@@ -5,6 +5,7 @@ from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.responses import HTMLResponse, FileResponse
 import uvicorn
 from PIL import Image
+from typing import List
 
 app = FastAPI(title="Rdv Asistan")
 
@@ -52,17 +53,18 @@ async def index():
         <div class="content">
             <form action="/yapay-zeka-islem" method="post" enctype="multipart/form-data">
                 
+                <!-- KUTULARA 'multiple' ÖZELLİĞİ EKLENDİ: ARTIK TEK KUTUDAN ÇOKLU RESİM SEÇEBİLİRSİN -->
                 <div class="file-box">
-                    <span class="file-label" id="lbl1">＋ 1. Dosya (Excel veya Resim)</span>
-                    <input type="file" name="file1" accept=".xlsx, .xls, .png, .jpg, .jpeg" onchange="document.getElementById('lbl1').innerText = this.files[0].name">
+                    <span class="file-label" id="lbl1">＋ 1. Dosya (Çoklu Resim veya Excel)</span>
+                    <input type="file" name="file1" accept=".xlsx, .xls, .png, .jpg, .jpeg" multiple onchange="document.getElementById('lbl1').innerText = this.files.length > 1 ? this.files.length + ' dosya seçildi' : this.files[0].name">
                 </div>
                 <div class="file-box">
-                    <span class="file-label" id="lbl2">＋ 2. Dosya (Excel veya Resim)</span>
-                    <input type="file" name="file2" accept=".xlsx, .xls, .png, .jpg, .jpeg" onchange="document.getElementById('lbl2').innerText = this.files[0].name">
+                    <span class="file-label" id="lbl2">＋ 2. Dosya (Çoklu Resim veya Excel)</span>
+                    <input type="file" name="file2" accept=".xlsx, .xls, .png, .jpg, .jpeg" multiple onchange="document.getElementById('lbl2').innerText = this.files[0].name">
                 </div>
                 <div class="file-box">
-                    <span class="file-label" id="lbl3">＋ 3. Dosya (Excel veya Resim)</span>
-                    <input type="file" name="file3" accept=".xlsx, .xls, .png, .jpg, .jpeg" onchange="document.getElementById('lbl3').innerText = this.files[0].name">
+                    <span class="file-label" id="lbl3">＋ 3. Dosya (Çoklu Resim veya Excel)</span>
+                    <input type="file" name="file3" accept=".xlsx, .xls, .png, .jpg, .jpeg" multiple onchange="document.getElementById('lbl3').innerText = this.files[0].name">
                 </div>
 
                 <div class="command-area">
@@ -86,16 +88,23 @@ async def index():
 @app.post("/yapay-zeka-islem")
 async def akilli_motor(
     komut: str = Form(...),
-    file1: UploadFile = File(None),
-    file2: UploadFile = File(None),
-    file3: UploadFile = File(None)
+    file1: List[UploadFile] = File(None),
+    file2: List[UploadFile] = File(None),
+    file3: List[UploadFile] = File(None)
 ):
     try:
         komut_lower = komut.lower()
-        uploaded_files = [f for f in [file1, file2, file3] if f and f.filename]
+        
+        # Gelen tüm dosyaları tek bir düz listede topluyoruz
+        uploaded_files = []
+        for f_list in [file1, file2, file3]:
+            if f_list:
+                for f in f_list:
+                    if f.filename:
+                        uploaded_files.append(f)
 
         if not uploaded_files:
-            raise HTTPException(status_code=400, detail="İşlem yapabilmek için en az bir dosya yüklemelisin Rıdo!")
+            raise HTTPException(status_code=400, detail="İşlem yapabilmek için dosya yüklemelisin Rıdo!")
 
         # 1. SENARYO: PDF ÇEVİRİCİ MOTORU
         if any(x in komut_lower for x in ["pdf", "resim", "görsel", "fotoğraf", "çevir"]):
