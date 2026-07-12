@@ -4,13 +4,13 @@ import pandas as pd
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.responses import HTMLResponse, FileResponse
 import uvicorn
+from PIL import Image
 
-app = FastAPI(title="RdvAsistan - Akıllı Mobil Platform")
+app = FastAPI(title="Rdv Asistan")
 
 OUTPUT_DIR = "outputs"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# GELECEKTEKİ DİĞER PROJELERİN İÇİN BURAYA YENİ SAYFALAR/HİZMETLER EKLEYEBİLİRSİN
 @app.get("/", response_class=HTMLResponse)
 async def index():
     return """
@@ -19,7 +19,7 @@ async def index():
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>RdvAsistan - Akıllı Excel Hub</title>
+        <title>Rdv Asistan</title>
         <style>
             :root {
                 --bg-color: #f1f5f9;
@@ -31,9 +31,8 @@ async def index():
             * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
             body { background: var(--bg-color); color: var(--text); padding: 15px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
             .container { width: 100%; max-width: 500px; background: var(--card-bg); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden; }
-            .header { background: var(--primary); color: white; padding: 30px 20px; text-align: center; }
-            .header h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
-            .header p { font-size: 13px; opacity: 0.7; margin-top: 5px; }
+            .header { background: var(--primary); color: white; padding: 35px 20px; text-align: center; }
+            .header h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
             .content { padding: 25px; }
             .file-box { border: 2px dashed #cbd5e1; border-radius: 12px; padding: 12px; margin-bottom: 12px; background: #f8fafc; position: relative; text-align: center; }
             .file-box input { position: absolute; top:0; left:0; width:100%; height:100%; opacity:0; cursor:pointer; }
@@ -42,44 +41,41 @@ async def index():
             textarea { width: 100%; height: 100px; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; font-size: 14px; resize: none; outline: none; }
             textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); }
             .btn-run { width: 100%; background: var(--accent); color: white; border: none; padding: 15px; font-size: 16px; font-weight: 700; border-radius: 12px; cursor: pointer; margin-top: 15px; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
-            .nav-future { display: flex; justify-content: space-around; margin-top: 20px; padding-top: 15px; border-top: 1px solid #e2e8f0; font-size: 12px; color: #94a3b8; }
+            .footer-tags { display: flex; justify-content: space-around; margin-top: 25px; padding-top: 15px; border-top: 1px solid #e2e8f0; font-size: 11px; color: #94a3b8; font-weight: 600; }
         </style>
     </head>
     <body>
     <div class="container">
         <div class="header">
-            <h1>RdvAsistan AI</h1>
-            <p>Dosyaları yükle ve ne yapacağını Türkçe emret</p>
+            <h1>Rdv Asistan</h1>
         </div>
         <div class="content">
             <form action="/yapay-zeka-islem" method="post" enctype="multipart/form-data">
                 
-                <!-- 3 Adet Opsiyonel Dosya Slotu (Mobilde seçimi rahatlatır) -->
                 <div class="file-box">
-                    <span class="file-label" id="lbl1">＋ 1. Excel Dosyası (Ana Dosya)</span>
-                    <input type="file" name="file1" accept=".xlsx, .xls" onchange="document.getElementById('lbl1').innerText = this.files[0].name">
+                    <span class="file-label" id="lbl1">＋ 1. Dosya (Excel veya Resim)</span>
+                    <input type="file" name="file1" accept=".xlsx, .xls, .png, .jpg, .jpeg" onchange="document.getElementById('lbl1').innerText = this.files[0].name">
                 </div>
                 <div class="file-box">
-                    <span class="file-label" id="lbl2">＋ 2. Excel Dosyası (Referans/Pivot Dosyası)</span>
-                    <input type="file" name="file2" accept=".xlsx, .xls" onchange="document.getElementById('lbl2').innerText = this.files[0].name">
+                    <span class="file-label" id="lbl2">＋ 2. Dosya (Excel veya Resim)</span>
+                    <input type="file" name="file2" accept=".xlsx, .xls, .png, .jpg, .jpeg" onchange="document.getElementById('lbl2').innerText = this.files[0].name">
                 </div>
                 <div class="file-box">
-                    <span class="file-label" id="lbl3">＋ 3. Excel Dosyası (Yedek Slot)</span>
-                    <input type="file" name="file3" accept=".xlsx, .xls" onchange="document.getElementById('lbl3').innerText = this.files[0].name">
+                    <span class="file-label" id="lbl3">＋ 3. Dosya (Excel veya Resim)</span>
+                    <input type="file" name="file3" accept=".xlsx, .xls, .png, .jpg, .jpeg" onchange="document.getElementById('lbl3').innerText = this.files[0].name">
                 </div>
 
                 <div class="command-area">
-                    <textarea name="komut" placeholder="Örn: 1. ve 2. dosyayı Musteri_ID sütunundan birleştir düşeyara yap." required></textarea>
+                    <textarea name="komut" placeholder="Ne yapmak istediğini yaz Rıdo...&#10;Örn 1: Dosyaları Musteri_ID sütunundan düşeyara yap.&#10;Örn 2: Yüklediğim resimleri sıkıştırıp tek bir PDF yap." required></textarea>
                 </div>
 
                 <button type="submit" class="btn-run">Komutu Çalıştır</button>
             </form>
             
-            <!-- İLERİDE EKLENECEK DİĞER MODÜLLER İÇİN BURASI HAZIR VİTRİN -->
-            <div class="nav-future">
-                <span>📊 Excel Motoru (Aktif)</span>
-                <span>📄 PDF Çevirici (Yakında)</span>
-                <span>🖼️ Görsel İşleme (Yakında)</span>
+            <div class="footer-tags">
+                <span>📊 Excel Motoru</span>
+                <span>📄 PDF Dönüştürücü</span>
+                <span>⚡ Otomatik Sıkıştırma</span>
             </div>
         </div>
     </div>
@@ -96,79 +92,84 @@ async def akilli_motor(
 ):
     try:
         komut_lower = komut.lower()
-        
-        # 1. DOSYALARI SORGULA VE DATAFRAME'E ÇEVİR
-        dfs = {}
-        if file1 and file1.filename:
-            dfs[1] = pd.read_excel(io.BytesIO(await file1.read()))
-            dfs[1].columns = dfs[1].columns.str.strip()
-        if file2 and file2.filename:
-            dfs[2] = pd.read_excel(io.BytesIO(await file2.read()))
-            dfs[2].columns = dfs[2].columns.str.strip()
-        if file3 and file3.filename:
-            dfs[3] = pd.read_excel(io.BytesIO(await file3.read()))
-            dfs[3].columns = dfs[3].columns.str.strip()
+        uploaded_files = [f for f in [file1, file2, file3] if f and f.filename]
 
-        if not dfs:
-            raise HTTPException(status_code=400, detail="En az bir dosya yüklemelisin Rıdo!")
+        if not uploaded_files:
+            raise HTTPException(status_code=400, detail="İşlem yapabilmek için en az bir dosya yüklemelisin Rıdo!")
 
-        output_path = os.path.join(OUTPUT_DIR, "asistan_sonuc.xlsx")
-
-        # 2. AKILLI NİYET ANALİZİ (INTENT ROUTING)
-        # Eğer metinde düşeyara/birleştirme geçiyorsa
-        if any(x in komut_lower for x in ["düşeyara", "vlookup", "birleştir", "merge"]):
-            if len(dfs) < 2:
-                raise HTTPException(status_code=400, detail="Düşeyara için en az 2 dosya yüklemelisin!")
+        # 1. SENARYO: PDF ÇEVİRİCİ MOTORU
+        if any(x in komut_lower for x in ["pdf", "resim", "görsel", "fotoğraf", "çevir"]):
+            images = []
+            for f in uploaded_files:
+                filename_lower = f.filename.lower()
+                if any(filename_lower.endswith(ext) for ext in ['.jpg', '.jpeg', '.png']):
+                    img_bytes = await f.read()
+                    img = Image.open(io.BytesIO(img_bytes))
+                    if img.mode in ('RGBA', 'LA', 'P'):
+                        img = img.convert('RGB')
+                    images.append(img)
             
-            # Komutun içinden hangi sütun isminin geçtiğini akıllıca bulma
+            if not images:
+                raise HTTPException(status_code=400, detail="Yüklediğin dosyalar resim (.jpg, .png) değil Rıdo!")
+
+            output_pdf_path = os.path.join(OUTPUT_DIR, "rdv_asistan_sonuc.pdf")
+            images[0].save(output_pdf_path, "PDF", save_all=True, append_images=images[1:], quality=65)
+            return FileResponse(output_pdf_path, media_type="application/pdf", filename="rdv_asistan_sonuc.pdf")
+
+        # 2. SENARYO: EXCEL DÜŞEYARA MOTORU
+        elif any(x in komut_lower for x in ["düşeyara", "vlookup", "birleştir", "merge"]):
+            if len(uploaded_files) < 2:
+                raise HTTPException(status_code=400, detail="Düşeyara için en az 2 Excel dosyası yüklemelisin!")
+            
+            df_main = pd.read_excel(io.BytesIO(await uploaded_files[0].read()))
+            df_ref = pd.read_excel(io.BytesIO(await uploaded_files[1].read()))
+            df_main.columns = df_main.columns.str.strip()
+            df_ref.columns = df_ref.columns.str.strip()
+            
             ortak_sutun = None
-            for col in dfs[1].columns:
+            for col in df_main.columns:
                 if col.lower() in komut_lower:
                     ortak_sutun = col
                     break
             
             if not ortak_sutun:
-                # Eğer yazıda sütun bulamazsa iki dosyadaki ilk kesişen ortak sütunu kendi bulur
-                ortak_set = set(dfs[1].columns).intersection(set(dfs[2].columns))
+                ortak_set = list(set(df_main.columns).intersection(set(df_ref.columns)))
                 if ortak_set:
-                    ortak_sutun = list(ortak_set)[0]
+                    ortak_sutun = ortak_set[0]
                 else:
-                    raise HTTPException(status_code=400, detail="Yazdığın komutta ortak sütun adını bulamadım ve dosya sütunları eşleşmiyor.")
+                    raise HTTPException(status_code=400, detail="Ortak sütun adını bulamadım ve sütunlar otomatik eşleşmedi.")
 
-            # İşlemi yap ve kaydet
-            sonuc_df = pd.merge(dfs[1], dfs[2], on=ortak_sutun, how="left")
-            sonuc_df.to_excel(output_path, index=False)
+            result_df = pd.merge(df_main, df_ref, on=ortak_sutun, how="left")
+            output_excel_path = os.path.join(OUTPUT_DIR, "asistan_sonuc.xlsx")
+            result_df.to_excel(output_excel_path, index=False)
+            return FileResponse(output_excel_path, media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", filename="duseyara_sonuc.xlsx")
 
-        # Eğer metinde pivot/özet geçiyorsa
+        # 3. SENARYO: EXCEL PIVOT MOTORU
         elif any(x in komut_lower for x in ["pivot", "özet", "grupla", "toplam"]):
-            target_df = dfs[1] # Varsayılan ilk dosyayı işler
+            df = pd.read_excel(io.BytesIO(await uploaded_files[0].read()))
+            df.columns = df.columns.str.strip()
             
-            # Metinden index ve değer sütunlarını tahmin etme
-            index_col = None
-            value_col = None
-            
-            for col in target_df.columns:
+            index_col, value_col = None, None
+            for col in df.columns:
                 if col.lower() in komut_lower:
-                    # Sayısal veri tipiyse değer alanı, metinse satır alanı yapalım
-                    if pd.api.types.is_numeric_dtype(target_df[col]) and not value_col:
+                    if pd.api.types.is_numeric_dtype(df[col]) and not value_col:
                         value_col = col
                     elif not index_col:
                         index_col = col
             
-            # Bulamazsa ilk iki sütunu baz alır
-            if not index_col: index_col = target_df.columns[0]
-            if not value_col: value_col = target_df.columns[1]
+            if not index_col: index_col = df.columns[0]
+            if not value_col: value_col = df.columns[1]
 
-            pivot_df = pd.pivot_table(target_df, values=value_col, index=index_col, aggfunc='sum').reset_index()
-            pivot_df.to_excel(output_path, index=False)
+            pivot_df = pd.pivot_table(df, values=value_col, index=index_col, aggfunc='sum').reset_index()
+            output_excel_path = os.path.join(OUTPUT_DIR, "asistan_sonuc.xlsx")
+            pivot_df.to_excel(output_excel_path, index=False)
+            return FileResponse(output_excel_path, media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", filename="pivot_sonuc.xlsx")
         
         else:
-            raise HTTPException(status_code=400, detail="Ne yapmak istediğini tam anlayamadım. Komutta 'düşeyara' veya 'pivot' kelimelerini geçirmeyi dene.")
-
-        return FileResponse(output_path, media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", filename="asistan_sonuc.xlsx")
+            raise HTTPException(status_code=400, detail="Ne yapmak istediğini tam anlayamadım Rıdo. Komutta 'düşeyara', 'pivot' veya 'pdf' kelimelerini geçirmeyi dene.")
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Sihirbaz Hatası: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Asistan Hatası: {str(e)}")
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
