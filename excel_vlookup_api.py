@@ -5,12 +5,12 @@ from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.responses import HTMLResponse, FileResponse
 import uvicorn
 
-app = FastAPI(title="Excel Mobil VLOOKUP & Pivot API")
+app = FastAPI(title="RdvAsistan - Akıllı Mobil Platform")
 
-# Geçici dosya kayıt dizini
 OUTPUT_DIR = "outputs"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
+# GELECEKTEKİ DİĞER PROJELERİN İÇİN BURAYA YENİ SAYFALAR/HİZMETLER EKLEYEBİLİRSİN
 @app.get("/", response_class=HTMLResponse)
 async def index():
     return """
@@ -19,194 +19,157 @@ async def index():
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Excel Mobil Sihirbazı</title>
+        <title>RdvAsistan - Akıllı Excel Hub</title>
         <style>
             :root {
-                --bg-color: #f4f7f6;
+                --bg-color: #f1f5f9;
                 --card-bg: #ffffff;
-                --primary: #1e3a8a;
-                --primary-hover: #172554;
-                --accent: #0ea5e9;
-                --text-color: #334155;
-                --border-color: #cbd5e1;
+                --primary: #0f172a;
+                --accent: #3b82f6;
+                --text: #1e293b;
             }
-            * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-            body { background-color: var(--bg-color); color: var(--text-color); padding: 15px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-            .container { width: 100%; max-width: 500px; background: var(--card-bg); border-radius: 16px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); overflow: hidden; }
-            .header { background: var(--primary); color: white; padding: 24px 20px; text-align: center; }
-            .header h1 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-            .header p { font-size: 13px; opacity: 0.8; }
-            .tabs { display: flex; background: #e2e8f0; padding: 4px; }
-            .tab-btn { flex: 1; background: none; border: none; padding: 12px; font-weight: 600; font-size: 14px; color: #64748b; cursor: pointer; border-radius: 8px; transition: all 0.2s; }
-            .tab-btn.active { background: white; color: var(--primary); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-            .form-content { padding: 20px; }
-            .form-section { display: none; }
-            .form-section.active { display: block; }
-            .form-group { margin-bottom: 18px; }
-            .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #475569; }
-            .file-input-wrapper { position: relative; border: 2px dashed var(--border-color); border-radius: 10px; padding: 15px; text-align: center; background: #f8fafc; cursor: pointer; transition: border-color 0.2s; }
-            .file-input-wrapper:hover { border-color: var(--accent); }
-            .file-input-wrapper input[type="file"] { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
-            .file-msg { font-size: 13px; color: #64748b; word-break: break-all; }
-            input[type="text"] { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 10px; font-size: 14px; outline: none; transition: border-color 0.2s; }
-            input[type="text"]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15); }
-            .btn-submit { width: 100%; background: var(--primary); color: white; border: none; padding: 14px; font-size: 15px; font-weight: 600; border-radius: 10px; cursor: pointer; transition: background 0.2s; margin-top: 10px; box-shadow: 0 4px 12px rgba(30, 58, 138, 0.15); }
-            .btn-submit:hover { background: var(--primary-hover); }
-            .footer-info { text-align: center; font-size: 11px; color: #94a3b8; margin-top: 15px; }
+            * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+            body { background: var(--bg-color); color: var(--text); padding: 15px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+            .container { width: 100%; max-width: 500px; background: var(--card-bg); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden; }
+            .header { background: var(--primary); color: white; padding: 30px 20px; text-align: center; }
+            .header h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+            .header p { font-size: 13px; opacity: 0.7; margin-top: 5px; }
+            .content { padding: 25px; }
+            .file-box { border: 2px dashed #cbd5e1; border-radius: 12px; padding: 12px; margin-bottom: 12px; background: #f8fafc; position: relative; text-align: center; }
+            .file-box input { position: absolute; top:0; left:0; width:100%; height:100%; opacity:0; cursor:pointer; }
+            .file-label { font-size: 13px; color: #64748b; font-weight: 600; }
+            .command-area { margin-top: 15px; }
+            textarea { width: 100%; height: 100px; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; font-size: 14px; resize: none; outline: none; }
+            textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); }
+            .btn-run { width: 100%; background: var(--accent); color: white; border: none; padding: 15px; font-size: 16px; font-weight: 700; border-radius: 12px; cursor: pointer; margin-top: 15px; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
+            .nav-future { display: flex; justify-content: space-around; margin-top: 20px; padding-top: 15px; border-top: 1px solid #e2e8f0; font-size: 12px; color: #94a3b8; }
         </style>
     </head>
     <body>
-
     <div class="container">
         <div class="header">
-            <h1>Excel Mobil Sihirbazı</h1>
-            <p>Düşeyara (Merge) ve Pivot işlemlerini mobilden saniyeler içinde yapın</p>
+            <h1>RdvAsistan AI</h1>
+            <p>Dosyaları yükle ve ne yapacağını Türkçe emret</p>
         </div>
-        
-        <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('vlookup')">Düşeyara (VLOOKUP)</button>
-            <button class="tab-btn" onclick="switchTab('pivot')">Pivot Tablo</button>
-        </div>
-        
-        <div class="form-content">
-            <!-- DÜŞEYARA FORMU -->
-            <form id="vlookup-form" class="form-section active" action="/vlookup" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label>Ana Dosya (Verilerin Ekleneceği Dosya)</label>
-                    <div class="file-input-wrapper">
-                        <span class="file-msg" id="msg-main">Excel Dosyası Seç (.xlsx, .xls)</span>
-                        <input type="file" name="file_main" accept=".xlsx, .xls" required onchange="updateFileName(this, 'msg-main')">
-                    </div>
-                </div>
+        <div class="content">
+            <form action="/yapay-zeka-islem" method="post" enctype="multipart/form-data">
                 
-                <div class="form-group">
-                    <label>Referans Dosya (Arama Yapılacak Kaynak)</label>
-                    <div class="file-input-wrapper">
-                        <span class="file-msg" id="msg-ref">Excel Dosyası Seç (.xlsx, .xls)</span>
-                        <input type="file" name="file_ref" accept=".xlsx, .xls" required onchange="updateFileName(this, 'msg-ref')">
-                    </div>
+                <!-- 3 Adet Opsiyonel Dosya Slotu (Mobilde seçimi rahatlatır) -->
+                <div class="file-box">
+                    <span class="file-label" id="lbl1">＋ 1. Excel Dosyası (Ana Dosya)</span>
+                    <input type="file" name="file1" accept=".xlsx, .xls" onchange="document.getElementById('lbl1').innerText = this.files[0].name">
                 </div>
-                
-                <div class="form-group">
-                    <label>Ana Dosyadaki Ortak Sütun Adı (Key)</label>
-                    <input type="text" name="key_main" placeholder="Örn: Musteri_ID veya Barkod" required>
+                <div class="file-box">
+                    <span class="file-label" id="lbl2">＋ 2. Excel Dosyası (Referans/Pivot Dosyası)</span>
+                    <input type="file" name="file2" accept=".xlsx, .xls" onchange="document.getElementById('lbl2').innerText = this.files[0].name">
                 </div>
-                
-                <div class="form-group">
-                    <label>Referans Dosyadaki Ortak Sütun Adı (Key)</label>
-                    <input type="text" name="key_ref" placeholder="Örn: ID veya Urun_Kodu" required>
+                <div class="file-box">
+                    <span class="file-label" id="lbl3">＋ 3. Excel Dosyası (Yedek Slot)</span>
+                    <input type="file" name="file3" accept=".xlsx, .xls" onchange="document.getElementById('lbl3').innerText = this.files[0].name">
                 </div>
-                
-                <button type="submit" class="btn-submit">Birleştir ve İndir</button>
-            </form>
 
-            <!-- PIVOT FORMU -->
-            <form id="pivot-form" class="form-section" action="/pivot" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label>Excel Dosyası</label>
-                    <div class="file-input-wrapper">
-                        <span class="file-msg" id="msg-pivot">Excel Dosyası Seç (.xlsx, .xls)</span>
-                        <input type="file" name="file_pivot" accept=".xlsx, .xls" required onchange="updateFileName(this, 'msg-pivot')">
-                    </div>
+                <div class="command-area">
+                    <textarea name="komut" placeholder="Örn: 1. ve 2. dosyayı Musteri_ID sütunundan birleştir düşeyara yap." required></textarea>
                 </div>
-                
-                <div class="form-group">
-                    <label>Satır Alanı (Index)</label>
-                    <input type="text" name="index_col" placeholder="Gruplanacak sütun, Örn: Bolge, Kategori" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>Değer Alanı (Values)</label>
-                    <input type="text" name="value_col" placeholder="Hesaplanacak sayısal sütun, Örn: Satis_Tutari" required>
-                </div>
-                
-                <button type="submit" class="btn-submit">Pivot Yap ve İndir</button>
+
+                <button type="submit" class="btn-run">Komutu Çalıştır</button>
             </form>
             
-            <p class="footer-info">Powered by Python Pandas & FastAPI • Mobile Optimized</p>
+            <!-- İLERİDE EKLENECEK DİĞER MODÜLLER İÇİN BURASI HAZIR VİTRİN -->
+            <div class="nav-future">
+                <span>📊 Excel Motoru (Aktif)</span>
+                <span>📄 PDF Çevirici (Yakında)</span>
+                <span>🖼️ Görsel İşleme (Yakında)</span>
+            </div>
         </div>
     </div>
-
-    <script>
-        function switchTab(tab) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.form-section').forEach(form => form.classList.remove('active'));
-            
-            if(tab === 'vlookup') {
-                document.querySelector('.tabs .tab-btn:nth-child(1)').classList.add('active');
-                document.getElementById('vlookup-form').classList.add('active');
-            } else {
-                document.querySelector('.tabs .tab-btn:nth-child(2)').classList.add('active');
-                document.getElementById('pivot-form').classList.add('active');
-            }
-        }
-
-        function updateFileName(input, targetId) {
-            const fileName = input.files[0] ? input.files[0].name : "Excel Dosyası Seç";
-            document.getElementById(targetId).innerText = fileName;
-            document.getElementById(targetId).style.color = "#0f172a";
-            document.getElementById(targetId).style.fontWeight = "600";
-        }
-    </script>
     </body>
     </html>
     """
 
-@app.post("/vlookup")
-async def do_vlookup(
-    file_main: UploadFile = File(...),
-    file_ref: UploadFile = File(...),
-    key_main: str = Form(...),
-    key_ref: str = Form(...)
+@app.post("/yapay-zeka-islem")
+async def akilli_motor(
+    komut: str = Form(...),
+    file1: UploadFile = File(None),
+    file2: UploadFile = File(None),
+    file3: UploadFile = File(None)
 ):
     try:
-        content_main = await file_main.read()
-        content_ref = await file_ref.read()
+        komut_lower = komut.lower()
         
-        df_main = pd.read_excel(io.BytesIO(content_main))
-        df_ref = pd.read_excel(io.BytesIO(content_ref))
-        
-        df_main.columns = df_main.columns.str.strip()
-        df_ref.columns = df_ref.columns.str.strip()
-        
-        if key_main not in df_main.columns:
-            raise HTTPException(status_code=400, detail=f"Ana dosyada '{key_main}' sütunu bulunamadı!")
-        if key_ref not in df_ref.columns:
-            raise HTTPException(status_code=400, detail=f"Referans dosyada '{key_ref}' sütunu bulunamadı!")
-            
-        result_df = pd.merge(df_main, df_ref, left_on=key_main, right_on=key_ref, how="left")
-        
-        output_filepath = os.path.join(OUTPUT_DIR, "vlookup_sonuc.xlsx")
-        result_df.to_excel(output_filepath, index=False)
-        
-        return FileResponse(output_filepath, media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", filename="duseyara_sonuc.xlsx")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Hata oluştu: {str(e)}")
+        # 1. DOSYALARI SORGULA VE DATAFRAME'E ÇEVİR
+        dfs = {}
+        if file1 and file1.filename:
+            dfs[1] = pd.read_excel(io.BytesIO(await file1.read()))
+            dfs[1].columns = dfs[1].columns.str.strip()
+        if file2 and file2.filename:
+            dfs[2] = pd.read_excel(io.BytesIO(await file2.read()))
+            dfs[2].columns = dfs[2].columns.str.strip()
+        if file3 and file3.filename:
+            dfs[3] = pd.read_excel(io.BytesIO(await file3.read()))
+            dfs[3].columns = dfs[3].columns.str.strip()
 
-@app.post("/pivot")
-async def do_pivot(
-    file_pivot: UploadFile = File(...),
-    index_col: str = Form(...),
-    value_col: str = Form(...)
-):
-    try:
-        content = await file_pivot.read()
-        df = pd.read_excel(io.BytesIO(content))
-        df.columns = df.columns.str.strip()
-        
-        if index_col not in df.columns or value_col not in df.columns:
-            raise HTTPException(status_code=400, detail="Belirtilen sütun isimleri dosyada bulunamadı!")
+        if not dfs:
+            raise HTTPException(status_code=400, detail="En az bir dosya yüklemelisin Rıdo!")
+
+        output_path = os.path.join(OUTPUT_DIR, "asistan_sonuc.xlsx")
+
+        # 2. AKILLI NİYET ANALİZİ (INTENT ROUTING)
+        # Eğer metinde düşeyara/birleştirme geçiyorsa
+        if any(x in komut_lower for x in ["düşeyara", "vlookup", "birleştir", "merge"]):
+            if len(dfs) < 2:
+                raise HTTPException(status_code=400, detail="Düşeyara için en az 2 dosya yüklemelisin!")
             
-        pivot_df = pd.pivot_table(df, values=value_col, index=index_col, aggfunc='sum').reset_index()
+            # Komutun içinden hangi sütun isminin geçtiğini akıllıca bulma
+            ortak_sutun = None
+            for col in dfs[1].columns:
+                if col.lower() in komut_lower:
+                    ortak_sutun = col
+                    break
+            
+            if not ortak_sutun:
+                # Eğer yazıda sütun bulamazsa iki dosyadaki ilk kesişen ortak sütunu kendi bulur
+                ortak_set = set(dfs[1].columns).intersection(set(dfs[2].columns))
+                if ortak_set:
+                    ortak_sutun = list(ortak_set)[0]
+                else:
+                    raise HTTPException(status_code=400, detail="Yazdığın komutta ortak sütun adını bulamadım ve dosya sütunları eşleşmiyor.")
+
+            # İşlemi yap ve kaydet
+            sonuc_df = pd.merge(dfs[1], dfs[2], on=ortak_sutun, how="left")
+            sonuc_df.to_excel(output_path, index=False)
+
+        # Eğer metinde pivot/özet geçiyorsa
+        elif any(x in komut_lower for x in ["pivot", "özet", "grupla", "toplam"]):
+            target_df = dfs[1] # Varsayılan ilk dosyayı işler
+            
+            # Metinden index ve değer sütunlarını tahmin etme
+            index_col = None
+            value_col = None
+            
+            for col in target_df.columns:
+                if col.lower() in komut_lower:
+                    # Sayısal veri tipiyse değer alanı, metinse satır alanı yapalım
+                    if pd.api.types.is_numeric_dtype(target_df[col]) and not value_col:
+                        value_col = col
+                    elif not index_col:
+                        index_col = col
+            
+            # Bulamazsa ilk iki sütunu baz alır
+            if not index_col: index_col = target_df.columns[0]
+            if not value_col: value_col = target_df.columns[1]
+
+            pivot_df = pd.pivot_table(target_df, values=value_col, index=index_col, aggfunc='sum').reset_index()
+            pivot_df.to_excel(output_path, index=False)
         
-        output_filepath = os.path.join(OUTPUT_DIR, "pivot_sonuc.xlsx")
-        pivot_df.to_excel(output_filepath, index=False)
-        
-        return FileResponse(output_filepath, media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", filename="pivot_sonuc.xlsx")
+        else:
+            raise HTTPException(status_code=400, detail="Ne yapmak istediğini tam anlayamadım. Komutta 'düşeyara' veya 'pivot' kelimelerini geçirmeyi dene.")
+
+        return FileResponse(output_path, media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", filename="asistan_sonuc.xlsx")
+
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Hata oluştu: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Sihirbaz Hatası: {str(e)}")
 
 if __name__ == "__main__":
-    # Render'ın port ayarıyla tam uyumlu çalışma alanı
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run("excel_vlookup_api:app", host="0.0.0.0", port=port, reload=False)
