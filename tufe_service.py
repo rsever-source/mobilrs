@@ -6,20 +6,17 @@ from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup
+import redis
 
-try:
-    import redis
-except ImportError:
-    redis = None
-
-
-# =========================================================
-# TÜİK KAYNAKLARI
-# =========================================================
 
 TUIK_MAIN = "https://www.tuik.gov.tr/"
+TUIK_CALENDAR = "https://www.tuik.gov.tr/Kurumsal/Veri_Takvimi"
 TUIK_MEDIA = "https://veriportali.tuik.gov.tr/media/"
-TUIK_PORTAL = "https://veriportali.tuik.gov.tr"
+TUIK_INDEX = "https://veriportali.tuik.gov.tr/Bulten/Index"
+TUIK_BASE = "https://veriportali.tuik.gov.tr"
+
+CACHE_KEY = "rdv:tufe:last_official"
+
 
 HEADERS = {
     "User-Agent": (
@@ -28,8 +25,11 @@ HEADERS = {
         "(KHTML, like Gecko) "
         "Chrome/136.0 Safari/537.36"
     ),
-    "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.8",
+    "Accept": "text/html,application/xhtml+xml",
+    "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.7",
+    "Cache-Control": "no-cache",
 }
+
 
 MONTH_NAMES = {
     1: "Ocak",
@@ -45,6 +45,7 @@ MONTH_NAMES = {
     11: "Kasım",
     12: "Aralık",
 }
+
 
 TR_MONTHS = {
     "ocak": 1,
@@ -67,18 +68,12 @@ TR_MONTHS = {
     "aralik": 12,
 }
 
-CACHE_KEY = "rdv:tufe:last_official"
 
-
-# =========================================================
-# HTTP
-# =========================================================
-
-def get_html(url: str) -> str:
+def get_html(url):
     response = requests.get(
         url,
         headers=HEADERS,
-        timeout=20,
+        timeout=25,
     )
 
     response.raise_for_status()
@@ -86,7 +81,9 @@ def get_html(url: str) -> str:
     return response.text
 
 
-def page_text(html: str) -> str:
+def get_text(url):
+    html = get_html(url)
+
     soup = BeautifulSoup(
         html,
         "html.parser",
@@ -98,24 +95,10 @@ def page_text(html: str) -> str:
     )
 
 
-# =========================================================
-# REDIS / RENDER KEY VALUE
-# =========================================================
-
 def get_redis_client():
-    """
-    Render'da REDIS_URL environment variable oluşturacağız.
-
-    Redis yoksa None döner.
-    Canlı TÜİK yine çalışabilir.
-    """
-
-    if redis is None:
-        return None
-
     redis_url = os.environ.get(
         "REDIS_URL",
-        ""
+        "",
     ).strip()
 
     if not redis_url:
@@ -125,6 +108,8 @@ def get_redis_client():
         client = redis.from_url(
             redis_url,
             decode_responses=True,
+            socket_connect_timeout=5,
+            socket_timeout=5,
         )
 
         client.ping()
@@ -135,15 +120,15 @@ def get_redis_client():
         return None
 
 
-def save_cache(data: dict) -> bool:
+def save_cache(data):
     client = get_redis_client()
 
     if client is None:
         return False
 
-    cache_data = dict(data)
+    payload = dict(data)
 
-    cache_data["cached_at"] = (
+    payload["cached_at"] = (
         datetime.now(timezone.utc)
         .isoformat()
     )
@@ -152,9 +137,9 @@ def save_cache(data: dict) -> bool:
         client.set(
             CACHE_KEY,
             json.dumps(
-                cache_data,
+                payload,
                 ensure_ascii=False,
-            )
+            ),
         )
 
         return True
@@ -177,83 +162,20 @@ def load_cache():
         if not raw:
             return None
 
-        data = json.loads(raw)
-
-        return data
+        return json.loads(raw)
 
     except Exception:
         return None
 
 
-# =========================================================
-# SON TÜFE DÖNEMİNİ BUL
-# =========================================================
-
-def period_from_main_page():
-    """
-    TÜİK ana sayfasından son açıklanmış
-    TÜFE dönemini bulmaya çalışır.
-
-    Örnek:
-    2026/7
-    """
-
-    text = page_text(
-        get_html(TUIK_MAIN)
-    )
-
-    patterns = [
-        (
-            r"Tüketici\s+Fiyat\s+Endeksi"
-            r".{0,200}?"
-            r"(\d{4})\s*/\s*(\d{1,2})"
-        ),
-        (
-            r"TÜFE"
-            r".{0,200}?"
-            r"(\d{4})\s*/\s*(\d{1,2})"
-        ),
-    ]
-
-    for pattern in patterns:
-        match = re.search(
-            pattern,
-            text,
-            re.IGNORECASE,
-        )
-
-        if match:
-            year = int(
-                match.group(1)
-            )
-
-            month = int(
-                match.group(2)
-            )
-
-            if 1 <= month <= 12:
-                return year, month
-
-    return None
-
-
-def period_from_media():
-    """
-    TÜİK Veri Portalı media sayfasından
-    son Tüketici Fiyat Endeksi dönemini bulur.
-    """
-
-    text = page_text(
-        get_html(TUIK_MEDIA)
-    )
-
+def extract_periods_from_text(text):
     pattern = (
         r"Tüketici\s+Fiyat\s+Endeksi"
-        r".{0,150}?"
+        r".{0,120}?"
         r"(Ocak|Şubat|Subat|Mart|Nisan|Mayıs|Mayis|"
         r"Haziran|Temmuz|Ağustos|Agustos|Eylül|Eylul|"
         r"Ekim|Kasım|Kasim|Aralık|Aralik)"
-        r"\s+(\d{4})"
+        r"[\s,]+(\d{4})"
     )
 
     matches = re.findall(
@@ -277,6 +199,79 @@ def period_from_media():
                 )
             )
 
+    return periods
+
+
+def period_from_main_page():
+    text = get_text(
+        TUIK_MAIN
+    )
+
+    periods = []
+
+
+    # Örnek:
+    # Tüketici Fiyat Endeksi-Yıllık (%)
+    # 2026/7 (Ay)
+    pattern_numeric = (
+        r"Tüketici\s+Fiyat\s+Endeksi"
+        r".{0,120}?"
+        r"(\d{4})\s*/\s*(\d{1,2})"
+    )
+
+    for year_text, month_text in re.findall(
+        pattern_numeric,
+        text,
+        re.IGNORECASE,
+    ):
+        year = int(year_text)
+        month = int(month_text)
+
+        if 1 <= month <= 12:
+            periods.append(
+                (
+                    year,
+                    month,
+                )
+            )
+
+
+    periods.extend(
+        extract_periods_from_text(
+            text
+        )
+    )
+
+    if not periods:
+        return None
+
+    return max(periods)
+
+
+def period_from_calendar():
+    text = get_text(
+        TUIK_CALENDAR
+    )
+
+    periods = extract_periods_from_text(
+        text
+    )
+
+    if not periods:
+        return None
+
+    return max(periods)
+
+
+def period_from_media():
+    text = get_text(
+        TUIK_MEDIA
+    )
+
+    periods = extract_periods_from_text(
+        text
+    )
+
     if not periods:
         return None
 
@@ -284,17 +279,15 @@ def period_from_media():
 
 
 def find_latest_official_period():
-    """
-    Birden fazla resmi kaynaktan dönemi bulur.
-    Bulunan en yeni dönemi kullanır.
-    """
-
     periods = []
 
-    for func in (
+    functions = [
         period_from_main_page,
+        period_from_calendar,
         period_from_media,
-    ):
+    ]
+
+    for func in functions:
         try:
             result = func()
 
@@ -308,25 +301,17 @@ def find_latest_official_period():
 
     if not periods:
         raise RuntimeError(
-            "TÜİK'ten son TÜFE dönemi belirlenemedi."
+            "TÜİK'ten güncel TÜFE dönemi belirlenemedi."
         )
 
     return max(periods)
 
 
-# =========================================================
-# RESMİ TÜFE BÜLTENİNİ BUL
-# =========================================================
-
-def candidate_links_from_page(
-    page_url: str,
-    year: int,
-    month: int,
+def candidate_links_from_html(
+    html,
+    year,
+    month,
 ):
-    html = get_html(
-        page_url
-    )
-
     soup = BeautifulSoup(
         html,
         "html.parser",
@@ -347,29 +332,34 @@ def candidate_links_from_page(
             a.stripped_strings
         )
 
-        label_lower = (
-            label.lower()
+        href = a.get(
+            "href",
+            "",
         )
+
+        combined = (
+            label
+            + " "
+            + href
+        ).lower()
 
         if (
             "tüketici fiyat endeksi"
-            not in label_lower
+            not in combined
+            and
+            "tuketici-fiyat-endeksi"
+            not in combined
         ):
             continue
 
-        if month_name not in label_lower:
+        if month_name not in combined:
             continue
 
-        if str(year) not in label:
+        if str(year) not in combined:
             continue
-
-        href = a.get(
-            "href",
-            ""
-        )
 
         full_url = urljoin(
-            TUIK_PORTAL,
+            TUIK_BASE,
             href,
         )
 
@@ -383,70 +373,59 @@ def candidate_links_from_page(
             )
 
     return list(
-        dict.fromkeys(links)
+        dict.fromkeys(
+            links
+        )
     )
 
 
-def find_bulletin_url(
-    year: int,
-    month: int,
+def bulletin_candidates(
+    year,
+    month,
 ):
-    pages = [
-        TUIK_MEDIA,
-        "https://veriportali.tuik.gov.tr/tr/",
-        "https://veriportali.tuik.gov.tr/Bulten/Index",
-    ]
-
     candidates = []
+
+    pages = [
+        TUIK_MAIN,
+        TUIK_MEDIA,
+        TUIK_INDEX,
+        (
+            TUIK_INDEX
+            + "?p=Tuketici-Fiyat-Endeksi"
+        ),
+    ]
 
     for page in pages:
         try:
+            html = get_html(
+                page
+            )
+
             candidates.extend(
-                candidate_links_from_page(
-                    page,
+                candidate_links_from_html(
+                    html,
                     year,
                     month,
                 )
             )
 
         except Exception:
-            continue
+            pass
 
-    candidates = list(
-        dict.fromkeys(candidates)
+    return list(
+        dict.fromkeys(
+            candidates
+        )
     )
 
-    for url in candidates:
-        try:
-            parsed = parse_tufe_bulletin(
-                url,
-                expected_year=year,
-                expected_month=month,
-            )
-
-            if parsed:
-                return url
-
-        except Exception:
-            continue
-
-    raise RuntimeError(
-        f"{MONTH_NAMES[month]} {year} "
-        "TÜFE bülteni bulunamadı."
-    )
-
-
-# =========================================================
-# BÜLTENİ OKU
-# =========================================================
 
 def parse_tufe_bulletin(
-    url: str,
+    url,
     expected_year=None,
     expected_month=None,
 ):
-    text = page_text(
-        get_html(url)
+    text = get_text(
+        url
     )
 
     if (
@@ -456,14 +435,13 @@ def parse_tufe_bulletin(
         return None
 
 
-    # Dönemi bul
     period_pattern = (
         r"Tüketici\s+Fiyat\s+Endeksi"
         r"\s*,?\s*"
         r"(Ocak|Şubat|Subat|Mart|Nisan|Mayıs|Mayis|"
         r"Haziran|Temmuz|Ağustos|Agustos|Eylül|Eylul|"
         r"Ekim|Kasım|Kasim|Aralık|Aralik)"
-        r"\s+(\d{4})"
+        r"[\s,]+(\d{4})"
     )
 
     period_match = re.search(
@@ -474,6 +452,7 @@ def parse_tufe_bulletin(
 
     if not period_match:
         return None
+
 
     month = TR_MONTHS.get(
         period_match
@@ -488,12 +467,14 @@ def parse_tufe_bulletin(
     if not month:
         return None
 
+
     if (
         expected_year is not None
         and
         year != expected_year
     ):
         return None
+
 
     if (
         expected_month is not None
@@ -503,23 +484,26 @@ def parse_tufe_bulletin(
         return None
 
 
-    # -----------------------------------------------------
-    # KİRA İÇİN GEREKEN:
-    # "on iki aylık ortalamalara göre değişim"
-    # -----------------------------------------------------
-
+    # Kira için gereken oran:
+    # "on iki aylık ortalamalara göre %31,90"
     patterns = [
         (
             r"on\s+iki\s+aylık\s+ortalamalara\s+göre"
-            r".{0,100}?"
+            r".{0,80}?"
             r"%\s*([0-9]{1,3}[,.][0-9]{1,2})"
         ),
         (
             r"on\s+iki\s+aylık\s+ortalamalara\s+göre"
-            r"\s*"
+            r".{0,80}?"
+            r"([0-9]{1,3}[,.][0-9]{1,2})"
+        ),
+        (
+            r"On\s+iki\s+aylık\s+ortalamalara\s+göre\s+değişim\s+oranı"
+            r".{0,80}?"
             r"([0-9]{1,3}[,.][0-9]{1,2})"
         ),
     ]
+
 
     rate = None
 
@@ -538,11 +522,13 @@ def parse_tufe_bulletin(
 
             break
 
+
     if rate is None:
         raise RuntimeError(
             "12 aylık ortalama TÜFE oranı "
-            "bültende bulunamadı."
+            "resmi bültende bulunamadı."
         )
+
 
     if not (
         0 < rate < 200
@@ -550,6 +536,7 @@ def parse_tufe_bulletin(
         raise RuntimeError(
             "Okunan TÜFE oranı geçersiz."
         )
+
 
     return {
         "rate": rate,
@@ -563,54 +550,77 @@ def parse_tufe_bulletin(
     }
 
 
-# =========================================================
-# CANLI TÜİK
-# =========================================================
+def previous_period(
+    year,
+    month,
+):
+    if month == 1:
+        return year - 1, 12
+
+    return year, month - 1
+
+
+def find_bulletin(
+    year,
+    month,
+):
+    candidates = bulletin_candidates(
+        year,
+        month,
+    )
+
+    for url in candidates:
+        try:
+            data = parse_tufe_bulletin(
+                url,
+                expected_year=year,
+                expected_month=month,
+            )
+
+            if data:
+                return data
+
+        except Exception:
+            continue
+
+    return None
+
 
 def fetch_live_tufe():
-    """
-    Her çağrıldığında internetten TÜİK'i kontrol eder.
-    """
-
     year, month = (
         find_latest_official_period()
     )
 
-    bulletin_url = (
-        find_bulletin_url(
+
+    # Önce en güncel dönemi dene.
+    # Gerekirse birkaç ay geriye giderek
+    # son erişilebilir resmi bülteni bul.
+    for _ in range(6):
+
+        data = find_bulletin(
             year,
             month,
         )
-    )
 
-    data = parse_tufe_bulletin(
-        bulletin_url,
-        expected_year=year,
-        expected_month=month,
-    )
+        if data:
+            data["data_mode"] = "live"
 
-    if not data:
-        raise RuntimeError(
-            "TÜFE verisi okunamadı."
+            return data
+
+        year, month = previous_period(
+            year,
+            month,
         )
 
-    data["data_mode"] = "live"
 
-    return data
+    raise RuntimeError(
+        "TÜİK'in resmi TÜFE bültenine ulaşılamadı."
+    )
 
-
-# =========================================================
-# CANLI + CACHE
-# =========================================================
 
 def get_current_tufe():
-    """
-    1. Önce canlı TÜİK.
-    2. Başarılıysa cache'e kaydet.
-    3. Canlı çalışmazsa son başarılı cache verisini kullan.
-    """
-
     live_error = None
+
 
     try:
         data = fetch_live_tufe()
@@ -637,30 +647,19 @@ def get_current_tufe():
 
 
     raise RuntimeError(
-        "Güncel TÜİK verisi alınamadı "
-        "ve kayıtlı son başarılı veri henüz yok."
+        "Güncel TÜİK verisi alınamadı ve "
+        "kayıtlı son başarılı veri henüz yok."
     )
 
-
-# =========================================================
-# CRON İÇİN
-# =========================================================
 
 def update_cache_from_tuik():
-    """
-    Cron Job bunu çağıracak.
-    Canlı TÜİK'i kontrol eder ve sadece başarılıysa cache'i yeniler.
-    """
-
     data = fetch_live_tufe()
 
-    saved = save_cache(
+    if not save_cache(
         data
-    )
-
-    if not saved:
+    ):
         raise RuntimeError(
-            "TÜFE alındı ancak Redis cache'e kaydedilemedi."
+            "TÜFE verisi alındı fakat Redis'e kaydedilemedi."
         )
 
     return data
