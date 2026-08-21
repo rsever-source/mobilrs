@@ -25,7 +25,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 # TÜİK - CANLI TÜFE VERİSİ
 # =========================================================
 
-TUİK_BASE = "https://veriportali.tuik.gov.tr"
+TUIK_BASE = "https://veriportali.tuik.gov.tr"
 
 HEADERS = {
     "User-Agent": (
@@ -74,11 +74,6 @@ MONTH_NAMES = {
 
 
 def parse_reference_period(text: str):
-    """
-    Örn:
-    Tüketici Fiyat Endeksi, Temmuz 2026
-    -> (2026, 7)
-    """
     match = re.search(
         r"Tüketici\s+Fiyat\s+Endeksi\s*,?\s*"
         r"(Ocak|Şubat|Subat|Mart|Nisan|Mayıs|Mayis|Haziran|Temmuz|"
@@ -102,19 +97,11 @@ def parse_reference_period(text: str):
 
 
 def find_latest_tufe_bulletin():
-    """
-    TÜİK Veri Portalı'ndan o anda yayımlanmış en güncel
-    Tüketici Fiyat Endeksi haber bültenini bulur.
-
-    Burada oran sabit/hard-coded değildir.
-    Hesapla'ya her basıldığında tekrar internetten kontrol edilir.
-    """
-
     discovery_urls = [
-        f"{TUİK_BASE}/B",
-        f"{TUİK_BASE}/tr/",
+        f"{TUIK_BASE}/B",
+        f"{TUIK_BASE}/tr/",
         (
-            f"{TUİK_BASE}/Search/Search"
+            f"{TUIK_BASE}/Search/Search"
             "?dil=1&text=T%C3%BCketici%20Fiyat%20Endeksi"
         ),
     ]
@@ -140,7 +127,7 @@ def find_latest_tufe_bulletin():
                     "/press/" in href.lower()
                     and "tüketici fiyat endeksi" in label.lower()
                 ):
-                    full_url = urljoin(TUİK_BASE, href)
+                    full_url = urljoin(TUIK_BASE, href)
 
                     press_match = re.search(r"/press/(\d+)", full_url)
 
@@ -155,7 +142,6 @@ def find_latest_tufe_bulletin():
         except Exception:
             continue
 
-    # Aynı linkleri kaldır
     unique_candidates = {}
 
     for press_id, url in candidates:
@@ -166,10 +152,8 @@ def find_latest_tufe_bulletin():
         for url, press_id in unique_candidates.items()
     ]
 
-    # Büyük press ID genellikle yeni bültendir.
     candidates.sort(key=lambda x: x[0], reverse=True)
 
-    # Aday bültenleri tek tek kontrol et.
     for _, bulletin_url in candidates[:10]:
         try:
             data = read_tufe_bulletin(bulletin_url)
@@ -187,11 +171,6 @@ def find_latest_tufe_bulletin():
 
 
 def read_tufe_bulletin(url: str):
-    """
-    TÜİK TÜFE bültenini okur ve kira için gerekli
-    12 aylık ortalama değişim oranını çıkarır.
-    """
-
     response = requests.get(
         url,
         headers=HEADERS,
@@ -207,12 +186,9 @@ def read_tufe_bulletin(url: str):
         strip=True,
     )
 
-    # Bunun gerçekten TÜFE bülteni olduğundan emin ol.
     if "Tüketici Fiyat Endeksi" not in text:
         return None
 
-    # Kira artışında kullanılacak doğru oran:
-    # "on iki aylık ortalamalara göre %31,90"
     rate_match = re.search(
         r"on\s+iki\s+aylık\s+ortalamalara\s+göre"
         r"\s*(?:değişim\s*)?(?:oranı\s*)?"
@@ -282,13 +258,6 @@ def read_tufe_bulletin(url: str):
 
 
 def calculate_next_renewal_month(selected_month: int):
-    """
-    Kullanıcı yalnızca kira yenileme ayını seçer.
-
-    O ay bu yıl henüz gelmediyse bu yıl,
-    geçtiyse gelecek yıl esas alınır.
-    """
-
     today = date.today()
 
     if selected_month >= today.month:
@@ -300,10 +269,6 @@ def calculate_next_renewal_month(selected_month: int):
 
 
 def previous_month(year: int, month: int):
-    """
-    Ekim 2026 yenilemesi -> Eylül 2026 TÜFE dönemi
-    """
-
     if month == 1:
         return year - 1, 12
 
@@ -311,10 +276,6 @@ def previous_month(year: int, month: int):
 
 
 def turkish_money(value: float):
-    """
-    26380.50 -> 26.380,50 TL
-    """
-
     formatted = f"{value:,.2f}"
 
     formatted = (
@@ -336,7 +297,9 @@ async def index():
     return """
     <!DOCTYPE html>
     <html lang="tr">
+
     <head>
+
         <meta charset="UTF-8">
 
         <meta
@@ -396,7 +359,6 @@ async def index():
             .header h1 {
                 font-size: 26px;
                 font-weight: 800;
-                letter-spacing: -0.5px;
             }
 
             .tabs {
@@ -483,12 +445,6 @@ async def index():
                 outline: none;
             }
 
-            textarea:focus {
-                border-color: var(--accent);
-                box-shadow:
-                    0 0 0 3px rgba(59,130,246,0.15);
-            }
-
             .btn-run {
                 width: 100%;
                 background: var(--accent);
@@ -500,26 +456,18 @@ async def index():
                 border-radius: 12px;
                 cursor: pointer;
                 margin-top: 15px;
-                box-shadow:
-                    0 4px 12px rgba(59,130,246,0.3);
             }
 
             .btn-pdf-excel {
                 background: #10b981;
-                box-shadow:
-                    0 4px 12px rgba(16,185,129,0.3);
             }
 
             .btn-image-pdf {
                 background: #6366f1;
-                box-shadow:
-                    0 4px 12px rgba(99,102,241,0.3);
             }
 
             .btn-kira {
                 background: #f59e0b;
-                box-shadow:
-                    0 4px 12px rgba(245,158,11,0.3);
             }
 
             .info-text {
@@ -550,12 +498,6 @@ async def index():
                 outline: none;
                 margin-bottom: 14px;
                 background: white;
-            }
-
-            .input-box:focus {
-                border-color: #f59e0b;
-                box-shadow:
-                    0 0 0 3px rgba(245,158,11,0.15);
             }
 
             .kira-result {
@@ -707,6 +649,7 @@ async def index():
                     ).value;
 
                 button.disabled = true;
+
                 button.innerText =
                     "TÜİK güncel verisi kontrol ediliyor...";
 
@@ -819,12 +762,12 @@ async def index():
                         '</div>' +
 
                         '<div class="result-row">' +
-                        '<b>Şu an kullanılan resmi veri:</b> ' +
+                        '<b>Kullanılan TÜFE dönemi:</b> ' +
                         data.kullanilan_tufe_donemi +
                         '</div>' +
 
                         '<div class="result-row">' +
-                        '<b>TÜİK yayımlama:</b> ' +
+                        '<b>TÜİK yayım tarihi:</b> ' +
                         data.yayim_tarihi +
                         '</div>' +
 
@@ -841,12 +784,9 @@ async def index():
                         '</div>' +
 
                         '<div class="small-note">' +
-                        'Hesaplama, TÜFE’nin on iki aylık ' +
+                        'Hesaplama TÜFE’nin on iki aylık ' +
                         'ortalamalara göre değişim oranını ' +
-                        'esas alır. Sözleşmede daha düşük ' +
-                        'bir artış oranı varsa veya kira ' +
-                        'ilişkisi 5 yılı aşmışsa somut ' +
-                        'durum ayrıca değerlendirilmelidir.' +
+                        'esas alır.' +
                         '</div>';
 
                 } catch (error) {
@@ -854,8 +794,6 @@ async def index():
                     result.innerHTML =
                         '<div class="error-box">' +
                         error.message +
-                        '<br><br>' +
-                        'Eski oranla otomatik hesap yapılmadı.' +
                         '</div>';
 
                 } finally {
@@ -887,6 +825,13 @@ async def index():
 
             <button
                 class="tab-btn active"
+                onclick="switchTab(event, 'kira-tab')"
+            >
+                🏠 Kira
+            </button>
+
+            <button
+                class="tab-btn"
                 onclick="switchTab(event, 'excel-tab')"
             >
                 📊 Excel
@@ -906,24 +851,100 @@ async def index():
                 🟢 PDF → Excel
             </button>
 
-            <button
-                class="tab-btn"
-                onclick="switchTab(event, 'kira-tab')"
-            >
-                🏠 Kira
-            </button>
-
         </div>
 
 
         <div class="content">
 
 
+            <!-- KİRA -->
+
+            <div
+                id="kira-tab"
+                class="tab-content active"
+            >
+
+                <div class="info-text">
+                    Hesapla'ya bastığında TÜİK'te
+                    yayımlanmış en güncel
+                    <b>12 aylık ortalama TÜFE</b>
+                    oranı kontrol edilir.
+                </div>
+
+
+                <form
+                    onsubmit="kiraHesapla(event)"
+                >
+
+                    <label class="field-label">
+                        Mevcut Aylık Kira
+                    </label>
+
+                    <input
+                        id="mevcut-kira"
+                        class="input-box"
+                        type="number"
+                        min="1"
+                        step="0.01"
+                        placeholder="Örn: 16000"
+                        required
+                    >
+
+
+                    <label class="field-label">
+                        Kira Yenileme Ayı
+                    </label>
+
+                    <select
+                        id="yenileme-ayi"
+                        class="input-box"
+                        required
+                    >
+
+                        <option value="">
+                            Ay seç
+                        </option>
+
+                        <option value="1">Ocak</option>
+                        <option value="2">Şubat</option>
+                        <option value="3">Mart</option>
+                        <option value="4">Nisan</option>
+                        <option value="5">Mayıs</option>
+                        <option value="6">Haziran</option>
+                        <option value="7">Temmuz</option>
+                        <option value="8">Ağustos</option>
+                        <option value="9">Eylül</option>
+                        <option value="10">Ekim</option>
+                        <option value="11">Kasım</option>
+                        <option value="12">Aralık</option>
+
+                    </select>
+
+
+                    <button
+                        id="kira-btn"
+                        type="submit"
+                        class="btn-run btn-kira"
+                    >
+                        Güncel TÜFE ile Hesapla
+                    </button>
+
+                </form>
+
+
+                <div
+                    id="kira-result"
+                    class="kira-result"
+                ></div>
+
+            </div>
+
+
             <!-- EXCEL -->
 
             <div
                 id="excel-tab"
-                class="tab-content active"
+                class="tab-content"
             >
 
                 <form
@@ -1117,125 +1138,6 @@ async def index():
             </div>
 
 
-            <!-- KİRA HESAPLAMA -->
-
-            <div
-                id="kira-tab"
-                class="tab-content"
-            >
-
-                <div class="info-text">
-                    Hesapla'ya bastığında TÜİK'te
-                    yayımlanmış en güncel
-                    <b>12 aylık ortalama TÜFE</b>
-                    oranı internetten kontrol edilir.
-                </div>
-
-
-                <form
-                    onsubmit="kiraHesapla(event)"
-                >
-
-                    <label class="field-label">
-                        Mevcut Aylık Kira
-                    </label>
-
-                    <input
-                        id="mevcut-kira"
-                        class="input-box"
-                        type="number"
-                        min="1"
-                        step="0.01"
-                        placeholder="Örn: 16000"
-                        required
-                    >
-
-
-                    <label class="field-label">
-                        Kira Yenileme Ayı
-                    </label>
-
-                    <select
-                        id="yenileme-ayi"
-                        class="input-box"
-                        required
-                    >
-
-                        <option value="">
-                            Ay seç
-                        </option>
-
-                        <option value="1">
-                            Ocak
-                        </option>
-
-                        <option value="2">
-                            Şubat
-                        </option>
-
-                        <option value="3">
-                            Mart
-                        </option>
-
-                        <option value="4">
-                            Nisan
-                        </option>
-
-                        <option value="5">
-                            Mayıs
-                        </option>
-
-                        <option value="6">
-                            Haziran
-                        </option>
-
-                        <option value="7">
-                            Temmuz
-                        </option>
-
-                        <option value="8">
-                            Ağustos
-                        </option>
-
-                        <option value="9">
-                            Eylül
-                        </option>
-
-                        <option value="10">
-                            Ekim
-                        </option>
-
-                        <option value="11">
-                            Kasım
-                        </option>
-
-                        <option value="12">
-                            Aralık
-                        </option>
-
-                    </select>
-
-
-                    <button
-                        id="kira-btn"
-                        type="submit"
-                        class="btn-run btn-kira"
-                    >
-                        Güncel TÜFE ile Hesapla
-                    </button>
-
-                </form>
-
-
-                <div
-                    id="kira-result"
-                    class="kira-result"
-                ></div>
-
-
-            </div>
-
-
         </div>
 
     </div>
@@ -1247,7 +1149,7 @@ async def index():
 
 
 # =========================================================
-# KİRA HESAPLAMA ENDPOINT
+# KİRA HESAPLAMA
 # =========================================================
 
 @app.post("/kira-hesapla")
@@ -1270,8 +1172,6 @@ async def kira_hesapla(
 
     try:
 
-        # ÖNEMLİ:
-        # Her buton tıklamasında yeniden TÜİK'e gider.
         tufe = find_latest_tufe_bulletin()
 
     except Exception as e:
@@ -1280,8 +1180,7 @@ async def kira_hesapla(
             status_code=503,
             detail=(
                 "TÜİK canlı verisine şu anda "
-                "ulaşılamadı. Güvenlik için eski "
-                "oranla hesap yapılmadı. "
+                "ulaşılamadı. "
                 f"Detay: {str(e)}"
             ),
         )
@@ -1294,14 +1193,11 @@ async def kira_hesapla(
     yeni_kira = mevcut_kira + artis_tutari
 
 
-    # Yenilemenin bir sonraki gerçekleşeceği yıl
     renewal_year = calculate_next_renewal_month(
         yenileme_ayi
     )
 
 
-    # Örnek:
-    # Ekim yenilemesi -> Eylül TÜFE dönemi
     target_year, target_month = previous_month(
         renewal_year,
         yenileme_ayi,
@@ -1328,30 +1224,24 @@ async def kira_hesapla(
             f"✅ {MONTH_NAMES[yenileme_ayi]} "
             f"{renewal_year} yenilemesi için "
             f"gerekli {MONTH_NAMES[target_month]} "
-            f"{target_year} TÜFE verisi yayımlanmış. "
-            f"Bu hesap güncel resmi oranla yapıldı."
+            f"{target_year} TÜFE verisi yayımlanmış."
         )
 
     elif current_period < target_period:
 
         durum_mesaji = (
             f"⏳ {MONTH_NAMES[yenileme_ayi]} "
-            f"{renewal_year} yenilemesi için kesin "
-            f"oran henüz yayımlanmadı. "
-            f"Şu anda TÜİK'in son resmi oranına "
-            f"göre tahmini tutar gösteriliyor. "
-            f"Hedef {MONTH_NAMES[target_month]} "
-            f"{target_year} TÜFE verisi yayımlandığında "
-            f'Hesapla düğmesine tekrar bastığında '
-            f"otomatik güncellenecek."
+            f"{renewal_year} yenilemesi için kesin oran "
+            f"henüz yayımlanmadı. Şu anki en güncel "
+            f"resmi TÜFE oranına göre tahmini kira "
+            f"gösteriliyor."
         )
 
     else:
 
         durum_mesaji = (
-            "ℹ️ Seçilen yenileme döneminden daha yeni "
-            "bir TÜFE verisi mevcut. Hesap şu anki en "
-            "güncel resmi TÜİK oranıyla gösteriliyor."
+            "ℹ️ Hesap mevcut en güncel resmi "
+            "TÜİK oranıyla yapıldı."
         )
 
 
@@ -1480,10 +1370,7 @@ async def excel_motor(
 
                     raise HTTPException(
                         status_code=400,
-                        detail=(
-                            "Ortak sütun adını "
-                            "komutta bulamadım."
-                        ),
+                        detail="Ortak sütun bulunamadı.",
                     )
 
 
@@ -1630,10 +1517,7 @@ async def resim_pdf_motor(
 
             raise HTTPException(
                 status_code=400,
-                detail=(
-                    "Hiç geçerli resim "
-                    "dosyası yüklenmedi!"
-                ),
+                detail="Geçerli resim bulunamadı.",
             )
 
 
@@ -1666,10 +1550,7 @@ async def resim_pdf_motor(
 
         raise HTTPException(
             status_code=500,
-            detail=(
-                "PDF Oluşturma Hatası: "
-                f"{str(e)}"
-            ),
+            detail=f"PDF Hatası: {str(e)}",
         )
 
 
@@ -1720,7 +1601,7 @@ async def pdf_excel_motor(
 
                     if text:
 
-                        for line in text.split("\\n"):
+                        for line in text.split("\n"):
 
                             if line.strip():
 
@@ -1733,10 +1614,7 @@ async def pdf_excel_motor(
 
             raise HTTPException(
                 status_code=400,
-                detail=(
-                    "PDF içerisinden aktarılacak "
-                    "veri bulunamadı!"
-                ),
+                detail="PDF içinde veri bulunamadı.",
             )
 
 
@@ -1775,10 +1653,7 @@ async def pdf_excel_motor(
 
         raise HTTPException(
             status_code=500,
-            detail=(
-                "PDF'ten Excel'e "
-                f"Çevirme Hatası: {str(e)}"
-            ),
+            detail=f"PDF → Excel Hatası: {str(e)}",
         )
 
 
