@@ -27,7 +27,6 @@ from fastapi.responses import (
 
 from tufe_service import (
     get_current_tufe,
-    parse_tuik_press_page,
     save_cache,
 )
 
@@ -106,7 +105,7 @@ def previous_month(
 
 
 # =========================================================
-# SPARK -> TÜİK -> REDIS
+# SPARK -> REDIS GÜNCELLEME
 # =========================================================
 
 @app.get(
@@ -115,6 +114,9 @@ def previous_month(
 async def spark_tufe_guncelle(
     key: str = Query(...),
     source: str = Query(...),
+    rate: float = Query(...),
+    year: int = Query(...),
+    month: int = Query(...),
 ):
 
     # -----------------------------------------------------
@@ -146,7 +148,8 @@ async def spark_tufe_guncelle(
 
 
     # -----------------------------------------------------
-    # SADECE RESMİ TÜİK URL'Sİ KABUL ET
+    # KAYNAK KONTROLÜ
+    # SADECE RESMİ TÜİK
     # -----------------------------------------------------
 
     try:
@@ -174,8 +177,7 @@ async def spark_tufe_guncelle(
         raise HTTPException(
             status_code=400,
             detail=(
-                "Kaynak yalnızca resmi "
-                "TÜİK Veri Portalı olabilir."
+                "Sadece resmi TÜİK kaynağı kabul edilir."
             ),
         )
 
@@ -187,62 +189,82 @@ async def spark_tufe_guncelle(
         raise HTTPException(
             status_code=400,
             detail=(
-                "Kaynak resmi TÜİK "
-                "TÜFE bülteni olmalı."
+                "Kaynak resmi TÜİK haber bülteni olmalı."
             ),
         )
 
 
     # -----------------------------------------------------
-    # ORANI SPARK'TAN ALMIYORUZ.
-    # VERİLEN TÜİK SAYFASINI KENDİMİZ OKUYORUZ.
+    # VERİ KONTROLLERİ
     # -----------------------------------------------------
 
-    try:
-
-        data = parse_tuik_press_page(
-            source
-        )
-
-    except Exception as e:
-
-        raise HTTPException(
-            status_code=502,
-            detail=(
-                "TÜİK bülteni okunamadı: "
-                + str(e)
-            ),
-        )
-
-
-    if not data:
+    if not (
+        1 <= month <= 12
+    ):
 
         raise HTTPException(
             status_code=400,
-            detail=(
-                "Bu TÜİK sayfasında geçerli "
-                "TÜFE 12 aylık ortalama "
-                "verisi bulunamadı."
-            ),
+            detail="Geçersiz ay.",
         )
+
+
+    if not (
+        2020 <= year <= 2100
+    ):
+
+        raise HTTPException(
+            status_code=400,
+            detail="Geçersiz yıl.",
+        )
+
+
+    if not (
+        0 < rate < 200
+    ):
+
+        raise HTTPException(
+            status_code=400,
+            detail="Geçersiz TÜFE oranı.",
+        )
+
+
+    # -----------------------------------------------------
+    # REDIS'E YAZILACAK VERİ
+    # -----------------------------------------------------
+
+    data = {
+        "rate": round(
+            float(rate),
+            2,
+        ),
+
+        "year": year,
+
+        "month": month,
+
+        "period": (
+            f"{MONTH_NAMES[month]} "
+            f"{year}"
+        ),
+
+        "source": source,
+
+        "data_mode": "spark",
+    }
 
 
     # -----------------------------------------------------
     # REDIS'E KAYDET
     # -----------------------------------------------------
 
-    saved = save_cache(
+    if not save_cache(
         data
-    )
-
-
-    if not saved:
+    ):
 
         raise HTTPException(
             status_code=500,
             detail=(
-                "TÜFE bulundu fakat Redis'e "
-                "kaydedilemedi."
+                "Veri Redis'e kaydedilemedi."
             ),
         )
 
@@ -250,15 +272,20 @@ async def spark_tufe_guncelle(
     return JSONResponse(
         {
             "ok": True,
-            "message": (
-                "TÜFE başarıyla güncellendi."
-            ),
+
+            "message":
+                "TÜFE başarıyla kaydedildi.",
+
             "oran": (
-                f"{float(data['rate']):.2f}"
+                f"{rate:.2f}"
                 .replace(".", ",")
             ),
-            "donem": data["period"],
-            "source": data["source"],
+
+            "donem":
+                data["period"],
+
+            "source":
+                source,
         }
     )
 
@@ -299,8 +326,11 @@ async def kira_hesapla(
 
 
     # -----------------------------------------------------
-    # 1. ÖNCE CANLI TÜİK DENENİR
-    # 2. ÇALIŞMAZSA REDIS'TEKİ SPARK/GÜNLÜK VERİ
+    # TÜFE VERİSİNİ AL
+    #
+    # get_current_tufe:
+    # canlı çalışırsa canlı
+    # çalışmazsa Redis cache
     # -----------------------------------------------------
 
     try:
@@ -360,6 +390,7 @@ async def kira_hesapla(
         / 100
     )
 
+
     yeni_kira = (
         mevcut_kira
         + artis
@@ -396,7 +427,7 @@ async def kira_hesapla(
 
 
     # -----------------------------------------------------
-    # AÇIKLAMA
+    # DURUM METNİ
     # -----------------------------------------------------
 
     if current_period == target_period:
@@ -434,22 +465,23 @@ async def kira_hesapla(
 
 
     # -----------------------------------------------------
-    # CACHE KULLANILDIYSA
+    # REDIS / SPARK KULLANILDIYSA
     # -----------------------------------------------------
 
     data_mode = tufe.get(
         "data_mode",
-        "live",
+        "cache",
     )
 
 
-    if data_mode == "cache":
+    if data_mode in (
+        "cache",
+        "spark",
+    ):
 
         durum += (
-            " Canlı TÜİK kontrolü sonuç "
-            "vermediği için günlük olarak "
-            "kaydedilmiş son resmi veri "
-            "kullanıldı."
+            " Günlük olarak kaydedilmiş "
+            "son resmi TÜİK verisi kullanıldı."
         )
 
 
@@ -776,70 +808,118 @@ textarea {
 
 <script>
 
-function switchTab(event, tabId) {
+function switchTab(
+    event,
+    tabId
+) {
 
     document
-    .querySelectorAll(".tab-content")
+    .querySelectorAll(
+        ".tab-content"
+    )
     .forEach(
-        el => el.classList.remove("active")
+        el =>
+        el.classList.remove(
+            "active"
+        )
     );
 
-    document
-    .querySelectorAll(".tab-btn")
-    .forEach(
-        el => el.classList.remove("active")
-    );
 
     document
-    .getElementById(tabId)
-    .classList.add("active");
+    .querySelectorAll(
+        ".tab-btn"
+    )
+    .forEach(
+        el =>
+        el.classList.remove(
+            "active"
+        )
+    );
+
+
+    document
+    .getElementById(
+        tabId
+    )
+    .classList
+    .add(
+        "active"
+    );
+
 
     event
     .currentTarget
-    .classList.add("active");
+    .classList
+    .add(
+        "active"
+    );
 }
 
 
-async function kiraHesapla(event) {
+async function kiraHesapla(
+    event
+) {
 
     event.preventDefault();
 
+
     const button =
-        document.getElementById("kira-btn");
+        document.getElementById(
+            "kira-btn"
+        );
+
 
     const result =
-        document.getElementById("kira-result");
+        document.getElementById(
+            "kira-result"
+        );
+
 
     const rent =
-        document.getElementById("mevcut-kira").value;
+        document.getElementById(
+            "mevcut-kira"
+        ).value;
+
 
     const month =
-        document.getElementById("yenileme-ayi").value;
+        document.getElementById(
+            "yenileme-ayi"
+        ).value;
+
 
     button.disabled = true;
-    button.innerText = "Hesaplanıyor...";
 
-    result.style.display = "block";
+    button.innerText =
+        "Hesaplanıyor...";
+
+
+    result.style.display =
+        "block";
+
 
     result.innerHTML =
         '<div class="info">' +
         'Güncel veri kontrol ediliyor...' +
         '</div>';
 
+
     try {
 
         const body =
             new URLSearchParams();
+
 
         body.append(
             "mevcut_kira",
             rent
         );
 
+
         body.append(
             "yenileme_ayi",
             month
         );
+
 
         const response =
             await fetch(
@@ -856,8 +936,10 @@ async function kiraHesapla(event) {
                 }
             );
 
+
         const data =
             await response.json();
+
 
         if (!response.ok) {
 
@@ -866,6 +948,7 @@ async function kiraHesapla(event) {
                 "Hesaplama yapılamadı."
             );
         }
+
 
         result.innerHTML =
 
@@ -894,6 +977,7 @@ async function kiraHesapla(event) {
             '</a>' +
             '</div>';
 
+
     } catch(error) {
 
         result.innerHTML =
@@ -904,7 +988,9 @@ async function kiraHesapla(event) {
     } finally {
 
         button.disabled = false;
-        button.innerText = "Hesapla";
+
+        button.innerText =
+            "Hesapla";
     }
 }
 
@@ -919,39 +1005,68 @@ async function kiraHesapla(event) {
 
 
 <div class="header">
-    <h1>Rdv Asistan</h1>
+
+    <h1>
+        Rdv Asistan
+    </h1>
+
 </div>
 
 
 <div class="tabs">
 
+
 <button
     class="tab-btn active"
-    onclick="switchTab(event,'kira-tab')"
+    onclick="
+        switchTab(
+            event,
+            'kira-tab'
+        )
+    "
 >
 🏠 Kira
 </button>
 
+
 <button
     class="tab-btn"
-    onclick="switchTab(event,'excel-tab')"
+    onclick="
+        switchTab(
+            event,
+            'excel-tab'
+        )
+    "
 >
 📊 Excel
 </button>
 
+
 <button
     class="tab-btn"
-    onclick="switchTab(event,'pdf-tab')"
+    onclick="
+        switchTab(
+            event,
+            'pdf-tab'
+        )
+    "
 >
 📄 Resim → PDF
 </button>
 
+
 <button
     class="tab-btn"
-    onclick="switchTab(event,'pdfexcel-tab')"
+    onclick="
+        switchTab(
+            event,
+            'pdfexcel-tab'
+        )
+    "
 >
 🟢 PDF → Excel
 </button>
+
 
 </div>
 
@@ -959,25 +1074,35 @@ async function kiraHesapla(event) {
 <div class="content">
 
 
-<!-- KİRA -->
+<!-- =====================================================
+KİRA
+===================================================== -->
 
 <div
     id="kira-tab"
     class="tab-content active"
 >
 
+
 <div class="info">
+
     Mevcut kira tutarını ve
     kira yenileme ayını seç.
+
 </div>
 
+
 <form
-    onsubmit="kiraHesapla(event)"
+    onsubmit="
+        kiraHesapla(event)
+    "
 >
+
 
 <label>
 Mevcut kira
 </label>
+
 
 <input
     id="mevcut-kira"
@@ -989,9 +1114,11 @@ Mevcut kira
     required
 >
 
+
 <label>
 Kira yenileme ayı
 </label>
+
 
 <select
     id="yenileme-ayi"
@@ -1003,20 +1130,56 @@ Kira yenileme ayı
 Ay seç
 </option>
 
-<option value="1">Ocak</option>
-<option value="2">Şubat</option>
-<option value="3">Mart</option>
-<option value="4">Nisan</option>
-<option value="5">Mayıs</option>
-<option value="6">Haziran</option>
-<option value="7">Temmuz</option>
-<option value="8">Ağustos</option>
-<option value="9">Eylül</option>
-<option value="10">Ekim</option>
-<option value="11">Kasım</option>
-<option value="12">Aralık</option>
+<option value="1">
+Ocak
+</option>
+
+<option value="2">
+Şubat
+</option>
+
+<option value="3">
+Mart
+</option>
+
+<option value="4">
+Nisan
+</option>
+
+<option value="5">
+Mayıs
+</option>
+
+<option value="6">
+Haziran
+</option>
+
+<option value="7">
+Temmuz
+</option>
+
+<option value="8">
+Ağustos
+</option>
+
+<option value="9">
+Eylül
+</option>
+
+<option value="10">
+Ekim
+</option>
+
+<option value="11">
+Kasım
+</option>
+
+<option value="12">
+Aralık
+</option>
 
 </select>
+
 
 <button
     id="kira-btn"
@@ -1026,7 +1189,9 @@ Ay seç
 Hesapla
 </button>
 
+
 </form>
+
 
 <div
     id="kira-result"
@@ -1034,21 +1199,26 @@ Hesapla
 >
 </div>
 
+
 </div>
 
 
-<!-- EXCEL -->
+<!-- =====================================================
+EXCEL
+===================================================== -->
 
 <div
     id="excel-tab"
     class="tab-content"
 >
 
+
 <form
     action="/excel-islem"
     method="post"
     enctype="multipart/form-data"
 >
+
 
 <div class="file-box">
 
@@ -1059,13 +1229,19 @@ Hesapla
 ＋ 1. Excel (Ana Dosya)
 </span>
 
+
 <input
     type="file"
     name="file1"
     accept=".xlsx,.xls"
     required
+
     onchange="
-        document.getElementById('xl1').innerText =
+        document
+        .getElementById(
+            'xl1'
+        )
+        .innerText =
         this.files[0].name
     "
 >
@@ -1082,13 +1258,19 @@ Hesapla
 ＋ 2. Excel (Referans Dosyası)
 </span>
 
+
 <input
     type="file"
     name="file2"
     accept=".xlsx,.xls"
     required
+
     onchange="
-        document.getElementById('xl2').innerText =
+        document
+        .getElementById(
+            'xl2'
+        )
+        .innerText =
         this.files[0].name
     "
 >
@@ -1102,6 +1284,7 @@ Hesapla
     required
 ></textarea>
 
+
 <button
     class="btn"
     type="submit"
@@ -1109,17 +1292,21 @@ Hesapla
 Excel İşlemini Başlat
 </button>
 
+
 </form>
 
 </div>
 
 
-<!-- RESİM -> PDF -->
+<!-- =====================================================
+RESİM -> PDF
+===================================================== -->
 
 <div
     id="pdf-tab"
     class="tab-content"
 >
+
 
 <form
     action="/resim-pdf-islem"
@@ -1127,10 +1314,14 @@ Excel İşlemini Başlat
     enctype="multipart/form-data"
 >
 
+
 <div class="info">
+
     Fotoğrafları seç,
     tek PDF dosyası oluştur.
+
 </div>
+
 
 <div class="file-box">
 
@@ -1141,20 +1332,27 @@ Excel İşlemini Başlat
 ＋ Fotoğrafları Seç
 </span>
 
+
 <input
     type="file"
     name="images"
     accept=".png,.jpg,.jpeg"
     multiple
     required
+
     onchange="
-        document.getElementById('img1').innerText =
+        document
+        .getElementById(
+            'img1'
+        )
+        .innerText =
         this.files.length +
         ' fotoğraf seçildi'
     "
 >
 
 </div>
+
 
 <button
     class="btn btn-purple"
@@ -1163,17 +1361,21 @@ Excel İşlemini Başlat
 PDF Yap
 </button>
 
+
 </form>
 
 </div>
 
 
-<!-- PDF -> EXCEL -->
+<!-- =====================================================
+PDF -> EXCEL
+===================================================== -->
 
 <div
     id="pdfexcel-tab"
     class="tab-content"
 >
+
 
 <form
     action="/pdf-excel-islem"
@@ -1181,10 +1383,14 @@ PDF Yap
     enctype="multipart/form-data"
 >
 
+
 <div class="info">
+
     PDF içindeki tablo veya
     metni Excel'e aktar.
+
 </div>
+
 
 <div class="file-box">
 
@@ -1195,18 +1401,25 @@ PDF Yap
 ＋ PDF Dosyasını Seç
 </span>
 
+
 <input
     type="file"
     name="pdf_file"
     accept=".pdf"
     required
+
     onchange="
-        document.getElementById('pdfsrc').innerText =
+        document
+        .getElementById(
+            'pdfsrc'
+        )
+        .innerText =
         this.files[0].name
     "
 >
 
 </div>
+
 
 <button
     class="btn btn-green"
@@ -1214,6 +1427,7 @@ PDF Yap
 >
 PDF'i Excel'e Çevir
 </button>
+
 
 </form>
 
@@ -1249,11 +1463,13 @@ async def excel_motor(
             komut.lower()
         )
 
+
         df_main = pd.read_excel(
             io.BytesIO(
                 await file1.read()
             )
         )
+
 
         df_ref = pd.read_excel(
             io.BytesIO(
@@ -1261,11 +1477,13 @@ async def excel_motor(
             )
         )
 
+
         df_main.columns = (
             df_main.columns
             .astype(str)
             .str.strip()
         )
+
 
         df_ref.columns = (
             df_ref.columns
@@ -1273,6 +1491,10 @@ async def excel_motor(
             .str.strip()
         )
 
+
+        # -------------------------------------------------
+        # DÜŞEYARA / MERGE
+        # -------------------------------------------------
 
         if any(
             x in komut_lower
@@ -1285,6 +1507,7 @@ async def excel_motor(
         ):
 
             ortak_sutun = None
+
 
             for col in df_main.columns:
 
@@ -1312,11 +1535,13 @@ async def excel_motor(
                     )
                 )
 
+
                 if ortak:
 
                     ortak_sutun = (
                         ortak[0]
                     )
+
 
                 else:
 
@@ -1337,6 +1562,10 @@ async def excel_motor(
             )
 
 
+        # -------------------------------------------------
+        # PIVOT / ÖZET
+        # -------------------------------------------------
+
         elif any(
             x in komut_lower
             for x in [
@@ -1351,6 +1580,7 @@ async def excel_motor(
                 df_main.columns[0]
             )
 
+
             numeric_cols = (
                 df_main
                 .select_dtypes(
@@ -1359,6 +1589,7 @@ async def excel_motor(
                 .columns
                 .tolist()
             )
+
 
             if not numeric_cols:
 
@@ -1370,9 +1601,11 @@ async def excel_motor(
                     ),
                 )
 
+
             value_col = (
                 numeric_cols[0]
             )
+
 
             result_df = (
                 pd.pivot_table(
@@ -1397,10 +1630,12 @@ async def excel_motor(
             "excel_sonuc.xlsx",
         )
 
+
         result_df.to_excel(
             output_path,
             index=False,
         )
+
 
         return FileResponse(
             output_path,
@@ -1445,10 +1680,12 @@ async def resim_pdf_motor(
 
         pil_images = []
 
+
         for file in images:
 
             if not file.filename:
                 continue
+
 
             if not file.filename.lower().endswith(
                 (
@@ -1459,17 +1696,20 @@ async def resim_pdf_motor(
             ):
                 continue
 
+
             image = Image.open(
                 io.BytesIO(
                     await file.read()
                 )
             )
 
+
             if image.mode != "RGB":
 
                 image = image.convert(
                     "RGB"
                 )
+
 
             pil_images.append(
                 image
@@ -1550,7 +1790,9 @@ async def pdf_excel_motor(
             await pdf_file.read()
         )
 
+
         extracted_data = []
+
 
         with pdfplumber.open(
             io.BytesIO(
@@ -1558,11 +1800,13 @@ async def pdf_excel_motor(
             )
         ) as pdf:
 
+
             for page in pdf.pages:
 
                 tables = (
                     page.extract_tables()
                 )
+
 
                 if tables:
 
@@ -1573,21 +1817,26 @@ async def pdf_excel_motor(
                             cleaned_row = [
                                 (
                                     str(cell).strip()
-                                    if cell is not None
+                                    if cell
+                                    is not None
                                     else ""
                                 )
-                                for cell in row
+                                for cell
+                                in row
                             ]
+
 
                             extracted_data.append(
                                 cleaned_row
                             )
+
 
                 else:
 
                     text = (
                         page.extract_text()
                     )
+
 
                     if text:
 
@@ -1672,9 +1921,13 @@ if __name__ == "__main__":
         )
     )
 
+
     uvicorn.run(
         "excel_vlookup_api:app",
+
         host="0.0.0.0",
+
         port=port,
+
         reload=False,
     )
