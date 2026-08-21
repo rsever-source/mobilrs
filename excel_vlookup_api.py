@@ -1,5 +1,6 @@
 import io
 import os
+import uuid
 from datetime import date
 from typing import List
 from urllib.parse import urlparse
@@ -8,7 +9,7 @@ import pandas as pd
 import pdfplumber
 import uvicorn
 
-from PIL import Image
+from PIL import Image, ImageOps
 
 from fastapi import (
     FastAPI,
@@ -24,6 +25,8 @@ from fastapi.responses import (
     FileResponse,
     JSONResponse,
 )
+
+from starlette.background import BackgroundTask
 
 from tufe_service import (
     get_current_tufe,
@@ -47,6 +50,17 @@ os.makedirs(
 )
 
 
+# =========================================================
+# DOSYA LİMİTLERİ
+# =========================================================
+
+# Tek Excel / PDF / fotoğraf için 25 MB
+MAX_FILE_SIZE = 25 * 1024 * 1024
+
+# Çoklu fotoğraflarda toplam 100 MB
+MAX_IMAGES_TOTAL_SIZE = 100 * 1024 * 1024
+
+
 MONTH_NAMES = {
     1: "Ocak",
     2: "Şubat",
@@ -64,7 +78,185 @@ MONTH_NAMES = {
 
 
 # =========================================================
-# YARDIMCI FONKSİYONLAR
+# LOG
+# =========================================================
+
+def app_log(message: str):
+    print(
+        f"[RDV] {message}",
+        flush=True,
+    )
+
+
+# =========================================================
+# DOSYA YARDIMCILARI
+# =========================================================
+
+def unique_output_path(extension: str):
+    filename = (
+        f"rdv_{uuid.uuid4().hex}.{extension}"
+    )
+
+    return os.path.join(
+        OUTPUT_DIR,
+        filename,
+    )
+
+
+def delete_file(path: str):
+    try:
+        if os.path.exists(path):
+            os.remove(path)
+
+            app_log(
+                f"GECICI DOSYA SILINDI path={path}"
+            )
+
+    except Exception as e:
+        app_log(
+            f"GECICI DOSYA SILME HATASI: {e}"
+        )
+
+
+async def read_upload_limited(
+    upload: UploadFile,
+    max_size: int = MAX_FILE_SIZE,
+):
+
+    data = await upload.read()
+
+    if len(data) > max_size:
+        raise HTTPException(
+            status_code=413,
+            detail=(
+                f"{upload.filename or 'Dosya'} çok büyük. "
+                f"Maksimum boyut "
+                f"{max_size // (1024 * 1024)} MB."
+            ),
+        )
+
+    return data
+
+
+def check_extension(
+    filename: str,
+    allowed_extensions,
+):
+
+    filename_lower = (
+        filename or ""
+    ).lower()
+
+    return filename_lower.endswith(
+        allowed_extensions
+    )
+
+
+# =========================================================
+# EXCEL YARDIMCILARI
+# =========================================================
+
+def normalize_column_name(value):
+    return str(value).strip()
+
+
+def select_join_column(
+    df_main: pd.DataFrame,
+    df_ref: pd.DataFrame,
+    command: str,
+):
+
+    command_lower = command.lower()
+
+    main_columns = list(
+        df_main.columns
+    )
+
+    ref_columns = list(
+        df_ref.columns
+    )
+
+    common_columns = [
+        col
+        for col in main_columns
+        if col in ref_columns
+    ]
+
+
+    if not common_columns:
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                "İki Excel dosyasında ortak "
+                "sütun bulunamadı."
+            ),
+        )
+
+
+    # Önce kullanıcının komutta belirttiği sütunu ara
+    for col in common_columns:
+
+        if str(col).lower() in command_lower:
+            return col
+
+
+    # Yaygın anahtar sütun isimlerine öncelik ver
+    preferred_words = [
+        "id",
+        "kod",
+        "code",
+        "no",
+        "numara",
+        "musteri",
+        "müşteri",
+        "container",
+        "konteyner",
+        "referans",
+        "ref",
+        "sicil",
+    ]
+
+
+    for preferred in preferred_words:
+
+        for col in common_columns:
+
+            col_lower = str(col).lower()
+
+            if preferred in col_lower:
+                return col
+
+
+    # Geriye uyumluluk:
+    # eski sistem gibi ilk ortak sütunu kullan
+    return common_columns[0]
+
+
+def find_command_columns(
+    df: pd.DataFrame,
+    command: str,
+):
+
+    command_lower = (
+        command.lower()
+    )
+
+    matches = []
+
+    for col in df.columns:
+
+        col_text = str(col)
+
+        if col_text.lower() in command_lower:
+            matches.append(
+                col
+            )
+
+    return matches
+
+
+# =========================================================
+# KİRA YARDIMCILARI
 # =========================================================
 
 def money_tr(value: float):
@@ -105,7 +297,7 @@ def previous_month(
 
 
 # =========================================================
-# SPARK -> REDIS GÜNCELLEME
+# SPARK -> REDIS TÜFE GÜNCELLEME
 # =========================================================
 
 @app.get(
@@ -119,9 +311,14 @@ async def spark_tufe_guncelle(
     month: int = Query(...),
 ):
 
-    # -----------------------------------------------------
-    # GİZLİ ANAHTAR
-    # -----------------------------------------------------
+    app_log(
+        "SPARK ISTEK GELDI "
+        f"source={source} "
+        f"rate={rate} "
+        f"year={year} "
+        f"month={month}"
+    )
+
 
     expected_key = os.environ.get(
         "SPARK_TUFE_KEY",
@@ -130,6 +327,11 @@ async def spark_tufe_guncelle(
 
 
     if not expected_key:
+
+        app_log(
+            "SUNUCU AYAR HATASI: "
+            "SPARK_TUFE_KEY TANIMLI DEGIL"
+        )
 
         raise HTTPException(
             status_code=500,
@@ -141,16 +343,15 @@ async def spark_tufe_guncelle(
 
     if key != expected_key:
 
+        app_log(
+            "SPARK ANAHTAR HATASI"
+        )
+
         raise HTTPException(
             status_code=403,
             detail="Yetkisiz erişim.",
         )
 
-
-    # -----------------------------------------------------
-    # KAYNAK KONTROLÜ
-    # SADECE RESMİ TÜİK
-    # -----------------------------------------------------
 
     try:
 
@@ -158,7 +359,12 @@ async def spark_tufe_guncelle(
             source
         )
 
-    except Exception:
+    except Exception as e:
+
+        app_log(
+            "SPARK PARAMETRE HATASI: "
+            f"KAYNAK URL OKUNAMADI: {e}"
+        )
 
         raise HTTPException(
             status_code=400,
@@ -174,6 +380,11 @@ async def spark_tufe_guncelle(
 
     if host != "veriportali.tuik.gov.tr":
 
+        app_log(
+            "SPARK PARAMETRE HATASI: "
+            f"GECERSIZ KAYNAK HOST={host}"
+        )
+
         raise HTTPException(
             status_code=400,
             detail=(
@@ -186,6 +397,11 @@ async def spark_tufe_guncelle(
         "/tr/press/"
     ):
 
+        app_log(
+            "SPARK PARAMETRE HATASI: "
+            f"GECERSIZ TUIK PATH={parsed.path}"
+        )
+
         raise HTTPException(
             status_code=400,
             detail=(
@@ -194,13 +410,14 @@ async def spark_tufe_guncelle(
         )
 
 
-    # -----------------------------------------------------
-    # VERİ KONTROLLERİ
-    # -----------------------------------------------------
-
     if not (
         1 <= month <= 12
     ):
+
+        app_log(
+            "SPARK PARAMETRE HATASI: "
+            f"GECERSIZ AY={month}"
+        )
 
         raise HTTPException(
             status_code=400,
@@ -212,6 +429,11 @@ async def spark_tufe_guncelle(
         2020 <= year <= 2100
     ):
 
+        app_log(
+            "SPARK PARAMETRE HATASI: "
+            f"GECERSIZ YIL={year}"
+        )
+
         raise HTTPException(
             status_code=400,
             detail="Geçersiz yıl.",
@@ -222,15 +444,16 @@ async def spark_tufe_guncelle(
         0 < rate < 200
     ):
 
+        app_log(
+            "SPARK PARAMETRE HATASI: "
+            f"GECERSIZ ORAN={rate}"
+        )
+
         raise HTTPException(
             status_code=400,
             detail="Geçersiz TÜFE oranı.",
         )
 
-
-    # -----------------------------------------------------
-    # REDIS'E YAZILACAK VERİ
-    # -----------------------------------------------------
 
     data = {
         "rate": round(
@@ -253,13 +476,16 @@ async def spark_tufe_guncelle(
     }
 
 
-    # -----------------------------------------------------
-    # REDIS'E KAYDET
-    # -----------------------------------------------------
-
-    if not save_cache(
+    saved = save_cache(
         data
-    ):
+    )
+
+
+    if not saved:
+
+        app_log(
+            "REDIS KAYIT HATASI"
+        )
 
         raise HTTPException(
             status_code=500,
@@ -267,6 +493,13 @@ async def spark_tufe_guncelle(
                 "Veri Redis'e kaydedilemedi."
             ),
         )
+
+
+    app_log(
+        "TUFE REDIS'E KAYDEDILDI "
+        f"donem={data['period']} "
+        f"oran={data['rate']}"
+    )
 
 
     return JSONResponse(
@@ -302,6 +535,13 @@ async def kira_hesapla(
     yenileme_ayi: int = Form(...),
 ):
 
+    app_log(
+        "KIRA HESAPLA ISTEGI "
+        f"kira={mevcut_kira} "
+        f"ay={yenileme_ayi}"
+    )
+
+
     if mevcut_kira <= 0:
 
         raise HTTPException(
@@ -325,19 +565,16 @@ async def kira_hesapla(
         )
 
 
-    # -----------------------------------------------------
-    # TÜFE VERİSİNİ AL
-    #
-    # get_current_tufe:
-    # canlı çalışırsa canlı
-    # çalışmazsa Redis cache
-    # -----------------------------------------------------
-
     try:
 
         tufe = get_current_tufe()
 
     except Exception as e:
+
+        app_log(
+            "KIRA HESAPLA TUFE HATASI: "
+            f"{str(e)}"
+        )
 
         raise HTTPException(
             status_code=503,
@@ -370,7 +607,12 @@ async def kira_hesapla(
             tufe["source"]
         )
 
-    except Exception:
+    except Exception as e:
+
+        app_log(
+            "KIRA HESAPLA VERI FORMAT HATASI: "
+            f"{str(e)}"
+        )
 
         raise HTTPException(
             status_code=500,
@@ -380,9 +622,19 @@ async def kira_hesapla(
         )
 
 
-    # -----------------------------------------------------
-    # KİRA HESABI
-    # -----------------------------------------------------
+    data_mode = tufe.get(
+        "data_mode",
+        "cache",
+    )
+
+
+    app_log(
+        "KIRA HESAPLA TUFE VERISI "
+        f"donem={tufe_period} "
+        f"oran={rate} "
+        f"mode={data_mode}"
+    )
+
 
     artis = (
         mevcut_kira
@@ -396,10 +648,6 @@ async def kira_hesapla(
         + artis
     )
 
-
-    # -----------------------------------------------------
-    # YENİLEME DÖNEMİ
-    # -----------------------------------------------------
 
     renewal_year = next_renewal_year(
         yenileme_ayi
@@ -425,10 +673,6 @@ async def kira_hesapla(
         target_month,
     )
 
-
-    # -----------------------------------------------------
-    # DURUM METNİ
-    # -----------------------------------------------------
 
     if current_period == target_period:
 
@@ -464,16 +708,6 @@ async def kira_hesapla(
         )
 
 
-    # -----------------------------------------------------
-    # REDIS / SPARK KULLANILDIYSA
-    # -----------------------------------------------------
-
-    data_mode = tufe.get(
-        "data_mode",
-        "cache",
-    )
-
-
     if data_mode in (
         "cache",
         "spark",
@@ -483,6 +717,12 @@ async def kira_hesapla(
             " Günlük olarak kaydedilmiş "
             "son resmi TÜİK verisi kullanıldı."
         )
+
+
+    app_log(
+        "KIRA HESAP BASARILI "
+        f"yeni_kira={yeni_kira:.2f}"
+    )
 
 
     return JSONResponse(
@@ -1074,9 +1314,7 @@ async function kiraHesapla(
 <div class="content">
 
 
-<!-- =====================================================
-KİRA
-===================================================== -->
+<!-- KİRA -->
 
 <div
     id="kira-tab"
@@ -1130,53 +1368,18 @@ Kira yenileme ayı
 Ay seç
 </option>
 
-<option value="1">
-Ocak
-</option>
-
-<option value="2">
-Şubat
-</option>
-
-<option value="3">
-Mart
-</option>
-
-<option value="4">
-Nisan
-</option>
-
-<option value="5">
-Mayıs
-</option>
-
-<option value="6">
-Haziran
-</option>
-
-<option value="7">
-Temmuz
-</option>
-
-<option value="8">
-Ağustos
-</option>
-
-<option value="9">
-Eylül
-</option>
-
-<option value="10">
-Ekim
-</option>
-
-<option value="11">
-Kasım
-</option>
-
-<option value="12">
-Aralık
-</option>
+<option value="1">Ocak</option>
+<option value="2">Şubat</option>
+<option value="3">Mart</option>
+<option value="4">Nisan</option>
+<option value="5">Mayıs</option>
+<option value="6">Haziran</option>
+<option value="7">Temmuz</option>
+<option value="8">Ağustos</option>
+<option value="9">Eylül</option>
+<option value="10">Ekim</option>
+<option value="11">Kasım</option>
+<option value="12">Aralık</option>
 
 </select>
 
@@ -1203,9 +1406,7 @@ Hesapla
 </div>
 
 
-<!-- =====================================================
-EXCEL
-===================================================== -->
+<!-- EXCEL -->
 
 <div
     id="excel-tab"
@@ -1235,7 +1436,6 @@ EXCEL
     name="file1"
     accept=".xlsx,.xls"
     required
-
     onchange="
         document
         .getElementById(
@@ -1264,7 +1464,6 @@ EXCEL
     name="file2"
     accept=".xlsx,.xls"
     required
-
     onchange="
         document
         .getElementById(
@@ -1298,9 +1497,7 @@ Excel İşlemini Başlat
 </div>
 
 
-<!-- =====================================================
-RESİM -> PDF
-===================================================== -->
+<!-- RESİM -> PDF -->
 
 <div
     id="pdf-tab"
@@ -1339,7 +1536,6 @@ RESİM -> PDF
     accept=".png,.jpg,.jpeg"
     multiple
     required
-
     onchange="
         document
         .getElementById(
@@ -1367,9 +1563,7 @@ PDF Yap
 </div>
 
 
-<!-- =====================================================
-PDF -> EXCEL
-===================================================== -->
+<!-- PDF -> EXCEL -->
 
 <div
     id="pdfexcel-tab"
@@ -1407,7 +1601,6 @@ PDF -> EXCEL
     name="pdf_file"
     accept=".pdf"
     required
-
     onchange="
         document
         .getElementById(
@@ -1457,38 +1650,104 @@ async def excel_motor(
     file2: UploadFile = File(...),
 ):
 
+    output_path = None
+
     try:
 
-        komut_lower = (
-            komut.lower()
+        app_log(
+            "EXCEL ISLEM BASLADI "
+            f"file1={file1.filename} "
+            f"file2={file2.filename}"
+        )
+
+
+        if not check_extension(
+            file1.filename,
+            (".xlsx", ".xls"),
+        ):
+
+            raise HTTPException(
+                status_code=400,
+                detail=(
+                    "1. dosya geçerli bir "
+                    "Excel dosyası değil."
+                ),
+            )
+
+
+        if not check_extension(
+            file2.filename,
+            (".xlsx", ".xls"),
+        ):
+
+            raise HTTPException(
+                status_code=400,
+                detail=(
+                    "2. dosya geçerli bir "
+                    "Excel dosyası değil."
+                ),
+            )
+
+
+        bytes1 = await read_upload_limited(
+            file1
+        )
+
+        bytes2 = await read_upload_limited(
+            file2
         )
 
 
         df_main = pd.read_excel(
             io.BytesIO(
-                await file1.read()
+                bytes1
             )
         )
 
 
         df_ref = pd.read_excel(
             io.BytesIO(
-                await file2.read()
+                bytes2
             )
         )
 
 
-        df_main.columns = (
-            df_main.columns
-            .astype(str)
-            .str.strip()
-        )
+        if df_main.empty:
+
+            raise HTTPException(
+                status_code=400,
+                detail=(
+                    "Ana Excel dosyasında "
+                    "veri bulunamadı."
+                ),
+            )
 
 
-        df_ref.columns = (
-            df_ref.columns
-            .astype(str)
-            .str.strip()
+        if df_ref.empty:
+
+            raise HTTPException(
+                status_code=400,
+                detail=(
+                    "Referans Excel dosyasında "
+                    "veri bulunamadı."
+                ),
+            )
+
+
+        df_main.columns = [
+            normalize_column_name(col)
+            for col in df_main.columns
+        ]
+
+
+        df_ref.columns = [
+            normalize_column_name(col)
+            for col in df_ref.columns
+        ]
+
+
+        komut_lower = (
+            komut.lower().strip()
         )
 
 
@@ -1497,61 +1756,32 @@ async def excel_motor(
         # -------------------------------------------------
 
         if any(
-            x in komut_lower
-            for x in [
+            word in komut_lower
+            for word in [
                 "düşeyara",
+                "duseyara",
                 "vlookup",
                 "birleştir",
+                "birlestir",
                 "merge",
+                "eşleştir",
+                "eslestir",
             ]
         ):
 
-            ortak_sutun = None
-
-
-            for col in df_main.columns:
-
-                if (
-                    col.lower()
-                    in komut_lower
-                ):
-
-                    if col in df_ref.columns:
-
-                        ortak_sutun = col
-                        break
-
-
-            if not ortak_sutun:
-
-                ortak = list(
-                    set(
-                        df_main.columns
-                    )
-                    .intersection(
-                        set(
-                            df_ref.columns
-                        )
-                    )
+            ortak_sutun = (
+                select_join_column(
+                    df_main,
+                    df_ref,
+                    komut,
                 )
+            )
 
 
-                if ortak:
-
-                    ortak_sutun = (
-                        ortak[0]
-                    )
-
-
-                else:
-
-                    raise HTTPException(
-                        status_code=400,
-                        detail=(
-                            "İki Excel dosyasında "
-                            "ortak sütun bulunamadı."
-                        ),
-                    )
+            app_log(
+                "EXCEL BIRLESTIRME "
+                f"ortak_sutun={ortak_sutun}"
+            )
 
 
             result_df = pd.merge(
@@ -1559,6 +1789,10 @@ async def excel_motor(
                 df_ref,
                 on=ortak_sutun,
                 how="left",
+                suffixes=(
+                    "",
+                    "_referans",
+                ),
             )
 
 
@@ -1567,21 +1801,25 @@ async def excel_motor(
         # -------------------------------------------------
 
         elif any(
-            x in komut_lower
-            for x in [
+            word in komut_lower
+            for word in [
                 "pivot",
                 "özet",
+                "ozet",
                 "grupla",
                 "toplam",
             ]
         ):
 
-            index_col = (
-                df_main.columns[0]
+            command_columns = (
+                find_command_columns(
+                    df_main,
+                    komut,
+                )
             )
 
 
-            numeric_cols = (
+            numeric_columns = (
                 df_main
                 .select_dtypes(
                     include="number"
@@ -1591,19 +1829,70 @@ async def excel_motor(
             )
 
 
-            if not numeric_cols:
+            if not numeric_columns:
 
                 raise HTTPException(
                     status_code=400,
                     detail=(
-                        "Pivot için sayısal "
-                        "sütun bulunamadı."
+                        "Pivot/özet için "
+                        "sayısal sütun bulunamadı."
                     ),
                 )
 
 
-            value_col = (
-                numeric_cols[0]
+            # Komutta geçen sayısal sütunu bul
+            value_col = None
+
+            for col in command_columns:
+
+                if col in numeric_columns:
+                    value_col = col
+                    break
+
+
+            if value_col is None:
+                value_col = (
+                    numeric_columns[0]
+                )
+
+
+            # Komutta geçen sayısal olmayan sütunu bul
+            index_col = None
+
+            for col in command_columns:
+
+                if col != value_col:
+                    index_col = col
+                    break
+
+
+            if index_col is None:
+
+                non_numeric = [
+                    col
+                    for col in df_main.columns
+                    if col != value_col
+                ]
+
+                if not non_numeric:
+
+                    raise HTTPException(
+                        status_code=400,
+                        detail=(
+                            "Pivot için grup "
+                            "sütunu bulunamadı."
+                        ),
+                    )
+
+                index_col = (
+                    non_numeric[0]
+                )
+
+
+            app_log(
+                "EXCEL PIVOT "
+                f"index={index_col} "
+                f"value={value_col}"
             )
 
 
@@ -1613,27 +1902,44 @@ async def excel_motor(
                     values=value_col,
                     index=index_col,
                     aggfunc="sum",
+                    fill_value=0,
                 )
                 .reset_index()
             )
 
 
+        # -------------------------------------------------
+        # KOMUT TANINMADI
+        # -------------------------------------------------
+
         else:
 
+            app_log(
+                "EXCEL KOMUT TANINMADI "
+                "ANA DOSYA AYNEN AKTARILDI"
+            )
+
             result_df = (
-                df_main
+                df_main.copy()
             )
 
 
-        output_path = os.path.join(
-            OUTPUT_DIR,
-            "excel_sonuc.xlsx",
+        output_path = (
+            unique_output_path(
+                "xlsx"
+            )
         )
 
 
         result_df.to_excel(
             output_path,
             index=False,
+        )
+
+
+        app_log(
+            "EXCEL ISLEM BASARILI "
+            f"satir={len(result_df)}"
         )
 
 
@@ -1648,6 +1954,11 @@ async def excel_motor(
             filename=(
                 "excel_sonuc.xlsx"
             ),
+
+            background=BackgroundTask(
+                delete_file,
+                output_path,
+            ),
         )
 
 
@@ -1656,6 +1967,15 @@ async def excel_motor(
 
 
     except Exception as e:
+
+        if output_path:
+            delete_file(
+                output_path
+            )
+
+        app_log(
+            f"EXCEL HATASI: {str(e)}"
+        )
 
         raise HTTPException(
             status_code=500,
@@ -1676,9 +1996,18 @@ async def resim_pdf_motor(
     images: List[UploadFile] = File(...)
 ):
 
+    output_path = None
+    pil_images = []
+
     try:
 
-        pil_images = []
+        app_log(
+            "RESIM PDF ISLEM BASLADI "
+            f"adet={len(images)}"
+        )
+
+
+        total_size = 0
 
 
         for file in images:
@@ -1687,19 +2016,54 @@ async def resim_pdf_motor(
                 continue
 
 
-            if not file.filename.lower().endswith(
+            if not check_extension(
+                file.filename,
                 (
                     ".jpg",
                     ".jpeg",
                     ".png",
-                )
+                ),
             ):
+
                 continue
+
+
+            data = await read_upload_limited(
+                file
+            )
+
+
+            total_size += len(
+                data
+            )
+
+
+            if (
+                total_size
+                > MAX_IMAGES_TOTAL_SIZE
+            ):
+
+                raise HTTPException(
+                    status_code=413,
+                    detail=(
+                        "Seçilen fotoğrafların "
+                        "toplam boyutu çok büyük. "
+                        "Maksimum 100 MB."
+                    ),
+                )
 
 
             image = Image.open(
                 io.BytesIO(
-                    await file.read()
+                    data
+                )
+            )
+
+
+            # iPhone / telefon fotoğrafı yönünü düzelt
+            image = (
+                ImageOps.exif_transpose(
+                    image
                 )
             )
 
@@ -1709,6 +2073,10 @@ async def resim_pdf_motor(
                 image = image.convert(
                     "RGB"
                 )
+
+
+            # Görüntüyü belleğe bağımsız kopyala
+            image = image.copy()
 
 
             pil_images.append(
@@ -1726,23 +2094,27 @@ async def resim_pdf_motor(
             )
 
 
-        output_path = os.path.join(
-            OUTPUT_DIR,
-            "rdv_pdf_sonuc.pdf",
+        output_path = (
+            unique_output_path(
+                "pdf"
+            )
         )
 
 
         pil_images[0].save(
             output_path,
             "PDF",
-
             save_all=True,
-
             append_images=(
                 pil_images[1:]
             ),
+            resolution=150.0,
+        )
 
-            quality=65,
+
+        app_log(
+            "RESIM PDF BASARILI "
+            f"adet={len(pil_images)}"
         )
 
 
@@ -1756,14 +2128,34 @@ async def resim_pdf_motor(
             filename=(
                 "rdv_pdf_sonuc.pdf"
             ),
+
+            background=BackgroundTask(
+                delete_file,
+                output_path,
+            ),
         )
 
 
     except HTTPException:
+
+        if output_path:
+            delete_file(
+                output_path
+            )
+
         raise
 
 
     except Exception as e:
+
+        if output_path:
+            delete_file(
+                output_path
+            )
+
+        app_log(
+            f"RESIM PDF HATASI: {str(e)}"
+        )
 
         raise HTTPException(
             status_code=500,
@@ -1771,6 +2163,16 @@ async def resim_pdf_motor(
                 f"PDF Hatası: {str(e)}"
             ),
         )
+
+
+    finally:
+
+        for image in pil_images:
+
+            try:
+                image.close()
+            except Exception:
+                pass
 
 
 # =========================================================
@@ -1784,10 +2186,33 @@ async def pdf_excel_motor(
     pdf_file: UploadFile = File(...)
 ):
 
+    output_path = None
+
     try:
 
+        app_log(
+            "PDF EXCEL ISLEM BASLADI "
+            f"file={pdf_file.filename}"
+        )
+
+
+        if not check_extension(
+            pdf_file.filename,
+            (".pdf",),
+        ):
+
+            raise HTTPException(
+                status_code=400,
+                detail=(
+                    "Geçerli bir PDF dosyası seç."
+                ),
+            )
+
+
         pdf_bytes = (
-            await pdf_file.read()
+            await read_upload_limited(
+                pdf_file
+            )
         )
 
 
@@ -1801,7 +2226,16 @@ async def pdf_excel_motor(
         ) as pdf:
 
 
-            for page in pdf.pages:
+            app_log(
+                "PDF ACILDI "
+                f"sayfa={len(pdf.pages)}"
+            )
+
+
+            for page_number, page in enumerate(
+                pdf.pages,
+                start=1,
+            ):
 
                 tables = (
                     page.extract_tables()
@@ -1814,9 +2248,18 @@ async def pdf_excel_motor(
 
                         for row in table:
 
+                            if not row:
+                                continue
+
+
                             cleaned_row = [
                                 (
-                                    str(cell).strip()
+                                    str(cell)
+                                    .replace(
+                                        "\n",
+                                        " ",
+                                    )
+                                    .strip()
                                     if cell
                                     is not None
                                     else ""
@@ -1826,9 +2269,15 @@ async def pdf_excel_motor(
                             ]
 
 
-                            extracted_data.append(
-                                cleaned_row
-                            )
+                            if any(
+                                cell
+                                for cell
+                                in cleaned_row
+                            ):
+
+                                extracted_data.append(
+                                    cleaned_row
+                                )
 
 
                 else:
@@ -1844,32 +2293,72 @@ async def pdf_excel_motor(
                             "\n"
                         ):
 
-                            if line.strip():
+                            line = (
+                                line.strip()
+                            )
+
+                            if line:
 
                                 extracted_data.append(
-                                    line.split()
+                                    [
+                                        line
+                                    ]
                                 )
 
 
         if not extracted_data:
 
+            app_log(
+                "PDF EXCEL VERI BULUNAMADI"
+            )
+
             raise HTTPException(
                 status_code=400,
                 detail=(
                     "PDF içinde Excel'e "
-                    "aktarılacak veri bulunamadı."
+                    "aktarılacak metin veya "
+                    "tablo bulunamadı. "
+                    "Taranmış/resim PDF ise "
+                    "OCR gerekir."
                 ),
             )
 
 
-        df = pd.DataFrame(
-            extracted_data
+        # Farklı uzunluktaki satırları eşitle
+        max_columns = max(
+            len(row)
+            for row
+            in extracted_data
         )
 
 
-        output_path = os.path.join(
-            OUTPUT_DIR,
-            "pdf_to_excel_sonuc.xlsx",
+        normalized_rows = []
+
+
+        for row in extracted_data:
+
+            normalized_row = (
+                row
+                + [""] * (
+                    max_columns
+                    - len(row)
+                )
+            )
+
+            normalized_rows.append(
+                normalized_row
+            )
+
+
+        df = pd.DataFrame(
+            normalized_rows
+        )
+
+
+        output_path = (
+            unique_output_path(
+                "xlsx"
+            )
         )
 
 
@@ -1877,6 +2366,13 @@ async def pdf_excel_motor(
             output_path,
             index=False,
             header=False,
+        )
+
+
+        app_log(
+            "PDF EXCEL BASARILI "
+            f"satir={len(df)} "
+            f"sutun={len(df.columns)}"
         )
 
 
@@ -1891,14 +2387,34 @@ async def pdf_excel_motor(
             filename=(
                 "pdf_to_excel_sonuc.xlsx"
             ),
+
+            background=BackgroundTask(
+                delete_file,
+                output_path,
+            ),
         )
 
 
     except HTTPException:
+
+        if output_path:
+            delete_file(
+                output_path
+            )
+
         raise
 
 
     except Exception as e:
+
+        if output_path:
+            delete_file(
+                output_path
+            )
+
+        app_log(
+            f"PDF EXCEL HATASI: {str(e)}"
+        )
 
         raise HTTPException(
             status_code=500,
