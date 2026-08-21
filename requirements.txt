@@ -5,3 +5,5 @@ openpyxl
 python-multipart
 Pillow
 pdfplumber
+requests
+beautifulsoup4
