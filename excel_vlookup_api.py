@@ -1,16 +1,34 @@
 # =========================================================
-# TÜİK CANLI TÜFE VERİSİ
+# TÜİK - GÜNCEL KİRA TÜFE VERİSİ
+# Sabit oran YOK.
 # =========================================================
 
-TUIK_MEDIA_URL = "https://veriportali.tuik.gov.tr/media/"
-TUIK_BASE = "https://veriportali.tuik.gov.tr"
+TUIK_MAIN = "https://www.tuik.gov.tr/"
+TUIK_MEDIA = "https://veriportali.tuik.gov.tr/media/"
+TUIK_PORTAL = "https://veriportali.tuik.gov.tr"
+TUIK_CALENDAR = "https://takvim.tuik.gov.tr/"
 
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 Chrome/136 Safari/537.36"
+        "AppleWebKit/537.36 Chrome/136.0 Safari/537.36"
     ),
     "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.8",
+}
+
+MONTH_NAMES = {
+    1: "Ocak",
+    2: "Şubat",
+    3: "Mart",
+    4: "Nisan",
+    5: "Mayıs",
+    6: "Haziran",
+    7: "Temmuz",
+    8: "Ağustos",
+    9: "Eylül",
+    10: "Ekim",
+    11: "Kasım",
+    12: "Aralık",
 }
 
 TR_MONTHS = {
@@ -34,248 +52,503 @@ TR_MONTHS = {
     "aralik": 12,
 }
 
-MONTH_NAMES = {
-    1: "Ocak",
-    2: "Şubat",
-    3: "Mart",
-    4: "Nisan",
-    5: "Mayıs",
-    6: "Haziran",
-    7: "Temmuz",
-    8: "Ağustos",
-    9: "Eylül",
-    10: "Ekim",
-    11: "Kasım",
-    12: "Aralık",
-}
 
-
-def get_latest_tufe_period():
-    """
-    TÜİK media sayfasındaki 'En Son Veriler' tablosundan
-    en güncel Tüketici Fiyat Endeksi dönemini bulur.
-    Örn: Temmuz 2026
-    """
-
-    response = requests.get(
-        TUIK_MEDIA_URL,
-        headers=HEADERS,
-        timeout=15,
-    )
-    response.raise_for_status()
-
-    soup = BeautifulSoup(
-        response.text,
-        "html.parser",
-    )
-
-    text = soup.get_text(
-        separator=" ",
-        strip=True,
-    )
-
-    # Örn:
-    # Tüketici Fiyat Endeksi Temmuz 2026 Haber Bülteni
-    match = re.search(
-        r"Tüketici\s+Fiyat\s+Endeksi\s+"
-        r"(Ocak|Şubat|Subat|Mart|Nisan|Mayıs|Mayis|Haziran|Temmuz|"
-        r"Ağustos|Agustos|Eylül|Eylul|Ekim|Kasım|Kasim|Aralık|Aralik)"
-        r"\s+(\d{4})",
-        text,
-        re.IGNORECASE,
-    )
-
-    if not match:
-        raise RuntimeError(
-            "TÜİK media sayfasında güncel TÜFE dönemi bulunamadı."
-        )
-
-    month_name_raw = match.group(1)
-    month_key = month_name_raw.lower()
-
-    month = TR_MONTHS.get(month_key)
-    year = int(match.group(2))
-
-    if not month:
-        raise RuntimeError(
-            "TÜFE ayı çözümlenemedi."
-        )
-
-    return {
-        "year": year,
-        "month": month,
-        "period": f"{MONTH_NAMES[month]} {year}",
-    }
-
-
-def find_official_tufe_bulletin(period_info):
-    """
-    TÜİK media sayfasındaki linklerden
-    ilgili en güncel TÜFE haber bültenini bulur.
-    """
-
-    response = requests.get(
-        TUIK_MEDIA_URL,
-        headers=HEADERS,
-        timeout=15,
-    )
-    response.raise_for_status()
-
-    soup = BeautifulSoup(
-        response.text,
-        "html.parser",
-    )
-
-    target_period = period_info["period"].lower()
-
-    candidates = []
-
-    for a in soup.find_all("a", href=True):
-        label = " ".join(
-            a.stripped_strings
-        ).lower()
-
-        href = a.get("href", "")
-
-        if (
-            "tüketici fiyat endeksi" in label
-            and target_period in label
-        ):
-            full_url = urljoin(
-                TUIK_BASE,
-                href,
-            )
-
-            if (
-                "/press/" in full_url.lower()
-                or "/bulten/" in full_url.lower()
-            ):
-                candidates.append(
-                    full_url
-                )
-
-    candidates = list(
-        dict.fromkeys(candidates)
-    )
-
-    if not candidates:
-        raise RuntimeError(
-            f"{period_info['period']} TÜFE bülteni linki bulunamadı."
-        )
-
-    return candidates[0]
-
-
-def read_tufe_bulletin(url: str):
-    """
-    Resmi TÜFE bülteninden kira artışında kullanılan
-    'on iki aylık ortalamalara göre değişim oranı'nı alır.
-    """
-
+def get_html(url):
     response = requests.get(
         url,
         headers=HEADERS,
         timeout=15,
     )
     response.raise_for_status()
+    return response.text
 
+
+def normalize_text(html):
     soup = BeautifulSoup(
-        response.text,
-        "html.parser",
+        html,
+        "html.parser"
     )
 
-    text = soup.get_text(
-        separator=" ",
-        strip=True,
+    return soup.get_text(
+        " ",
+        strip=True
     )
 
-    if "Tüketici Fiyat Endeksi" not in text:
-        raise RuntimeError(
-            "Açılan sayfa TÜFE bülteni değil."
-        )
 
-    rate_match = re.search(
-        r"on\s+iki\s+aylık\s+ortalamalara\s+göre"
-        r".{0,80}?%?\s*([0-9]{1,3}[,.][0-9]{1,2})",
+# ---------------------------------------------------------
+# 1) TÜİK ANA SAYFASINDAN SON TÜFE DÖNEMİNİ BUL
+# ---------------------------------------------------------
+
+def period_from_main_page():
+
+    text = normalize_text(
+        get_html(TUIK_MAIN)
+    )
+
+    # Örnek:
+    # Tüketici Fiyat Endeksi-Yıllık (%) 2026/7 (Ay)
+    match = re.search(
+        r"Tüketici\s+Fiyat\s+Endeksi"
+        r".{0,100}?"
+        r"(\d{4})\s*/\s*(\d{1,2})",
         text,
         re.IGNORECASE,
     )
 
-    if not rate_match:
-        raise RuntimeError(
-            "12 aylık ortalama TÜFE oranı bulunamadı."
-        )
+    if not match:
+        return None
 
-    rate = float(
-        rate_match.group(1).replace(",", ".")
+    year = int(match.group(1))
+    month = int(match.group(2))
+
+    if month < 1 or month > 12:
+        return None
+
+    return year, month
+
+
+# ---------------------------------------------------------
+# 2) VERİ PORTALINDAN SON TÜFE DÖNEMİNİ BUL
+# ---------------------------------------------------------
+
+def period_from_media():
+
+    text = normalize_text(
+        get_html(TUIK_MEDIA)
     )
 
-    period_match = re.search(
-        r"Tüketici\s+Fiyat\s+Endeksi\s*,?\s*"
-        r"(Ocak|Şubat|Subat|Mart|Nisan|Mayıs|Mayis|Haziran|Temmuz|"
-        r"Ağustos|Agustos|Eylül|Eylul|Ekim|Kasım|Kasim|Aralık|Aralik)"
+    match = re.search(
+        r"Tüketici\s+Fiyat\s+Endeksi"
+        r".{0,100}?"
+        r"(Ocak|Şubat|Subat|Mart|Nisan|Mayıs|Mayis|"
+        r"Haziran|Temmuz|Ağustos|Agustos|Eylül|Eylul|"
+        r"Ekim|Kasım|Kasim|Aralık|Aralik)"
         r"\s+(\d{4})",
         text,
         re.IGNORECASE,
     )
 
-    if not period_match:
-        raise RuntimeError(
-            "Bülten dönemi bulunamadı."
+    if not match:
+        return None
+
+    month = TR_MONTHS.get(
+        match.group(1).lower()
+    )
+
+    year = int(
+        match.group(2)
+    )
+
+    if not month:
+        return None
+
+    return year, month
+
+
+# ---------------------------------------------------------
+# 3) TÜİK TAKVİMİNDEN SON TÜFE DÖNEMİNİ BUL
+# ---------------------------------------------------------
+
+def period_from_calendar():
+
+    text = normalize_text(
+        get_html(TUIK_CALENDAR)
+    )
+
+    matches = re.findall(
+        r"Tüketici\s+Fiyat\s+Endeksi"
+        r"\s*,?\s*"
+        r"(Ocak|Şubat|Subat|Mart|Nisan|Mayıs|Mayis|"
+        r"Haziran|Temmuz|Ağustos|Agustos|Eylül|Eylul|"
+        r"Ekim|Kasım|Kasim|Aralık|Aralik)"
+        r"\s+(\d{4})",
+        text,
+        re.IGNORECASE,
+    )
+
+    if not matches:
+        return None
+
+    periods = []
+
+    for month_name, year_text in matches:
+
+        month = TR_MONTHS.get(
+            month_name.lower()
         )
 
-    month = TR_MONTHS[
-        period_match.group(1).lower()
+        if month:
+
+            periods.append(
+                (
+                    int(year_text),
+                    month,
+                )
+            )
+
+    if not periods:
+        return None
+
+    return max(periods)
+
+
+# ---------------------------------------------------------
+# SON DÖNEMİ RESMİ KAYNAKLARDAN BELİRLE
+# ---------------------------------------------------------
+
+def find_latest_official_period():
+
+    found = []
+
+    sources = [
+        period_from_main_page,
+        period_from_media,
+        period_from_calendar,
     ]
+
+    for source in sources:
+
+        try:
+
+            result = source()
+
+            if result:
+                found.append(result)
+
+        except Exception:
+            pass
+
+    if not found:
+
+        raise RuntimeError(
+            "TÜİK resmi kaynaklarından "
+            "güncel TÜFE dönemi belirlenemedi."
+        )
+
+    # Kaynaklardan bulunan en yeni dönem
+    return max(found)
+
+
+# ---------------------------------------------------------
+# VERİ PORTALINDA İLGİLİ TÜFE BÜLTENİNİ BUL
+# ---------------------------------------------------------
+
+def find_bulletin_url(year, month):
+
+    html = get_html(TUIK_MEDIA)
+
+    soup = BeautifulSoup(
+        html,
+        "html.parser"
+    )
+
+    target_month = MONTH_NAMES[month]
+
+    possible_urls = []
+
+
+    # Önce media sayfasındaki linkleri tara
+    for a in soup.find_all(
+        "a",
+        href=True
+    ):
+
+        label = " ".join(
+            a.stripped_strings
+        )
+
+        href = a.get(
+            "href",
+            ""
+        )
+
+        label_lower = label.lower()
+
+        if (
+            "tüketici fiyat endeksi"
+            in label_lower
+            and target_month.lower()
+            in label_lower
+            and str(year)
+            in label_lower
+        ):
+
+            full_url = urljoin(
+                TUIK_PORTAL,
+                href
+            )
+
+            if (
+                "/press/" in full_url.lower()
+                or "/bulten/" in full_url.lower()
+            ):
+
+                possible_urls.append(
+                    full_url
+                )
+
+
+    # Aynı linkleri temizle
+    possible_urls = list(
+        dict.fromkeys(
+            possible_urls
+        )
+    )
+
+
+    # Bulunan adayların gerçekten doğru TÜFE
+    # bülteni olduğunu doğrula
+    for url in possible_urls:
+
+        try:
+
+            data = parse_bulletin(
+                url,
+                expected_year=year,
+                expected_month=month,
+            )
+
+            if data:
+                return url
+
+        except Exception:
+            continue
+
+
+    # -----------------------------------------------------
+    # Media linki bulunamazsa Veri Portalı genel listesini
+    # kontrol et
+    # -----------------------------------------------------
+
+    portal_pages = [
+        "https://veriportali.tuik.gov.tr/Bulten/Index",
+        "https://veriportali.tuik.gov.tr/tr/",
+    ]
+
+    for page_url in portal_pages:
+
+        try:
+
+            html = get_html(page_url)
+
+            soup = BeautifulSoup(
+                html,
+                "html.parser"
+            )
+
+            for a in soup.find_all(
+                "a",
+                href=True
+            ):
+
+                label = " ".join(
+                    a.stripped_strings
+                )
+
+                if (
+                    "tüketici fiyat endeksi"
+                    not in label.lower()
+                ):
+                    continue
+
+                if (
+                    target_month.lower()
+                    not in label.lower()
+                ):
+                    continue
+
+                if str(year) not in label:
+                    continue
+
+                full_url = urljoin(
+                    TUIK_PORTAL,
+                    a["href"]
+                )
+
+                try:
+
+                    data = parse_bulletin(
+                        full_url,
+                        expected_year=year,
+                        expected_month=month,
+                    )
+
+                    if data:
+                        return full_url
+
+                except Exception:
+                    continue
+
+        except Exception:
+            continue
+
+
+    raise RuntimeError(
+        f"{target_month} {year} "
+        "TÜFE haber bülteni bulunamadı."
+    )
+
+
+# ---------------------------------------------------------
+# BÜLTENDEN 12 AYLIK ORTALAMA TÜFE'Yİ OKU
+# ---------------------------------------------------------
+
+def parse_bulletin(
+    url,
+    expected_year=None,
+    expected_month=None,
+):
+
+    text = normalize_text(
+        get_html(url)
+    )
+
+
+    if "Tüketici Fiyat Endeksi" not in text:
+
+        return None
+
+
+    # Bülten dönemini doğrula
+    period_match = re.search(
+        r"Tüketici\s+Fiyat\s+Endeksi"
+        r"\s*,?\s*"
+        r"(Ocak|Şubat|Subat|Mart|Nisan|Mayıs|Mayis|"
+        r"Haziran|Temmuz|Ağustos|Agustos|Eylül|Eylul|"
+        r"Ekim|Kasım|Kasim|Aralık|Aralik)"
+        r"\s+(\d{4})",
+        text,
+        re.IGNORECASE,
+    )
+
+
+    if not period_match:
+
+        return None
+
+
+    month = TR_MONTHS.get(
+        period_match.group(1).lower()
+    )
 
     year = int(
         period_match.group(2)
     )
 
-    next_match = re.search(
-        r"bir\s+sonraki\s+haber\s+bülteninin\s+"
-        r"yayımlanma\s+tarihi\s*:?\s*"
-        r"([0-9]{1,2}\s+"
-        r"(?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|"
-        r"Ağustos|Eylül|Ekim|Kasım|Aralık)"
-        r"\s+[0-9]{4})",
+
+    if (
+        expected_year is not None
+        and year != expected_year
+    ):
+
+        return None
+
+
+    if (
+        expected_month is not None
+        and month != expected_month
+    ):
+
+        return None
+
+
+    # -----------------------------------------------------
+    # ÖNEMLİ:
+    # İlk paragraftaki GENEL TÜFE'nin
+    # 12 AYLIK ORTALAMA oranını al.
+    #
+    # Temmuz 2026 örneği:
+    # "... on iki aylık ortalamalara göre
+    # %31,90 artış olarak gerçekleşti."
+    # -----------------------------------------------------
+
+    rate_match = re.search(
+        r"TÜFE(?:'deki|'ndeki)?"
+        r".{0,700}?"
+        r"on\s+iki\s+aylık\s+ortalamalara\s+göre"
+        r"\s*%?\s*"
+        r"([0-9]{1,3}[,.][0-9]{1,2})",
         text,
         re.IGNORECASE,
     )
 
-    next_date = (
-        next_match.group(1)
-        if next_match
-        else None
+
+    # İlk kalıp yakalayamazsa genel alternatif
+    if not rate_match:
+
+        rate_match = re.search(
+            r"on\s+iki\s+aylık\s+ortalamalara\s+göre"
+            r"\s*%?\s*"
+            r"([0-9]{1,3}[,.][0-9]{1,2})"
+            r"\s+artış\s+olarak\s+gerçekleşti",
+            text,
+            re.IGNORECASE,
+        )
+
+
+    if not rate_match:
+
+        raise RuntimeError(
+            "TÜİK bülteninde "
+            "12 aylık ortalama TÜFE oranı bulunamadı."
+        )
+
+
+    rate = float(
+        rate_match
+        .group(1)
+        .replace(",", ".")
     )
+
+
+    # Mantık kontrolü
+    if rate <= 0 or rate > 200:
+
+        raise RuntimeError(
+            "Okunan TÜFE oranı mantıksız görünüyor."
+        )
+
 
     return {
         "rate": rate,
         "year": year,
         "month": month,
-        "period": f"{MONTH_NAMES[month]} {year}",
+        "period": (
+            f"{MONTH_NAMES[month]} {year}"
+        ),
         "source": url,
-        "next_date": next_date,
     }
 
 
+# ---------------------------------------------------------
+# ANA FONKSİYON
+# ---------------------------------------------------------
+
 def find_latest_tufe():
-    """
-    Sabit oran kullanmaz.
-    Her Hesapla tıklamasında:
-    1) TÜİK media sayfasından son dönemi bulur
-    2) resmi bülteni bulur
-    3) 12 aylık ortalama oranı bültenden çeker
-    """
 
-    period_info = get_latest_tufe_period()
-
-    bulletin_url = find_official_tufe_bulletin(
-        period_info
+    # 1. Son resmi dönemi bul
+    year, month = (
+        find_latest_official_period()
     )
 
-    tufe = read_tufe_bulletin(
-        bulletin_url
+    # 2. O dönemin resmi haber bültenini bul
+    bulletin_url = find_bulletin_url(
+        year,
+        month
     )
 
-    return tufe
+    # 3. Bültenin içinden kira için gereken
+    # 12 aylık ortalama TÜFE oranını çek
+    data = parse_bulletin(
+        bulletin_url,
+        expected_year=year,
+        expected_month=month,
+    )
+
+    if not data:
+
+        raise RuntimeError(
+            "Güncel TÜFE verisi okunamadı."
+        )
+
+    return data
