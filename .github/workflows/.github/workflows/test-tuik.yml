@@ -1,0 +1,36 @@
+name: TÜİK API Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-tuik:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: TÜİK API'yi test et
+        run: |
+          echo "TÜİK API test ediliyor..."
+
+          HTTP_CODE=$(curl -sS \
+            -o tuik_response.txt \
+            -w "%{http_code}" \
+            -L \
+            -H "Accept: application/json, text/plain, */*" \
+            -H "Accept-Language: tr-TR,tr;q=0.9" \
+            -H "Referer: https://veriportali.tuik.gov.tr/tr/press/58297" \
+            -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/136 Safari/537.36" \
+            "https://veriportali.tuik.gov.tr/api/tr/press/58297")
+
+          echo "HTTP CODE: $HTTP_CODE"
+          echo "----- CEVAP BAŞLANGICI -----"
+          head -c 1000 tuik_response.txt
+          echo ""
+          echo "----- CEVAP SONU -----"
+
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "TÜİK API başarısız: HTTP $HTTP_CODE"
+            exit 1
+          fi
+
+          echo "TÜİK API BAŞARILI."
