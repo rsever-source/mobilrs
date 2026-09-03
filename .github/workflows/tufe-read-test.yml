@@ -10,48 +10,59 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch TUİK and print latest CPI info
+      - name: Test TÜİK DataBrowser2 CPI endpoint
         shell: python
         run: |
-          import re
+          import json
           import urllib.request
-          from html import unescape
 
+          flow = 'TR,DF_TUFE_SDMX_TT04,1.0'
+          base = f'https://databrowser2.tuik.gov.tr/api/core/nodes/1/datasets/{flow}'
           headers = {
               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/136 Safari/537.36',
-              'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
           }
 
-          def fetch(url):
-              req = urllib.request.Request(url, headers=headers)
-              with urllib.request.urlopen(req, timeout=30) as r:
-                  return r.status, r.geturl(), r.read().decode('utf-8', 'ignore')
+          req = urllib.request.Request(base + '/structure', headers=headers)
+          with urllib.request.urlopen(req, timeout=45) as r:
+              raw = r.read().decode('utf-8')
+              print('STRUCTURE_HTTP=', r.status)
+              print('STRUCTURE_BYTES=', len(raw))
+              structure = json.loads(raw)
 
-          tests = [
-              'https://veriportali.tuik.gov.tr/',
-              'https://veriportali.tuik.gov.tr/tr/press/58290',
-          ]
+          criteria = structure.get('template', {}).get('criteria')
+          if not criteria:
+              raise SystemExit('No template.criteria in structure response')
 
-          for url in tests:
-              status, final_url, html = fetch(url)
-              print('FETCH', status, final_url, 'bytes=', len(html))
-              if status != 200:
-                  raise SystemExit(f'HTTP {status}: {url}')
+          print('CRITERIA_COUNT=', len(criteria))
 
-          status, final_url, html = fetch('https://veriportali.tuik.gov.tr/tr/press/58290')
-          text = re.sub(r'<[^>]+>', ' ', html)
-          text = unescape(re.sub(r'\s+', ' ', text))
+          body = json.dumps(criteria).encode('utf-8')
+          req = urllib.request.Request(base + '/data', data=body, headers=headers, method='POST')
+          with urllib.request.urlopen(req, timeout=90) as r:
+              raw = r.read().decode('utf-8')
+              print('DATA_HTTP=', r.status)
+              print('DATA_BYTES=', len(raw))
+              payload = json.loads(raw)
 
-          if 'Tüketici Fiyat Endeksi' not in text:
-              raise SystemExit('CPI title not found in bulletin')
+          print('CLASS=', payload.get('class'))
+          print('IDS=', payload.get('id'))
+          print('SIZE=', payload.get('size'))
+          print('TIME_ROLE=', payload.get('role', {}).get('time'))
 
-          period = re.search(r'Tüketici\s+Fiyat\s+Endeksi\s*[,–-]?\s*(Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+(20\d{2})', text, re.I)
-          rate = re.search(r'on\s+iki\s+aylık\s+ortalamalara\s+göre.{0,160}?%\s*([0-9]{1,3}[,.][0-9]{1,2})', text, re.I)
+          dims = payload.get('dimension', {})
+          time_ids = payload.get('role', {}).get('time') or []
+          if time_ids:
+              tid = time_ids[0]
+              tdim = dims.get(tid, {})
+              print('TIME_LABEL=', tdim.get('label'))
+              print('TIME_CODES_TAIL=', list((tdim.get('category', {}).get('label') or {}).items())[-8:])
 
-          print('PERIOD=', period.group(1), period.group(2) if period else 'NOT_FOUND')
-          print('RATE=', rate.group(1) if rate else 'NOT_FOUND')
+          values = payload.get('value')
+          print('VALUE_TYPE=', type(values).__name__)
+          print('VALUE_COUNT=', len(values) if hasattr(values, '__len__') else 'NA')
 
-          if not period or not rate:
-              raise SystemExit('Period/rate parse failed')
+          if payload.get('class') != 'dataset' or not values:
+              raise SystemExit('JSON-stat dataset/values not returned')
 
-          print('RESULT=', f'{period.group(1)} {period.group(2)} / %{rate.group(1)}')
+          print('RESULT=SUCCESS DataBrowser2 returned CPI dataset')
