@@ -107,7 +107,6 @@ def html_to_text(html):
         "html.parser",
     )
 
-    # Script/style kalabalığını temizle
     for tag in soup(
         [
             "script",
@@ -222,7 +221,6 @@ def load_cache():
 
 def extract_period(text):
 
-    # Türkçe
     tr_pattern = (
         r"Tüketici\s+Fiyat\s+Endeksi"
         r"\s*[,–\-]?\s*"
@@ -253,7 +251,6 @@ def extract_period(text):
             return year, month
 
 
-    # İngilizce
     en_pattern = (
         r"Consumer\s+Price\s+Index"
         r"\s*[,–\-]?\s*"
@@ -293,44 +290,33 @@ def extract_period(text):
 def extract_rate(text):
 
     patterns = [
-
-        # Türkçe ana paragraf
         (
             r"on\s+iki\s+aylık\s+ortalamalara\s+göre"
             r"\s*%"
             r"\s*([0-9]{1,3}[,.][0-9]{1,2})"
         ),
-
-        # Araya birkaç kelime girebilir
         (
             r"on\s+iki\s+aylık\s+ortalamalara\s+göre"
             r".{0,100}?"
             r"%\s*([0-9]{1,3}[,.][0-9]{1,2})"
         ),
-
-        # Tablo satırı
         (
             r"On\s+iki\s+aylık\s+ortalamalara\s+göre"
             r"\s+değişim\s+oranı"
             r"\s*"
             r"([0-9]{1,3}[,.][0-9]{1,2})"
         ),
-
-        # İngilizce ana paragraf
         (
             r"increased\s+by\s+"
             r"([0-9]{1,3}[,.][0-9]{1,2})%"
             r"\s+by\s+the\s+twelve\s+month\s+moving\s+averages"
         ),
-
-        # İngilizce tablo satırı
         (
             r"Rate\s+of\s+change\s+in\s+12\s+months\s+averages"
             r"\s*"
             r"([0-9]{1,3}[,.][0-9]{1,2})"
         ),
     ]
-
 
     for pattern in patterns:
 
@@ -350,7 +336,6 @@ def extract_rate(text):
 
             if 0 < rate < 200:
                 return rate
-
 
     return None
 
@@ -374,7 +359,6 @@ def parse_single_page(url):
     except Exception:
         return None
 
-
     period = extract_period(
         text
     )
@@ -383,17 +367,13 @@ def parse_single_page(url):
         text
     )
 
-
     if not period:
         return None
-
 
     if rate is None:
         return None
 
-
     year, month = period
-
 
     return {
         "rate": rate,
@@ -418,39 +398,26 @@ def parse_tuik_press_page(source_url):
         or ""
     ).lower()
 
-
     if host != "veriportali.tuik.gov.tr":
-
         return None
 
-
-    # Press ID'sini çek
     id_match = re.search(
         r"/(?:tr|en)/press/(\d+)",
         parsed.path,
         re.IGNORECASE,
     )
 
-
     if not id_match:
         return None
 
-
     press_id = id_match.group(1)
 
-
-    # Aynı resmi bülteni birkaç resmi varyasyondan dene.
     urls = [
-
         f"https://veriportali.tuik.gov.tr/tr/press/{press_id}",
-
         f"https://veriportali.tuik.gov.tr/en/press/{press_id}",
-
         f"https://veriportali.tuik.gov.tr/tr/press/{press_id}/metadata",
-
         f"https://veriportali.tuik.gov.tr/en/press/{press_id}/metadata",
     ]
-
 
     for url in urls:
 
@@ -459,35 +426,137 @@ def parse_tuik_press_page(source_url):
         )
 
         if data:
-
-            # Kullanıcıya kaynak olarak
-            # Türkçe resmi ana bülteni göster
             data["source"] = (
                 f"https://veriportali.tuik.gov.tr/"
                 f"tr/press/{press_id}"
             )
-
             return data
-
 
     return None
 
 
 # =========================================================
-# CANLI TÜİK OTOMATİK KEŞİF
+# CANLI TÜİK - DATABROWSER2
 # =========================================================
 
+def _jsonstat_pos_to_code(dim):
+    index = dim.get("category", {}).get("index") or []
+    if isinstance(index, dict):
+        return {int(pos): code for code, pos in index.items()}
+    return {pos: code for pos, code in enumerate(index)}
+
+
+def _jsonstat_unravel(flat_index, sizes):
+    coords = [0] * len(sizes)
+    rem = int(flat_index)
+    for i in range(len(sizes) - 1, -1, -1):
+        coords[i] = rem % sizes[i]
+        rem //= sizes[i]
+    return coords
+
+
 def fetch_live_tufe():
+    """Resmi TÜİK DataBrowser2 üzerinden son kira artış TÜFE oranını al."""
 
-    # Buradaki otomatik keşif önceki yöntemle yine denenebilir.
-    # Başarısız olursa Redis devreye girer.
-    #
-    # Spark tarafı ise resmi press URL'sini doğrudan
-    # /tufe-guncelle endpoint'ine verecek.
-
-    raise RuntimeError(
-        "Otomatik TÜİK keşfi kullanılamadı."
+    flow = "TR,DF_TUFE_SDMX_TT10,1.0"
+    base = (
+        "https://databrowser2.tuik.gov.tr/api/core/nodes/1/datasets/"
+        + flow
     )
+
+    headers = {
+        "User-Agent": HEADERS["User-Agent"],
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
+    }
+
+    structure_response = requests.get(
+        base + "/structure",
+        headers=headers,
+        timeout=20,
+    )
+    structure_response.raise_for_status()
+    structure = structure_response.json()
+
+    criteria = structure.get("template", {}).get("criteria")
+    if not criteria:
+        raise RuntimeError("TÜİK DataBrowser2 kriterleri alınamadı.")
+
+    data_response = requests.post(
+        base + "/data",
+        headers=headers,
+        json=criteria,
+        timeout=45,
+    )
+    data_response.raise_for_status()
+    payload = data_response.json()
+
+    ids = payload.get("id") or []
+    sizes = payload.get("size") or []
+    dims = payload.get("dimension") or {}
+    values = payload.get("value") or {}
+
+    required = {
+        "REF_AREA",
+        "FREQ",
+        "SINIFLAMA_DUZEYI",
+        "DEGISIM",
+        "COICOP_2018",
+        "TIME_PERIOD",
+    }
+    if not required.issubset(ids) or not values:
+        raise RuntimeError("TÜİK DataBrowser2 veri yapısı beklenenden farklı.")
+
+    pos_to_code = {
+        dim_id: _jsonstat_pos_to_code(dims[dim_id])
+        for dim_id in ids
+    }
+
+    matches = []
+    for flat, raw_value in values.items():
+        coords = _jsonstat_unravel(flat, sizes)
+        row = {
+            dim_id: pos_to_code[dim_id].get(pos)
+            for dim_id, pos in zip(ids, coords)
+        }
+
+        if (
+            row.get("REF_AREA") == "TR"
+            and row.get("FREQ") == "M"
+            and row.get("SINIFLAMA_DUZEYI") == "TUFE"
+            and row.get("DEGISIM") == "5"
+            and row.get("COICOP_2018") == "0"
+        ):
+            try:
+                rate = float(raw_value)
+            except (TypeError, ValueError):
+                continue
+
+            period_code = str(row.get("TIME_PERIOD") or "")
+            if re.fullmatch(r"20\d{2}-(0[1-9]|1[0-2])", period_code):
+                matches.append((period_code, rate))
+
+    if not matches:
+        raise RuntimeError("TÜİK 12 aylık ortalama TÜFE serisi bulunamadı.")
+
+    matches.sort(key=lambda item: item[0])
+    period_code, rate = matches[-1]
+
+    year = int(period_code[:4])
+    month = int(period_code[5:7])
+
+    if not (0 < rate < 200):
+        raise RuntimeError("TÜİK oranı geçersiz görünüyor.")
+
+    return {
+        "rate": round(rate, 2),
+        "year": year,
+        "month": month,
+        "period": f"{MONTH_NAMES[month]} {year}",
+        "source": base,
+        "data_mode": "tuik_databrowser2",
+    }
 
 
 # =========================================================
@@ -498,43 +567,21 @@ def get_current_tufe():
 
     live_error = None
 
-
     try:
-
         data = fetch_live_tufe()
-
-        save_cache(
-            data
-        )
-
-        data["data_mode"] = (
-            "live"
-        )
-
+        save_cache(data)
+        data["data_mode"] = "live"
         return data
 
     except Exception as exc:
-
-        live_error = str(
-            exc
-        )
-
+        live_error = str(exc)
 
     cached = load_cache()
 
-
     if cached:
-
-        cached["data_mode"] = (
-            "cache"
-        )
-
-        cached["live_error"] = (
-            live_error
-        )
-
+        cached["data_mode"] = "cache"
+        cached["live_error"] = live_error
         return cached
-
 
     raise RuntimeError(
         "Güncel TÜİK verisi alınamadı ve "
@@ -543,17 +590,14 @@ def get_current_tufe():
 
 
 # =========================================================
-# GÜNLÜK GÜNCELLEME
+# GÜNCELLEME
 # =========================================================
 
 def update_cache_from_tuik():
 
     data = fetch_live_tufe()
 
-    if not save_cache(
-        data
-    ):
-
+    if not save_cache(data):
         raise RuntimeError(
             "TÜFE bulundu fakat Redis'e kaydedilemedi."
         )
