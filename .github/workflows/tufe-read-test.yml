@@ -10,86 +10,47 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect TÜİK DataBrowser2 CPI dataset
+      - name: Probe TÜİK CPI tables
         shell: python
         run: |
           import json
           import urllib.request
+          import urllib.error
 
-          flow = 'TR,DF_TUFE_SDMX_TT04,1.0'
-          base = f'https://databrowser2.tuik.gov.tr/api/core/nodes/1/datasets/{flow}'
           headers = {
               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/136 Safari/537.36',
               'Accept': 'application/json',
               'Content-Type': 'application/json',
           }
 
-          req = urllib.request.Request(base + '/structure', headers=headers)
-          with urllib.request.urlopen(req, timeout=45) as r:
-              structure = json.loads(r.read().decode('utf-8'))
+          for n in range(1, 13):
+              flow = f'TR,DF_TUFE_SDMX_TT{n:02d},1.0'
+              base = f'https://databrowser2.tuik.gov.tr/api/core/nodes/1/datasets/{flow}'
+              try:
+                  req = urllib.request.Request(base + '/structure', headers=headers)
+                  with urllib.request.urlopen(req, timeout=25) as r:
+                      structure = json.loads(r.read().decode('utf-8'))
+                  criteria = structure.get('template', {}).get('criteria')
+                  if not criteria:
+                      print('FLOW', flow, 'NO_CRITERIA')
+                      continue
+                  req = urllib.request.Request(base + '/data', data=json.dumps(criteria).encode(), headers=headers, method='POST')
+                  with urllib.request.urlopen(req, timeout=60) as r:
+                      p = json.loads(r.read().decode('utf-8'))
+                  dims = p.get('dimension', {})
+                  ids = p.get('id', [])
+                  freq = list((dims.get('FREQ', {}).get('category', {}).get('label') or {}).items())
+                  deg = list((dims.get('DEGISIM', {}).get('category', {}).get('label') or {}).items())
+                  times = list((dims.get('TIME_PERIOD', {}).get('category', {}).get('label') or {}).items())
+                  print('\nFLOW=', flow)
+                  print('IDS=', ids)
+                  print('FREQ=', freq)
+                  print('DEGISIM=', deg)
+                  print('TIME_TAIL=', times[-15:])
+                  print('SIZE=', p.get('size'))
+              except urllib.error.HTTPError as e:
+                  print('FLOW', flow, 'HTTP', e.code)
+              except Exception as e:
+                  print('FLOW', flow, 'ERR', repr(e))
 
-          criteria = structure.get('template', {}).get('criteria')
-          if not criteria:
-              raise SystemExit('No template.criteria')
-
-          req = urllib.request.Request(
-              base + '/data',
-              data=json.dumps(criteria).encode('utf-8'),
-              headers=headers,
-              method='POST',
-          )
-          with urllib.request.urlopen(req, timeout=90) as r:
-              payload = json.loads(r.read().decode('utf-8'))
-
-          ids = payload['id']
-          sizes = payload['size']
-          dims = payload['dimension']
-          values = payload['value']
-
-          print('IDS=', ids)
-          print('SIZE=', sizes)
-
-          for dim_id in ids:
-              d = dims[dim_id]
-              labels = d.get('category', {}).get('label') or {}
-              index = d.get('category', {}).get('index') or {}
-              print('\nDIM=', dim_id, 'LABEL=', d.get('label'))
-              print('CODES=', list(labels.items())[:40])
-              print('INDEX=', list(index.items())[:40] if isinstance(index, dict) else index[:40])
-
-          # Decode sparse JSON-stat flat indices into dimension codes.
-          code_by_pos = {}
-          for dim_id in ids:
-              idx = dims[dim_id].get('category', {}).get('index') or {}
-              if isinstance(idx, dict):
-                  code_by_pos[dim_id] = {pos: code for code, pos in idx.items()}
-              else:
-                  labels = list((dims[dim_id].get('category', {}).get('label') or {}).keys())
-                  code_by_pos[dim_id] = {i: code for i, code in enumerate(labels)}
-
-          def unravel(flat):
-              coords = [0] * len(sizes)
-              rem = int(flat)
-              for i in range(len(sizes) - 1, -1, -1):
-                  coords[i] = rem % sizes[i]
-                  rem //= sizes[i]
-              return coords
-
-          rows = []
-          for flat, val in values.items():
-              coords = unravel(flat)
-              row = {'value': val}
-              for dim_id, pos in zip(ids, coords):
-                  code = code_by_pos[dim_id].get(pos, str(pos))
-                  label = (dims[dim_id].get('category', {}).get('label') or {}).get(code, code)
-                  row[dim_id] = code
-                  row[dim_id + '_LABEL'] = label
-              rows.append(row)
-
-          # Print only latest 2026 rows that look like total CPI/change series.
-          latest = [r for r in rows if str(r.get('TIME_PERIOD')) == '2026']
-          print('\nROWS_2026_COUNT=', len(latest))
-          for r in latest[:120]:
-              print('ROW2026=', json.dumps(r, ensure_ascii=False))
-
-          print('RESULT=SUCCESS decoded rows')
+          print('RESULT=PROBE_DONE')
