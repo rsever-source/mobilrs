@@ -10,7 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Test TÜİK DataBrowser2 CPI endpoint
+      - name: Inspect TÜİK DataBrowser2 CPI dataset
         shell: python
         run: |
           import json
@@ -26,43 +26,70 @@ jobs:
 
           req = urllib.request.Request(base + '/structure', headers=headers)
           with urllib.request.urlopen(req, timeout=45) as r:
-              raw = r.read().decode('utf-8')
-              print('STRUCTURE_HTTP=', r.status)
-              print('STRUCTURE_BYTES=', len(raw))
-              structure = json.loads(raw)
+              structure = json.loads(r.read().decode('utf-8'))
 
           criteria = structure.get('template', {}).get('criteria')
           if not criteria:
-              raise SystemExit('No template.criteria in structure response')
+              raise SystemExit('No template.criteria')
 
-          print('CRITERIA_COUNT=', len(criteria))
-
-          body = json.dumps(criteria).encode('utf-8')
-          req = urllib.request.Request(base + '/data', data=body, headers=headers, method='POST')
+          req = urllib.request.Request(
+              base + '/data',
+              data=json.dumps(criteria).encode('utf-8'),
+              headers=headers,
+              method='POST',
+          )
           with urllib.request.urlopen(req, timeout=90) as r:
-              raw = r.read().decode('utf-8')
-              print('DATA_HTTP=', r.status)
-              print('DATA_BYTES=', len(raw))
-              payload = json.loads(raw)
+              payload = json.loads(r.read().decode('utf-8'))
 
-          print('CLASS=', payload.get('class'))
-          print('IDS=', payload.get('id'))
-          print('SIZE=', payload.get('size'))
-          print('TIME_ROLE=', payload.get('role', {}).get('time'))
+          ids = payload['id']
+          sizes = payload['size']
+          dims = payload['dimension']
+          values = payload['value']
 
-          dims = payload.get('dimension', {})
-          time_ids = payload.get('role', {}).get('time') or []
-          if time_ids:
-              tid = time_ids[0]
-              tdim = dims.get(tid, {})
-              print('TIME_LABEL=', tdim.get('label'))
-              print('TIME_CODES_TAIL=', list((tdim.get('category', {}).get('label') or {}).items())[-8:])
+          print('IDS=', ids)
+          print('SIZE=', sizes)
 
-          values = payload.get('value')
-          print('VALUE_TYPE=', type(values).__name__)
-          print('VALUE_COUNT=', len(values) if hasattr(values, '__len__') else 'NA')
+          for dim_id in ids:
+              d = dims[dim_id]
+              labels = d.get('category', {}).get('label') or {}
+              index = d.get('category', {}).get('index') or {}
+              print('\nDIM=', dim_id, 'LABEL=', d.get('label'))
+              print('CODES=', list(labels.items())[:40])
+              print('INDEX=', list(index.items())[:40] if isinstance(index, dict) else index[:40])
 
-          if payload.get('class') != 'dataset' or not values:
-              raise SystemExit('JSON-stat dataset/values not returned')
+          # Decode sparse JSON-stat flat indices into dimension codes.
+          code_by_pos = {}
+          for dim_id in ids:
+              idx = dims[dim_id].get('category', {}).get('index') or {}
+              if isinstance(idx, dict):
+                  code_by_pos[dim_id] = {pos: code for code, pos in idx.items()}
+              else:
+                  labels = list((dims[dim_id].get('category', {}).get('label') or {}).keys())
+                  code_by_pos[dim_id] = {i: code for i, code in enumerate(labels)}
 
-          print('RESULT=SUCCESS DataBrowser2 returned CPI dataset')
+          def unravel(flat):
+              coords = [0] * len(sizes)
+              rem = int(flat)
+              for i in range(len(sizes) - 1, -1, -1):
+                  coords[i] = rem % sizes[i]
+                  rem //= sizes[i]
+              return coords
+
+          rows = []
+          for flat, val in values.items():
+              coords = unravel(flat)
+              row = {'value': val}
+              for dim_id, pos in zip(ids, coords):
+                  code = code_by_pos[dim_id].get(pos, str(pos))
+                  label = (dims[dim_id].get('category', {}).get('label') or {}).get(code, code)
+                  row[dim_id] = code
+                  row[dim_id + '_LABEL'] = label
+              rows.append(row)
+
+          # Print only latest 2026 rows that look like total CPI/change series.
+          latest = [r for r in rows if str(r.get('TIME_PERIOD')) == '2026']
+          print('\nROWS_2026_COUNT=', len(latest))
+          for r in latest[:120]:
+              print('ROW2026=', json.dumps(r, ensure_ascii=False))
+
+          print('RESULT=SUCCESS decoded rows')
