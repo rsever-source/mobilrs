@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: '0 */6 * * *'
   workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/rdv-health.yml'
 
 permissions:
   contents: read
@@ -61,7 +64,6 @@ jobs:
           PY
           fi
 
-          # Kira endpointine gerçek hesap isteği göndererek hem endpointi hem de TÜFE kaynağını test et.
           KIRA_OK=0
           for attempt in 1 2 3 4; do
             code=$(curl -L -sS --connect-timeout 20 --max-time 70 \
