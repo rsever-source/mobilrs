@@ -23,8 +23,6 @@ HEADERS = {
     "Cache-Control": "no-cache",
 }
 
-# Araç/model listesi yoktur. Yalnızca markaların resmi Türkiye fiyat kaynakları tutulur.
-# Aynı markaya yeni model eklendiğinde Bakanlık listesinden otomatik keşfedilir.
 BRAND_PRICE_SOURCES = {
     "RENAULT": ["https://www.renault.com.tr/renault-fiyat-listeleri/binek-arac-fiyat-listesi.html"],
     "HYUNDAI": ["https://www.hyundai.com/tr/tr/satis/fiyat-listesi.html"],
@@ -67,7 +65,6 @@ def _find_ministry_pdf():
             return MINISTRY_PDF, r.content
     except Exception:
         pass
-
     r = _get(MINISTRY_PAGE, 35)
     soup = BeautifulSoup(r.text, "html.parser")
     for a in soup.find_all("a", href=True):
@@ -116,16 +113,11 @@ def _parse_ministry_pdf(pdf_bytes):
 def _eligible_models(rows):
     grouped = {}
     for r in rows:
+        if r["locality"] < MIN_LOCALITY:
+            continue
         grouped.setdefault((r["brand_key"], r["model_key"]), []).append(r)
-
     out = []
     for items in grouped.values():
-        if not any(x["locality"] >= MIN_LOCALITY for x in items):
-            continue
-        # Aynı modelin Bakanlık tablosunda %40 altı paketi varsa başlangıç fiyatını
-        # o pakete yanlış bağlamamak için model otomatik listelenmez.
-        if any(x["locality"] < MIN_LOCALITY for x in items):
-            continue
         b = dict(items[0])
         b["locality_min"] = round(min(x["locality"] for x in items), 2)
         b["locality_max"] = round(max(x["locality"] for x in items), 2)
@@ -138,7 +130,6 @@ def _eligible_models(rows):
 
 
 def _official_source_key(brand_key):
-    # Bakanlık PDF'inde marka hücresinde ek şirket/ünvan ifadesi olsa da markayı tanır.
     bk = _norm(brand_key)
     for key in BRAND_PRICE_SOURCES:
         if key in bk or bk in key:
@@ -165,7 +156,6 @@ def _price_candidates(text):
 
 
 def _model_position(text, model):
-    # Önce model adı birebir; sonra noktalama/boşluk farklarını tolere eden kelime araması.
     m = re.search(re.escape(_clean(model)), text, re.I)
     if m:
         return m.start()
@@ -185,15 +175,11 @@ def _price_near_model(text, model):
     candidates = _price_candidates(window)
     if not candidates:
         return None
-
-    # Resmi liste tablosunda "Tavsiye Edilen Liste Fiyatı" bulunuyorsa ona yakın fiyat;
-    # aksi halde model adından sonra görülen ilk gerçek otomobil fiyatı.
     lower = window.lower()
     anchors = [m.start() for m in re.finditer(r"(?:tavsiye edilen\s+)?liste fiyat", lower)]
     if anchors:
         return min(candidates, key=lambda x: min(abs(x[0] - a) for a in anchors))[1]
-    after = [x for x in candidates if x[0] >= 0]
-    return after[0][1] if after else None
+    return candidates[0][1]
 
 
 def _fetch_pages(brand_key):
@@ -224,8 +210,6 @@ def _resolve_price(item, cache):
 
 
 def _estimated_exempt_price(price, fuel):
-    # Elektrikli araçlarda ÖTV dilimi motor gücü/matraha göre değişebildiği için
-    # resmi oran doğrulanmadan tahmin üretilmez.
     if "elektr" in str(fuel).lower():
         return None
     return round(price / 1.80)
@@ -254,10 +238,10 @@ def refresh_otv_data(force=False):
     try:
         ministry_url, pdf_bytes = _find_ministry_pdf()
         ministry_rows = _parse_ministry_pdf(pdf_bytes)
+        print("OTV ministry M1 sample:", [(x["brand"], x["model"], x["trim"], x["locality"]) for x in ministry_rows[:30]])
         candidates = _eligible_models(ministry_rows)
         page_cache, vehicles, unresolved = {}, [], []
         print("OTV ministry candidates:", [(x["brand"], x["model"], x["locality_min"]) for x in candidates])
-
         for item in candidates:
             price_info = _resolve_price(item, page_cache)
             if not price_info:
@@ -267,43 +251,28 @@ def refresh_otv_data(force=False):
             if price > LIMIT_2026:
                 continue
             vehicles.append({
-                "brand": item["brand"],
-                "model": item["model"],
-                "trim": item.get("trim", ""),
-                "fuel": item.get("fuel", ""),
-                "price": int(price),
+                "brand": item["brand"], "model": item["model"], "trim": item.get("trim", ""),
+                "fuel": item.get("fuel", ""), "price": int(price),
                 "exempt_price": _estimated_exempt_price(price, item.get("fuel", "")),
-                "locality": item["locality_min"],
-                "locality_range": [item["locality_min"], item["locality_max"]],
-                "source_name": f"{item['brand']} Türkiye",
-                "source_url": source_url,
-                "locality_source_name": "T.C. Sanayi ve Teknoloji Bakanlığı",
-                "locality_source_url": ministry_url,
+                "locality": item["locality_min"], "locality_range": [item["locality_min"], item["locality_max"]],
+                "source_name": f"{item['brand']} Türkiye", "source_url": source_url,
+                "locality_source_name": "T.C. Sanayi ve Teknoloji Bakanlığı", "locality_source_url": ministry_url,
                 "checked_at": now.strftime("%H:%M"),
             })
-
         vehicles.sort(key=lambda v: (v["brand"], v["price"], v["model"]))
         print("OTV unresolved:", unresolved)
         print("OTV verified vehicles:", [(v["brand"], v["model"], v["price"]) for v in vehicles])
         if not vehicles:
             raise RuntimeError("Bakanlıkta uygun modeller bulundu ancak resmî fiyatlar doğrulanamadı")
-
         return _save({
-            "limit": LIMIT_2026,
-            "min_locality": MIN_LOCALITY,
-            "updated_at": now.strftime("%d.%m.%Y %H:%M"),
-            "updated_time": now.strftime("%H:%M"),
-            "source_mode": "ministry_live",
-            "ministry_source": ministry_url,
-            "candidate_count": len(candidates),
-            "unresolved": unresolved,
-            "vehicles": vehicles,
+            "limit": LIMIT_2026, "min_locality": MIN_LOCALITY,
+            "updated_at": now.strftime("%d.%m.%Y %H:%M"), "updated_time": now.strftime("%H:%M"),
+            "source_mode": "ministry_live", "ministry_source": ministry_url,
+            "candidate_count": len(candidates), "unresolved": unresolved, "vehicles": vehicles,
         })
     except Exception as e:
         if old and old.get("vehicles"):
-            old = dict(old)
-            old["refresh_error"] = str(e)
-            old["refresh_failed_at"] = now.strftime("%d.%m.%Y %H:%M")
+            old = dict(old); old["refresh_error"] = str(e); old["refresh_failed_at"] = now.strftime("%d.%m.%Y %H:%M")
             return old
         raise
 
