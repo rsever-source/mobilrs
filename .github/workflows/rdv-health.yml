@@ -1,0 +1,132 @@
+name: RDV Asistan Health Monitor
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check RDV Asistan with Render wake-up tolerance
+        id: health
+        shell: bash
+        run: |
+          set -u
+          BASE="https://rdvsever.onrender.com"
+          FAIL=""
+
+          wake_and_get() {
+            local url="$1"
+            local out="$2"
+            for attempt in 1 2 3 4 5 6 7 8; do
+              code=$(curl -L -sS --connect-timeout 20 --max-time 70 -o "$out" -w "%{http_code}" "$url" || true)
+              if [ "$code" = "200" ]; then
+                return 0
+              fi
+              echo "Attempt $attempt failed for $url (HTTP $code). Render may be waking up."
+              sleep 25
+            done
+            return 1
+          }
+
+          if ! wake_and_get "$BASE/" /tmp/home.html; then
+            FAIL="$FAIL\n- Ana sayfa 8 denemede açılamadı."
+          else
+            grep -q "RDV Asistan" /tmp/home.html || FAIL="$FAIL\n- Ana sayfa açıldı ama RDV Asistan içeriği bulunamadı."
+            grep -q "ÖTV Muaf Araçlar" /tmp/home.html || FAIL="$FAIL\n- Ana sayfa açıldı ama ÖTV Muaf Araçlar bölümü bulunamadı."
+          fi
+
+          if ! wake_and_get "$BASE/api/otv" /tmp/otv.json; then
+            FAIL="$FAIL\n- ÖTV API cevap vermedi."
+          else
+            python - <<'PY' || FAIL="$FAIL\n- ÖTV verisi bozuk, boş veya 30 saatten eski."
+          import json
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          with open('/tmp/otv.json', encoding='utf-8') as f:
+              d=json.load(f)
+          assert d.get('vehicles'), 'vehicles empty'
+          assert d.get('limit') == 2873900, d.get('limit')
+          assert all(0 < int(v.get('price',0)) <= d['limit'] for v in d['vehicles'])
+          dt=datetime.strptime(d['updated_at'],'%d.%m.%Y %H:%M').replace(tzinfo=ZoneInfo('Europe/Istanbul'))
+          age=(datetime.now(ZoneInfo('Europe/Istanbul'))-dt).total_seconds()/3600
+          assert age <= 30, f'OTV data age={age:.1f}h'
+          print(f"OTV OK: {len(d['vehicles'])} araç, age={age:.1f}h")
+          PY
+          fi
+
+          # Kira endpointine gerçek hesap isteği göndererek hem endpointi hem de TÜFE kaynağını test et.
+          KIRA_OK=0
+          for attempt in 1 2 3 4; do
+            code=$(curl -L -sS --connect-timeout 20 --max-time 70 \
+              -o /tmp/kira.json -w "%{http_code}" \
+              -X POST "$BASE/kira-hesapla" \
+              -H "Content-Type: application/x-www-form-urlencoded" \
+              --data "mevcut_kira=10000&yenileme_ayi=12" || true)
+            if [ "$code" = "200" ]; then KIRA_OK=1; break; fi
+            echo "Kira check attempt $attempt failed (HTTP $code)"
+            sleep 20
+          done
+
+          if [ "$KIRA_OK" != "1" ]; then
+            FAIL="$FAIL\n- Kira Hesaplama/TÜFE servisi cevap vermedi."
+          else
+            python - <<'PY' || FAIL="$FAIL\n- Kira Hesaplama cevap verdi fakat TÜFE verisi/kaynağı geçersiz."
+          import json
+          with open('/tmp/kira.json', encoding='utf-8') as f:
+              d=json.load(f)
+          assert d.get('oran'), d
+          assert d.get('yeni_kira'), d
+          src=str(d.get('source','')).lower()
+          assert 'tuik' in src or 'veriportali.tuik.gov.tr' in src or 'data.tuik.gov.tr' in src, src
+          assert d.get('donem'), d
+          print('Kira/TÜFE OK:', d.get('donem'), d.get('oran'))
+          PY
+          fi
+
+          if [ -n "$FAIL" ]; then
+            printf "%b\n" "$FAIL" > /tmp/failure.txt
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+
+          echo "ok=true" >> "$GITHUB_OUTPUT"
+          echo "RDV Asistan health check passed."
+
+      - name: Create alert issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TS=$(TZ=Europe/Istanbul date '+%d.%m.%Y %H:%M')
+          BODY="@rsever-source\n\nRDV Asistan 6 saatlik sağlık kontrolünde hata bulundu.\n\n"
+          if [ -f /tmp/failure.txt ]; then
+            BODY="$BODY$(cat /tmp/failure.txt)"
+          else
+            BODY="$BODY- Sağlık kontrolü beklenmedik şekilde başarısız oldu."
+          fi
+          BODY="$BODY\n\nKontrol zamanı: $TS (Türkiye)\nCanlı site: https://rdvsever.onrender.com"
+
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search 'RDV Asistan sağlık alarmı in:title' --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body "$BODY"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "RDV Asistan sağlık alarmı" --body "$BODY"
+          fi
+
+      - name: Close old alert after recovery
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search 'RDV Asistan sağlık alarmı in:title' --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body "RDV Asistan sağlık kontrolü tekrar normale döndü."
+            gh issue close "$existing" --repo "$GITHUB_REPOSITORY"
+          fi
