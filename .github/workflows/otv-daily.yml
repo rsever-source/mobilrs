@@ -1,0 +1,50 @@
+name: RDV OTV Daily Update
+
+on:
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/otv-daily.yml'
+      - 'otv_service.py'
+      - 'excel_vlookup_api.py'
+
+jobs:
+  refresh-and-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Render deploy after code push
+        if: github.event_name == 'push'
+        run: sleep 75
+
+      - name: Check RDV Asistan home
+        run: |
+          set -e
+          html=$(curl --fail --silent --show-error --retry 4 --retry-delay 15 --max-time 60 https://rdvsever.onrender.com/)
+          echo "$html" | grep -q 'RDV Asistan'
+          echo "$html" | grep -q 'ÖTV Muaf Araçlar'
+          echo "RDV Asistan home OK"
+
+      - name: Refresh official OTV data
+        run: |
+          set -e
+          response=$(curl --fail --silent --show-error --retry 4 --retry-delay 15 --max-time 90 -X POST https://rdvsever.onrender.com/api/otv/yenile)
+          echo "$response" > /tmp/otv.json
+          python - <<'PY'
+          import json
+          with open('/tmp/otv.json', encoding='utf-8') as f:
+              data=json.load(f)
+          assert data.get('limit') == 2873900, data
+          vehicles=data.get('vehicles') or []
+          assert vehicles, data
+          assert all(v.get('price', 0) <= data['limit'] for v in vehicles), vehicles
+          print('OTV refresh OK:', len(vehicles), 'vehicles', data.get('updated_at'))
+          for v in vehicles:
+              print(v.get('brand'), v.get('model'), v.get('price'), v.get('exempt_price'))
+          PY
+
+      - name: Check read API
+        run: |
+          curl --fail --silent --show-error --retry 3 --retry-delay 10 --max-time 60 https://rdvsever.onrender.com/api/otv > /dev/null
+          echo "OTV API OK"
