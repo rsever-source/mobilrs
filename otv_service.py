@@ -3,6 +3,7 @@ import json
 import re
 import unicodedata
 from datetime import datetime
+from urllib.parse import urljoin
 from zoneinfo import ZoneInfo
 
 import pdfplumber
@@ -23,11 +24,12 @@ HEADERS = {
     "Cache-Control": "no-cache",
 }
 
+# Model listesi yoktur; yalnızca markaların resmî Türkiye kaynakları tanımlıdır.
 BRAND_PRICE_SOURCES = {
     "RENAULT": ["https://www.renault.com.tr/renault-fiyat-listeleri/binek-arac-fiyat-listesi.html"],
-    "HYUNDAI": ["https://www.hyundai.com/tr/tr/satis/fiyat-listesi.html"],
-    "TOYOTA": ["https://turkiye.toyota.com.tr/middle/fiyat-listesi/", "https://www.toyota.com.tr/araba-modelleri"],
-    "FIAT": ["https://www.fiat.com.tr/fiyat-listeleri"],
+    "HYUNDAI": ["https://www.hyundai.com/tr/tr/models.html"],
+    "TOYOTA": ["https://www.toyota.com.tr/araba-modelleri", "https://www.toyota.com.tr/kampanyalar"],
+    "FIAT": ["https://www.fiat.com.tr/kampanyalar"],
     "TOGG": ["https://togg.com.tr/price-list", "https://www.togg.com.tr/t10f-price-list"],
 }
 
@@ -71,9 +73,7 @@ def _find_ministry_pdf():
         label = _norm(a.get_text(" ", strip=True))
         if "2026" not in label or "MOTORLU" not in label or "YERLI" not in label:
             continue
-        href = a["href"]
-        if href.startswith("/"):
-            href = "https://www.sanayi.gov.tr" + href
+        href = urljoin(MINISTRY_PAGE, a["href"])
         rr = _get(href, 35)
         if rr.content[:4] == b"%PDF":
             return href, rr.content
@@ -82,7 +82,6 @@ def _find_ministry_pdf():
 
 def _parse_ministry_pdf(pdf_bytes):
     result = []
-    debug_count = 0
     with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
         for page in pdf.pages:
             for table in page.extract_tables() or []:
@@ -90,9 +89,7 @@ def _parse_ministry_pdf(pdf_bytes):
                     if not row or len(row) < 10:
                         continue
                     c = [_clean(x) for x in row]
-                    if debug_count < 12 and any(x.upper() in {"M1", "M1-AF", "M1-AC"} or "M1" in x.upper() for x in c):
-                        print("OTV RAW ROW", debug_count, list(enumerate(c)))
-                        debug_count += 1
+                    # 2026 Bakanlık tablosunda yerli katkı oranı son sütundan bir önceki alandadır.
                     locality = _ratio(c[-2])
                     if locality is None:
                         continue
@@ -141,12 +138,13 @@ def _official_source_key(brand_key):
     return None
 
 
-def _page_text(url):
+def _page(url):
     r = _get(url, 25)
     soup = BeautifulSoup(r.text, "html.parser")
     for tag in soup(["script", "style", "noscript"]):
         tag.decompose()
-    return re.sub(r"\s+", " ", soup.get_text(" ", strip=True))
+    text = re.sub(r"\s+", " ", soup.get_text(" ", strip=True))
+    return soup, text
 
 
 def _price_candidates(text):
@@ -159,61 +157,104 @@ def _price_candidates(text):
     return out
 
 
-def _model_position(text, model):
-    m = re.search(re.escape(_clean(model)), text, re.I)
-    if m:
-        return m.start()
-    tokens = [t for t in re.split(r"[^A-Za-z0-9]+", _norm(model)) if t and t not in {"YENI", "NEW"}]
-    for token in tokens:
-        m = re.search(r"\b" + re.escape(token) + r"\b", text, re.I)
-        if m:
-            return m.start()
-    return None
+def _label_for_item(item, brand):
+    model = _clean(item["model"])
+    # Bakanlık yerli Megane'ı "MEGANE" olarak verir; Renault fiyat sayfasında
+    # Türkiye üretimi içten yanmalı model "MEGANE SEDAN" adıyla yer alır.
+    if brand == "RENAULT" and _norm(model) == "MEGANE" and "ELEKTR" not in _norm(item.get("fuel")):
+        return "MEGANE SEDAN"
+    if brand == "FIAT" and _norm(model).startswith("EGEA "):
+        return "EGEA"
+    return model
 
 
-def _price_near_model(text, model):
-    pos = _model_position(text, model)
-    if pos is None:
-        return None
-    window = text[max(0, pos - 80):pos + 900]
-    candidates = _price_candidates(window)
-    if not candidates:
-        return None
-    lower = window.lower()
-    anchors = [m.start() for m in re.finditer(r"(?:tavsiye edilen\s+)?liste fiyat", lower)]
-    if anchors:
-        return min(candidates, key=lambda x: min(abs(x[0] - a) for a in anchors))[1]
-    return candidates[0][1]
+def _anchored_price_after(text, label, max_chars=700):
+    # Bir modelin tüm geçişlerini inceler; modelden ÖNCEKİ aracın fiyatını asla almaz.
+    hits = list(re.finditer(re.escape(label), text, re.I))
+    best = []
+    for hit in hits:
+        window = text[hit.start():hit.start() + max_chars]
+        candidates = _price_candidates(window)
+        if not candidates:
+            continue
+        lower = window.lower()
+        anchors = list(re.finditer(r"(?:başlangıç\s*fiyatı|başlayan\s+(?:avantajlı\s+)?fiyat|başlayan\s+fiyatlar|teslim\s+fiyatları|anahtar\s+teslim\s+fiyat)", lower))
+        if anchors:
+            for a in anchors:
+                after = [(pos, p) for pos, p in candidates if pos >= a.start() and pos - a.start() <= 220]
+                if after:
+                    best.append((0, after[0][1]))
+        # Togg gibi fiyat tablosunda başlık ile fiyat arasında versiyonlar olabilir.
+        if not anchors and candidates:
+            best.append((1, candidates[0][1]))
+    return min(best, key=lambda x: x[0])[1] if best else None
 
 
-def _fetch_pages(brand_key):
-    key = _official_source_key(brand_key)
-    if not key:
-        return []
-    pages = []
-    for url in BRAND_PRICE_SOURCES[key]:
-        try:
-            pages.append((url, _page_text(url)))
-        except Exception as e:
-            print("OTV price source failed:", key, url, repr(e))
-    return pages
+def _toyota_model_page(item, soup, base_url):
+    target = _norm(item["model"])
+    choices = []
+    for a in soup.find_all("a", href=True):
+        label = _norm(a.get_text(" ", strip=True))
+        if not label or target not in label:
+            continue
+        href = urljoin(base_url, a["href"])
+        if "toyota.com.tr/araba-modelleri/" not in href:
+            continue
+        penalty = 0
+        if target == "COROLLA":
+            if "HATCHBACK" in label or "CROSS" in label:
+                penalty += 10
+            if "corolla-sedan" in href.lower():
+                penalty -= 5
+        choices.append((penalty, len(label), href))
+    return min(choices)[2] if choices else None
 
 
 def _resolve_price(item, cache):
-    key = _official_source_key(item["brand_key"])
-    if not key:
+    brand = _official_source_key(item["brand_key"])
+    if not brand:
         return None
-    if key not in cache:
-        cache[key] = _fetch_pages(item["brand_key"])
-    found = []
-    for url, text in cache[key]:
-        p = _price_near_model(text, item["model"])
+    label = _label_for_item(item, brand)
+
+    if brand not in cache:
+        cache[brand] = []
+        for url in BRAND_PRICE_SOURCES[brand]:
+            try:
+                cache[brand].append((url, *_page(url)))
+            except Exception as e:
+                print("OTV price source failed:", brand, url, repr(e))
+
+    pages = list(cache[brand])
+
+    # Toyota'da model kartından resmî model sayfasını dinamik bulup onu önceliklendir.
+    if brand == "TOYOTA" and pages:
+        model_url = _toyota_model_page(item, pages[0][1], pages[0][0])
+        if model_url:
+            key = ("TOYOTA_MODEL", model_url)
+            if key not in cache:
+                try:
+                    cache[key] = _page(model_url)
+                except Exception:
+                    cache[key] = (None, "")
+            _, model_text = cache[key]
+            p = _anchored_price_after(model_text, item["model"], 900)
+            if p:
+                return p, model_url
+
+    # T10F için model adı URL'de geçen sayfayı, T10X için genel T10X fiyat sayfasını önceliklendir.
+    if brand == "TOGG":
+        model_key = _norm(item["model"]).replace(" ", "").lower()
+        pages.sort(key=lambda x: (0 if model_key in re.sub(r"[^a-z0-9]", "", x[0].lower()) else 1))
+
+    for url, _soup, text in pages:
+        p = _anchored_price_after(text, label, 1000)
         if p:
-            found.append((p, url))
-    return min(found, key=lambda x: x[0]) if found else None
+            return p, url
+    return None
 
 
 def _estimated_exempt_price(price, fuel):
+    # Elektrikli araçlarda ÖTV oranı güç/matraha göre değişebildiğinden tahmin göstermiyoruz.
     if "elektr" in str(fuel).lower():
         return None
     return round(price / 1.80)
@@ -263,7 +304,7 @@ def refresh_otv_data(force=False):
             })
         vehicles.sort(key=lambda v: (v["brand"], v["price"], v["model"]))
         print("OTV unresolved:", unresolved)
-        print("OTV verified vehicles:", [(v["brand"], v["model"], v["price"]) for v in vehicles])
+        print("OTV verified vehicles:", [(v["brand"], v["model"], v["price"], v["locality"]) for v in vehicles])
         if not vehicles:
             raise RuntimeError("Bakanlıkta uygun modeller bulundu ancak resmî fiyatlar doğrulanamadı")
         return _save({
@@ -274,7 +315,9 @@ def refresh_otv_data(force=False):
         })
     except Exception as e:
         if old and old.get("vehicles"):
-            old = dict(old); old["refresh_error"] = str(e); old["refresh_failed_at"] = now.strftime("%d.%m.%Y %H:%M")
+            old = dict(old)
+            old["refresh_error"] = str(e)
+            old["refresh_failed_at"] = now.strftime("%d.%m.%Y %H:%M")
             return old
         raise
 
