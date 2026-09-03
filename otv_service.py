@@ -151,18 +151,14 @@ def _page(url):
 
 
 def _price_candidates(text):
-    """Yalnızca fiyat gibi biçimlenmiş milyonluk tutarları kabul eder.
-    TL/₺ zorunlu değildir; ancak yakınında fiyat/price/tutar ifadesi ya da para simgesi bulunmalıdır.
-    Böylece eski doğru okuma davranışı korunur, 800480 gibi ID/kW sayıları fiyat sanılmaz.
+    """Nokta/boşlukla binlik ayracı bulunan 1-15 milyon arası tutarlar.
+    800480 gibi düz ID/sayaç değerleri bu desene girmez.
     """
     out, seen = [], set()
     pat = r"(?<!\d)([1-9]\d{0,2}(?:[.\s]\d{3}){1,2})(?:[,.]00)?(?!\d)"
     for m in re.finditer(pat, text, re.I):
         p = _money(m.group(1))
         if not p or not (1_000_000 <= p <= 15_000_000):
-            continue
-        local = text[max(0, m.start()-220):m.end()+220]
-        if not re.search(r"(?:₺|\bTL\b|fiyat|price|tutar|anahtar\s+teslim)", local, re.I):
             continue
         key = (m.start(), p)
         if key in seen:
@@ -214,7 +210,7 @@ def _package_aliases(item):
         for token in ["TOYOTA", model, "HYBRID", "E CVT", "ECVT", "MDS"]:
             if token:
                 simple = simple.replace(token, " ")
-        simple = re.sub(r"\b\d+(?:\s+\d+)?\b", " ", simple)
+        simple = re.sub(r"\b\d+\b", " ", simple)
         simple = re.sub(r"\s+", " ", simple).strip()
         if simple:
             aliases.add(simple)
@@ -240,7 +236,7 @@ def _package_price_from_text(text, item, dedicated_model_page=False):
     model = _norm(item["model"])
     ranked = []
     for pos, price in _price_candidates(text):
-        context = text[max(0, pos - 1400):pos + 1400]
+        context = text[max(0, pos - 900):pos + 900]
         nc = _norm(context)
         if not _package_present(nc, item):
             continue
@@ -258,13 +254,13 @@ def _package_price_from_text(text, item, dedicated_model_page=False):
         for alias in _package_aliases(item):
             distances.extend(abs(m.start() - center) for m in re.finditer(re.escape(alias), nc))
         if distances:
-            score += min(distances) / 45
+            score += min(distances) / 30
         ranked.append((score, price))
 
     if not ranked:
         return None
     ranked.sort(key=lambda x: (x[0], x[1]))
-    if len(ranked) > 1 and ranked[0][1] != ranked[1][1] and abs(ranked[0][0] - ranked[1][0]) < 1.5:
+    if len(ranked) > 1 and ranked[0][1] != ranked[1][1] and abs(ranked[0][0] - ranked[1][0]) < 1:
         return None
     return ranked[0][1]
 
