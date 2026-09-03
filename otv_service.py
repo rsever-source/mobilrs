@@ -151,18 +151,24 @@ def _page(url):
 
 
 def _price_candidates(text):
+    """Yalnızca fiyat gibi biçimlenmiş milyonluk tutarları kabul eder.
+    TL/₺ zorunlu değildir; ancak yakınında fiyat/price/tutar ifadesi ya da para simgesi bulunmalıdır.
+    Böylece eski doğru okuma davranışı korunur, 800480 gibi ID/kW sayıları fiyat sanılmaz.
+    """
     out, seen = [], set()
-    patterns = [
-        r"₺\s*([1-9]\d{0,2}(?:[.\s]\d{3}){1,2})(?:[,.]00)?",
-        r"([1-9]\d{0,2}(?:[.\s]\d{3}){1,2})(?:[,.]00)?\s*(?:TL|₺)",
-    ]
-    for pat in patterns:
-        for m in re.finditer(pat, text, re.I):
-            p = _money(m.group(1))
-            key = (m.start(), p)
-            if p and 1_000_000 <= p <= 15_000_000 and key not in seen:
-                seen.add(key)
-                out.append((m.start(), p))
+    pat = r"(?<!\d)([1-9]\d{0,2}(?:[.\s]\d{3}){1,2})(?:[,.]00)?(?!\d)"
+    for m in re.finditer(pat, text, re.I):
+        p = _money(m.group(1))
+        if not p or not (1_000_000 <= p <= 15_000_000):
+            continue
+        local = text[max(0, m.start()-220):m.end()+220]
+        if not re.search(r"(?:₺|\bTL\b|fiyat|price|tutar|anahtar\s+teslim)", local, re.I):
+            continue
+        key = (m.start(), p)
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append((m.start(), p))
     return sorted(out)
 
 
@@ -242,7 +248,7 @@ def _package_price_from_text(text, item, dedicated_model_page=False):
             continue
 
         score = 0
-        if re.search(r"(?:liste\s*fiyat|anahtar\s*teslim|tavsiye\s*edilen|teslim\s*fiyat|başlangıç\s*fiyat)", context, re.I):
+        if re.search(r"(?:liste\s*fiyat|anahtar\s*teslim|tavsiye\s*edilen|teslim\s*fiyat|başlangıç\s*fiyat|başlayan\s+fiyat)", context, re.I):
             score -= 20
         if re.search(r"(?:kredi|finansman|aylık|taksit)", context, re.I):
             score += 30
