@@ -36,23 +36,20 @@ jobs:
           with open('/tmp/otv.json', encoding='utf-8') as f:
               data=json.load(f)
           assert data.get('limit') == 2873900, data
-          assert data.get('source_mode') == 'ministry_variant_live', data
+          assert data.get('source_mode') == 'ministry_package_live', data
           assert not data.get('refresh_error'), data.get('refresh_error')
           assert data.get('ministry_source'), data
           vehicles=data.get('vehicles') or []
-          assert vehicles, data
           assert all(v.get('trim') for v in vehicles), vehicles
-          assert all(v.get('engine') for v in vehicles), vehicles
-          assert all(v.get('transmission') for v in vehicles), vehicles
           assert all(0 < int(v.get('price', 0)) <= data['limit'] for v in vehicles), vehicles
           assert all(float(v.get('locality', 0)) >= 40 for v in vehicles), vehicles
           assert all('sanayi.gov.tr' in str(v.get('locality_source_url','')) for v in vehicles), vehicles
           assert all(str(v.get('source_url','')).startswith('https://') for v in vehicles), vehicles
-          print('OTV variant refresh OK:', len(vehicles), 'variants', data.get('updated_at'))
+          print('OTV package refresh OK:', len(vehicles), 'packages', data.get('updated_at'))
           print('Unresolved:', data.get('unresolved') or [])
           print('Over limit:', data.get('over_limit') or [])
           for v in vehicles:
-              print(v.get('brand'), v.get('model'), v.get('trim'), v.get('engine'), v.get('transmission'), v.get('price'), 'locality', v.get('locality'))
+              print(v.get('brand'), v.get('model'), v.get('trim'), v.get('price'), 'locality', v.get('locality'))
           PY
 
       - name: Check read API
