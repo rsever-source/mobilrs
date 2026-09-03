@@ -82,6 +82,7 @@ def _find_ministry_pdf():
 
 def _parse_ministry_pdf(pdf_bytes):
     result = []
+    debug_count = 0
     with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
         for page in pdf.pages:
             for table in page.extract_tables() or []:
@@ -89,8 +90,9 @@ def _parse_ministry_pdf(pdf_bytes):
                     if not row or len(row) < 10:
                         continue
                     c = [_clean(x) for x in row]
-                    # Bakanlık tablosunda son sütun beyan/güncelleme tarihi,
-                    # bir önceki sütun Yerli Katkı Oranı (%) sütunudur.
+                    if debug_count < 12 and any(x.upper() in {"M1", "M1-AF", "M1-AC"} or "M1" in x.upper() for x in c):
+                        print("OTV RAW ROW", debug_count, list(enumerate(c)))
+                        debug_count += 1
                     locality = _ratio(c[-2])
                     if locality is None:
                         continue
@@ -240,10 +242,8 @@ def refresh_otv_data(force=False):
     try:
         ministry_url, pdf_bytes = _find_ministry_pdf()
         ministry_rows = _parse_ministry_pdf(pdf_bytes)
-        print("OTV ministry M1 sample:", [(x["brand"], x["model"], x["trim"], x["locality"]) for x in ministry_rows[:30]])
         candidates = _eligible_models(ministry_rows)
         page_cache, vehicles, unresolved = {}, [], []
-        print("OTV ministry candidates:", [(x["brand"], x["model"], x["locality_min"]) for x in candidates])
         for item in candidates:
             price_info = _resolve_price(item, page_cache)
             if not price_info:
