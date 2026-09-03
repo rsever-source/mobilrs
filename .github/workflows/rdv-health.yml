@@ -48,7 +48,7 @@ jobs:
           if ! wake_and_get "$BASE/api/otv" /tmp/otv.json; then
             FAIL="$FAIL\n- ÖTV API cevap vermedi."
           else
-            python - <<'PY' || FAIL="$FAIL\n- ÖTV verisi bozuk, boş veya 30 saatten eski."
+            python - <<'PY' || FAIL="$FAIL\n- ÖTV verisi bozuk, Bakanlık kaynağı doğrulanamıyor veya veri 30 saatten eski."
           import json
           from datetime import datetime
           from zoneinfo import ZoneInfo
@@ -56,11 +56,17 @@ jobs:
               d=json.load(f)
           assert d.get('vehicles'), 'vehicles empty'
           assert d.get('limit') == 2873900, d.get('limit')
+          assert d.get('source_mode') == 'ministry_live', d.get('source_mode')
+          assert not d.get('refresh_error'), d.get('refresh_error')
+          assert 'sanayi.gov.tr' in str(d.get('ministry_source','')), d.get('ministry_source')
           assert all(0 < int(v.get('price',0)) <= d['limit'] for v in d['vehicles'])
+          assert all(float(v.get('locality',0)) >= 40 for v in d['vehicles'])
+          assert all('sanayi.gov.tr' in str(v.get('locality_source_url','')) for v in d['vehicles'])
+          assert all(str(v.get('source_url','')).startswith('https://') for v in d['vehicles'])
           dt=datetime.strptime(d['updated_at'],'%d.%m.%Y %H:%M').replace(tzinfo=ZoneInfo('Europe/Istanbul'))
           age=(datetime.now(ZoneInfo('Europe/Istanbul'))-dt).total_seconds()/3600
           assert age <= 30, f'OTV data age={age:.1f}h'
-          print(f"OTV OK: {len(d['vehicles'])} araç, age={age:.1f}h")
+          print(f"OTV OK: {len(d['vehicles'])} araç, age={age:.1f}h, unresolved={d.get('unresolved') or []}")
           PY
           fi
 
