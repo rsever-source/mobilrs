@@ -1,10 +1,8 @@
-import html
 import io
 import json
 import re
 import unicodedata
 from datetime import datetime
-from difflib import SequenceMatcher
 from urllib.parse import urljoin
 from zoneinfo import ZoneInfo
 
@@ -22,21 +20,33 @@ MINISTRY_PDF = "https://www.sanayi.gov.tr/assets/pdf/birimler/2026YiliMotorluAra
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/136.0 Safari/537.36",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.7",
     "Cache-Control": "no-cache",
 }
 
-BRAND_PRICE_SOURCES = {
-    "RENAULT": ["https://www.renault.com.tr/renault-fiyat-listeleri/binek-arac-fiyat-listesi.html"],
-    "HYUNDAI": ["https://www.hyundai.com/tr/tr/models.html"],
-    "TOYOTA": ["https://www.toyota.com.tr/araba-modelleri"],
-    "FIAT": [
-        "https://www.fiat.com.tr/engelsiz-otomobil",
-        "https://www.fiat.com.tr/fiyat-listeleri",
-        "https://www.fiat.com.tr/kampanyalar",
-    ],
-    "TOGG": ["https://togg.com.tr/price-list", "https://www.togg.com.tr/t10f-price-list"],
+# Bunlar uygun araç listesi değildir; yalnızca Bakanlıktan gelen model/paketi
+# üreticinin resmî sayfasına yönlendirmek için kaynak adresleridir.
+RENAULT_PACKAGE_URLS = {
+    ("BOREAL", "EVOLUTION"): "https://www.renault.com.tr/hybrid-araclar/boreal/modeller-versiyonlar.html?gradeCode=ENS_MDL2P1SERIELIM1",
+    ("BOREAL", "TECHNO"): "https://www.renault.com.tr/hybrid-araclar/boreal/modeller-versiyonlar.html?gradeCode=ENS_MDL2P1SERIELIM2",
+    ("BOREAL", "ICONIC"): "https://www.renault.com.tr/hybrid-araclar/boreal/modeller-versiyonlar.html?gradeCode=ENS_MDL2P1SERIELIM3",
+    ("DUSTER", "EVOLUTION"): "https://www.renault.com.tr/hybrid-araclar/yeni-renault-duster/modeller-versiyonlar.html?gradeCode=ENS_MDL2P1SERIELIM1",
+    ("DUSTER", "TECHNO"): "https://www.renault.com.tr/hybrid-araclar/yeni-renault-duster/modeller-versiyonlar.html?gradeCode=ENS_MDL2P1SERIELIM2",
+    ("CLIO", "EVOLUTION PLUS"): "https://www.renault.com.tr/hybrid-araclar/yeni-clio/modeller-versiyonlar.html?gradeCode=ENS_MDL2P1SERIELIM1",
+    ("CLIO", "ESPRIT ALPINE"): "https://www.renault.com.tr/hybrid-araclar/yeni-clio/modeller-versiyonlar.html?gradeCode=ENS_MDL2P1SERIELIM2",
+    ("MEGANE", "TOUCH"): "https://www.renault.com.tr/binek-araclar/megane-sedan.html",
+    ("MEGANE", "ICON"): "https://www.renault.com.tr/binek-araclar/megane-sedan.html",
+}
+
+TOYOTA_PRICE_URL = "https://turkiye.toyota.com.tr/middle/fiyat-listesi/"
+HYUNDAI_PRICE_URL = "https://www.hyundai.com/tr/tr/satis/fiyat-listesi.html"
+FIAT_SOURCES = [
+    "https://www.fiat.com.tr/engelsiz-otomobil",
+    "https://www.fiat.com.tr/fiyat-listeleri",
+]
+TOGG_URLS = {
+    "T10X": "https://togg.com.tr/price-list",
+    "T10F": "https://www.togg.com.tr/t10f-price-list",
 }
 
 
@@ -50,10 +60,6 @@ def _norm(v):
     return re.sub(r"\s+", " ", re.sub(r"[^A-Z0-9]+", " ", s)).strip()
 
 
-def _compact(v):
-    return re.sub(r"[^a-z0-9]", "", _norm(v).lower())
-
-
 def _ratio(v):
     m = re.search(r"(\d{1,3}(?:[.,]\d{1,2})?)", str(v or ""))
     return float(m.group(1).replace(",", ".")) if m else None
@@ -64,26 +70,34 @@ def _money(v):
     return int(d) if d else None
 
 
-def _get(url, timeout=30):
+def _get(url, timeout=35):
     r = requests.get(url, headers=HEADERS, timeout=timeout, allow_redirects=True)
     r.raise_for_status()
     return r
 
 
+def _text(url):
+    r = _get(url)
+    soup = BeautifulSoup(r.text, "html.parser")
+    for tag in soup(["script", "style", "noscript"]):
+        tag.decompose()
+    return re.sub(r"\s+", " ", soup.get_text(" ", strip=True))
+
+
 def _find_ministry_pdf():
     try:
-        r = _get(MINISTRY_PDF, 35)
+        r = _get(MINISTRY_PDF)
         if r.content[:4] == b"%PDF":
             return MINISTRY_PDF, r.content
     except Exception:
         pass
-    soup = BeautifulSoup(_get(MINISTRY_PAGE, 35).text, "html.parser")
+    soup = BeautifulSoup(_get(MINISTRY_PAGE).text, "html.parser")
     for a in soup.find_all("a", href=True):
         label = _norm(a.get_text(" ", strip=True))
         if "2026" not in label or "MOTORLU" not in label or "YERLI" not in label:
             continue
         href = urljoin(MINISTRY_PAGE, a["href"])
-        rr = _get(href, 35)
+        rr = _get(href)
         if rr.content[:4] == b"%PDF":
             return href, rr.content
     raise RuntimeError("Bakanlığın 2026 yerli katkı PDF'i indirilemedi")
@@ -120,200 +134,169 @@ def _parse_ministry_pdf(pdf_bytes):
 
 
 def _eligible_packages(rows):
-    by_key = {}
+    out = {}
     for r in rows:
         if r["locality"] < MIN_LOCALITY:
             continue
         key = (r["brand_key"], r["model_key"], _norm(r["trim"]))
-        old = by_key.get(key)
+        old = out.get(key)
         if old is None or r["locality"] > old["locality"]:
-            by_key[key] = dict(r)
-    return list(by_key.values())
+            out[key] = dict(r)
+    return list(out.values())
 
 
-def _official_source_key(brand_key):
-    bk = _norm(brand_key)
-    for key in BRAND_PRICE_SOURCES:
-        if key in bk or bk in key:
-            return key
+def _first_price_after(text, phrase, max_chars=450):
+    """Phrase'den sonra gelen ilk milyonluk fiyatı alır. Paket sayfalarında güvenlidir."""
+    low = text.lower()
+    p = low.find(phrase.lower())
+    if p < 0:
+        return None
+    window = text[p:p + max_chars]
+    m = re.search(r"(?:₺\s*)?([1-9]\d{0,2}(?:[.\s]\d{3}){1,2})(?:[,.]00)?\s*(?:₺|TL)?", window, re.I)
+    if not m:
+        return None
+    val = _money(m.group(1))
+    return val if val and 1_000_000 <= val <= 15_000_000 else None
+
+
+def _renault_price(item, cache):
+    key = (_norm(item["model"]), _norm(item["trim"]))
+    url = RENAULT_PACKAGE_URLS.get(key)
+    if not url:
+        return None
+    if url not in cache:
+        cache[url] = _text(url)
+    text = cache[url]
+    trim = _clean(item["trim"])
+    # Önce "versiyon <paket>" bölümünü hedefle; ana model başlangıç fiyatını yanlış alma.
+    price = _first_price_after(text, f"versiyon {trim}", 330)
+    if not price:
+        price = _first_price_after(text, trim, 330)
+    return (price, url) if price else None
+
+
+def _toyota_simple_trim(item):
+    n = _norm(item["trim"])
+    n = n.replace("TOYOTA", " ").replace(_norm(item["model"]), " ")
+    n = re.sub(r"\b1\s*[58]\b", " ", n)
+    n = n.replace("HYBRID", " ").replace("E CVT", " ").replace("ECVT", " ").replace("MDS", " ")
+    n = re.sub(r"\s+", " ", n).strip()
+    return n
+
+
+def _toyota_price(item, cache):
+    url = TOYOTA_PRICE_URL
+    if url not in cache:
+        cache[url] = _text(url)
+    text = cache[url]
+    model = _norm(item["model"])
+    package = _toyota_simple_trim(item)
+    nt = _norm(text)
+    # Toyota tablo satırında model/versiyon adı ve Tavsiye Edilen Liste Fiyatı birlikte bulunur.
+    targets = []
+    if model == "COROLLA":
+        targets.append(package)
+    else:
+        targets.extend([f"C HR {package}", package])
+    for target in targets:
+        pos = nt.find(target)
+        if pos < 0:
+            continue
+        # normalize edilmiş metinde karakter konumu özgün metinle birebir değil; hedef satırı
+        # görünür metinde paket kelimeleri üzerinden tekrar bul.
+        words = [w for w in package.split() if len(w) > 2]
+        if not words:
+            continue
+        low = text.lower()
+        starts = [low.find(w.lower()) for w in words]
+        starts = [x for x in starts if x >= 0]
+        if not starts:
+            continue
+        p = min(starts)
+        window = text[max(0, p-180):p+650]
+        # Kampanyalı/ÖTV muaf fiyat yerine tablo içindeki en yüksek normal liste fiyatını seç.
+        vals = []
+        for m in re.finditer(r"([1-9]\d{0,2}(?:[.\s]\d{3}){1,2})(?:[,.]00)?", window):
+            v = _money(m.group(1))
+            if v and 1_000_000 <= v <= 5_000_000:
+                vals.append(v)
+        if vals:
+            return max(vals), url
     return None
 
 
-def _page(url):
-    r = _get(url, 30)
-    soup = BeautifulSoup(r.text, "html.parser")
-    visible = BeautifulSoup(r.text, "html.parser")
-    for tag in visible(["script", "style", "noscript"]):
-        tag.decompose()
-    visible_text = re.sub(r"\s+", " ", visible.get_text(" ", strip=True))
-    raw_text = html.unescape(re.sub(r"\s+", " ", r.text))
-    return soup, visible_text + " " + raw_text
-
-
-def _price_candidates(text):
-    """Nokta/boşlukla binlik ayracı bulunan 1-15 milyon arası tutarlar.
-    800480 gibi düz ID/sayaç değerleri bu desene girmez.
-    """
-    out, seen = [], set()
-    pat = r"(?<!\d)([1-9]\d{0,2}(?:[.\s]\d{3}){1,2})(?:[,.]00)?(?!\d)"
-    for m in re.finditer(pat, text, re.I):
-        p = _money(m.group(1))
-        if not p or not (1_000_000 <= p <= 15_000_000):
-            continue
-        key = (m.start(), p)
-        if key in seen:
-            continue
-        seen.add(key)
-        out.append((m.start(), p))
-    return sorted(out)
-
-
-def _find_model_page(soup, base_url, item, brand):
-    target = _compact(item["model"])
-    choices = []
-    for a in soup.find_all("a", href=True):
-        href = urljoin(base_url, a["href"])
-        label = _compact(a.get_text(" ", strip=True))
-        path = _compact(href)
-        score = 100
-        if target and target in label:
-            score -= 30
-        if target and target in path:
-            score -= 35
-        if brand == "HYUNDAI" and "/tr/tr/modeller/" not in href:
-            continue
-        if brand == "TOYOTA" and "toyota.com.tr/araba-modelleri/" not in href:
-            continue
-        if brand == "TOYOTA" and _norm(item["model"]) == "COROLLA":
-            if "cross" in href.lower() or "hatchback" in href.lower():
-                score += 80
-            if "corolla-sedan" in href.lower():
-                score -= 50
-        if brand == "TOYOTA" and _norm(item["model"]) == "C-HR" and "c-hr" in href.lower():
-            score -= 50
-        if score < 100:
-            choices.append((score, len(href), href))
-    return min(choices)[2] if choices else None
-
-
-def _package_aliases(item):
-    raw = _norm(item.get("trim"))
-    model = _norm(item.get("model"))
-    aliases = {raw, raw.replace("SYTLE", "STYLE")}
-    if raw == "ICON":
-        aliases.add("ICONIC")
-    if raw.startswith("ICON "):
-        aliases.add(raw.replace("ICON ", "ICONIC ", 1))
-
-    if _norm(item.get("brand")) == "TOYOTA":
-        simple = raw
-        for token in ["TOYOTA", model, "HYBRID", "E CVT", "ECVT", "MDS"]:
-            if token:
-                simple = simple.replace(token, " ")
-        simple = re.sub(r"\b\d+\b", " ", simple)
-        simple = re.sub(r"\s+", " ", simple).strip()
-        if simple:
-            aliases.add(simple)
-
-    if _norm(item.get("brand")) == "TOGG" and model and raw.startswith(model + " "):
-        aliases.add(raw[len(model):].strip())
-
-    return sorted({a.strip() for a in aliases if a and a.strip()}, key=len, reverse=True)
-
-
-def _package_present(norm_context, item):
-    for alias in _package_aliases(item):
-        if alias in norm_context:
-            return True
-        if len(alias.split()) == 1:
-            for w in norm_context.split():
-                if len(w) >= 4 and SequenceMatcher(None, alias, w).ratio() >= 0.88:
-                    return True
-    return False
-
-
-def _package_price_from_text(text, item, dedicated_model_page=False):
+def _togg_alias(item):
+    n = _norm(item["trim"])
     model = _norm(item["model"])
-    ranked = []
-    for pos, price in _price_candidates(text):
-        context = text[max(0, pos - 900):pos + 900]
-        nc = _norm(context)
-        if not _package_present(nc, item):
-            continue
-        if not dedicated_model_page and model and model not in nc:
-            continue
+    if n.startswith(model + " "):
+        n = n[len(model):].strip()
+    aliases = {
+        "V1 SR": "V1 RWD Standart Menzil",
+        "V1 LR": "V1 RWD Uzun Menzil",
+        "V2 LR": "V2 RWD Uzun Menzil",
+        "V2 LR AWD": "V2 4More",
+    }
+    return aliases.get(n)
 
-        score = 0
-        if re.search(r"(?:liste\s*fiyat|anahtar\s*teslim|tavsiye\s*edilen|teslim\s*fiyat|başlangıç\s*fiyat|başlayan\s+fiyat)", context, re.I):
-            score -= 20
-        if re.search(r"(?:kredi|finansman|aylık|taksit)", context, re.I):
-            score += 30
 
-        center = len(nc) // 2
-        distances = []
-        for alias in _package_aliases(item):
-            distances.extend(abs(m.start() - center) for m in re.finditer(re.escape(alias), nc))
-        if distances:
-            score += min(distances) / 30
-        ranked.append((score, price))
-
-    if not ranked:
+def _togg_price(item, cache):
+    model = _norm(item["model"])
+    url = TOGG_URLS.get(model)
+    alias = _togg_alias(item)
+    if not url or not alias:
         return None
-    ranked.sort(key=lambda x: (x[0], x[1]))
-    if len(ranked) > 1 and ranked[0][1] != ranked[1][1] and abs(ranked[0][0] - ranked[1][0]) < 1:
+    if url not in cache:
+        cache[url] = _text(url)
+    text = cache[url]
+    # Togg sayfasında versiyonlar önce, fiyatlar aynı sırada ayrı blokta. Bu yüzden
+    # tüm versiyon/fiyat sıralarını resmi tablodan birlikte çıkarıyoruz.
+    if model == "T10X":
+        versions = ["V1 RWD Standart Menzil", "V1 RWD Uzun Menzil", "V2 RWD Uzun Menzil", "V2 4More Obsidiyen"]
+    else:
+        versions = ["V1 RWD Standart Menzil", "V1 RWD Uzun Menzil", "V2 RWD Uzun Menzil", "V2 4More"]
+    prices_section = text.lower().find("teslim fiyat")
+    if prices_section < 0:
         return None
-    return ranked[0][1]
-
-
-def _resolve_package_price(item, cache):
-    brand = _official_source_key(item["brand_key"])
-    if not brand:
+    vals = []
+    for m in re.finditer(r"([1-9]\d{0,2}(?:[.\s]\d{3}){1,2})\s*₺", text[prices_section:prices_section+600]):
+        v = _money(m.group(1))
+        if v and v >= 1_000_000:
+            vals.append(v)
+    if len(vals) < len(versions):
         return None
+    idx = None
+    for i, vname in enumerate(versions):
+        if alias == vname or (alias == "V2 4More" and vname.startswith("V2 4More")):
+            idx = i
+            break
+    return (vals[idx], url) if idx is not None else None
 
-    if brand not in cache:
-        cache[brand] = []
-        for url in BRAND_PRICE_SOURCES[brand]:
-            try:
-                cache[brand].append((url, *_page(url)))
-            except Exception as e:
-                print("OTV price source failed:", brand, url, repr(e))
-    pages = list(cache[brand])
 
-    if brand in {"HYUNDAI", "TOYOTA"} and pages:
-        model_url = _find_model_page(pages[0][1], pages[0][0], item, brand)
-        if model_url:
-            key = (brand + "_MODEL", model_url)
-            if key not in cache:
-                try:
-                    cache[key] = _page(model_url)
-                except Exception as e:
-                    print("OTV model page failed:", model_url, repr(e))
-                    cache[key] = (None, "")
-            _, text = cache[key]
-            if text and "çok yakında" not in text.lower():
-                p = _package_price_from_text(text, item, dedicated_model_page=True)
-                if p:
-                    return p, model_url
-        return None
+def _hyundai_price(item, cache):
+    # Hyundai'nin halka açık fiyat sayfası şu anda paketlerin isimlerini gösteriyor fakat
+    # statik HTML'de Jump/Style/Elite için ayrı liste fiyatları güvenilir şekilde sunmuyor.
+    # Yanlış kampanya tutarı eşleştirmek yerine beklet.
+    return None
 
+
+def _fiat_price(item, cache):
+    # Fiat'ın resmi sayfaları Render IP'lerine 403 döndürüyor. Resmi fiyat çekilemediği
+    # sürece fiyat uydurulmaz; Bakanlık paketi bekleyen olarak görünür.
+    return None
+
+
+def _resolve_price(item, cache):
+    brand = _norm(item["brand"])
+    if brand == "RENAULT":
+        return _renault_price(item, cache)
+    if brand == "TOYOTA":
+        return _toyota_price(item, cache)
     if brand == "TOGG":
-        mk = _norm(item["model"])
-        if mk == "T10F":
-            preferred = [p for p in pages if "t10f" in p[0].lower()]
-        elif mk == "T10X":
-            preferred = [p for p in pages if "t10f" not in p[0].lower()]
-        else:
-            preferred = []
-        for url, _soup, text in preferred:
-            p = _package_price_from_text(text, item, dedicated_model_page=True)
-            if p:
-                return p, url
-        return None
-
-    for url, _soup, text in pages:
-        p = _package_price_from_text(text, item, dedicated_model_page=False)
-        if p:
-            return p, url
+        return _togg_price(item, cache)
+    if brand == "HYUNDAI":
+        return _hyundai_price(item, cache)
+    if brand == "FIAT":
+        return _fiat_price(item, cache)
     return None
 
 
@@ -340,33 +323,34 @@ def refresh_otv_data(force=False):
     try:
         ministry_url, pdf_bytes = _find_ministry_pdf()
         candidates = _eligible_packages(_parse_ministry_pdf(pdf_bytes))
-        page_cache, vehicles, unresolved, over_limit = {}, [], [], []
+        cache, vehicles, unresolved, over_limit = {}, [], [], []
 
         for item in candidates:
-            info = _resolve_package_price(item, page_cache)
-            package_name = _clean(item.get("trim"))
-            label = f"{item['brand']} {item['model']} — {package_name}"
+            label = f"{item['brand']} {item['model']} — {_clean(item['trim'])}"
+            try:
+                info = _resolve_price(item, cache)
+            except Exception as e:
+                print("OTV official price read failed:", label, repr(e))
+                info = None
             if not info:
                 unresolved.append(label)
                 continue
-
             price, source_url = info
             if price > LIMIT_2026:
                 over_limit.append(label)
                 continue
-
             vehicles.append({
                 "brand": item["brand"],
                 "model": item["model"],
-                "trim": package_name,
+                "trim": _clean(item["trim"]),
                 "price": int(price),
-                "exempt_price": None,
                 "locality": round(float(item["locality"]), 2),
                 "source_name": f"{item['brand']} Türkiye",
                 "source_url": source_url,
                 "locality_source_name": "T.C. Sanayi ve Teknoloji Bakanlığı",
                 "locality_source_url": ministry_url,
                 "checked_at": now.strftime("%H:%M"),
+                "exempt_price": None,
                 "engine": "",
                 "transmission": "",
                 "fuel": "",
@@ -375,9 +359,7 @@ def refresh_otv_data(force=False):
         unique = {}
         for v in vehicles:
             key = (v["brand"], v["model"], _norm(v["trim"]))
-            old_v = unique.get(key)
-            if old_v is None or v["price"] < old_v["price"]:
-                unique[key] = v
+            unique[key] = v
         vehicles = sorted(unique.values(), key=lambda v: (v["brand"], v["model"], v["price"], v["trim"]))
 
         print("OTV package candidates:", len(candidates))
