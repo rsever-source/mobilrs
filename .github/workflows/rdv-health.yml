@@ -29,9 +29,7 @@ jobs:
             local out="$2"
             for attempt in 1 2 3 4 5 6 7 8; do
               code=$(curl -L -sS --connect-timeout 20 --max-time 70 -o "$out" -w "%{http_code}" "$url" || true)
-              if [ "$code" = "200" ]; then
-                return 0
-              fi
+              if [ "$code" = "200" ]; then return 0; fi
               echo "Attempt $attempt failed for $url (HTTP $code). Render may be waking up."
               sleep 25
             done
@@ -54,29 +52,29 @@ jobs:
           from zoneinfo import ZoneInfo
           with open('/tmp/otv.json', encoding='utf-8') as f:
               d=json.load(f)
-          assert d.get('vehicles'), 'vehicles empty'
           assert d.get('limit') == 2873900, d.get('limit')
-          assert d.get('source_mode') == 'ministry_live', d.get('source_mode')
+          assert d.get('source_mode') == 'ministry_package_live', d.get('source_mode')
           assert not d.get('refresh_error'), d.get('refresh_error')
           assert 'sanayi.gov.tr' in str(d.get('ministry_source','')), d.get('ministry_source')
-          assert all(0 < int(v.get('price',0)) <= d['limit'] for v in d['vehicles'])
-          assert all(float(v.get('locality',0)) >= 40 for v in d['vehicles'])
-          assert all('sanayi.gov.tr' in str(v.get('locality_source_url','')) for v in d['vehicles'])
-          assert all(str(v.get('source_url','')).startswith('https://') for v in d['vehicles'])
+          assert int(d.get('candidate_count') or 0) > 0, 'no ministry packages'
+          vehicles=d.get('vehicles') or []
+          unresolved=d.get('unresolved') or []
+          assert vehicles or unresolved, 'no package results'
+          assert all(v.get('trim') for v in vehicles)
+          assert all(0 < int(v.get('price',0)) <= d['limit'] for v in vehicles)
+          assert all(float(v.get('locality',0)) >= 40 for v in vehicles)
+          assert all('sanayi.gov.tr' in str(v.get('locality_source_url','')) for v in vehicles)
+          assert all(str(v.get('source_url','')).startswith('https://') for v in vehicles)
           dt=datetime.strptime(d['updated_at'],'%d.%m.%Y %H:%M').replace(tzinfo=ZoneInfo('Europe/Istanbul'))
           age=(datetime.now(ZoneInfo('Europe/Istanbul'))-dt).total_seconds()/3600
           assert age <= 30, f'OTV data age={age:.1f}h'
-          print(f"OTV OK: {len(d['vehicles'])} araç, age={age:.1f}h, unresolved={d.get('unresolved') or []}")
+          print(f"OTV OK: {len(vehicles)} doğrulanmış paket, {len(unresolved)} bekleyen paket, age={age:.1f}h")
           PY
           fi
 
           KIRA_OK=0
           for attempt in 1 2 3 4; do
-            code=$(curl -L -sS --connect-timeout 20 --max-time 70 \
-              -o /tmp/kira.json -w "%{http_code}" \
-              -X POST "$BASE/kira-hesapla" \
-              -H "Content-Type: application/x-www-form-urlencoded" \
-              --data "mevcut_kira=10000&yenileme_ayi=12" || true)
+            code=$(curl -L -sS --connect-timeout 20 --max-time 70 -o /tmp/kira.json -w "%{http_code}" -X POST "$BASE/kira-hesapla" -H "Content-Type: application/x-www-form-urlencoded" --data "mevcut_kira=10000&yenileme_ayi=12" || true)
             if [ "$code" = "200" ]; then KIRA_OK=1; break; fi
             echo "Kira check attempt $attempt failed (HTTP $code)"
             sleep 20
@@ -114,19 +112,10 @@ jobs:
         run: |
           TS=$(TZ=Europe/Istanbul date '+%d.%m.%Y %H:%M')
           BODY="@rsever-source\n\nRDV Asistan 6 saatlik sağlık kontrolünde hata bulundu.\n\n"
-          if [ -f /tmp/failure.txt ]; then
-            BODY="$BODY$(cat /tmp/failure.txt)"
-          else
-            BODY="$BODY- Sağlık kontrolü beklenmedik şekilde başarısız oldu."
-          fi
+          if [ -f /tmp/failure.txt ]; then BODY="$BODY$(cat /tmp/failure.txt)"; else BODY="$BODY- Sağlık kontrolü beklenmedik şekilde başarısız oldu."; fi
           BODY="$BODY\n\nKontrol zamanı: $TS (Türkiye)\nCanlı site: https://rdvsever.onrender.com"
-
           existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search 'RDV Asistan sağlık alarmı in:title' --json number --jq '.[0].number // empty')
-          if [ -n "$existing" ]; then
-            gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body "$BODY"
-          else
-            gh issue create --repo "$GITHUB_REPOSITORY" --title "RDV Asistan sağlık alarmı" --body "$BODY"
-          fi
+          if [ -n "$existing" ]; then gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body "$BODY"; else gh issue create --repo "$GITHUB_REPOSITORY" --title "RDV Asistan sağlık alarmı" --body "$BODY"; fi
 
       - name: Close old alert after recovery
         if: success()
