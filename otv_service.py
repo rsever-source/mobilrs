@@ -89,7 +89,9 @@ def _parse_ministry_pdf(pdf_bytes):
                     if not row or len(row) < 10:
                         continue
                     c = [_clean(x) for x in row]
-                    locality = _ratio(c[-1])
+                    # Bakanlık tablosunda son sütun beyan/güncelleme tarihi,
+                    # bir önceki sütun Yerli Katkı Oranı (%) sütunudur.
+                    locality = _ratio(c[-2])
                     if locality is None:
                         continue
                     brand, model, category, fuel, trim = c[2], c[3], c[4], c[6], c[8]
