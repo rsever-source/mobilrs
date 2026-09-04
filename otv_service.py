@@ -38,7 +38,15 @@ RENAULT_PACKAGE_URLS = {
     ("MEGANE", "ICON"): "https://www.renault.com.tr/binek-araclar/megane-sedan.html",
 }
 
-TOYOTA_PRICE_URL = "https://turkiye.toyota.com.tr/middle/fiyat-listesi/"
+TOYOTA_MODEL_IDS = {
+    "COROLLA": "65bfd91d-f2a8-4cbb-bdbc-3834b400492a",
+    "C HR": "6c193d6b-514c-436f-ab43-654d97e601d8",
+}
+TOYOTA_MODEL_URLS = {
+    "COROLLA": "https://www.toyota.com.tr/araba-modelleri/corolla-sedan",
+    "C HR": "https://www.toyota.com.tr/araba-modelleri/c-hr",
+}
+TOYOTA_GRADE_URL = "https://dxp-webcarconfig.toyota-europe.com/v1/grade-selector/tr/tr?modelId={}"
 HYUNDAI_DEALER_URL = "https://ferhat.hyundaiplaza.com.tr/fiyat-listesi"
 FIAT_DEALER_URL = "https://www.tanoto.com.tr/fiat-fiyat-listesi/"
 FIAT_ULYSSE_URL = "https://www.tanoto.com.tr/arac-detay/ulysse/"
@@ -215,7 +223,7 @@ def _renault_price(item, cache):
 
 # ---------- Toyota ----------
 
-def _toyota_target(item):
+def _toyota_base_package(item):
     n = _norm(item["trim"])
     n = n.replace("TOYOTA", " ")
     model = _norm(item["model"])
@@ -223,76 +231,100 @@ def _toyota_target(item):
         n = n.replace("C HR", " ")
     else:
         n = n.replace(model, " ")
-    n = re.sub(r"\bMDS\b", "MULTIDRIVE S", n)
-    n = n.replace("ECVT", "E CVT")
+    n = re.sub(r"\b1\s+[58]\b", " ", n)
+    n = re.sub(r"\bHYBRID\b", " ", n)
+    n = re.sub(r"\bMDS\b", " ", n)
+    n = re.sub(r"\bE\s*CVT\b", " ", n)
     return re.sub(r"\s+", " ", n).strip()
 
 
-def _toyota_context_ok(model_key, context):
-    c = _norm(context)
-    if model_key == "C HR":
-        return "C HR" in c
-    if model_key == "COROLLA":
-        return "COROLLA" in c and "CROSS" not in c and "HATCHBACK" not in c
-    return False
+def _toyota_is_hybrid(item):
+    return "HYBRID" in _norm(item["trim"])
+
+
+def _toyota_grade_base(name):
+    n = _norm(name)
+    n = re.sub(r"\bHYBRID\b", " ", n)
+    n = re.sub(r"\bMULTIDRIVE\s+S\b", " ", n)
+    n = re.sub(r"\bE\s*CVT\b", " ", n)
+    return re.sub(r"\s+", " ", n).strip()
+
+
+def _toyota_rows(model_key, cache):
+    ck = ("TOYOTA_GRADES", model_key)
+    if ck in cache:
+        return cache[ck]
+    model_id = TOYOTA_MODEL_IDS.get(model_key)
+    model_url = TOYOTA_MODEL_URLS.get(model_key)
+    if not model_id or not model_url:
+        cache[ck] = []
+        return []
+
+    url = TOYOTA_GRADE_URL.format(model_id)
+    headers = dict(HEADERS)
+    headers.update({
+        "Accept": "text/html,application/xhtml+xml,*/*",
+        "Referer": model_url,
+    })
+    r = requests.post(url, headers=headers, timeout=40)
+    r.raise_for_status()
+    soup = BeautifulSoup(r.text, "html.parser")
+    data_div = soup.find("div", id=re.compile(r"-data$"))
+    if not data_div:
+        raise RuntimeError(f"Toyota {model_key} paket verisi bulunamadı")
+    data = json.loads(data_div.get_text())
+    model = (data.get("gradeSelectorModel") or {}).get("model") or {}
+
+    rows = []
+    for gb in model.get("gradeBodyTypes") or []:
+        if not isinstance(gb, dict):
+            continue
+        grade = gb.get("grade") or {}
+        grade_name = _clean(grade.get("name") if isinstance(grade, dict) else grade)
+        if not grade_name:
+            continue
+        for engine in gb.get("engines") or []:
+            if not isinstance(engine, dict):
+                continue
+            engine_name = _clean(engine.get("name"))
+            category = engine.get("category") or {}
+            category_code = _norm(category.get("code") if isinstance(category, dict) else category)
+            is_hybrid = "HYBRID" in _norm(engine_name) or category_code == "HEV"
+            for trans in engine.get("transmissions") or []:
+                if not isinstance(trans, dict):
+                    continue
+                for wd in trans.get("wheeldrives") or []:
+                    if not isinstance(wd, dict):
+                        continue
+                    price = wd.get("price") or {}
+                    if not isinstance(price, dict):
+                        continue
+                    list_price = price.get("list")
+                    try:
+                        list_price = int(float(list_price))
+                    except Exception:
+                        list_price = None
+                    if list_price and 1_000_000 <= list_price <= 10_000_000:
+                        rows.append({
+                            "grade": grade_name,
+                            "base": _toyota_grade_base(grade_name),
+                            "hybrid": is_hybrid,
+                            "price": list_price,
+                        })
+    cache[ck] = rows
+    print("OTV Toyota live grades", model_key, [(r["grade"], r["price"]) for r in rows])
+    return rows
 
 
 def _toyota_price(item, cache):
-    url = TOYOTA_PRICE_URL
-    if url not in cache:
-        cache[url] = _page(url)
-    soup, text, _raw = cache[url]
-    target = _toyota_target(item)
     model_key = _norm(item["model"])
-    if not target:
+    package = _toyota_base_package(item)
+    want_hybrid = _toyota_is_hybrid(item)
+    rows = _toyota_rows(model_key, cache)
+    matches = [r["price"] for r in rows if r["base"] == package and r["hybrid"] == want_hybrid]
+    if not matches:
         return None
-
-    # Birincil yol: Toyota'nın HTML fiyat tablolarındaki versiyon satırını okuyup
-    # ilk normal/tavsiye edilen liste fiyatını al.
-    matches = []
-    for context, cells in _table_rows(soup):
-        if not _toyota_context_ok(model_key, context):
-            continue
-        row_name = _norm(cells[0])
-        if target not in row_name and row_name not in target:
-            continue
-        row_prices = []
-        for cell in cells[1:]:
-            row_prices.extend(v for _, v in _prices(cell, 1_000_000, 6_000_000))
-        if row_prices:
-            matches.append(row_prices[0])
-    if matches:
-        return min(matches), url
-
-    # Fallback: sayfanın görünür metninde yalnız ilgili model bloğunda ara.
-    marker = text.lower().find("toyota fiyat listesi")
-    if model_key == "COROLLA":
-        section = _section_after(text, "Corolla", ["Toyota C-HR Hybrid", "C-HR Hybrid", "Corolla Cross"], marker)
-    elif model_key == "C HR":
-        section = _section_after(text, "C-HR Hybrid", ["Corolla Cross", "Yaris", "RAV4"], marker)
-        if not section:
-            section = _section_after(text, "Toyota C-HR Hybrid", ["Corolla Cross", "Yaris", "RAV4"], marker)
-    else:
-        return None
-    ns = _norm(section)
-    pos = ns.find(target)
-    if pos < 0:
-        return None
-
-    # Normalizasyon metni uzatıp kısaltabildiğinden paket adının ayırt edici
-    # kelimeleri üzerinden özgün metinde tekrar konum bul.
-    words = [w for w in target.split() if len(w) >= 4 and w not in {"HYBRID", "MULTIDRIVE"}]
-    low = section.lower()
-    starts = []
-    for w in words:
-        p = low.find(w.lower())
-        if p >= 0:
-            starts.append(p)
-    if not starts:
-        return None
-    p = min(starts)
-    vals = _prices(section[p:p + 650], 1_000_000, 6_000_000)
-    return (vals[0][1], url) if vals else None
+    return min(matches), TOYOTA_MODEL_URLS[model_key]
 
 
 # ---------- Togg ----------
@@ -350,7 +382,6 @@ def _hyundai_price(item, cache):
     model = _norm(item["model"])
     trim = _norm(item["trim"]).replace("SYTLE", "STYLE")
 
-    # Birincil yol: yetkili Hyundai satıcısının güncel tablo satırı.
     matches = []
     for context, cells in _table_rows(soup):
         if not _hyundai_model_ok(model, context):
@@ -362,13 +393,10 @@ def _hyundai_price(item, cache):
         for cell in cells[1:]:
             vals.extend(v for _, v in _prices(cell, 1_000_000, 5_000_000))
         if vals:
-            # Tabloda ilk büyük tutar azami/maksimum liste fiyatıdır.
             matches.append(vals[0])
     if matches:
         return min(matches), url
 
-    # Fallback: navigasyon menüsündeki i20/BAYON isimlerine takılmamak için fiyat
-    # listesi başlangıç işaretinden sonra model bloğunu seç.
     marker = text.lower().find("azami / maksimum satış fiyatları")
     if marker < 0:
         marker = text.lower().find("maksimum satış fiyatları")
@@ -408,8 +436,6 @@ def _fiat_model_ok(model_key, context):
 def _fiat_price(item, cache):
     model = _norm(item["model"])
 
-    # Ulysse binek fiyat tablosunda her zaman görünmeyebildiği için yetkili satıcının
-    # güncel Ulysse model sayfasındaki başlangıç/listelenen fiyatı kullan.
     if model == "ULYSSE":
         url = FIAT_ULYSSE_URL
         if url not in cache:
@@ -418,7 +444,6 @@ def _fiat_price(item, cache):
         vals = _prices(text, 1_000_000, 6_000_000)
         if not vals:
             return None
-        # Sayfanın en üstündeki araç fiyatı ilk büyük tutardır.
         return vals[0][1], url
 
     url = FIAT_DEALER_URL
@@ -426,9 +451,6 @@ def _fiat_price(item, cache):
         cache[url] = _page(url)
     soup, text, _raw = cache[url]
 
-    # Bakanlık Fiat Egea için donanımı "Standart Donanım" diye beyan ediyor.
-    # Ekranda motor/şanzıman istemediğimiz için modelin güncel en düşük normal liste
-    # fiyatını gösteriyoruz; farklı satış paketlerini uygunmuş gibi uydurmuyoruz.
     if _norm(item["trim"]) != "STANDART DONANIM":
         return None
 
@@ -472,9 +494,26 @@ def _resolve_price(item, cache):
     return None
 
 
+def _pretty_package(n):
+    mapping = {
+        "VISION PLUS": "Vision Plus",
+        "DREAM": "Dream",
+        "DREAM X PACK": "Dream X-Pack",
+        "FLAME": "Flame",
+        "FLAME X PACK": "Flame X-Pack",
+        "PASSION": "Passion",
+        "PASSION X PACK": "Passion X-Pack",
+        "PASSION X SPORT": "Passion X-Sport",
+        "GR SPORT": "GR Sport",
+    }
+    return mapping.get(n, n.title())
+
+
 def _display_trim(item):
     t = _clean(item["trim"])
-    # Bakanlık PDF'sindeki Hyundai yazım hatasını kullanıcıya taşımıyoruz.
+    if _norm(item["brand"]) == "TOYOTA":
+        base = _toyota_base_package(item)
+        return _pretty_package(base) if base else t
     if _norm(t) == "SYTLE":
         return "STYLE"
     return t
@@ -540,9 +579,14 @@ def refresh_otv_data(force=False):
                 "checked_at": now.strftime("%H:%M"),
             })
 
+        # Aynı marka/model/paket farklı motor satırlarından gelirse kullanıcı yalnız paket
+        # istediği için doğrulanmış en düşük normal liste fiyatını tek satırda göster.
         unique = {}
         for v in vehicles:
-            unique[(v["brand"], v["model"], _norm(v["trim"]))] = v
+            key = (v["brand"], v["model"], _norm(v["trim"]))
+            old_v = unique.get(key)
+            if old_v is None or v["price"] < old_v["price"]:
+                unique[key] = v
         vehicles = sorted(unique.values(), key=lambda v: (v["brand"], v["model"], v["price"], v["trim"]))
 
         print("OTV package candidates:", len(candidates))
