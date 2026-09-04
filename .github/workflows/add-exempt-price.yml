@@ -1,0 +1,32 @@
+name: Add OTV Exempt Price
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-exempt-price.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add exempt price calculation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('excel_vlookup_api.py')
+          s=p.read_text(encoding='utf-8')
+          old="""function verifiedRow(v){return `<div class=\"row\"><div class=\"rowtop\"><div><div class=\"name\">${v.brand} ${v.model}</div><div class=\"meta\">${v.trim||''}</div></div><span class=\"tag\">Uygun</span></div><div class=\"price\">Liste Fiyatı<b>${tl(v.price)}</b></div><div class=\"note\">Yerlilik: %${v.locality||'—'} · Kaynak: ${v.source_name||v.brand} · Son kontrol: ${v.checked_at||'—'}</div></div>`}"""
+          new="""function otvRateFor(v){let p=Number(v.price||0),b=(v.brand||'').toUpperCase(),m=(v.model||'').toUpperCase();if(!p)return null;let solve=(rules)=>{for(let [r,min,max] of rules){let base=p/1.20/(1+r);if(base>min&&(max==null||base<=max))return r}return null};if(b==='TOGG')return solve([[.25,0,1650000],[.55,1650000,null]]);if(b==='TOYOTA'&&m.includes('C-HR'))return solve([[.70,0,1250000],[.80,1250000,null]]);if(b==='TOYOTA'&&m.includes('COROLLA'))return solve([[.75,0,850000],[.80,850000,1100000],[.90,1100000,1650000],[1.00,1650000,null]]);if(b==='FIAT'&&m.includes('ULYSSE'))return solve([[1.50,0,1650000],[1.70,1650000,null]]);if(b==='FIAT'&&m.includes('EGEA'))return solve([[.75,0,850000],[.80,850000,1100000],[.90,1100000,1650000],[1.00,1650000,null]])||solve([[.70,0,650000],[.75,650000,900000],[.80,900000,1100000],[.90,1100000,null]]);return solve([[.70,0,650000],[.75,650000,900000],[.80,900000,1100000],[.90,1100000,null]])}function exemptPrice(v){let r=otvRateFor(v);return r==null?null:Math.round(Number(v.price)/(1+r))}function verifiedRow(v){let ep=exemptPrice(v);return `<div class=\"row\"><div class=\"rowtop\"><div><div class=\"name\">${v.brand} ${v.model}</div><div class=\"meta\">${v.trim||''}</div></div><span class=\"tag\">Uygun</span></div><div class=\"price\">Liste Fiyatı<b>${tl(v.price)}</b></div>${ep?`<div class=\"price\">Tahmini ÖTV Muaf Fiyat<b>${tl(ep)}</b></div>`:''}<div class=\"note\">Yerlilik: %${v.locality||'—'} · Kaynak: ${v.source_name||v.brand} · Son kontrol: ${v.checked_at||'—'}</div></div>`}"""
+          if old not in s:
+              raise SystemExit('verifiedRow target not found')
+          p.write_text(s.replace(old,new),encoding='utf-8')
+          PY
+          git config user.name 'rsever-source'
+          git config user.email 'r.sever@hotmail.com.tr'
+          git add excel_vlookup_api.py
+          git commit -m 'Show estimated OTV exempt prices by tax bracket'
+          git push
