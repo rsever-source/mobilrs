@@ -24,7 +24,10 @@ jobs:
           html=$(curl --fail --silent --show-error --retry 4 --retry-delay 15 --max-time 60 https://rdvsever.onrender.com/)
           echo "$html" | grep -q 'RDV Asistan'
           echo "$html" | grep -q 'ÖTV Muaf Araçlar'
-          echo "RDV Asistan home OK"
+          ! echo "$html" | grep -q 'Hesaplanmıyor'
+          ! echo "$html" | grep -qi 'fiyat doğrulanıyor'
+          ! echo "$html" | grep -q '>Kontrol<'
+          echo "RDV Asistan verified-only UI OK"
 
       - name: Refresh official OTV data
         run: |
@@ -40,6 +43,7 @@ jobs:
           assert not data.get('refresh_error'), data.get('refresh_error')
           assert data.get('ministry_source'), data
           vehicles=data.get('vehicles') or []
+          assert vehicles, 'verified vehicle list is empty'
           assert all(v.get('trim') for v in vehicles), vehicles
           assert all(0 < int(v.get('price', 0)) <= data['limit'] for v in vehicles), vehicles
           assert all(float(v.get('locality', 0)) >= 40 for v in vehicles), vehicles
