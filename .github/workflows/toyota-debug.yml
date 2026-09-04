@@ -1,0 +1,54 @@
+name: Toyota Price Source Probe
+
+on:
+  push:
+    paths:
+      - '.github/workflows/toyota-debug.yml'
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe Toyota grade selectors and car config
+        shell: bash
+        run: |
+          set +e
+          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/136.0 Safari/537.36'
+          echo '=== COROLLA GRADE SELECTOR ==='
+          curl -sS -D /tmp/h1 -o /tmp/b1 -X POST \
+            -A "$UA" -H 'Accept: application/json, text/plain, */*' \
+            -H 'Referer: https://www.toyota.com.tr/araba-modelleri/corolla-sedan' \
+            'https://dxp-webcarconfig.toyota-europe.com/v1/grade-selector/tr/tr?modelId=65bfd91d-f2a8-4cbb-bdbc-3834b400492a'
+          head -30 /tmp/h1
+          echo BODY_BYTES=$(wc -c </tmp/b1)
+          head -c 2000 /tmp/b1; echo
+
+          echo '=== CHR GRADE SELECTOR ==='
+          curl -sS -D /tmp/h2 -o /tmp/b2 -X POST \
+            -A "$UA" -H 'Accept: application/json, text/plain, */*' \
+            -H 'Referer: https://www.toyota.com.tr/araba-modelleri/c-hr' \
+            'https://dxp-webcarconfig.toyota-europe.com/v1/grade-selector/tr/tr?modelId=6c193d6b-514c-436f-ab43-654d97e601d8'
+          head -30 /tmp/h2
+          echo BODY_BYTES=$(wc -c </tmp/b2)
+          head -c 2000 /tmp/b2; echo
+
+          echo '=== COROLLA CAR CONFIG ==='
+          curl -sS -D /tmp/h3 -o /tmp/b3 -X POST \
+            -A "$UA" -H 'Accept: application/json, text/plain, */*' -H 'Content-Type: application/json' \
+            -H 'Origin: https://www.toyota.com.tr' -H 'Referer: https://www.toyota.com.tr/araba-modelleri/corolla-sedan/olustur' \
+            --data '{"reduxState":{"carConfigSettings":{"loadedStepUrls":{"configure":"https://www.toyota.com.tr/araba-modelleri/corolla-sedan/olustur","specs":"https://www.toyota.com.tr/araba-modelleri/corolla-sedan/ozellikler"}}}}' \
+            'https://dxp-webcarconfig.toyota-europe.com/v1/car-config/tr/tr?path=configure/65bfd91d-f2a8-4cbb-bdbc-3834b400492a'
+          head -30 /tmp/h3
+          echo BODY_BYTES=$(wc -c </tmp/b3)
+          head -c 4000 /tmp/b3; echo
+
+          echo '=== CHR CAR CONFIG ==='
+          curl -sS -D /tmp/h4 -o /tmp/b4 -X POST \
+            -A "$UA" -H 'Accept: application/json, text/plain, */*' -H 'Content-Type: application/json' \
+            -H 'Origin: https://www.toyota.com.tr' -H 'Referer: https://www.toyota.com.tr/araba-modelleri/c-hr/olustur' \
+            --data '{"reduxState":{"carConfigSettings":{"loadedStepUrls":{"configure":"https://www.toyota.com.tr/araba-modelleri/c-hr/olustur","specs":"https://www.toyota.com.tr/araba-modelleri/c-hr/ozellikler"}}}}' \
+            'https://dxp-webcarconfig.toyota-europe.com/v1/car-config/tr/tr?path=configure/6c193d6b-514c-436f-ab43-654d97e601d8'
+          head -30 /tmp/h4
+          echo BODY_BYTES=$(wc -c </tmp/b4)
+          head -c 4000 /tmp/b4; echo
