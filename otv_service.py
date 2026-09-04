@@ -24,8 +24,6 @@ HEADERS = {
     "Cache-Control": "no-cache",
 }
 
-# Üreticiye özel fiyat okuyucuları. Araç uygunluğu burada tutulmaz; uygun adaylar
-# her zaman Bakanlığın %40+ yerli katkı listesinden gelir.
 RENAULT_PACKAGE_URLS = {
     ("BOREAL", "EVOLUTION"): "https://www.renault.com.tr/hybrid-araclar/boreal/modeller-versiyonlar.html?gradeCode=ENS_MDL2P1SERIELIM1",
     ("BOREAL", "TECHNO"): "https://www.renault.com.tr/hybrid-araclar/boreal/modeller-versiyonlar.html?gradeCode=ENS_MDL2P1SERIELIM2",
@@ -38,9 +36,17 @@ RENAULT_PACKAGE_URLS = {
     ("MEGANE", "ICON"): "https://www.renault.com.tr/binek-araclar/megane-sedan.html",
 }
 
-TOYOTA_PRICE_URL = "https://turkiye.toyota.com.tr/middle/fiyat-listesi/"
-HYUNDAI_PRICE_URL = "https://www.hyundai.com/tr/tr/satis/fiyat-listesi.html"
-FIAT_OTV_URL = "https://www.fiat.com.tr/engelsiz-otomobil"
+TOYOTA_MODEL_IDS = {
+    "COROLLA": "65bfd91d-f2a8-4cbb-bdbc-3834b400492a",
+    "C HR": "6c193d6b-514c-436f-ab43-654d97e601d8",
+}
+TOYOTA_MODEL_URLS = {
+    "COROLLA": "https://www.toyota.com.tr/araba-modelleri/corolla-sedan",
+    "C HR": "https://www.toyota.com.tr/araba-modelleri/c-hr",
+}
+TOYOTA_API = "https://dxp-webcarconfig.toyota-europe.com/v1/grade-selector/tr/tr?modelId={}"
+HYUNDAI_DEALER_URL = "https://ferhat.hyundaiplaza.com.tr/fiyat-listesi"
+FIAT_DEALER_URL = "https://www.tanoto.com.tr/fiat-fiyat-listesi/?tip=binek"
 FIAT_PRICE_URL = "https://www.fiat.com.tr/fiyat-listeleri"
 TOGG_URLS = {
     "T10X": "https://togg.com.tr/price-list",
@@ -68,6 +74,13 @@ def _money(v):
     return int(d) if d else None
 
 
+def _number_price(v):
+    if isinstance(v, (int, float)):
+        n = int(v)
+        return n if 500_000 <= n <= 15_000_000 else None
+    return _money(v) if v is not None else None
+
+
 def _get(url, timeout=35):
     r = requests.get(url, headers=HEADERS, timeout=timeout, allow_redirects=True)
     r.raise_for_status()
@@ -83,10 +96,6 @@ def _page(url):
     text = re.sub(r"\s+", " ", visible.get_text(" ", strip=True))
     raw = re.sub(r"\s+", " ", r.text)
     return soup, text, raw
-
-
-def _text(url):
-    return _page(url)[1]
 
 
 def _find_ministry_pdf():
@@ -193,36 +202,87 @@ def _toyota_simple_trim(item):
     return re.sub(r"\s+", " ", n).strip()
 
 
+def _find_grade_lists(obj):
+    found = []
+    if isinstance(obj, dict):
+        g = obj.get("gradeBodyTypes")
+        if isinstance(g, list):
+            found.append(g)
+        for v in obj.values():
+            found.extend(_find_grade_lists(v))
+    elif isinstance(obj, list):
+        for v in obj:
+            found.extend(_find_grade_lists(v))
+    return found
+
+
+def _toyota_api_rows(model_key, cache):
+    ck = ("TOYOTA_API", model_key)
+    if ck in cache:
+        return cache[ck]
+    model_id = TOYOTA_MODEL_IDS.get(model_key)
+    if not model_id:
+        cache[ck] = []
+        return []
+    url = TOYOTA_API.format(model_id)
+    headers = dict(HEADERS)
+    headers.update({"Accept": "application/json, text/plain, */*", "Referer": TOYOTA_MODEL_URLS[model_key]})
+    r = requests.post(url, headers=headers, timeout=35)
+    r.raise_for_status()
+    data = r.json()
+    rows = []
+    seen_lists = set()
+    for grades in _find_grade_lists(data):
+        marker = id(grades)
+        if marker in seen_lists:
+            continue
+        seen_lists.add(marker)
+        for gb in grades:
+            if not isinstance(gb, dict):
+                continue
+            grade = gb.get("grade") or {}
+            grade_name = _clean(grade.get("name") if isinstance(grade, dict) else grade)
+            if not grade_name:
+                continue
+            engines = gb.get("engines") or []
+            for engine in engines:
+                if not isinstance(engine, dict):
+                    continue
+                for trans in engine.get("transmissions") or []:
+                    if not isinstance(trans, dict):
+                        continue
+                    for wd in trans.get("wheeldrives") or []:
+                        if not isinstance(wd, dict):
+                            continue
+                        p = wd.get("price") or {}
+                        if not isinstance(p, dict):
+                            continue
+                        list_price = _number_price(p.get("list"))
+                        discount_price = _number_price(p.get("listWithDiscount"))
+                        if list_price:
+                            rows.append({"grade": grade_name, "price": list_price, "discount": discount_price})
+    print("OTV Toyota API rows", model_key, [(x["grade"], x["price"], x["discount"]) for x in rows])
+    cache[ck] = rows
+    return rows
+
+
 def _toyota_price(item, cache):
-    url = TOYOTA_PRICE_URL
-    if url not in cache:
-        cache[url] = _page(url)
-    _soup, text, raw = cache[url]
+    model_key = _norm(item["model"])
+    rows = _toyota_api_rows(model_key, cache)
     package = _toyota_simple_trim(item)
-    if not package:
+    if not rows or not package:
         return None
-    # Toyota resmi fiyat tablosunda versiyon satırından sonra önce tavsiye edilen liste,
-    # ardından kampanyalı fiyat gelir. İlk milyonluk tutarı alıyoruz.
-    for source in (text, raw):
-        ns = _norm(source)
-        target = _norm(package)
-        pos = ns.find(target)
-        if pos < 0:
-            continue
-        # Normalize konumu birebir kullanmak yerine gerçek metinde paketin en ayırt edici
-        # iki kelimesini bulup kısa pencere açıyoruz.
-        words = [w for w in package.split() if len(w) >= 4]
-        low = source.lower()
-        starts = [low.find(w.lower()) for w in words]
-        starts = [x for x in starts if x >= 0]
-        if not starts:
-            continue
-        p = min(starts)
-        window = source[max(0, p - 120):p + 550]
-        vals = _prices(window, 1_000_000, 6_000_000)
-        if vals:
-            return vals[0][1], url
-    return None
+    words = [w for w in _norm(package).split() if len(w) >= 2]
+    matches = []
+    for row in rows:
+        gn = _norm(row["grade"])
+        if all(w in gn for w in words):
+            matches.append(row["price"])
+    if not matches:
+        return None
+    # Kullanıcı motor/şanzıman istemediği için aynı paketin birden fazla motoru varsa
+    # paket için resmî en düşük liste fiyatını gösteriyoruz.
+    return min(matches), TOYOTA_MODEL_URLS[model_key]
 
 
 def _togg_alias(item):
@@ -252,109 +312,96 @@ def _togg_price(item, cache):
     start = source.lower().find("teslim fiyat")
     if start < 0:
         return None
-    # Resmi Togg tablosunda versiyonlar ve teslim fiyatları aynı sıradadır.
     vals = [v for _, v in _prices(source[start:start + 1200], 1_000_000, 6_000_000)]
-    if model == "T10X":
-        versions = ["V1 RWD STANDART MENZIL", "V1 RWD UZUN MENZIL", "V2 RWD UZUN MENZIL", "V2 4MORE"]
-    else:
-        versions = ["V1 RWD STANDART MENZIL", "V1 RWD UZUN MENZIL", "V2 RWD UZUN MENZIL", "V2 4MORE"]
+    versions = ["V1 RWD STANDART MENZIL", "V1 RWD UZUN MENZIL", "V2 RWD UZUN MENZIL", "V2 4MORE"]
     if len(vals) < len(versions) or alias not in versions:
         return None
     return vals[versions.index(alias)], url
 
 
-def _hyundai_model_url(item):
-    model = _norm(item["model"])
-    slug = {"I20": "i20", "BAYON": "bayon"}.get(model)
-    return f"https://www.hyundai.com/tr/tr/modeller/{slug}/konfigurator.html" if slug else None
+def _section_after(text, heading, next_headings):
+    low = text.lower()
+    start = low.find(heading.lower())
+    if start < 0:
+        return ""
+    ends = []
+    for h in next_headings:
+        p = low.find(h.lower(), start + len(heading))
+        if p > start:
+            ends.append(p)
+    end = min(ends) if ends else min(len(text), start + 12000)
+    return text[start:end]
 
 
 def _hyundai_price(item, cache):
-    url = _hyundai_model_url(item)
-    if not url:
-        return None
+    url = HYUNDAI_DEALER_URL
     if url not in cache:
         cache[url] = _page(url)
     _soup, text, raw = cache[url]
-    trim = _norm(item["trim"]).replace("SYTLE", "STYLE")
-
-    # Hyundai konfigüratörü paket/fiyat verisini çoğunlukla script/JSON içinde tutuyor.
-    # Paket adının çevresindeki price/listPrice/msrp alanlarını önceliklendiriyoruz.
-    for source in (raw, text):
-        ns = _norm(source)
-        for m in re.finditer(re.escape(trim), ns):
-            # Normalizasyon uzunluğu birebir olmadığı için aynı paketi gerçek metinde de ara.
-            pass
-        low = source.lower()
-        aliases = [trim.lower(), trim.lower().replace("style", "sytle")]
-        for alias in aliases:
-            for hit in re.finditer(re.escape(alias), low, re.I):
-                window = source[max(0, hit.start() - 1000):hit.start() + 1800]
-                ranked = []
-                for pos, val in _prices(window, 1_000_000, 5_000_000):
-                    around = window[max(0, pos - 100):pos + 100].lower()
-                    score = abs(pos - 1000)
-                    if any(k in around for k in ["listprice", "list_price", "price", "fiyat", "msrp", "amount"]):
-                        score -= 700
-                    if any(k in around for k in ["kredi", "faiz", "indirim", "opsiyon", "renk"]):
-                        score += 900
-                    ranked.append((score, val))
-                if ranked:
-                    ranked.sort(key=lambda x: x[0])
-                    return ranked[0][1], url
-
-    # Paket bazlı veri bulunamazsa model başlangıç fiyatını yalnızca JUMP için kullan.
-    # Jump taban donanımdır; Style/Elite'e aynı fiyatı yapıştırmayız.
-    if trim == "JUMP":
-        model_url = url.replace("/konfigurator.html", ".html")
-        try:
-            if model_url not in cache:
-                cache[model_url] = _page(model_url)
-            _s, t, r = cache[model_url]
-            for source in (t, r):
-                p = _first_price_after(source, "Başlangıç fiyatı", 220)
-                if p:
-                    return p, model_url
-        except Exception:
-            pass
-    return None
-
-
-def _fiat_model_url(item):
     model = _norm(item["model"])
-    if model == "EGEA SEDAN":
-        return "https://www.fiat.com.tr/modeller/egea/sedan"
-    if model == "EGEA CROSS":
-        return "https://www.fiat.com.tr/modeller/egea/cross"
-    if model == "ULYSSE":
-        return "https://www.fiat.com.tr/modeller/ulysse"
-    return None
+    if model == "I20":
+        section = _section_after(text, "i20", ["i30", "BAYON", "KONA"])
+    elif model == "BAYON":
+        section = _section_after(text, "BAYON", ["KONA", "TUCSON", "INSTER"])
+    else:
+        return None
+    if not section:
+        return None
+    trim = _norm(item["trim"]).replace("SYTLE", "STYLE")
+    aliases = [trim]
+    prices = []
+    ns = _norm(section)
+    for alias in aliases:
+        for m in re.finditer(r"\b" + re.escape(alias) + r"\b", ns):
+            # Normalize edilmiş metinde yaklaşık konumu kullan; tablo sırası aynı kalır.
+            ratio = m.start() / max(len(ns), 1)
+            p = int(ratio * len(section))
+            window = section[max(0, p - 250):p + 700]
+            vals = _prices(window, 1_000_000, 5_000_000)
+            if vals:
+                prices.append(vals[0][1])
+    if not prices:
+        # Görünür metinde direkt paket araması fallback.
+        low = section.lower()
+        for alias in [trim.lower(), trim.lower().replace("style", "sytle")]:
+            for hit in re.finditer(re.escape(alias), low, re.I):
+                vals = _prices(section[hit.start():hit.start() + 700], 1_000_000, 5_000_000)
+                if vals:
+                    prices.append(vals[0][1])
+    if not prices:
+        return None
+    return min(prices), url
 
 
 def _fiat_price(item, cache):
-    # Önce Fiat'ın normal fiyat sayfasını deneriz. Render 403 verirse model sayfasına geçeriz.
-    sources = [FIAT_PRICE_URL, _fiat_model_url(item)]
+    # Fiat ana sitesi Render'a 403 verebildiği için, güncel Fiat yetkili bayi fiyat
+    # listesini resmi fiyat doğrulaması için fallback olarak kullanıyoruz.
+    url = FIAT_DEALER_URL
+    if url not in cache:
+        cache[url] = _page(url)
+    _soup, text, raw = cache[url]
+    model = _norm(item["model"])
+    if model == "EGEA SEDAN":
+        section = _section_after(text, "Egea Sedan", ["Egea Cross", "Grande Panda", "500e", "Topolino"])
+    elif model == "EGEA CROSS":
+        section = _section_after(text, "Egea Cross", ["Grande Panda", "500e", "Topolino", "600"])
+    elif model == "ULYSSE":
+        section = _section_after(text, "Ulysse", ["Ducato", "Scudo", "Doblo"])
+    else:
+        return None
+    if not section:
+        return None
     trim = _norm(item["trim"])
-    for url in [u for u in sources if u]:
-        try:
-            if url not in cache:
-                cache[url] = _page(url)
-            _soup, text, raw = cache[url]
-        except Exception as e:
-            print("OTV Fiat source failed:", url, repr(e))
-            continue
-        # Bakanlık Fiat'ta "STANDART DONANIM" diyebiliyor. Böyle durumda modelin resmi
-        # başlangıç fiyatını kullanmak güvenlidir; belirli bir üst pakete atamayız.
-        if trim == "STANDART DONANIM":
-            for source in (text, raw):
-                p = _first_price_after(source, "Başlangıç", 350)
-                if p:
-                    return p, url
-        else:
-            for source in (text, raw):
-                p = _first_price_after(source, _clean(item["trim"]), 500)
-                if p:
-                    return p, url
+    vals = _prices(section, 1_000_000, 6_000_000)
+    if trim == "STANDART DONANIM":
+        return (min(v for _, v in vals), url) if vals else None
+    # Ulysse gibi Bakanlıkta paket adı bulunan modellerde paket etrafındaki fiyatı al.
+    target = _clean(item["trim"])
+    p = section.lower().find(target.lower())
+    if p >= 0:
+        near = _prices(section[p:p + 900], 1_000_000, 6_000_000)
+        if near:
+            return near[0][1], url
     return None
 
 
@@ -371,6 +418,14 @@ def _resolve_price(item, cache):
     if brand == "FIAT":
         return _fiat_price(item, cache)
     return None
+
+
+def _source_name(brand, url):
+    if "hyundaiplaza.com.tr" in url:
+        return "Hyundai Yetkili Satıcı"
+    if "tanoto.com.tr" in url:
+        return "Fiat Yetkili Satıcı"
+    return f"{brand} Türkiye"
 
 
 def _save(data):
@@ -418,7 +473,7 @@ def refresh_otv_data(force=False):
                 "trim": _clean(item["trim"]),
                 "price": int(price),
                 "locality": round(float(item["locality"]), 2),
-                "source_name": f"{item['brand']} Türkiye",
+                "source_name": _source_name(item["brand"], source_url),
                 "source_url": source_url,
                 "locality_source_name": "T.C. Sanayi ve Teknoloji Bakanlığı",
                 "locality_source_url": ministry_url,
