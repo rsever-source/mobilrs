@@ -24,8 +24,8 @@ HEADERS = {
     "Cache-Control": "no-cache",
 }
 
-# Bunlar uygun araç listesi değildir; yalnızca Bakanlıktan gelen model/paketi
-# üreticinin resmî sayfasına yönlendirmek için kaynak adresleridir.
+# Üreticiye özel fiyat okuyucuları. Araç uygunluğu burada tutulmaz; uygun adaylar
+# her zaman Bakanlığın %40+ yerli katkı listesinden gelir.
 RENAULT_PACKAGE_URLS = {
     ("BOREAL", "EVOLUTION"): "https://www.renault.com.tr/hybrid-araclar/boreal/modeller-versiyonlar.html?gradeCode=ENS_MDL2P1SERIELIM1",
     ("BOREAL", "TECHNO"): "https://www.renault.com.tr/hybrid-araclar/boreal/modeller-versiyonlar.html?gradeCode=ENS_MDL2P1SERIELIM2",
@@ -40,10 +40,8 @@ RENAULT_PACKAGE_URLS = {
 
 TOYOTA_PRICE_URL = "https://turkiye.toyota.com.tr/middle/fiyat-listesi/"
 HYUNDAI_PRICE_URL = "https://www.hyundai.com/tr/tr/satis/fiyat-listesi.html"
-FIAT_SOURCES = [
-    "https://www.fiat.com.tr/engelsiz-otomobil",
-    "https://www.fiat.com.tr/fiyat-listeleri",
-]
+FIAT_OTV_URL = "https://www.fiat.com.tr/engelsiz-otomobil"
+FIAT_PRICE_URL = "https://www.fiat.com.tr/fiyat-listeleri"
 TOGG_URLS = {
     "T10X": "https://togg.com.tr/price-list",
     "T10F": "https://www.togg.com.tr/t10f-price-list",
@@ -76,12 +74,19 @@ def _get(url, timeout=35):
     return r
 
 
-def _text(url):
+def _page(url):
     r = _get(url)
     soup = BeautifulSoup(r.text, "html.parser")
-    for tag in soup(["script", "style", "noscript"]):
+    visible = BeautifulSoup(r.text, "html.parser")
+    for tag in visible(["script", "style", "noscript"]):
         tag.decompose()
-    return re.sub(r"\s+", " ", soup.get_text(" ", strip=True))
+    text = re.sub(r"\s+", " ", visible.get_text(" ", strip=True))
+    raw = re.sub(r"\s+", " ", r.text)
+    return soup, text, raw
+
+
+def _text(url):
+    return _page(url)[1]
 
 
 def _find_ministry_pdf():
@@ -145,18 +150,22 @@ def _eligible_packages(rows):
     return list(out.values())
 
 
-def _first_price_after(text, phrase, max_chars=450):
-    """Phrase'den sonra gelen ilk milyonluk fiyatı alır. Paket sayfalarında güvenlidir."""
+def _prices(text, minimum=1_000_000, maximum=15_000_000):
+    vals = []
+    for m in re.finditer(r"(?:₺\s*)?([1-9]\d{0,2}(?:[.\s]\d{3}){1,2})(?:[,.]00)?\s*(?:₺|TL)?", text, re.I):
+        v = _money(m.group(1))
+        if v and minimum <= v <= maximum:
+            vals.append((m.start(), v))
+    return vals
+
+
+def _first_price_after(text, phrase, max_chars=550):
     low = text.lower()
     p = low.find(phrase.lower())
     if p < 0:
         return None
-    window = text[p:p + max_chars]
-    m = re.search(r"(?:₺\s*)?([1-9]\d{0,2}(?:[.\s]\d{3}){1,2})(?:[,.]00)?\s*(?:₺|TL)?", window, re.I)
-    if not m:
-        return None
-    val = _money(m.group(1))
-    return val if val and 1_000_000 <= val <= 15_000_000 else None
+    vals = _prices(text[p:p + max_chars])
+    return vals[0][1] if vals else None
 
 
 def _renault_price(item, cache):
@@ -165,14 +174,15 @@ def _renault_price(item, cache):
     if not url:
         return None
     if url not in cache:
-        cache[url] = _text(url)
-    text = cache[url]
+        cache[url] = _page(url)
+    _soup, text, raw = cache[url]
     trim = _clean(item["trim"])
-    # Önce "versiyon <paket>" bölümünü hedefle; ana model başlangıç fiyatını yanlış alma.
-    price = _first_price_after(text, f"versiyon {trim}", 330)
-    if not price:
-        price = _first_price_after(text, trim, 330)
-    return (price, url) if price else None
+    for source in (text, raw):
+        for phrase in (f"versiyon {trim}", trim):
+            price = _first_price_after(source, phrase, 700)
+            if price:
+                return price, url
+    return None
 
 
 def _toyota_simple_trim(item):
@@ -180,48 +190,38 @@ def _toyota_simple_trim(item):
     n = n.replace("TOYOTA", " ").replace(_norm(item["model"]), " ")
     n = re.sub(r"\b1\s*[58]\b", " ", n)
     n = n.replace("HYBRID", " ").replace("E CVT", " ").replace("ECVT", " ").replace("MDS", " ")
-    n = re.sub(r"\s+", " ", n).strip()
-    return n
+    return re.sub(r"\s+", " ", n).strip()
 
 
 def _toyota_price(item, cache):
     url = TOYOTA_PRICE_URL
     if url not in cache:
-        cache[url] = _text(url)
-    text = cache[url]
-    model = _norm(item["model"])
+        cache[url] = _page(url)
+    _soup, text, raw = cache[url]
     package = _toyota_simple_trim(item)
-    nt = _norm(text)
-    # Toyota tablo satırında model/versiyon adı ve Tavsiye Edilen Liste Fiyatı birlikte bulunur.
-    targets = []
-    if model == "COROLLA":
-        targets.append(package)
-    else:
-        targets.extend([f"C HR {package}", package])
-    for target in targets:
-        pos = nt.find(target)
+    if not package:
+        return None
+    # Toyota resmi fiyat tablosunda versiyon satırından sonra önce tavsiye edilen liste,
+    # ardından kampanyalı fiyat gelir. İlk milyonluk tutarı alıyoruz.
+    for source in (text, raw):
+        ns = _norm(source)
+        target = _norm(package)
+        pos = ns.find(target)
         if pos < 0:
             continue
-        # normalize edilmiş metinde karakter konumu özgün metinle birebir değil; hedef satırı
-        # görünür metinde paket kelimeleri üzerinden tekrar bul.
-        words = [w for w in package.split() if len(w) > 2]
-        if not words:
-            continue
-        low = text.lower()
+        # Normalize konumu birebir kullanmak yerine gerçek metinde paketin en ayırt edici
+        # iki kelimesini bulup kısa pencere açıyoruz.
+        words = [w for w in package.split() if len(w) >= 4]
+        low = source.lower()
         starts = [low.find(w.lower()) for w in words]
         starts = [x for x in starts if x >= 0]
         if not starts:
             continue
         p = min(starts)
-        window = text[max(0, p-180):p+650]
-        # Kampanyalı/ÖTV muaf fiyat yerine tablo içindeki en yüksek normal liste fiyatını seç.
-        vals = []
-        for m in re.finditer(r"([1-9]\d{0,2}(?:[.\s]\d{3}){1,2})(?:[,.]00)?", window):
-            v = _money(m.group(1))
-            if v and 1_000_000 <= v <= 5_000_000:
-                vals.append(v)
+        window = source[max(0, p - 120):p + 550]
+        vals = _prices(window, 1_000_000, 6_000_000)
         if vals:
-            return max(vals), url
+            return vals[0][1], url
     return None
 
 
@@ -231,10 +231,10 @@ def _togg_alias(item):
     if n.startswith(model + " "):
         n = n[len(model):].strip()
     aliases = {
-        "V1 SR": "V1 RWD Standart Menzil",
-        "V1 LR": "V1 RWD Uzun Menzil",
-        "V2 LR": "V2 RWD Uzun Menzil",
-        "V2 LR AWD": "V2 4More",
+        "V1 SR": "V1 RWD STANDART MENZIL",
+        "V1 LR": "V1 RWD UZUN MENZIL",
+        "V2 LR": "V2 RWD UZUN MENZIL",
+        "V2 LR AWD": "V2 4MORE",
     }
     return aliases.get(n)
 
@@ -246,42 +246,115 @@ def _togg_price(item, cache):
     if not url or not alias:
         return None
     if url not in cache:
-        cache[url] = _text(url)
-    text = cache[url]
-    # Togg sayfasında versiyonlar önce, fiyatlar aynı sırada ayrı blokta. Bu yüzden
-    # tüm versiyon/fiyat sıralarını resmi tablodan birlikte çıkarıyoruz.
+        cache[url] = _page(url)
+    _soup, text, raw = cache[url]
+    source = text if "Teslim Fiyat" in text else raw
+    start = source.lower().find("teslim fiyat")
+    if start < 0:
+        return None
+    # Resmi Togg tablosunda versiyonlar ve teslim fiyatları aynı sıradadır.
+    vals = [v for _, v in _prices(source[start:start + 1200], 1_000_000, 6_000_000)]
     if model == "T10X":
-        versions = ["V1 RWD Standart Menzil", "V1 RWD Uzun Menzil", "V2 RWD Uzun Menzil", "V2 4More Obsidiyen"]
+        versions = ["V1 RWD STANDART MENZIL", "V1 RWD UZUN MENZIL", "V2 RWD UZUN MENZIL", "V2 4MORE"]
     else:
-        versions = ["V1 RWD Standart Menzil", "V1 RWD Uzun Menzil", "V2 RWD Uzun Menzil", "V2 4More"]
-    prices_section = text.lower().find("teslim fiyat")
-    if prices_section < 0:
+        versions = ["V1 RWD STANDART MENZIL", "V1 RWD UZUN MENZIL", "V2 RWD UZUN MENZIL", "V2 4MORE"]
+    if len(vals) < len(versions) or alias not in versions:
         return None
-    vals = []
-    for m in re.finditer(r"([1-9]\d{0,2}(?:[.\s]\d{3}){1,2})\s*₺", text[prices_section:prices_section+600]):
-        v = _money(m.group(1))
-        if v and v >= 1_000_000:
-            vals.append(v)
-    if len(vals) < len(versions):
-        return None
-    idx = None
-    for i, vname in enumerate(versions):
-        if alias == vname or (alias == "V2 4More" and vname.startswith("V2 4More")):
-            idx = i
-            break
-    return (vals[idx], url) if idx is not None else None
+    return vals[versions.index(alias)], url
+
+
+def _hyundai_model_url(item):
+    model = _norm(item["model"])
+    slug = {"I20": "i20", "BAYON": "bayon"}.get(model)
+    return f"https://www.hyundai.com/tr/tr/modeller/{slug}/konfigurator.html" if slug else None
 
 
 def _hyundai_price(item, cache):
-    # Hyundai'nin halka açık fiyat sayfası şu anda paketlerin isimlerini gösteriyor fakat
-    # statik HTML'de Jump/Style/Elite için ayrı liste fiyatları güvenilir şekilde sunmuyor.
-    # Yanlış kampanya tutarı eşleştirmek yerine beklet.
+    url = _hyundai_model_url(item)
+    if not url:
+        return None
+    if url not in cache:
+        cache[url] = _page(url)
+    _soup, text, raw = cache[url]
+    trim = _norm(item["trim"]).replace("SYTLE", "STYLE")
+
+    # Hyundai konfigüratörü paket/fiyat verisini çoğunlukla script/JSON içinde tutuyor.
+    # Paket adının çevresindeki price/listPrice/msrp alanlarını önceliklendiriyoruz.
+    for source in (raw, text):
+        ns = _norm(source)
+        for m in re.finditer(re.escape(trim), ns):
+            # Normalizasyon uzunluğu birebir olmadığı için aynı paketi gerçek metinde de ara.
+            pass
+        low = source.lower()
+        aliases = [trim.lower(), trim.lower().replace("style", "sytle")]
+        for alias in aliases:
+            for hit in re.finditer(re.escape(alias), low, re.I):
+                window = source[max(0, hit.start() - 1000):hit.start() + 1800]
+                ranked = []
+                for pos, val in _prices(window, 1_000_000, 5_000_000):
+                    around = window[max(0, pos - 100):pos + 100].lower()
+                    score = abs(pos - 1000)
+                    if any(k in around for k in ["listprice", "list_price", "price", "fiyat", "msrp", "amount"]):
+                        score -= 700
+                    if any(k in around for k in ["kredi", "faiz", "indirim", "opsiyon", "renk"]):
+                        score += 900
+                    ranked.append((score, val))
+                if ranked:
+                    ranked.sort(key=lambda x: x[0])
+                    return ranked[0][1], url
+
+    # Paket bazlı veri bulunamazsa model başlangıç fiyatını yalnızca JUMP için kullan.
+    # Jump taban donanımdır; Style/Elite'e aynı fiyatı yapıştırmayız.
+    if trim == "JUMP":
+        model_url = url.replace("/konfigurator.html", ".html")
+        try:
+            if model_url not in cache:
+                cache[model_url] = _page(model_url)
+            _s, t, r = cache[model_url]
+            for source in (t, r):
+                p = _first_price_after(source, "Başlangıç fiyatı", 220)
+                if p:
+                    return p, model_url
+        except Exception:
+            pass
+    return None
+
+
+def _fiat_model_url(item):
+    model = _norm(item["model"])
+    if model == "EGEA SEDAN":
+        return "https://www.fiat.com.tr/modeller/egea/sedan"
+    if model == "EGEA CROSS":
+        return "https://www.fiat.com.tr/modeller/egea/cross"
+    if model == "ULYSSE":
+        return "https://www.fiat.com.tr/modeller/ulysse"
     return None
 
 
 def _fiat_price(item, cache):
-    # Fiat'ın resmi sayfaları Render IP'lerine 403 döndürüyor. Resmi fiyat çekilemediği
-    # sürece fiyat uydurulmaz; Bakanlık paketi bekleyen olarak görünür.
+    # Önce Fiat'ın normal fiyat sayfasını deneriz. Render 403 verirse model sayfasına geçeriz.
+    sources = [FIAT_PRICE_URL, _fiat_model_url(item)]
+    trim = _norm(item["trim"])
+    for url in [u for u in sources if u]:
+        try:
+            if url not in cache:
+                cache[url] = _page(url)
+            _soup, text, raw = cache[url]
+        except Exception as e:
+            print("OTV Fiat source failed:", url, repr(e))
+            continue
+        # Bakanlık Fiat'ta "STANDART DONANIM" diyebiliyor. Böyle durumda modelin resmi
+        # başlangıç fiyatını kullanmak güvenlidir; belirli bir üst pakete atamayız.
+        if trim == "STANDART DONANIM":
+            for source in (text, raw):
+                p = _first_price_after(source, "Başlangıç", 350)
+                if p:
+                    return p, url
+        else:
+            for source in (text, raw):
+                p = _first_price_after(source, _clean(item["trim"]), 500)
+                if p:
+                    return p, url
     return None
 
 
@@ -358,8 +431,7 @@ def refresh_otv_data(force=False):
 
         unique = {}
         for v in vehicles:
-            key = (v["brand"], v["model"], _norm(v["trim"]))
-            unique[key] = v
+            unique[(v["brand"], v["model"], _norm(v["trim"]))] = v
         vehicles = sorted(unique.values(), key=lambda v: (v["brand"], v["model"], v["price"], v["trim"]))
 
         print("OTV package candidates:", len(candidates))
