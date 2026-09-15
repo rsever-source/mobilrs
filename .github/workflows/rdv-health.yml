@@ -9,13 +9,59 @@ on:
       - '.github/workflows/rdv-health.yml'
 
 permissions:
-  contents: read
+  contents: write
   issues: write
 
 jobs:
   health:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Apply only Excel selection indicator fix
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          set -e
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('excel_vlookup_api.py')
+          s=p.read_text(encoding='utf-8')
+          m=re.search(r'(<section id="excel".*?</section>)',s,re.S)
+          if not m: raise SystemExit('Excel section not found')
+          sec=m.group(1)
+          p1=r'<div class="filebox">.*?<input type="file" name="file1"[^>]*></div>'
+          r1='<div class="filebox">📄 <span id="excelFileName1">Dosya seçilmedi — Dosya Seç</span><input type="file" name="file1" accept=".xlsx,.xls" required onchange="excelDosya1Secildi(this)"></div>'
+          sec,n=re.subn(p1,r1,sec,count=1,flags=re.S)
+          if n!=1: raise SystemExit('file1 box not found')
+          p2=r'<div class="filebox">.*?<input type="file" name="file2"[^>]*></div>'
+          r2='<div class="filebox">📄 <span id="excelFileName2">Dosya seçilmedi — Dosya Seç</span><input type="file" name="file2" accept=".xlsx,.xls" required onchange="excelDosya2Secildi(this)"></div>'
+          sec,n=re.subn(p2,r2,sec,count=1,flags=re.S)
+          if n!=1: raise SystemExit('file2 box not found')
+          s=s[:m.start(1)]+sec+s[m.end(1):]
+          js="function excelDosya1Secildi(input){let el=document.getElementById('excelFileName1');if(input.files&&input.files.length){el.textContent='✓ Dosya 1 seçildi: '+input.files[0].name;}else{el.textContent='Dosya seçilmedi — Dosya Seç';}} function excelDosya2Secildi(input){let el=document.getElementById('excelFileName2');if(input.files&&input.files.length){el.textContent='✓ Dosya 2 seçildi: '+input.files[0].name;}else{el.textContent='Dosya seçilmedi — Dosya Seç';}}"
+          if 'function excelDosya1Secildi(' not in s:
+              marker='function renderOTV()'
+              if marker not in s: raise SystemExit('JS insertion point not found')
+              s=s.replace(marker,js+marker,1)
+          p.write_text(s,encoding='utf-8')
+          PY
+          grep -q 'excelDosya1Secildi' excel_vlookup_api.py
+          grep -q 'excelDosya2Secildi' excel_vlookup_api.py
+          grep -q '/excel-islem' excel_vlookup_api.py
+          grep -q '/pdf-excel-islem' excel_vlookup_api.py
+          grep -q '/kira-hesapla' excel_vlookup_api.py
+          grep -q '/api/otv' excel_vlookup_api.py
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add excel_vlookup_api.py
+          git commit -m 'Make Excel file selection visible without changing processing'
+          git push
+          git fetch origin main
+          git reset --hard origin/main
+
       - name: Check RDV Asistan with Render wake-up tolerance
         id: health
         shell: bash
