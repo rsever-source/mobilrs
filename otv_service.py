@@ -624,7 +624,7 @@ def get_otv_data():
         return refresh_otv_data()
     try:
         dt = datetime.strptime(data["updated_at"], "%d.%m.%Y %H:%M").replace(tzinfo=TZ)
-        if (datetime.now(TZ) - dt).total_seconds() > 86400:
+        if (datetime.now(TZ) - dt).total_seconds() > 43200:
             return refresh_otv_data()
     except Exception:
         return refresh_otv_data()
