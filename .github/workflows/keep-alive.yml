@@ -11,3 +11,6 @@ jobs:
     steps:
       - name: Ping RDV Asistan
         run: curl -fsS --max-time 60 https://rdvsever.onrender.com/ > /dev/null
+
+      - name: Refresh OTV cache when needed
+        run: curl -fsS --max-time 300 https://rdvsever.onrender.com/api/otv > /dev/null
