@@ -1,0 +1,33 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    id: Build
+    args:
+      - build
+      - --no-cache
+      - -t
+      - europe-west1-docker.pkg.dev/project-f671a84c-0cde-40b8-921/cloud-run-source-deploy/mobilrs-test:$COMMIT_SHA
+      - .
+      - -f
+      - Dockerfile
+
+  - name: gcr.io/cloud-builders/docker
+    id: Push
+    args:
+      - push
+      - europe-west1-docker.pkg.dev/project-f671a84c-0cde-40b8-921/cloud-run-source-deploy/mobilrs-test:$COMMIT_SHA
+
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    id: Deploy
+    entrypoint: gcloud
+    args:
+      - run
+      - services
+      - update
+      - mobilrs-test
+      - --platform=managed
+      - --image=europe-west1-docker.pkg.dev/project-f671a84c-0cde-40b8-921/cloud-run-source-deploy/mobilrs-test:$COMMIT_SHA
+      - --region=europe-west1
+      - --quiet
+
+options:
+  logging: CLOUD_LOGGING_ONLY
