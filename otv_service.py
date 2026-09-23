@@ -7,7 +7,7 @@ from urllib.parse import urljoin
 from zoneinfo import ZoneInfo
 
 from cloud_storage import load_json as gcs_load_json, save_json as gcs_save_json
-from vehicle_images import enrich_vehicles
+from vehicle_images import enrich_vehicles, pool_needs_refresh
 
 import pdfplumber
 import requests
@@ -642,7 +642,7 @@ def get_otv_data():
 
     # Existing GCS cache may predate the image pool. Enrich it once without
     # waiting for the 12-hour price refresh window.
-    if any(not v.get("image_url") for v in data.get("vehicles", [])):
+    if any(not v.get("image_url") for v in data.get("vehicles", [])) or pool_needs_refresh(data.get("vehicles", [])):
         try:
             data = dict(data)
             data["vehicles"] = enrich_vehicles(list(data.get("vehicles", [])))
