@@ -8,7 +8,7 @@ from fastapi.responses import HTMLResponse, FileResponse, JSONResponse
 from starlette.background import BackgroundTask
 
 from tufe_service import get_current_tufe, save_cache
-from otv_service import get_otv_data, refresh_otv_data
+from otv_service import get_otv_data, refresh_otv_data, _load as load_otv_cache
 
 app = FastAPI(title="Rdv Asistan")
 OUTPUT_DIR = "outputs"
@@ -99,7 +99,10 @@ async def api_otv(): return JSONResponse(get_otv_data())
 async def api_otv_yenile(): return JSONResponse(refresh_otv_data(force=True))
 
 @app.get("/", response_class=HTMLResponse)
-async def index(): return HTMLResponse(HOME_HTML)
+async def index():
+    initial = load_otv_cache() or {}
+    initial_json = __import__("json").dumps(initial, ensure_ascii=False).replace("</", "<\\/")
+    return HTMLResponse(HOME_HTML.replace("/*INITIAL_OTV_DATA*/{}", initial_json))
 
 @app.get("/robots.txt", response_class=HTMLResponse)
 async def robots_txt():
@@ -181,7 +184,7 @@ HOME_HTML = r'''<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta
 <section id="pdfexcel" class="page"><div class="pagehead"><button class="back" onclick="openPage('home')">‹</button><h2>PDF → Excel</h2></div><div class="panel"><form action="/pdf-excel-islem" method="post" enctype="multipart/form-data"><div class="filebox" id="pdfFileBox">📄 <span id="pdfFileName">PDF seçilmedi — PDF Dosyasını Seç</span><input type="file" name="pdf_file" accept=".pdf" required onchange="pdfSecildi(this)"></div><button class="btn green">PDF'i Excel'e Çevir</button></form></div></section>
 <button class="homebtn" onclick="openPage('home')">⌂ &nbsp;Ana Sayfa</button></main>
 <script>
-let otvData={vehicles:[],limit:2873900},activeBrand=null;
+let otvData=/*INITIAL_OTV_DATA*/{},activeBrand=null; if(!otvData.vehicles)otvData={vehicles:[],limit:2873900};
 function openPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));document.getElementById(id).classList.add('on');scrollTo(0,0);if(id==='otv')renderOTV()}
 function tl(v){return Number(v||0).toLocaleString('tr-TR')+' ₺'}
 function otvRateFor(v){let p=Number(v.price||0),b=(v.brand||'').toUpperCase(),m=(v.model||'').toUpperCase();if(!p)return null;let solve=(rules)=>{for(let [r,min,max] of rules){let base=p/1.20/(1+r);if(base>min&&(max==null||base<=max))return r}return null};if(b==='TOGG')return solve([[.25,0,1650000],[.55,1650000,null]]);if(b==='TOYOTA'&&m.includes('C-HR'))return solve([[.70,0,1250000],[.80,1250000,null]]);if(b==='TOYOTA'&&m.includes('COROLLA'))return solve([[.75,0,850000],[.80,850000,1100000],[.90,1100000,1650000],[1.00,1650000,null]]);if(b==='FIAT'&&m.includes('ULYSSE'))return solve([[1.50,0,1650000],[1.70,1650000,null]]);if(b==='FIAT'&&m.includes('EGEA'))return solve([[.75,0,850000],[.80,850000,1100000],[.90,1100000,1650000],[1.00,1650000,null]])||solve([[.70,0,650000],[.75,650000,900000],[.80,900000,1100000],[.90,1100000,null]]);return solve([[.70,0,650000],[.75,650000,900000],[.80,900000,1100000],[.90,1100000,null]])}function exemptPrice(v){let r=otvRateFor(v);return r==null?null:Math.round(Number(v.price)/(1+r))}function verifiedRow(v){let ep=exemptPrice(v);return `<div class="row"><div class="rowtop"><div><div class="name">${v.brand} ${v.model}</div><div class="meta">${v.trim||''}</div></div><span class="tag">Uygun</span></div><div class="price">Liste Fiyatı<b>${tl(v.price)}</b></div>${ep?`<div class="price">Tahmini ÖTV Muaf Fiyat<b>${tl(ep)}</b></div>`:''}<div class="note">Yerlilik: %${v.locality||'—'} · Kaynak: ${v.source_name||v.brand} · Son kontrol: ${v.checked_at||'—'}</div></div>`}
@@ -192,7 +195,7 @@ function renderHome(){let c=document.getElementById('heroCount'),b=document.getE
 function pdfSecildi(input){let el=document.getElementById('pdfFileName');if(input.files&&input.files.length){el.textContent='✓ PDF seçildi: '+input.files[0].name;}else{el.textContent='PDF seçilmedi — PDF Dosyasını Seç';}}function renderOTV(){document.getElementById('otvLimit').textContent=tl(otvData.limit);buttons();let rows=(otvData.vehicles||[]).filter(v=>!activeBrand||v.brand===activeBrand);document.getElementById('otvSummary').textContent=`${rows.length} uygun paket · Son fiyat kontrolü ${otvData.updated_at||'—'}`;document.getElementById('otvList').innerHTML=rows.length?rows.map(verifiedRow).join(''):'<div class="panel">Bu markada uygun ve fiyatı doğrulanmış paket bulunamadı.</div>'}
 async function loadOTV(){try{let r=await fetch('/api/otv');otvData=await r.json();renderHome()}catch(e){}}
 async function kiraHesapla(e){e.preventDefault();let b=document.getElementById('kira-btn'),res=document.getElementById('kira-result');b.disabled=true;b.textContent='Hesaplanıyor...';res.style.display='block';res.innerHTML='Güncel TÜFE kontrol ediliyor...';try{let body=new URLSearchParams();body.append('mevcut_kira',document.getElementById('mevcut-kira').value);body.append('yenileme_ayi',document.getElementById('yenileme-ayi').value);let r=await fetch('/kira-hesapla',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body});let d=await r.json();if(!r.ok)throw Error(d.detail||'Hesaplama yapılamadı.');res.innerHTML=`<div class="note" style="text-align:center">12 aylık ortalama TÜFE</div><div class="big">%${d.oran}</div><div class="note" style="text-align:center">Yeni kira</div><div class="big">${d.yeni_kira}</div><div class="note">${d.durum}</div>`}catch(x){res.innerHTML='<div class="note">'+x.message+'</div>'}finally{b.disabled=false;b.textContent='Hesapla'}}
-loadOTV();
+renderHome(); loadOTV();
 </script></body></html>'''
 
 
