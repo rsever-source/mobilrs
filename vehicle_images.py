@@ -12,7 +12,7 @@ from cloud_storage import load_json as gcs_load_json, save_json as gcs_save_json
 POOL_FILE = "vehicle_image_pool.json"
 POOL_PREFIX = "vehicle-images/"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
-POOL_VERSION = 2
+POOL_VERSION = 3
 HEADERS = {
     "User-Agent": "EngelliMeVehicleImagePool/2.0 (https://engelli.me)",
     "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.8",
@@ -22,16 +22,16 @@ HEADERS = {
 # the actual image into our GCS pool; the browser never depends on the source URL.
 SEED_IMAGES = {
     "RENAULT|BOREAL": "https://upload.wikimedia.org/wikipedia/commons/4/42/2026_Renault_Boreal_front_view_01.png",
-    "RENAULT|DUSTER": "https://imgd.aeplcdn.com/1920x1080/n/cw/ec/163801/duster-exterior-right-front-three-quarter-5.jpeg?isig=0&q=90",
-    "RENAULT|CLIO": "https://cms.bilhandel.dk/media/gihc2rsz/g0vc5o6wmaaitkp.jpeg",
-    "RENAULT|MEGANE": "https://www.renault.com.tr/binek-araclar/megane-sedan.html",
+    "RENAULT|DUSTER": "https://img-ik.cars.co.za/news-site-za/images/2025/03/2025-Renault-Duster-Launch-6.jpg",
+    "RENAULT|CLIO": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Renault_Clio_Evolution_(V,_Facelift)_%E2%80%93_f_04042026.jpg?width=1600",
+    "RENAULT|MEGANE": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Renault_Megane_IV_Sedan_1X7A0225.jpg?width=1600",
     "TOYOTA|C HR": "https://www.toyota.com.tr/araba-modelleri/c-hr",
-    "TOYOTA|COROLLA": "https://www.toyota.com.tr/araba-modelleri/corolla-sedan",
+    "TOYOTA|COROLLA": "https://commons.wikimedia.org/wiki/Special:Redirect/file/TOYOTA_COROLLA_SEDAN_(E210)_China_(14).jpg?width=1600",
     "HYUNDAI|I20": "https://storage.googleapis.com/fp-media/1/2025/12/Hyundai-i20-MY26.jpg",
     "HYUNDAI|BAYON": "https://storage.googleapis.com/fp-media/1/2025/12/Hyundai-Bayon-MY26.jpg",
     "TOGG|T10X": "https://www.togg.eu/assets/img/68a4514343d1be59b0dab71b_T10X-Range.webp",
-    "TOGG|T10F": "https://commons.wikimedia.org/wiki/File:Togg_T10F_IAA_2025_DSC_2233.jpg",
-    "FIAT|EGEA SEDAN": "https://www.fiat.com.tr/modeller/egea/sedan",
+    "TOGG|T10F": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Togg_T10F_IAA_2025_DSC_2140.jpg?width=1600",
+    "FIAT|EGEA SEDAN": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Fiat_Egea_in_Pendik_Istanbul.jpg?width=1600",
     "FIAT|EGEA CROSS": "https://www.fiat.com.tr/modeller/egea",
     "FIAT|ULYSSE": "https://manage.sifiraracal.com/public/resim/galeri/1002/43084/fiat-ulysse.png",
 }
