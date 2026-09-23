@@ -1,33 +1,38 @@
-import json
+import hashlib
 import re
 import unicodedata
-from urllib.parse import quote
+from urllib.parse import quote, unquote, urljoin
 
 import requests
+from bs4 import BeautifulSoup
+from google.cloud import storage
 
 from cloud_storage import load_json as gcs_load_json, save_json as gcs_save_json
 
 POOL_FILE = "vehicle_image_pool.json"
+POOL_PREFIX = "vehicle-images/"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
+POOL_VERSION = 2
 HEADERS = {
-    "User-Agent": "EngelliMeVehicleImagePool/1.0 (https://engelli.me)",
+    "User-Agent": "EngelliMeVehicleImagePool/2.0 (https://engelli.me)",
     "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.8",
 }
 
-# Hand-verified stable images for models already present. New models are discovered
-# automatically from Wikimedia Commons and cached in the same pool.
+# Sources are either direct images or official/Commons pages. The worker downloads
+# the actual image into our GCS pool; the browser never depends on the source URL.
 SEED_IMAGES = {
     "RENAULT|BOREAL": "https://upload.wikimedia.org/wikipedia/commons/4/42/2026_Renault_Boreal_front_view_01.png",
     "RENAULT|DUSTER": "https://imgd.aeplcdn.com/1920x1080/n/cw/ec/163801/duster-exterior-right-front-three-quarter-5.jpeg?isig=0&q=90",
     "RENAULT|CLIO": "https://cms.bilhandel.dk/media/gihc2rsz/g0vc5o6wmaaitkp.jpeg",
-    "RENAULT|MEGANE": "https://imagecdnsa.zigwheels.ae/large/gallery/exterior/33/371/renault-megane-24585.jpg",
-    "TOYOTA|C HR": "https://toyota-media.ch/__image/a/2248486/alias/xxl/v/4/c/25/ar/16-9/fn/Toyota%20C-HR%202026_01.jpg",
-    "TOYOTA|COROLLA": "https://modenamotorsgmbh.com/98819-thickbox_default/toyota-corolla-sedan-18-hybrid-elite-edition-my2026.jpg",
+    "RENAULT|MEGANE": "https://www.renault.com.tr/binek-araclar/megane-sedan.html",
+    "TOYOTA|C HR": "https://www.toyota.com.tr/araba-modelleri/c-hr",
+    "TOYOTA|COROLLA": "https://www.toyota.com.tr/araba-modelleri/corolla-sedan",
     "HYUNDAI|I20": "https://storage.googleapis.com/fp-media/1/2025/12/Hyundai-i20-MY26.jpg",
     "HYUNDAI|BAYON": "https://storage.googleapis.com/fp-media/1/2025/12/Hyundai-Bayon-MY26.jpg",
     "TOGG|T10X": "https://www.togg.eu/assets/img/68a4514343d1be59b0dab71b_T10X-Range.webp",
-    "FIAT|EGEA SEDAN": "https://arbstorage.mncdn.com/modelphotos/60cf26a2-ff58-461c-a8a5-fbc3cbce58b1_912x513.jpg",
-    "FIAT|EGEA CROSS": "https://www.fiat.com.tr/content/dam/fiat/cross/egea-cross/egea-cross-gallery.jpg",
+    "TOGG|T10F": "https://commons.wikimedia.org/wiki/File:Togg_T10F_IAA_2025_DSC_2233.jpg",
+    "FIAT|EGEA SEDAN": "https://www.fiat.com.tr/modeller/egea/sedan",
+    "FIAT|EGEA CROSS": "https://www.fiat.com.tr/modeller/egea",
     "FIAT|ULYSSE": "https://manage.sifiraracal.com/public/resim/galeri/1002/43084/fiat-ulysse.png",
 }
 
@@ -44,17 +49,101 @@ def _key(brand, model):
 
 def _load_pool():
     pool = gcs_load_json(POOL_FILE)
-    if isinstance(pool, dict):
-        return pool
-    return {}
+    return pool if isinstance(pool, dict) else {}
 
 
 def _save_pool(pool):
-    gcs_save_json(POOL_FILE, pool)
+    return gcs_save_json(POOL_FILE, pool)
 
 
-def _is_image_url(url):
-    return bool(url and re.search(r"\.(?:jpe?g|png|webp)(?:$|\?)", url, re.I))
+def _bucket():
+    from os import environ
+    name = environ.get("GCS_BUCKET", "").strip()
+    return storage.Client().bucket(name) if name else None
+
+
+def _direct_image_url(url, response):
+    ctype = (response.headers.get("content-type") or "").lower()
+    if ctype.startswith("image/"):
+        return response.url, ctype
+
+    try:
+        soup = BeautifulSoup(response.text, "html.parser")
+    except Exception:
+        return None, None
+
+    candidates = []
+    for meta in soup.find_all("meta"):
+        prop = (meta.get("property") or meta.get("name") or "").lower()
+        content = meta.get("content")
+        if content and prop in {"og:image", "twitter:image"}:
+            candidates.append(urljoin(response.url, content))
+    for img in soup.find_all("img"):
+        src = img.get("src")
+        if src:
+            candidates.append(urljoin(response.url, src))
+
+    for candidate in candidates:
+        try:
+            rr = requests.get(candidate, headers=HEADERS, timeout=20)
+            rr.raise_for_status()
+            ct = (rr.headers.get("content-type") or "").lower()
+            if ct.startswith("image/") and len(rr.content) >= 10000:
+                return rr.url, ct
+        except Exception:
+            continue
+    return None, None
+
+
+def _download_image(source_url):
+    r = requests.get(source_url, headers=HEADERS, timeout=25, allow_redirects=True)
+    r.raise_for_status()
+    final_url, content_type = _direct_image_url(source_url, r)
+    if not final_url:
+        return None
+    if final_url != r.url:
+        r = requests.get(final_url, headers=HEADERS, timeout=25, allow_redirects=True)
+        r.raise_for_status()
+        content_type = (r.headers.get("content-type") or content_type or "").lower()
+    if not content_type.startswith("image/") or len(r.content) < 10000:
+        return None
+    return r.content, content_type, r.url
+
+
+def _extension(content_type, url):
+    if "png" in content_type:
+        return "png"
+    if "webp" in content_type:
+        return "webp"
+    if "gif" in content_type:
+        return "gif"
+    return "jpg"
+
+
+def _store_image(key, brand, model, source_url, source_kind):
+    downloaded = _download_image(source_url)
+    if not downloaded:
+        return None
+    data, content_type, resolved_url = downloaded
+    bucket = _bucket()
+    if bucket is None:
+        return None
+
+    digest = hashlib.sha256(key.encode("utf-8")).hexdigest()[:20]
+    object_name = f"{POOL_PREFIX}{digest}.{_extension(content_type, resolved_url)}"
+    blob = bucket.blob(object_name)
+    blob.upload_from_string(data, content_type=content_type)
+
+    return {
+        "version": POOL_VERSION,
+        "object_name": object_name,
+        "content_type": content_type,
+        "source_url": source_url,
+        "resolved_url": resolved_url,
+        "source": source_kind,
+        "brand": brand,
+        "model": model,
+    }
 
 
 def _commons_search(brand, model):
@@ -67,7 +156,7 @@ def _commons_search(brand, model):
         "gsrlimit": 12,
         "prop": "imageinfo",
         "iiprop": "url|mime|size",
-        "iiurlwidth": 1200,
+        "iiurlwidth": 1600,
         "format": "json",
         "formatversion": 2,
     }
@@ -79,9 +168,7 @@ def _commons_search(brand, model):
         print("Vehicle image discovery failed:", brand, model, repr(exc))
         return None
 
-    brand_n = _norm(brand)
-    model_n = _norm(model)
-    # Only accept a result whose filename/title contains both brand and model.
+    brand_n, model_n = _norm(brand), _norm(model)
     candidates = []
     for page in pages:
         title = _norm(page.get("title", ""))
@@ -90,57 +177,83 @@ def _commons_search(brand, model):
         mime = str(info.get("mime") or "")
         if not url or not mime.startswith("image/"):
             continue
-        score = 0
-        if brand_n in title:
-            score += 3
-        if model_n in title:
-            score += 5
-        if "front" in title or "3 4" in title or "three quarter" in title:
+        # Both brand and model must be in the Commons filename/title.
+        if brand_n not in title or model_n not in title:
+            continue
+        score = 8
+        if any(x in title for x in ("FRONT", "THREE QUARTER", "3 4", "SIDE")):
             score += 2
-        if score >= 8:
-            candidates.append((score, int(info.get("width") or 0), url, page.get("title", "")))
+        width = int(info.get("width") or 0)
+        if width < 800:
+            continue
+        candidates.append((score, width, url, page.get("title", "")))
 
     if not candidates:
         return None
     candidates.sort(key=lambda x: (x[0], x[1]), reverse=True)
-    score, width, url, title = candidates[0]
-    if width and width < 500:
-        return None
-    print("Vehicle image discovered:", brand, model, title, url)
-    return url
+    chosen = candidates[0]
+    print("Vehicle image discovered:", brand, model, chosen[3], chosen[2])
+    return chosen[2]
 
 
 def ensure_vehicle_image(brand, model):
     key = _key(brand, model)
     pool = _load_pool()
+    existing = pool.get(key) or {}
 
-    if key in pool and pool[key].get("url"):
-        return pool[key]["url"]
+    # Versioned seeds allow us to replace old/wrong images once, then keep the
+    # downloaded file locally in our pool on all later visits.
+    source_url = SEED_IMAGES.get(key)
+    source_kind = "verified seed"
+    if source_url is None:
+        source_url = _commons_search(brand, model)
+        source_kind = "Wikimedia Commons auto-discovery"
 
-    if key in SEED_IMAGES:
-        pool[key] = {
-            "url": SEED_IMAGES[key],
-            "source": "seed",
-            "brand": brand,
-            "model": model,
-        }
-        _save_pool(pool)
-        return SEED_IMAGES[key]
-
-    url = _commons_search(brand, model)
-    if not url:
+    if not source_url:
         return ""
-    pool[key] = {
-        "url": url,
-        "source": "Wikimedia Commons auto-discovery",
-        "brand": brand,
-        "model": model,
-    }
-    _save_pool(pool)
-    return url
+
+    if (
+        existing.get("version") == POOL_VERSION
+        and existing.get("object_name")
+    ):
+        return f"/vehicle-image?key={quote(key, safe='')}"
+
+    try:
+        entry = _store_image(key, brand, model, source_url, source_kind)
+        if not entry:
+            return ""
+        pool[key] = entry
+        _save_pool(pool)
+        return f"/vehicle-image?key={quote(key, safe='')}"
+    except Exception as exc:
+        print("Vehicle image pool write failed:", brand, model, repr(exc))
+        return ""
+
+
+def get_vehicle_image(key):
+    pool = _load_pool()
+    entry = pool.get(key) or {}
+    object_name = entry.get("object_name")
+    if not object_name:
+        return None
+    bucket = _bucket()
+    if bucket is None:
+        return None
+    blob = bucket.blob(object_name)
+    try:
+        if not blob.exists():
+            return None
+        return blob.download_as_bytes(), entry.get("content_type", "image/jpeg")
+    except Exception as exc:
+        print("Vehicle image pool read failed:", key, repr(exc))
+        return None
+
+
+def vehicle_image_url(brand, model):
+    return ensure_vehicle_image(brand, model)
 
 
 def enrich_vehicles(vehicles):
     for vehicle in vehicles:
-        vehicle["image_url"] = ensure_vehicle_image(vehicle["brand"], vehicle["model"])
+        vehicle["image_url"] = vehicle_image_url(vehicle["brand"], vehicle["model"])
     return vehicles
