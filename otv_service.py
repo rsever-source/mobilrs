@@ -7,6 +7,7 @@ from urllib.parse import urljoin
 from zoneinfo import ZoneInfo
 
 from cloud_storage import load_json as gcs_load_json, save_json as gcs_save_json
+from vehicle_images import enrich_vehicles
 
 import pdfplumber
 import requests
@@ -597,6 +598,7 @@ def refresh_otv_data(force=False):
             if old_v is None or v["price"] < old_v["price"]:
                 unique[key] = v
         vehicles = sorted(unique.values(), key=lambda v: (v["brand"], v["model"], v["price"], v["trim"]))
+        vehicles = enrich_vehicles(vehicles)
 
         print("OTV package candidates:", len(candidates))
         print("OTV unresolved packages:", unresolved)
