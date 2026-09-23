@@ -639,6 +639,16 @@ def get_otv_data():
             return refresh_otv_data()
     except Exception:
         return refresh_otv_data()
+
+    # Existing GCS cache may predate the image pool. Enrich it once without
+    # waiting for the 12-hour price refresh window.
+    if any(not v.get("image_url") for v in data.get("vehicles", [])):
+        try:
+            data = dict(data)
+            data["vehicles"] = enrich_vehicles(list(data.get("vehicles", [])))
+            _save(data)
+        except Exception as exc:
+            print("OTV image pool enrichment failed:", repr(exc))
     return data
 
 
