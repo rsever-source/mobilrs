@@ -6,6 +6,8 @@ from datetime import datetime
 from urllib.parse import urljoin
 from zoneinfo import ZoneInfo
 
+from cloud_storage import load_json as gcs_load_json, save_json as gcs_save_json
+
 import pdfplumber
 import requests
 from bs4 import BeautifulSoup
@@ -528,6 +530,9 @@ def _source_name(brand, url):
 
 
 def _save(data):
+    # Cloud Run'da kalıcı önbellek için GCS kullanılır.
+    if gcs_save_json(CACHE_FILE, data):
+        return data
     try:
         with open(CACHE_FILE, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False)
@@ -537,6 +542,10 @@ def _save(data):
 
 
 def _load():
+    # GCS varsa önce kalıcı önbellekten oku; yerelde/Render'da mevcut dosya önbelleğine düş.
+    data = gcs_load_json(CACHE_FILE)
+    if data:
+        return data
     try:
         with open(CACHE_FILE, encoding="utf-8") as f:
             return json.load(f)
