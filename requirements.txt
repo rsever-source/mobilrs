@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pandas
+openpyxl
+xlrd
+python-multipart
+pdfplumber
+requests
+beautifulsoup4
+redis
+google-cloud-storage
