@@ -3,8 +3,9 @@ name: Engelli Haberleri Güncelle
 on:
   workflow_dispatch:
   schedule:
+    # Türkiye saatiyle 09:35, 14:35 ve 21:35 (UTC+3).
     - cron: "35 6 * * *"
-    - cron: "3 11 * * *"
+    - cron: "35 11 * * *"
     - cron: "35 18 * * *"
 
 permissions:
