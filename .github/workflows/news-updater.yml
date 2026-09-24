@@ -8,8 +8,10 @@ on:
     paths:
       - .github/workflows/news-updater.yml
   schedule:
-    # Türkiye saatiyle 09:35, 13:35 ve 21:35 (UTC+3).
-    - cron: "35 6,10,18 * * *"
+    # Türkiye saatiyle 09:35, 13:55 ve 21:35 (UTC+3).
+    - cron: "35 6 * * *
+    - cron: "55 10 * * *"
+    - cron: "35 18 * * *""
 
 permissions:
   contents: write
