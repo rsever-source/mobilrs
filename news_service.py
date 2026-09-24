@@ -20,14 +20,13 @@ GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
 UA = "EngelliMe-NewsBot/1.0 (+https://engelli.me)"
 TIMEOUT = 20
 AI_TIMEOUT = 60
-KEYWORDS = (
+
+STRONG_KEYWORDS = (
     "engelli", "engelliler", "engelli birey", "engelli vatandaş",
-    "engelli aylığı", "evde bakım", "erişilebilir", "ekpss",
-    "özel eğitim", "özel gereksinim", "ötv", "muafiyet",
-    "sosyal yardım", "malulen emekl", "çalışma gücü kaybı",
-    "bakım yardımı", "ücretsiz seyahat", "erişilebilirlik", "hak", "yardım",
-    "maaş", "istihdam", "çalışma", "ulaşım", "mevzuat", "kanun", "bakım",
-    "özel gereksinimli",
+    "engelli aylığı", "evde bakım", "erişilebilir", "erişilebilirlik",
+    "ekpss", "özel eğitim", "özel gereksinim", "özel gereksinimli",
+    "ötv", "muafiyet", "bakım yardımı", "ücretsiz seyahat",
+    "malulen emekl", "çalışma gücü kaybı",
 )
 
 def _load_json(path, default):
@@ -83,19 +82,9 @@ def _feed_items(source):
             items.append({"source": source["name"], "title": title, "url": link, "description": description, "published_at": pub.isoformat() if pub else None})
     return items
 
-def _relevant_candidate(item):
-    text = f"{item.get('title', '')} {item.get('description', '')}".lower()
-    return any(keyword in text for keyword in KEYWORDS)
-
 def _strong_relevance(item):
     text = f"{item.get('title', '')} {item.get('description', '')}".lower()
-    strong = (
-        "engelli", "engelliler", "engelli birey", "engelli vatandaş",
-        "erişilebilirlik", "erişilebilir", "ekpss", "özel gereksinim",
-        "engelli aylığı", "evde bakım", "ötv", "muafiyet", "bakım yardımı",
-        "ücretsiz seyahat", "özel eğitim", "malulen emekl", "çalışma gücü kaybı",
-    )
-    return any(keyword in text for keyword in strong)
+    return any(keyword in text for keyword in STRONG_KEYWORDS)
 
 def _article_text(url):
     response = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT, allow_redirects=True)
@@ -163,26 +152,31 @@ def update_news():
 
     for source in sources:
         try:
-            for item in _feed_items(source):
+            feed_items = _feed_items(source)
+            is_disability_feed = "Engelli Yaşam" in source.get("name", "") or "Engelsiz" in source.get("name", "")
+            for item in feed_items:
                 item["id"] = _id(item)
                 if item["id"] in known or item["id"] in candidate_ids:
                     continue
                 published = _date(item.get("published_at"))
                 if published and published < now - timedelta(hours=LOOKBACK_HOURS):
                     continue
-                # Engelli Yaşam RSS'i doğrudan engelli haberleri verdiği için
-                # başlık/özet anahtar kelime filtresine takılmasın; diğer akışlarda
-                # Gemini'ye gereksiz içerik göndermemek için ön filtreyi koru.
-                is_disability_feed = "Engelli Yaşam" in source.get("name", "") or "Engelsiz" in source.get("name", "")
-                if is_disability_feed or _strong_relevance(item) or _relevant_candidate(item):
+                if is_disability_feed or _strong_relevance(item):
                     candidates.append(item)
                     candidate_ids.add(item["id"])
         except Exception as exc:
             print("Kaynak okunamadı:", source["name"], repr(exc))
 
+    candidates.sort(
+        key=lambda item: (
+            _strong_relevance(item),
+            _date(item.get("published_at")) or datetime.min.replace(tzinfo=timezone.utc),
+        ),
+        reverse=True,
+    )
+
     added = []
     failed = []
-    candidates.sort(key=lambda item: (_strong_relevance(item), _date(item.get("published_at")) or datetime.min.replace(tzinfo=timezone.utc)), reverse=True)
     for item in candidates[:MAX_AI_CANDIDATES]:
         try:
             article = _article_text(item["url"])
@@ -213,7 +207,12 @@ Kaynak metni:
             title = _clean(result.get("title"))
             if not summary or not title:
                 continue
-            added.append({"id": item["id"], "title": title[:180], "summary": summary[:900], "category": _clean(result.get("category"))[:50] or "Gündem", "source": item["source"], "url": item["url"], "published_at": item.get("published_at"), "created_at": now.isoformat()})
+            added.append({
+                "id": item["id"], "title": title[:180], "summary": summary[:900],
+                "category": _clean(result.get("category"))[:50] or "Gündem",
+                "source": item["source"], "url": item["url"],
+                "published_at": item.get("published_at"), "created_at": now.isoformat()
+            })
         except Exception as exc:
             print("Haber işlenemedi:", item.get("title"), repr(exc))
             failed.append(item)
