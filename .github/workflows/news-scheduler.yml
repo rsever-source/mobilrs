@@ -2,8 +2,8 @@ name: Engelli Haberleri Scheduler
 
 on:
   schedule:
-    # Test: 10 dakikada bir; saat başı yükünden kaçınmak için 7. dakikadan başlar.
-    - cron: "7-59/10 * * * *"
+    # Test: 5 dakikada bir; scheduler çalışması doğrulanınca 3 saate alınacak.
+    - cron: "2-59/5 * * * *"
   workflow_dispatch:
   push:
     branches:
