@@ -5,6 +5,7 @@ import re
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from html import unescape
+from urllib.parse import urljoin
 from xml.etree import ElementTree as ET
 
 import requests
@@ -79,8 +80,37 @@ def _feed_items(source):
         published = _text(node, ["pubDate", "published", "updated", "{*}published", "{*}updated"])
         pub = _date(published)
         if title and link:
-            items.append({"source": source["name"], "title": title, "url": link, "description": description, "published_at": pub.isoformat() if pub else None})
+            items.append({
+                "source": source["name"], "title": title, "url": link,
+                "description": description, "published_at": pub.isoformat() if pub else None
+            })
     return items
+
+def _html_items(source):
+    response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
+    response.raise_for_status()
+    soup = BeautifulSoup(response.text, "html.parser")
+    items = []
+    seen = set()
+    for a in soup.find_all("a", href=True):
+        title = _clean(a.get_text(" ", strip=True))
+        href = urljoin(source["url"], a.get("href", ""))
+        if not title or len(title) < 12 or href in seen:
+            continue
+        if "/ayrimcilikhatti/engelsiz-yasam/" not in href or href.rstrip("/") == source["url"].rstrip("/"):
+            continue
+        if href.startswith("https://www.aa.com.tr/"):
+            seen.add(href)
+            items.append({
+                "source": source["name"], "title": title[:300], "url": href,
+                "description": title, "published_at": None
+            })
+    return items
+
+def _source_items(source):
+    if source.get("kind") == "html":
+        return _html_items(source)
+    return _feed_items(source)
 
 def _strong_relevance(item):
     text = f"{item.get('title', '')} {item.get('description', '')}".lower()
@@ -150,11 +180,16 @@ def update_news():
             candidates.append(item)
             candidate_ids.add(item["id"])
 
+    source_counts = {}
     for source in sources:
         try:
-            feed_items = _feed_items(source)
-            is_disability_feed = "Engelli Yaşam" in source.get("name", "") or "Engelsiz" in source.get("name", "")
-            for item in feed_items:
+            source_items = _source_items(source)
+            source_counts[source["name"]] = len(source_items)
+            is_disability_feed = (
+                "Engelli Yaşam" in source.get("name", "")
+                or "Engelsiz" in source.get("name", "")
+            )
+            for item in source_items:
                 item["id"] = _id(item)
                 if item["id"] in known or item["id"] in candidate_ids:
                     continue
@@ -166,6 +201,9 @@ def update_news():
                     candidate_ids.add(item["id"])
         except Exception as exc:
             print("Kaynak okunamadı:", source["name"], repr(exc))
+
+    print("Kaynak kayıtları:", source_counts)
+    print("AI adayları:", len(candidates))
 
     candidates.sort(
         key=lambda item: (
@@ -220,7 +258,11 @@ Kaynak metni:
     merged = added + existing_items
     merged.sort(key=lambda item: item.get("published_at") or item.get("created_at") or "", reverse=True)
     failed_by_id = {item["id"]: item for item in failed}
-    result = {"updated_at": now.isoformat(), "items": merged[:MAX_ITEMS], "pending": list(failed_by_id.values())[:MAX_PENDING]}
+    result = {
+        "updated_at": now.isoformat(),
+        "items": merged[:MAX_ITEMS],
+        "pending": list(failed_by_id.values())[:MAX_PENDING],
+    }
     _save_json(NEWS_FILE, result)
     print(f"Yeni haber: {len(added)} | Toplam: {len(result['items'])} | Bekleyen: {len(result['pending'])}")
     return result
