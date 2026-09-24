@@ -8,7 +8,7 @@ on:
     paths:
       - .github/workflows/news-updater.yml
   schedule:
-    # Türkiye saatiyle yaklaşık 3 saatte bir.
+    # Türkiye saatiyle yaklaşık 3 saatte bir; ana branch üzerinden çalışır, haberleri cloud-run-migration'a yazar.
     - cron: "35 0,3,6,9,12,15,18,21 * * *"
 
 permissions:
