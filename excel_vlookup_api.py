@@ -254,6 +254,13 @@ button,input,select,textarea{font:inherit}.app{width:min(1180px,calc(100% - 48px
 <section id="home" class="page on"><div class="home">
 <div class="hero"><h1>Güncel ÖTV muaf araçlar</h1><p>Liste fiyatları ve hesaplanmış fiyatlar tek yerde. Uygun araçları marka ve paket bazında inceleyebilirsiniz.</p><div class="hero-stats"><div class="stat"><small>Uygun paket</small><b id="heroCount">—</b></div><div class="stat"><small>Marka</small><b id="heroBrands">—</b></div></div></div>
 <div class="section"><div class="section-head"><div></div><div id="heroTime" style="font-size:10px;color:var(--muted);text-align:right;white-space:nowrap">Son araştırma saati: —</div></div><div id="homeVehicles" class="vehicle-grid"></div><div class="more"><button class="primary" onclick="openPage(&quot;otv&quot;)">Tüm araçları gör →</button></div></div>
+<div class="news-section">
+  <div class="section-head">
+    <div><div class="news-kicker"><span class="news-kicker-dot"></span><h2>Güncel engelli haberleri</h2></div><p>Haklar, ÖTV, sosyal destek ve günlük yaşamdan seçilmiş gelişmeler</p></div>
+    <button class="secondary" onclick="openPage('news')">Tüm haberler →</button>
+  </div>
+  <div id="homeNews" class="news-grid"><div class="news-empty">Haberler yükleniyor…</div></div>
+</div>
 <div class="tools" id="helpers"><div class="section-head" onclick="toggleHelpers()" style="cursor:pointer"><div><h2>Yardımcılar</h2><p>Tek dokunuşla açabilirsiniz</p></div><div style="color:var(--blue);font-size:20px;font-weight:900">＋</div></div><div class="tool-grid"><div class="tool" onclick="openPage('kira')"><div class="tool-icon">₺</div><div><b>Kira Hesaplama</b><small>TÜFE ile kira artışını hesapla</small></div></div><div class="tool" onclick="openPage('excel')"><div class="tool-icon">X</div><div><b>Excel İşlemleri</b><small>Düşeyara, birleştirme ve pivot</small></div></div><div class="tool" onclick="openPage('pdfexcel')"><div class="tool-icon">PDF</div><div><b>PDF → Excel</b><small>PDF içeriğini Excel'e aktar</small></div></div></div></div>
 </div></section>
 <section id="news" class="page"><div class="page-wrap"><div class="page-head"><button class="back" onclick="openPage('home')">‹</button><h1>Güncel engelli haberleri</h1></div>
