@@ -14,6 +14,7 @@ NEWS_FILE = "news.json"
 SOURCES_FILE = "news_sources.json"
 MAX_ITEMS = 10
 MAX_PENDING = 30
+MAX_AI_CANDIDATES = 12
 LOOKBACK_HOURS = 168
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
 UA = "EngelliMe-NewsBot/1.0 (+https://engelli.me)"
@@ -86,6 +87,16 @@ def _relevant_candidate(item):
     text = f"{item.get('title', '')} {item.get('description', '')}".lower()
     return any(keyword in text for keyword in KEYWORDS)
 
+def _strong_relevance(item):
+    text = f"{item.get('title', '')} {item.get('description', '')}".lower()
+    strong = (
+        "engelli", "engelliler", "engelli birey", "engelli vatandaş",
+        "erişilebilirlik", "erişilebilir", "ekpss", "özel gereksinim",
+        "engelli aylığı", "evde bakım", "ötv", "muafiyet", "bakım yardımı",
+        "ücretsiz seyahat", "özel eğitim", "malulen emekl", "çalışma gücü kaybı",
+    )
+    return any(keyword in text for keyword in strong)
+
 def _article_text(url):
     response = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT, allow_redirects=True)
     response.raise_for_status()
@@ -146,7 +157,7 @@ def update_news():
     candidate_ids = set()
 
     for item in pending:
-        if item.get("id") and item["id"] not in known:
+        if item.get("id") and item["id"] not in known and _strong_relevance(item):
             candidates.append(item)
             candidate_ids.add(item["id"])
 
@@ -163,7 +174,7 @@ def update_news():
                 # başlık/özet anahtar kelime filtresine takılmasın; diğer akışlarda
                 # Gemini'ye gereksiz içerik göndermemek için ön filtreyi koru.
                 is_disability_feed = "Engelli Yaşam" in source.get("name", "") or "Engelsiz" in source.get("name", "")
-                if is_disability_feed or _relevant_candidate(item):
+                if is_disability_feed or _strong_relevance(item) or _relevant_candidate(item):
                     candidates.append(item)
                     candidate_ids.add(item["id"])
         except Exception as exc:
@@ -171,16 +182,21 @@ def update_news():
 
     added = []
     failed = []
-    for item in candidates[:MAX_PENDING]:
+    candidates.sort(key=lambda item: (_strong_relevance(item), _date(item.get("published_at")) or datetime.min.replace(tzinfo=timezone.utc)), reverse=True)
+    for item in candidates[:MAX_AI_CANDIDATES]:
         try:
             article = _article_text(item["url"])
             prompt = f"""Sen engelli.me için çalışan bir haber editörüsün.
 Yalnızca verilen kaynak metnindeki doğrulanabilir bilgileri kullan.
-Haber engelli bireyleri doğrudan veya açık biçimde dolaylı olarak ilgilendiriyorsa publish=true ver.
-Sadece genel haber olup engelli bireyler açısından somut bir etkisi olmayan içerikte publish=false ver.
-Başlık/özet anahtar kelime filtresine takılmış olabilecek ilgili haberleri de değerlendir; uygun haberi sırf başlığında "engelli" kelimesi geçmediği için eleme.
+Haber engelli bireylerin haklarını, gelir veya sosyal yardımlarını, bakımını, istihdamını,
+eğitimini, sağlığını, ulaşımını, erişilebilirliğini, araç/ÖTV durumunu veya ilgili mevzuatı
+somut biçimde etkiliyorsa publish=true ver.
+Genel ekonomi, siyaset, savaş, trafik veya gündem haberlerini yalnızca engelli bireyler
+üzerinde açık ve somut bir etkisi varsa yayınla; aksi halde publish=false ver.
+Önceliği doğrudan engelli bireyleri ilgilendiren haberlere ver.
 Özgün, kısa ve tarafsız Türkçe özet hazırla; kaynak metnini kopyalama.
-Özet 3-5 kısa cümle olsun. Yeni bilgi, yorum veya tahmin ekleme.
+Özet 3-5 kısa cümle olsun ve yalnızca kaynakta doğrulanabilen bilgileri içersin.
+Başlığı kaynağın anlamını koruyarak kısa ve doğal Türkçe yaz.
 Kategori: Engelli Hakları, ÖTV/Araç, Sosyal Yardım, Evde Bakım,
 EKPSS/İstihdam, Sağlık, Ulaşım, Erişilebilirlik veya Gündem.
 
