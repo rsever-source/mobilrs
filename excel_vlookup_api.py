@@ -3,7 +3,7 @@ from datetime import date
 from urllib.parse import urlparse
 
 import pandas as pd, pdfplumber, uvicorn
-from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Query
+from fastapi import BackgroundTasks, FastAPI, UploadFile, File, Form, HTTPException, Query
 from fastapi.responses import HTMLResponse, FileResponse, JSONResponse, Response
 from starlette.background import BackgroundTask
 
@@ -37,6 +37,20 @@ async def read_upload_limited(upload, max_size=MAX_FILE_SIZE):
 
 
 def check_extension(filename, allowed): return (filename or "").lower().endswith(allowed)
+
+def validate_file_signature(data, filename):
+    name=(filename or "").lower()
+    if name.endswith(".pdf"):
+        ok=data.startswith(b"%PDF")
+    elif name.endswith(".xlsx"):
+        ok=data.startswith(b"PK\\x03\\x04")
+    elif name.endswith(".xls"):
+        ok=data.startswith(b"\\xD0\\xCF\\x11\\xE0")
+    else:
+        ok=True
+    if not ok:
+        raise HTTPException(400,"Dosya türü içeriğiyle uyuşmuyor.")
+
 def normalize_column_name(v): return str(v).strip()
 
 
@@ -82,7 +96,7 @@ async def spark_tufe_guncelle(key:str=Query(...), source:str=Query(...), rate:fl
 async def kira_hesapla(mevcut_kira:float=Form(...), yenileme_ayi:int=Form(...)):
     if mevcut_kira <= 0 or not 1 <= yenileme_ayi <= 12: raise HTTPException(400,"Geçerli kira ve yenileme ayı gir.")
     try: tufe=get_current_tufe()
-    except Exception as e: raise HTTPException(503,f"Güncel TÜFE verisi alınamadı. {e}")
+    except Exception: raise HTTPException(503,"Güncel TÜFE verisi şu anda alınamadı.")
     rate=float(tufe["rate"]); ty=int(tufe["year"]); tm=int(tufe["month"]); period=str(tufe["period"]); source=str(tufe["source"])
     artis=mevcut_kira*rate/100; yeni=mevcut_kira+artis; ry=next_renewal_year(yenileme_ayi); target=previous_month(ry,yenileme_ayi); current=(ty,tm)
     if current == target:
@@ -98,7 +112,10 @@ async def kira_hesapla(mevcut_kira:float=Form(...), yenileme_ayi:int=Form(...)):
 async def api_otv(): return JSONResponse(get_otv_data())
 
 @app.post("/api/otv/yenile")
-async def api_otv_yenile(): return JSONResponse(refresh_otv_data(force=True))
+async def api_otv_yenile(background_tasks: BackgroundTasks):
+    current=load_otv_cache() or get_otv_data()
+    background_tasks.add_task(refresh_otv_data, False)
+    return JSONResponse(current, status_code=202)
 
 @app.get("/", response_class=HTMLResponse)
 async def index():
@@ -123,7 +140,7 @@ async def excel_motor(komut:str=Form(...), file1:UploadFile=File(...), file2:Upl
     out=None
     try:
         if not check_extension(file1.filename,(".xlsx",".xls")) or not check_extension(file2.filename,(".xlsx",".xls")): raise HTTPException(400,"Geçerli Excel dosyaları seç.")
-        a=pd.read_excel(io.BytesIO(await read_upload_limited(file1))); b=pd.read_excel(io.BytesIO(await read_upload_limited(file2)))
+        d1=await read_upload_limited(file1); d2=await read_upload_limited(file2); validate_file_signature(d1,file1.filename); validate_file_signature(d2,file2.filename); a=pd.read_excel(io.BytesIO(d1)); b=pd.read_excel(io.BytesIO(d2))
         if a.empty or b.empty: raise HTTPException(400,"Excel dosyalarında veri bulunamadı.")
         a.columns=[normalize_column_name(c) for c in a.columns]; b.columns=[normalize_column_name(c) for c in b.columns]; k=komut.lower().strip()
         if any(w in k for w in ["düşeyara","duseyara","vlookup","birleştir","birlestir","merge","eşleştir","eslestir"]):
@@ -142,7 +159,7 @@ async def excel_motor(komut:str=Form(...), file1:UploadFile=File(...), file2:Upl
         raise
     except Exception as e:
         if out: delete_file(out)
-        raise HTTPException(500,f"Excel Hatası: {e}")
+        raise HTTPException(500,"Excel işlemi sırasında beklenmeyen bir hata oluştu.")
 
 
 @app.post("/pdf-excel-islem")
@@ -151,7 +168,8 @@ async def pdf_excel_motor(pdf_file:UploadFile=File(...)):
     try:
         if not check_extension(pdf_file.filename,(".pdf",)): raise HTTPException(400,"Geçerli bir PDF dosyası seç.")
         rows=[]
-        with pdfplumber.open(io.BytesIO(await read_upload_limited(pdf_file))) as pdf:
+        pdf_data=await read_upload_limited(pdf_file); validate_file_signature(pdf_data,pdf_file.filename)
+        with pdfplumber.open(io.BytesIO(pdf_data)) as pdf:
             for page in pdf.pages:
                 tables=page.extract_tables()
                 if tables:
@@ -171,7 +189,7 @@ async def pdf_excel_motor(pdf_file:UploadFile=File(...)):
         raise
     except Exception as e:
         if out: delete_file(out)
-        raise HTTPException(500,f"PDF → Excel Hatası: {e}")
+        raise HTTPException(500,"PDF → Excel işlemi sırasında beklenmeyen bir hata oluştu.")
 
 
 HOME_HTML = r'''<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>ÖTV Muaf Araçlar ve Kira Hesaplama | Engelli.me</title><meta name="description" content="Güncel ÖTV muaf araç liste fiyatları ve hesaplanmış fiyatlar. TÜFE ile kira hesaplama, Excel ve PDF → Excel araçları."><meta name="robots" content="index,follow"><link rel="canonical" href="https://engelli.me/"><meta property="og:title" content="ÖTV Muaf Araçlar ve Kira Hesaplama | Engelli.me"><meta property="og:description" content="Güncel ÖTV muaf araç liste fiyatları ve hesaplanmış fiyatlar."><meta property="og:url" content="https://engelli.me/"><meta property="og:type" content="website">

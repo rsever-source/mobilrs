@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 
 LIMIT_2026 = 2_873_900
 MIN_LOCALITY = 40.0
+OTV_REFRESH_LOCK = threading.Lock()
 CACHE_FILE = "otv_cache.json"
 TZ = ZoneInfo("Europe/Istanbul")
 
@@ -556,6 +557,15 @@ def _load():
 def refresh_otv_data(force=False):
     now = datetime.now(TZ)
     old = _load()
+    if not force and old and old.get("vehicles"):
+        try:
+            stamp=datetime.strptime(str(old.get("updated_at","")), "%d.%m.%Y %H:%M").replace(tzinfo=TZ)
+            if (now-stamp).total_seconds() < 12*60*60:
+                return old
+        except Exception:
+            pass
+    if not OTV_REFRESH_LOCK.acquire(blocking=False):
+        return old or {}
     try:
         ministry_url, pdf_bytes = _find_ministry_pdf()
         candidates = _eligible_packages(_parse_ministry_pdf(pdf_bytes))
@@ -625,6 +635,8 @@ def refresh_otv_data(force=False):
             old["refresh_failed_at"] = now.strftime("%d.%m.%Y %H:%M")
             return old
         raise
+    finally:
+        OTV_REFRESH_LOCK.release()
 
 
 def get_otv_data():
