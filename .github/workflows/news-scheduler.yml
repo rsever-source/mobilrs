@@ -2,9 +2,14 @@ name: Engelli Haberleri Scheduler
 
 on:
   schedule:
-    # Geçici test: 10 dakikada bir. Scheduler doğrulanınca 3 saate alınacak.
-    - cron: "*/10 * * * *"
+    # Test: 10 dakikada bir; saat başı yükünden kaçınmak için 7. dakikadan başlar.
+    - cron: "7-59/10 * * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/news-scheduler.yml
 
 permissions:
   contents: write
