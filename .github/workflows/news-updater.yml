@@ -7,9 +7,6 @@ on:
       - main
     paths:
       - .github/workflows/news-updater.yml
-  schedule:
-    # Geçici test: 10 dakikada bir çalışır. Sistem doğrulanınca 3 saate alınacak.
-    - cron: "*/10 * * * *"
 
 permissions:
   contents: write
