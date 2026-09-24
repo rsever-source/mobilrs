@@ -1,5 +1,102 @@
 {
-  "updated_at": "2026-09-24T20:33:53.532952+00:00",
+  "updated_at": "2026-09-24T20:48:09.327217+00:00",
   "items": [],
-  "pending": []
+  "pending": [
+    {
+      "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+      "title": "Görme engelli hafızlar umrede Kabe'ye dokunmanın ve manevi atmosferin heyecanını yaşadı",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/gorme-engelli-hafizlar-umrede-kabeye-dokunmanin-ve-manevi-atmosferin-heyecanini-yasadi/1832536",
+      "description": "Görme engelli hafızlar umrede Kabe'ye dokunmanın ve manevi atmosferin heyecanını yaşadı",
+      "published_at": null,
+      "id": "5623e2afd2f6712ba403"
+    },
+    {
+      "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+      "title": "Burdur'da gönüllü öğrenciler özel gereksinimli bireylerin kişisel bakımını yapıyor",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/burdurda-gonullu-ogrenciler-ozel-gereksinimli-bireylerin-kisisel-bakimini-yapiyor/1832487",
+      "description": "Burdur'da gönüllü öğrenciler özel gereksinimli bireylerin kişisel bakımını yapıyor",
+      "published_at": null,
+      "id": "b456c94809f5cf234b15"
+    },
+    {
+      "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+      "title": "Engelli yüzücüler aynı havuzda hedefe kulaç atıyor",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/engelli-yuzuculer-ayni-havuzda-hedefe-kulac-atiyor/1832413",
+      "description": "Engelli yüzücüler aynı havuzda hedefe kulaç atıyor",
+      "published_at": null,
+      "id": "8c17affd20bb01936e73"
+    },
+    {
+      "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+      "title": "Türkiye'nin ilk işitme engelli müzik grubu \"seslerini\" Türkiye'ye duyurmak istiyor",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/turkiyenin-ilk-isitme-engelli-muzik-grubu-seslerini-turkiyeye-duyurmak-istiyor/1832394",
+      "description": "Türkiye'nin ilk işitme engelli müzik grubu \"seslerini\" Türkiye'ye duyurmak istiyor",
+      "published_at": null,
+      "id": "f1920cbc05f84c81b117"
+    },
+    {
+      "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+      "title": "Tekirdağ'da engelli vatandaşlar için plajlarda erişilebilirlik çalışması",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/tekirdagda-engelli-vatandaslar-icin-plajlarda-erisilebilirlik-calismasi/1832353",
+      "description": "Tekirdağ'da engelli vatandaşlar için plajlarda erişilebilirlik çalışması",
+      "published_at": null,
+      "id": "aef076cc3eafedcb58ee"
+    },
+    {
+      "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+      "title": "Devlet korumasındaki engelli gençler gönüllü annelerin açtığı kafede çalışarak hayata hazırlanıyor",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/devlet-korumasindaki-engelli-gencler-gonullu-annelerin-actigi-kafede-calisarak-hayata-hazirlaniyor/1832352",
+      "description": "Devlet korumasındaki engelli gençler gönüllü annelerin açtığı kafede çalışarak hayata hazırlanıyor",
+      "published_at": null,
+      "id": "9ea625783400024f1634"
+    },
+    {
+      "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+      "title": "İşitme engelli Alparslan biyonik kulak sayesinde daha rahat duymaya başladı",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/isitme-engelli-alparslan-biyonik-kulak-sayesinde-daha-rahat-duymaya-basladi-/1832311",
+      "description": "İşitme engelli Alparslan biyonik kulak sayesinde daha rahat duymaya başladı",
+      "published_at": null,
+      "id": "3ec5ce973eec5ecd57bf"
+    },
+    {
+      "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+      "title": "Görme engelli Beyza Zelal, \"kusursuz kulağı\" sayesinde hayali olan konservatuvara yerleşti",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/gorme-engelli-beyza-zelal-kusursuz-kulagi-sayesinde-hayali-olan-konservatuvara-yerlesti/1832296",
+      "description": "Görme engelli Beyza Zelal, \"kusursuz kulağı\" sayesinde hayali olan konservatuvara yerleşti",
+      "published_at": null,
+      "id": "6fe14380a6a06146dfb8"
+    },
+    {
+      "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+      "title": "Burdur'da Down sendromlu 28 yaşındaki Elif Aldemir için temsili düğün yapıldı",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/burdurda-down-sendromlu-28-yasindaki-elif-aldemir-icin-temsili-dugun-yapildi/1832596",
+      "description": "Burdur'da Down sendromlu 28 yaşındaki Elif Aldemir için temsili düğün yapıldı",
+      "published_at": null,
+      "id": "c1f820d08d79b179a265"
+    },
+    {
+      "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+      "title": "Mayın patlaması sonucu ayağını kaybeden Suriyeli kendi protezini üretti",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/-mayin-patlamasi-sonucu-ayagini-kaybeden-suriyeli-kendi-protezini-uretirken-ihtiyac-sahiplerine-de-umut-oldu/1832514",
+      "description": "Mayın patlaması sonucu ayağını kaybeden Suriyeli kendi protezini üretti",
+      "published_at": null,
+      "id": "c9105a038f9a44de7d63"
+    },
+    {
+      "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+      "title": "Milli sporcu Defne Kurt, Avrupa Para Yüzme Şampiyonası'nda 4'üncü altın madalyasını kazandı",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/milli-sporcu-defne-kurt-avrupa-para-yuzme-sampiyonasinda-4uncu-altin-madalyasini-kazandi/1832480",
+      "description": "Milli sporcu Defne Kurt, Avrupa Para Yüzme Şampiyonası'nda 4'üncü altın madalyasını kazandı",
+      "published_at": null,
+      "id": "b1fdef202cc25c272b27"
+    },
+    {
+      "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+      "title": "Su korkusunu yenmek için yüzmeye başlayan otizmli Alper, milli takım yolunda",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/su-korkusunu-yenmek-icin-yuzmeye-baslayan-otizmli-alper-milli-takim-yolunda/1832473",
+      "description": "Su korkusunu yenmek için yüzmeye başlayan otizmli Alper, milli takım yolunda",
+      "published_at": null,
+      "id": "0daadcb030790b44ee13"
+    }
+  ]
 }
