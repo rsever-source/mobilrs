@@ -2,7 +2,7 @@ name: RDV Asistan Health Monitor
 
 on:
   schedule:
-    - cron: '15 */3 * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
   push:
     paths:
@@ -111,7 +111,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           TS=$(TZ=Europe/Istanbul date '+%d.%m.%Y %H:%M')
-          BODY="@rsever-source\n\nRDV Asistan 3 saatlik sağlık kontrolünde hata bulundu.\n\n"
+          BODY="@rsever-source\n\nRDV Asistan 5 dakikalık sağlık kontrolünde hata bulundu.\n\n"
           if [ -f /tmp/failure.txt ]; then BODY="$BODY$(cat /tmp/failure.txt)"; else BODY="$BODY- Sağlık kontrolü beklenmedik şekilde başarısız oldu."; fi
           BODY="$BODY\n\nKontrol zamanı: $TS (Türkiye)\nCanlı site: https://rdvsever.onrender.com"
           existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search 'RDV Asistan sağlık alarmı in:title' --json number --jq '.[0].number // empty')
