@@ -3,15 +3,14 @@ name: Engelli Haberleri Güncelle
 on:
   workflow_dispatch:
   schedule:
-    # Türkiye saatiyle 13:20, 16:15 ve 22:15 (UTC+3).
-    - cron: "20 10,13,19 * * *"
+    # Türkiye saatiyle yaklaşık 00:20, 03:20, 06:20, 09:20, 12:20, 15:20, 18:20, 21:20.
+    - cron: "20 0,3,6,9,12,15,18,21 * * *"
 
 permissions:
   contents: write
 
 jobs:
   update-news:
-    if: ${{ secrets.GEMINI_API_KEY != '' }}
     runs-on: ubuntu-latest
     steps:
       - name: Depoyu al
