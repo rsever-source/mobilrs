@@ -2,7 +2,7 @@ name: Engelli Haberleri Otomatik Güncelle
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '17 * * * *'
   workflow_dispatch:
   push:
     branches:
