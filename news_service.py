@@ -14,7 +14,7 @@ NEWS_FILE = "news.json"
 SOURCES_FILE = "news_sources.json"
 MAX_ITEMS = 10
 MAX_PENDING = 30
-LOOKBACK_HOURS = 72
+LOOKBACK_HOURS = 168
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
 UA = "EngelliMe-NewsBot/1.0 (+https://engelli.me)"
 TIMEOUT = 20
@@ -24,7 +24,9 @@ KEYWORDS = (
     "engelli aylığı", "evde bakım", "erişilebilir", "ekpss",
     "özel eğitim", "özel gereksinim", "ötv", "muafiyet",
     "sosyal yardım", "malulen emekl", "çalışma gücü kaybı",
-    "bakım yardımı", "ücretsiz seyahat", "erişilebilirlik",
+    "bakım yardımı", "ücretsiz seyahat", "erişilebilirlik", "hak", "yardım",
+    "maaş", "istihdam", "çalışma", "ulaşım", "mevzuat", "kanun", "bakım",
+    "özel gereksinimli",
 )
 
 def _load_json(path, default):
@@ -157,7 +159,11 @@ def update_news():
                 published = _date(item.get("published_at"))
                 if published and published < now - timedelta(hours=LOOKBACK_HOURS):
                     continue
-                if _relevant_candidate(item):
+                # Engelli Yaşam RSS'i doğrudan engelli haberleri verdiği için
+                # başlık/özet anahtar kelime filtresine takılmasın; diğer akışlarda
+                # Gemini'ye gereksiz içerik göndermemek için ön filtreyi koru.
+                is_disability_feed = "Engelli Yaşam" in source.get("name", "") or "Engelsiz" in source.get("name", "")
+                if is_disability_feed or _relevant_candidate(item):
                     candidates.append(item)
                     candidate_ids.add(item["id"])
         except Exception as exc:
@@ -170,7 +176,9 @@ def update_news():
             article = _article_text(item["url"])
             prompt = f"""Sen engelli.me için çalışan bir haber editörüsün.
 Yalnızca verilen kaynak metnindeki doğrulanabilir bilgileri kullan.
-Haber engelli bireyleri doğrudan ilgilendirmiyorsa publish=false ver.
+Haber engelli bireyleri doğrudan veya açık biçimde dolaylı olarak ilgilendiriyorsa publish=true ver.
+Sadece genel haber olup engelli bireyler açısından somut bir etkisi olmayan içerikte publish=false ver.
+Başlık/özet anahtar kelime filtresine takılmış olabilecek ilgili haberleri de değerlendir; uygun haberi sırf başlığında "engelli" kelimesi geçmediği için eleme.
 Özgün, kısa ve tarafsız Türkçe özet hazırla; kaynak metnini kopyalama.
 Özet 3-5 kısa cümle olsun. Yeni bilgi, yorum veya tahmin ekleme.
 Kategori: Engelli Hakları, ÖTV/Araç, Sosyal Yardım, Evde Bakım,
