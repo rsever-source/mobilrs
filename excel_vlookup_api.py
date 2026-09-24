@@ -1,4 +1,4 @@
-import io, os, uuid
+import io, json, os, uuid
 from datetime import date
 from urllib.parse import urlparse
 
@@ -117,6 +117,29 @@ async def api_otv_yenile(background_tasks: BackgroundTasks):
     background_tasks.add_task(refresh_otv_data, False)
     return JSONResponse(current, status_code=202)
 
+@app.get("/api/news")
+async def api_news():
+    try:
+        with open("news.json", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception:
+        data = {"updated_at": None, "items": []}
+    items = []
+    for item in data.get("items", [])[:10]:
+        url = str(item.get("url", "")).strip()
+        if not url.startswith(("https://", "http://")):
+            continue
+        items.append({
+            "id": str(item.get("id", "")),
+            "title": str(item.get("title", ""))[:180],
+            "summary": str(item.get("summary", ""))[:900],
+            "category": str(item.get("category", "Gündem"))[:50],
+            "source": str(item.get("source", ""))[:100],
+            "url": url,
+            "published_at": item.get("published_at"),
+        })
+    return JSONResponse({"updated_at": data.get("updated_at"), "items": items})
+
 @app.get("/", response_class=HTMLResponse)
 async def index():
     initial = load_otv_cache() or {}
@@ -199,6 +222,26 @@ HOME_HTML = r'''<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta
 button,input,select,textarea{font:inherit}.app{width:min(1180px,calc(100% - 48px));margin:28px auto 48px;background:var(--white);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
 .header{display:flex;align-items:center;justify-content:space-between;padding:22px 30px;border-bottom:1px solid var(--line);background:#fff}.brand{font-size:24px;font-weight:850;letter-spacing:-.6px}.brand span{color:var(--blue)}.header-note{font-size:12px;color:var(--muted)}
 .page{display:none}.page.on{display:block}.home{padding:30px}.hero{padding:30px;border:1px solid #dce6f6;border-radius:24px;background:linear-gradient(135deg,#f8fbff,#edf4ff)}.eyebrow{font-size:12px;font-weight:800;color:var(--blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:9px}.hero h1{margin:0;font-size:36px;line-height:1.08;letter-spacing:-1.2px}.hero p{margin:10px 0 0;max-width:680px;color:var(--muted);font-size:15px;line-height:1.55}.hero-stats{display:flex;gap:10px;margin-top:24px}.stat{background:#fff;border:1px solid #dfe7f3;border-radius:16px;padding:13px 17px;min-width:150px}.stat small{display:block;color:var(--muted);font-size:11px}.stat b{display:block;margin-top:4px;font-size:22px;letter-spacing:-.3px}.section{margin-top:28px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:12px}.section-head h2{margin:0;font-size:21px;letter-spacing:-.4px}.section-head p{margin:0;color:var(--muted);font-size:12px}
+.news-section{margin-top:26px;padding:20px;border:1px solid #e1e7f0;border-radius:22px;background:linear-gradient(145deg,#fbfcff,#f5f8fc)}
+.news-section .section-head{margin-bottom:14px}.news-kicker{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.news-kicker-dot{width:8px;height:8px;border-radius:50%;background:#e04b59;box-shadow:0 0 0 5px #fdecef}
+.news-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.news-card{display:flex;flex-direction:column;min-width:0;border:1px solid #e0e6ef;border-radius:17px;background:#fff;padding:16px;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.news-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(20,32,55,.07);border-color:#d2dbe9}
+.news-card .news-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.news-tag{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;background:#edf4ff;color:var(--blue);font-size:10px;font-weight:850;white-space:nowrap}
+.news-date{font-size:10px;color:var(--muted);white-space:nowrap}
+.news-card h3{margin:0;font-size:16px;line-height:1.3;letter-spacing:-.2px}
+.news-card h3 a{color:var(--ink);text-decoration:none}.news-card h3 a:hover{text-decoration:underline}
+.news-summary{margin:9px 0 13px;color:#596579;font-size:12px;line-height:1.55;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden}
+.news-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:11px;border-top:1px solid #edf0f4}
+.news-source{min-width:0;color:var(--muted);font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.news-source b{color:#465268}.news-link{flex:0 0 auto;color:var(--blue);font-size:11px;font-weight:850;text-decoration:none}.news-link:hover{text-decoration:underline}
+.news-empty{grid-column:1/-1;border:1px dashed #d7dee9;border-radius:15px;padding:18px;text-align:center;color:var(--muted);font-size:12px;background:#fff}
+.news-archive-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.news-refresh{font-size:10px;color:var(--muted)}
+.news-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(max-width:640px){.news-section{padding:15px;border-radius:19px}.news-grid,.news-list{grid-template-columns:1fr}.news-card{padding:15px}.news-card h3{font-size:15px}.news-summary{font-size:12px}.news-date{display:none}}
+
 .vehicle-grid{display:grid;grid-template-columns:repeat(2,minmax(0,500px));justify-content:center;gap:16px}.vehicle-card{border:1px solid var(--line);border-radius:14px;background:#fff;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0}.vehicle-card .vehicle-info{min-width:0}.vehicle-card .brandline{font-size:10px;color:var(--muted);font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.vehicle-card h3{margin:4px 0 3px;font-size:18px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.vehicle-card .trim{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.vehicle-card .price-line{flex:0 0 auto;text-align:right}.vehicle-card .price-label{font-size:10px;color:var(--muted);white-space:nowrap}.vehicle-card .price{font-size:18px;font-weight:850;white-space:nowrap}.vehicle-card .arrow{display:none}
 .more{display:flex;justify-content:center;margin-top:22px}.primary,.secondary{border:0;border-radius:12px;padding:12px 17px;font-weight:800;cursor:pointer}.primary{background:var(--blue);color:#fff}.primary:hover{background:var(--blue-dark)}.secondary{background:var(--soft-blue);color:var(--blue)}
 .tools{margin-top:30px}.tool-grid{display:none;grid-template-columns:repeat(3,1fr);gap:12px}.tools.open .tool-grid{display:grid}.tool{display:flex;align-items:center;gap:13px;border:1px solid var(--line);border-radius:16px;padding:17px;background:#fff;cursor:pointer}.tool-icon{width:42px;height:42px;flex:0 0 42px;border-radius:12px;background:var(--soft-blue);display:grid;place-items:center;color:var(--blue);font-weight:900}.tool b{font-size:14px}.tool small{display:block;margin-top:3px;color:var(--muted);font-size:11px}
@@ -213,6 +256,9 @@ button,input,select,textarea{font:inherit}.app{width:min(1180px,calc(100% - 48px
 <div class="section"><div class="section-head"><div></div><div id="heroTime" style="font-size:10px;color:var(--muted);text-align:right;white-space:nowrap">Son araştırma saati: —</div></div><div id="homeVehicles" class="vehicle-grid"></div><div class="more"><button class="primary" onclick="openPage(&quot;otv&quot;)">Tüm araçları gör →</button></div></div>
 <div class="tools" id="helpers"><div class="section-head" onclick="toggleHelpers()" style="cursor:pointer"><div><h2>Yardımcılar</h2><p>Tek dokunuşla açabilirsiniz</p></div><div style="color:var(--blue);font-size:20px;font-weight:900">＋</div></div><div class="tool-grid"><div class="tool" onclick="openPage('kira')"><div class="tool-icon">₺</div><div><b>Kira Hesaplama</b><small>TÜFE ile kira artışını hesapla</small></div></div><div class="tool" onclick="openPage('excel')"><div class="tool-icon">X</div><div><b>Excel İşlemleri</b><small>Düşeyara, birleştirme ve pivot</small></div></div><div class="tool" onclick="openPage('pdfexcel')"><div class="tool-icon">PDF</div><div><b>PDF → Excel</b><small>PDF içeriğini Excel'e aktar</small></div></div></div></div>
 </div></section>
+<section id="news" class="page"><div class="page-wrap"><div class="page-head"><button class="back" onclick="openPage('home')">‹</button><h1>Güncel engelli haberleri</h1></div>
+<div class="panel summary"><div class="news-archive-head"><b>Son 10 haber</b><span id="newsUpdated" class="news-refresh">Güncelleniyor…</span></div><div id="newsChips" class="chips"></div></div>
+<div id="newsList" class="news-list"><div class="news-empty">Haberler yükleniyor…</div></div></div></section>
 <section id="otv" class="page"><div class="page-wrap"><div class="page-head"><button class="back" onclick="openPage('home')">‹</button><h1>ÖTV muaf araçlar</h1></div><div class="panel summary"><b id="otvSummary">Yükleniyor…</b><div class="note">2026 üst limit: <b id="otvLimit">—</b> · Yerli katkı oranı en az %40.</div></div><div id="otvChips" class="chips"></div><div id="otvList" class="list"></div></div></section>
 <section id="kira" class="page"><div class="page-wrap"><div class="page-head"><button class="back" onclick="openPage('home')">‹</button><h1>Kira Hesaplama</h1></div><div class="panel"><form onsubmit="kiraHesapla(event)"><label class="field">Mevcut kira</label><input id="mevcut-kira" class="input" type="number" min="1" step=".01" placeholder="Örn: 12000" required><label class="field">Kira yenileme ayı</label><select id="yenileme-ayi" required><option value="">Ay seç</option><option value="1">Ocak</option><option value="2">Şubat</option><option value="3">Mart</option><option value="4">Nisan</option><option value="5">Mayıs</option><option value="6">Haziran</option><option value="7">Temmuz</option><option value="8">Ağustos</option><option value="9">Eylül</option><option value="10">Ekim</option><option value="11">Kasım</option><option value="12">Aralık</option></select><button id="kira-btn" class="btn">Hesapla</button></form><div id="kira-result" class="result"></div></div></div></section>
 <section id="excel" class="page"><div class="page-wrap"><div class="page-head"><button class="back" onclick="openPage('home')">‹</button><h1>Excel İşlemleri</h1></div><div class="panel"><form action="/excel-islem" method="post" enctype="multipart/form-data"><div class="filebox">＋ 1. Excel (Ana Dosya)<input type="file" name="file1" accept=".xlsx,.xls" required></div><div class="filebox">＋ 2. Excel (Referans Dosyası)<input type="file" name="file2" accept=".xlsx,.xls" required></div><label class="field">İşlem</label><textarea name="komut" placeholder="Örn: Dosyaları Musteri_ID sütunundan düşeyara yap." required></textarea><button class="btn">Excel işlemini başlat</button></form></div></div></section>
@@ -220,6 +266,15 @@ button,input,select,textarea{font:inherit}.app{width:min(1180px,calc(100% - 48px
 <footer class="footer">Engelli.me · Güncel veriler resmi kaynaklardan kontrol edilir.</footer><button id="bottomHome" class="bottom-home" onclick="openPage('home')">⌂ Ana Sayfa</button></main>
 <script>
 let otvData=/*INITIAL_OTV_DATA*/{},activeBrand=null;if(!otvData.vehicles)otvData={vehicles:[],limit:2873900};
+let newsData={items:[],updated_at:null},activeNewsCategory=null;
+function esc(v){return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
+function safeUrl(v){let u=String(v||'').trim();return /^https?:\/\//i.test(u)?u:''}
+function newsDate(v){if(!v)return '';try{return new Date(v).toLocaleDateString('tr-TR',{day:'2-digit',month:'short',year:'numeric'})}catch(e){return ''}}
+function newsCard(item){let u=safeUrl(item.url);let title=esc(item.title),summary=esc(item.summary),source=esc(item.source||'Kaynak belirtilmemiş'),cat=esc(item.category||'Gündem'),dt=esc(newsDate(item.published_at));return '<article class="news-card"><div class="news-meta"><span class="news-tag">'+cat+'</span><span class="news-date">'+dt+'</span></div><h3>'+(u?'<a href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">'+title+'</a>':title)+'</h3><p class="news-summary">'+summary+'</p><div class="news-bottom"><span class="news-source">Kaynak: <b>'+source+'</b></span>'+(u?'<a class="news-link" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">Habere Git ↗</a>':'')+'</div></article>'}
+function newsCategories(){return [...new Set(newsData.items.map(x=>x.category).filter(Boolean))]}
+function renderNews(){let items=newsData.items||[],filtered=activeNewsCategory?items.filter(x=>x.category===activeNewsCategory):items;let home=document.getElementById('homeNews');if(home){let homeItems=items.slice(0,5);home.innerHTML=homeItems.length?homeItems.map(newsCard).join(''):'<div class="news-empty">Şu anda yayınlanacak güncel engelli haberi bulunamadı.</div>'}let chips=document.getElementById('newsChips');if(chips){let cats=newsCategories();chips.innerHTML=['Tümü',...cats].map(c=>'<button class="chip '+((c==='Tümü'&&!activeNewsCategory)||c===activeNewsCategory?'on':'')+'" data-news-cat="'+esc(c)+'">'+esc(c)+'</button>').join('');chips.querySelectorAll('.chip').forEach(btn=>btn.addEventListener('click',()=>{activeNewsCategory=btn.dataset.newsCat==='Tümü'?null:btn.dataset.newsCat;renderNews()}))}let list=document.getElementById('newsList');if(list){list.innerHTML=filtered.slice(0,10).map(newsCard).join('')||'<div class="news-empty">Bu kategoride haber bulunamadı.</div>'}let updated=document.getElementById('newsUpdated');if(updated)updated.textContent=newsData.updated_at?'Son güncelleme: '+newsDate(newsData.updated_at):'Henüz güncelleme yok'}
+async function loadNews(){try{let r=await fetch('/api/news?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('news');newsData=await r.json();renderNews()}catch(e){let home=document.getElementById('homeNews'),list=document.getElementById('newsList');if(home)home.innerHTML='<div class="news-empty">Haberler şu anda alınamadı.</div>';if(list)list.innerHTML='<div class="news-empty">Haberler şu anda alınamadı.</div>'}}
+
 function openPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));document.getElementById(id).classList.add('on');let bh=document.getElementById('bottomHome');if(bh)bh.style.setProperty('display',id==='home'?'none':'block','important');scrollTo(0,0);if(id==='otv')renderOTV()}
 function tl(v){return Number(v||0).toLocaleString('tr-TR')+' ₺'}
 function otvRateFor(v){let p=Number(v.price||0),b=(v.brand||'').toUpperCase(),m=(v.model||'').toUpperCase();if(!p)return null;let solve=(rules)=>{for(let [r,min,max] of rules){let base=p/1.20/(1+r);if(base>min&&(max==null||base<=max))return r}return null};if(b==='TOGG')return solve([[.25,0,1650000],[.55,1650000,null]]);if(b==='TOYOTA'&&m.includes('C-HR'))return solve([[.70,0,1250000],[.80,1250000,null]]);if(b==='TOYOTA'&&m.includes('COROLLA'))return solve([[.75,0,850000],[.80,850000,1100000],[.90,1100000,1650000],[1.00,1650000,null]]);if(b==='FIAT'&&m.includes('ULYSSE'))return solve([[1.50,0,1650000],[1.70,1650000,null]]);if(b==='FIAT'&&m.includes('EGEA'))return solve([[.75,0,850000],[.80,850000,1100000],[.90,1100000,1650000],[1.00,1650000,null]])||solve([[.70,0,650000],[.75,650000,900000],[.80,900000,1100000],[.90,1100000,null]]);return solve([[.70,0,650000],[.75,650000,900000],[.80,900000,1100000],[.90,1100000,null]])}
@@ -237,7 +292,7 @@ async function loadOTV(){try{let r=await fetch('/api/otv',{cache:'no-store'});ot
 function otvNeedsRefresh(){try{let s=String(otvData.updated_at||'').trim();let m=s.match(/^(\d{2})\.(\d{2})\.(\d{4}) (\d{2}):(\d{2})$/);if(!m)return true;let dt=new Date(Number(m[3]),Number(m[2])-1,Number(m[1]),Number(m[4]),Number(m[5]));return Date.now()-dt.getTime()>=43200000}catch(e){return true}}
 async function triggerOTVBackgroundRefresh(){if(!otvNeedsRefresh())return;try{await fetch('/api/otv/yenile',{method:'POST',keepalive:true});let r=await fetch('/api/otv?ts='+Date.now(),{cache:'no-store'});if(r.ok){otvData=await r.json();renderHome()}}catch(e){}}
 async function kiraHesapla(e){e.preventDefault();let b=document.getElementById('kira-btn'),res=document.getElementById('kira-result');b.disabled=true;b.textContent='Hesaplanıyor...';res.style.display='block';res.innerHTML='Güncel TÜFE kontrol ediliyor...';try{let body=new URLSearchParams();body.append('mevcut_kira',document.getElementById('mevcut-kira').value);body.append('yenileme_ayi',document.getElementById('yenileme-ayi').value);let r=await fetch('/kira-hesapla',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body});let d=await r.json();if(!r.ok)throw Error(d.detail||'Hesaplama yapılamadı.');res.innerHTML='<div class="note" style="text-align:center">12 aylık ortalama TÜFE</div><div class="big">%'+d.oran+'</div><div class="note" style="text-align:center">Yeni kira</div><div class="big">'+d.yeni_kira+'</div><div class="note">'+d.durum+'</div>'}catch(x){res.innerHTML='<div class="note">'+x.message+'</div>'}finally{b.disabled=false;b.textContent='Hesapla'}}
-renderHome();loadOTV();setTimeout(triggerOTVBackgroundRefresh,800);
+renderHome();loadOTV();loadNews();setTimeout(triggerOTVBackgroundRefresh,800);
 </script></body></html>'''
 
 
