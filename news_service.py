@@ -17,7 +17,7 @@ MAX_ITEMS = 10
 MAX_PENDING = 30
 MAX_AI_CANDIDATES = 12
 LOOKBACK_HOURS = 168
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
 UA = "EngelliMe-NewsBot/1.0 (+https://engelli.me)"
 TIMEOUT = 20
 AI_TIMEOUT = 60
@@ -131,7 +131,6 @@ def _gemini(prompt):
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
-            "temperature": 0.2,
             "maxOutputTokens": 600,
             "responseMimeType": "application/json",
             "responseSchema": {
