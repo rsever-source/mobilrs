@@ -2,16 +2,10 @@ name: Engelli Haberleri Güncelle
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - .github/workflows/news-updater.yml
   schedule:
-    # Türkiye saatiyle 09:35, 14:03 ve 21:35 (UTC+3).
-    - cron: "35 6 * * *
+    - cron: "35 6 * * *"
     - cron: "3 11 * * *"
-    - cron: "35 18 * * *""
+    - cron: "35 18 * * *"
 
 permissions:
   contents: write
@@ -23,19 +17,25 @@ jobs:
       - name: Haber branch'ini al
         uses: actions/checkout@v4
         with:
+          repository: rsever-source/mobilrs
           ref: cloud-run-migration
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Python kurulumu
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
       - name: Bağımlılıkları kur
         run: pip install requests beautifulsoup4
+
       - name: Haberleri Gemini ile güncelle
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: gemini-2.5-flash-lite
         run: python update_news.py
+
       - name: Değişiklik varsa cloud-run-migration'a kaydet
         run: |
           git config user.name "engelli.me news bot"
