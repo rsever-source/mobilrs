@@ -1,5 +1,30 @@
 {
-  "updated_at": "2026-09-24T10:46:38.843116+00:00",
+  "updated_at": "2026-09-24T11:38:11.455978+00:00",
   "items": [],
-  "pending": []
+  "pending": [
+    {
+      "source": "TRT Haber",
+      "title": "Cumhurbaşkanı Yardımcısı Yılmaz: Sermaye piyasalarımızda yapısal bir sorun yok",
+      "url": "https://www.trthaber.com/haber/guncel/cumhurbaskani-yardimcisi-yilmaz-sermaye-piyasalarimizda-yapisal-bir-sorun-yok-957813.html",
+      "description": "Cumhurbaşkanı Yardımcısı Cevdet Yılmaz, \"Sermaye piyasalarına yönelik gerekli tüm idari tedbirler alındı alınmaya devam ediyor. Sermaye piyasalarımızda yapısal bir sorun yok. Kısıtlı bir alanda sorun ile karşı karşıyayız, bunları aştığımızda sermaye piyasaları daha da güçlendirilmiş şekilde yoluna devam edecek\" dedi.",
+      "published_at": "2026-09-23T08:58:00+00:00",
+      "id": "7ad4db21488bed4ae702"
+    },
+    {
+      "source": "TRT Haber",
+      "title": "WSJ: ABD, Körfez'deki enerji tesislerinin yeniden inşası için 5 milyar dolar önerdi",
+      "url": "https://www.trthaber.com/haber/guncel/wsj-abd-korfezdeki-enerji-tesislerinin-yeniden-insasi-icin-5-milyar-dolar-onerdi-957575.html",
+      "description": "ABD’nin, Orta Doğu ülkelerinin ABD/İsrail-İran savaşında zarar gören enerji altyapılarını yeniden inşa etmelerine yardımcı olacak yeni bir fona 5 milyar dolar yatırım yapmayı önerdiği iddia edildi.",
+      "published_at": "2026-09-21T20:25:00+00:00",
+      "id": "9ca312e32fe73f2cd0d1"
+    },
+    {
+      "source": "TRT Haber",
+      "title": "Anadolu Otoyolu'nun Kocaeli kesiminde bariyere çarpan tır ulaşımı aksattı",
+      "url": "https://www.trthaber.com/haber/guncel/anadolu-otoyolunun-kocaeli-kesiminde-bariyere-carpan-tir-ulasimi-aksatti-957269.html",
+      "description": "Anadolu Otoyolu'nun Kocaeli geçişinde tırın bariyere çarpması nedeniyle ulaşım aksadı.",
+      "published_at": "2026-09-18T10:24:00+00:00",
+      "id": "686ed60a12f9ef93e1fa"
+    }
+  ]
 }
