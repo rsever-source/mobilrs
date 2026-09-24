@@ -50,3 +50,5 @@ jobs:
             git commit -m "Güncel engelli haberlerini yenile"
             git push origin HEAD:cloud-run-migration
           fi
+
+# News source fallback enabled on cloud-run-migration
