@@ -1,9 +1,9 @@
-import io, json, os, uuid
+import asyncio, io, json, os, time, uuid
 from datetime import date
 from urllib.parse import urlparse
 
 import pandas as pd, pdfplumber, uvicorn
-from fastapi import BackgroundTasks, FastAPI, UploadFile, File, Form, HTTPException, Query
+from fastapi import BackgroundTasks, FastAPI, UploadFile, File, Form, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse, FileResponse, JSONResponse, Response
 from starlette.background import BackgroundTask
 
@@ -16,7 +16,37 @@ app = FastAPI(title="Rdv Asistan")
 OUTPUT_DIR = "outputs"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 MAX_FILE_SIZE = 25 * 1024 * 1024
+RATE_LIMIT_WINDOW = 60
+UPLOAD_RATE_LIMIT = 6
+REFRESH_RATE_LIMIT_WINDOW = 300
+REFRESH_RATE_LIMIT = 1
+_RATE_LIMITS = {}
+_RATE_LIMIT_LOCK = asyncio.Lock()
+_REFRESH_LOCK = asyncio.Lock()
 MONTH_NAMES = {1:"Ocak",2:"Şubat",3:"Mart",4:"Nisan",5:"Mayıs",6:"Haziran",7:"Temmuz",8:"Ağustos",9:"Eylül",10:"Ekim",11:"Kasım",12:"Aralık"}
+
+
+async def enforce_rate_limit(request: Request, bucket: str, limit: int, window: int):
+    forwarded = request.headers.get("x-forwarded-for", "")
+    client_ip = forwarded.split(",")[0].strip() if forwarded else ""
+    if not client_ip:
+        client_ip = request.client.host if request.client else "unknown"
+    key = f"{bucket}:{client_ip}"
+    now = time.monotonic()
+    async with _RATE_LIMIT_LOCK:
+        cutoff = now - window
+        for k in list(_RATE_LIMITS):
+            if not _RATE_LIMITS[k] or _RATE_LIMITS[k][-1] <= cutoff:
+                _RATE_LIMITS.pop(k, None)
+        hits = [t for t in _RATE_LIMITS.get(key, []) if t > cutoff]
+        if len(hits) >= limit:
+            retry_after = max(1, int(window - (now - hits[0])) + 1)
+            raise HTTPException(429, "Çok fazla istek. Lütfen biraz sonra tekrar deneyin.", headers={"Retry-After": str(retry_after)})
+        hits.append(now)
+        _RATE_LIMITS[key] = hits
+        if len(_RATE_LIMITS) > 4096:
+            oldest = min(_RATE_LIMITS, key=lambda k: _RATE_LIMITS[k][-1])
+            _RATE_LIMITS.pop(oldest, None)
 
 
 def unique_output_path(ext):
@@ -112,9 +142,11 @@ async def kira_hesapla(mevcut_kira:float=Form(...), yenileme_ayi:int=Form(...)):
 async def api_otv(): return JSONResponse(get_otv_data())
 
 @app.post("/api/otv/yenile")
-async def api_otv_yenile(background_tasks: BackgroundTasks):
+async def api_otv_yenile(request: Request, background_tasks: BackgroundTasks):
+    await enforce_rate_limit(request, "otv-refresh", REFRESH_RATE_LIMIT, REFRESH_RATE_LIMIT_WINDOW)
     current=load_otv_cache() or get_otv_data()
-    background_tasks.add_task(refresh_otv_data, False)
+    async with _REFRESH_LOCK:
+        background_tasks.add_task(refresh_otv_data, False)
     return JSONResponse(current, status_code=202)
 
 @app.get("/api/news")
@@ -164,7 +196,8 @@ async def kvkk_page():
 
 
 @app.post("/excel-islem")
-async def excel_motor(komut:str=Form(...), file1:UploadFile=File(...), file2:UploadFile=File(...)):
+async def excel_motor(request: Request, komut:str=Form(...), file1:UploadFile=File(...), file2:UploadFile=File(...)):
+    await enforce_rate_limit(request, "upload", UPLOAD_RATE_LIMIT, RATE_LIMIT_WINDOW)
     out=None
     try:
         if not check_extension(file1.filename,(".xlsx",".xls")) or not check_extension(file2.filename,(".xlsx",".xls")): raise HTTPException(400,"Geçerli Excel dosyaları seç.")
@@ -191,7 +224,8 @@ async def excel_motor(komut:str=Form(...), file1:UploadFile=File(...), file2:Upl
 
 
 @app.post("/pdf-excel-islem")
-async def pdf_excel_motor(pdf_file:UploadFile=File(...)):
+async def pdf_excel_motor(request: Request, pdf_file:UploadFile=File(...)):
+    await enforce_rate_limit(request, "upload", UPLOAD_RATE_LIMIT, RATE_LIMIT_WINDOW)
     out=None
     try:
         if not check_extension(pdf_file.filename,(".pdf",)): raise HTTPException(400,"Geçerli bir PDF dosyası seç.")
