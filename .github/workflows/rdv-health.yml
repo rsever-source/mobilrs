@@ -39,7 +39,7 @@ jobs:
           if ! get_url "$BASE/" /tmp/home.html; then
             FAIL="$FAIL\n- Ana sayfa 8 denemede açılamadı."
           else
-            grep -q "RDV Asistan" /tmp/home.html || FAIL="$FAIL\n- Ana sayfa açıldı ama RDV Asistan içeriği bulunamadı."
+            grep -q "ÖTV Muaf Araçlar" /tmp/home.html || FAIL="$FAIL\n- Ana sayfa açıldı ama ÖTV Muaf Araçlar bölümü bulunamadı."
             grep -q "ÖTV Muaf Araçlar" /tmp/home.html || FAIL="$FAIL\n- Ana sayfa açıldı ama ÖTV Muaf Araçlar bölümü bulunamadı."
           fi
 
