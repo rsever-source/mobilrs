@@ -29,6 +29,31 @@ jobs:
           ! echo "$html" | grep -q '>Kontrol<'
           echo "RDV Asistan verified-only UI OK"
 
+      - name: Haber otomasyonunu kontrol et
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          response=$(curl --fail --silent --show-error --retry 3 --retry-delay 10 --max-time 30 \\
+            -H "Authorization: Bearer $GH_TOKEN" \\
+            -H "Accept: application/vnd.github+json" \\
+            "https://api.github.com/repos/rsever-source/mobilrs/actions/workflows/news-cron.yml/runs?per_page=1")
+          python - <<'PY' "$response"
+          import json, sys
+          from datetime import datetime, timezone
+          data=json.loads(sys.argv[1])
+          runs=data.get("workflow_runs") or []
+          assert runs, "Haber workflow'u için hiç çalışma bulunamadı."
+          run=runs[0]
+          assert run.get("status") == "completed", f"Son haber çalışması tamamlanmamış: {run.get('status')}"
+          assert run.get("conclusion") == "success", f"Son haber çalışması başarısız: {run.get('conclusion')}"
+          started=run.get("run_started_at") or run.get("created_at")
+          dt=datetime.fromisoformat(started.replace("Z","+00:00"))
+          age_hours=(datetime.now(timezone.utc)-dt).total_seconds()/3600
+          assert age_hours <= 4, f"Son başarılı haber güncellemesi çok eski: {age_hours:.1f} saat"
+          print(f"Haber otomasyonu OK: son başarılı çalışma {age_hours:.1f} saat önce ({run.get('html_url')})")
+          PY
+
       - name: Refresh official OTV data
         run: |
           set -e
