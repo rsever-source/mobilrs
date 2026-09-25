@@ -199,7 +199,18 @@ async def api_news():
 async def index():
     initial = load_otv_cache() or {}
     initial_json = __import__("json").dumps(initial, ensure_ascii=False).replace("</", "<\\/")
-    return HTMLResponse(HOME_HTML.replace("/*INITIAL_OTV_DATA*/{}", initial_json))
+    try:
+        with open("news.json", encoding="utf-8") as f:
+            initial_news = json.load(f)
+    except Exception:
+        initial_news = {"updated_at": None, "items": []}
+    initial_news_json = json.dumps(initial_news, ensure_ascii=False).replace("</", "<\\/")
+    return HTMLResponse(
+        HOME_HTML
+        .replace("/*INITIAL_OTV_DATA*/{}", initial_json)
+        .replace("/*INITIAL_NEWS_DATA*/{}", initial_news_json)
+    )
+
 
 @app.get("/robots.txt", response_class=HTMLResponse)
 async def robots_txt():
@@ -343,7 +354,7 @@ button,input,select,textarea{font:inherit}.app{width:min(1180px,calc(100% - 48px
 <footer class="footer">Engelli.me · Güncel veriler resmi kaynaklardan kontrol edilir.</footer><button id="bottomHome" class="bottom-home" onclick="openPage('home')">⌂ Ana Sayfa</button></main>
 <script>
 let otvData=/*INITIAL_OTV_DATA*/{},activeBrand=null;if(!otvData.vehicles)otvData={vehicles:[],limit:2873900};
-let newsData={items:[],updated_at:null},pageStack=['home'],forwardStack=[];
+let newsData=/*INITIAL_NEWS_DATA*/{items:[],updated_at:null},pageStack=['home'],forwardStack=[];
 function esc(v){return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
 function safeUrl(v){let u=String(v||'').trim();return /^https?:\/\//i.test(u)?u:''}
 function newsDate(v){if(!v)return '';try{return new Date(v).toLocaleDateString('tr-TR',{day:'2-digit',month:'short',year:'numeric'})}catch(e){return ''}}
@@ -378,7 +389,7 @@ document.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'){swipeSta
 document.addEventListener('pointerup',e=>{if(!swipeActive||e.pointerType!=='touch')return;swipeActive=false;let dx=e.clientX-swipeStartX,dy=e.clientY-swipeStartY;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.1){if(dx<0)goNextPage();else goPreviousPage()}},{passive:true});
 window.addEventListener('scroll',()=>{let b=document.getElementById('bottomHome');if(b)b.classList.toggle('compact',window.scrollY>120)},{passive:true});
 document.addEventListener('pointercancel',()=>{swipeActive=false},{passive:true});
-renderHome();loadOTV();loadNews();setTimeout(triggerOTVBackgroundRefresh,800);
+renderHome();renderNews();loadOTV();loadNews();setTimeout(triggerOTVBackgroundRefresh,800);
 </script></body></html>'''
 
 
