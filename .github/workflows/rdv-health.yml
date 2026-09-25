@@ -16,34 +16,34 @@ jobs:
   health:
     runs-on: ubuntu-latest
     steps:
-      - name: Check RDV Asistan with Render wake-up tolerance
+      - name: Check RDV Asistan on Cloud Run
         id: health
         shell: bash
         run: |
           set -u
-          BASE="https://rdvsever.onrender.com"
+          BASE="https://mobilrs-test-987996487997.europe-west1.run.app"
           FAIL=""
 
-          wake_and_get() {
+          get_url() {
             local url="$1"
             local out="$2"
-            for attempt in 1 2 3 4 5 6 7 8; do
+            for attempt in 1 2 3; do
               code=$(curl -L -sS --connect-timeout 20 --max-time 70 -o "$out" -w "%{http_code}" "$url" || true)
               if [ "$code" = "200" ]; then return 0; fi
-              echo "Attempt $attempt failed for $url (HTTP $code). Render may be waking up."
-              sleep 25
+              echo "Attempt $attempt failed for $url (HTTP $code)."
+              sleep 10
             done
             return 1
           }
 
-          if ! wake_and_get "$BASE/" /tmp/home.html; then
+          if ! get_url "$BASE/" /tmp/home.html; then
             FAIL="$FAIL\n- Ana sayfa 8 denemede açılamadı."
           else
             grep -q "RDV Asistan" /tmp/home.html || FAIL="$FAIL\n- Ana sayfa açıldı ama RDV Asistan içeriği bulunamadı."
             grep -q "ÖTV Muaf Araçlar" /tmp/home.html || FAIL="$FAIL\n- Ana sayfa açıldı ama ÖTV Muaf Araçlar bölümü bulunamadı."
           fi
 
-          if ! wake_and_get "$BASE/api/otv" /tmp/otv.json; then
+          if ! get_url "$BASE/api/otv" /tmp/otv.json; then
             FAIL="$FAIL\n- ÖTV API cevap vermedi."
           else
             python - <<'PY' || FAIL="$FAIL\n- ÖTV verisi bozuk, Bakanlık kaynağı doğrulanamıyor veya veri 30 saatten eski."
@@ -113,7 +113,7 @@ jobs:
           TS=$(TZ=Europe/Istanbul date '+%d.%m.%Y %H:%M')
           BODY="@rsever-source\n\nRDV Asistan 5 dakikalık sağlık kontrolünde hata bulundu.\n\n"
           if [ -f /tmp/failure.txt ]; then BODY="$BODY$(cat /tmp/failure.txt)"; else BODY="$BODY- Sağlık kontrolü beklenmedik şekilde başarısız oldu."; fi
-          BODY="$BODY\n\nKontrol zamanı: $TS (Türkiye)\nCanlı site: https://rdvsever.onrender.com"
+          BODY="$BODY\n\nKontrol zamanı: $TS (Türkiye)\nCanlı site: https://mobilrs-test-987996487997.europe-west1.run.app"
           existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search 'RDV Asistan sağlık alarmı in:title' --json number --jq '.[0].number // empty')
           if [ -n "$existing" ]; then gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body "$BODY"; else gh issue create --repo "$GITHUB_REPOSITORY" --title "RDV Asistan sağlık alarmı" --body "$BODY"; fi
 
