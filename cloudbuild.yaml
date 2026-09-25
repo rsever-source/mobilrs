@@ -1,4 +1,4 @@
-# Cloud Build yeniden tetikleme; çalışma ayarlarını değiştirmez.
+# Cloud Build manuel yeniden tetikleme — ayarlarda değişiklik yok.
 steps:
   - name: gcr.io/cloud-builders/docker
     id: Build
