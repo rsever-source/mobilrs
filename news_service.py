@@ -97,9 +97,13 @@ def _html_items(source):
         href = urljoin(source["url"], a.get("href", ""))
         if not title or len(title) < 12 or href in seen:
             continue
-        if "/ayrimcilikhatti/engelsiz-yasam/" not in href or href.rstrip("/") == source["url"].rstrip("/"):
+        include = source.get("include_path")
+        if include:
+            if include not in href or href.rstrip("/") == source["url"].rstrip("/"):
+                continue
+        elif "/ayrimcilikhatti/engelsiz-yasam/" not in href or href.rstrip("/") == source["url"].rstrip("/"):
             continue
-        if href.startswith("https://www.aa.com.tr/"):
+        if href.startswith(source.get("allowed_prefix", "https://www.aa.com.tr/")):
             seen.add(href)
             items.append({
                 "source": source["name"], "title": title[:300], "url": href,
@@ -137,11 +141,10 @@ def _gemini(prompt):
                 "type": "OBJECT",
                 "properties": {
                     "publish": {"type": "BOOLEAN"},
-                    "category": {"type": "STRING"},
                     "title": {"type": "STRING"},
                     "summary": {"type": "STRING"},
                 },
-                "required": ["publish", "category", "title", "summary"],
+                "required": ["publish", "title", "summary"],
             },
         },
     }
@@ -225,12 +228,10 @@ somut biçimde etkiliyorsa publish=true ver.
 Genel ekonomi, siyaset, savaş, trafik veya gündem haberlerini yalnızca engelli bireyler
 üzerinde açık ve somut bir etkisi varsa yayınla; aksi halde publish=false ver.
 Önceliği doğrudan engelli bireyleri ilgilendiren haberlere ver.
-Özgün, kısa ve tarafsız Türkçe özet hazırla; kaynak metnini kopyalama.
-Özet 3-5 kısa cümle olsun ve yalnızca kaynakta doğrulanabilen bilgileri içersin.
+Özgün ve tarafsız Türkçe özet hazırla; kaynak metnini kopyalama.
+Özet 6-7 kısa ve tam cümleden oluşsun. Cümleyi ortasında kesme veya yarım bırakma.
+Yalnızca kaynakta doğrulanabilen bilgileri içersin.
 Başlığı kaynağın anlamını koruyarak kısa ve doğal Türkçe yaz.
-Kategori: Engelli Hakları, ÖTV/Araç, Sosyal Yardım, Evde Bakım,
-EKPSS/İstihdam, Sağlık, Ulaşım, Erişilebilirlik veya Gündem.
-
 Kaynak: {item["source"]}
 Başlık: {item["title"]}
 Kaynak özeti: {item.get("description", "")}
@@ -246,7 +247,6 @@ Kaynak metni:
                 continue
             added.append({
                 "id": item["id"], "title": title[:180], "summary": summary[:900],
-                "category": _clean(result.get("category"))[:50] or "Gündem",
                 "source": item["source"], "url": item["url"],
                 "published_at": item.get("published_at"), "created_at": now.isoformat()
             })
