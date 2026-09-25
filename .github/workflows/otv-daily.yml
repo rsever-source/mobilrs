@@ -21,7 +21,7 @@ jobs:
       - name: Check RDV Asistan home
         run: |
           set -e
-          html=$(curl --fail --silent --show-error --retry 4 --retry-delay 15 --max-time 60 https://rdvsever.onrender.com/)
+          html=$(curl --fail --silent --show-error --retry 4 --retry-delay 15 --max-time 60 https://mobilrs-test-987996487997.europe-west1.run.app/)
           echo "$html" | grep -q 'RDV Asistan'
           echo "$html" | grep -q 'ÖTV Muaf Araçlar'
           ! echo "$html" | grep -q 'Hesaplanmıyor'
@@ -57,7 +57,7 @@ jobs:
       - name: Refresh official OTV data
         run: |
           set -e
-          response=$(curl --fail --silent --show-error --retry 4 --retry-delay 15 --max-time 120 -X POST https://rdvsever.onrender.com/api/otv/yenile)
+          response=$(curl --fail --silent --show-error --retry 4 --retry-delay 15 --max-time 120 -X POST https://mobilrs-test-987996487997.europe-west1.run.app/api/otv/yenile)
           echo "$response" > /tmp/otv.json
           python - <<'PY'
           import json
@@ -83,5 +83,5 @@ jobs:
 
       - name: Check read API
         run: |
-          curl --fail --silent --show-error --retry 3 --retry-delay 10 --max-time 60 https://rdvsever.onrender.com/api/otv > /dev/null
+          curl --fail --silent --show-error --retry 3 --retry-delay 10 --max-time 60 https://mobilrs-test-987996487997.europe-west1.run.app/api/otv > /dev/null
           echo "OTV API OK"
