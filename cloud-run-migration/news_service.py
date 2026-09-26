@@ -2,7 +2,6 @@ import hashlib
 import json
 import os
 import re
-from difflib import SequenceMatcher
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from html import unescape
@@ -142,10 +141,12 @@ def _gemini(prompt):
                 "type": "OBJECT",
                 "properties": {
                     "publish": {"type": "BOOLEAN"},
+                    "duplicate": {"type": "BOOLEAN"},
+                    "duplicate_reason": {"type": "STRING"},
                     "title": {"type": "STRING"},
                     "summary": {"type": "STRING"},
                 },
-                "required": ["publish", "title", "summary"],
+                "required": ["publish", "duplicate", "duplicate_reason", "title", "summary"],
             },
         },
     }
@@ -164,80 +165,6 @@ def _gemini(prompt):
     if not raw:
         raise RuntimeError("Gemini boş yanıt verdi")
     return json.loads(raw)
-
-def _title_key(item):
-    text = _clean(item.get("title", "")).lower()
-    return re.sub(r"[^a-z0-9çğıöşü]+", " ", text).strip()
-
-
-def _is_duplicate(item, selected):
-    title = _title_key(item)
-    url = str(item.get("url", "")).rstrip("/").lower()
-    for other in selected:
-        other_url = str(other.get("url", "")).rstrip("/").lower()
-        if url and other_url and url == other_url:
-            return True
-        other_title = _title_key(other)
-        if title and other_title:
-            if SequenceMatcher(None, title, other_title).ratio() >= 0.86:
-                return True
-            a, b = set(title.split()), set(other_title.split())
-            if a and b and len(a & b) / min(len(a), len(b)) >= 0.80:
-                return True
-    return False
-
-
-def _dedupe(items):
-    selected = []
-    for item in items:
-        if not _is_duplicate(item, selected):
-            selected.append(item)
-    return selected
-
-
-def _diverse_candidates(items, limit):
-    groups = {}
-    for item in items:
-        groups.setdefault(item.get("source", ""), []).append(item)
-    for group in groups.values():
-        group.sort(key=lambda x: (_strong_relevance(x), _date(x.get("published_at")) or datetime.min.replace(tzinfo=timezone.utc)), reverse=True)
-    result = []
-    while len(result) < limit:
-        added_any = False
-        for group in groups.values():
-            if group:
-                item = group.pop(0)
-                if not _is_duplicate(item, result):
-                    result.append(item)
-                    if len(result) >= limit:
-                        break
-                added_any = True
-        if not added_any:
-            break
-    return result
-
-
-def _select_final(items, limit):
-    items = _dedupe(sorted(items, key=lambda x: x.get("published_at") or x.get("created_at") or "", reverse=True))
-    counts = {}
-    selected = []
-    for item in items:
-        source = item.get("source", "")
-        if counts.get(source, 0) >= 4:
-            continue
-        selected.append(item)
-        counts[source] = counts.get(source, 0) + 1
-        if len(selected) >= limit:
-            return selected
-    if len(selected) < limit:
-        selected_ids = {item.get("id") for item in selected}
-        for item in items:
-            if item.get("id") in selected_ids:
-                continue
-            selected.append(item)
-            if len(selected) >= limit:
-                break
-    return selected
 
 def _id(item):
     return hashlib.sha256(item["url"].encode("utf-8")).hexdigest()[:20]
@@ -289,7 +216,6 @@ def update_news():
         ),
         reverse=True,
     )
-    candidates = _diverse_candidates(candidates, MAX_AI_CANDIDATES)
 
     added = []
     failed = []
@@ -304,6 +230,37 @@ somut biçimde etkiliyorsa publish=true ver.
 Genel ekonomi, siyaset, savaş, trafik veya gündem haberlerini yalnızca engelli bireyler
 üzerinde açık ve somut bir etkisi varsa yayınla; aksi halde publish=false ver.
 Önceliği doğrudan engelli bireyleri ilgilendiren haberlere ver.
+
+ÖNEMLİ: MÜKERRER VE AYNI OLAYIN GÜNCELLEMESİNİ AYIRT ET.
+Aşağıdaki "Mevcut sitedeki haberler" listesini yeni haberle karşılaştır.
+Başlıklar veya URL'ler farklı olsa bile aynı olayı, aynı duyuruyu veya aynı gelişmeyi anlatıyorlarsa
+duplicate=true ver ve bu haberi yayınlama.
+
+Özellikle tarih ve dönem bilgisini dikkatle karşılaştır:
+- Aynı yardım/ödeme/başvuru/duyuru olayının farklı başlık veya farklı URL ile tekrar anlatılması mükerrerdir.
+- Yeni ay, yeni ödeme dönemi, yeni başvuru dönemi, yeni tutar, yeni tarih veya yeni resmî karar
+  gibi somut ve gerçekten yeni bir gelişme varsa eski haberle aynı konu olsa bile duplicate=false ver.
+- Eski haberdeki olayın yalnızca yeniden yazılması veya başka bir sitede tekrar yayımlanması yeni haber değildir.
+- Aynı olay hakkında sonradan ortaya çıkan yeni ve önemli bir resmî gelişme varsa bunu yeni haber olarak yayınla.
+- Sadece başlığın değişmesi, haberin başka bir URL'de bulunması veya haber metninin yeniden yazılması
+  tek başına yeni gelişme sayılmaz.
+
+Kararı yalnızca başlık eşleşmesine göre verme; haber metnindeki olay, kurum, kişi, konu, tarih,
+ödeme dönemi, tutar, başvuru dönemi ve diğer somut ayrıntıları birlikte değerlendir.
+Örneğin farklı URL'lere sahip "Evde Bakım Yardımı ödemeleri başladı" ve
+"Evde Bakım Yardımı hesaplara yatırıldı" aynı ödeme dönemini anlatıyorsa mükerrerdir.
+Ancak sonraki ayın Evde Bakım Yardımı ödemesi veya yeni bir ödeme tutarı ayrı bir haberdir.
+Örneğin bir yardımın ilk duyurusundan sonra başvuruların başladığına dair yeni resmî duyuru
+veya ödemenin gerçekten hesaplara geçtiğine dair yeni gelişme, önceki haberden farklı somut bir gelişmeyse
+yeni haber olabilir.
+
+Mevcut sitedeki haberler:
+{{existing_news}}
+
+duplicate=true ise publish=false ver.
+duplicate_reason alanında kısa olarak neden mükerrer olduğunu belirt.
+
+Mükerrer değilse:
 Özgün ve tarafsız Türkçe özet hazırla; kaynak metnini kopyalama.
 Özet 6-7 kısa ve tam cümleden oluşsun. Cümleyi ortasında kesme veya yarım bırakma.
 Yalnızca kaynakta doğrulanabilen bilgileri içersin.
@@ -314,7 +271,17 @@ Kaynak özeti: {item.get("description", "")}
 Kaynak metni:
 {article}
 """
+            existing_news = existing_items + added
+            existing_news_text = "\n".join(
+                f"- Başlık: {n.get('title', '')}\n  Özet: {n.get('summary', '')}"
+                for n in existing_news
+            ) or "Henüz yayınlanmış haber yok."
+            prompt = prompt.replace("{existing_news}", existing_news_text)
+
             result = _gemini(prompt)
+            if result.get("duplicate"):
+                print("Mükerrer haber atlandı:", item.get("title"), "|", result.get("duplicate_reason", ""))
+                continue
             if not result.get("publish"):
                 continue
             summary = _clean(result.get("summary"))
@@ -330,7 +297,8 @@ Kaynak metni:
             print("Haber işlenemedi:", item.get("title"), repr(exc))
             failed.append(item)
 
-    merged = _select_final(added + existing_items, MAX_ITEMS)
+    merged = added + existing_items
+    merged.sort(key=lambda item: item.get("published_at") or item.get("created_at") or "", reverse=True)
     failed_by_id = {item["id"]: item for item in failed}
     result = {
         "updated_at": now.isoformat(),
