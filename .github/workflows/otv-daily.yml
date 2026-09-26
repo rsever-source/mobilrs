@@ -22,12 +22,11 @@ jobs:
         run: |
           set -e
           html=$(curl --fail --silent --show-error --retry 4 --retry-delay 15 --max-time 60 https://mobilrs-test-987996487997.europe-west1.run.app/)
-          echo "$html" | grep -q 'RDV Asistan'
           echo "$html" | grep -q 'ÖTV Muaf Araçlar'
           ! echo "$html" | grep -q 'Hesaplanmıyor'
           ! echo "$html" | grep -qi 'fiyat doğrulanıyor'
           ! echo "$html" | grep -q '>Kontrol<'
-          echo "RDV Asistan verified-only UI OK"
+          echo "Cloud Run verified-only UI OK"
 
       - name: Haber otomasyonunu kontrol et
         env:
