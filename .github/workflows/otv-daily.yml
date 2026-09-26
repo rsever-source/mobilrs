@@ -14,10 +14,6 @@ jobs:
   refresh-and-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for Render deploy after code push
-        if: github.event_name == 'push'
-        run: sleep 75
-
       - name: Check RDV Asistan home
         run: |
           set -e
