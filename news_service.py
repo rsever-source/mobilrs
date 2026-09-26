@@ -243,7 +243,7 @@ Aynı konunun farklı bir tarihteki yeni gelişmesi veya gerçekten farklı bir 
 Ancak başka bir ayın yeni ödeme duyurusu ayrı bir haberdir.
 
 Mevcut sitedeki haberler:
-{existing_news}
+{{existing_news}}
 
 duplicate=true ise publish=false ver.
 duplicate_reason alanında kısa olarak neden mükerrer olduğunu belirt.
