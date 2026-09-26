@@ -141,10 +141,12 @@ def _gemini(prompt):
                 "type": "OBJECT",
                 "properties": {
                     "publish": {"type": "BOOLEAN"},
+                    "duplicate": {"type": "BOOLEAN"},
+                    "duplicate_reason": {"type": "STRING"},
                     "title": {"type": "STRING"},
                     "summary": {"type": "STRING"},
                 },
-                "required": ["publish", "title", "summary"],
+                "required": ["publish", "duplicate", "duplicate_reason", "title", "summary"],
             },
         },
     }
@@ -228,6 +230,25 @@ somut biçimde etkiliyorsa publish=true ver.
 Genel ekonomi, siyaset, savaş, trafik veya gündem haberlerini yalnızca engelli bireyler
 üzerinde açık ve somut bir etkisi varsa yayınla; aksi halde publish=false ver.
 Önceliği doğrudan engelli bireyleri ilgilendiren haberlere ver.
+
+ÖNEMLİ: MÜKERRER HABER KONTROLÜ YAP.
+Aşağıdaki "Mevcut sitedeki haberler" listesini yeni haberle karşılaştır.
+Başlıklar veya URL'ler farklı olsa bile aynı olayı, aynı duyuruyu veya aynı gelişmeyi anlatıyorlarsa
+duplicate=true ver ve bu haberi yayınlama.
+Kararı yalnızca başlık eşleşmesine göre verme; haber metnindeki olay, kurum, kişi, konu, tarih,
+ödeme/tutar bilgileri ve diğer somut ayrıntıları birlikte değerlendir.
+Aynı konunun farklı bir tarihteki yeni gelişmesi veya gerçekten farklı bir olay ise duplicate=false ver.
+Örneğin farklı URL'lere sahip "Evde Bakım Yardımı ödemeleri başladı" ve
+"Evde Bakım Yardımı hesaplara yatırıldı" aynı ödeme duyurusunu anlatıyorsa mükerrerdir.
+Ancak başka bir ayın yeni ödeme duyurusu ayrı bir haberdir.
+
+Mevcut sitedeki haberler:
+{existing_news}
+
+duplicate=true ise publish=false ver.
+duplicate_reason alanında kısa olarak neden mükerrer olduğunu belirt.
+
+Mükerrer değilse:
 Özgün ve tarafsız Türkçe özet hazırla; kaynak metnini kopyalama.
 Özet 6-7 kısa ve tam cümleden oluşsun. Cümleyi ortasında kesme veya yarım bırakma.
 Yalnızca kaynakta doğrulanabilen bilgileri içersin.
@@ -238,7 +259,17 @@ Kaynak özeti: {item.get("description", "")}
 Kaynak metni:
 {article}
 """
+            existing_news = existing_items + added
+            existing_news_text = "\n".join(
+                f"- Başlık: {n.get('title', '')}\n  Özet: {n.get('summary', '')}"
+                for n in existing_news
+            ) or "Henüz yayınlanmış haber yok."
+            prompt = prompt.replace("{existing_news}", existing_news_text)
+
             result = _gemini(prompt)
+            if result.get("duplicate"):
+                print("Mükerrer haber atlandı:", item.get("title"), "|", result.get("duplicate_reason", ""))
+                continue
             if not result.get("publish"):
                 continue
             summary = _clean(result.get("summary"))
