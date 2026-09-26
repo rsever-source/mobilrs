@@ -29,9 +29,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -e
-          response=$(curl --fail --silent --show-error --retry 3 --retry-delay 10 --max-time 30 \\
-            -H "Authorization: Bearer $GH_TOKEN" \\
-            -H "Accept: application/vnd.github+json" \\
+          response=$(curl --fail --silent --show-error --retry 3 --retry-delay 10 --max-time 30 \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/rsever-source/mobilrs/actions/workflows/news-cron.yml/runs?per_page=1")
           python - <<'PY' "$response"
           import json, sys
