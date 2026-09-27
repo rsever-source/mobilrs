@@ -107,7 +107,8 @@ def _html_items(source):
             seen.add(href)
             items.append({
                 "source": source["name"], "title": title[:300], "url": href,
-                "description": title, "published_at": None
+                "description": title, "published_at": None,
+                "source_position": len(items),
             })
     return items
 
@@ -115,6 +116,60 @@ def _source_items(source):
     if source.get("kind") == "html":
         return _html_items(source)
     return _feed_items(source)
+
+def _title_tokens(title):
+    text = re.sub(r"[^0-9a-zçğıöşü ]+", " ", _clean(title).lower())
+    stop = {
+        "ve", "ile", "için", "olan", "olarak", "bir", "bu", "şu", "de", "da",
+        "mi", "mı", "mu", "mü", "haber", "açıklama", "açıklandı", "duyuru",
+    }
+    return {token for token in text.split() if len(token) > 2 and token not in stop}
+
+def _similar_title(a, b):
+    left = _title_tokens(a)
+    right = _title_tokens(b)
+    if not left or not right:
+        return 0.0
+    return len(left & right) / len(left | right)
+
+def _collapse_obvious_source_repeats(items):
+    """Keep the newest near-identical item from the same source before the AI cap.
+
+    This is intentionally conservative: only very similar titles are collapsed.
+    Different developments in the same subject remain available to Gemini.
+    """
+    kept = []
+    for item in items:
+        duplicate_index = None
+        for index, previous in enumerate(kept):
+            if previous.get("source") != item.get("source"):
+                continue
+            if _similar_title(previous.get("title", ""), item.get("title", "")) >= 0.80:
+                duplicate_index = index
+                break
+
+        if duplicate_index is None:
+            kept.append(item)
+            continue
+
+        previous = kept[duplicate_index]
+        previous_date = _date(previous.get("published_at"))
+        current_date = _date(item.get("published_at"))
+
+        # Feed dates are authoritative when available. For HTML pages without
+        # dates, source_position reflects the page order (newest normally first).
+        previous_key = (
+            previous_date or datetime.min.replace(tzinfo=timezone.utc),
+            -int(previous.get("source_position", 10**9)),
+        )
+        current_key = (
+            current_date or datetime.min.replace(tzinfo=timezone.utc),
+            -int(item.get("source_position", 10**9)),
+        )
+        if current_key > previous_key:
+            kept[duplicate_index] = item
+
+    return kept
 
 def _strong_relevance(item):
     text = f"{item.get('title', '')} {item.get('description', '')}".lower()
@@ -195,6 +250,7 @@ def update_news():
             )
             for item in source_items:
                 item["id"] = _id(item)
+                item["source_position"] = source_items.index(item)
                 if item["id"] in known or item["id"] in candidate_ids:
                     continue
                 published = _date(item.get("published_at"))
@@ -206,8 +262,9 @@ def update_news():
         except Exception as exc:
             print("Kaynak okunamadı:", source["name"], repr(exc))
 
+    candidates = _collapse_obvious_source_repeats(candidates)
     print("Kaynak kayıtları:", source_counts)
-    print("AI adayları:", len(candidates))
+    print("AI adayları (kaynak tekrarları ayıklandı):", len(candidates))
 
     candidates.sort(
         key=lambda item: (
@@ -232,6 +289,16 @@ Genel ekonomi, siyaset, savaş, trafik veya gündem haberlerini yalnızca engell
 Önceliği doğrudan engelli bireyleri ilgilendiren haberlere ver.
 
 ÖNEMLİ: MÜKERRER VE AYNI OLAYIN GÜNCELLEMESİNİ AYIRT ET.
+Kaynak sayfasındaki sıralamayı ve yayın tarihini birlikte dikkate al.
+Aynı kaynakta aynı konuya ait birden fazla duyuru varsa, kaynak sayfasında daha yukarıda
+yer alan ve/veya daha yeni tarihli haber güncel olan olarak değerlendirilmelidir.
+Daha aşağıda kalan veya daha eski tarihli aynı olay duyurusu, yeni haberin eski tekrarıysa
+publish=false ve duplicate=true olmalıdır. Ancak arada farklı konulu haberler varsa onları
+eleme; her haberi kendi konusu içinde değerlendir.
+
+Bu adayın kaynak sayfasındaki sırası: {source_position}
+Bu adayın yayın tarihi: {published_at}
+
 Aşağıdaki "Mevcut sitedeki haberler" listesini yeni haberle karşılaştır.
 Başlıklar veya URL'ler farklı olsa bile aynı olayı, aynı duyuruyu veya aynı gelişmeyi anlatıyorlarsa
 duplicate=true ver ve bu haberi yayınlama.
@@ -278,6 +345,8 @@ Kaynak metni:
             ) or "Henüz yayınlanmış haber yok."
             prompt = prompt.replace("{existing_news}", existing_news_text)
 
+            prompt = prompt.replace("{source_position}", str(item.get("source_position", "bilinmiyor")))
+            prompt = prompt.replace("{published_at}", str(item.get("published_at") or "bilinmiyor"))
             result = _gemini(prompt)
             if result.get("duplicate"):
                 print("Mükerrer haber atlandı:", item.get("title"), "|", result.get("duplicate_reason", ""))
