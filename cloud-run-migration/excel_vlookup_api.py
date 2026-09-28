@@ -12,6 +12,43 @@ from otv_service import get_otv_data, refresh_otv_data, _load as load_otv_cache
 
 app = FastAPI(title="Rdv Asistan")
 
+CHAT_HTML = r'''<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Engelli.me Sohbet</title>
+<meta name="description" content="Engelli.me canlı sohbet odası.">
+<style>
+:root{--ink:#182234;--muted:#697386;--blue:#1769e0;--line:#e4e8ef;--white:#fff}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:#f4f6f9;color:var(--ink);font-family:Inter,Aptos,"Segoe UI",system-ui,-apple-system,sans-serif}
+.shell{height:100%;min-height:100%;display:flex;flex-direction:column;max-width:1100px;margin:0 auto;background:#fff}
+.head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}
+.brand{font-size:21px;font-weight:850;letter-spacing:-.5px}.brand span{color:var(--blue)}
+.back{color:var(--blue);text-decoration:none;font-size:13px;font-weight:800}
+.chat{flex:1;min-height:0;padding:12px}
+.chat iframe{display:block;width:100%;height:calc(100vh - 82px);min-height:520px;border:1px solid var(--line);border-radius:16px;background:#fff}
+@media(max-width:640px){.head{padding:14px 16px}.chat{padding:8px}.chat iframe{height:calc(100vh - 68px);min-height:480px;border-radius:12px}}
+</style>
+</head>
+<body>
+<main class="shell">
+<header class="head"><div class="brand">Engelli<span>.me</span> Sohbet</div><a class="back" href="https://engelli.me/">← Ana Sayfa</a></header>
+<div class="chat"><iframe src="https://klaklak.com/embed/engellime" title="Engelli.me canlı sohbet" loading="eager" allow="clipboard-write"></iframe></div>
+</main>
+</body>
+</html>'''
+
+
+@app.middleware("http")
+async def chat_subdomain(request: Request, call_next):
+    host = request.headers.get("host", "").split(":")[0].lower()
+    if host == "chat.engelli.me" and request.url.path == "/":
+        return HTMLResponse(CHAT_HTML)
+    return await call_next(request)
+
+
 @app.middleware("http")
 async def add_security_headers(request: Request, call_next):
     response = await call_next(request)
@@ -27,6 +64,7 @@ async def add_security_headers(request: Request, call_next):
         "img-src 'self' data:; "
         "font-src 'self' data:; "
         "connect-src 'self'; "
+        "frame-src https://klaklak.com; "
         "object-src 'none'; "
         "base-uri 'self'; "
         "form-action 'self'; "
@@ -295,7 +333,7 @@ HOME_HTML = r'''<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta
 :root{--ink:#182234;--muted:#697386;--blue:#1769e0;--blue-dark:#0e4faf;--line:#e4e8ef;--soft:#f5f7fa;--soft-blue:#edf4ff;--white:#fff;--green:#14804a;--shadow:0 16px 45px rgba(20,32,55,.08)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{touch-action:pan-y;margin:0;background:#f4f6f9;color:var(--ink);font-family:Inter,Aptos,"Segoe UI",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
 button,input,select,textarea{font:inherit}.app{width:min(1180px,calc(100% - 48px));margin:28px auto 48px;background:var(--white);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
-.header{display:flex;align-items:center;justify-content:space-between;padding:22px 30px;border-bottom:1px solid var(--line);background:#fff}.brand{font-size:24px;font-weight:850;letter-spacing:-.6px}.brand span{color:var(--blue)}.header-note{font-size:12px;color:var(--muted)}
+.header{display:flex;align-items:center;justify-content:space-between;padding:22px 30px;border-bottom:1px solid var(--line);background:#fff}.brand{font-size:24px;font-weight:850;letter-spacing:-.6px}.brand span{color:var(--blue)}.header-note{font-size:12px;color:var(--muted)}.chat-nav{color:var(--blue);text-decoration:none;font-size:13px;font-weight:850;border:1px solid #d7e3f7;border-radius:999px;padding:8px 12px;background:#f7faff}.chat-nav:hover{background:#edf4ff}
 .page{display:none}.page.on{display:block}.home{padding:30px}.hero{padding:20px 22px;border:1px solid #dce6f6;border-radius:20px;background:linear-gradient(135deg,#f8fbff,#edf4ff)}.eyebrow{font-size:12px;font-weight:800;color:var(--blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:9px}.hero h1{margin:0;font-size:28px;line-height:1.1;letter-spacing:-.9px}.hero p{margin:7px 0 0;max-width:680px;color:var(--muted);font-size:13px;line-height:1.45}.hero-stats{display:flex;gap:8px;margin-top:15px}.stat{background:#fff;border:1px solid #dfe7f3;border-radius:14px;padding:9px 13px;min-width:125px}.stat small{display:block;color:var(--muted);font-size:11px}.stat b{display:block;margin-top:2px;font-size:18px;letter-spacing:-.3px}.section{margin-top:18px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:12px}.section-head h2{margin:0;font-size:21px;letter-spacing:-.4px}.section-head p{margin:0;color:var(--muted);font-size:12px}
 .news-section{margin-top:26px;padding:20px;border:1px solid #e1e7f0;border-radius:22px;background:linear-gradient(145deg,#fbfcff,#f5f8fc)}
 .news-section .section-head{margin-bottom:14px}.news-kicker{display:flex;align-items:center;gap:8px;margin-bottom:4px}
@@ -330,7 +368,7 @@ button,input,select,textarea{font:inherit}.app{width:min(1180px,calc(100% - 48px
 @media(max-width:900px){.vehicle-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tool-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){body{background:#fff}.app{width:100%;margin:0;border:0;border-radius:0;box-shadow:none;min-height:100vh}.header{padding:17px 16px}.brand{font-size:22px}.header-note{font-size:10px}.home,.page-wrap{padding:18px 16px 80px}.hero{padding:17px;border-radius:18px}.hero h1{font-size:23px}.hero p{font-size:12px}.hero-stats{grid-template-columns:1fr 1fr;gap:8px}.stat:last-child{grid-column:1/-1;position:static;width:auto;min-width:0;padding:15px 17px}.stat:last-child small{font-size:11px}.stat:last-child b{font-size:20px;margin-top:4px}.stat b{font-size:20px}.section{margin-top:24px}.section-head h2{font-size:19px}.vehicle-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.vehicle-card{padding:15px 13px}.vehicle-card h3{font-size:15px}.vehicle-card .price-label{font-size:9px}.vehicle-card .price{font-size:14px}.tool-grid{grid-template-columns:1fr}.tool{padding:15px}.page-head h1,.page-head h2{font-size:23px}.list{grid-template-columns:1fr}.row{padding:15px}.bottom-home{display:block;position:fixed;left:50%;bottom:10px;transform:translateX(-50%);border:1px solid var(--line);background:#fff;color:var(--blue);border-radius:999px;padding:7px 12px;font-size:11px;font-weight:850;opacity:.82;box-shadow:0 5px 16px rgba(0,0,0,.10);z-index:20;transition:transform .2s ease,opacity .2s ease,padding .2s ease,font-size .2s ease}.bottom-home.compact{transform:translateX(-50%) scale(.86);opacity:.62;padding:5px 9px;font-size:10px}}
 </style></head><body><main class="app">
-<header class="header"><div class="brand">Engelli<span>.me</span></div></header><!-- Homepage UI build -->
+<header class="header"><div class="brand">Engelli<span>.me</span></div><a class="chat-nav" href="https://chat.engelli.me">Sohbet</a></header><!-- Homepage UI build -->
 <section id="home" class="page on"><div class="home">
 <div class="news-section">
   <div class="section-head">
