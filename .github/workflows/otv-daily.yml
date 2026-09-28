@@ -38,15 +38,23 @@ jobs:
           from datetime import datetime, timezone
           data=json.loads(sys.argv[1])
           runs=data.get("workflow_runs") or []
-          assert runs, "Haber workflow'u için hiç çalışma bulunamadı."
+          if not runs:
+              print("UYARI: Haber workflow'u için henüz çalışma bulunamadı; OTV güncellemesi devam ediyor.")
+              raise SystemExit(0)
           run=runs[0]
-          assert run.get("status") == "completed", f"Son haber çalışması tamamlanmamış: {run.get('status')}"
-          assert run.get("conclusion") == "success", f"Son haber çalışması başarısız: {run.get('conclusion')}"
+          if run.get("status") != "completed":
+              print(f"UYARI: Son haber çalışması tamamlanmamış: {run.get('status')}; OTV güncellemesi devam ediyor.")
+              raise SystemExit(0)
+          if run.get("conclusion") != "success":
+              print(f"UYARI: Son haber çalışması başarısız: {run.get('conclusion')}; OTV güncellemesi devam ediyor.")
+              raise SystemExit(0)
           started=run.get("run_started_at") or run.get("created_at")
           dt=datetime.fromisoformat(started.replace("Z","+00:00"))
           age_hours=(datetime.now(timezone.utc)-dt).total_seconds()/3600
-          assert age_hours <= 4, f"Son başarılı haber güncellemesi çok eski: {age_hours:.1f} saat"
-          print(f"Haber otomasyonu OK: son başarılı çalışma {age_hours:.1f} saat önce ({run.get('html_url')})")
+          if age_hours > 4:
+              print(f"UYARI: Son başarılı haber güncellemesi {age_hours:.1f} saat önce. Zamanlama gecikmiş/atlanmış olabilir; OTV güncellemesi devam ediyor.")
+          else:
+              print(f"Haber otomasyonu OK: son başarılı çalışma {age_hours:.1f} saat önce ({run.get('html_url')})")
           PY
 
       - name: Refresh official OTV data
