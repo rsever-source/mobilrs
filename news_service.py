@@ -2,6 +2,7 @@ import hashlib
 import json
 import os
 import re
+import time
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from html import unescape
@@ -20,6 +21,9 @@ GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
 UA = "EngelliMe-NewsBot/1.0 (+https://engelli.me)"
 TIMEOUT = 20
 AI_TIMEOUT = 60
+GEMINI_MIN_INTERVAL = 4
+GEMINI_RETRY_DELAYS = (2, 4, 8, 16)
+_gemini_last_request_at = None
 
 def _load_json(path, default):
     try:
@@ -158,6 +162,8 @@ def _article_text(url):
     return _clean(soup.get_text(" ", strip=True))[:18000]
 
 def _gemini(prompt):
+    global _gemini_last_request_at
+
     key = os.environ.get("GEMINI_API_KEY", "").strip()
     if not key:
         raise RuntimeError("GEMINI_API_KEY ayarlanmamış")
@@ -179,21 +185,44 @@ def _gemini(prompt):
             },
         },
     }
-    response = requests.post(
-        f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent",
-        headers={"x-goog-api-key": key, "Content-Type": "application/json"},
-        json=payload,
-        timeout=AI_TIMEOUT,
-    )
-    response.raise_for_status()
-    data = response.json()
-    try:
-        raw = data["candidates"][0]["content"]["parts"][0]["text"].strip()
-    except (KeyError, IndexError, TypeError) as exc:
-        raise RuntimeError("Gemini boş veya beklenmeyen yanıt verdi") from exc
-    if not raw:
-        raise RuntimeError("Gemini boş yanıt verdi")
-    return json.loads(raw)
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
+    headers = {"x-goog-api-key": key, "Content-Type": "application/json"}
+
+    for attempt in range(len(GEMINI_RETRY_DELAYS) + 1):
+        if attempt == 0 and _gemini_last_request_at is not None:
+            elapsed = time.monotonic() - _gemini_last_request_at
+            if elapsed < GEMINI_MIN_INTERVAL:
+                time.sleep(GEMINI_MIN_INTERVAL - elapsed)
+
+        response = requests.post(
+            url,
+            headers=headers,
+            json=payload,
+            timeout=AI_TIMEOUT,
+        )
+        _gemini_last_request_at = time.monotonic()
+
+        if response.status_code in (408, 429, 503) and attempt < len(GEMINI_RETRY_DELAYS):
+            delay = GEMINI_RETRY_DELAYS[attempt]
+            print(
+                f"Gemini geçici hata {response.status_code}; "
+                f"{delay} saniye sonra yeniden denenecek "
+                f"({attempt + 1}/{len(GEMINI_RETRY_DELAYS)})"
+            )
+            time.sleep(delay)
+            continue
+
+        response.raise_for_status()
+        data = response.json()
+        try:
+            raw = data["candidates"][0]["content"]["parts"][0]["text"].strip()
+        except (KeyError, IndexError, TypeError) as exc:
+            raise RuntimeError("Gemini boş veya beklenmeyen yanıt verdi") from exc
+        if not raw:
+            raise RuntimeError("Gemini boş yanıt verdi")
+        return json.loads(raw)
+
+    raise RuntimeError("Gemini geçici hatası yeniden denemelerden sonra devam etti")
 
 def _id(item):
     return hashlib.sha256(item["url"].encode("utf-8")).hexdigest()[:20]
