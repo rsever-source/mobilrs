@@ -13,6 +13,7 @@ import requests
 from bs4 import BeautifulSoup
 
 NEWS_FILE = "news.json"
+AI_LOG_FILE = "news_ai_log.json"
 SOURCES_FILE = "news_sources.json"
 MAX_ITEMS = 10
 MAX_PENDING = 30
@@ -268,7 +269,19 @@ def update_news():
 
     added = []
     failed = []
+    ai_log = {
+        "run_at": now.isoformat(),
+        "model": GEMINI_MODEL,
+        "candidates": [],
+    }
     for item in candidates:
+        ai_entry = {
+            "title": item.get("title", ""),
+            "source": item.get("source", ""),
+            "url": item.get("url", ""),
+            "published_at": item.get("published_at"),
+            "status": "not_sent",
+        }
         try:
             article = _article_text(item["url"])
             prompt = f"""Sen engelli.me için çalışan bir haber editörüsün.
@@ -318,15 +331,32 @@ Kaynak metni:
             prompt = prompt.replace("{existing_news}", existing_news_text)
 
             result = _gemini(prompt)
+            ai_entry["status"] = "gemini_decision"
+            ai_entry["publish"] = bool(result.get("publish"))
+            ai_entry["duplicate"] = bool(result.get("duplicate"))
+            ai_entry["duplicate_reason"] = _clean(result.get("duplicate_reason"))
+            ai_entry["generated_title"] = _clean(result.get("title"))
+            ai_entry["summary"] = _clean(result.get("summary"))
+            ai_entry["decision"] = (
+                "duplicate" if result.get("duplicate")
+                else "publish" if result.get("publish")
+                else "reject"
+            )
             if result.get("duplicate"):
                 print("Mükerrer haber atlandı:", item.get("title"), "|", result.get("duplicate_reason", ""))
+                ai_log["candidates"].append(ai_entry)
                 continue
             if not result.get("publish"):
+                ai_log["candidates"].append(ai_entry)
                 continue
             summary = _clean(result.get("summary"))
             title = _clean(result.get("title"))
             if not summary or not title:
+                ai_entry["status"] = "gemini_invalid_output"
+                ai_log["candidates"].append(ai_entry)
                 continue
+            ai_entry["status"] = "published"
+            ai_log["candidates"].append(ai_entry)
             added.append({
                 "id": item["id"], "title": title[:180], "summary": summary[:900],
                 "source": item["source"], "url": item["url"],
@@ -334,6 +364,9 @@ Kaynak metni:
             })
         except Exception as exc:
             print("Haber işlenemedi:", item.get("title"), repr(exc))
+            ai_entry["status"] = "not_processed"
+            ai_entry["error"] = repr(exc)
+            ai_log["candidates"].append(ai_entry)
             failed.append(item)
 
     merged = added + existing_items
@@ -344,6 +377,11 @@ Kaynak metni:
         "items": merged[:MAX_ITEMS],
         "pending": list(failed_by_id.values())[:MAX_PENDING],
     }
+    previous_ai_logs = _load_json(AI_LOG_FILE, [])
+    if not isinstance(previous_ai_logs, list):
+        previous_ai_logs = []
+    previous_ai_logs.append(ai_log)
+    _save_json(AI_LOG_FILE, previous_ai_logs[-7:])
     _save_json(NEWS_FILE, result)
     print(f"Yeni haber: {len(added)} | Toplam: {len(result['items'])} | Bekleyen: {len(result['pending'])}")
     return result
