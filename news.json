@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-29T19:15:44.399558+00:00",
+  "updated_at": "2026-09-29T20:33:46.575744+00:00",
   "items": [
     {
       "id": "1cc1f174f0869a406a28",
@@ -95,22 +95,6 @@
   "pending": [
     {
       "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "Evde Bakım Yardımı hesaplara yatırıldı",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/evde-bakim-yardimi-hesaplara-yatirildi/",
-      "description": "Evde Bakım Yardımı hesaplara yatırıldı",
-      "published_at": "2026-09-29T00:00:00+00:00",
-      "id": "94a8e58655628f267b2a"
-    },
-    {
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "24.05.2026 Bakanımız Göktaş, Gemerek Huzurevi Yaşlı Bakım Rehabilitasyon Merkezi Müdürlüğü’nün açılışını yaptı. Haberin Detayı",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktas-gemerek-huzurevi-yasli-bakim-rehabilitasyon-merkezi-mudurlugu-nun-acilisini-yapti/",
-      "description": "24.05.2026 Bakanımız Göktaş, Gemerek Huzurevi Yaşlı Bakım Rehabilitasyon Merkezi Müdürlüğü’nün açılışını yaptı. Haberin Detayı",
-      "published_at": "2026-09-29T00:00:00+00:00",
-      "id": "f3a3139861b0bb1b6bf7"
-    },
-    {
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
       "title": "Aile ve Sosyal Hizmetler Bakanımız Göktaş, Muş'ta konuştu",
       "url": "https://www.aile.gov.tr/eyhgm/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-mus-ta-konustu/",
       "description": "Aile ve Sosyal Hizmetler Bakanımız Göktaş, Muş'ta konuştu",
@@ -119,27 +103,35 @@
     },
     {
       "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "15.06.2026 Bakanımız Göktaş: \"Evde Bakım Yardımı ödemesini hesaplara yatırmaya başladık\" Haberin Detayı",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktasevde-bakim-yardimi-odemesini-hesaplara-yatirmaya-basladik/",
-      "description": "15.06.2026 Bakanımız Göktaş: \"Evde Bakım Yardımı ödemesini hesaplara yatırmaya başladık\" Haberin Detayı",
-      "published_at": "2026-09-29T00:00:00+00:00",
-      "id": "17cde933aeb947fa96b1"
-    },
-    {
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "26.05.2026 Bakanımız Göktaş, bayram ziyaretlerinde bulundu Haberin Detayı",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktas-bayram-ziyaretlerinde-bulundu/",
-      "description": "26.05.2026 Bakanımız Göktaş, bayram ziyaretlerinde bulundu Haberin Detayı",
-      "published_at": "2026-09-29T00:00:00+00:00",
-      "id": "48c8a450f8bea293c397"
-    },
-    {
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
       "title": "Ana Menüye Git",
       "url": "https://www.aile.gov.tr/eyhgm/haberler/#0",
       "description": "Ana Menüye Git",
       "published_at": "2026-09-29T00:00:00+00:00",
       "id": "fdbdd386c1470dfa4c34"
+    },
+    {
+      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
+      "title": "“1 Ekim Dünya Yaşlılar Günü”nde 81 ilde eş zamanlı yürüyüşler gerçekleştirilecek",
+      "url": "https://www.aile.gov.tr/eyhgm/haberler/1-ekim-dunya-yaslilar-gunu-nde-81-ilde-es-zamanli-yuruyusler-gerceklestirilecek/",
+      "description": "“1 Ekim Dünya Yaşlılar Günü”nde 81 ilde eş zamanlı yürüyüşler gerçekleştirilecek",
+      "published_at": "2026-09-29T00:00:00+00:00",
+      "id": "5dfa3581bcc96524cc93"
+    },
+    {
+      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
+      "title": "Bakanımız Göktaş, Ağrı'da \"Terörsüz Türkiye\" süreciyle ilgili konuştu",
+      "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktas-agri-da-terorsuz-turkiye-sureciyle-ilgili-konustu/",
+      "description": "Bakanımız Göktaş, Ağrı'da \"Terörsüz Türkiye\" süreciyle ilgili konuştu",
+      "published_at": "2026-09-29T00:00:00+00:00",
+      "id": "05974a0b5534b30164c2"
+    },
+    {
+      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
+      "title": "16.06.2026 Aile ve Sosyal Hizmetler Bakanlığı ile YTB arasında işbirliği protokolü imzalandı Haberin Detayı",
+      "url": "https://www.aile.gov.tr/eyhgm/haberler/aile-ve-sosyal-hizmetler-bakanligi-ile-ytb-arasinda-isbirligi-protokolu-imzalandi/",
+      "description": "16.06.2026 Aile ve Sosyal Hizmetler Bakanlığı ile YTB arasında işbirliği protokolü imzalandı Haberin Detayı",
+      "published_at": "2026-09-29T00:00:00+00:00",
+      "id": "8cbb78db35aac629ebba"
     }
   ]
 }
