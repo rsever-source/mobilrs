@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-29T22:08:22.549473+00:00",
+  "updated_at": "2026-09-29T22:18:56.153205+00:00",
   "items": [
     {
       "id": "1cc1f174f0869a406a28",
@@ -9,6 +9,24 @@
       "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/ampute-futbol-milli-takimi-dunya-kupasi-icin-guc-depoluyor/1832425",
       "published_at": "2026-11-22T00:00:00+00:00",
       "created_at": "2026-09-29T22:08:22.549473+00:00"
+    },
+    {
+      "id": "05974a0b5534b30164c2",
+      "title": "Bakan Göktaş: Şehit Yakınları ve Gazilere Yönelik Yeni Düzenlemeler Hayata Geçiriliyor",
+      "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Ağrı'da şehit yakınları ve gazilerle bir araya geldi. Bakan Göktaş, terörle mücadelede yaralanıp malul sayılmayanların gazi sayılacağını belirtti. Tüm şehit anne ve babaları için asgari ücret güvencesi getirildiğini açıkladı. Ağrı'da yürütülen sosyal yardımlar ve evde bakım desteği hakkında bilgi verildi. Gençlere yönelik sıfır faizli evlilik kredisi projelerinin sürdüğü ifade edildi.",
+      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
+      "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktas-agri-da-terorsuz-turkiye-sureciyle-ilgili-konustu/",
+      "published_at": "2026-09-30T00:00:00+00:00",
+      "created_at": "2026-09-29T22:18:56.153205+00:00"
+    },
+    {
+      "id": "94a8e58655628f267b2a",
+      "title": "Evde Bakım Yardımı Hesaplara Yatırıldı",
+      "summary": "Aile ve Sosyal Hizmetler Bakanlığı tarafından evlerinde bakılan tam bağımlı vatandaşlar için bu ay toplam 7 milyar lira Evde Bakım Yardımı hesaplara yatırıldı. Bakan Mahinur Özdemir Göktaş, 2006 yılından bu yana uygulanan bu destekle engelli bireylerin aile ortamında bakımının hedeflendiğini belirtti. Mevcut dönemde 516 bin vatandaş bu yardımdan faydalanmaktadır. 2026 yılı içerisinde bugüne kadar sağlanan toplam destek miktarı 48,6 milyar liraya ulaştı. Temmuz ayındaki memur maaş katsayısı düzenlemesiyle Evde Bakım Yardımı 15 bin 775 liraya yükseldi. Artışlı ödemeler ağustos ayından itibaren hak sahiplerinin hesaplarına aktarılmaya başlandı. Bakanlık, engelli bireylerin aile birliklerini koruyarak yaşadıkları ortamdan ayrılmadan desteklenmesini öncelikli görmektedir.",
+      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
+      "url": "https://www.aile.gov.tr/eyhgm/haberler/evde-bakim-yardimi-hesaplara-yatirildi/",
+      "published_at": "2026-09-30T00:00:00+00:00",
+      "created_at": "2026-09-29T22:18:56.153205+00:00"
     },
     {
       "id": "5dfa3581bcc96524cc93",
@@ -59,14 +77,6 @@
   "pending": [
     {
       "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "Aramaya atla",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/#search",
-      "description": "Aramaya atla",
-      "published_at": "2026-09-30T00:00:00+00:00",
-      "id": "49ca3e5f67653977dade"
-    },
-    {
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
       "title": "Bakanımız Göktaş, Göztepe Semiha Şakir Huzurevi Yaşlı Bakım ve Rehabilitasyon Merkezi'nin açılışına katıldı",
       "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktas-goztepe-semiha-sakir-huzurevi-yasli-bakim-ve-rehabilitasyon-merkezi-nin-acilisina-katildi/",
       "description": "Bakanımız Göktaş, Göztepe Semiha Şakir Huzurevi Yaşlı Bakım ve Rehabilitasyon Merkezi'nin açılışına katıldı",
@@ -75,19 +85,11 @@
     },
     {
       "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "Bakanımız Göktaş, Ağrı'da \"Terörsüz Türkiye\" süreciyle ilgili konuştu",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktas-agri-da-terorsuz-turkiye-sureciyle-ilgili-konustu/",
-      "description": "Bakanımız Göktaş, Ağrı'da \"Terörsüz Türkiye\" süreciyle ilgili konuştu",
+      "title": "Evde Bakım Yardımı ödemeleri hak sahiplerinin hesaplarına yatırılmaya başlandı",
+      "url": "https://www.aile.gov.tr/eyhgm/haberler/evde-bakim-yardimi-odemeleri-hak-sahiplerinin-hesaplarina-yatirilmaya-baslandi/",
+      "description": "Evde Bakım Yardımı ödemeleri hak sahiplerinin hesaplarına yatırılmaya başlandı",
       "published_at": "2026-09-30T00:00:00+00:00",
-      "id": "05974a0b5534b30164c2"
-    },
-    {
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "Ana Menüye Git",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/#0",
-      "description": "Ana Menüye Git",
-      "published_at": "2026-09-30T00:00:00+00:00",
-      "id": "fdbdd386c1470dfa4c34"
+      "id": "48c218764e10d9123152"
     }
   ]
 }
