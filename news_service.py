@@ -39,7 +39,7 @@ def _save_json(path, data):
 
 def _clean(text):
     text = unescape(str(text or ""))
-    return re.sub(r"\s+", " ", BeautifulSoup(text, "html.parser").get_text(" ", strip=True)).strip()
+    return re.sub(r"s+", " ", BeautifulSoup(text, "html.parser").get_text(" ", strip=True)).strip()
 
 def _date(value):
     if not value:
@@ -111,22 +111,13 @@ def _article_published_at(url):
         title_node = soup.find("h1")
         title_text = _clean(title_node.get_text(" ", strip=True)) if title_node else ""
 
-        # Some ministry pages contain a site/header date before the actual
-        # article date. Prefer a date embedded in the article title first.
-        numeric_dates = re.findall(r"\\b(\\d{1,2})[./-](\\d{1,2})[./-](\\d{4})\\b", title_text)
-        if numeric_dates:
-            day, month, year = map(int, numeric_dates[0])
-            return datetime(year, month, day, tzinfo=timezone.utc).isoformat()
-
         months = {
             "ocak":1, "şubat":2, "mart":3, "nisan":4, "mayıs":5, "haziran":6,
             "temmuz":7, "ağustos":8, "eylül":9, "ekim":10, "kasım":11, "aralık":12
         }
-        date_pattern = r"\\b(\\d{1,2})\\s+(Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\\s+(\\d{4})\\b"
+        date_pattern = r"(d{1,2})s+(Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)s+(d{4})"
         matches = list(re.finditer(date_pattern, text, re.I))
         if matches:
-            # Choose the date closest to the article heading, not a generic
-            # site/header date that may appear earlier on the page.
             title_pos = text.find(title_text) if title_text else -1
             match = min(
                 matches,
@@ -141,6 +132,16 @@ def _article_published_at(url):
         print("Haber tarihi okunamadı:", url, repr(exc))
     return None
 
+def _title_published_at(title):
+    text = _clean(title)
+    match = re.search(r"(?<!d)(d{1,2})[./-](d{1,2})[./-](d{4})(?!d)", text)
+    if not match:
+        return None
+    day, month, year = map(int, match.groups())
+    try:
+        return datetime(year, month, day, tzinfo=timezone.utc).isoformat()
+    except ValueError:
+        return None
 
 def _html_items(source):
     response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
@@ -161,7 +162,9 @@ def _html_items(source):
             continue
         if href.startswith(source.get("allowed_prefix", "https://www.aa.com.tr/")):
             seen.add(href)
-            published_at = _article_published_at(href)
+            published_at = _title_published_at(title)
+            if not published_at:
+                published_at = _article_published_at(href)
             if not published_at:
                 continue
             items.append({
@@ -345,8 +348,10 @@ Kaynak metni:
 {article}
 """
             existing_news = existing_items + added
-            existing_news_text = "\n".join(
-                f"- Başlık: {n.get('title', '')}\n  Özet: {n.get('summary', '')}"
+            existing_news_text = "
+".join(
+                f"- Başlık: {n.get('title', '')}
+  Özet: {n.get('summary', '')}"
                 for n in existing_news
             ) or "Henüz yayınlanmış haber yok."
             prompt = prompt.replace("{existing_news}", existing_news_text)
