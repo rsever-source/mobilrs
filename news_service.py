@@ -86,6 +86,45 @@ def _feed_items(source):
             })
     return items
 
+def _article_published_at(url):
+    try:
+        response = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        for attrs in (
+            {"property": "article:published_time"},
+            {"name": "article:published_time"},
+            {"itemprop": "datePublished"},
+            {"property": "datePublished"},
+            {"name": "datePublished"},
+        ):
+            node = soup.find("meta", attrs=attrs)
+            if node and node.get("content"):
+                parsed = _date(node.get("content"))
+                if parsed:
+                    return parsed.isoformat()
+
+        for node in soup.find_all("time"):
+            value = node.get("datetime") or node.get_text(" ", strip=True)
+            parsed = _date(value)
+            if parsed:
+                return parsed.isoformat()
+
+        months = "Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık"
+        match = re.search(rf"\b(\d{{1,2}})\s+({months})\s+(\d{{4}})\b", _clean(soup.get_text(" ", strip=True)), re.I)
+        if match:
+            month_map = {
+                "ocak":1, "şubat":2, "mart":3, "nisan":4, "mayıs":5, "haziran":6,
+                "temmuz":7, "ağustos":8, "eylül":9, "ekim":10, "kasım":11, "aralık":12
+            }
+            dt = datetime(int(match.group(3)), month_map[match.group(2).lower()], int(match.group(1)), tzinfo=timezone.utc)
+            return dt.isoformat()
+    except Exception as exc:
+        print("Haber tarihi okunamadı:", url, repr(exc))
+    return None
+
+
 def _html_items(source):
     response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
     response.raise_for_status()
@@ -105,9 +144,12 @@ def _html_items(source):
             continue
         if href.startswith(source.get("allowed_prefix", "https://www.aa.com.tr/")):
             seen.add(href)
+            published_at = _article_published_at(href)
+            if not published_at:
+                continue
             items.append({
                 "source": source["name"], "title": title[:300], "url": href,
-                "description": title, "published_at": None
+                "description": title, "published_at": published_at
             })
     return items
 
@@ -179,10 +221,14 @@ def update_news():
     candidates = []
     candidate_ids = set()
 
+    cutoff = now - timedelta(hours=LOOKBACK_HOURS)
+
     for item in pending:
         if item.get("id") and item["id"] not in known and _strong_relevance(item):
-            candidates.append(item)
-            candidate_ids.add(item["id"])
+            published = _date(item.get("published_at"))
+            if published and published >= cutoff:
+                candidates.append(item)
+                candidate_ids.add(item["id"])
 
     source_counts = {}
     for source in sources:
@@ -198,7 +244,7 @@ def update_news():
                 if item["id"] in known or item["id"] in candidate_ids:
                     continue
                 published = _date(item.get("published_at"))
-                if published and published < now - timedelta(hours=LOOKBACK_HOURS):
+                if not published or published < cutoff:
                     continue
                 if is_disability_feed or _strong_relevance(item):
                     candidates.append(item)
