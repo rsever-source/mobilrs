@@ -107,14 +107,35 @@ def _article_published_at(url):
             if parsed:
                 return parsed.isoformat()
 
-        months = "Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık"
-        match = re.search(rf"\b(\d{{1,2}})\s+({months})\s+(\d{{4}})\b", _clean(soup.get_text(" ", strip=True)), re.I)
-        if match:
-            month_map = {
-                "ocak":1, "şubat":2, "mart":3, "nisan":4, "mayıs":5, "haziran":6,
-                "temmuz":7, "ağustos":8, "eylül":9, "ekim":10, "kasım":11, "aralık":12
-            }
-            dt = datetime(int(match.group(3)), month_map[match.group(2).lower()], int(match.group(1)), tzinfo=timezone.utc)
+        text = _clean(soup.get_text(" ", strip=True))
+        title_node = soup.find("h1")
+        title_text = _clean(title_node.get_text(" ", strip=True)) if title_node else ""
+
+        # Some ministry pages contain a site/header date before the actual
+        # article date. Prefer a date embedded in the article title first.
+        numeric_dates = re.findall(r"\\b(\\d{1,2})[./-](\\d{1,2})[./-](\\d{4})\\b", title_text)
+        if numeric_dates:
+            day, month, year = map(int, numeric_dates[0])
+            return datetime(year, month, day, tzinfo=timezone.utc).isoformat()
+
+        months = {
+            "ocak":1, "şubat":2, "mart":3, "nisan":4, "mayıs":5, "haziran":6,
+            "temmuz":7, "ağustos":8, "eylül":9, "ekim":10, "kasım":11, "aralık":12
+        }
+        date_pattern = r"\\b(\\d{1,2})\\s+(Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\\s+(\\d{4})\\b"
+        matches = list(re.finditer(date_pattern, text, re.I))
+        if matches:
+            # Choose the date closest to the article heading, not a generic
+            # site/header date that may appear earlier on the page.
+            title_pos = text.find(title_text) if title_text else -1
+            match = min(
+                matches,
+                key=lambda m: abs(m.start() - title_pos) if title_pos >= 0 else m.start(),
+            )
+            day, month_name, year = match.groups()
+            dt = datetime(
+                int(year), months[month_name.lower()], int(day), tzinfo=timezone.utc
+            )
             return dt.isoformat()
     except Exception as exc:
         print("Haber tarihi okunamadı:", url, repr(exc))
