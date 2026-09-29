@@ -1,6 +1,15 @@
 {
-  "updated_at": "2026-09-29T08:34:49.931006+00:00",
+  "updated_at": "2026-09-29T10:04:24.678798+00:00",
   "items": [
+    {
+      "id": "1cc1f174f0869a406a28",
+      "title": "Ampute Futbol Milli Takımı Meksika'daki Dünya Kupası İçin Kayseri'de Kamp Yapıyor",
+      "summary": "Son dünya şampiyonu Ampute Futbol Milli Takımı, Meksika'da düzenlenecek Dünya Kupası hazırlıklarını sürdürüyor. Ay-yıldızlı ekip, Erciyes Yüksek İrtifa Kamp Merkezi'nde 18 Eylül'e kadar çalışmalarına devam edecek. Takım, 13-22 Kasım 2026 tarihlerinde San Juan de los Lagos kentinde gerçekleştirilecek turnuvada yeniden şampiyonluk hedefliyor. Teknik direktör İsmail Temiz, hazırlıkların neşeyle ve hırsla devam ettiğini belirtti. Milliler, Erzurum ve Samsun'daki kamp süreçleriyle hazırlıklarını sürdürecek. Kamp merkezinde sağlanan imkanlar dolayısıyla yetkililere teşekkür edildi.",
+      "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/ampute-futbol-milli-takimi-dunya-kupasi-icin-guc-depoluyor/1832425",
+      "published_at": "2026-11-22T00:00:00+00:00",
+      "created_at": "2026-09-29T10:04:24.678798+00:00"
+    },
     {
       "id": "a5b97948675a9af72b69",
       "title": "16 Mayıs Ulusal Erişilebilirlik Günü somut projelerle kutlanıyor",
@@ -81,33 +90,16 @@
       "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/burdurda-gonullu-ogrenciler-ozel-gereksinimli-bireylerin-kisisel-bakimini-yapiyor/1832487",
       "published_at": null,
       "created_at": "2026-09-29T02:00:11.928008+00:00"
-    },
-    {
-      "id": "561c9c024f19d1a1f07f",
-      "title": "Iraklı Down sendromli Emir fotoğrafçılığa olan ilgisiyle dikkat çekiyor",
-      "summary": "Irak'ta yaşayan 15 yaşındaki Down sendromlu Emir Nevres, fotoğrafçılığa duyduğu ilgiyle çevresindeki dünyayı kendi bakış açısıyla yansıtıyor. Fotoğrafçılık serüvenine babasının desteğiyle başlayan Emir, zamanla video çekmeyi de öğrenerek çalışmalarını geliştirdi. Babasından kadraj ve filtre kullanımı gibi temel unsurları öğrenen genç yetenek, çektiği fotoğrafları sosyal medyada paylaşıyor. Ailesi, Emir'in fotoğraflarından oluşan bir sergi açmayı planlıyor. Emir'in fotoğrafçılık alanındaki başarısı bazı özel kurum ve kuruluşlar tarafından ödüllendirildi. Ailesi, yetkililerden gencin yeteneğini geliştirmesi için destek bekliyor.",
-      "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
-      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/down-sendromlu-15-yasindaki-irakli-gorduklerini-kendi-kardajindan-yansitmaya-calisiyor/1832611",
-      "published_at": null,
-      "created_at": "2026-09-29T02:00:11.928008+00:00"
     }
   ],
   "pending": [
     {
       "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "23.06.2026 Bakanımız Göktaş, \"Engelli Hakları Ulusal Eylem Planı Çalıştayı\"nda konuştu Haberin Detayı",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktas-engelli-haklari-ulusal-eylem-plani-calistayi-nda-konustu/",
-      "description": "23.06.2026 Bakanımız Göktaş, \"Engelli Hakları Ulusal Eylem Planı Çalıştayı\"nda konuştu Haberin Detayı",
-      "published_at": null,
-      "id": "4f5841803b55c6cb041f"
-    },
-    {
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "15.05.2026 Evde Bakım Yardımı hesaplara yatırılmaya başlandı Haberin Detayı",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/evde-bakim-yardimi-hesaplara-yatirilmaya-baslandi-5/",
-      "description": "15.05.2026 Evde Bakım Yardımı hesaplara yatırılmaya başlandı Haberin Detayı",
-      "published_at": null,
-      "id": "eb37c07db87a248cded0"
+      "title": "Evde Bakım Yardımı hesaplara yatırıldı",
+      "url": "https://www.aile.gov.tr/eyhgm/haberler/evde-bakim-yardimi-hesaplara-yatirildi/",
+      "description": "Evde Bakım Yardımı hesaplara yatırıldı",
+      "published_at": "2026-09-29T00:00:00+00:00",
+      "id": "94a8e58655628f267b2a"
     }
   ]
 }
