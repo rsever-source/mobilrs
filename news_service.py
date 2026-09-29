@@ -15,7 +15,6 @@ NEWS_FILE = "news.json"
 SOURCES_FILE = "news_sources.json"
 MAX_ITEMS = 10
 MAX_PENDING = 30
-MAX_AI_CANDIDATES = 12
 LOOKBACK_HOURS = 168
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
 UA = "EngelliMe-NewsBot/1.0 (+https://engelli.me)"
@@ -224,7 +223,7 @@ def update_news():
     cutoff = now - timedelta(hours=LOOKBACK_HOURS)
 
     for item in pending:
-        if item.get("id") and item["id"] not in known and _strong_relevance(item):
+        if item.get("id") and item["id"] not in known:
             published = _date(item.get("published_at"))
             if published and published >= cutoff:
                 candidates.append(item)
@@ -235,10 +234,6 @@ def update_news():
         try:
             source_items = _source_items(source)
             source_counts[source["name"]] = len(source_items)
-            is_disability_feed = (
-                "Engelli Yaşam" in source.get("name", "")
-                or "Engelsiz" in source.get("name", "")
-            )
             for item in source_items:
                 item["id"] = _id(item)
                 if item["id"] in known or item["id"] in candidate_ids:
@@ -246,26 +241,17 @@ def update_news():
                 published = _date(item.get("published_at"))
                 if not published or published < cutoff:
                     continue
-                if is_disability_feed or _strong_relevance(item):
-                    candidates.append(item)
-                    candidate_ids.add(item["id"])
+                candidates.append(item)
+                candidate_ids.add(item["id"])
         except Exception as exc:
             print("Kaynak okunamadı:", source["name"], repr(exc))
 
     print("Kaynak kayıtları:", source_counts)
     print("AI adayları:", len(candidates))
 
-    candidates.sort(
-        key=lambda item: (
-            _strong_relevance(item),
-            _date(item.get("published_at")) or datetime.min.replace(tzinfo=timezone.utc),
-        ),
-        reverse=True,
-    )
-
     added = []
     failed = []
-    for item in candidates[:MAX_AI_CANDIDATES]:
+    for item in candidates:
         try:
             article = _article_text(item["url"])
             prompt = f"""Sen engelli.me için çalışan bir haber editörüsün.
