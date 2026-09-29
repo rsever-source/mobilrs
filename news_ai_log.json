@@ -722,5 +722,167 @@
         "decision": "publish"
       }
     ]
+  },
+  {
+    "run_at": "2026-09-29T21:38:19.883927+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": [
+      {
+        "title": "California'da kolluk kuvvetlerinin elektroşok eldiveni kullanması yasaklandı",
+        "source": "TRT Haber",
+        "url": "https://www.trthaber.com/haber/guncel/californiada-kolluk-kuvvetlerinin-elektrosok-eldiveni-kullanmasi-yasaklandi-958563.html",
+        "published_at": "2026-09-29T17:50:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "California'da kolluk kuvvetlerinin elektroşok eldiveni kullanması yasaklandı",
+        "summary": "ABD'nin California eyaletinde, kolluk kuvvetlerinin gözaltı sırasında elektroşok uygulayan eldivenleri kullanması yasaklandı. California Valisi Gavin Newsom, yerel, eyalet ve federal kolluk kuvvetlerinin bu eldivenleri gelecek yıldan itibaren 2030'a kadar kullanmasını yasaklayan yasayı onayladı. Karar, ABD Göçmenlik ve Gümrük Muhafaza İdaresinin görevlilerini bu eldivenlerle donatma kararından birkaç hafta sonra alındı. Kaynak metinde engelli bireylerin hakları, bakımı veya erişilebilirliği ile doğrudan bir bağlam yer almadığı için haber engelli.me yayın politikasına uygun değildir.",
+        "decision": "reject"
+      },
+      {
+        "title": "TCMB firmalara yönelik döviz dönüşüm desteğinde yeni dönemi devreye alıyor",
+        "source": "TRT Haber",
+        "url": "https://www.trthaber.com/haber/guncel/tcmb-firmalara-yonelik-doviz-donusum-desteginde-yeni-donemi-devreye-aliyor-958364.html",
+        "published_at": "2026-09-28T06:22:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "TCMB'den firmalara döviz dönüşüm desteğinde yeni dönem",
+        "summary": "Türkiye Cumhuriyet Merkez Bankası, firmalara yönelik döviz dönüşüm desteğinde yeni bir dönemi hayata geçiriyor. Hazine ve Maliye Bakanı Mehmet Şimşek, destek şartlarının daha esnek ve sade hale getirildiğini bildirdi. Yeni uygulamayla birlikte döviz almama taahhüdü kaldırılarak firmaların döviz pozisyonu şartı getirildi. Destek kapsamında satılabilecek döviz tutarı, firmaların katma değerine göre hesaplanacak. Aracı ihracatçı kullanan tedarikçi firmalar da kendi limitleri ölçüsünde destekten faydalanabilecek. 1 Ekim'de yürürlüğe girecek yeni talimat ile bankaların kontrol mekanizmaları güçlendirildi.",
+        "decision": "reject"
+      },
+      {
+        "title": "Cumhurbaşkanı Yardımcısı Yılmaz: Sermaye piyasalarımızda yapısal bir sorun yok",
+        "source": "TRT Haber",
+        "url": "https://www.trthaber.com/haber/guncel/cumhurbaskani-yardimcisi-yilmaz-sermaye-piyasalarimizda-yapisal-bir-sorun-yok-957813.html",
+        "published_at": "2026-09-23T08:58:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "Cumhurbaşkanı Yardımcısı Yılmaz'dan sermaye piyasaları açıklaması",
+        "summary": "Cumhurbaşkanı Yardımcısı Cevdet Yılmaz sermaye piyasalarında yapısal bir sorun bulunmadığını açıkladı. Gerekli idari tedbirlerin alındığını belirten Yılmaz kısıtlı bir alanda sorun yaşandığını ifade etti. Makroekonomik temellerin sağlam olduğunu vurgulayan Yılmaz cari dengenin yönetilebilir seviyede olduğunu kaydetti. Rezervlerdeki güçlü seyir ve risk primindeki düşüşe dikkat çekildi. Bölgesel ihracatın artmaya devam ettiği belirtildi.",
+        "decision": "reject"
+      },
+      {
+        "title": "117 kalp merkeziyle ileri tanı ve tedavi hizmeti sunuluyor",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/117-kalp-merkeziyle-ileri-tani-ve-tedavi-hizmeti-sunuluyor-958532.html",
+        "published_at": "2026-09-29T12:12:00+00:00",
+        "status": "published",
+        "publish": true,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "Türkiye genelinde 117 kalp merkeziyle ileri sağlık hizmeti sunuluyor",
+        "summary": "Sağlık Bakanlığına bağlı kamu hastanelerinde faaliyet gösteren 101 erişkin ve 16 pediatrik olmak üzere toplam 117 kalp merkezi hizmet vermektedir. Bu merkezlerde kardiyoloji ve kalp damar cerrahisi alanlarında tanı, tedavi ve takip süreçleri bütüncül bir yaklaşımla yürütülmektedir. Geçtiğimiz yıl ülke genelinde toplam 46 kalp nakli gerçekleştirilmiştir. Bu yılın ilk yarısında ise yapılan kalp nakli sayısı 11 olarak kayıtlara geçmiştir. Uzman ekipler, nakil yapılan hastaların ameliyat sonrasındaki süreçlerini de düzenli olarak takip etmektedir. Birinci basamak sağlık hizmetlerinde kalp ve damar hastalıklarına yönelik risk değerlendirmeleri yapılmaktadır. Vatandaşların sağlıklı yaşam alışkanlıkları edinmesi ve risk faktörlerinden uzak durması teşvik edilmektedir.",
+        "decision": "publish"
+      },
+      {
+        "title": "İdris Demir: Sigarayı bırakalı 3 ay oldu, sağlık sorunlarımın çoğu gitti",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/idris-demir-sigarayi-birakali-3-ay-oldu-saglik-sorunlarimin-cogu-gitti-958412.html",
+        "published_at": "2026-09-28T10:19:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "Sigarayı Bırakan İdris Demir Sağlığına Kavuştu",
+        "summary": "Kayseri'de yaşayan 63 yaşındaki işçi emeklisi İdris Demir, elli yıl boyunca günde üç paket sigara tüketti. Şiddetli öksürük ve nefes darlığı yaşayan Demir, Sigara Bırakma Polikliniği'ne başvurdu. İlaç, bant, diyet ve psikososyal destek alan Demir üç aydır sigara kullanmıyor. Merdiven çıkamayan ve astım bronşit olan Demir'in sağlık sorunlarının çoğu geçti. Tedavi sürecinde doktorundan büyük destek gördüğünü belirten Demir sigarayı bıraktıktan sonra hayatının değiştiğini ifade etti. Poliklinikte görevli uzman doktor Işıl Arık hastaların bağımlılık düzeyine göre kişiye özel tedavi planı oluşturduklarını kaydetti.",
+        "decision": "reject"
+      },
+      {
+        "title": "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/8-ayda-179-bini-askin-kisi-sigarayi-birakmak-icin-basvurdu-958394.html",
+        "published_at": "2026-09-28T08:37:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu",
+        "summary": "Türkiye genelinde sigara bırakma polikliniklerinin sayısı 1751'e yükseldi. Bu yılın ilk sekiz ayında sigara bırakma polikliniklerine 179 bin 779 başvuru yapıldı. ALO 171 Sigara Bırakma Danışma Hattı üzerinden de bu dönemde yaklaşık 180 bin çağrı yanıtlandı. Sağlık Bakanlığı tarafından sigara bırakma tedavisinde kullanılan ilaçlar vatandaşlara ücretsiz olarak sağlanıyor. Polikliniklerde ve aile hekimliği birimlerinde yürütülen süreçte hastalar bir yıl boyunca düzenli olarak takip ediliyor. Bir yıllık takip süreci tamamlanan hastaların yaklaşık yüzde 24'ünün sigarayı bıraktığı tespit edildi.",
+        "decision": "reject"
+      },
+      {
+        "title": "Elektronik sigara akciğerleri vuruyor: Organ ve sistemleri olumsuz etkiliyor.",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/elektronik-sigara-akcigerleri-vuruyor-organ-ve-sistemleri-olumsuz-etkiliyor-958383.html",
+        "published_at": "2026-09-28T07:42:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "Elektronik sigara ve tütün ürünleri sağlığı tehdit ediyor",
+        "summary": "Son yıllarda yaygınlaşan elektronik sigara, puff ve ısıtılmış tütün ürünleri başta akciğerler olmak üzere tüm vücut sistemlerini olumsuz etkiliyor. Uzmanlar, bu ürünlerin kısa ve uzun vadede solunum sorunlarına ve kalıcı akciğer hasarlarına yol açabildiğini belirtiyor. Gençler arasında popüler hale gelen ürünlerin nikotin oranının yüksek olduğu ve bağımlılık riskini artırdığı vurgulanıyor. Aromalı tasarımlar ve tatlandırıcılar çocukların ve gençlerin bu ürünlere yönelmesini kolaylaştırıyor. Ailelerin elektronik sigara kullanımına karşı dikkatli olmaları ve çocuklarını uyarmaları önem taşıyor. Uzmanlar, gençlerin sporla ilgilenmeleri ve bu tür zararlı maddelerden uzak durmaları gerektiğini belirtiyor.",
+        "decision": "reject"
+      },
+      {
+        "title": "Türkiye'de kadınlarda tütün kullanımı 17 yılda yüzde 35 arttı",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/turkiyede-kadinlarda-tutun-kullanimi-17-yilda-yuzde-35-artti-958097.html",
+        "published_at": "2026-09-25T08:08:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "Türkiye'de Kadınlarda Tütün Kullanımı Oranı Arttı",
+        "summary": "Türkiye'de 2008 ile 2025 yılları arasında kadınlarda tütün ürünü kullanım oranı yüzde 15,2'den yüzde 20,6 seviyesine yükseldi. Aynı dönemde erkeklerde tütün kullanımı yüzde 47,9'dan yüzde 46 oranına geriledi. Sağlık Bakanlığı verileri ve TÜİK araştırmalarına göre 15 yaş ve üzeri nüfusta genel tütün kullanım oranı yüzde 33,2 olarak hesaplandı. Tütün kullanımının dünyada ve Türkiye'de kronik hastalıklar ile kanser vakalarında büyük bir paya sahip olduğu belirtildi. Ülke genelinde tütünle mücadele kapsamında Tütünle Mücadele Timleri ile Mobil Sigara Bırakma Poliklinikleri çalışmalarını sürdürüyor. Ayrıca çocuk ve gençlerin tütün ürünlerinden korunması amacıyla üniversiteler için Dumansız Kampüs rehberi hazırlandı.",
+        "decision": "reject"
+      },
+      {
+        "title": "Tütünle mücadelede yeni düzenlemeler geliyor",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/tutunle-mucadelede-yeni-duzenlemeler-geliyor-957990.html",
+        "published_at": "2026-09-24T10:28:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "Tütünle Mücadelede Yeni Yasal Düzenlemeler Gündemde",
+        "summary": "Sağlık Bakanlığının hazırladığı yeni tütünle mücadele kanun teklifinin ekim ayında TBMM'ye sunulması planlanmaktadır. Taslak çalışmada 1 Ocak 2015'ten sonra doğanlara tütün ürünleri satışının ömür boyu yasaklanması yer almaktadır. Ayrıca 2040 yılından sonra tütün ürünleri üretim ve satışının kökten yasaklanması öngörülmektedir. Lokanta, park ve bahçelerde sigara içimine yönelik yeni sınırlamalar getirilmesi amaçlanmaktadır. Sigara paketlerinde standart paket uygulamasına geçilerek ince ve slim sigaraların kaldırılması planlanmaktadır. Satışlarda 18 yaş altı için kredi kartı ile kimlik doğrulama zorunluluğu getirilmesi hedeflenmektedir.",
+        "decision": "reject"
+      },
+      {
+        "title": "1 milyon 756 bin bebeğe işitme taraması yapıldı",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/1-milyon-756-bin-bebege-isitme-taramasi-yapildi-957830.html",
+        "published_at": "2026-09-23T10:00:00+00:00",
+        "status": "published",
+        "publish": true,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "Son iki yılda milyonlarca bebek ve çocuğa işitme taraması yapıldı",
+        "summary": "Sağlık Bakanlığı tarafından yürütülen programlar kapsamında son iki yılda 1 milyon 756 bin bebeğe işitme taraması gerçekleştirildi. Yapılan taramalar sonucunda ileri değerlendirme gerektiren 24 bin bebek ileri tanı merkezlerine sevk edildi. Ayrıca ilkokul birinci sınıf öğrencilerine yönelik programda 2 milyon 129 bin çocuğa ulaşıldı ve 118 bin çocuk KBB hekimlerine yönlendirildi. İşitme engelli bireylerin sağlık hizmetlerine erişimini kolaylaştıran ESİM uygulamasından bugüne kadar 118 bin vatandaş yararlandı. Ücretsiz mobil uygulama üzerinden profesyonel işaret dili tercümanlarıyla 7 gün 24 saat kesintisiz hizmet sunulmaktadır.",
+        "decision": "publish"
+      },
+      {
+        "title": "2 milyon 129 bin çocuğa işitme taraması yapıldı",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/2-milyon-129-bin-cocuga-isitme-taramasi-yapildi-957811.html",
+        "published_at": "2026-09-23T08:56:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": true,
+        "duplicate_reason": "Mevcut sitedeki 'Son iki yılda milyonlarca bebek ve çocuğa işitme taraması yapıldı' başlıklı haber ile aynı istatistikleri ve bilgileri içermektedir.",
+        "generated_title": "",
+        "summary": "",
+        "decision": "duplicate"
+      },
+      {
+        "title": "Türkiye'de tütün her yıl 100 bin ölüme neden oluyor",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/turkiyede-tutun-her-yil-100-bin-olume-neden-oluyor-957804.html",
+        "published_at": "2026-09-23T08:32:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "Türkiye'de tütün her yıl binlerce kişinin ölümüne yol açıyor",
+        "summary": "Türkiye'de her üç yetişkinden biri tütün ürünü kullanmaktadır. Her yıl tütün kullanımına bağlı nedenlerle yüz bin kişi hayatını kaybetmektedir. Uzmanlar, tütüne başlama yaşının ortalama on altı olduğunu belirtmektedir. Çocukların ve gençlerin tütün ürünlerinden korunması için yeni tedbirlerin alınması istenmektedir. Elektronik sigara ve benzeri ürünlerin de ciddi sağlık riskleri barındırdığı vurgulanmaktadır.",
+        "decision": "reject"
+      }
+    ]
   }
 ]

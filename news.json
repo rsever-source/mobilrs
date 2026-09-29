@@ -1,5 +1,24 @@
 {
-  "updated_at": "2026-09-30T00:00:00+00:00",
-  "items": [],
+  "updated_at": "2026-09-29T21:38:19.883927+00:00",
+  "items": [
+    {
+      "id": "0828bc8cefa14da335d4",
+      "title": "Türkiye genelinde 117 kalp merkeziyle ileri sağlık hizmeti sunuluyor",
+      "summary": "Sağlık Bakanlığına bağlı kamu hastanelerinde faaliyet gösteren 101 erişkin ve 16 pediatrik olmak üzere toplam 117 kalp merkezi hizmet vermektedir. Bu merkezlerde kardiyoloji ve kalp damar cerrahisi alanlarında tanı, tedavi ve takip süreçleri bütüncül bir yaklaşımla yürütülmektedir. Geçtiğimiz yıl ülke genelinde toplam 46 kalp nakli gerçekleştirilmiştir. Bu yılın ilk yarısında ise yapılan kalp nakli sayısı 11 olarak kayıtlara geçmiştir. Uzman ekipler, nakil yapılan hastaların ameliyat sonrasındaki süreçlerini de düzenli olarak takip etmektedir. Birinci basamak sağlık hizmetlerinde kalp ve damar hastalıklarına yönelik risk değerlendirmeleri yapılmaktadır. Vatandaşların sağlıklı yaşam alışkanlıkları edinmesi ve risk faktörlerinden uzak durması teşvik edilmektedir.",
+      "source": "TRT Haber – Sağlık",
+      "url": "https://www.trthaber.com/haber/saglik/117-kalp-merkeziyle-ileri-tani-ve-tedavi-hizmeti-sunuluyor-958532.html",
+      "published_at": "2026-09-29T12:12:00+00:00",
+      "created_at": "2026-09-29T21:38:19.883927+00:00"
+    },
+    {
+      "id": "df95df504ca74c595992",
+      "title": "Son iki yılda milyonlarca bebek ve çocuğa işitme taraması yapıldı",
+      "summary": "Sağlık Bakanlığı tarafından yürütülen programlar kapsamında son iki yılda 1 milyon 756 bin bebeğe işitme taraması gerçekleştirildi. Yapılan taramalar sonucunda ileri değerlendirme gerektiren 24 bin bebek ileri tanı merkezlerine sevk edildi. Ayrıca ilkokul birinci sınıf öğrencilerine yönelik programda 2 milyon 129 bin çocuğa ulaşıldı ve 118 bin çocuk KBB hekimlerine yönlendirildi. İşitme engelli bireylerin sağlık hizmetlerine erişimini kolaylaştıran ESİM uygulamasından bugüne kadar 118 bin vatandaş yararlandı. Ücretsiz mobil uygulama üzerinden profesyonel işaret dili tercümanlarıyla 7 gün 24 saat kesintisiz hizmet sunulmaktadır.",
+      "source": "TRT Haber – Sağlık",
+      "url": "https://www.trthaber.com/haber/saglik/1-milyon-756-bin-bebege-isitme-taramasi-yapildi-957830.html",
+      "published_at": "2026-09-23T10:00:00+00:00",
+      "created_at": "2026-09-29T21:38:19.883927+00:00"
+    }
+  ],
   "pending": []
 }
