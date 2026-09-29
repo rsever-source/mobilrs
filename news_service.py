@@ -21,14 +21,6 @@ UA = "EngelliMe-NewsBot/1.0 (+https://engelli.me)"
 TIMEOUT = 20
 AI_TIMEOUT = 60
 
-STRONG_KEYWORDS = (
-    "engelli", "engelliler", "engelli birey", "engelli vatandaş",
-    "engelli aylığı", "evde bakım", "erişilebilir", "erişilebilirlik",
-    "ekpss", "özel eğitim", "özel gereksinim", "özel gereksinimli",
-    "ötv", "muafiyet", "bakım yardımı", "ücretsiz seyahat",
-    "malulen emekl", "çalışma gücü kaybı",
-)
-
 def _load_json(path, default):
     try:
         with open(path, encoding="utf-8") as f:
@@ -157,10 +149,6 @@ def _source_items(source):
         return _html_items(source)
     return _feed_items(source)
 
-def _strong_relevance(item):
-    text = f"{item.get('title', '')} {item.get('description', '')}".lower()
-    return any(keyword in text for keyword in STRONG_KEYWORDS)
-
 def _article_text(url):
     response = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT, allow_redirects=True)
     response.raise_for_status()
@@ -256,12 +244,14 @@ def update_news():
             article = _article_text(item["url"])
             prompt = f"""Sen engelli.me için çalışan bir haber editörüsün.
 Yalnızca verilen kaynak metnindeki doğrulanabilir bilgileri kullan.
-Haber engelli bireylerin haklarını, gelir veya sosyal yardımlarını, bakımını, istihdamını,
-eğitimini, sağlığını, ulaşımını, erişilebilirliğini, araç/ÖTV durumunu veya ilgili mevzuatı
-somut biçimde etkiliyorsa publish=true ver.
+Haberin Engelli.me için uygun olup olmadığına kendin karar ver.
+Başlıkta veya kısa açıklamada belirli anahtar kelimelerin geçmesini şart koşma; haber metninin tamamındaki bağlamı değerlendir.
+Engelli bireylerin hakları, gelir veya sosyal yardımları, bakımı, istihdamı, eğitimi,
+sağlığı, ulaşımı, erişilebilirliği, araç/ÖTV durumu veya ilgili mevzuatla doğrudan ya da
+anlamlı biçimde ilgiliyse publish=true ver.
 Genel ekonomi, siyaset, savaş, trafik veya gündem haberlerini yalnızca engelli bireyler
-üzerinde açık ve somut bir etkisi varsa yayınla; aksi halde publish=false ver.
-Önceliği doğrudan engelli bireyleri ilgilendiren haberlere ver.
+üzerinde açık ve somut bir etkisi varsa publish=true ver.
+Aksi durumda publish=false ver.
 
 ÖNEMLİ: MÜKERRER HABER KONTROLÜ YAP.
 Aşağıdaki "Mevcut sitedeki haberler" listesini yeni haberle karşılaştır.
