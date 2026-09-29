@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-29T20:44:19.534906+00:00",
+  "updated_at": "2026-09-29T20:57:55.520650+00:00",
   "items": [
     {
       "id": "1cc1f174f0869a406a28",
@@ -95,22 +95,6 @@
   "pending": [
     {
       "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "“1 Ekim Dünya Yaşlılar Günü”nde 81 ilde eş zamanlı yürüyüşler gerçekleştirilecek",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/1-ekim-dunya-yaslilar-gunu-nde-81-ilde-es-zamanli-yuruyusler-gerceklestirilecek/",
-      "description": "“1 Ekim Dünya Yaşlılar Günü”nde 81 ilde eş zamanlı yürüyüşler gerçekleştirilecek",
-      "published_at": "2026-09-29T00:00:00+00:00",
-      "id": "5dfa3581bcc96524cc93"
-    },
-    {
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "Aramaya atla",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/#search",
-      "description": "Aramaya atla",
-      "published_at": "2026-09-29T00:00:00+00:00",
-      "id": "49ca3e5f67653977dade"
-    },
-    {
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
       "title": "Evde Bakım Yardımı hesaplara yatırıldı",
       "url": "https://www.aile.gov.tr/eyhgm/haberler/evde-bakim-yardimi-hesaplara-yatirildi/",
       "description": "Evde Bakım Yardımı hesaplara yatırıldı",
@@ -119,27 +103,43 @@
     },
     {
       "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "23.06.2026 Bakanımız Göktaş, \"Engelli Hakları Ulusal Eylem Planı Çalıştayı\"nda konuştu Haberin Detayı",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktas-engelli-haklari-ulusal-eylem-plani-calistayi-nda-konustu/",
-      "description": "23.06.2026 Bakanımız Göktaş, \"Engelli Hakları Ulusal Eylem Planı Çalıştayı\"nda konuştu Haberin Detayı",
-      "published_at": "2026-09-29T00:00:00+00:00",
-      "id": "4f5841803b55c6cb041f"
-    },
-    {
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "11.06.2026 Tazelenme Olimpiyatları 273 Kıdemli Sporcu ile Isparta’da Gerçekleştirildi Haberin Detayı",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/tazelenme-olimpiyatlari-273-kidemli-sporcu-ile-isparta-da-gerceklestirildi/",
-      "description": "11.06.2026 Tazelenme Olimpiyatları 273 Kıdemli Sporcu ile Isparta’da Gerçekleştirildi Haberin Detayı",
-      "published_at": "2026-09-29T00:00:00+00:00",
-      "id": "fcc134e123b3b18b0028"
-    },
-    {
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
       "title": "15.05.2026 Evde Bakım Yardımı hesaplara yatırılmaya başlandı Haberin Detayı",
       "url": "https://www.aile.gov.tr/eyhgm/haberler/evde-bakim-yardimi-hesaplara-yatirilmaya-baslandi-5/",
       "description": "15.05.2026 Evde Bakım Yardımı hesaplara yatırılmaya başlandı Haberin Detayı",
       "published_at": "2026-09-29T00:00:00+00:00",
       "id": "eb37c07db87a248cded0"
+    },
+    {
+      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
+      "title": "Bakanımız Göktaş, Göztepe Semiha Şakir Huzurevi Yaşlı Bakım ve Rehabilitasyon Merkezi'nin açılışına katıldı",
+      "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktas-goztepe-semiha-sakir-huzurevi-yasli-bakim-ve-rehabilitasyon-merkezi-nin-acilisina-katildi/",
+      "description": "Bakanımız Göktaş, Göztepe Semiha Şakir Huzurevi Yaşlı Bakım ve Rehabilitasyon Merkezi'nin açılışına katıldı",
+      "published_at": "2026-09-29T00:00:00+00:00",
+      "id": "7a01db1673b68c08a73f"
+    },
+    {
+      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
+      "title": "09.07.2026 Bakanımız Göktaş, Eskişehir'de Yaşlı Aktif Yaşam Merkezi'nin açılışında konuştu Haberin Detayı",
+      "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktas-eskisehir-de-yasli-aktif-yasam-merkezi-nin-acilisinda-konustu/",
+      "description": "09.07.2026 Bakanımız Göktaş, Eskişehir'de Yaşlı Aktif Yaşam Merkezi'nin açılışında konuştu Haberin Detayı",
+      "published_at": "2026-09-29T00:00:00+00:00",
+      "id": "095522b2117445917866"
+    },
+    {
+      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
+      "title": "15.06.2026 Bakanımız Göktaş: \"Evde Bakım Yardımı ödemesini hesaplara yatırmaya başladık\" Haberin Detayı",
+      "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktasevde-bakim-yardimi-odemesini-hesaplara-yatirmaya-basladik/",
+      "description": "15.06.2026 Bakanımız Göktaş: \"Evde Bakım Yardımı ödemesini hesaplara yatırmaya başladık\" Haberin Detayı",
+      "published_at": "2026-09-29T00:00:00+00:00",
+      "id": "17cde933aeb947fa96b1"
+    },
+    {
+      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
+      "title": "24.05.2026 Bakanımız Göktaş, Gemerek Huzurevi Yaşlı Bakım Rehabilitasyon Merkezi Müdürlüğü’nün açılışını yaptı. Haberin Detayı",
+      "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktas-gemerek-huzurevi-yasli-bakim-rehabilitasyon-merkezi-mudurlugu-nun-acilisini-yapti/",
+      "description": "24.05.2026 Bakanımız Göktaş, Gemerek Huzurevi Yaşlı Bakım Rehabilitasyon Merkezi Müdürlüğü’nün açılışını yaptı. Haberin Detayı",
+      "published_at": "2026-09-29T00:00:00+00:00",
+      "id": "f3a3139861b0bb1b6bf7"
     }
   ]
 }
