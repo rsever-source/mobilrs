@@ -39,7 +39,7 @@ def _save_json(path, data):
 
 def _clean(text):
     text = unescape(str(text or ""))
-    return re.sub(r"s+", " ", BeautifulSoup(text, "html.parser").get_text(" ", strip=True)).strip()
+    return re.sub(r"\s+", " ", BeautifulSoup(text, "html.parser").get_text(" ", strip=True)).strip()
 
 def _date(value):
     if not value:
@@ -87,7 +87,6 @@ def _article_published_at(url):
         response = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, "html.parser")
-
         for attrs in (
             {"property": "article:published_time"},
             {"name": "article:published_time"},
@@ -100,33 +99,25 @@ def _article_published_at(url):
                 parsed = _date(node.get("content"))
                 if parsed:
                     return parsed.isoformat()
-
         for node in soup.find_all("time"):
             value = node.get("datetime") or node.get_text(" ", strip=True)
             parsed = _date(value)
             if parsed:
                 return parsed.isoformat()
-
         text = _clean(soup.get_text(" ", strip=True))
         title_node = soup.find("h1")
         title_text = _clean(title_node.get_text(" ", strip=True)) if title_node else ""
-
         months = {
             "ocak":1, "şubat":2, "mart":3, "nisan":4, "mayıs":5, "haziran":6,
             "temmuz":7, "ağustos":8, "eylül":9, "ekim":10, "kasım":11, "aralık":12
         }
-        date_pattern = r"(d{1,2})s+(Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)s+(d{4})"
+        date_pattern = r"\b(\d{1,2})\s+(Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+(\d{4})\b"
         matches = list(re.finditer(date_pattern, text, re.I))
         if matches:
             title_pos = text.find(title_text) if title_text else -1
-            match = min(
-                matches,
-                key=lambda m: abs(m.start() - title_pos) if title_pos >= 0 else m.start(),
-            )
+            match = min(matches, key=lambda m: abs(m.start() - title_pos) if title_pos >= 0 else m.start())
             day, month_name, year = match.groups()
-            dt = datetime(
-                int(year), months[month_name.lower()], int(day), tzinfo=timezone.utc
-            )
+            dt = datetime(int(year), months[month_name.lower()], int(day), tzinfo=timezone.utc)
             return dt.isoformat()
     except Exception as exc:
         print("Haber tarihi okunamadı:", url, repr(exc))
@@ -134,7 +125,7 @@ def _article_published_at(url):
 
 def _title_published_at(title):
     text = _clean(title)
-    match = re.search(r"(?<!d)(d{1,2})[./-](d{1,2})[./-](d{4})(?!d)", text)
+    match = re.search(r"(?<!\d)(\d{1,2})[./-](\d{1,2})[./-](\d{4})(?!\d)", text)
     if not match:
         return None
     day, month, year = map(int, match.groups())
@@ -188,7 +179,6 @@ def _article_text(url):
 
 def _gemini(prompt):
     global _gemini_last_request_at
-
     key = os.environ.get("GEMINI_API_KEY", "").strip()
     if not key:
         raise RuntimeError("GEMINI_API_KEY ayarlanmamış")
@@ -212,31 +202,18 @@ def _gemini(prompt):
     }
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
     headers = {"x-goog-api-key": key, "Content-Type": "application/json"}
-
     for attempt in range(len(GEMINI_RETRY_DELAYS) + 1):
         if attempt == 0 and _gemini_last_request_at is not None:
             elapsed = time.monotonic() - _gemini_last_request_at
             if elapsed < GEMINI_MIN_INTERVAL:
                 time.sleep(GEMINI_MIN_INTERVAL - elapsed)
-
-        response = requests.post(
-            url,
-            headers=headers,
-            json=payload,
-            timeout=AI_TIMEOUT,
-        )
+        response = requests.post(url, headers=headers, json=payload, timeout=AI_TIMEOUT)
         _gemini_last_request_at = time.monotonic()
-
         if response.status_code in (408, 429, 503) and attempt < len(GEMINI_RETRY_DELAYS):
             delay = GEMINI_RETRY_DELAYS[attempt]
-            print(
-                f"Gemini geçici hata {response.status_code}; "
-                f"{delay} saniye sonra yeniden denenecek "
-                f"({attempt + 1}/{len(GEMINI_RETRY_DELAYS)})"
-            )
+            print(f"Gemini geçici hata {response.status_code}; {delay} saniye sonra yeniden denenecek ({attempt + 1}/{len(GEMINI_RETRY_DELAYS)})")
             time.sleep(delay)
             continue
-
         response.raise_for_status()
         data = response.json()
         try:
@@ -246,7 +223,6 @@ def _gemini(prompt):
         if not raw:
             raise RuntimeError("Gemini boş yanıt verdi")
         return json.loads(raw)
-
     raise RuntimeError("Gemini geçici hatası yeniden denemelerden sonra devam etti")
 
 def _id(item):
@@ -261,7 +237,6 @@ def update_news():
     known = {item.get("id") for item in existing_items}
     candidates = []
     candidate_ids = set()
-
     cutoff = now - timedelta(hours=LOOKBACK_HOURS)
 
     for item in pending:
@@ -290,14 +265,10 @@ def update_news():
 
     print("Kaynak kayıtları:", source_counts)
     print("AI adayları:", len(candidates))
-
     added = []
     failed = []
-    ai_log = {
-        "run_at": now.isoformat(),
-        "model": GEMINI_MODEL,
-        "candidates": [],
-    }
+    ai_log = {"run_at": now.isoformat(), "model": GEMINI_MODEL, "candidates": []}
+
     for item in candidates:
         ai_entry = {
             "title": item.get("title", ""),
@@ -348,10 +319,8 @@ Kaynak metni:
 {article}
 """
             existing_news = existing_items + added
-            existing_news_text = "
-".join(
-                f"- Başlık: {n.get('title', '')}
-  Özet: {n.get('summary', '')}"
+            existing_news_text = "\n".join(
+                f"- Başlık: {n.get('title', '')}\n  Özet: {n.get('summary', '')}"
                 for n in existing_news
             ) or "Henüz yayınlanmış haber yok."
             prompt = prompt.replace("{existing_news}", existing_news_text)
