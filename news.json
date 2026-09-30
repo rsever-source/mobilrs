@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-30T12:39:21.126801+00:00",
+  "updated_at": "2026-09-30T19:23:50.898348+00:00",
   "items": [
     {
       "id": "7a01db1673b68c08a73f",
@@ -92,14 +92,5 @@
       "created_at": "2026-09-29T21:38:19.883927+00:00"
     }
   ],
-  "pending": [
-    {
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "Aramaya atla",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/#search",
-      "description": "Aramaya atla",
-      "published_at": "2026-09-30T00:00:00+00:00",
-      "id": "49ca3e5f67653977dade"
-    }
-  ]
+  "pending": []
 }
