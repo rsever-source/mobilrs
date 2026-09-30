@@ -208,8 +208,21 @@ def _section_after(text, heading, next_headings, start_at=0):
 
 # ---------- Renault ----------
 
+def _renault_model_key(value):
+    """Bakanlık model adını Renault fiyat sayfasındaki model anahtarına eşler.
+
+    Yalnızca açıkça doğrulanmış Clio 6 adlandırması eşlenir. Duster/Boreal/Megane
+    gibi diğer Renault modelleri kendi model anahtarlarıyla ayrı kalır.
+    """
+    model = _norm(value)
+    aliases = {
+        "CLIO 6": "CLIO",
+    }
+    return aliases.get(model, model)
+
+
 def _renault_price(item, cache):
-    key = (_norm(item["model"]), _norm(item["trim"]))
+    key = (_renault_model_key(item["model"]), _norm(item["trim"]))
     url = RENAULT_PACKAGE_URLS.get(key)
     if not url:
         return None
