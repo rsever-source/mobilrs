@@ -17,6 +17,7 @@ LIMIT_2026 = 2_873_900
 MIN_LOCALITY = 40.0
 OTV_REFRESH_LOCK = threading.Lock()
 CACHE_FILE = "otv_cache.json"
+CACHE_VERSION = 2
 TZ = ZoneInfo("Europe/Istanbul")
 
 MINISTRY_PAGE = "https://www.sanayi.gov.tr/merkez-birimi/6f188a931f68/yerli-mali"
@@ -559,11 +560,12 @@ def _save(data):
 def _load():
     # GCS varsa önce kalıcı önbellekten oku; yerelde/Render'da mevcut dosya önbelleğine düş.
     data = gcs_load_json(CACHE_FILE)
-    if data:
+    if data and data.get("cache_version") == CACHE_VERSION:
         return data
     try:
         with open(CACHE_FILE, encoding="utf-8") as f:
-            return json.load(f)
+            data = json.load(f)
+        return data if data.get("cache_version") == CACHE_VERSION else None
     except Exception:
         return None
 
@@ -631,6 +633,7 @@ def refresh_otv_data(force=False):
             raise RuntimeError("Hiçbir paket fiyatı doğrulanamadı")
 
         return _save({
+            "cache_version": CACHE_VERSION,
             "limit": LIMIT_2026,
             "min_locality": MIN_LOCALITY,
             "updated_at": now.strftime("%d.%m.%Y %H:%M"),
