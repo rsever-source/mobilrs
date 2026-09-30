@@ -87,6 +87,9 @@ def _article_published_at(url):
         response = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, "html.parser")
+
+        # Detay sayfasında yalnızca açıkça yayın tarihini belirten güvenilir alanları kullan.
+        # Sayfanın genel metnindeki rastgele bir tarihi yayın tarihi sanma.
         for attrs in (
             {"property": "article:published_time"},
             {"name": "article:published_time"},
@@ -99,30 +102,16 @@ def _article_published_at(url):
                 parsed = _date(node.get("content"))
                 if parsed:
                     return parsed.isoformat()
+
         for node in soup.find_all("time"):
             value = node.get("datetime") or node.get_text(" ", strip=True)
             parsed = _date(value)
             if parsed:
                 return parsed.isoformat()
-        text = _clean(soup.get_text(" ", strip=True))
-        title_node = soup.find("h1")
-        title_text = _clean(title_node.get_text(" ", strip=True)) if title_node else ""
-        months = {
-            "ocak":1, "şubat":2, "mart":3, "nisan":4, "mayıs":5, "haziran":6,
-            "temmuz":7, "ağustos":8, "eylül":9, "ekim":10, "kasım":11, "aralık":12
-        }
-        date_pattern = r"\b(\d{1,2})\s+(Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+(\d{4})\b"
-        matches = list(re.finditer(date_pattern, text, re.I))
-        if matches:
-            title_pos = text.find(title_text) if title_text else -1
-            match = min(matches, key=lambda m: abs(m.start() - title_pos) if title_pos >= 0 else m.start())
-            day, month_name, year = match.groups()
-            dt = datetime(int(year), months[month_name.lower()], int(day), tzinfo=timezone.utc)
-            return dt.isoformat()
+
     except Exception as exc:
         print("Haber tarihi okunamadı:", url, repr(exc))
     return None
-
 def _title_published_at(title):
     text = _clean(title)
     match = re.search(r"(?<!\d)(\d{1,2})[./-](\d{1,2})[./-](\d{4})(?!\d)", text)
