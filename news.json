@@ -1,15 +1,6 @@
 {
-  "updated_at": "2026-09-30T06:00:00+00:00",
+  "updated_at": "2026-09-30T12:39:21.126801+00:00",
   "items": [
-    {
-      "id": "1cc1f174f0869a406a28",
-      "title": "Ampute Futbol Milli Takımı Dünya Kupası İçin Erciyes'te Hazırlanıyor",
-      "summary": "Son dünya şampiyonu unvanına sahip Ampute Futbol Milli Takımı, Meksika'da gerçekleştirilecek Dünya Kupası için hazırlıklarını sürdürüyor. Milliler, 18 Eylül tarihine kadar Erciyes Dağı'ndaki yüksek irtifa kamp merkezinde çalışmalarına devam ediyor. Teknik direktör İsmail Temiz, takımın moralinin yüksek olduğunu ve kupayı yeniden kazanmayı hedeflediklerini belirtti. Kamp sürecinde Erzurum Palandöken ve Samsun'da da çalışmalar yapılacak. Türkiye turnuvada seribaşı olarak yer alacak ve şampiyonluk için mücadele edecek.",
-      "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
-      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/ampute-futbol-milli-takimi-dunya-kupasi-icin-guc-depoluyor/1832425",
-      "published_at": "2026-09-09T00:00:00+00:00",
-      "created_at": "2026-09-29T22:08:22.549473+00:00"
-    },
     {
       "id": "7a01db1673b68c08a73f",
       "title": "Göztepe Semiha Şakir Huzurevi Yaşlı Bakım ve Rehabilitasyon Merkezi Açıldı",
@@ -83,6 +74,15 @@
       "created_at": "2026-09-29T22:08:22.549473+00:00"
     },
     {
+      "id": "ba209a975b2aa5bd1577",
+      "title": "Tütünle Mücadelede Yeni Yasal Düzenlemeler Meclis Gündemine Geliyor",
+      "summary": "Sağlık Bakanlığı tarafından hazırlanan yeni kanun teklifi ekim ayında Meclis'e sunulacak. Taslak kapsamında 1 Ocak 2015'ten sonra doğanlara tütün ürünleri satışı yasaklanacak. 2040 yılından itibaren ise Türkiye'de tütün ürünlerinin üretimi ve satışı tamamen sonlandırılacak. Lokantalar ile park ve bahçelerde sigara kullanımına yönelik yeni kısıtlamalar getirilecek. Ayrıca ince sigara satışının kaldırılması ve paketlerde standart uygulama yapılması planlanıyor.",
+      "source": "TRT Haber – Sağlık",
+      "url": "https://www.trthaber.com/haber/saglik/tutunle-mucadelede-yeni-duzenlemeler-geliyor-957990.html",
+      "published_at": "2026-09-24T10:28:00+00:00",
+      "created_at": "2026-09-30T12:39:21.126801+00:00"
+    },
+    {
       "id": "df95df504ca74c595992",
       "title": "Son iki yılda milyonlarca bebek ve çocuğa işitme taraması yapıldı",
       "summary": "Sağlık Bakanlığı tarafından yürütülen programlar kapsamında son iki yılda 1 milyon 756 bin bebeğe işitme taraması gerçekleştirildi. Yapılan taramalar sonucunda ileri değerlendirme gerektiren 24 bin bebek ileri tanı merkezlerine sevk edildi. Ayrıca ilkokul birinci sınıf öğrencilerine yönelik programda 2 milyon 129 bin çocuğa ulaşıldı ve 118 bin çocuk KBB hekimlerine yönlendirildi. İşitme engelli bireylerin sağlık hizmetlerine erişimini kolaylaştıran ESİM uygulamasından bugüne kadar 118 bin vatandaş yararlandı. Ücretsiz mobil uygulama üzerinden profesyonel işaret dili tercümanlarıyla 7 gün 24 saat kesintisiz hizmet sunulmaktadır.",
@@ -93,14 +93,6 @@
     }
   ],
   "pending": [
-    {
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "Evde Bakım Yardımı ödemeleri hak sahiplerinin hesaplarına yatırılmaya başlandı",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/evde-bakim-yardimi-odemeleri-hak-sahiplerinin-hesaplarina-yatirilmaya-baslandi/",
-      "description": "Evde Bakım Yardımı ödemeleri hak sahiplerinin hesaplarına yatırılmaya başlandı",
-      "published_at": "2026-09-30T00:00:00+00:00",
-      "id": "48c218764e10d9123152"
-    },
     {
       "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
       "title": "Aramaya atla",
