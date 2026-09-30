@@ -52,7 +52,8 @@ TOYOTA_MODEL_URLS = {
     "C HR": "https://www.toyota.com.tr/araba-modelleri/c-hr",
 }
 TOYOTA_GRADE_URL = "https://dxp-webcarconfig.toyota-europe.com/v1/grade-selector/tr/tr?modelId={}"
-HYUNDAI_DEALER_URL = "https://ferhat.hyundaiplaza.com.tr/fiyat-listesi"
+HYUNDAI_CAMPAIGN_URL = "https://www.hyundai.com/tr/tr/satis/ozel-teklifler/arac-indirimi-programi.html"
+HYUNDAI_PRICE_URL = "https://www.hyundai.com/tr/tr/satis/fiyat-listesi.html"
 FIAT_DEALER_URL = "https://www.tanoto.com.tr/fiat-fiyat-listesi/"
 FIAT_ULYSSE_URL = "https://www.tanoto.com.tr/arac-detay/ulysse/"
 TOGG_URLS = {
@@ -393,10 +394,12 @@ def _hyundai_model_ok(model_key, context):
 
 
 def _hyundai_price(item, cache):
-    url = HYUNDAI_DEALER_URL
-    if url not in cache:
-        cache[url] = _page(url)
-    soup, text, _raw = cache[url]
+    # Fiyatı Hyundai Motor Türkiye'nin resmi fiyat listesinden oku.
+    # ÖTV muafiyet programının resmi sayfası ayrıca kullanıcıya kaynak olarak gösterilir.
+    price_url = HYUNDAI_PRICE_URL
+    if price_url not in cache:
+        cache[price_url] = _page(price_url)
+    soup, text, _raw = cache[price_url]
     model = _norm(item["model"])
     trim = _norm(item["trim"]).replace("SYTLE", "STYLE")
 
@@ -413,7 +416,7 @@ def _hyundai_price(item, cache):
         if vals:
             matches.append(vals[0])
     if matches:
-        return min(matches), url
+        return min(matches), HYUNDAI_CAMPAIGN_URL
 
     marker = text.lower().find("azami / maksimum satış fiyatları")
     if marker < 0:
@@ -437,7 +440,7 @@ def _hyundai_price(item, cache):
             vals = _prices(section[hit.start():hit.start() + 350], 1_000_000, 5_000_000)
             if vals:
                 prices.append(vals[0][1])
-    return (min(prices), url) if prices else None
+    return (min(prices), HYUNDAI_CAMPAIGN_URL) if prices else None
 
 
 # ---------- Fiat ----------
@@ -538,6 +541,8 @@ def _display_trim(item):
 
 
 def _source_name(brand, url):
+    if "hyundai.com" in url:
+        return "Hyundai Motor Türkiye"
     if "hyundaiplaza.com.tr" in url:
         return "Hyundai Yetkili Satıcı"
     if "tanoto.com.tr" in url:
