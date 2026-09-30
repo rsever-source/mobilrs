@@ -1,0 +1,12 @@
+name: OTV Manuel Guncelle
+
+on:
+  workflow_dispatch:
+
+jobs:
+  refresh-otv:
+    runs-on: ubuntu-latest
+    steps:
+      - name: OTV verisini zorla yenile
+        run: |
+          curl --fail --show-error --silent --request POST             https://mobilrs-test-987996487997.europe-west1.run.app/api/otv/yenile
