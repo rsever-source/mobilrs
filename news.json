@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-29T22:18:56.153205+00:00",
+  "updated_at": "2026-09-30T05:36:31.729833+00:00",
   "items": [
     {
       "id": "1cc1f174f0869a406a28",
@@ -9,6 +9,24 @@
       "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/ampute-futbol-milli-takimi-dunya-kupasi-icin-guc-depoluyor/1832425",
       "published_at": "2026-11-22T00:00:00+00:00",
       "created_at": "2026-09-29T22:08:22.549473+00:00"
+    },
+    {
+      "id": "7a01db1673b68c08a73f",
+      "title": "Göztepe Semiha Şakir Huzurevi Yaşlı Bakım ve Rehabilitasyon Merkezi Açıldı",
+      "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, İstanbul'da Göztepe Semiha Şakir Huzurevi Yaşlı Bakım ve Rehabilitasyon Merkezi'nin açılışını gerçekleştirdi. Bakan Göktaş, merkezin 114 yatak kapasitesine sahip olduğunu ve yaşlıların bakım ile rehabilitasyon hizmetlerini aynı çatı altında alacağını belirtti. Konuşmasında hem kurumsal bakım hem de evde bakım hizmetlerini güçlendirmeye devam ettiklerini vurguladı. Sadece ocak ayından bu yana İstanbul'da evde bakım yardımı kapsamında 6,4 milyar lira kaynak aktarıldığını ifade etti. Türkiye genelinde 492 huzurevinde yaklaşık 30 bin vatandaşa yatılı hizmet sunulduğunu kaydetti. Açılış töreninin ardından Bakan Göktaş, merkezde kalan yaşlıları ziyaret ederek yetkililerden bilgi aldı.",
+      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
+      "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktas-goztepe-semiha-sakir-huzurevi-yasli-bakim-ve-rehabilitasyon-merkezi-nin-acilisina-katildi/",
+      "published_at": "2026-09-30T00:00:00+00:00",
+      "created_at": "2026-09-30T05:36:31.729833+00:00"
+    },
+    {
+      "id": "bf6d6af4c717ced9ec46",
+      "title": "Muş'ta Engelli Aktif Yaşam Merkezi Açılıyor",
+      "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, çeşitli programlara katılmak üzere gittiği Muş'ta önemli açıklamalarda bulundu. Bakan Göktaş, kentte 30 kapasiteli Engelli Aktif Yaşam Merkezi'nin açılışının yapılacağını duyurdu. Bu merkez sayesinde ailelerin engelli bireyleri güvenle emanet edebileceği ve sosyalleşebileceği belirtildi. Ayrıca Muş'ta 4 bin 614 aileye evde bakım yardımı kapsamında aylık ödemelerin yapıldığı ifade edildi. Ulusal Vefa Programı ile de kentteki yaşlı ve engelli vatandaşlara destek olunduğu aktarıldı. Bakanlık tarafından Muş'a son 24 yılda çeşitli alanlarda milyarlarca liralık yatırım sunulduğu kaydedildi.",
+      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
+      "url": "https://www.aile.gov.tr/eyhgm/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-mus-ta-konustu/",
+      "published_at": "2026-09-30T00:00:00+00:00",
+      "created_at": "2026-09-30T05:36:31.729833+00:00"
     },
     {
       "id": "05974a0b5534b30164c2",
@@ -77,19 +95,19 @@
   "pending": [
     {
       "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "title": "Bakanımız Göktaş, Göztepe Semiha Şakir Huzurevi Yaşlı Bakım ve Rehabilitasyon Merkezi'nin açılışına katıldı",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktas-goztepe-semiha-sakir-huzurevi-yasli-bakim-ve-rehabilitasyon-merkezi-nin-acilisina-katildi/",
-      "description": "Bakanımız Göktaş, Göztepe Semiha Şakir Huzurevi Yaşlı Bakım ve Rehabilitasyon Merkezi'nin açılışına katıldı",
-      "published_at": "2026-09-30T00:00:00+00:00",
-      "id": "7a01db1673b68c08a73f"
-    },
-    {
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
       "title": "Evde Bakım Yardımı ödemeleri hak sahiplerinin hesaplarına yatırılmaya başlandı",
       "url": "https://www.aile.gov.tr/eyhgm/haberler/evde-bakim-yardimi-odemeleri-hak-sahiplerinin-hesaplarina-yatirilmaya-baslandi/",
       "description": "Evde Bakım Yardımı ödemeleri hak sahiplerinin hesaplarına yatırılmaya başlandı",
       "published_at": "2026-09-30T00:00:00+00:00",
       "id": "48c218764e10d9123152"
+    },
+    {
+      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
+      "title": "Aramaya atla",
+      "url": "https://www.aile.gov.tr/eyhgm/haberler/#search",
+      "description": "Aramaya atla",
+      "published_at": "2026-09-30T00:00:00+00:00",
+      "id": "49ca3e5f67653977dade"
     }
   ]
 }
