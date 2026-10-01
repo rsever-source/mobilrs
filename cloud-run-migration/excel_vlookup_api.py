@@ -42,14 +42,6 @@ body{background:#f4f6f9;color:var(--ink);font-family:Inter,Aptos,"Segoe UI",syst
 
 
 @app.middleware("http")
-async def chat_subdomain(request: Request, call_next):
-    host = request.headers.get("host", "").split(":")[0].lower()
-    if host == "chat.engelli.me" and request.url.path == "/":
-        return HTMLResponse(CHAT_HTML.replace('<style>', f'<style nonce="{request.state.csp_nonce}">'))
-    return await call_next(request)
-
-
-@app.middleware("http")
 async def add_security_headers(request: Request, call_next):
     nonce = secrets.token_urlsafe(24)
     request.state.csp_nonce = nonce
@@ -329,7 +321,9 @@ async def api_news():
     return JSONResponse({"updated_at": data.get("updated_at"), "items": items})
 
 @app.get("/", response_class=HTMLResponse)
-async def index():
+async def index(request: Request):
+    if request.headers.get("host", "").split(":")[0].lower() == "chat.engelli.me":
+        return HTMLResponse(CHAT_HTML.replace("<style>", f'<style nonce="{request.state.csp_nonce}">'))
     initial = load_otv_cache() or {}
     initial_json = __import__("json").dumps(initial, ensure_ascii=False).replace("</", "<\\/")
     try:
@@ -364,8 +358,8 @@ async def security_txt():
 
 
 @app.get("/kvkk", response_class=HTMLResponse)
-async def kvkk_page():
-    return HTMLResponse(KVKK_HTML.replace('<style>', f'<style nonce="{request.state.csp_nonce}">'))
+async def kvkk_page(request: Request):
+    return HTMLResponse(KVKK_HTML.replace("<style>", f'<style nonce="{request.state.csp_nonce}">'))
 
 
 
