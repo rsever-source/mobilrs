@@ -94,9 +94,6 @@ def _article_published_at(url):
         response = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, "html.parser")
-
-        # Detay sayfasında yalnızca açıkça yayın tarihini belirten güvenilir alanları kullan.
-        # Sayfanın genel metnindeki rastgele bir tarihi yayın tarihi sanma.
         for attrs in (
             {"property": "article:published_time"},
             {"name": "article:published_time"},
@@ -109,13 +106,11 @@ def _article_published_at(url):
                 parsed = _date(node.get("content"))
                 if parsed:
                     return parsed.isoformat()
-
         for node in soup.find_all("time"):
             value = node.get("datetime") or node.get_text(" ", strip=True)
             parsed = _date(value)
             if parsed:
                 return parsed.isoformat()
-
     except Exception as exc:
         print("Haber tarihi okunamadı:", url, repr(exc))
     return None
@@ -246,7 +241,6 @@ def update_news():
     for item in pending:
         if item.get("id") and item["id"] not in known:
             published = _date(item.get("published_at"))
-            # Gelecek tarihli bekleyen kayıtları tekrar AI'ya gönderme.
             if published and published <= now and published >= cutoff:
                 candidates.append(item)
                 candidate_ids.add(item["id"])
@@ -261,7 +255,6 @@ def update_news():
                 if item["id"] in known or item["id"] in candidate_ids:
                     continue
                 published = _date(item.get("published_at"))
-                # Gelecek tarihli haberleri hiçbir koşulda aday yapma.
                 if not published or published > now or published < cutoff:
                     continue
                 candidates.append(item)
@@ -298,22 +291,16 @@ Aksi durumda publish=false ver.
 
 ÖNEMLİ: MÜKERRER HABER KONTROLÜ YAP.
 Aşağıdaki "Mevcut sitedeki haberler" listesini yeni haberle karşılaştır.
-duplicate kararı yalnızca aynı konu başlığına veya genel temaya bakılarak verilmemeli.
-İki haberin gerçekten aynı olay/duyuru/gelişme olup olmadığını belirle.
-Aynı olay için kullanılan farklı başlıklar, farklı kaynaklar veya farklı anlatım duplicate olabilir.
-Buna karşılık aynı kurum, aynı konu veya aynı genel konu başlığı tek başına duplicate değildir.
-Yeni ay, yeni ödeme dönemi, yeni tutar, yeni karar, yeni uygulama, yeni sonuç, yeni açıklama
-veya olayın daha sonraki aşaması söz konusuysa duplicate=false ver.
+duplicate kararı yalnızca başlık veya genel konu benzerliğine göre verilmemeli.
+İki haberin aynı somut olay, aynı duyuru veya aynı gelişme olup olmadığını belirle.
+Aynı olay farklı başlıkla veya farklı kaynakta anlatılıyorsa duplicate=true olabilir.
+Ancak aynı konu hakkında daha sonra gerçekleşen yeni bir gelişme duplicate değildir.
+Özellikle tarih, dönem, ödeme ayı, tutar, karar, uygulama veya sonuç değişmişse yeni gelişme olarak değerlendir.
 Örneğin:
-- "Eylül Evde Bakım Yardımı ödemeleri başladı" ile aynı Eylül ödemesini anlatan
-  "Eylül Evde Bakım Yardımı hesaplara yatırıldı" duplicate olabilir.
-- "Ekim Evde Bakım Yardımı ödemeleri başladı" yeni bir ödeme dönemi olduğu için duplicate değildir.
-- "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu" ile daha önceki sigara
-  haberleri yalnızca aynı sağlık/tütün konusundaysa, aynı olay veya aynı istatistik dönemi
-  olduğu açıkça gösterilmedikçe duplicate değildir.
-duplicate_reason alanında somut olarak hangi aynı olay veya hangi aynı duyurunun tekrarlandığını belirt.
-Yalnızca "aynı konu", "aynı alan", "benzer sağlık haberi", "benzer gündem" gibi genel gerekçeler
-duplicate kararı için yeterli değildir.
+- Eylül Evde Bakım Yardımı ödemelerinin farklı kaynaklardaki duyuruları aynı Eylül ödemesini anlatıyorsa mükerrerdir.
+- Ekim Evde Bakım Yardımı ödemesi Eylül haberinden ayrı, yeni bir gelişmedir.
+duplicate_reason alanında mükerrerliği somut olay veya dönem üzerinden açıkla.
+Sadece "aynı konu", "benzer haber" veya "aynı alan" gibi genel gerekçeler duplicate için yeterli değildir.
 
 Mevcut sitedeki haberler:
 {{existing_news}}
