@@ -1,16 +1,16 @@
-import asyncio, io, json, os, time, uuid
+import asyncio, base64, hashlib, html as html_lib, io, json, os, re, secrets, time, uuid, zipfile
 from datetime import date
 from urllib.parse import urlparse
 
 import pandas as pd, pdfplumber, uvicorn
-from fastapi import BackgroundTasks, FastAPI, UploadFile, File, Form, HTTPException, Query, Request
+from fastapi import BackgroundTasks, FastAPI, UploadFile, File, Form, Header, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse, FileResponse, JSONResponse, Response
 from starlette.background import BackgroundTask
 
 from tufe_service import get_current_tufe, save_cache
 from otv_service import get_otv_data, refresh_otv_data, _load as load_otv_cache
 
-app = FastAPI(title="Rdv Asistan")
+app = FastAPI(title="Rdv Asistan", docs_url=None, redoc_url=None, openapi_url=None)
 
 CHAT_HTML = r'''<!doctype html>
 <html lang="tr">
@@ -52,6 +52,14 @@ async def chat_subdomain(request: Request, call_next):
 @app.middleware("http")
 async def add_security_headers(request: Request, call_next):
     response = await call_next(request)
+    nonce = secrets.token_urlsafe(24)
+    body = getattr(response, "body", b"")
+    html_body = body.decode("utf-8", errors="ignore") if body else ""
+    def csp_hash(value):
+        digest = hashlib.sha256(html_lib.unescape(value).encode("utf-8")).digest()
+        return "'sha256-" + base64.b64encode(digest).decode("ascii") + "'"
+    script_attr_hashes = sorted({csp_hash(value) for value in re.findall(r'\bon(?:click|submit|change|input|load)\s*=\s*"([^"]*)"', html_body, re.IGNORECASE)})
+    style_attr_hashes = sorted({csp_hash(value) for value in re.findall(r'\bstyle\s*=\s*"([^"]*)"', html_body, re.IGNORECASE)})
     response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["X-Frame-Options"] = "DENY"
@@ -59,8 +67,10 @@ async def add_security_headers(request: Request, call_next):
     response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()"
     response.headers["Content-Security-Policy"] = (
         "default-src 'self'; "
-        "script-src 'self' 'unsafe-inline'; "
-        "style-src 'self' 'unsafe-inline'; "
+        f"script-src 'self' 'nonce-{nonce}'; "
+        f"script-src-attr 'unsafe-hashes' {' '.join(script_attr_hashes)}; "
+        f"style-src 'self' 'nonce-{nonce}'; "
+        f"style-src-attr 'unsafe-hashes' {' '.join(style_attr_hashes)}; "
         "img-src 'self' data:; "
         "font-src 'self' data:; "
         "connect-src 'self'; "
@@ -70,6 +80,19 @@ async def add_security_headers(request: Request, call_next):
         "form-action 'self'; "
         "frame-ancestors 'none'"
     )
+    if response.headers.get("content-type", "").startswith("text/html") and body:
+        body = body.replace(b"<script>", f'<script nonce="{nonce}">'.encode()).replace(b"<style>", f'<style nonce="{nonce}">'.encode())
+        response.body = body
+        response.headers["content-length"] = str(len(body))
+    path = request.url.path
+    if request.method != "GET" or path in {"/tufe-guncelle", "/kira-hesapla", "/excel-islem", "/pdf-excel-islem", "/api/otv/yenile"}:
+        response.headers["Cache-Control"] = "no-store"
+    elif path in {"/", "/api/news", "/api/otv", "/robots.txt", "/sitemap.xml"}:
+        response.headers["Cache-Control"] = "public, max-age=60, s-maxage=300, stale-while-revalidate=60"
+    elif path == "/kvkk":
+        response.headers["Cache-Control"] = "public, max-age=3600"
+    else:
+        response.headers["Cache-Control"] = "no-store"
     return response
 
 
@@ -77,6 +100,12 @@ async def add_security_headers(request: Request, call_next):
 OUTPUT_DIR = "outputs"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 MAX_FILE_SIZE = 25 * 1024 * 1024
+MAX_ARCHIVE_ENTRIES = 2000
+MAX_ARCHIVE_UNCOMPRESSED = 100 * 1024 * 1024
+MAX_EXCEL_ROWS = 200_000
+MAX_PDF_PAGES = 50
+MAX_PDF_ROWS = 100_000
+FILE_PROCESS_TIMEOUT = 90
 RATE_LIMIT_WINDOW = 60
 UPLOAD_RATE_LIMIT = 6
 REFRESH_RATE_LIMIT_WINDOW = 300
@@ -129,18 +158,47 @@ async def read_upload_limited(upload, max_size=MAX_FILE_SIZE):
 
 def check_extension(filename, allowed): return (filename or "").lower().endswith(allowed)
 
-def validate_file_signature(data, filename):
+def validate_file_signature(data, filename, content_type=""):
     name=(filename or "").lower()
     if name.endswith(".pdf"):
+        if content_type and content_type not in {"application/pdf", "application/octet-stream"}:
+            raise HTTPException(400,"PDF MIME türü geçersiz.")
         ok=data.startswith(b"%PDF")
     elif name.endswith(".xlsx"):
+        if content_type and content_type not in {"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/zip", "application/octet-stream"}:
+            raise HTTPException(400,"XLSX MIME türü geçersiz.")
         ok=data.startswith(b"PK\\x03\\x04")
     elif name.endswith(".xls"):
+        if content_type and content_type not in {"application/vnd.ms-excel", "application/octet-stream"}:
+            raise HTTPException(400,"XLS MIME türü geçersiz.")
         ok=data.startswith(b"\\xD0\\xCF\\x11\\xE0")
     else:
         ok=True
     if not ok:
         raise HTTPException(400,"Dosya türü içeriğiyle uyuşmuyor.")
+    if name.endswith(".xlsx"):
+        validate_xlsx_zip(data)
+
+
+def validate_xlsx_zip(data):
+    try:
+        with zipfile.ZipFile(io.BytesIO(data)) as archive:
+            infos = archive.infolist()
+            if len(infos) > MAX_ARCHIVE_ENTRIES:
+                raise HTTPException(413,"XLSX arşivi çok fazla dosya içeriyor.")
+            total = 0
+            for info in infos:
+                if info.flag_bits & 0x1 or len(info.filename) > 255:
+                    raise HTTPException(400,"XLSX arşivi güvenli değil.")
+                total += info.file_size
+                if info.compress_size and info.file_size / info.compress_size > 1000:
+                    raise HTTPException(413,"XLSX sıkıştırma oranı güvenli sınırı aşıyor.")
+            if total > MAX_ARCHIVE_UNCOMPRESSED:
+                raise HTTPException(413,"XLSX açılmış boyut sınırını aşıyor.")
+    except HTTPException:
+        raise
+    except (zipfile.BadZipFile, OSError):
+        raise HTTPException(400,"Geçerli bir XLSX arşivi yükleyin.")
 
 def normalize_column_name(v): return str(v).strip()
 
@@ -161,6 +219,45 @@ def find_command_columns(df, command): return [c for c in df.columns if str(c).l
 def money_tr(v): return f"{v:,.2f}".replace(",","X").replace(".",",").replace("X",".") + " TL"
 
 
+def build_excel_result(d1, d2, command):
+    a=pd.read_excel(io.BytesIO(d1), nrows=MAX_EXCEL_ROWS + 1); b=pd.read_excel(io.BytesIO(d2), nrows=MAX_EXCEL_ROWS + 1)
+    if a.shape[0] > MAX_EXCEL_ROWS or b.shape[0] > MAX_EXCEL_ROWS:
+        raise HTTPException(413,"Excel satır sınırı aşıldı.")
+    if a.empty or b.empty: raise HTTPException(400,"Excel dosyalarında veri bulunamadı.")
+    a.columns=[normalize_column_name(c) for c in a.columns]; b.columns=[normalize_column_name(c) for c in b.columns]; k=command.lower().strip()
+    if any(w in k for w in ["düşeyara","duseyara","vlookup","birleştir","birlestir","merge","eşleştir","eslestir"]):
+        c=select_join_column(a,b,command); result=pd.merge(a,b,on=c,how="left",suffixes=("","_referans"))
+    elif any(w in k for w in ["pivot","özet","ozet","grupla","toplam"]):
+        cc=find_command_columns(a,command); nums=a.select_dtypes(include="number").columns.tolist()
+        if not nums: raise HTTPException(400,"Pivot/özet için sayısal sütun bulunamadı.")
+        val=next((c for c in cc if c in nums),nums[0]); idx=next((c for c in cc if c!=val),None) or next((c for c in a.columns if c!=val),None)
+        if idx is None: raise HTTPException(400,"Pivot için grup sütunu bulunamadı.")
+        result=pd.pivot_table(a,values=val,index=idx,aggfunc="sum",fill_value=0).reset_index()
+    else: result=a.copy()
+    if result.shape[0] > MAX_EXCEL_ROWS: raise HTTPException(413,"İşlem sonucu satır sınırını aşıyor.")
+    out=unique_output_path("xlsx"); result.to_excel(out,index=False); return out
+
+
+def build_pdf_result(pdf_data):
+    rows=[]
+    with pdfplumber.open(io.BytesIO(pdf_data)) as pdf:
+        if len(pdf.pages) > MAX_PDF_PAGES: raise HTTPException(413,"PDF sayfa sınırını aşıyor.")
+        for page in pdf.pages:
+            tables=page.extract_tables()
+            if tables:
+                for table in tables:
+                    for row in table:
+                        if row:
+                            rr=[str(c).replace("\n"," ").strip() if c is not None else "" for c in row]
+                            if any(rr): rows.append(rr)
+            else:
+                txt=page.extract_text()
+                if txt: rows.extend([[ln.strip()] for ln in txt.split("\n") if ln.strip()])
+            if len(rows) > MAX_PDF_ROWS: raise HTTPException(413,"PDF satır sınırını aşıyor.")
+    if not rows: raise HTTPException(400,"PDF içinde Excel'e aktarılacak metin veya tablo bulunamadı. Taranmış/resim PDF ise OCR gerekir.")
+    mc=max(map(len,rows)); df=pd.DataFrame([r+[""]*(mc-len(r)) for r in rows]); out=unique_output_path("xlsx"); df.to_excel(out,index=False,header=False); return out
+
+
 def next_renewal_year(m):
     t=date.today(); return t.year if m >= t.month else t.year+1
 
@@ -168,11 +265,12 @@ def next_renewal_year(m):
 def previous_month(y,m): return (y-1,12) if m==1 else (y,m-1)
 
 
-@app.get("/tufe-guncelle")
-async def spark_tufe_guncelle(key:str=Query(...), source:str=Query(...), rate:float=Query(...), year:int=Query(...), month:int=Query(...)):
+@app.post("/tufe-guncelle")
+async def spark_tufe_guncelle(request: Request, authorization: str|None=Header(default=None), source:str=Query(...), rate:float=Query(...), year:int=Query(...), month:int=Query(...)):
+    await enforce_rate_limit(request, "tufe-update", 5, 300)
     expected=os.environ.get("SPARK_TUFE_KEY","").strip()
     if not expected: raise HTTPException(500,"SPARK_TUFE_KEY ayarlanmamış.")
-    if key != expected: raise HTTPException(403,"Yetkisiz erişim.")
+    if authorization != f"Bearer {expected}": raise HTTPException(401,"Yetkisiz erişim.", headers={"WWW-Authenticate":"Bearer"})
     p=urlparse(source)
     if (p.hostname or "").lower() != "veriportali.tuik.gov.tr" or not p.path.startswith("/tr/press/"):
         raise HTTPException(400,"Sadece resmi TÜİK haber bülteni kabul edilir.")
@@ -260,6 +358,11 @@ async def sitemap_xml():
     return HTMLResponse("<?xml version=\"1.0\" encoding=\"UTF-8\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://engelli.me/</loc></url></urlset>", media_type="application/xml")
 
 
+@app.get("/.well-known/security.txt", response_class=Response)
+async def security_txt():
+    return Response("Contact: https://engelli.me/\nExpires: 2027-10-01T00:00:00.000Z\nPreferred-Languages: tr, en\nCanonical: https://engelli.me/.well-known/security.txt\n", media_type="text/plain")
+
+
 @app.get("/kvkk", response_class=HTMLResponse)
 async def kvkk_page():
     return HTMLResponse(KVKK_HTML)
@@ -273,23 +376,15 @@ async def excel_motor(request: Request, komut:str=Form(...), file1:UploadFile=Fi
     out=None
     try:
         if not check_extension(file1.filename,(".xlsx",".xls")) or not check_extension(file2.filename,(".xlsx",".xls")): raise HTTPException(400,"Geçerli Excel dosyaları seç.")
-        d1=await read_upload_limited(file1); d2=await read_upload_limited(file2); validate_file_signature(d1,file1.filename); validate_file_signature(d2,file2.filename); a=pd.read_excel(io.BytesIO(d1)); b=pd.read_excel(io.BytesIO(d2))
-        if a.empty or b.empty: raise HTTPException(400,"Excel dosyalarında veri bulunamadı.")
-        a.columns=[normalize_column_name(c) for c in a.columns]; b.columns=[normalize_column_name(c) for c in b.columns]; k=komut.lower().strip()
-        if any(w in k for w in ["düşeyara","duseyara","vlookup","birleştir","birlestir","merge","eşleştir","eslestir"]):
-            c=select_join_column(a,b,komut); result=pd.merge(a,b,on=c,how="left",suffixes=("","_referans"))
-        elif any(w in k for w in ["pivot","özet","ozet","grupla","toplam"]):
-            cc=find_command_columns(a,komut); nums=a.select_dtypes(include="number").columns.tolist()
-            if not nums: raise HTTPException(400,"Pivot/özet için sayısal sütun bulunamadı.")
-            val=next((c for c in cc if c in nums),nums[0]); idx=next((c for c in cc if c!=val),None) or next((c for c in a.columns if c!=val),None)
-            if idx is None: raise HTTPException(400,"Pivot için grup sütunu bulunamadı.")
-            result=pd.pivot_table(a,values=val,index=idx,aggfunc="sum",fill_value=0).reset_index()
-        else: result=a.copy()
-        out=unique_output_path("xlsx"); result.to_excel(out,index=False)
+        d1=await read_upload_limited(file1); d2=await read_upload_limited(file2); validate_file_signature(d1,file1.filename,file1.content_type); validate_file_signature(d2,file2.filename,file2.content_type)
+        out=await asyncio.wait_for(asyncio.to_thread(build_excel_result,d1,d2,komut), timeout=FILE_PROCESS_TIMEOUT)
         return FileResponse(out,media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",filename="excel_sonuc.xlsx",background=BackgroundTask(delete_file,out))
     except HTTPException:
         if out: delete_file(out)
         raise
+    except asyncio.TimeoutError:
+        if out: delete_file(out)
+        raise HTTPException(504,"Excel işlemi zaman sınırını aştı.")
     except Exception as e:
         if out: delete_file(out)
         raise HTTPException(500,"Excel işlemi sırasında beklenmeyen bir hata oluştu.")
@@ -301,26 +396,15 @@ async def pdf_excel_motor(request: Request, pdf_file:UploadFile=File(...)):
     out=None
     try:
         if not check_extension(pdf_file.filename,(".pdf",)): raise HTTPException(400,"Geçerli bir PDF dosyası seç.")
-        rows=[]
-        pdf_data=await read_upload_limited(pdf_file); validate_file_signature(pdf_data,pdf_file.filename)
-        with pdfplumber.open(io.BytesIO(pdf_data)) as pdf:
-            for page in pdf.pages:
-                tables=page.extract_tables()
-                if tables:
-                    for table in tables:
-                        for row in table:
-                            if row:
-                                rr=[str(c).replace("\n"," ").strip() if c is not None else "" for c in row]
-                                if any(rr): rows.append(rr)
-                else:
-                    txt=page.extract_text()
-                    if txt: rows.extend([[ln.strip()] for ln in txt.split("\n") if ln.strip()])
-        if not rows: raise HTTPException(400,"PDF içinde Excel'e aktarılacak metin veya tablo bulunamadı. Taranmış/resim PDF ise OCR gerekir.")
-        mc=max(map(len,rows)); df=pd.DataFrame([r+[""]*(mc-len(r)) for r in rows]); out=unique_output_path("xlsx"); df.to_excel(out,index=False,header=False)
+        pdf_data=await read_upload_limited(pdf_file); validate_file_signature(pdf_data,pdf_file.filename,pdf_file.content_type)
+        out=await asyncio.wait_for(asyncio.to_thread(build_pdf_result,pdf_data), timeout=FILE_PROCESS_TIMEOUT)
         return FileResponse(out,media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",filename="pdf_to_excel_sonuc.xlsx",background=BackgroundTask(delete_file,out))
     except HTTPException:
         if out: delete_file(out)
         raise
+    except asyncio.TimeoutError:
+        if out: delete_file(out)
+        raise HTTPException(504,"PDF işlemi zaman sınırını aştı.")
     except Exception as e:
         if out: delete_file(out)
         raise HTTPException(500,"PDF → Excel işlemi sırasında beklenmeyen bir hata oluştu.")
