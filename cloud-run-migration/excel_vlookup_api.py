@@ -45,21 +45,21 @@ body{background:#f4f6f9;color:var(--ink);font-family:Inter,Aptos,"Segoe UI",syst
 async def chat_subdomain(request: Request, call_next):
     host = request.headers.get("host", "").split(":")[0].lower()
     if host == "chat.engelli.me" and request.url.path == "/":
-        return HTMLResponse(CHAT_HTML)
+        return HTMLResponse(CHAT_HTML.replace('<style>', f'<style nonce="{request.state.csp_nonce}">'))
     return await call_next(request)
 
 
 @app.middleware("http")
 async def add_security_headers(request: Request, call_next):
-    response = await call_next(request)
     nonce = secrets.token_urlsafe(24)
-    body = getattr(response, "body", b"")
-    html_body = body.decode("utf-8", errors="ignore") if body else ""
+    request.state.csp_nonce = nonce
+    response = await call_next(request)
     def csp_hash(value):
         digest = hashlib.sha256(html_lib.unescape(value).encode("utf-8")).digest()
         return "'sha256-" + base64.b64encode(digest).decode("ascii") + "'"
-    script_attr_hashes = sorted({csp_hash(value) for value in re.findall(r'\bon(?:click|submit|change|input|load)\s*=\s*"([^"]*)"', html_body, re.IGNORECASE)})
-    style_attr_hashes = sorted({csp_hash(value) for value in re.findall(r'\bstyle\s*=\s*"([^"]*)"', html_body, re.IGNORECASE)})
+    csp_sources = "\n".join((HOME_HTML, CHAT_HTML, KVKK_HTML))
+    script_attr_hashes = sorted({csp_hash(value) for value in re.findall(r'\bon(?:click|submit|change|input|load)\s*=\s*"([^"]*)"', csp_sources, re.IGNORECASE)})
+    style_attr_hashes = sorted({csp_hash(value) for value in re.findall(r'\bstyle\s*=\s*"([^"]*)"', csp_sources, re.IGNORECASE)})
     response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["X-Frame-Options"] = "DENY"
@@ -80,10 +80,7 @@ async def add_security_headers(request: Request, call_next):
         "form-action 'self'; "
         "frame-ancestors 'none'"
     )
-    if response.headers.get("content-type", "").startswith("text/html") and body:
-        body = body.replace(b"<script>", f'<script nonce="{nonce}">'.encode()).replace(b"<style>", f'<style nonce="{nonce}">'.encode())
-        response.body = body
-        response.headers["content-length"] = str(len(body))
+
     path = request.url.path
     if request.method != "GET" or path in {"/tufe-guncelle", "/kira-hesapla", "/excel-islem", "/pdf-excel-islem", "/api/otv/yenile"}:
         response.headers["Cache-Control"] = "no-store"
@@ -341,11 +338,14 @@ async def index():
     except Exception:
         initial_news = {"updated_at": None, "items": []}
     initial_news_json = json.dumps(initial_news, ensure_ascii=False).replace("</", "<\\/")
-    return HTMLResponse(
+    html = (
         HOME_HTML
         .replace("/*INITIAL_OTV_DATA*/{}", initial_json)
         .replace("/*INITIAL_NEWS_DATA*/{}", initial_news_json)
+        .replace("<script>", f'<script nonce="{request.state.csp_nonce}">')
+        .replace("<style>", f'<style nonce="{request.state.csp_nonce}">')
     )
+    return HTMLResponse(html)
 
 
 @app.get("/robots.txt", response_class=HTMLResponse)
@@ -365,7 +365,7 @@ async def security_txt():
 
 @app.get("/kvkk", response_class=HTMLResponse)
 async def kvkk_page():
-    return HTMLResponse(KVKK_HTML)
+    return HTMLResponse(KVKK_HTML.replace('<style>', f'<style nonce="{request.state.csp_nonce}">'))
 
 
 
