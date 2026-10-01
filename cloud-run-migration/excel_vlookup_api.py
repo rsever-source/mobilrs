@@ -1,4 +1,4 @@
-import asyncio, base64, hashlib, html as html_lib, io, json, os, re, time, uuid, zipfile
+import asyncio, base64, hashlib, html as html_lib, io, json, os, re, secrets, time, uuid, zipfile
 from datetime import date
 from urllib.parse import urlparse
 
@@ -52,13 +52,12 @@ async def chat_subdomain(request: Request, call_next):
 @app.middleware("http")
 async def add_security_headers(request: Request, call_next):
     response = await call_next(request)
+    nonce = secrets.token_urlsafe(24)
     body = getattr(response, "body", b"")
     html_body = body.decode("utf-8", errors="ignore") if body else ""
     def csp_hash(value):
         digest = hashlib.sha256(html_lib.unescape(value).encode("utf-8")).digest()
         return "'sha256-" + base64.b64encode(digest).decode("ascii") + "'"
-    script_tag_hashes = sorted({csp_hash(value) for value in re.findall(r'<script(?:\s[^>]*)?>(.*?)</script>', html_body, re.IGNORECASE | re.DOTALL)})
-    style_tag_hashes = sorted({csp_hash(value) for value in re.findall(r'<style(?:\s[^>]*)?>(.*?)</style>', html_body, re.IGNORECASE | re.DOTALL)})
     script_attr_hashes = sorted({csp_hash(value) for value in re.findall(r'\bon(?:click|submit|change|input|load)\s*=\s*"([^"]*)"', html_body, re.IGNORECASE)})
     style_attr_hashes = sorted({csp_hash(value) for value in re.findall(r'\bstyle\s*=\s*"([^"]*)"', html_body, re.IGNORECASE)})
     response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
@@ -68,9 +67,9 @@ async def add_security_headers(request: Request, call_next):
     response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()"
     response.headers["Content-Security-Policy"] = (
         "default-src 'self'; "
-        f"script-src 'self' {' '.join(script_tag_hashes)}; "
+        f"script-src 'self' 'nonce-{nonce}'; "
         f"script-src-attr 'unsafe-hashes' {' '.join(script_attr_hashes)}; "
-        f"style-src 'self' {' '.join(style_tag_hashes)}; "
+        f"style-src 'self' 'nonce-{nonce}'; "
         f"style-src-attr 'unsafe-hashes' {' '.join(style_attr_hashes)}; "
         "img-src 'self' data:; "
         "font-src 'self' data:; "
@@ -81,6 +80,10 @@ async def add_security_headers(request: Request, call_next):
         "form-action 'self'; "
         "frame-ancestors 'none'"
     )
+    if response.headers.get("content-type", "").startswith("text/html") and body:
+        body = body.replace(b"<script>", f'<script nonce="{nonce}">'.encode()).replace(b"<style>", f'<style nonce="{nonce}">'.encode())
+        response.body = body
+        response.headers["content-length"] = str(len(body))
     path = request.url.path
     if request.method != "GET" or path in {"/tufe-guncelle", "/kira-hesapla", "/excel-islem", "/pdf-excel-islem", "/api/otv/yenile"}:
         response.headers["Cache-Control"] = "no-store"
