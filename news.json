@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-01T19:34:06.977539+00:00",
+  "updated_at": "2026-10-01T23:54:29.052958+00:00",
   "items": [
     {
       "id": "5f3d36cfaeda78a4c5cf",
@@ -74,6 +74,15 @@
       "created_at": "2026-09-29T21:38:19.883927+00:00"
     },
     {
+      "id": "9b9e4787736ebdd30faf",
+      "title": "Kayseri'de İdris Demir 50 Yıl Sonra Sigarayı Bıraktı",
+      "summary": "Kayseri'de yaşayan altmış üç yaşındaki işçi emeklisi İdris Demir, günde üç paket sigara içtiği alışkanlığından elli yıl sonra kurtuldu. Şiddetli öksürük ve nefes darlığı şikayetleriyle Sigara Bırakma Polikliniği'ne başvuran Demir, ilaç ve bant tedavisinin yanı sıra diyet desteği aldı. Üç aydır sigara kullanmayan Demir, merdiven çıkamama ve astım bronşit gibi sağlık sorunlarının büyük ölçüde düzeldiğini belirtti. Uzman doktor Işıl Arık, hastanın tedavi sürecinde kişiselleştirilmiş bir plan uygulandığını ifade etti. Demir, sürecin sonunda hem sağlığına kavuştuğunu hem de maddi olarak rahatladığını vurguladı.",
+      "source": "TRT Haber – Sağlık",
+      "url": "https://www.trthaber.com/haber/saglik/idris-demir-sigarayi-birakali-3-ay-oldu-saglik-sorunlarimin-cogu-gitti-958412.html",
+      "published_at": "2026-09-28T10:19:00+00:00",
+      "created_at": "2026-10-01T23:54:29.052958+00:00"
+    },
+    {
       "id": "76d32a39d83324213503",
       "title": "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu",
       "summary": "Türkiye genelinde sigara bırakma polikliniklerinin sayısı 1751'e yükseldi. Bu yılın ilk 8 ayında polikliniklere 179 bin 779 başvuru yapıldı. Sağlık Bakanlığı tarafından yürütülen çalışmalar kapsamında 12-18 yaş grubuna yönelik adölesan poliklinikleri açıldı. ALO 171 Sigara Bırakma Danışma Hattı üzerinden 8 ayda yaklaşık 180 bin çağrı yanıtlandı. Polikliniklere başvurarak bir yıllık takip süreci tamamlanan hastaların yaklaşık yüzde 24'ünün sigarayı bıraktığı belirlendi. Bakanlık bugüne kadar 1,5 milyondan fazla kişiye ücretsiz ilaç desteği sağladı.",
@@ -81,25 +90,7 @@
       "url": "https://www.trthaber.com/haber/saglik/8-ayda-179-bini-askin-kisi-sigarayi-birakmak-icin-basvurdu-958394.html",
       "published_at": "2026-09-28T08:37:00+00:00",
       "created_at": "2026-10-01T19:34:06.977539+00:00"
-    },
-    {
-      "id": "e3cc95985a828adb69fa",
-      "title": "Elektronik sigara akciğerlere ve organlara zarar veriyor",
-      "summary": "Son yıllarda yaygınlaşan elektronik sigara ve puff gibi ısıtılmış tütün ürünleri, başta akciğerler olmak üzere tüm vücut sistemlerini olumsuz etkiliyor. Uzmanlar, bu ürünlerin kısa ve uzun vadede solunum yetmezliği ve kalıcı akciğer hasarlarına yol açabileceğini belirtiyor. Gençler arasında popüler olan aromalı ürünler, yüksek nikotin oranları nedeniyle normal sigaraya göre daha büyük bağımlılık riski taşıyor. Ailelerin, çocuklarının odalarındaki farklı koku ve görünümdeki bu ürünlere karşı dikkatli olması gerekiyor. Uzmanlar, gençlerin bu ürünlerin sağlık ve bağımlılık riskleri konusunda bilinçlendirilmesinin önemine dikkat çekiyor.",
-      "source": "TRT Haber – Sağlık",
-      "url": "https://www.trthaber.com/haber/saglik/elektronik-sigara-akcigerleri-vuruyor-organ-ve-sistemleri-olumsuz-etkiliyor-958383.html",
-      "published_at": "2026-09-28T07:42:00+00:00",
-      "created_at": "2026-09-29T22:08:22.549473+00:00"
     }
   ],
-  "pending": [
-    {
-      "source": "TRT Haber",
-      "title": "Japonya, Suriye'ye yönelik yaptırımları kısmen kaldırdı",
-      "url": "https://www.trthaber.com/haber/guncel/japonya-suriyeye-yonelik-yaptirimlari-kismen-kaldirdi-958550.html",
-      "description": "Japonya yönetimi, Suriye ile mevcut ilişkiler ışığında bu ülkeye yönelik yaptırımları kısmen kaldırdıklarını duyurdu.",
-      "published_at": "2026-09-29T14:51:00+00:00",
-      "id": "f2006a6d012a377f756b"
-    }
-  ]
+  "pending": []
 }
