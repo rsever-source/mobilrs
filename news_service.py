@@ -26,6 +26,7 @@ GEMINI_MIN_INTERVAL = 4
 GEMINI_RETRY_DELAYS = (2, 4, 8, 16)
 _gemini_last_request_at = None
 
+
 def _load_json(path, default):
     try:
         with open(path, encoding="utf-8") as f:
@@ -33,13 +34,16 @@ def _load_json(path, default):
     except Exception:
         return default
 
+
 def _save_json(path, data):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
+
 def _clean(text):
     text = unescape(str(text or ""))
     return re.sub(r"\s+", " ", BeautifulSoup(text, "html.parser").get_text(" ", strip=True)).strip()
+
 
 def _date(value):
     if not value:
@@ -52,12 +56,14 @@ def _date(value):
         except Exception:
             return None
 
+
 def _text(node, names):
     for name in names:
         value = node.findtext(name)
         if value:
             return _clean(value)
     return ""
+
 
 def _feed_items(source):
     response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
@@ -81,6 +87,7 @@ def _feed_items(source):
                 "description": description, "published_at": pub.isoformat() if pub else None
             })
     return items
+
 
 def _article_published_at(url):
     try:
@@ -112,6 +119,8 @@ def _article_published_at(url):
     except Exception as exc:
         print("Haber tarihi okunamadı:", url, repr(exc))
     return None
+
+
 def _title_published_at(title):
     text = _clean(title)
     match = re.search(r"(?<!\d)(\d{1,2})[./-](\d{1,2})[./-](\d{4})(?!\d)", text)
@@ -122,6 +131,7 @@ def _title_published_at(title):
         return datetime(year, month, day, tzinfo=timezone.utc).isoformat()
     except ValueError:
         return None
+
 
 def _html_items(source):
     response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
@@ -153,10 +163,12 @@ def _html_items(source):
             })
     return items
 
+
 def _source_items(source):
     if source.get("kind") == "html":
         return _html_items(source)
     return _feed_items(source)
+
 
 def _article_text(url):
     response = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT, allow_redirects=True)
@@ -165,6 +177,7 @@ def _article_text(url):
     for tag in soup(["script", "style", "noscript", "svg", "nav", "footer"]):
         tag.decompose()
     return _clean(soup.get_text(" ", strip=True))[:18000]
+
 
 def _gemini(prompt):
     global _gemini_last_request_at
@@ -214,8 +227,10 @@ def _gemini(prompt):
         return json.loads(raw)
     raise RuntimeError("Gemini geçici hatası yeniden denemelerden sonra devam etti")
 
+
 def _id(item):
     return hashlib.sha256(item["url"].encode("utf-8")).hexdigest()[:20]
+
 
 def update_news():
     now = datetime.now(timezone.utc)
@@ -231,7 +246,8 @@ def update_news():
     for item in pending:
         if item.get("id") and item["id"] not in known:
             published = _date(item.get("published_at"))
-            if published and published >= cutoff:
+            # Gelecek tarihli bekleyen kayıtları tekrar AI'ya gönderme.
+            if published and published <= now and published >= cutoff:
                 candidates.append(item)
                 candidate_ids.add(item["id"])
 
@@ -245,7 +261,8 @@ def update_news():
                 if item["id"] in known or item["id"] in candidate_ids:
                     continue
                 published = _date(item.get("published_at"))
-                if not published or published < cutoff:
+                # Gelecek tarihli haberleri hiçbir koşulda aday yapma.
+                if not published or published > now or published < cutoff:
                     continue
                 candidates.append(item)
                 candidate_ids.add(item["id"])
@@ -281,20 +298,27 @@ Aksi durumda publish=false ver.
 
 ÖNEMLİ: MÜKERRER HABER KONTROLÜ YAP.
 Aşağıdaki "Mevcut sitedeki haberler" listesini yeni haberle karşılaştır.
-Başlıklar veya URL'ler farklı olsa bile aynı olayı, aynı duyuruyu veya aynı gelişmeyi anlatıyorlarsa
-duplicate=true ver ve bu haberi yayınlama.
-Kararı yalnızca başlık eşleşmesine göre verme; haber metnindeki olay, kurum, kişi, konu, tarih,
-ödeme/tutar bilgileri ve diğer somut ayrıntıları birlikte değerlendir.
-Aynı konunun farklı bir tarihteki yeni gelişmesi veya gerçekten farklı bir olay ise duplicate=false ver.
-Örneğin farklı URL'lere sahip "Evde Bakım Yardımı ödemeleri başladı" ve
-"Evde Bakım Yardımı hesaplara yatırıldı" aynı ödeme duyurusunu anlatıyorsa mükerrerdir.
-Ancak başka bir ayın yeni ödeme duyurusu ayrı bir haberdir.
+duplicate kararı yalnızca aynı konu başlığına veya genel temaya bakılarak verilmemeli.
+İki haberin gerçekten aynı olay/duyuru/gelişme olup olmadığını belirle.
+Aynı olay için kullanılan farklı başlıklar, farklı kaynaklar veya farklı anlatım duplicate olabilir.
+Buna karşılık aynı kurum, aynı konu veya aynı genel konu başlığı tek başına duplicate değildir.
+Yeni ay, yeni ödeme dönemi, yeni tutar, yeni karar, yeni uygulama, yeni sonuç, yeni açıklama
+veya olayın daha sonraki aşaması söz konusuysa duplicate=false ver.
+Örneğin:
+- "Eylül Evde Bakım Yardımı ödemeleri başladı" ile aynı Eylül ödemesini anlatan
+  "Eylül Evde Bakım Yardımı hesaplara yatırıldı" duplicate olabilir.
+- "Ekim Evde Bakım Yardımı ödemeleri başladı" yeni bir ödeme dönemi olduğu için duplicate değildir.
+- "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu" ile daha önceki sigara
+  haberleri yalnızca aynı sağlık/tütün konusundaysa, aynı olay veya aynı istatistik dönemi
+  olduğu açıkça gösterilmedikçe duplicate değildir.
+duplicate_reason alanında somut olarak hangi aynı olay veya hangi aynı duyurunun tekrarlandığını belirt.
+Yalnızca "aynı konu", "aynı alan", "benzer sağlık haberi", "benzer gündem" gibi genel gerekçeler
+duplicate kararı için yeterli değildir.
 
 Mevcut sitedeki haberler:
 {{existing_news}}
 
 duplicate=true ise publish=false ver.
-duplicate_reason alanında kısa olarak neden mükerrer olduğunu belirt.
 
 Mükerrer değilse:
 Özgün ve tarafsız Türkçe özet hazırla; kaynak metnini kopyalama.
@@ -308,8 +332,10 @@ Kaynak metni:
 {article}
 """
             existing_news = existing_items + added
-            existing_news_text = "\n".join(
-                f"- Başlık: {n.get('title', '')}\n  Özet: {n.get('summary', '')}"
+            existing_news_text = "
+".join(
+                f"- Başlık: {n.get('title', '')}
+  Özet: {n.get('summary', '')}"
                 for n in existing_news
             ) or "Henüz yayınlanmış haber yok."
             prompt = prompt.replace("{existing_news}", existing_news_text)
@@ -369,6 +395,7 @@ Kaynak metni:
     _save_json(NEWS_FILE, result)
     print(f"Yeni haber: {len(added)} | Toplam: {len(result['items'])} | Bekleyen: {len(result['pending'])}")
     return result
+
 
 if __name__ == "__main__":
     update_news()
