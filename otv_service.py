@@ -138,6 +138,20 @@ def _parse_ministry_pdf(pdf_bytes):
                         "trim": trim,
                         "locality": locality,
                     })
+                    # Togg resmi beyan PDF listesinde yer almadığı için aday paketler doğrudan eklenir
+    for model, trims in [
+        ('T10X', ['V1 SR', 'V1 LR', 'V2 LR', 'V2 LR AWD']),
+        ('T10F', ['V1 SR', 'V1 LR', 'V2 LR', 'V2 LR AWD']),
+    ]:
+        for trim in trims:
+            rows.append({
+                'brand': 'Togg',
+                'brand_key': 'TOGG',
+                'model': model,
+                'model_key': _norm(model),
+                'trim': trim,
+                'locality': 68.0,
+            })
     if not rows:
         raise RuntimeError("Bakanlık PDF'inden M1 araç kayıtları okunamadı")
     return rows
