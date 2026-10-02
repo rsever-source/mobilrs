@@ -17,7 +17,7 @@ LIMIT_2026 = 2_873_900
 MIN_LOCALITY = 40.0
 OTV_REFRESH_LOCK = threading.Lock()
 CACHE_FILE = "otv_cache.json"
-CACHE_VERSION = 4
+CACHE_VERSION = 5
 TZ = ZoneInfo("Europe/Istanbul")
 
 MINISTRY_PAGE = "https://www.sanayi.gov.tr/merkez-birimi/6f188a931f68/yerli-mali"
@@ -493,7 +493,6 @@ def _hyundai_price(item, cache):
                 prices.append(vals[0][1])
     return (min(prices), HYUNDAI_CAMPAIGN_URL) if prices else None
 
-
 # ---------- Fiat ----------
 
 def _fiat_model_ok(model_key, context):
@@ -547,7 +546,6 @@ def _fiat_price(item, cache):
         return None
     vals = _prices(section, 1_000_000, 6_000_000)
     return (min(v for _, v in vals), url) if vals else None
-
 
 # ---------- Ortak ----------
 
