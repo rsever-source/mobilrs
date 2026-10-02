@@ -17,7 +17,7 @@ LIMIT_2026 = 2_873_900
 MIN_LOCALITY = 40.0
 OTV_REFRESH_LOCK = threading.Lock()
 CACHE_FILE = "otv_cache.json"
-CACHE_VERSION = 5
+CACHE_VERSION = 6
 TZ = ZoneInfo("Europe/Istanbul")
 
 MINISTRY_PAGE = "https://www.sanayi.gov.tr/merkez-birimi/6f188a931f68/yerli-mali"
@@ -121,35 +121,19 @@ def _find_ministry_pdf():
 
 def _parse_ministry_pdf(pdf_bytes):
     rows = []
-    known_brands = {"TOGG", "RENAULT", "TOYOTA", "HYUNDAI", "FIAT", "KARSAN"}
 
     with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
         for page in pdf.pages:
             for table in page.extract_tables() or []:
                 for row in table or []:
-                    if not row:
+                    if not row or len(row) < 11:
                         continue
                     c = [_clean(x) for x in row]
-
-                    # Togg'un güncel Bakanlık tablosu 9 sütunlu düzende geliyor:
-                    # Marka, Model, Gövde, Motor, Yakıt, Şanzıman, Donanım,
-                    # Yerli Katkı, Dönem.
-                    if (
-                        len(c) >= 8
-                        and _norm(c[0]) in known_brands
-                        and _norm(c[2]) == "M1"
-                    ):
-                        brand, model, category, trim, locality = (
-                            c[0], c[1], c[2], c[6], _ratio(c[7])
-                        )
-                    elif len(c) >= 11:
-                        # Mevcut diğer marka tablolarının 11+ sütunlu düzeni.
-                        brand, model, category, trim = c[2], c[3], c[4], c[8]
-                        locality = _ratio(c[-2])
-                    else:
+                    locality = _ratio(c[-2])
+                    if locality is None:
                         continue
-
-                    if locality is None or not brand or not model or not trim:
+                    brand, model, category, trim = c[2], c[3], c[4], c[8]
+                    if not brand or not model or not trim:
                         continue
                     if not re.search(r"(?:^|\s)M1(?:\s|$|[-–])", category.upper()):
                         continue
@@ -161,6 +145,42 @@ def _parse_ministry_pdf(pdf_bytes):
                         "trim": trim,
                         "locality": locality,
                     })
+
+            # Togg satırları bazı PDF sayfalarında tablo hücresi olarak değil,
+            # normal metin satırı olarak çıkıyor. Bu durumda tablo parserı onları
+            # hiç döndürmüyor; resmi satır formatından doğrudan yakala.
+            page_text = page.extract_text() or ""
+            for raw_line in page_text.splitlines():
+                line = _clean(raw_line)
+                m = re.search(
+                    r"\bTOGG\s+(T10X|T10F)\s+M1\s+.*?\b"
+                    r"(T10X|T10F)\s+(V1\s+SR|V2\s+LR|V2\s+LR\s+AWD)\s+"
+                    r"(\d{1,3}(?:[.,]\d{1,2}))\s+\d{1,2}\.\d{1,2}\.\d{4}\s*$",
+                    line,
+                    re.IGNORECASE,
+                )
+                if not m or m.group(1).upper() != m.group(2).upper():
+                    continue
+                model = m.group(1).upper()
+                trim = f"{model} {re.sub(r'\s+', ' ', m.group(3)).upper()}"
+                locality = _ratio(m.group(4))
+                key = ("TOGG", _norm(model), _norm(trim))
+                if locality is None:
+                    continue
+                if any(
+                    (r["brand_key"], r["model_key"], _norm(r["trim"])) == key
+                    for r in rows
+                ):
+                    continue
+                rows.append({
+                    "brand": "Togg",
+                    "brand_key": "TOGG",
+                    "model": model,
+                    "model_key": _norm(model),
+                    "trim": trim,
+                    "locality": locality,
+                })
+
     if not rows:
         raise RuntimeError("Bakanlık PDF'inden M1 araç kayıtları okunamadı")
     return rows
