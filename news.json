@@ -1,6 +1,15 @@
 {
-  "updated_at": "2026-10-02T05:42:47.249416+00:00",
+  "updated_at": "2026-10-02T12:40:44.668525+00:00",
   "items": [
+    {
+      "id": "2efa4f85c19c62505957",
+      "title": "2 İlaç Daha Sosyal Güvenlik Kurumu Geri Ödeme Kapsamına Alındı",
+      "summary": "Sosyal Güvenlik Kurumu Sağlık Uygulama Tebliği'nde yapılan yeni düzenlemeler Resmi Gazete'de yayımlandı. Çalışma ve Sosyal Güvenlik Bakanı Vedat Işıkhan, iki yeni ilacın geri ödeme kapsamına alındığını duyurdu. Yapılan düzenlemeyle yenidoğan ile çocuk hastaların ileri teknoloji cerrahi işlemleri desteklenecek. Erken evre meme kanseri tedavisinde kullanılan bir ilaç ödeme listesine eklendi. Göz sinirinin tutulumuyla seyreden nadir bir hastalığın tedavisindeki ilaç da kapsama dahil edildi. Ayrıca organ nakli bekleyen hastalar için organ koruma protokollerinin kesintisiz ilerlemesi sağlandı.",
+      "source": "TRT Haber – Sağlık",
+      "url": "https://www.trthaber.com/haber/saglik/2-ilac-daha-geri-odeme-kapsamina-alindi-958880.html",
+      "published_at": "2026-10-02T07:33:00+00:00",
+      "created_at": "2026-10-02T12:40:44.668525+00:00"
+    },
     {
       "id": "5f3d36cfaeda78a4c5cf",
       "title": "Dokuz Ayda 4 Milyondan Fazla Yaşlıya Kapsamlı Sağlık Değerlendirmesi Yapıldı",
@@ -81,15 +90,6 @@
       "url": "https://www.trthaber.com/haber/saglik/idris-demir-sigarayi-birakali-3-ay-oldu-saglik-sorunlarimin-cogu-gitti-958412.html",
       "published_at": "2026-09-28T10:19:00+00:00",
       "created_at": "2026-10-01T23:54:29.052958+00:00"
-    },
-    {
-      "id": "76d32a39d83324213503",
-      "title": "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu",
-      "summary": "Türkiye genelinde sigara bırakma polikliniklerinin sayısı 1751'e yükseldi. Bu yılın ilk 8 ayında polikliniklere 179 bin 779 başvuru yapıldı. Sağlık Bakanlığı tarafından yürütülen çalışmalar kapsamında 12-18 yaş grubuna yönelik adölesan poliklinikleri açıldı. ALO 171 Sigara Bırakma Danışma Hattı üzerinden 8 ayda yaklaşık 180 bin çağrı yanıtlandı. Polikliniklere başvurarak bir yıllık takip süreci tamamlanan hastaların yaklaşık yüzde 24'ünün sigarayı bıraktığı belirlendi. Bakanlık bugüne kadar 1,5 milyondan fazla kişiye ücretsiz ilaç desteği sağladı.",
-      "source": "TRT Haber – Sağlık",
-      "url": "https://www.trthaber.com/haber/saglik/8-ayda-179-bini-askin-kisi-sigarayi-birakmak-icin-basvurdu-958394.html",
-      "published_at": "2026-09-28T08:37:00+00:00",
-      "created_at": "2026-10-01T19:34:06.977539+00:00"
     }
   ],
   "pending": []
