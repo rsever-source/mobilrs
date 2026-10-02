@@ -1,102 +1,5 @@
 [
   {
-    "run_at": "2026-10-01T06:00:11.482082+00:00",
-    "model": "gemini-3.5-flash-lite",
-    "candidates": [
-      {
-        "title": "California'da kolluk kuvvetlerinin elektroşok eldiveni kullanması yasaklandı",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/californiada-kolluk-kuvvetlerinin-elektrosok-eldiveni-kullanmasi-yasaklandi-958563.html",
-        "published_at": "2026-09-29T17:50:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber, ABD'deki yerel bir kolluk kuvveti uygulaması ve yasayla ilgili olup, engelli bireylerin hakları, bakımı veya erişilebilirliği ile doğrudan anlamlı bir ilişkisi bulunmamaktadır.",
-        "generated_title": "California'da Kolluk Kuvvetlerinin Elektroşok Eldiveni Kullanması Yasaklandı",
-        "summary": "ABD'nin California eyaletinde kolluk kuvvetlerinin gözaltı sırasında elektroşok eldiveni kullanması yasaklandı. Vali Gavin Newsom ilgili yasayı onaylayarak uygulamanın kullanımını kısıtladı. Karar, Göçmenlik ve Gümrük Muhafaza İdaresinin bu yönde bir alım sözleşmesi imzalamasının ardından alındı.",
-        "decision": "reject"
-      },
-      {
-        "title": "Japonya, Suriye'ye yönelik yaptırımları kısmen kaldırdı",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/japonya-suriyeye-yonelik-yaptirimlari-kismen-kaldirdi-958550.html",
-        "published_at": "2026-09-29T14:51:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "TCMB firmalara yönelik döviz dönüşüm desteğinde yeni dönemi devreye alıyor",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/tcmb-firmalara-yonelik-doviz-donusum-desteginde-yeni-donemi-devreye-aliyor-958364.html",
-        "published_at": "2026-09-28T06:22:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Merkez Bankası'ndan Firmalara Yönelik Döviz Dönüşüm Desteğinde Yeni Dönem",
-        "summary": "Türkiye Cumhuriyet Merkez Bankası, firmaların yurt dışı kaynaklı döviz gelirlerinin Türk lirasına dönüşümünü destekleyen yeni uygulamayı devreye aldı. Hazine ve Maliye Bakanı Mehmet Şimşek, destek mekanizmasında daha esnek ve sade şartlar getirildiğini açıkladı. 1 Ekim'de yürürlüğe girecek yeni talimatla döviz almama taahhüdü kaldırılarak döviz pozisyonu şartı getirildi. Destek kapsamında satılabilecek döviz tutarı, firmaların katma değeri ile ilişkilendirilerek üst limite bağlandı. Tedarikçi firmaların da destekten yararlanabilmesine imkan sağlanarak süreç kolaylaştırıldı.",
-        "decision": "reject"
-      },
-      {
-        "title": "Sağlık ekiplerine zorlu koşullarda müdahale eğitimi",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/saglik-ekiplerine-zorlu-kosullarda-mudahale-egitimi-958617.html",
-        "published_at": "2026-09-30T08:16:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "İdris Demir: Sigarayı bırakalı 3 ay oldu, sağlık sorunlarımın çoğu gitti",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/idris-demir-sigarayi-birakali-3-ay-oldu-saglik-sorunlarimin-cogu-gitti-958412.html",
-        "published_at": "2026-09-28T10:19:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Kayseri'de 50 Yıl Sonra Sigarayı Bırakan İdris Demir'in Sağlığına Kavuşması",
-        "summary": "Kayseri'de yaşayan 63 yaşındaki işçi emeklisi İdris Demir, uzun yıllar kullandığı sigarayı sağlık sorunları nedeniyle bıraktı. Sigara Bırakma Polikliniği'ne başvuran Demir, doktor desteği ve uygulanan tedavi yöntemiyle bağımlılığından kurtuldu. Üç aydır sigara kullanmayan Demir, nefes darlığı ve astım bronşit gibi sağlık sorunlarının büyük ölçüde azaldığını belirtti. Uzman doktor Işıl Arık, hastaların bağımlılık düzeyine göre kişiye özel tedavi planı oluşturduklarını ifade etti. Demir, sürecin ardından hem sağlığına kavuştuğunu hem de maddi olarak rahatladığını söyledi.",
-        "decision": "reject"
-      },
-      {
-        "title": "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/8-ayda-179-bini-askin-kisi-sigarayi-birakmak-icin-basvurdu-958394.html",
-        "published_at": "2026-09-28T08:37:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": true,
-        "duplicate_reason": "Bu haber daha önce benzer sağlık ve tütün mücadelesi başlıkları altında farklı kaynaklarca işlenmiş genel bir gündem konusudur.",
-        "generated_title": "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu",
-        "summary": "Türkiye genelinde sigara bırakma polikliniklerinin sayısı artırılırken, bu yılın ilk 8 ayında binlerce başvuru yapıldı. Sağlık Bakanlığı tarafından yürütülen çalışmalar kapsamında vatandaşlara danışmanlık ve ücretsiz ilaç desteği sağlanıyor. ALO 171 Sigara Bırakma Danışma Hattı üzerinden de 7 gün 24 saat kesintisiz hizmet veriliyor. Takip süreci tamamlanan hastaların önemli bir kısmının sigarayı bıraktığı tespit edildi.",
-        "decision": "duplicate"
-      },
-      {
-        "title": "Türkiye'de kadınlarda tütün kullanımı 17 yılda yüzde 35 arttı",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/turkiyede-kadinlarda-tutun-kullanimi-17-yilda-yuzde-35-artti-958097.html",
-        "published_at": "2026-09-25T08:08:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Türkiye'de kadınlarda tütün kullanımı 17 yılda yüzde 35 arttı",
-        "summary": "Türkiye'de 2008 ile 2025 yılları arasında kadınlarda tütün ve tütün ürünleri kullanım oranı yüzde 15,2'den yüzde 20,6'ya yükseldi. Erkeklerde ise bu oran yüzde 47,9'dan yüzde 46'ya geriledi. Sağlık Bakanlığı ve TÜİK verilerine göre, 15 yaş ve üzeri nüfusta toplam tütün kullanım oranı yüzde 33,2 olarak hesaplandı. Tütün kullanımının dünya genelindeki kronik hastalıkların yüzde 25'inden ve akciğer kanserlerinin yüzde 90'ından sorumlu olduğu bildirildi. Türkiye'de her yıl yaklaşık 125 bin kişi tütün nedeniyle hayatını kaybediyor. Sağlık Bakanlığı tarafından tütünle mücadele kapsamında denetimler, eğitimler ve mobil sigara bırakma hizmetleri yürütülüyor.",
-        "decision": "reject"
-      }
-    ]
-  },
-  {
     "run_at": "2026-10-01T13:51:34.650319+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": [
@@ -760,6 +663,142 @@
         "duplicate_reason": "",
         "generated_title": "Elektronik Sigara Akciğerleri ve Solunum Sistemini Olumsuz Etkiliyor",
         "summary": "Son yıllarda popülerleşen elektronik sigara, puff ve ısıtılmış tütün ürünleri başta akciğerler olmak üzere tüm organ ve sistemleri olumsuz etkilemektedir. Uzmanlar, bu ürünlerin kısa ve uzun vadede ciddi solunum sorunlarına, kalıcı akciğer hasarlarına ve solunum yetmezliğine yol açabileceğini belirtmektedir. Meyve aromaları ve renkli tasarımlarla gençleri hedef alan ürünlerin nikotin oranının yüksek olduğu ve bağımlılık riskini artırdığı vurgulanmaktadır. Uzmanlar, sigarayı bırakma aracı olarak lanse edilen bu ürünlerin aslında tütüne başlama riskini katladığına dikkat çekmektedir. Ailelerin çocuklarının odalarındaki koku ve ambalajlara karşı dikkatli olması gerektiği ifade edilmektedir. Gençlerin sağlık ve bağımlılık riskleri konusunda bilinçlendirilmesi ve bu tür zararlı maddelerden uzak durması önem taşımaktadır.",
+        "decision": "reject"
+      }
+    ]
+  },
+  {
+    "run_at": "2026-10-02T23:48:52.586639+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": [
+      {
+        "title": "California'da kolluk kuvvetlerinin elektroşok eldiveni kullanması yasaklandı",
+        "source": "TRT Haber",
+        "url": "https://www.trthaber.com/haber/guncel/californiada-kolluk-kuvvetlerinin-elektrosok-eldiveni-kullanmasi-yasaklandi-958563.html",
+        "published_at": "2026-09-29T17:50:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "Haber, ABD'nin California eyaletinde kolluk kuvvetlerinin elektroşok eldiveni kullanmasının yasaklanmasıyla ilgilidir ve engelli hakları, sosyal yardımlar veya doğrudan engelli bireyleri ilgilendiren bir konu içermediğinden Engelli.me yayın kriterlerine uygun değildir.",
+        "generated_title": "California'da Kolluk Kuvvetlerinin Elektroşok Eldiveni Kullanması Yasaklandı",
+        "summary": "ABD'nin California eyaletinde kolluk kuvvetlerinin gözaltı sırasında elektroşok eldiveni kullanması yasaklandı. Vali Gavin Newsom, ilgili yasayı imzalayarak uygulamanın gelecekteki kullanımını kısıtladı. Karar, Göçmenlik ve Gümrük Muhafaza İdaresinin bu tür eldivenleri temin etme girişiminin ardından alındı.",
+        "decision": "reject"
+      },
+      {
+        "title": "Japonya, Suriye'ye yönelik yaptırımları kısmen kaldırdı",
+        "source": "TRT Haber",
+        "url": "https://www.trthaber.com/haber/guncel/japonya-suriyeye-yonelik-yaptirimlari-kismen-kaldirdi-958550.html",
+        "published_at": "2026-09-29T14:51:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "Verilen haber dış politika ve uluslararası ilişkiler alanındaki yaptırımlarla ilgili olup, engelli bireylerin hakları, sosyal yardımları, bakımı veya erişilebilirliği gibi konularla doğrudan veya anlamlı bir ilişkisi bulunmamaktadır.",
+        "generated_title": "Japonya, Suriye'ye Yönelik Yaptırımları Kısmen Kaldırdı",
+        "summary": "Japonya yönetimi, Suriye ile olan ilişkiler çerçevesinde bu ülkeye yönelik bazı yaptırımları kısmen kaldırma kararı aldı. Dışişleri Bakanlığından yapılan açıklamada, Esed rejiminin devrilmesinin ardından ilişkilerin normalleştiği vurgulandı. Alınan karar doğrultusunda içişleri ve savunma bakanlıkları dahil 16 kuruluşa uygulanan yaptırımlara son verildi. Buna karşın, 59 şahıs ve 15 kuruluşa yönelik yaptırımların devam edeceği bildirildi.",
+        "decision": "reject"
+      },
+      {
+        "title": "TCMB firmalara yönelik döviz dönüşüm desteğinde yeni dönemi devreye alıyor",
+        "source": "TRT Haber",
+        "url": "https://www.trthaber.com/haber/guncel/tcmb-firmalara-yonelik-doviz-donusum-desteginde-yeni-donemi-devreye-aliyor-958364.html",
+        "published_at": "2026-09-28T06:22:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "TCMB'den Firmalara Yönelik Döviz Dönüşüm Desteğinde Yeni Dönem",
+        "summary": "Hazine ve Maliye Bakanı Mehmet Şimşek, Türkiye Cumhuriyet Merkez Bankasının firmalara yönelik döviz dönüşüm desteğinde yeni bir dönemin devreye alındığını açıkladı. Yapılan düzenlemeyle destek şartları daha esnek ve sade hale getirilirken, ihracata katkı sunan firmaların erişimi kolaylaştırıldı. 1 Ekim'de yürürlüğe girecek yeni uygulama talimatına göre destek tutarına üst limit getirildi ve döviz almama taahhüdü kaldırılarak döviz pozisyonu şartı eklendi. Aracı ihracatçı kullanan tedarikçi firmalar da kendi limitleri ölçüsünde destekten faydalanabilecek. Ayrıca aracı bankaların denetim yetkileri artırılarak olası suistimallerin önüne geçilmesi amaçlandı.",
+        "decision": "reject"
+      },
+      {
+        "title": "Doktorlara ameliyat öncesi sanal prova imkanı sunan yerli teknoloji",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/doktorlara-ameliyat-oncesi-sanal-prova-imkani-sunan-yerli-teknoloji-958894.html",
+        "published_at": "2026-10-02T08:19:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "Doktorlara Ameliyat Öncesi Sanal Prova İmkânı Sunan Yerli Teknoloji",
+        "summary": "TÜBİTAK destekli MetaTıp Projesi ile MR verileri üç boyutlu modellere dönüştürülmektedir. Doktorlar hastanın anatomisini sanal ortamda inceleyerek ameliyat öncesi hazırlık yapabilmektedir. Sistem sayesinde cerrahlar uzaktan aynı sanal ameliyatta buluşabilmektedir. Proje, Sağlık Bakanlığı onayıyla bazı üniversite hastanelerinde tıp fakültesi öğrencilerinin kullanımına sunulmuştur. Geliştirilen yerli teknoloji TEKNOFEST'te ziyaretçilere tanıtılmaktadır.",
+        "decision": "reject"
+      },
+      {
+        "title": "50 yaşındaki kilomuz 70 yaşındaki hafızamızı etkileyebilir mi?",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/50-yasindaki-kilomuz-70-yasindaki-hafizamizi-etkileyebilir-mi-958886.html",
+        "published_at": "2026-10-02T07:43:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "Haber genel saglik ve obezite uzerine yapilan arastirmalari konu almaktadir ve engelli bireylerin haklari, bakimi veya sosyal yardimlariyla dogrudan bir iliskisi bulunmamaktadir.",
+        "generated_title": "Orta Yaştaki Obezite İleri Yaşta Demans Riskini Artırabilir",
+        "summary": "Yapılan araştırmalar, orta yaşta obezitesi olan bireylerin ilerleyen yaşlarda demans ve Alzheimer riskinin normal kilolulara göre yüzde 33 daha yüksek olduğunu ortaya koydu. Bilimsel çalışmalar, obezitenin hafıza ve karar verme işlevlerinden sorumlu beyin bölgelerini olumsuz etkileyebileceğini gösteriyor. Uzmanlar, obezitenin beynin daha hızlı yaşlanmasında önemli bir risk faktörü olduğuna dikkat çekiyor. Kilo vermenin beyin sağlığı üzerindeki kesin etkileri için daha fazla araştırmaya ihtiyaç duyulurken, obezitenin kontrol altına alınmasının ilerleyen dönemdeki bilişsel sağlık açısından önem taşıdığı vurgulanıyor.",
+        "decision": "reject"
+      },
+      {
+        "title": "Kahve tüketiminde saat ve miktar önemli",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/kahve-tuketiminde-saat-ve-miktar-onemli-958764.html",
+        "published_at": "2026-10-01T08:45:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "Haber genel sağlik ve beslenme uyarilari hakkinda olup engelli bireylerin haklari, bakimi veya sosyal yardimlari ile dogrudan bir ilgisi bulunmamaktadir.",
+        "generated_title": "",
+        "summary": "",
+        "decision": "reject"
+      },
+      {
+        "title": "Sağlık ekiplerine zorlu koşullarda müdahale eğitimi",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/saglik-ekiplerine-zorlu-kosullarda-mudahale-egitimi-958617.html",
+        "published_at": "2026-09-30T08:16:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "Sağlık Ekiplerine Zorlu Koşullarda Müdahale Eğitimi",
+        "summary": "Kars'ta sağlık çalışanlarına zorlu arazi koşullarında müdahale ve tahliye eğitimi verildi. Program kapsamında UMKE personeline afet ve acil durum eğitimleri uygulandı. Ambulans sürücülerine ise farklı yol ve hava koşullarında güvenli sürüş teknikleri aktarıldı. Eğitimlerle acil vakalara hızlı ve güvenli ulaşılması hedeflendi.",
+        "decision": "reject"
+      },
+      {
+        "title": "İdris Demir: Sigarayı bırakalı 3 ay oldu, sağlık sorunlarımın çoğu gitti",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/idris-demir-sigarayi-birakali-3-ay-oldu-saglik-sorunlarimin-cogu-gitti-958412.html",
+        "published_at": "2026-09-28T10:19:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "Haber genel sağlık ve bireysel sigarayı bırakma başarısı ile ilgili olup, engellilik veya özel politika gerektiren dezavantajlı gruplar bağlamında doğrudan bir içeriğe sahip değildir.",
+        "generated_title": "İdris Demir: Sigarayı bırakalı 3 ay oldu, sağlık sorunlarımın çoğu gitti",
+        "summary": "Kayseri'de yaşayan 63 yaşındaki İdris Demir, şiddetli öksürük ve nefes darlığı şikayetleriyle Sigara Bırakma Polikliniği'ne başvurdu. Uzman doktor eşliğinde kişiye özel tedavi planı uygulayan Demir, ilaç ve bant desteğiyle üç ayda sigarayı bıraktı. Astım bronşit ve varis gibi sağlık sorunlarının büyük ölçüde azaldığını belirten Demir, merdiven çıkarken yaşadığı nefes darlığı sorunundan kurtulduğunu ifade etti. Uzman doktor Işıl Arık, başvuran kişilerin bağımlılık düzeyine göre özel tedavi süreci yürüttüklerini belirtti. Demir, sigara bağımlılığından kurtulmak isteyen herkese polikliniklere başvurma çağrısında bulundu.",
+        "decision": "reject"
+      },
+      {
+        "title": "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/8-ayda-179-bini-askin-kisi-sigarayi-birakmak-icin-basvurdu-958394.html",
+        "published_at": "2026-09-28T08:37:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "Haber genel halk sağlığı ve sigara bırakma istatistikleriyle ilgilidir, engelli bireylere yönelik özel bir politika veya hak düzenlemesi içermemektedir.",
+        "generated_title": "8 Ayda 179 Bini Aşkın Kişi Sigarayı Bırakmak İçin Başvurdu",
+        "summary": "Türkiye genelinde sigara bırakma polikliniklerinin sayısı 1751'e yükseldi. Bu yılın ilk sekiz ayında polikliniklere 179 bin 779 başvuru yapıldı. Bakanlık verilerine göre, ALO 171 hattı ve poliklinikler aracılığıyla vatandaşlara kapsamlı danışmanlık hizmeti sunuluyor. Bir yıllık takip süreci tamamlanan hastaların yaklaşık yüzde 24'ü sigarayı bıraktı. Tedavi sürecinde gerekli görülen ilaçlar Sağlık Bakanlığı tarafından ücretsiz olarak sağlanıyor. Ayrıca aile hekimlikleri ve çevrim içi hizmetlerle de tütün bağımlılığıyla mücadele çalışmaları sürdürülüyor.",
+        "decision": "reject"
+      },
+      {
+        "title": "Elektronik sigara akciğerleri vuruyor: Organ ve sistemleri olumsuz etkiliyor.",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/elektronik-sigara-akcigerleri-vuruyor-organ-ve-sistemleri-olumsuz-etkiliyor-958383.html",
+        "published_at": "2026-09-28T07:42:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "Verilen haber elektronik sigara ve tütün ürünlerinin sağlık üzerindeki zararları hakkındadır ve sitedeki mevcut meme kanseri, yaşlı sağlığı veya evde bakım yardımı haberleriyle mükerrer değildir.",
+        "generated_title": "Elektronik Sigara ve Tütün Ürünleri Akciğerleri ve Organları Tehdit Ediyor",
+        "summary": "Son yıllarda yaygınlaşan elektronik sigara ve benzeri tütün ürünleri, başta akciğerler olmak üzere tüm organ ve sistemleri olumsuz etkilemektedir. Uzmanlar, bu ürünlerin kısa ve uzun vadede ciddi solunum sorunlarına, kalıcı akciğer hasarlarına ve solunum yetmezliğine yol açabileceğini belirtmektedir. Özellikle gençler arasında meyve aromaları ve çekici tasarımlarla yayılan bu ürünler, yüksek nikotin oranları nedeniyle normal sigaradan daha büyük bağımlılık riski taşımaktadır. Uzmanlar, ailelerin çocuklarının odalarındaki koku ve eşyalara karşı dikkatli olması gerektiğini vurgulamaktadır. Gençlerin ise söz konusu ürünlerin sağlık ve bağımlılık riskleri konusunda bilinçlendirilmesi büyük önem taşımaktadır.",
         "decision": "reject"
       }
     ]
