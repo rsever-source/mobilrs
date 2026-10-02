@@ -402,6 +402,7 @@ def _web_search_pages(query, max_results=6):
     """Google başarısızsa statik DuckDuckGo HTML aramasına düşen keşif katmanı."""
     providers = (
         ("google", "https://www.google.com/search", {"q": query, "hl": "tr", "gl": "TR", "num": max_results}),
+        ("bing", "https://www.bing.com/search", {"q": query, "setlang": "tr-TR", "count": max_results}),
         ("duckduckgo", "https://html.duckduckgo.com/html/", {"q": query, "kl": "tr-tr"}),
     )
 
@@ -410,6 +411,8 @@ def _web_search_pages(query, max_results=6):
             headers = dict(HEADERS)
             if provider == "duckduckgo":
                 headers["Referer"] = "https://html.duckduckgo.com/"
+            elif provider == "bing":
+                headers["Referer"] = "https://www.bing.com/"
             r = requests.get(url, params=params, headers=headers, timeout=25)
             r.raise_for_status()
         except Exception as e:
@@ -422,6 +425,8 @@ def _web_search_pages(query, max_results=6):
 
         if provider == "duckduckgo":
             links = soup.select("a.result__a")
+        elif provider == "bing":
+            links = soup.select("li.b_algo h2 a[href]")
         else:
             links = soup.find_all("a", href=True)
 
@@ -436,7 +441,7 @@ def _web_search_pages(query, max_results=6):
             if not href.startswith("http"):
                 continue
             low_href = href.lower()
-            if any(host in low_href for host in ("google.", "duckduckgo.", "googleusercontent.")):
+            if any(host in low_href for host in ("google.", "bing.", "duckduckgo.", "googleusercontent.")):
                 continue
             if href in seen:
                 continue
@@ -518,6 +523,8 @@ def _web_locality_rows(parsed_rows):
     for brand_key, model, trims in targets:
         trim_query = " ".join(f'"{trim}"' for trim in trims[:6])
         query = f'2026 "{brand_key}" "{model}" "yerli katkı" {trim_query}'.strip()
+        model_key = _norm(model)
+        target_keys = {(brand_key, model_key, _norm(trim)) for trim in trims}
 
         for url, title in _web_search_pages(query):
             try:
@@ -528,19 +535,21 @@ def _web_locality_rows(parsed_rows):
             combined = _norm(" ".join(" ".join(r) for r in table_rows) + " " + text)
             if "2026" not in combined or "YERLI KATKI" not in combined:
                 continue
-            if brand_key not in combined or _norm(model) not in combined:
+            if brand_key not in combined or model_key not in combined:
                 continue
 
             for cells in table_rows:
                 row_text = _norm(" ".join(cells))
-                if brand_key not in row_text or _norm(model) not in row_text:
+                if brand_key not in row_text or model_key not in row_text:
                     continue
 
                 ratio_values = []
+                # Yüzde işaretli oranı önceliklendir; motor gücü/model yılı gibi
+                # başka sayılar yanlışlıkla yerli katkı oranı kabul edilmesin.
                 for cell in cells:
-                    if "%" in cell or re.search(r"\b\d{2}(?:[.,]\d{1,2})?\b", cell):
-                        ratio = _ratio(cell)
-                        if ratio is not None and 40 <= ratio <= 100:
+                    for match in re.findall(r"(\d{2,3}(?:[.,]\d{1,2})?)\s*%", cell):
+                        ratio = float(match.replace(",", "."))
+                        if 40 <= ratio <= 100:
                             ratio_values.append(ratio)
                 if not ratio_values:
                     continue
@@ -549,7 +558,7 @@ def _web_locality_rows(parsed_rows):
                     trim_key = _norm(trim)
                     if trim_key not in row_text:
                         continue
-                    key = (brand_key, _norm(model), trim_key)
+                    key = (brand_key, model_key, trim_key)
                     if key in seen:
                         continue
                     seen.add(key)
@@ -557,16 +566,19 @@ def _web_locality_rows(parsed_rows):
                         "brand": "Togg" if brand_key == "TOGG" else brand_key.title(),
                         "brand_key": brand_key,
                         "model": model,
-                        "model_key": _norm(model),
+                        "model_key": model_key,
                         "trim": trim,
                         "locality": ratio_values[0],
                         "locality_source_name": f"Web doğrulama: {title or url}",
                         "locality_source_url": url,
                     })
 
-            if rows and any(r["brand_key"] == brand_key and r["model_key"] == _norm(model) for r in rows):
-                # Aynı model için birden fazla güvenilir sonuç bulmak yerine
-                # ilk doğrulanmış sayfayı kullan; sonraki modelde devam et.
+            found_for_model = {
+                (r["brand_key"], r["model_key"], _norm(r["trim"]))
+                for r in rows
+                if r["brand_key"] == brand_key and r["model_key"] == model_key
+            }
+            if target_keys.issubset(found_for_model):
                 break
 
     print(
