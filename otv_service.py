@@ -17,7 +17,7 @@ LIMIT_2026 = 2_873_900
 MIN_LOCALITY = 40.0
 OTV_REFRESH_LOCK = threading.Lock()
 CACHE_FILE = "otv_cache.json"
-CACHE_VERSION = 2
+CACHE_VERSION = 3
 TZ = ZoneInfo("Europe/Istanbul")
 
 MINISTRY_PAGE = "https://www.sanayi.gov.tr/merkez-birimi/6f188a931f68/yerli-mali"
@@ -362,6 +362,44 @@ def _togg_alias(item):
     return aliases.get(n)
 
 
+TOGG_VERSIONS = (
+    "V1 RWD STANDART MENZIL",
+    "V1 RWD UZUN MENZIL",
+    "V2 RWD UZUN MENZIL",
+    "V2 4MORE",
+)
+
+
+def _togg_version_key(value):
+    n = _norm(value)
+    if n == "V2 4MORE OBSIDIYEN":
+        return "V2 4MORE"
+    return n
+
+
+def _togg_live_prices(soup):
+    """Togg sayfasında sürüm adı ile aynı DOM öğesindeki fiyatı eşleştir."""
+    rows = {}
+    for tag in soup.find_all(True):
+        raw_text = _clean(tag.get_text(" ", strip=True))
+        if not raw_text or len(raw_text) > 700:
+            continue
+        norm_text = _norm(raw_text)
+        matched = [v for v in TOGG_VERSIONS if re.search(r"(?<![A-Z0-9])" + re.escape(v) + r"(?![A-Z0-9])", norm_text)]
+        if len(matched) != 1:
+            continue
+        prices = _prices(raw_text, 1_000_000, 6_000_000)
+        if len(prices) != 1:
+            continue
+        key = matched[0]
+        old = rows.get(key)
+        if old is None or len(raw_text) < old[0]:
+            rows[key] = (len(raw_text), prices[0][1], raw_text)
+    result = {key: value[1] for key, value in rows.items()}
+    print("OTV Togg live version-price pairs:", result)
+    return result
+
+
 def _togg_price(item, cache):
     model = _norm(item["model"])
     url = TOGG_URLS.get(model)
@@ -370,17 +408,19 @@ def _togg_price(item, cache):
         return None
     if url not in cache:
         cache[url] = _page(url)
-    _soup, text, raw = cache[url]
-    source = text if "Teslim Fiyat" in text else raw
-    start = source.lower().find("teslim fiyat")
-    if start < 0:
+    soup, text, raw = cache[url]
+    live = _togg_live_prices(soup)
+    if set(live) != set(TOGG_VERSIONS):
+        missing = [v for v in TOGG_VERSIONS if v not in live]
+        print("OTV Togg incomplete official price table:", model, "missing=", missing, "url=", url)
         return None
-    vals = [v for _, v in _prices(source[start:start + 1400], 1_000_000, 6_000_000)]
-    versions = ["V1 RWD STANDART MENZIL", "V1 RWD UZUN MENZIL", "V2 RWD UZUN MENZIL", "V2 4MORE"]
-    if len(vals) < len(versions) or alias not in versions:
+    key = _togg_version_key(alias)
+    price = live.get(key)
+    if not price:
+        print("OTV Togg version not found:", model, alias, "url=", url)
         return None
-    return vals[versions.index(alias)], url
-
+    print("OTV Togg verified:", model, alias, price, url)
+    return price, url
 
 # ---------- Hyundai ----------
 
