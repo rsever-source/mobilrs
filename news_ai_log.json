@@ -1,136 +1,5 @@
 [
   {
-    "run_at": "2026-09-30T12:39:21.126801+00:00",
-    "model": "gemini-3.5-flash-lite",
-    "candidates": [
-      {
-        "title": "Evde Bakım Yardımı ödemeleri hak sahiplerinin hesaplarına yatırılmaya başlandı",
-        "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-        "url": "https://www.aile.gov.tr/eyhgm/haberler/evde-bakim-yardimi-odemeleri-hak-sahiplerinin-hesaplarina-yatirilmaya-baslandi/",
-        "published_at": "2026-09-30T00:00:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": true,
-        "duplicate_reason": "Mevcut sitede yer alan 'Evde Bakım Yardımı Hesaplara Yatırıldı' başlıklı haber ile aynı döneme ait evde bakım yardımı ödemelerini ve tutarlarını anlatmaktadır.",
-        "generated_title": "Evde Bakım Yardımı ödemeleri hesaplara yatırılmaya başlandı",
-        "summary": "Aile ve Sosyal Hizmetler Bakanlığı tarafından evlerinde bakılan tam bağımlı vatandaşlar için Evde Bakım Yardımı ödemeleri hesaplara yatırılmaya başlandı.",
-        "decision": "duplicate"
-      },
-      {
-        "title": "Aramaya atla",
-        "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-        "url": "https://www.aile.gov.tr/eyhgm/haberler/#search",
-        "published_at": "2026-09-30T00:00:00+00:00",
-        "status": "not_processed",
-        "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='www.aile.gov.tr', port=443): Max retries exceeded with url: /eyhgm/haberler/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.aile.gov.tr', port=443) at 0x7fd80c7738d0>, 'Connection to www.aile.gov.tr timed out. (connect timeout=20)'))\"))"
-      },
-      {
-        "title": "California'da kolluk kuvvetlerinin elektroşok eldiveni kullanması yasaklandı",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/californiada-kolluk-kuvvetlerinin-elektrosok-eldiveni-kullanmasi-yasaklandi-958563.html",
-        "published_at": "2026-09-29T17:50:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "Japonya, Suriye'ye yönelik yaptırımları kısmen kaldırdı",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/japonya-suriyeye-yonelik-yaptirimlari-kismen-kaldirdi-958550.html",
-        "published_at": "2026-09-29T14:51:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "TCMB firmalara yönelik döviz dönüşüm desteğinde yeni dönemi devreye alıyor",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/tcmb-firmalara-yonelik-doviz-donusum-desteginde-yeni-donemi-devreye-aliyor-958364.html",
-        "published_at": "2026-09-28T06:22:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "Sağlık ekiplerine zorlu koşullarda müdahale eğitimi",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/saglik-ekiplerine-zorlu-kosullarda-mudahale-egitimi-958617.html",
-        "published_at": "2026-09-30T08:16:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Sağlık Ekiplerine Zorlu Koşullarda Müdahale ve Sürüş Eğitimi Verildi",
-        "summary": "Kars'ta sağlık çalışanları için zorlu arazi koşullarında müdahale, tahliye ve güvenli nakil eğitimleri düzenlendi. Üç gün süren UMKE eğitimine 17 gönüllü sağlık personeli katıldı. Susuz ilçesinde kurulan kamp alanında teorik ve uygulamalı çalışmalar gerçekleştirildi. Ekipler enkazdan yaralı çıkarma ve acil müdahaleler konusunda bilgilendirildi. Ambulans personeli için ise Kars merkezde güvenli sürüş eğitimleri verildi. Eğitimlerin amacının acil durumlarda hızlı ve güvenli hizmet sunulması olduğu belirtildi.",
-        "decision": "reject"
-      },
-      {
-        "title": "İdris Demir: Sigarayı bırakalı 3 ay oldu, sağlık sorunlarımın çoğu gitti",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/idris-demir-sigarayi-birakali-3-ay-oldu-saglik-sorunlarimin-cogu-gitti-958412.html",
-        "published_at": "2026-09-28T10:19:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "İdris Demir: Sigarayı Bırakalı 3 Ay Oldu, Sağlık Sorunlarımın Çoğu Gitti",
-        "summary": "Kayseri'de yaşayan 63 yaşındaki işçi emeklisi İdris Demir, günde üç paket içtiği sigarayı bırakmak için sağlık merkezine başvurdu. Uzman doktor eşliğinde kişiye özel tedavi planı uygulanan Demir, üç aydır sigara kullanmıyor. Süreçte ilaç ve bant tedavisinin yanı sıra psikososyal destek de aldı. Sigarayı bırakmasıyla birlikte astım bronşit ve nefes darlığı gibi sağlık sorunlarının büyük ölçüde geçtiğini belirtti. Ayrıca maddi olarak da rahatladığını ifade eden Demir, sigara bırakmak isteyen herkese polikliniklere başvurmalarını tavsiye etti.",
-        "decision": "reject"
-      },
-      {
-        "title": "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/8-ayda-179-bini-askin-kisi-sigarayi-birakmak-icin-basvurdu-958394.html",
-        "published_at": "2026-09-28T08:37:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu",
-        "summary": "Türkiye genelinde sigara bırakma polikliniklerinin sayısı 1751'e yükseldi. Bu yılın ilk 8 ayında polikliniklere 179 bin 779 başvuru yapıldı. Sağlık Bakanlığı tarafından yürütülen çalışmalar kapsamında vatandaşlara ücretsiz ilaç desteği de sağlanıyor. ALO 171 hattı üzerinden de danışmanlık hizmeti sunulmaya devam ediyor. Takip süreci tamamlanan hastaların yaklaşık yüzde 24'ünün sigarayı bıraktığı belirlendi.",
-        "decision": "reject"
-      },
-      {
-        "title": "Türkiye'de kadınlarda tütün kullanımı 17 yılda yüzde 35 arttı",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/turkiyede-kadinlarda-tutun-kullanimi-17-yilda-yuzde-35-artti-958097.html",
-        "published_at": "2026-09-25T08:08:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Türkiye'de Kadınlarda Tütün Kullanımı 17 Yılda Yüzde 35 Arttı",
-        "summary": "Sağlık Bakanlığı ve TÜİK verilerine göre Türkiye'de 2008-2025 döneminde tütün kullanımı kadınlarda yüzde 15,2'den yüzde 20,6'ya yükseldi. Erkeklerde ise bu oran yüzde 47,9'dan yüzde 46'ya geriledi. Uzmanlar tütün kullanımının kronik hastalıklar ve kanser vakalarındaki payına dikkat çekti. Tütünle Mücadele Timleri, vatandaşları bilgilendirmek ve sigara bırakma polikliniklerine yönlendirmek için çalışmalar yürütüyor. Dumansız Hava Sahası uygulamaları kapsamında iller arası çapraz denetimler başlatıldı. Üniversitelerde dumansız kampüs rehberi hazırlanarak gençlerin tütün ürünlerinden korunması hedeflendi.",
-        "decision": "reject"
-      },
-      {
-        "title": "Tütünle mücadelede yeni düzenlemeler geliyor",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/tutunle-mucadelede-yeni-duzenlemeler-geliyor-957990.html",
-        "published_at": "2026-09-24T10:28:00+00:00",
-        "status": "published",
-        "publish": true,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Tütünle Mücadelede Yeni Yasal Düzenlemeler Meclis Gündemine Geliyor",
-        "summary": "Sağlık Bakanlığı tarafından hazırlanan yeni kanun teklifi ekim ayında Meclis'e sunulacak. Taslak kapsamında 1 Ocak 2015'ten sonra doğanlara tütün ürünleri satışı yasaklanacak. 2040 yılından itibaren ise Türkiye'de tütün ürünlerinin üretimi ve satışı tamamen sonlandırılacak. Lokantalar ile park ve bahçelerde sigara kullanımına yönelik yeni kısıtlamalar getirilecek. Ayrıca ince sigara satışının kaldırılması ve paketlerde standart uygulama yapılması planlanıyor.",
-        "decision": "publish"
-      }
-    ]
-  },
-  {
     "run_at": "2026-09-30T19:23:50.898348+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": [
@@ -755,6 +624,103 @@
         "duplicate_reason": "",
         "generated_title": "Türkiye'de Kadınlarda Tütün Kullanımı On Yedi Yılda Yüzde Otuz Beş Arttı",
         "summary": "Türkiye'de 2008 ile 2025 yılları arasındaki dönemde kadınlarda tütün ürünü kullanım oranı artış gösterdi. Sağlık Bakanlığı ve TÜİK verilerine göre kadınlarda bu oran yüzde 15,2'den yüzde 20,6'ya yükseldi. Erkeklerde ise tütün kullanımı yüzde 47,9'dan yüzde 46 oranına geriledi. Ülke genelinde her yıl yaklaşık 125 bin kişi tütün kullanımına bağlı nedenlerle hayatını kaybetmektedir. Sağlık Bakanlığı tarafından yürütülen çalışmalar kapsamında Tütünle Mücadele Timleri bir milyondan fazla vatandaşa ulaştı. Ayrıca üniversitelerde dumansız kampüs uygulamaları ve çeşitli koruyucu eğitim faaliyetleri sürdürülmektedir.",
+        "decision": "reject"
+      }
+    ]
+  },
+  {
+    "run_at": "2026-10-02T05:42:47.249416+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": [
+      {
+        "title": "California'da kolluk kuvvetlerinin elektroşok eldiveni kullanması yasaklandı",
+        "source": "TRT Haber",
+        "url": "https://www.trthaber.com/haber/guncel/californiada-kolluk-kuvvetlerinin-elektrosok-eldiveni-kullanmasi-yasaklandi-958563.html",
+        "published_at": "2026-09-29T17:50:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "Haber, ABD'nin California eyaletindeki kolluk kuvvetlerinin elektroşok eldiveni kullanımının yasaklanmasıyla ilgilidir ve engelli hakları, sosyal yardımlar veya mevzuatla doğrudan bir ilişkisi bulunmamaktadır.",
+        "generated_title": "California'da Kolluk Kuvvetlerinin Elektroşok Eldiveni Kullanımı Yasaklandı",
+        "summary": "ABD'nin California eyaletinde kolluk kuvvetlerinin gözaltı sürecinde elektroşok uygulayan eldivenleri kullanması yasaklandı. California Valisi Gavin Newsom, ilgili yasayı onaylayarak uygulamanın gelecek yıldan itibaren sınırlandırılacağını belirtti. Karar, ABD Göçmenlik ve Gümrük Muhafaza İdaresinin direnç gösteren kişilere karşı bu ekipmanları temin etme kararının ardından alındı. Valilik, eyaletteki güvenlik ve göçmenlik uygulamalarında denetimi artırmayı hedefliyor.",
+        "decision": "reject"
+      },
+      {
+        "title": "Japonya, Suriye'ye yönelik yaptırımları kısmen kaldırdı",
+        "source": "TRT Haber",
+        "url": "https://www.trthaber.com/haber/guncel/japonya-suriyeye-yonelik-yaptirimlari-kismen-kaldirdi-958550.html",
+        "published_at": "2026-09-29T14:51:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "",
+        "summary": "",
+        "decision": "reject"
+      },
+      {
+        "title": "TCMB firmalara yönelik döviz dönüşüm desteğinde yeni dönemi devreye alıyor",
+        "source": "TRT Haber",
+        "url": "https://www.trthaber.com/haber/guncel/tcmb-firmalara-yonelik-doviz-donusum-desteginde-yeni-donemi-devreye-aliyor-958364.html",
+        "published_at": "2026-09-28T06:22:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "TCMB'den Firmalara Yönelik Döviz Dönüşüm Desteğinde Yeni Dönem",
+        "summary": "Türkiye Cumhuriyet Merkez Bankası, firmaların yurt dışı kaynaklı döviz gelirlerinin Türk lirasına dönüşümünü destekleyen düzenlemesinde yeni bir uygulamaya geçiyor. Hazine ve Maliye Bakanı Mehmet Şimşek, destek mekanizmasının daha esnek ve sade şartlarla yürütüleceğini açıkladı. 1 Ekim'de yürürlüğe girecek yeni uygulama talimatına göre, firmalar için döviz almama taahhüdü kaldırılarak döviz pozisyonu şartı getirildi. Destek kapsamında satılabilecek döviz tutarı, firmanın katma değeri ile ilişkilendirilerek üst limite bağlandı. Aracı ihracatçı kullanan tedarikçi firmaların da kendi limitleri ölçüsünde destekten faydalanabilmesine imkan sağlandı. Ayrıca aracı bankaların görevleri artırılarak kontrol mekanizmaları güçlendirildi.",
+        "decision": "reject"
+      },
+      {
+        "title": "Kahve tüketiminde saat ve miktar önemli",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/kahve-tuketiminde-saat-ve-miktar-onemli-958764.html",
+        "published_at": "2026-10-01T08:45:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "Kahve Tüketiminde Saat ve Miktar Önemlidir",
+        "summary": "Kardiyoloji ve iç hastalıkları uzmanları, kahve tüketiminde miktar ve saat kadar hazırlama şeklinin de önemli olduğuna dikkat çekti. Uzmanlar, kafein alımının 15.00 ile 16.00 saatleri arasında sonlandırılmasını önermektedir. Günlük kafein sınırının aşılması çarpıntı ve uyku bozukluklarına yol açabilmektedir. Şekerli ve kremalı kahvelerin kolesterol ile kan şekerini artırabileceği belirtilmektedir. Filtre kahve veya öğütülmüş çekirdek kahvelerin tercih edilmesi tavsiye edilmektedir.",
+        "decision": "reject"
+      },
+      {
+        "title": "Sağlık ekiplerine zorlu koşullarda müdahale eğitimi",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/saglik-ekiplerine-zorlu-kosullarda-mudahale-egitimi-958617.html",
+        "published_at": "2026-09-30T08:16:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "Haber, engelli hakları, bakım, istihdam veya sosyal yardımlarla doğrudan anlamlı bir ilişki barındırmamakta olup genel sağlık ve acil yardım personeli eğitimi konusunu ele almaktadır.",
+        "generated_title": "",
+        "summary": "",
+        "decision": "reject"
+      },
+      {
+        "title": "Elektronik sigara akciğerleri vuruyor: Organ ve sistemleri olumsuz etkiliyor.",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/elektronik-sigara-akcigerleri-vuruyor-organ-ve-sistemleri-olumsuz-etkiliyor-958383.html",
+        "published_at": "2026-09-28T07:42:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "Elektronik Sigara Akciğerleri ve Sağlığı Olumsuz Etkiliyor",
+        "summary": "Son yıllarda yaygınlaşan elektronik sigara, puff ve ısıtılmış tütün ürünleri başta akciğerler olmak üzere tüm organ ve sistemleri olumsuz etkilemektedir. Uzmanlar, bu ürünlerin kısa ve uzun vadede ciddi solunum sorunlarına, kalıcı akciğer hasarlarına ve solunum yetmezliğine yol açabileceğini belirtmektedir. Çeşitli aroma, renk ve tasarımlarla özellikle gençleri hedef alan bu ürünlerin bağımlılık riskini artırdığı vurgulanmaktadır. Nikotin miktarının yüksek olması ve hızlı bağımlılık yapması nedeniyle uzmanlar, aileleri dikkatli olmaya ve gençleri bilinçlendirmeye çağırmaktadır.",
+        "decision": "reject"
+      },
+      {
+        "title": "Türkiye'de kadınlarda tütün kullanımı 17 yılda yüzde 35 arttı",
+        "source": "TRT Haber – Sağlık",
+        "url": "https://www.trthaber.com/haber/saglik/turkiyede-kadinlarda-tutun-kullanimi-17-yilda-yuzde-35-artti-958097.html",
+        "published_at": "2026-09-25T08:08:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "Türkiye'de Kadınlarda Tütün Kullanımı 17 Yılda Yüzde 35 Arttı",
+        "summary": "Türkiye İstatistik Kurumu ve Sağlık Bakanlığı verilerine göre, 2008 ile 2025 yılları arasında kadınlarda tütün kullanım oranı yüzde 15,2'den yüzde 20,6'ya yükseldi. Erkeklerde ise aynı dönemde tütün kullanım oranı yüzde 47,9'dan yüzde 46'ya geriledi. Ülke genelinde toplam tütün kullanım oranı 2008'de yüzde 31,2 iken 2025'te yüzde 33,2 oldu. Tütün kullanımının dünyadaki kronik hastalıkların yüzde 25'inden ve akciğer kanserlerinin yüzde 90'ından sorumlu olduğu bildirildi. Türkiye'de tütün nedeniyle her yıl yaklaşık 125 bin kişinin hayatını kaybettiği açıklandı. Sağlık Bakanlığı, tütünle mücadele kapsamında mobil poliklinikler ve denetim faaliyetlerini sürdürüyor.",
         "decision": "reject"
       }
     ]
