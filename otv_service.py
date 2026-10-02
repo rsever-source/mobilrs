@@ -121,18 +121,35 @@ def _find_ministry_pdf():
 
 def _parse_ministry_pdf(pdf_bytes):
     rows = []
+    known_brands = {"TOGG", "RENAULT", "TOYOTA", "HYUNDAI", "FIAT", "KARSAN"}
+
     with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
         for page in pdf.pages:
             for table in page.extract_tables() or []:
                 for row in table or []:
-                    if not row or len(row) < 11:
+                    if not row:
                         continue
                     c = [_clean(x) for x in row]
-                    locality = _ratio(c[-2])
-                    if locality is None:
+
+                    # Togg'un güncel Bakanlık tablosu 9 sütunlu düzende geliyor:
+                    # Marka, Model, Gövde, Motor, Yakıt, Şanzıman, Donanım,
+                    # Yerli Katkı, Dönem.
+                    if (
+                        len(c) >= 8
+                        and _norm(c[0]) in known_brands
+                        and _norm(c[2]) == "M1"
+                    ):
+                        brand, model, category, trim, locality = (
+                            c[0], c[1], c[2], c[6], _ratio(c[7])
+                        )
+                    elif len(c) >= 11:
+                        # Mevcut diğer marka tablolarının 11+ sütunlu düzeni.
+                        brand, model, category, trim = c[2], c[3], c[4], c[8]
+                        locality = _ratio(c[-2])
+                    else:
                         continue
-                    brand, model, category, trim = c[2], c[3], c[4], c[8]
-                    if not brand or not model or not trim:
+
+                    if locality is None or not brand or not model or not trim:
                         continue
                     if not re.search(r"(?:^|\s)M1(?:\s|$|[-–])", category.upper()):
                         continue
@@ -679,6 +696,10 @@ def refresh_otv_data(force=False):
         vehicles = sorted(unique.values(), key=lambda v: (v["brand"], v["model"], v["price"], v["trim"]))
 
         print("OTV package candidates:", len(candidates))
+        print(
+            "OTV ministry Togg candidates:",
+            [(r["model"], r["trim"], r["locality"]) for r in candidates if r["brand_key"] == "TOGG"],
+        )
         print("OTV unresolved packages:", unresolved)
         print("OTV over-limit packages:", over_limit)
         print("OTV verified packages:", [(v["brand"], v["model"], v["trim"], v["price"], v["locality"]) for v in vehicles])
