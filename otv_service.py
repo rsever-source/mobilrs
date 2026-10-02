@@ -378,27 +378,38 @@ def _togg_version_key(value):
 
 
 def _togg_live_prices(text):
-    """Togg fiyat tablosunu resmi sayfanın sürüm/fiyat sırasına göre eşleştir."""
-    section = _section_after(text, "Versiyonlar", ["Opsiyonlar", "Anahtar teslim fiyatına"], 0)
-    if not section:
-        return {}
+    """Togg resmi fiyat listesinden dört versiyonun teslim fiyatlarını güvenilir biçimde çıkar."""
+    clean_text = _clean(text)
+    low = clean_text.lower()
+
+    # Önce sürümleri metin içindeki gerçek sıralarına göre bul.
     version_positions = []
-    low = section.lower()
     for version in TOGG_VERSIONS:
         p = low.find(version.lower())
         if p >= 0:
             version_positions.append((p, version))
     version_positions.sort()
-    prices = [v for _, v in _prices(section, 1_000_000, 6_000_000)]
+
+    # Fiyatlar "Teslim Fiyatları" başlığının hemen altında yer alıyor.
+    delivery_pos = low.find("teslim fiyatları")
+    if delivery_pos >= 0:
+        delivery_section = clean_text[delivery_pos:delivery_pos + 1200]
+    else:
+        delivery_section = clean_text
+
+    prices = [v for _, v in _prices(delivery_section, 1_000_000, 6_000_000)]
+
     if len(version_positions) != 4 or len(prices) < 4:
-        print("OTV Togg incomplete official price table:", version_positions, prices)
+        print(
+            "OTV Togg incomplete official price table:",
+            "versions=", version_positions,
+            "prices=", prices,
+        )
         return {}
-    # Resmi Togg sayfasında dört teslim fiyatı, dört sürümün aynı sıradaki
-    # karşılığıdır. Opsiyon fiyatlarını bölgeye dahil etmemek için ilk dört fiyat alınır.
+
     result = {version_positions[i][1]: prices[i] for i in range(4)}
     print("OTV Togg live version-price pairs:", result)
     return result
-
 
 def _togg_price(item, cache):
     model = _norm(item["model"])
