@@ -60,6 +60,10 @@ TOGG_URLS = {
     "T10X": "https://togg.com.tr/price-list",
     "T10F": "https://www.togg.com.tr/t10f-price-list",
 }
+TOGG_FALLBACK_TRIMS = {
+    "T10X": ("V1 SR", "V2 LR", "V2 LR AWD"),
+    "T10F": ("V1 SR", "V2 LR", "V2 LR AWD"),
+}
 
 
 def _clean(v):
@@ -177,6 +181,35 @@ def _eligible_packages(rows):
         if old is None or r["locality"] > old["locality"]:
             out[key] = dict(r)
     return list(out.values())
+
+
+def _togg_candidates_from_ministry(rows):
+    """Togg oranı varsa Bakanlık verisini kullan; yoksa oranı boş bırak."""
+    ministry = {}
+    for row in rows:
+        if row.get("brand_key") != "TOGG":
+            continue
+        key = (_norm(row.get("model")), _norm(row.get("trim")))
+        old = ministry.get(key)
+        if old is None or (row.get("locality") or 0) > (old.get("locality") or 0):
+            ministry[key] = dict(row)
+
+    candidates = []
+    for model, trims in TOGG_FALLBACK_TRIMS.items():
+        for trim in trims:
+            found = ministry.get((_norm(model), _norm(trim)))
+            if found:
+                candidates.append(found)
+            else:
+                candidates.append({
+                    "brand": "Togg",
+                    "brand_key": "TOGG",
+                    "model": model,
+                    "model_key": _norm(model),
+                    "trim": trim,
+                    "locality": None,
+                })
+    return candidates
 
 
 def _prices(text, minimum=1_000_000, maximum=15_000_000):
@@ -369,10 +402,6 @@ def _toyota_price(item, cache):
 # Buradaki katalog fiyat kaynağı değil; yalnızca hangi bilinen model/paketlerin
 # web üzerinde tekrar kontrol edileceğini belirler.
 WEB_FALLBACK_CATALOG = {
-    "TOGG": {
-        "T10X": ("V1 SR", "V2 LR", "V2 LR AWD"),
-        "T10F": ("V1 SR", "V2 LR", "V2 LR AWD"),
-    },
     "RENAULT": {
         "BOREAL": ("EVOLUTION", "TECHNO", "ICONIC"),
         "DUSTER": ("EVOLUTION", "TECHNO"),
@@ -881,9 +910,10 @@ def refresh_otv_data(force=False):
     try:
         ministry_url, pdf_bytes = _find_ministry_pdf()
         parsed_rows = _parse_ministry_pdf(pdf_bytes)
-        # PDF'de eksik kalan tüm desteklenen marka/model/paketler için
-        # genel web keşif katmanını çalıştır. Web sonucu yalnız model+paket+oran
-        # aynı kaynakta doğrulanırsa PDF adaylarına eklenir.
+
+        # Diğer markalar mevcut Bakanlık/PDF + web fallback akışını kullanır.
+        # Togg ise arama motorlarına hiç gitmez: Bakanlık oranı varsa onu alır,
+        # yoksa yalnız resmi Togg fiyat sayfasından fiyatını okur.
         web_rows = _web_locality_rows(parsed_rows)
         web_locality_source = {}
         for row in web_rows:
@@ -891,7 +921,8 @@ def refresh_otv_data(force=False):
         if web_rows:
             parsed_rows.extend(web_rows)
 
-        candidates = _eligible_packages(parsed_rows)
+        non_togg_rows = [r for r in parsed_rows if r.get("brand_key") != "TOGG"]
+        candidates = _eligible_packages(non_togg_rows) + _togg_candidates_from_ministry(parsed_rows)
         cache, vehicles, unresolved, over_limit = {}, [], [], []
 
         for item in candidates:
@@ -908,22 +939,24 @@ def refresh_otv_data(force=False):
             if price > LIMIT_2026:
                 over_limit.append(label)
                 continue
-            vehicles.append({
+            vehicle = {
                 "brand": item["brand"],
                 "model": item["model"],
                 "trim": _display_trim(item),
                 "price": int(price),
-                "locality": round(float(item["locality"]), 2),
                 "source_name": _source_name(item["brand"], source_url),
                 "source_url": source_url,
-                "locality_source_name": web_locality_source.get(
-                    (item["brand_key"], item["model_key"], _norm(item["trim"])), {}
-                ).get("locality_source_name", "T.C. Sanayi ve Teknoloji Bakanlığı"),
-                "locality_source_url": web_locality_source.get(
-                    (item["brand_key"], item["model_key"], _norm(item["trim"])), {}
-                ).get("locality_source_url", ministry_url),
                 "checked_at": now.strftime("%H:%M"),
-            })
+            }
+            if item.get("locality") is not None:
+                vehicle["locality"] = round(float(item["locality"]), 2)
+                vehicle["locality_source_name"] = web_locality_source.get(
+                    (item["brand_key"], item["model_key"], _norm(item["trim"])), {}
+                ).get("locality_source_name", "T.C. Sanayi ve Teknoloji Bakanlığı")
+                vehicle["locality_source_url"] = web_locality_source.get(
+                    (item["brand_key"], item["model_key"], _norm(item["trim"])), {}
+                ).get("locality_source_url", ministry_url)
+            vehicles.append(vehicle)
 
         # Aynı marka/model/paket farklı motor satırlarından gelirse kullanıcı yalnız paket
         # istediği için doğrulanmış en düşük normal liste fiyatını tek satırda göster.
@@ -938,11 +971,14 @@ def refresh_otv_data(force=False):
         print("OTV package candidates:", len(candidates))
         print(
             "OTV web/ministry candidates:",
-            [(r["brand"], r["model"], r["trim"], r["locality"]) for r in candidates],
+            [(r["brand"], r["model"], r["trim"], r.get("locality")) for r in candidates],
         )
         print("OTV unresolved packages:", unresolved)
         print("OTV over-limit packages:", over_limit)
-        print("OTV verified packages:", [(v["brand"], v["model"], v["trim"], v["price"], v["locality"]) for v in vehicles])
+        print(
+            "OTV verified packages:",
+            [(v["brand"], v["model"], v["trim"], v["price"], v.get("locality")) for v in vehicles],
+        )
 
         if not vehicles:
             raise RuntimeError("Hiçbir paket fiyatı doğrulanamadı")
