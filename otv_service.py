@@ -4,7 +4,7 @@ import re
 import threading
 import unicodedata
 from datetime import datetime
-from urllib.parse import urljoin
+from urllib.parse import urljoin, parse_qs, unquote
 from zoneinfo import ZoneInfo
 
 from cloud_storage import load_json as gcs_load_json, save_json as gcs_save_json
@@ -17,7 +17,7 @@ LIMIT_2026 = 2_873_900
 MIN_LOCALITY = 40.0
 OTV_REFRESH_LOCK = threading.Lock()
 CACHE_FILE = "otv_cache.json"
-CACHE_VERSION = 6
+CACHE_VERSION = 7
 TZ = ZoneInfo("Europe/Istanbul")
 
 MINISTRY_PAGE = "https://www.sanayi.gov.tr/merkez-birimi/6f188a931f68/yerli-mali"
@@ -60,7 +60,6 @@ TOGG_URLS = {
     "T10X": "https://togg.com.tr/price-list",
     "T10F": "https://www.togg.com.tr/t10f-price-list",
 }
-TOGG_WEB_SEARCH_URL = "https://www.google.com/search"
 
 
 def _clean(v):
@@ -364,114 +363,216 @@ def _toyota_price(item, cache):
     return min(matches), TOYOTA_MODEL_URLS[model_key]
 
 
-# ---------- Togg web fallback ----------
+# ---------- Genel web fallback ----------
 
-TOGG_WEB_TRIMS = {
-    "T10X": ("V1 SR", "V2 LR", "V2 LR AWD"),
-    "T10F": ("V1 SR", "V2 LR", "V2 LR AWD"),
+# PDF'de eksik kalan model/paketler için arama kataloğu.
+# Buradaki katalog fiyat kaynağı değil; yalnızca hangi bilinen model/paketlerin
+# web üzerinde tekrar kontrol edileceğini belirler.
+WEB_FALLBACK_CATALOG = {
+    "TOGG": {
+        "T10X": ("V1 SR", "V2 LR", "V2 LR AWD"),
+        "T10F": ("V1 SR", "V2 LR", "V2 LR AWD"),
+    },
+    "RENAULT": {
+        "BOREAL": ("EVOLUTION", "TECHNO", "ICONIC"),
+        "DUSTER": ("EVOLUTION", "TECHNO"),
+        "CLIO": ("EVOLUTION PLUS", "ESPRIT ALPINE"),
+        "MEGANE": ("TOUCH", "ICON"),
+    },
+    "TOYOTA": {
+        "COROLLA": (
+            "VISION PLUS", "DREAM", "DREAM X PACK",
+            "FLAME", "FLAME X PACK", "PASSION",
+            "PASSION X PACK", "PASSION X SPORT", "GR SPORT",
+        ),
+        "C HR": ("FLAME", "PASSION", "PASSION X SPORT", "GR SPORT"),
+    },
+    "HYUNDAI": {
+        "I20": ("JUMP", "STYLE", "ELITE"),
+        "BAYON": ("JUMP", "STYLE", "ELITE"),
+    },
+    "FIAT": {
+        "EGEA SEDAN": ("STANDART DONANIM",),
+        "EGEA CROSS": ("STANDART DONANIM",),
+    },
 }
 
 
-def _google_search_pages(query, max_results=5):
-    """Google web aramasından aday sayfaları döndürür; sonuçlar veri kaynağı değil keşif katmanıdır."""
-    try:
-        r = requests.get(
-            TOGG_WEB_SEARCH_URL,
-            params={"q": query, "hl": "tr", "gl": "TR", "num": max_results},
-            headers=HEADERS,
-            timeout=25,
-        )
-        r.raise_for_status()
-    except Exception as e:
-        print("OTV Togg Google search failed:", repr(e))
-        return []
-
-    soup = BeautifulSoup(r.text, "html.parser")
-    pages = []
-    seen = set()
-    for a in soup.find_all("a", href=True):
-        href = a.get("href", "")
-        if href.startswith("/url?q="):
-            href = href.split("/url?q=", 1)[1].split("&", 1)[0]
-        if not href.startswith("http") or "google." in href:
-            continue
-        if href in seen:
-            continue
-        title = _clean(a.get_text(" ", strip=True))
-        seen.add(href)
-        pages.append((href, title))
-        if len(pages) >= max_results:
-            break
-    return pages
-
-
-def _google_togg_locality_rows():
-    """PDF'de Togg yoksa Google'da güncel Togg beyanlarını arar.
-
-    Oranlar yalnızca bir sayfada model+paket+oran birlikte bulunursa kabul edilir.
-    Böylece Google'ın kendi metni tek başına güvenilir veri kaynağı yapılmaz;
-    arama yalnızca Bakanlık verisini aktaran sayfayı bulmak için kullanılır.
-    """
-    rows = []
-    queries = (
-        "2026 TOGG T10X T10F yerli katkı oranı Bakanlık 17 Eylül 2026",
-        "2026 TOGG T10X V1 SR V2 LR AWD T10F yerli katkı oranı",
+def _web_search_pages(query, max_results=6):
+    """Google başarısızsa statik DuckDuckGo HTML aramasına düşen keşif katmanı."""
+    providers = (
+        ("google", "https://www.google.com/search", {"q": query, "hl": "tr", "gl": "TR", "num": max_results}),
+        ("duckduckgo", "https://html.duckduckgo.com/html/", {"q": query, "kl": "tr-tr"}),
     )
 
-    for query in queries:
-        for url, title in _google_search_pages(query):
+    for provider, url, params in providers:
+        try:
+            headers = dict(HEADERS)
+            if provider == "duckduckgo":
+                headers["Referer"] = "https://html.duckduckgo.com/"
+            r = requests.get(url, params=params, headers=headers, timeout=25)
+            r.raise_for_status()
+        except Exception as e:
+            print(f"OTV web search failed ({provider}):", repr(e))
+            continue
+
+        soup = BeautifulSoup(r.text, "html.parser")
+        pages = []
+        seen = set()
+
+        if provider == "duckduckgo":
+            links = soup.select("a.result__a")
+        else:
+            links = soup.find_all("a", href=True)
+
+        for a in links:
+            href = a.get("href", "")
+            if provider == "duckduckgo" and href.startswith("//duckduckgo.com/l/"):
+                query_values = parse_qs(href.split("?", 1)[1] if "?" in href else "")
+                href = unquote(query_values.get("uddg", [""])[0])
+            elif provider == "google" and href.startswith("/url?q="):
+                href = unquote(href.split("/url?q=", 1)[1].split("&", 1)[0])
+
+            if not href.startswith("http"):
+                continue
+            low_href = href.lower()
+            if any(host in low_href for host in ("google.", "duckduckgo.", "googleusercontent.")):
+                continue
+            if href in seen:
+                continue
+
+            title = _clean(a.get_text(" ", strip=True))
+            if not title:
+                title = href
+            seen.add(href)
+            pages.append((href, title))
+            if len(pages) >= max_results:
+                break
+
+        if pages:
+            print("OTV web search provider:", provider, "query=", query)
+            return pages
+
+    return []
+
+
+def _web_page_tables(url):
+    """HTML veya PDF web sonucunu tablo satırlarına çevirir."""
+    try:
+        r = _get(url)
+    except Exception:
+        return [], ""
+
+    if r.content[:4] == b"%PDF":
+        rows = []
+        try:
+            with pdfplumber.open(io.BytesIO(r.content)) as pdf:
+                for page in pdf.pages:
+                    for table in page.extract_tables() or []:
+                        for row in table or []:
+                            cells = [_clean(x) for x in row]
+                            cells = [x for x in cells if x]
+                            if len(cells) >= 2:
+                                rows.append(cells)
+        except Exception:
+            return [], ""
+        return rows, ""
+
+    soup = BeautifulSoup(r.text, "html.parser")
+    visible = BeautifulSoup(r.text, "html.parser")
+    for tag in visible(["script", "style", "noscript"]):
+        tag.decompose()
+    text = re.sub(r"\s+", " ", visible.get_text(" ", strip=True))
+
+    rows = []
+    for tr in soup.find_all("tr"):
+        cells = [_clean(c.get_text(" ", strip=True)) for c in tr.find_all(["th", "td"])]
+        cells = [x for x in cells if x]
+        if len(cells) >= 2:
+            rows.append(cells)
+    return rows, text
+
+
+def _web_locality_rows(parsed_rows):
+    """PDF'de eksik kalan desteklenen marka/model/paketleri web üzerinden bulur.
+
+    Arama yalnızca keşif içindir. Kabul edilen oran aynı sayfada 2026 + yerli katkı
+    ifadesiyle ve model/paket ile birlikte bulunmalıdır. Böylece arama motoru
+    sonucundaki rastgele bir yüzde tek başına veri kabul edilmez.
+    """
+    present = {}
+    for row in parsed_rows:
+        present.setdefault((row["brand_key"], row["model_key"]), set()).add(_norm(row["trim"]))
+
+    targets = []
+    for brand_key, models in WEB_FALLBACK_CATALOG.items():
+        for model, trims in models.items():
+            existing = present.get((brand_key, _norm(model)), set())
+            missing = [trim for trim in trims if _norm(trim) not in existing]
+            if missing:
+                targets.append((brand_key, model, tuple(missing)))
+
+    rows = []
+    seen = set()
+
+    for brand_key, model, trims in targets:
+        trim_query = " ".join(f'"{trim}"' for trim in trims[:6])
+        query = f'2026 "{brand_key}" "{model}" "yerli katkı" {trim_query}'.strip()
+
+        for url, title in _web_search_pages(query):
             try:
-                _soup, text, _raw = _page(url)
+                table_rows, text = _web_page_tables(url)
             except Exception:
                 continue
 
-            norm_text = _norm(text)
-            if "TOGG" not in norm_text or "2026" not in norm_text:
+            combined = _norm(" ".join(" ".join(r) for r in table_rows) + " " + text)
+            if "2026" not in combined or "YERLI KATKI" not in combined:
+                continue
+            if brand_key not in combined or _norm(model) not in combined:
                 continue
 
-            found = []
-            for model, trims in TOGG_WEB_TRIMS.items():
-                model_pos = 0
-                while True:
-                    model_pos = norm_text.find(model, model_pos)
-                    if model_pos < 0:
-                        break
-                    chunk = norm_text[model_pos:model_pos + 5000]
-                    for trim in trims:
-                        trim_pos = chunk.find(_norm(trim))
-                        if trim_pos < 0:
-                            continue
-                        near = chunk[trim_pos:trim_pos + 220]
-                        matches = re.findall(r"(?:%\s*)?(\d{2}(?:[.,]\d{1,2})?)\s*%?", near)
-                        ratios = []
-                        for value in matches:
-                            ratio = _ratio(value)
-                            if ratio is not None and 40 <= ratio <= 100:
-                                ratios.append(ratio)
-                        if ratios:
-                            found.append((model, trim, ratios[0]))
-                    model_pos += len(model)
+            for cells in table_rows:
+                row_text = _norm(" ".join(cells))
+                if brand_key not in row_text or _norm(model) not in row_text:
+                    continue
 
-            if not found:
-                continue
+                ratio_values = []
+                for cell in cells:
+                    if "%" in cell or re.search(r"\b\d{2}(?:[.,]\d{1,2})?\b", cell):
+                        ratio = _ratio(cell)
+                        if ratio is not None and 40 <= ratio <= 100:
+                            ratio_values.append(ratio)
+                if not ratio_values:
+                    continue
 
-            # Aynı sayfa üzerinde Togg verisinin tamamı/ilgili satırları bulunuyorsa kabul et.
-            unique = {(m, t): ratio for m, t, ratio in found}
-            for (model, trim), ratio in unique.items():
-                rows.append({
-                    "brand": "Togg",
-                    "brand_key": "TOGG",
-                    "model": model,
-                    "model_key": _norm(model),
-                    "trim": trim,
-                    "locality": ratio,
-                    "locality_source_name": f"Google web araması: {title or url}",
-                    "locality_source_url": url,
-                })
+                for trim in trims:
+                    trim_key = _norm(trim)
+                    if trim_key not in row_text:
+                        continue
+                    key = (brand_key, _norm(model), trim_key)
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    rows.append({
+                        "brand": "Togg" if brand_key == "TOGG" else brand_key.title(),
+                        "brand_key": brand_key,
+                        "model": model,
+                        "model_key": _norm(model),
+                        "trim": trim,
+                        "locality": ratio_values[0],
+                        "locality_source_name": f"Web doğrulama: {title or url}",
+                        "locality_source_url": url,
+                    })
 
-            if len({(r["model"], r["trim"]) for r in rows}) >= 6:
-                return rows
+            if rows and any(r["brand_key"] == brand_key and r["model_key"] == _norm(model) for r in rows):
+                # Aynı model için birden fazla güvenilir sonuç bulmak yerine
+                # ilk doğrulanmış sayfayı kullan; sonraki modelde devam et.
+                break
 
+    print(
+        "OTV generic web fallback:",
+        [(r["brand"], r["model"], r["trim"], r["locality"]) for r in rows],
+    )
     return rows
 
 
@@ -768,21 +869,15 @@ def refresh_otv_data(force=False):
     try:
         ministry_url, pdf_bytes = _find_ministry_pdf()
         parsed_rows = _parse_ministry_pdf(pdf_bytes)
-        togg_rows = [r for r in parsed_rows if r["brand_key"] == "TOGG"]
-
-        # Bakanlık PDF'sinin elimizdeki sürümünde Togg yoksa, Google ile güncel
-        # Bakanlık verisini aktaran sayfayı bulup yalnız Togg satırlarını ekle.
-        togg_web_source = {}
-        if not togg_rows:
-            web_rows = _google_togg_locality_rows()
-            for row in web_rows:
-                togg_web_source[(row["model_key"], _norm(row["trim"]))] = row
-            if web_rows:
-                parsed_rows.extend(web_rows)
-                print(
-                    "OTV Togg web fallback:",
-                    [(r["model"], r["trim"], r["locality"]) for r in web_rows],
-                )
+        # PDF'de eksik kalan tüm desteklenen marka/model/paketler için
+        # genel web keşif katmanını çalıştır. Web sonucu yalnız model+paket+oran
+        # aynı kaynakta doğrulanırsa PDF adaylarına eklenir.
+        web_rows = _web_locality_rows(parsed_rows)
+        web_locality_source = {}
+        for row in web_rows:
+            web_locality_source[(row["brand_key"], row["model_key"], _norm(row["trim"]))] = row
+        if web_rows:
+            parsed_rows.extend(web_rows)
 
         candidates = _eligible_packages(parsed_rows)
         cache, vehicles, unresolved, over_limit = {}, [], [], []
@@ -809,18 +904,12 @@ def refresh_otv_data(force=False):
                 "locality": round(float(item["locality"]), 2),
                 "source_name": _source_name(item["brand"], source_url),
                 "source_url": source_url,
-                "locality_source_name": (
-                    togg_web_source.get((item["model_key"], _norm(item["trim"])), {}).get(
-                        "locality_source_name",
-                        "T.C. Sanayi ve Teknoloji Bakanlığı",
-                    )
-                ),
-                "locality_source_url": (
-                    togg_web_source.get((item["model_key"], _norm(item["trim"])), {}).get(
-                        "locality_source_url",
-                        ministry_url,
-                    )
-                ),
+                "locality_source_name": web_locality_source.get(
+                    (item["brand_key"], item["model_key"], _norm(item["trim"])), {}
+                ).get("locality_source_name", "T.C. Sanayi ve Teknoloji Bakanlığı"),
+                "locality_source_url": web_locality_source.get(
+                    (item["brand_key"], item["model_key"], _norm(item["trim"])), {}
+                ).get("locality_source_url", ministry_url),
                 "checked_at": now.strftime("%H:%M"),
             })
 
@@ -836,8 +925,8 @@ def refresh_otv_data(force=False):
 
         print("OTV package candidates:", len(candidates))
         print(
-            "OTV ministry Togg candidates:",
-            [(r["model"], r["trim"], r["locality"]) for r in candidates if r["brand_key"] == "TOGG"],
+            "OTV web/ministry candidates:",
+            [(r["brand"], r["model"], r["trim"], r["locality"]) for r in candidates],
         )
         print("OTV unresolved packages:", unresolved)
         print("OTV over-limit packages:", over_limit)
