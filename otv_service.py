@@ -437,7 +437,7 @@ def _google_togg_locality_rows():
                     if model_pos < 0:
                         break
                     chunk = norm_text[model_pos:model_pos + 5000]
-                    for trim, fallback_ratio in trims.items():
+                    for trim in trims:
                         trim_pos = chunk.find(_norm(trim))
                         if trim_pos < 0:
                             continue
