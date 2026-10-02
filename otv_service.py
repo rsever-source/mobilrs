@@ -17,7 +17,7 @@ LIMIT_2026 = 2_873_900
 MIN_LOCALITY = 40.0
 OTV_REFRESH_LOCK = threading.Lock()
 CACHE_FILE = "otv_cache.json"
-CACHE_VERSION = 6
+CACHE_VERSION = 7
 TZ = ZoneInfo("Europe/Istanbul")
 
 MINISTRY_PAGE = "https://www.sanayi.gov.tr/merkez-birimi/6f188a931f68/yerli-mali"
@@ -153,9 +153,10 @@ def _parse_ministry_pdf(pdf_bytes):
             for raw_line in page_text.splitlines():
                 line = _clean(raw_line)
                 m = re.search(
-                    r"^\s*TOGG\s+(T10X|T10F)\s+M1\s+.*?\s+"
+                    r"\bTOGG\s+(T10X|T10F)\s+M1\s+.*?\s+"
                     r"(V1\s+SR|V2\s+LR\s+AWD|V2\s+LR)\s+"
-                    r"(\d{1,3}(?:[.,]\d{1,2}))\s+2026\s*$",
+                    r"(\d{1,3}(?:[.,]\d{1,2}))\s+"
+                    r"\d{1,2}\.\d{1,2}\.\d{4}\s*$",
                     line,
                     re.IGNORECASE,
                 )
