@@ -290,12 +290,11 @@ async def kira_hesapla(mevcut_kira:float=Form(...), yenileme_ayi:int=Form(...)):
 async def api_otv(): return JSONResponse(get_otv_data())
 
 @app.post("/api/otv/yenile")
-async def api_otv_yenile(request: Request, background_tasks: BackgroundTasks):
+async def api_otv_yenile(request: Request):
     await enforce_rate_limit(request, "otv-refresh", REFRESH_RATE_LIMIT, REFRESH_RATE_LIMIT_WINDOW)
-    current=load_otv_cache() or get_otv_data()
     async with _REFRESH_LOCK:
-        background_tasks.add_task(refresh_otv_data, False)
-    return JSONResponse(current, status_code=202)
+        data = await asyncio.to_thread(refresh_otv_data, True)
+    return JSONResponse(data)
 
 @app.get("/api/news")
 async def api_news():
