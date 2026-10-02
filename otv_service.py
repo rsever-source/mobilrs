@@ -153,18 +153,18 @@ def _parse_ministry_pdf(pdf_bytes):
             for raw_line in page_text.splitlines():
                 line = _clean(raw_line)
                 m = re.search(
-                    r"\bTOGG\s+(T10X|T10F)\s+M1\s+.*?\b"
-                    r"(T10X|T10F)\s+(V1\s+SR|V2\s+LR|V2\s+LR\s+AWD)\s+"
-                    r"(\d{1,3}(?:[.,]\d{1,2}))\s+\d{1,2}\.\d{1,2}\.\d{4}\s*$",
+                    r"^\s*TOGG\s+(T10X|T10F)\s+M1\s+.*?\s+"
+                    r"(V1\s+SR|V2\s+LR\s+AWD|V2\s+LR)\s+"
+                    r"(\d{1,3}(?:[.,]\d{1,2}))\s+2026\s*$",
                     line,
                     re.IGNORECASE,
                 )
-                if not m or m.group(1).upper() != m.group(2).upper():
+                if not m:
                     continue
                 model = m.group(1).upper()
-                clean_trim = re.sub(r"\s+", " ", m.group(3)).upper()
+                clean_trim = re.sub(r"\s+", " ", m.group(2)).upper()
                 trim = f"{model} {clean_trim}"
-                locality = _ratio(m.group(4))
+                locality = float(m.group(3).replace(",", "."))
                 key = ("TOGG", _norm(model), _norm(trim))
                 if locality is None:
                     continue
