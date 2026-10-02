@@ -17,7 +17,7 @@ LIMIT_2026 = 2_873_900
 MIN_LOCALITY = 40.0
 OTV_REFRESH_LOCK = threading.Lock()
 CACHE_FILE = "otv_cache.json"
-CACHE_VERSION = 5
+CACHE_VERSION = 6
 TZ = ZoneInfo("Europe/Istanbul")
 
 MINISTRY_PAGE = "https://www.sanayi.gov.tr/merkez-birimi/6f188a931f68/yerli-mali"
@@ -60,6 +60,7 @@ TOGG_URLS = {
     "T10X": "https://togg.com.tr/price-list",
     "T10F": "https://www.togg.com.tr/t10f-price-list",
 }
+TOGG_WEB_SEARCH_URL = "https://www.google.com/search"
 
 
 def _clean(v):
@@ -363,6 +364,117 @@ def _toyota_price(item, cache):
     return min(matches), TOYOTA_MODEL_URLS[model_key]
 
 
+# ---------- Togg web fallback ----------
+
+TOGG_WEB_TRIMS = {
+    "T10X": ("V1 SR", "V2 LR", "V2 LR AWD"),
+    "T10F": ("V1 SR", "V2 LR", "V2 LR AWD"),
+}
+
+
+def _google_search_pages(query, max_results=5):
+    """Google web aramasından aday sayfaları döndürür; sonuçlar veri kaynağı değil keşif katmanıdır."""
+    try:
+        r = requests.get(
+            TOGG_WEB_SEARCH_URL,
+            params={"q": query, "hl": "tr", "gl": "TR", "num": max_results},
+            headers=HEADERS,
+            timeout=25,
+        )
+        r.raise_for_status()
+    except Exception as e:
+        print("OTV Togg Google search failed:", repr(e))
+        return []
+
+    soup = BeautifulSoup(r.text, "html.parser")
+    pages = []
+    seen = set()
+    for a in soup.find_all("a", href=True):
+        href = a.get("href", "")
+        if href.startswith("/url?q="):
+            href = href.split("/url?q=", 1)[1].split("&", 1)[0]
+        if not href.startswith("http") or "google." in href:
+            continue
+        if href in seen:
+            continue
+        title = _clean(a.get_text(" ", strip=True))
+        seen.add(href)
+        pages.append((href, title))
+        if len(pages) >= max_results:
+            break
+    return pages
+
+
+def _google_togg_locality_rows():
+    """PDF'de Togg yoksa Google'da güncel Togg beyanlarını arar.
+
+    Oranlar yalnızca bir sayfada model+paket+oran birlikte bulunursa kabul edilir.
+    Böylece Google'ın kendi metni tek başına güvenilir veri kaynağı yapılmaz;
+    arama yalnızca Bakanlık verisini aktaran sayfayı bulmak için kullanılır.
+    """
+    rows = []
+    queries = (
+        "2026 TOGG T10X T10F yerli katkı oranı Bakanlık 17 Eylül 2026",
+        "2026 TOGG T10X V1 SR V2 LR AWD T10F yerli katkı oranı",
+    )
+
+    for query in queries:
+        for url, title in _google_search_pages(query):
+            try:
+                _soup, text, _raw = _page(url)
+            except Exception:
+                continue
+
+            norm_text = _norm(text)
+            if "TOGG" not in norm_text or "2026" not in norm_text:
+                continue
+
+            found = []
+            for model, trims in TOGG_WEB_TRIMS.items():
+                model_pos = 0
+                while True:
+                    model_pos = norm_text.find(model, model_pos)
+                    if model_pos < 0:
+                        break
+                    chunk = norm_text[model_pos:model_pos + 5000]
+                    for trim, fallback_ratio in trims.items():
+                        trim_pos = chunk.find(_norm(trim))
+                        if trim_pos < 0:
+                            continue
+                        near = chunk[trim_pos:trim_pos + 220]
+                        matches = re.findall(r"(?:%\s*)?(\d{2}(?:[.,]\d{1,2})?)\s*%?", near)
+                        ratios = []
+                        for value in matches:
+                            ratio = _ratio(value)
+                            if ratio is not None and 40 <= ratio <= 100:
+                                ratios.append(ratio)
+                        if ratios:
+                            found.append((model, trim, ratios[0]))
+                    model_pos += len(model)
+
+            if not found:
+                continue
+
+            # Aynı sayfa üzerinde Togg verisinin tamamı/ilgili satırları bulunuyorsa kabul et.
+            unique = {(m, t): ratio for m, t, ratio in found}
+            for (model, trim), ratio in unique.items():
+                rows.append({
+                    "brand": "Togg",
+                    "brand_key": "TOGG",
+                    "model": model,
+                    "model_key": _norm(model),
+                    "trim": trim,
+                    "locality": ratio,
+                    "locality_source_name": f"Google web araması: {title or url}",
+                    "locality_source_url": url,
+                })
+
+            if len({(r["model"], r["trim"]) for r in rows}) >= 6:
+                return rows
+
+    return rows
+
+
 # ---------- Togg ----------
 
 def _togg_alias(item):
@@ -655,7 +767,24 @@ def refresh_otv_data(force=False):
         return old or {}
     try:
         ministry_url, pdf_bytes = _find_ministry_pdf()
-        candidates = _eligible_packages(_parse_ministry_pdf(pdf_bytes))
+        parsed_rows = _parse_ministry_pdf(pdf_bytes)
+        togg_rows = [r for r in parsed_rows if r["brand_key"] == "TOGG"]
+
+        # Bakanlık PDF'sinin elimizdeki sürümünde Togg yoksa, Google ile güncel
+        # Bakanlık verisini aktaran sayfayı bulup yalnız Togg satırlarını ekle.
+        togg_web_source = {}
+        if not togg_rows:
+            web_rows = _google_togg_locality_rows()
+            for row in web_rows:
+                togg_web_source[(row["model_key"], _norm(row["trim"]))] = row
+            if web_rows:
+                parsed_rows.extend(web_rows)
+                print(
+                    "OTV Togg web fallback:",
+                    [(r["model"], r["trim"], r["locality"]) for r in web_rows],
+                )
+
+        candidates = _eligible_packages(parsed_rows)
         cache, vehicles, unresolved, over_limit = {}, [], [], []
 
         for item in candidates:
@@ -680,8 +809,18 @@ def refresh_otv_data(force=False):
                 "locality": round(float(item["locality"]), 2),
                 "source_name": _source_name(item["brand"], source_url),
                 "source_url": source_url,
-                "locality_source_name": "T.C. Sanayi ve Teknoloji Bakanlığı",
-                "locality_source_url": ministry_url,
+                "locality_source_name": (
+                    togg_web_source.get((item["model_key"], _norm(item["trim"])), {}).get(
+                        "locality_source_name",
+                        "T.C. Sanayi ve Teknoloji Bakanlığı",
+                    )
+                ),
+                "locality_source_url": (
+                    togg_web_source.get((item["model_key"], _norm(item["trim"])), {}).get(
+                        "locality_source_url",
+                        ministry_url,
+                    )
+                ),
                 "checked_at": now.strftime("%H:%M"),
             })
 
