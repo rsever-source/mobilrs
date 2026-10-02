@@ -911,15 +911,9 @@ def refresh_otv_data(force=False):
         ministry_url, pdf_bytes = _find_ministry_pdf()
         parsed_rows = _parse_ministry_pdf(pdf_bytes)
 
-        # Diğer markalar mevcut Bakanlık/PDF + web fallback akışını kullanır.
-        # Togg ise arama motorlarına hiç gitmez: Bakanlık oranı varsa onu alır,
-        # yoksa yalnız resmi Togg fiyat sayfasından fiyatını okur.
-        web_rows = _web_locality_rows(parsed_rows)
+        # Tüm markalarda yerlilik oranı yalnız Bakanlığın resmi PDF'sinden gelir.
+        # Arama motoru / Gemini / üçüncü taraf web keşfi kullanılmaz.
         web_locality_source = {}
-        for row in web_rows:
-            web_locality_source[(row["brand_key"], row["model_key"], _norm(row["trim"]))] = row
-        if web_rows:
-            parsed_rows.extend(web_rows)
 
         non_togg_rows = [r for r in parsed_rows if r.get("brand_key") != "TOGG"]
         candidates = _eligible_packages(non_togg_rows) + _togg_candidates_from_ministry(parsed_rows)
@@ -950,12 +944,8 @@ def refresh_otv_data(force=False):
             }
             if item.get("locality") is not None:
                 vehicle["locality"] = round(float(item["locality"]), 2)
-                vehicle["locality_source_name"] = web_locality_source.get(
-                    (item["brand_key"], item["model_key"], _norm(item["trim"])), {}
-                ).get("locality_source_name", "T.C. Sanayi ve Teknoloji Bakanlığı")
-                vehicle["locality_source_url"] = web_locality_source.get(
-                    (item["brand_key"], item["model_key"], _norm(item["trim"])), {}
-                ).get("locality_source_url", ministry_url)
+                vehicle["locality_source_name"] = "T.C. Sanayi ve Teknoloji Bakanlığı"
+                vehicle["locality_source_url"] = ministry_url
             vehicles.append(vehicle)
 
         # Aynı marka/model/paket farklı motor satırlarından gelirse kullanıcı yalnız paket
