@@ -377,25 +377,25 @@ def _togg_version_key(value):
     return n
 
 
-def _togg_live_prices(soup):
-    """Togg sayfasında sürüm adı ile aynı DOM öğesindeki fiyatı eşleştir."""
-    rows = {}
-    for tag in soup.find_all(True):
-        raw_text = _clean(tag.get_text(" ", strip=True))
-        if not raw_text or len(raw_text) > 700:
-            continue
-        norm_text = _norm(raw_text)
-        matched = [v for v in TOGG_VERSIONS if re.search(r"(?<![A-Z0-9])" + re.escape(v) + r"(?![A-Z0-9])", norm_text)]
-        if len(matched) != 1:
-            continue
-        prices = _prices(raw_text, 1_000_000, 6_000_000)
-        if len(prices) != 1:
-            continue
-        key = matched[0]
-        old = rows.get(key)
-        if old is None or len(raw_text) < old[0]:
-            rows[key] = (len(raw_text), prices[0][1], raw_text)
-    result = {key: value[1] for key, value in rows.items()}
+def _togg_live_prices(text):
+    """Togg fiyat tablosunu resmi sayfanın sürüm/fiyat sırasına göre eşleştir."""
+    section = _section_after(text, "Versiyonlar", ["Opsiyonlar", "Anahtar teslim fiyatına"], 0)
+    if not section:
+        return {}
+    version_positions = []
+    low = section.lower()
+    for version in TOGG_VERSIONS:
+        p = low.find(version.lower())
+        if p >= 0:
+            version_positions.append((p, version))
+    version_positions.sort()
+    prices = [v for _, v in _prices(section, 1_000_000, 6_000_000)]
+    if len(version_positions) != 4 or len(prices) < 4:
+        print("OTV Togg incomplete official price table:", version_positions, prices)
+        return {}
+    # Resmi Togg sayfasında dört teslim fiyatı, dört sürümün aynı sıradaki
+    # karşılığıdır. Opsiyon fiyatlarını bölgeye dahil etmemek için ilk dört fiyat alınır.
+    result = {version_positions[i][1]: prices[i] for i in range(4)}
     print("OTV Togg live version-price pairs:", result)
     return result
 
@@ -409,7 +409,7 @@ def _togg_price(item, cache):
     if url not in cache:
         cache[url] = _page(url)
     soup, text, raw = cache[url]
-    live = _togg_live_prices(soup)
+    live = _togg_live_prices(text)
     if set(live) != set(TOGG_VERSIONS):
         missing = [v for v in TOGG_VERSIONS if v not in live]
         print("OTV Togg incomplete official price table:", model, "missing=", missing, "url=", url)
