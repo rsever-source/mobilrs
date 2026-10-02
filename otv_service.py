@@ -162,7 +162,8 @@ def _parse_ministry_pdf(pdf_bytes):
                 if not m or m.group(1).upper() != m.group(2).upper():
                     continue
                 model = m.group(1).upper()
-                trim = f"{model} {re.sub(r'\s+', ' ', m.group(3)).upper()}"
+                clean_trim = re.sub(r"\s+", " ", m.group(3)).upper()
+                trim = f"{model} {clean_trim}"
                 locality = _ratio(m.group(4))
                 key = ("TOGG", _norm(model), _norm(trim))
                 if locality is None:
