@@ -156,11 +156,11 @@ def validate_file_signature(data, filename, content_type=""):
     elif name.endswith(".xlsx"):
         if content_type and content_type not in {"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/zip", "application/octet-stream"}:
             raise HTTPException(400,"XLSX MIME türü geçersiz.")
-        ok=data.startswith(b"PK\\x03\\x04")
+        ok=data.startswith(b"PK\x03\x04")
     elif name.endswith(".xls"):
         if content_type and content_type not in {"application/vnd.ms-excel", "application/octet-stream"}:
             raise HTTPException(400,"XLS MIME türü geçersiz.")
-        ok=data.startswith(b"\\xD0\\xCF\\x11\\xE0")
+        ok=data.startswith(b"\xD0\xCF\x11\xE0")
     else:
         ok=True
     if not ok:
