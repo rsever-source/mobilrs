@@ -18,6 +18,7 @@ SOURCES_FILE = "news_sources.json"
 MAX_ITEMS = 10
 MAX_PENDING = 30
 LOOKBACK_HOURS = 168
+SEEN_URL_RETENTION_HOURS = 168
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
 UA = "EngelliMe-NewsBot/1.0 (+https://engelli.me)"
 TIMEOUT = 20
@@ -237,6 +238,18 @@ def update_news():
     candidates = []
     candidate_ids = set()
     cutoff = now - timedelta(hours=LOOKBACK_HOURS)
+    seen_cutoff = now - timedelta(hours=SEEN_URL_RETENTION_HOURS)
+
+    # Aynı URL'yi 7 gün boyunca Gemini'ye tekrar gönderme.
+    # Kayıtlar her çalışmada 7 günden eski olanlar temizlenerek dosyanın şişmesi önlenir.
+    raw_seen_urls = old.get("seen_urls", {})
+    if not isinstance(raw_seen_urls, dict):
+        raw_seen_urls = {}
+    seen_urls = {}
+    for url, seen_at in raw_seen_urls.items():
+        parsed = _date(seen_at)
+        if parsed and parsed >= seen_cutoff and parsed <= now:
+            seen_urls[url] = parsed.isoformat()
 
     for item in pending:
         if item.get("id") and item["id"] not in known:
@@ -252,7 +265,7 @@ def update_news():
             source_counts[source["name"]] = len(source_items)
             for item in source_items:
                 item["id"] = _id(item)
-                if item["id"] in known or item["id"] in candidate_ids:
+                if item["id"] in known or item["id"] in candidate_ids or item.get("url") in seen_urls:
                     continue
                 published = _date(item.get("published_at"))
                 if not published or published > now or published < cutoff:
@@ -337,6 +350,8 @@ Kaynak metni:
                 else "publish" if result.get("publish")
                 else "reject"
             )
+            # Gemini değerlendirmesi tamamlandı; aynı URL 7 gün boyunca tekrar işlenmesin.
+            seen_urls[item["url"]] = now.isoformat()
             if result.get("duplicate"):
                 print("Mükerrer haber atlandı:", item.get("title"), "|", result.get("duplicate_reason", ""))
                 ai_log["candidates"].append(ai_entry)
@@ -371,6 +386,7 @@ Kaynak metni:
         "updated_at": now.isoformat(),
         "items": merged[:MAX_ITEMS],
         "pending": list(failed_by_id.values())[:MAX_PENDING],
+        "seen_urls": seen_urls,
     }
     previous_ai_logs = _load_json(AI_LOG_FILE, [])
     if not isinstance(previous_ai_logs, list):
