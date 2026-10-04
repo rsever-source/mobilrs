@@ -338,6 +338,14 @@ Kaynak metni:
             ) or "Henüz yayınlanmış haber yok."
             prompt = prompt.replace("{existing_news}", existing_news_text)
 
+            # Gemini'ye gönderilecek URL'yi çağrıdan hemen önce kalıcı olarak kaydet.
+            # Gemini hata verse bile aynı URL sonraki çalışmada tekrar gönderilmesin.
+            seen_urls[item["url"]] = now.isoformat()
+            _save_json(NEWS_FILE, {
+                **old,
+                "seen_urls": seen_urls,
+            })
+
             result = _gemini(prompt)
             ai_entry["status"] = "gemini_decision"
             ai_entry["publish"] = bool(result.get("publish"))
@@ -350,8 +358,6 @@ Kaynak metni:
                 else "publish" if result.get("publish")
                 else "reject"
             )
-            # Gemini değerlendirmesi tamamlandı; aynı URL 7 gün boyunca tekrar işlenmesin.
-            seen_urls[item["url"]] = now.isoformat()
             if result.get("duplicate"):
                 print("Mükerrer haber atlandı:", item.get("title"), "|", result.get("duplicate_reason", ""))
                 ai_log["candidates"].append(ai_entry)
