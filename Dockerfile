@@ -8,8 +8,6 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
-COPY IMG_7513.jpeg ./IMG_7513.jpeg
-COPY cloud-run-migration/excel_vlookup_api.py ./excel_vlookup_api.py
 RUN useradd --create-home --uid 10001 appuser && chown -R appuser:appuser /app
 USER appuser
 
