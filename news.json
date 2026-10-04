@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T08:28:59.439828+00:00",
+  "updated_at": "2026-10-04T15:23:47.042097+00:00",
   "items": [
     {
       "id": "2b29cc734432099d7572",
@@ -92,5 +92,17 @@
       "created_at": "2026-09-29T21:38:19.883927+00:00"
     }
   ],
-  "pending": []
+  "pending": [],
+  "seen_urls": {
+    "https://www.trthaber.com/haber/guncel/californiada-kolluk-kuvvetlerinin-elektrosok-eldiveni-kullanmasi-yasaklandi-958563.html": "2026-10-04T15:23:47.042097+00:00",
+    "https://www.trthaber.com/haber/guncel/japonya-suriyeye-yonelik-yaptirimlari-kismen-kaldirdi-958550.html": "2026-10-04T15:23:47.042097+00:00",
+    "https://www.trthaber.com/haber/guncel/tcmb-firmalara-yonelik-doviz-donusum-desteginde-yeni-donemi-devreye-aliyor-958364.html": "2026-10-04T15:23:47.042097+00:00",
+    "https://www.trthaber.com/haber/saglik/doktorlara-ameliyat-oncesi-sanal-prova-imkani-sunan-yerli-teknoloji-958894.html": "2026-10-04T15:23:47.042097+00:00",
+    "https://www.trthaber.com/haber/saglik/50-yasindaki-kilomuz-70-yasindaki-hafizamizi-etkileyebilir-mi-958886.html": "2026-10-04T15:23:47.042097+00:00",
+    "https://www.trthaber.com/haber/saglik/kahve-tuketiminde-saat-ve-miktar-onemli-958764.html": "2026-10-04T15:23:47.042097+00:00",
+    "https://www.trthaber.com/haber/saglik/saglik-ekiplerine-zorlu-kosullarda-mudahale-egitimi-958617.html": "2026-10-04T15:23:47.042097+00:00",
+    "https://www.trthaber.com/haber/saglik/idris-demir-sigarayi-birakali-3-ay-oldu-saglik-sorunlarimin-cogu-gitti-958412.html": "2026-10-04T15:23:47.042097+00:00",
+    "https://www.trthaber.com/haber/saglik/8-ayda-179-bini-askin-kisi-sigarayi-birakmak-icin-basvurdu-958394.html": "2026-10-04T15:23:47.042097+00:00",
+    "https://www.trthaber.com/haber/saglik/elektronik-sigara-akcigerleri-vuruyor-organ-ve-sistemleri-olumsuz-etkiliyor-958383.html": "2026-10-04T15:23:47.042097+00:00"
+  }
 }
