@@ -1,0 +1,16 @@
+# Engelli.me Claude inceleme paketi
+
+Kaynak: rsever-source/mobilrs
+Branch snapshot: cloud-run-migration
+Commit: 9539cecff398e98c340712f5185ac74fe4d80cbf
+
+Bu dosya Claude'a kod teşhisi için verilmek üzere oluşturuldu.
+
+İstenen inceleme:
+- Erişilebilirlik bölümünün neden kaybolduğunu belirle.
+- Dockerfile'ın yanlış/eski dosya kopyalayıp kopyalamadığını kontrol et.
+- Cloud Build -> Docker -> Cloud Run zincirinde eski kodun nasıl image'a girebildiğini belirle.
+- Logo değişikliklerinin siteyi neden etkilediğini, gerçek kök nedeni ve güvenli düzeltmeyi belirt.
+- Kod değiştirme, commit veya deploy yapma; sadece teşhis ve öneri ver.
+
+Bu dosyanın yanına kaynak excel_vlookup_api.py de aynı snapshot'tan eklenecek.
