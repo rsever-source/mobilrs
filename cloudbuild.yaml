@@ -1,4 +1,6 @@
-# Cloud Build manuel yeniden tetikleme — ayarlarda değişiklik yok.
+# Cloud Build: build + push + TRAFİKSİZ deploy.
+# Yeni revision canlı trafik ALMAZ. "test" etiketli ayrı bir adresten denenir.
+# Canlıya almak elle yapılır (komut, cloudbuild.yaml'ın altında / yanıtta).
 steps:
   - name: gcr.io/cloud-builders/docker
     id: Build
@@ -28,7 +30,32 @@ steps:
       - --platform=managed
       - --image=europe-west1-docker.pkg.dev/project-f671a84c-0cde-40b8-921/cloud-run-source-deploy/mobilrs-test:$COMMIT_SHA
       - --region=europe-west1
+      - --no-traffic
+      - --tag=test
       - --quiet
+
+  # Emniyet kemeri: yeni revision herhangi bir trafik alıyorsa build'i KIRMIZI yapar.
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    id: VerifyNoTraffic
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        gcloud run services describe mobilrs-test --region=europe-west1 --format=json > /tmp/svc.json
+        python3 - <<'PY'
+        import json, sys
+        d = json.load(open("/tmp/svc.json"))
+        new = d["status"]["latestCreatedRevisionName"]
+        traffic = d["status"].get("traffic", [])
+        print("Yeni revision:", new)
+        for t in traffic:
+            print("  trafik:", t.get("revisionName"), t.get("percent", 0), "%", "(LATEST takibi)" if t.get("latestRevision") else "", t.get("tag", ""), t.get("url", ""))
+        bad = [t for t in traffic if t.get("percent", 0) > 0 and (t.get("latestRevision") or t.get("revisionName") == new)]
+        if bad:
+            print("HATA: Yeni revision canlı trafik alıyor!")
+            sys.exit(1)
+        print("TAMAM: Yeni revision trafik almıyor. Canlı site değişmedi.")
+        PY
 
 options:
   logging: CLOUD_LOGGING_ONLY

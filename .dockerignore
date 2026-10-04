@@ -11,3 +11,7 @@ env
 outputs
 otv_cache.json
 *.log
+cloud-run-migration/
+CLAUDE_INCELEME_PAKETI.txt
+apply_logo.py
+*.diff
