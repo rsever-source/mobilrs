@@ -472,7 +472,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <section id="home" class="page on"><div class="home">
 <section class="news-section" aria-labelledby="news-heading">
   <div class="section-head">
-    <div><div class="news-kicker"><span class="news-kicker-dot" aria-hidden="true"></span><h2 id="news-heading">Güncel engelli haberleri</h2></div><p>Haklar, ÖTV, sosyal destek ve günlük yaşamdan seçilmiş gelişmeler</p></div>
+    <div><div class="news-kicker"><span class="news-kicker-dot" aria-hidden="true"></span><h2 id="news-heading">Güncel engelli haberleri</h2></div><p>Haklar, ÖTV, sosyal destek ve gündemdeki önemli gelişmeler</p></div>
     <button type="button" class="secondary" onclick="openPage('news')">Tüm haberleri görüntüle</button>
   </div>
   <div id="homeNews" class="news-grid"><div class="news-empty">Haberler yükleniyor…</div></div>
