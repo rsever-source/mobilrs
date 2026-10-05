@@ -302,6 +302,21 @@ Genel ekonomi, siyaset, savaş, trafik veya gündem haberlerini yalnızca engell
 üzerinde açık ve somut bir etkisi varsa publish=true ver.
 Aksi durumda publish=false ver.
 
+source_context = ""
+if item.get("source") == "Sosyal Güvenlik Kurumu – Duyurular":
+    source_context = """SGK DUYURULARI İÇİN EK KURAL:
+Bu kaynak SGK'nın resmi Duyurular sayfasıdır. Kaynağın SGK olması tek başına yayınlama nedeni değildir.
+Yalnızca engelli bireyler açısından doğrudan veya anlamlı ve somut etkisi olan duyuruları yayınla.
+Özellikle malullük/engelli emekliliği, engelli istihdamı ve 2828 kapsamındaki yerleştirme/atama,
+GSS ve sağlık hizmetleri, SUT değişiklikleri, ilaç geri ödeme düzenlemeleri, tıbbi malzeme,
+protez/ortez veya görme/işitme gibi yardımcı cihazlara ilişkin ve engelli bireyleri doğrudan
+etkileyen diğer sosyal güvenlik uygulamaları değerlendirilebilir.
+Genel personel alımı, kurum içi görevlendirme, gayrimenkul satışları, teknik sistem duyuruları,
+generic prim/işveren işlemleri veya engelli bireylere somut etkisi gösterilemeyen genel SGK
+duyurularını publish=false ver.
+
+"""
+
 ÖNEMLİ: MÜKERRER HABER KONTROLÜ YAP.
 Aşağıdaki "Mevcut sitedeki haberler" listesini yeni haberle karşılaştır.
 duplicate kararı yalnızca başlık veya genel konu benzerliğine göre verilmemeli.
@@ -326,6 +341,7 @@ Mükerrer değilse:
 Yalnızca kaynakta doğrulanabilen bilgileri içersin.
 Başlığı kaynağın anlamını koruyarak kısa ve doğal Türkçe yaz.
 Kaynak: {item["source"]}
+{source_context}
 Başlık: {item["title"]}
 Kaynak özeti: {item.get("description", "")}
 Kaynak metni:
