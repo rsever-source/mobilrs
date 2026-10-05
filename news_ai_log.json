@@ -1,141 +1,5 @@
 [
   {
-    "run_at": "2026-10-03T21:20:02.082767+00:00",
-    "model": "gemini-3.5-flash-lite",
-    "candidates": [
-      {
-        "title": "California'da kolluk kuvvetlerinin elektroşok eldiveni kullanması yasaklandı",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/californiada-kolluk-kuvvetlerinin-elektrosok-eldiveni-kullanmasi-yasaklandi-958563.html",
-        "published_at": "2026-09-29T17:50:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber, ABD'nin California eyaletindeki kolluk kuvvetlerinin elektroşok eldiveni kullanmasının yasaklanmasıyla ilgilidir ve engelli hakları, sosyal yardımlar veya doğrudan engellilikle ilgili anlamlı bir bağlam içermemektedir.",
-        "generated_title": "California'da Kolluk Kuvvetlerinin Elektroşok Eldiveni Kullanması Yasaklandı",
-        "summary": "ABD'nin California eyaletinde kolluk kuvvetlerinin gözaltı sırasında elektroşok uygulayan eldivenleri kullanması yasaklandı. California Valisi Gavin Newsom, bu cihazların kullanımını yasaklayan yasayı onayladı. Yasak, yerel, eyalet ve federal kolluk kuvvetlerini kapsamaktadır. Uygulamanın gelecek yıldan 2030'a kadar geçerli olacağı belirtildi. Bu karar, Göçmenlik ve Gümrük Muhafaza İdaresinin direnç gösteren kişilere yönelik eldiven tedarik etme kararının ardından geldi. Newsom, eyalette şeffaflık ve denetimin güçlendirildiğini vurguladı.",
-        "decision": "reject"
-      },
-      {
-        "title": "Japonya, Suriye'ye yönelik yaptırımları kısmen kaldırdı",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/japonya-suriyeye-yonelik-yaptirimlari-kismen-kaldirdi-958550.html",
-        "published_at": "2026-09-29T14:51:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber dış politika ve uluslararası ilişkiler alanında olup engelli bireylerin hakları, bakımı veya sosyal yardımları ile doğrudan ilgili değildir.",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "TCMB firmalara yönelik döviz dönüşüm desteğinde yeni dönemi devreye alıyor",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/tcmb-firmalara-yonelik-doviz-donusum-desteginde-yeni-donemi-devreye-aliyor-958364.html",
-        "published_at": "2026-09-28T06:22:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "Doktorlara ameliyat öncesi sanal prova imkanı sunan yerli teknoloji",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/doktorlara-ameliyat-oncesi-sanal-prova-imkani-sunan-yerli-teknoloji-958894.html",
-        "published_at": "2026-10-02T08:19:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Doktorlara Ameliyat Öncesi Sanal Prova İmkanı Sunan Yerli Teknoloji",
-        "summary": "TÜBİTAK destekli MetaTıp Projesi ile hastaların MR verileri üç boyutlu modellere dönüştürülüyor. Geliştirilen yerli teknoloji sayesinde doktorlar, ameliyat öncesinde hastanın anatomisini sanal ortamda inceleyebiliyor. Sistem, doktorlara sanal simülasyon yapma ve ameliyata hazırlanma imkanı tanıyor. Farklı konumlardaki uzmanlar aynı sanal ameliyat ortamında bir araya gelebiliyor. Proje, Sağlık Bakanlığı onayıyla bazı üniversite hastanelerinde tıp fakültesi öğrencilerinin kullanımına sunuldu. Sistem TEKNOFEST'te ziyaretçilere tanıtılırken, kısa sürede ülke genelinde yaygınlaştırılması hedefleniyor.",
-        "decision": "reject"
-      },
-      {
-        "title": "50 yaşındaki kilomuz 70 yaşındaki hafızamızı etkileyebilir mi?",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/50-yasindaki-kilomuz-70-yasindaki-hafizamizi-etkileyebilir-mi-958886.html",
-        "published_at": "2026-10-02T07:43:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Orta Yaşta Obezite ve Demans Riski",
-        "summary": "Yapılan bilimsel çalışmalar orta yaşta obezitesi olan bireylerin ilerleyen yaşlarda demans riskinin daha yüksek olduğunu ortaya koymaktadır. Yaklaşık 600 bin kişinin verilerine dayanan araştırmalar obezitenin beynin yaşlanma sürecini hızlandırabileceğini göstermektedir. Uzmanlar kırklı ve ellili yaşlardaki kilonun hafıza ve karar verme işlevleriyle bağlantılı beyin bölgelerini etkileyebileceğini belirtmektedir. Obezitenin kontrol altına alınmasının beyin sağlığını korumak açısından önem taşıdığı ifade edilmektedir. Kilo vermenin beyin üzerindeki tam etkileri henüz kesinleşmese de risk faktörleriyle mücadele etmek önemlidir. Elde edilen bulgular bugünkü kilo kontrolünün gelecekteki zihinsel sağlık üzerinde belirleyici olabileceğini göstermektedir.",
-        "decision": "reject"
-      },
-      {
-        "title": "Kahve tüketiminde saat ve miktar önemli",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/kahve-tuketiminde-saat-ve-miktar-onemli-958764.html",
-        "published_at": "2026-10-01T08:45:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Kahve Tüketiminde Saat ve Miktar Önemli",
-        "summary": "Uzmanlar kahve tüketiminde miktar kadar saat ve hazırlanma şeklinin de önemli olduğuna dikkat çekti. Kafein alımının 15.00 ile 16.00 saatlerinde sonlandırılması önerildi. Şekerli ve kremalı kahvelerin sınırlandırılması gerektiği belirtildi. Kalp hastalığı, ritim bozukluğu, hipertansiyon ve demir eksikliği olan kişilerin kafein tüketimine özen göstermesi istendi. Günlük kafein sınırının aşılmaması gerektiği vurgulandı.",
-        "decision": "reject"
-      },
-      {
-        "title": "Sağlık ekiplerine zorlu koşullarda müdahale eğitimi",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/saglik-ekiplerine-zorlu-kosullarda-mudahale-egitimi-958617.html",
-        "published_at": "2026-09-30T08:16:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Sağlık Ekiplerine Zorlu Koşullarda Müdahale Eğitimi",
-        "summary": "Kars'ta sağlık çalışanlarına yönelik zorlu arazi koşullarında müdahale eğitimleri düzenlendi. Üç gün süren UMKE eğitimlerinde afet ve acil durumlarda yaralılara müdahale uygulamaları yapıldı. Ambulans personeline ise farklı yol ve hava koşullarında sürüş güvenliği eğitimi verildi. Eğitimlerle ekiplerin acil durumlarda hızlı ve koordineli hareket etmesi hedeflendi. İl Sağlık Müdürü Arif Eker, her şarta hazır olmak için yıl içinde benzer kurslar düzenlediklerini belirtti.",
-        "decision": "reject"
-      },
-      {
-        "title": "İdris Demir: Sigarayı bırakalı 3 ay oldu, sağlık sorunlarımın çoğu gitti",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/idris-demir-sigarayi-birakali-3-ay-oldu-saglik-sorunlarimin-cogu-gitti-958412.html",
-        "published_at": "2026-09-28T10:19:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/8-ayda-179-bini-askin-kisi-sigarayi-birakmak-icin-basvurdu-958394.html",
-        "published_at": "2026-09-28T08:37:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "Elektronik sigara akciğerleri vuruyor: Organ ve sistemleri olumsuz etkiliyor.",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/elektronik-sigara-akcigerleri-vuruyor-organ-ve-sistemleri-olumsuz-etkiliyor-958383.html",
-        "published_at": "2026-09-28T07:42:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Elektronik sigara akciğerleri ve solunum sistemini olumsuz etkiliyor",
-        "summary": "Uzmanlar, son yıllarda yaygınlaşan elektronik sigara ve ısıtılmış tütün ürünlerinin akciğer sağlığını tehdit ettiğini belirtiyor. Bu ürünlerin kısa ve uzun vadede solunum yetmezliğine yol açabilecek kalıcı hasarlara neden olabildiği vurgulanıyor. Gençler arasında popüler hale gelen ürünlerin yüksek nikotin içerdiği ve bağımlılık riskini artırdığı ifade ediliyor. Ailelerin, çocuklarının odalarındaki meyve aroması kokusu gibi belirtilere karşı dikkatli olması isteniyor. Uzmanlar, söz konusu ürünlerin zararları konusunda hem gençlerin hem de ebeveynlerin bilinçlendirilmesi gerektiğini kaydediyor.",
-        "decision": "reject"
-      }
-    ]
-  },
-  {
     "run_at": "2026-10-04T00:40:40.567433+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": [
@@ -555,6 +419,11 @@
   },
   {
     "run_at": "2026-10-05T05:45:59.192913+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": []
+  },
+  {
+    "run_at": "2026-10-05T14:46:18.569583+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
   }
