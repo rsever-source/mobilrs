@@ -352,7 +352,9 @@ def _icon_route(name):
     return handler
 
 for _n in ("logo.png", "favicon.png", "apple-touch-icon.png"):
-    app.add_api_route("/" + _n, _icon_route(_n), methods=["GET"], include_in_schema=False)
+    app.add_api_route("/" + _n, _icon_route(_n), methods=["GET", "HEAD"], include_in_schema=False)
+for _alias, _n in (("favicon.ico", "favicon.png"), ("apple-touch-icon-precomposed.png", "apple-touch-icon.png")):
+    app.add_api_route("/" + _alias, _icon_route(_n), methods=["GET", "HEAD"], include_in_schema=False)
 
 
 @app.get("/robots.txt", response_class=HTMLResponse)
