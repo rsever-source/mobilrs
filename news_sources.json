@@ -1,7 +1,38 @@
 [
-  {"name":"Anadolu Ajansı – Engelli Yaşam","kind":"rss","url":"https://www.aa.com.tr/tr/ayrimcilikhatti/rss/news?cat=engelli-yasam"},
-  {"name":"Anadolu Ajansı – Engelsiz Yaşam (yedek)","kind":"html","url":"https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam","include_path":"/ayrimcilikhatti/engelsiz-yasam/","allowed_prefix":"https://www.aa.com.tr/"},
-  {"name":"TRT Haber","kind":"rss","url":"https://www.trthaber.com/guncel_articles.rss"},
-  {"name":"TRT Haber – Sağlık","kind":"rss","url":"https://www.trthaber.com/saglik_articles.rss"},
-  {"name":"Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri","kind":"html","url":"https://www.aile.gov.tr/eyhgm/haberler/","include_path":"/eyhgm/haberler/","allowed_prefix":"https://www.aile.gov.tr/"}
+  {
+    "name": "Anadolu Ajansı – Engelli Yaşam",
+    "kind": "rss",
+    "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/rss/news?cat=engelli-yasam"
+  },
+  {
+    "name": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+    "kind": "html",
+    "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam",
+    "include_path": "/ayrimcilikhatti/engelsiz-yasam/",
+    "allowed_prefix": "https://www.aa.com.tr/"
+  },
+  {
+    "name": "TRT Haber",
+    "kind": "rss",
+    "url": "https://www.trthaber.com/guncel_articles.rss"
+  },
+  {
+    "name": "TRT Haber – Sağlık",
+    "kind": "rss",
+    "url": "https://www.trthaber.com/saglik_articles.rss"
+  },
+  {
+    "name": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
+    "kind": "html",
+    "url": "https://www.aile.gov.tr/eyhgm/haberler/",
+    "include_path": "/eyhgm/haberler/",
+    "allowed_prefix": "https://www.aile.gov.tr/"
+  },
+  {
+    "name": "Sosyal Güvenlik Kurumu – Duyurular",
+    "kind": "html",
+    "url": "https://www.sgk.gov.tr/duyuru",
+    "include_path": "/duyuru/detay/",
+    "allowed_prefix": "https://www.sgk.gov.tr/"
+  }
 ]
