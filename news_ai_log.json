@@ -1,141 +1,5 @@
 [
   {
-    "run_at": "2026-10-04T08:28:59.439828+00:00",
-    "model": "gemini-3.5-flash-lite",
-    "candidates": [
-      {
-        "title": "California'da kolluk kuvvetlerinin elektroşok eldiveni kullanması yasaklandı",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/californiada-kolluk-kuvvetlerinin-elektrosok-eldiveni-kullanmasi-yasaklandi-958563.html",
-        "published_at": "2026-09-29T17:50:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "California'da Kolluk Kuvvetlerinin Elektroşok Eldiveni Kullanması Yasaklandı",
-        "summary": "ABD'nin California eyaletinde kolluk kuvvetlerinin elektroşok eldiveni kullanması yasaklandı. Vali Gavin Newsom ilgili yasayı onayladı. Yasak, gelecek yıldan 2030 yılına kadar geçerli olacak. Karar, Göçmenlik ve Gümrük Muhafaza İdaresinin eldiven alım sözleşmesinin ardından alındı.",
-        "decision": "reject"
-      },
-      {
-        "title": "Japonya, Suriye'ye yönelik yaptırımları kısmen kaldırdı",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/japonya-suriyeye-yonelik-yaptirimlari-kismen-kaldirdi-958550.html",
-        "published_at": "2026-09-29T14:51:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber, Japonya'nın Suriye'ye yönelik yaptırımlarını kısmen kaldırmasını konu almaktadır ve engelli bireylerin hakları, bakımı, istihdamı, eğitimi veya sosyal yardımları gibi doğrudan alanlarla anlamlı bir ilişkisi bulunmamaktadır.",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "TCMB firmalara yönelik döviz dönüşüm desteğinde yeni dönemi devreye alıyor",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/tcmb-firmalara-yonelik-doviz-donusum-desteginde-yeni-donemi-devreye-aliyor-958364.html",
-        "published_at": "2026-09-28T06:22:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "Doktorlara ameliyat öncesi sanal prova imkanı sunan yerli teknoloji",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/doktorlara-ameliyat-oncesi-sanal-prova-imkani-sunan-yerli-teknoloji-958894.html",
-        "published_at": "2026-10-02T08:19:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Doktorlara ameliyat öncesi sanal prova imkanı sunan yerli teknoloji",
-        "summary": "TÜBİTAK destekli MetaTıp Projesi kapsamında MR verileri 3 boyutlu modellere dönüştürülmektedir. Geliştirilen bu teknoloji sayesinde doktorlar hastanın anatomisini sanal ortamda inceleyerek ameliyat öncesi hazırlık yapabilmektedir. Sistem, doktorların uzaktan aynı sanal ameliyatta buluşmasına ve simülasyon gerçekleştirmesine olanak tanımaktadır. Proje, TEKNOFEST'te ziyaretçilere tanıtılmış olup kısa süre içerisinde ülke genelinde kullanılmaya başlanması beklenmektedir.",
-        "decision": "reject"
-      },
-      {
-        "title": "50 yaşındaki kilomuz 70 yaşındaki hafızamızı etkileyebilir mi?",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/50-yasindaki-kilomuz-70-yasindaki-hafizamizi-etkileyebilir-mi-958886.html",
-        "published_at": "2026-10-02T07:43:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Orta Yaşta Obezite Demans Riskini Artırıyor",
-        "summary": "Yapılan araştırmalar orta yaşta obezitesi olan bireylerin ileri yaşlarda demans riskiyle karşı karşıya olduğunu gösteriyor. Yaklaşık 600 bin kişinin verilerinin incelendiği çalışmalarda 35 ile 65 yaş arasında obezite sorunu yaşayanların demans riskinin normal kilolulardan yüzde 33 daha fazla olduğu tespit edildi. Uzmanlar obezitenin beyin yaşlanmasını hızlandıran önemli risk faktörlerinden biri olduğunu vurguluyor. Beyin görüntüleme çalışmaları obezitenin hafıza ve karar verme işlevleriyle bağlantılı bölgeleri olumsuz etkileyebildiğini ortaya koyuyor. Kilo vermenin bu süreçteki tam etkisini söylemek için erken olsa da obezitenin kontrol altına alınması beyin sağlığı açısından önem taşımaktadır.",
-        "decision": "reject"
-      },
-      {
-        "title": "Kahve tüketiminde saat ve miktar önemli",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/kahve-tuketiminde-saat-ve-miktar-onemli-958764.html",
-        "published_at": "2026-10-01T08:45:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Kahve tüketiminde saat ve miktar önemli",
-        "summary": "Uzmanlar kahve tüketiminde miktar kadar tüketilen saat ve hazırlanma şeklinin de önemli olduğunu vurguladı. Kafein alımının 15.00 ile 16.00 saatlerinde sonlandırılması önerildi. Şekerli ve kremalı kahvelerin sınırlandırılması gerektiği belirtildi. Günlük kafein sınırının aşılmaması gerektiği ifade edildi.",
-        "decision": "reject"
-      },
-      {
-        "title": "Sağlık ekiplerine zorlu koşullarda müdahale eğitimi",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/saglik-ekiplerine-zorlu-kosullarda-mudahale-egitimi-958617.html",
-        "published_at": "2026-09-30T08:16:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber, genel sağlık personeli eğitimi ve acil sağlık hizmetlerine yönelik bir tatbikat/eğitim faaliyetini içermekte olup, engelli bireylerin hakları, bakımı veya sosyal yardımları ile doğrudan anlamlı bir ilişkisi bulunmamaktadır.",
-        "generated_title": "Kars'ta Sağlık Ekiplerine Zorlu Arazi Koşullarında Müdahale Eğitimi",
-        "summary": "Kars'ta sağlık çalışanlarına yönelik zorlu arazi koşullarında yaralılara müdahale ve tahliye eğitimleri düzenlendi. Hemşire, ebe, acil tıp teknisyeni ve paramediklerden oluşan gönüllü sağlık personeli UMKE eğitimi aldı. Susuz ilçesindeki kamp alanında gerçekleştirilen çalışmalarda enkazdan yaralı çıkarma ve KBRN olaylarına müdahale uygulamaları yapıldı. Kars, Ardahan ve Iğdır'dan personelin katıldığı ambulans sürüş güvenliği eğitimi ise il merkezinde tamamlandı. İl Sağlık Müdürü Uzman Dr. Arif Eker, ekipleri her türlü iklim ve arazi şartına hazırlamak için eğitimlerin sürdüğünü belirtti. İl Ambulans Servisi Başhekimi Dr. Ubeydullah Şahin ise amaçlarının vatandaşlara en güvenli ve hızlı şekilde ulaşmak olduğunu ifade etti.",
-        "decision": "reject"
-      },
-      {
-        "title": "İdris Demir: Sigarayı bırakalı 3 ay oldu, sağlık sorunlarımın çoğu gitti",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/idris-demir-sigarayi-birakali-3-ay-oldu-saglik-sorunlarimin-cogu-gitti-958412.html",
-        "published_at": "2026-09-28T10:19:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "İdris Demir: Sigarayı bırakalı 3 ay oldu, sağlık sorunlarımın çoğu gitti",
-        "summary": "Kayseri'de yaşayan 63 yaşındaki işçi emeklisi İdris Demir, günde üç paket tükettiği sigarayı bırakmak için Sigarayı Bırakma Polikliniği'ne başvurdu. İlaç, bant, diyet ve psikososyal destek içeren tedavi sürecini tamamlayan Demir, üç aydır sigara kullanmıyor. Şiddetli öksürük, nefes darlığı, astım bronşit ve varis gibi sağlık sorunlarının büyük kısmının geçtiğini belirtti. İlk 15-20 günün zor geçtiğini ifade eden Demir, şu an ilaç kullanmadığını ve kendini çok daha iyi hissettiğini söyledi. Poliklinikte görevli Uzman Doktor Işıl Arık, hastaların bağımlılık düzeyine göre kişiye özel tedavi planı oluşturduklarını kaydetti. Arık, sigarayı bırakmak isteyen herkesi polikliniklerine davet etti.",
-        "decision": "reject"
-      },
-      {
-        "title": "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/8-ayda-179-bini-askin-kisi-sigarayi-birakmak-icin-basvurdu-958394.html",
-        "published_at": "2026-09-28T08:37:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "8 Ayda 179 Bini Aşkın Kişi Sigarayı Bırakmak İçin Başvurdu",
-        "summary": "Türkiye genelinde sigara bırakma polikliniklerinin sayısı 1751'e yükseldi ve bu yılın ilk sekiz ayında 179 bin 779 başvuru yapıldı. Sağlık Bakanlığı tarafından yürütülen çalışmalar kapsamında polikliniklerin yanı sıra aile hekimlikleri ve çevrim içi hizmetlerle de destek sağlanıyor. ALO 171 Sigara Bırakma Danışma Hattı üzerinden de binlerce vatandaşa rehberlik ve takip hizmeti sunuldu. Bağımlılık tedavisinde kullanılan ilaçlar bakanlık tarafından uygun görülen hastalara ücretsiz olarak ulaştırılıyor. Bir yıllık takip süreci tamamlanan hastaların yaklaşık yüzde 24'ünün sigarayı bıraktığı tespit edildi.",
-        "decision": "reject"
-      },
-      {
-        "title": "Elektronik sigara akciğerleri vuruyor: Organ ve sistemleri olumsuz etkiliyor.",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/elektronik-sigara-akcigerleri-vuruyor-organ-ve-sistemleri-olumsuz-etkiliyor-958383.html",
-        "published_at": "2026-09-28T07:42:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber genel sağlık uyarısı niteliğinde olup, engelli hakları, sosyal yardımlar veya bakım hizmetleriyle doğrudan anlamlı bir ilişkisi bulunmamaktadır.",
-        "generated_title": "Elektronik Sigaranın Sağlığa Etkileri",
-        "summary": "Elektronik sigara ve benzeri tütün ürünleri organ ve sistemleri olumsuz etkilemektedir. Uzmanlar bu ürünlerin kalıcı akciğer hasarlarına yol açabileceğini belirtmektedir. Ürünlerin içerdiği nikotin miktarının yüksek olduğu ifade edilmektedir. Ailelerin bu konuda dikkatli olması ve farkındalık oluşturması gerekmektedir.",
-        "decision": "reject"
-      }
-    ]
-  },
-  {
     "run_at": "2026-10-04T15:23:47.042097+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": [
@@ -322,5 +186,10 @@
         "decision": "duplicate"
       }
     ]
+  },
+  {
+    "run_at": "2026-10-06T15:14:28.385009+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": []
   }
 ]
