@@ -531,9 +531,20 @@ async function loadOTV(){try{let r=await fetch('/api/otv',{cache:'no-store'});ot
 function otvNeedsRefresh(){try{let s=String(otvData.updated_at||'').trim();let m=s.match(/^(\d{2})\.(\d{2})\.(\d{4}) (\d{2}):(\d{2})$/);if(!m)return true;let dt=new Date(Number(m[3]),Number(m[2])-1,Number(m[1]),Number(m[4]),Number(m[5]));return Date.now()-dt.getTime()>=43200000}catch(e){return true}}
 async function triggerOTVBackgroundRefresh(){if(!otvNeedsRefresh())return;try{await fetch('/api/otv/yenile',{method:'POST',keepalive:true});let r=await fetch('/api/otv?ts='+Date.now(),{cache:'no-store'});if(r.ok){otvData=await r.json();renderHome()}}catch(e){}}
 async function kiraHesapla(e){e.preventDefault();let b=document.getElementById('kira-btn'),res=document.getElementById('kira-result');b.disabled=true;b.textContent='Hesaplanıyor...';res.style.display='block';res.innerHTML='Güncel TÜFE kontrol ediliyor...';try{let body=new URLSearchParams();body.append('mevcut_kira',document.getElementById('mevcut-kira').value);body.append('yenileme_ayi',document.getElementById('yenileme-ayi').value);let r=await fetch('/kira-hesapla',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body});let d=await r.json();if(!r.ok)throw Error(d.detail||'Hesaplama yapılamadı.');res.innerHTML='<div class="note" style="text-align:center">12 aylık ortalama TÜFE</div><div class="big">%'+d.oran+'</div><div class="note" style="text-align:center">Yeni kira</div><div class="big">'+d.yeni_kira+'</div><div class="note">'+d.durum+'</div>'}catch(x){res.innerHTML='<div class="note">'+x.message+'</div>'}finally{b.disabled=false;b.textContent='Hesapla'}}
-let swipeStartX=0,swipeStartY=0,swipeActive=false;
-document.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'){swipeStartX=e.clientX;swipeStartY=e.clientY;swipeActive=true}},{passive:true});
-document.addEventListener('pointerup',e=>{if(!swipeActive||e.pointerType!=='touch')return;swipeActive=false;let dx=e.clientX-swipeStartX,dy=e.clientY-swipeStartY;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.1){if(dx<0)goNextPage();else goPreviousPage()}},{passive:true});
+let touchStartX=0,touchStartY=0;
+document.addEventListener('touchstart',e=>{
+  if(e.touches.length!==1)return;
+  touchStartX=e.touches[0].clientX;
+  touchStartY=e.touches[0].clientY;
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(!e.changedTouches.length)return;
+  let dx=e.changedTouches[0].clientX-touchStartX;
+  let dy=e.changedTouches[0].clientY-touchStartY;
+  if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.1){
+    if(dx<0)goNextPage();else goPreviousPage();
+  }
+},{passive:true});
 window.addEventListener('scroll',()=>{let b=document.getElementById('bottomHome');if(b)b.classList.toggle('compact',window.scrollY>120)},{passive:true});
 document.addEventListener('pointercancel',()=>{swipeActive=false},{passive:true});
 renderHome();renderNews();loadOTV();loadNews();setTimeout(triggerOTVBackgroundRefresh,800);
