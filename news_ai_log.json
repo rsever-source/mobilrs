@@ -1,141 +1,5 @@
 [
   {
-    "run_at": "2026-10-04T15:23:47.042097+00:00",
-    "model": "gemini-3.5-flash-lite",
-    "candidates": [
-      {
-        "title": "California'da kolluk kuvvetlerinin elektroşok eldiveni kullanması yasaklandı",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/californiada-kolluk-kuvvetlerinin-elektrosok-eldiveni-kullanmasi-yasaklandi-958563.html",
-        "published_at": "2026-09-29T17:50:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "California'da Kolluk Kuvvetlerinin Elektroşok Eldiveni Kullanması Yasaklandı",
-        "summary": "ABD'nin California eyaletinde kolluk kuvvetlerinin gözaltı sırasında elektroşok eldiveni kullanması yasaklandı. Vali Gavin Newsom, ilgili yasayı imzalayarak onayladı. Yasak, gelecek yıldan 2030 yılına kadar geçerli olacak. Karar, ABD Göçmenlik ve Gümrük Muhafaza İdaresinin eldiven satın alma adımının ardından alındı.",
-        "decision": "reject"
-      },
-      {
-        "title": "Japonya, Suriye'ye yönelik yaptırımları kısmen kaldırdı",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/japonya-suriyeye-yonelik-yaptirimlari-kismen-kaldirdi-958550.html",
-        "published_at": "2026-09-29T14:51:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber dış politika ve uluslararası ilişkiler alanında olup engelli bireylerin hakları, bakımı veya sosyal yardımları ile doğrudan anlamlı bir ilişkisi bulunmamaktadır.",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "TCMB firmalara yönelik döviz dönüşüm desteğinde yeni dönemi devreye alıyor",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/tcmb-firmalara-yonelik-doviz-donusum-desteginde-yeni-donemi-devreye-aliyor-958364.html",
-        "published_at": "2026-09-28T06:22:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber genel ekonomi, TCMB uygulamaları ve döviz dönüşüm desteği ile ilgili olup engelli bireylerin hakları, bakımı, istihdamı, erişilebilirliği veya özel mevzuatıyla doğrudan anlamlı bir ilişkisi bulunmamaktadır.",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "Doktorlara ameliyat öncesi sanal prova imkanı sunan yerli teknoloji",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/doktorlara-ameliyat-oncesi-sanal-prova-imkani-sunan-yerli-teknoloji-958894.html",
-        "published_at": "2026-10-02T08:19:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "50 yaşındaki kilomuz 70 yaşındaki hafızamızı etkileyebilir mi?",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/50-yasindaki-kilomuz-70-yasindaki-hafizamizi-etkileyebilir-mi-958886.html",
-        "published_at": "2026-10-02T07:43:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber genel sağlık, obezite ve demans ilişkisini inceleyen bilimsel bir araştırmayı konu almakta olup engelli hakları, bakım, istihdam veya sosyal yardımlarla doğrudan bir ilişkisi bulunmamaktadır.",
-        "generated_title": "Orta Yaşta Obezite İlerleyen Yaşlarda Demans Riskini Artırabilir",
-        "summary": "Yapılan kapsamlı araştırmalar, orta yaşta obezitesi olan bireylerin ilerleyen yaşlarda demans riskinin daha yüksek olduğunu ortaya koymaktadır. Yaklaşık 600 bin kişinin verilerine dayanan incelemeler, obezitenin hafıza ve karar verme gibi işlevlerden sorumlu beyin bölgelerini olumsuz etkileyebileceğini göstermektedir. Uzmanlar, obezitenin beynin daha hızlı yaşlanmasında önemli bir risk faktörü olduğuna dikkat çekmektedir. Kilo vermenin beyin üzerindeki tam etkileri henüz kesinleşmese de obezitenin kontrol altına alınmasının ilerleyen dönemdeki zihinsel sağlık açısından önem taşıdığı vurgulanmaktadır. Çalışmalar, özellikle 40 ve 50'li yaşlardaki kilo durumunun uzun vadeli beyin sağlığı için kritik bir ipucu olabileceğini belirtmektedir.",
-        "decision": "reject"
-      },
-      {
-        "title": "Kahve tüketiminde saat ve miktar önemli",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/kahve-tuketiminde-saat-ve-miktar-onemli-958764.html",
-        "published_at": "2026-10-01T08:45:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "Sağlık ekiplerine zorlu koşullarda müdahale eğitimi",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/saglik-ekiplerine-zorlu-kosullarda-mudahale-egitimi-958617.html",
-        "published_at": "2026-09-30T08:16:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Sağlık Ekiplerine Zorlu Koşullarda Müdahale Eğitimi",
-        "summary": "Kars'ta sağlık çalışanlarına yönelik zorlu arazi koşullarında müdahale eğitimleri düzenlendi. Üç gün süren UMKE eğitimlerinde personele afet ve acil durumlarda görev yapma becerileri kazandırıldı. Ekipler enkazdan yaralı çıkarma ve acil müdahale ünitesi kurulumu gibi uygulamalar gerçekleştirdi. Ayrıca ambulans sürücülerine farklı yol ve hava koşullarında güvenli sürüş eğitimi verildi. Eğitimlerle sağlık personelinin afetlerde hızlı ve koordineli hareket etmesi hedeflendi.",
-        "decision": "reject"
-      },
-      {
-        "title": "İdris Demir: Sigarayı bırakalı 3 ay oldu, sağlık sorunlarımın çoğu gitti",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/idris-demir-sigarayi-birakali-3-ay-oldu-saglik-sorunlarimin-cogu-gitti-958412.html",
-        "published_at": "2026-09-28T10:19:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber bireysel bir sigara bırakma hikayesini konu almakta olup engelli bireylerin hakları, bakımı, istihdamı, erişilebilirliği veya sosyal yardımları ile doğrudan ilgili genel bir politika veya mevzuat değişikliği içermemektedir.",
-        "generated_title": "İdris Demir: Sigarayı bırakalı 3 ay oldu, sağlık sorunlarımın çoğu gitti",
-        "summary": "Kayseri'de yaşayan 63 yaşındaki işçi emeklisi İdris Demir, şiddetli öksürük ve nefes darlığı şikayetleriyle Sigara Bırakma Polikliniği'ne başvurdu. İlaç, bant, diyet ve psikososyal destek içeren tedavi sürecini tamamlayan Demir, üç aydır sigara kullanmadığını belirtti. Merdiven çıkamama ve nefes kesilmesi gibi sağlık sorunlarının büyük ölçüde azaldığını ifade etti. Poliklinikte görevli uzman doktor Işıl Arık, hastaların bağımlılık düzeyine göre kişiye özel tedavi planı oluşturduklarını kaydetti. Demir, tedavi sürecinde kendisine destek olan Sağlık Bakanlığına ve İl Sağlık Müdürlüğüne teşekkür etti.",
-        "decision": "reject"
-      },
-      {
-        "title": "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/8-ayda-179-bini-askin-kisi-sigarayi-birakmak-icin-basvurdu-958394.html",
-        "published_at": "2026-09-28T08:37:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber, engelli hakları, evde bakım, engelli istihdamı, eğitim veya erişilebilirlik gibi doğrudan engellilik alanına giren özel bir politika veya düzenleme içermemektedir. Genel sağlığı ilgilendiren sigara bırakma poliklinikleri ve başvurularına ilişkin genel bir sağlık haberidir.",
-        "generated_title": "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu",
-        "summary": "Türkiye genelinde sigara bırakma polikliniklerinin sayısı 1751'e yükseldi. Bu yılın ilk sekiz ayında polikliniklere 179 bin 779 başvuru yapıldı. Sağlık Bakanlığı tarafından yürütülen çalışmalar kapsamında aile hekimlikleri ve uzaktan hizmetler de devreye sokuldu. ALO 171 hattı üzerinden de binlerce vatandaşa danışmanlık hizmeti sunuldu. Bir yıllık takip süreci tamamlanan hastaların yaklaşık yüzde 24'ünün sigarayı bıraktığı belirlendi. Ayrıca uygun hastalara poliklinikler aracılığıyla ücretsiz ilaç desteği sağlanmaya devam ediliyor.",
-        "decision": "reject"
-      },
-      {
-        "title": "Elektronik sigara akciğerleri vuruyor: Organ ve sistemleri olumsuz etkiliyor.",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/elektronik-sigara-akcigerleri-vuruyor-organ-ve-sistemleri-olumsuz-etkiliyor-958383.html",
-        "published_at": "2026-09-28T07:42:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      }
-    ]
-  },
-  {
     "run_at": "2026-10-04T19:40:22.383444+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
@@ -191,5 +55,25 @@
     "run_at": "2026-10-06T15:14:28.385009+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
+  },
+  {
+    "run_at": "2026-10-06T21:00:27.644147+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": [
+      {
+        "title": "Çin, ABD'nin Tayvan'a F16 satışına karşı çıkıyor",
+        "source": "TRT Haber",
+        "url": "https://www.trthaber.com/haber/guncel/cin-abdnin-tayvana-f-16-satisina-karsi-cikiyor-959320.html",
+        "published_at": "2026-10-06T18:06:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "Haber, Çin ve ABD'nin Tayvan'a F-16 satışı konusundaki jeopolitik gelişmeleri içermekte olup engelli bireylerin hakları, bakımı, istihdamı veya sosyal yardımlarıyla doğrudan bir ilişkisi bulunmamaktadır.",
+        "generated_title": "Çin'den ABD'nin Tayvan'a F-16 Satışına Tepki",
+        "summary": "Çin, ABD'nin Tayvan'a modernize edilmiş F-16 savaş uçakları satmasına tepki gösterdi. Çin Dışişleri Bakanlığı Sözcüsü Guo Ciakun, ABD'nin tek Çin ilkesine uyması gerektiğini belirtti. Tayvan sorunumun Çin'in iç işi olduğu vurgulandı. Tayvan'ın satın aldığı uçakların ilk teslimatının yapıldığı bildirildi.",
+        "detail_summary": "Çin, ABD'nin egemenlik ihtilafı içindeki Tayvan'a modernize edilmiş F-16 savaş uçakları satmasına karşı çıktığını açıkladı. Çin Dışişleri Bakanlığı Sözcüsü Guo Ciakun, iki ülke liderlerinin mutabakatı doğrultusunda ABD'nin tek Çin ilkesine uymasını istedi. Tayvan sorunumun Çin'in iç işi olduğu ve dış müdahalenin kabul edilemeyeceği ifade edildi. Tayvan'ın satın aldığı F-16V Block 70 tipi ilk uçakların Taitung ilindeki Chihhang Hava Üssü'ne getirildiği aktarıldı. Tayvan'ın ABD'den bu tipte toplam 65 savaş uçağı satın aldığı kaydedildi.",
+        "decision": "reject"
+      }
+    ]
   }
 ]
