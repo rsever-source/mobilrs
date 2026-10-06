@@ -316,7 +316,7 @@ generic prim/işveren işlemleri veya engelli bireylere somut etkisi gösterilem
 duyurularını publish=false ver.
 
 """
-
+            prompt = f"""
 ÖNEMLİ: MÜKERRER HABER KONTROLÜ YAP.
 Aşağıdaki "Mevcut sitedeki haberler" listesini yeni haberle karşılaştır.
 duplicate kararı yalnızca başlık veya genel konu benzerliğine göre verilmemeli.
