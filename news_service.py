@@ -183,7 +183,7 @@ def _gemini(prompt):
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
-            "maxOutputTokens": 600,
+            "maxOutputTokens": 900,
             "responseMimeType": "application/json",
             "responseSchema": {
                 "type": "OBJECT",
@@ -193,8 +193,9 @@ def _gemini(prompt):
                     "duplicate_reason": {"type": "STRING"},
                     "title": {"type": "STRING"},
                     "summary": {"type": "STRING"},
+                    "detail_summary": {"type": "STRING"},
                 },
-                "required": ["publish", "duplicate", "duplicate_reason", "title", "summary"],
+                "required": ["publish", "duplicate", "duplicate_reason", "title", "summary", "detail_summary"],
             },
         },
     }
@@ -337,6 +338,10 @@ duplicate=true ise publish=false ver.
 Mükerrer değilse:
 Özgün ve tarafsız Türkçe özet hazırla; kaynak metnini kopyalama.
 Özet 6-7 kısa ve tam cümleden oluşsun. Cümleyi ortasında kesme veya yarım bırakma.
+Bu "summary" alanı haber kartlarında ve mobil haber detayında kullanılır; gereksiz ayrıntıya girme.
+Ayrıca "detail_summary" alanında aynı haberi biraz daha ayrıntılı anlatan 8-10 kısa ve tam cümle oluştur.
+"detail_summary" yeni bilgi uydurmasın; yalnızca kaynak metnindeki doğrulanabilir ayrıntıları daha düzenli biçimde anlatsın.
+İki özet aynı olmasın; detail_summary, summary'den yalnızca gerektiği kadar daha ayrıntılı olsun.
 Yalnızca kaynakta doğrulanabilen bilgileri içersin.
 Başlığı kaynağın anlamını koruyarak kısa ve doğal Türkçe yaz.
 Kaynak: {item["source"]}
@@ -368,6 +373,7 @@ Kaynak metni:
             ai_entry["duplicate_reason"] = _clean(result.get("duplicate_reason"))
             ai_entry["generated_title"] = _clean(result.get("title"))
             ai_entry["summary"] = _clean(result.get("summary"))
+            ai_entry["detail_summary"] = _clean(result.get("detail_summary"))
             ai_entry["decision"] = (
                 "duplicate" if result.get("duplicate")
                 else "publish" if result.get("publish")
@@ -381,6 +387,7 @@ Kaynak metni:
                 ai_log["candidates"].append(ai_entry)
                 continue
             summary = _clean(result.get("summary"))
+            detail_summary = _clean(result.get("detail_summary")) or summary
             title = _clean(result.get("title"))
             if not summary or not title:
                 ai_entry["status"] = "gemini_invalid_output"
@@ -389,7 +396,7 @@ Kaynak metni:
             ai_entry["status"] = "published"
             ai_log["candidates"].append(ai_entry)
             added.append({
-                "id": item["id"], "title": title[:180], "summary": summary[:900],
+                "id": item["id"], "title": title[:180], "summary": summary[:900], "detail_summary": detail_summary[:1400],
                 "source": item["source"], "url": item["url"],
                 "published_at": item.get("published_at"), "created_at": now.isoformat()
             })
