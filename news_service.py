@@ -291,20 +291,9 @@ def update_news():
         }
         try:
             article = _article_text(item["url"])
-            prompt = f"""Sen engelli.me için çalışan bir haber editörüsün.
-Yalnızca verilen kaynak metnindeki doğrulanabilir bilgileri kullan.
-Haberin Engelli.me için uygun olup olmadığına kendin karar ver.
-Başlıkta veya kısa açıklamada belirli anahtar kelimelerin geçmesini şart koşma; haber metninin tamamındaki bağlamı değerlendir.
-Engelli bireylerin hakları, gelir veya sosyal yardımları, bakımı, istihdamı, eğitimi,
-sağlığı, ulaşımı, erişilebilirliği, araç/ÖTV durumu veya ilgili mevzuatla doğrudan ya da
-anlamlı biçimde ilgiliyse publish=true ver.
-Genel ekonomi, siyaset, savaş, trafik veya gündem haberlerini yalnızca engelli bireyler
-üzerinde açık ve somut bir etkisi varsa publish=true ver.
-Aksi durumda publish=false ver.
-
-source_context = ""
-if item.get("source") == "Sosyal Güvenlik Kurumu – Duyurular":
-    source_context = """SGK DUYURULARI İÇİN EK KURAL:
+            source_context = ""
+            if item.get("source") == "Sosyal Güvenlik Kurumu – Duyurular":
+                source_context = """SGK DUYURULARI İÇİN EK KURAL:
 Bu kaynak SGK'nın resmi Duyurular sayfasıdır. Kaynağın SGK olması tek başına yayınlama nedeni değildir.
 Yalnızca engelli bireyler açısından doğrudan veya anlamlı ve somut etkisi olan duyuruları yayınla.
 Özellikle malullük/engelli emekliliği, engelli istihdamı ve 2828 kapsamındaki yerleştirme/atama,
@@ -316,7 +305,17 @@ generic prim/işveren işlemleri veya engelli bireylere somut etkisi gösterilem
 duyurularını publish=false ver.
 
 """
-            prompt = f"""
+            prompt = f"""Sen engelli.me için çalışan bir haber editörüsün.
+Yalnızca verilen kaynak metnindeki doğrulanabilir bilgileri kullan.
+Haberin Engelli.me için uygun olup olmadığına kendin karar ver.
+Başlıkta veya kısa açıklamada belirli anahtar kelimelerin geçmesini şart koşma; haber metninin tamamındaki bağlamı değerlendir.
+Engelli bireylerin hakları, gelir veya sosyal yardımları, bakımı, istihdamı, eğitimi,
+sağlığı, ulaşımı, erişilebilirliği, araç/ÖTV durumu veya ilgili mevzuatla doğrudan ya da
+anlamlı biçimde ilgiliyse publish=true ver.
+Genel ekonomi, siyaset, savaş, trafik veya gündem haberlerini yalnızca engelli bireyler
+üzerinde açık ve somut bir etkisi varsa publish=true ver.
+Aksi durumda publish=false ver.
+
 ÖNEMLİ: MÜKERRER HABER KONTROLÜ YAP.
 Aşağıdaki "Mevcut sitedeki haberler" listesini yeni haberle karşılaştır.
 duplicate kararı yalnızca başlık veya genel konu benzerliğine göre verilmemeli.
