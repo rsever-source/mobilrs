@@ -1,141 +1,5 @@
 [
   {
-    "run_at": "2026-10-04T00:40:40.567433+00:00",
-    "model": "gemini-3.5-flash-lite",
-    "candidates": [
-      {
-        "title": "California'da kolluk kuvvetlerinin elektroşok eldiveni kullanması yasaklandı",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/californiada-kolluk-kuvvetlerinin-elektrosok-eldiveni-kullanmasi-yasaklandi-958563.html",
-        "published_at": "2026-09-29T17:50:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "California'da Kolluk Kuvvetlerinin Elektroşok Eldiveni Kullanması Yasaklandı",
-        "summary": "ABD'nin California eyaletinde, kolluk kuvvetlerinin gözaltı sırasında elektroşok uygulayan eldivenleri kullanması yasaklandı. Vali Gavin Newsom, ilgili yasayı onaylayarak uygulamanın gelecek yıldan itibaren 2030'a kadar yasaklandığını duyurdu. Karar, ABD Göçmenlik ve Gümrük Muhafaza İdaresinin direnç gösteren kişilere yönelik eldiven tedarik etme kararının ardından alındı. Newsom, eyaletteki göçmenlik uygulamalarında şeffaflık ve denetimin güçlendirildiğini belirtti.",
-        "decision": "reject"
-      },
-      {
-        "title": "Japonya, Suriye'ye yönelik yaptırımları kısmen kaldırdı",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/japonya-suriyeye-yonelik-yaptirimlari-kismen-kaldirdi-958550.html",
-        "published_at": "2026-09-29T14:51:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Japonya, Suriye'ye Yönelik Yaptırımları Kısmen Kaldırdı",
-        "summary": "Japonya yönetimi, Suriye ile olan ilişkiler çerçevesinde bu ülkeye uygulanan bazı yaptırımları kısmen kaldırma kararı aldı. Dışişleri Bakanlığı tarafından yapılan açıklamada, Esed rejiminin devrilmesinin ardından ilişkilerin normalleştiği vurgulandı. Alınan yeni karar doğrultusunda içişleri ve savunma bakanlıkları dahil olmak üzere toplam 16 kuruluşa yönelik yaptırımlar sonlandırıldı. Buna karşın, Suriyeli 59 şahıs ve 15 kuruluşa yönelik yaptırımların ise uygulanmaya devam edeceği bildirildi.",
-        "decision": "reject"
-      },
-      {
-        "title": "TCMB firmalara yönelik döviz dönüşüm desteğinde yeni dönemi devreye alıyor",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/tcmb-firmalara-yonelik-doviz-donusum-desteginde-yeni-donemi-devreye-aliyor-958364.html",
-        "published_at": "2026-09-28T06:22:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber, genel ekonomi ve TCMB'nin döviz dönüşüm desteği düzenlemeleriyle ilgili olup, engelli bireylerin hakları, bakımı, istihdamı veya sosyal yardımları üzerinde doğrudan ve anlamlı bir etkisi bulunmamaktadır.",
-        "generated_title": "TCMB Firmalara Yönelik Döviz Dönüşüm Desteğinde Yeni Dönemi Başlatıyor",
-        "summary": "Türkiye Cumhuriyet Merkez Bankası, firmaların yurt dışı kaynaklı döviz gelirlerinin Türk lirasına dönüşümünü teşvik eden düzenlemede yeni bir uygulamaya geçiyor. Hazine ve Maliye Bakanı Mehmet Şimşek, destek mekanizmasının daha esnek, sade ve firmaların faaliyetleriyle uyumlu hale getirildiğini belirtti. 1 Ekim'de yürürlüğe girecek yeni talimata göre destek tutarına üst limit getirilirken, döviz almama taahhüdü yerine döviz pozisyonu şartı eklendi. Aracı ihracatçı kullanan tedarikçi firmaların da destekten faydalanabilmesi kolaylaştırıldı. Ayrıca denetim mekanizmaları güçlendirilerek aracı bankaların rolleri yeniden düzenlendi.",
-        "decision": "reject"
-      },
-      {
-        "title": "Doktorlara ameliyat öncesi sanal prova imkanı sunan yerli teknoloji",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/doktorlara-ameliyat-oncesi-sanal-prova-imkani-sunan-yerli-teknoloji-958894.html",
-        "published_at": "2026-10-02T08:19:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber genel sağlık teknolojileri ve tıbbi yenilikler alanında yer almakta olup, engelli bireylere yönelik doğrudan hak, bakım veya istihdam gibi özel bir politika ya da somut etki içermemektedir.",
-        "generated_title": "Doktorlara Ameliyat Öncesi Sanal Prova İmkanı Sunan Yerli Teknoloji",
-        "summary": "TÜBİTAK destekli MetaTıp Projesi ile MR verileri 3 boyutlu modellere dönüştürülüyor. Doktorlar hastanın anatomisini sanal ortamda inceleyerek ameliyat öncesi hazırlık yapabiliyor. TEKNOFEST'te tanıtılan proje ile cerrahi süreçlerin simülasyonu gerçekleştiriliyor. Sistem sayesinde farklı şehirlerdeki uzmanlar aynı sanal ameliyatta buluşabiliyor. Lezyon tespiti ve hacimleme gibi ölçümler birebir doğrulukla yapılabiliyor. Sağlık Bakanlığı onayıyla bazı üniversite hastanelerinde kullanılmaya başlanan teknolojinin yaygınlaştırılması hedefleniyor.",
-        "decision": "reject"
-      },
-      {
-        "title": "50 yaşındaki kilomuz 70 yaşındaki hafızamızı etkileyebilir mi?",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/50-yasindaki-kilomuz-70-yasindaki-hafizamizi-etkileyebilir-mi-958886.html",
-        "published_at": "2026-10-02T07:43:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "Kahve tüketiminde saat ve miktar önemli",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/kahve-tuketiminde-saat-ve-miktar-onemli-958764.html",
-        "published_at": "2026-10-01T08:45:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber genel sağlıklı yaşam, kahve tüketimi, saatleri ve miktarını konu almakta olup, engelli bireylerin hakları, sosyal yardımları, bakımı, istihdamı veya özel mevzuatı ile doğrudan anlamlı bir ilişkisi bulunmamaktadır.",
-        "generated_title": "Uzmanlardan kahve tüketiminde saat ve miktar uyarısı",
-        "summary": "Kardiyoloji ve iç hastalıkları uzmanları, kahvenin miktarının yanı sıra tüketim saatlerinin ve hazırlanma şeklinin de sağlık açısından önemli olduğunu belirtti. Uzmanlar, kafein alımının öğleden sonra saat 15.00 ile 16.00 civarında sonlandırılmasını önerdi. Şekerli, kremalı kahveler ile filtre dışı kahve türlerinin kolesterol ve kan şekerini artırabileceği vurgulandı. Günlük kafein sınırının aşılmasının çarpıntı, uyku bozukluğu ve tansiyon yükselmesine yol açabileceği ifade edildi. Kalp hastaları, hamileler ve demir eksikliği bulunan kişilerin kafein tüketimine daha fazla özen göstermesi gerektiği aktarıldı. Çekirdekten hazırlanan şekersiz ve kremasız kahvelerin ölçülü tüketiminin sağlıklı ve koruyucu etki sağlayabileceği belirtildi.",
-        "decision": "reject"
-      },
-      {
-        "title": "Sağlık ekiplerine zorlu koşullarda müdahale eğitimi",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/saglik-ekiplerine-zorlu-kosullarda-mudahale-egitimi-958617.html",
-        "published_at": "2026-09-30T08:16:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      },
-      {
-        "title": "İdris Demir: Sigarayı bırakalı 3 ay oldu, sağlık sorunlarımın çoğu gitti",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/idris-demir-sigarayi-birakali-3-ay-oldu-saglik-sorunlarimin-cogu-gitti-958412.html",
-        "published_at": "2026-09-28T10:19:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "İdris Demir: Sigarayı bırakalı 3 ay oldu, sağlık sorunlarımın çoğu gitti",
-        "summary": "Kayseri'de yaşayan 63 yaşındaki işçi emeklisi İdris Demir, günde üç paket sigara içtiği alışkanlığından 50 yılın ardından kurtuldu. Şiddetli öksürük ve nefes darlığı şikayetleriyle Sağlıklı Hayat Merkezi Sigara Bırakma Polikliniği'ne başvuran Demir, uzman doktor gözetiminde tedavi sürecine alındı. İlaç ve bant tedavisi ile psikososyal destek alan Demir, üç aydır sigara kullanmadığını belirtti. Merdiven çıkamama, astım bronşit ve varis gibi sağlık sorunlarının büyük ölçüde geçtiğini ifade etti. Tedavi sürecinde kararlılıkla hareket eden Demir, sigaraya harcadığı paranın da cebinde kaldığını vurguladı. Poliklinikte görevli uzman doktor Işıl Arık ise başvuran kişilerin bağımlılık düzeyine göre kişiye özel tedavi planı oluşturduklarını kaydetti.",
-        "decision": "reject"
-      },
-      {
-        "title": "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/8-ayda-179-bini-askin-kisi-sigarayi-birakmak-icin-basvurdu-958394.html",
-        "published_at": "2026-09-28T08:37:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber genel halk sağlığı ve sigara bırakma istatistikleriyle ilgilidir, engelli hakları, evde bakım veya engelliliğe özgü bir düzenleme içermemektedir.",
-        "generated_title": "8 ayda 179 bini aşkın kişi sigarayı bırakmak için başvurdu",
-        "summary": "Türkiye genelinde sigara bırakma polikliniklerinin sayısı 1751'e yükseldi. Bu yılın ilk 8 ayında polikliniklere 179 bin 779 başvuru yapıldı. ALO 171 Sigara Bırakma Danışma Hattı üzerinden de binlerce çağrı yanıtlandı. Takip süreci tamamlanan hastaların yaklaşık yüzde 24'ünün sigarayı bıraktığı belirlendi. Sağlık Bakanlığı tarafından vatandaşlara ücretsiz ilaç desteği sağlanmaya devam ediliyor.",
-        "decision": "reject"
-      },
-      {
-        "title": "Elektronik sigara akciğerleri vuruyor: Organ ve sistemleri olumsuz etkiliyor.",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/elektronik-sigara-akcigerleri-vuruyor-organ-ve-sistemleri-olumsuz-etkiliyor-958383.html",
-        "published_at": "2026-09-28T07:42:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "",
-        "summary": "",
-        "decision": "reject"
-      }
-    ]
-  },
-  {
     "run_at": "2026-10-04T08:28:59.439828+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": [
@@ -426,5 +290,37 @@
     "run_at": "2026-10-05T14:46:18.569583+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
+  },
+  {
+    "run_at": "2026-10-06T08:07:04.147968+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": [
+      {
+        "title": "2 Ekim 2026 02/10/2026 SUT Değişiklik Tebliği İşlenmiş Güncel 2013 SUT GENEL SAĞLIK SİGORTASI GENEL MÜDÜRLÜĞÜ",
+        "source": "Sosyal Güvenlik Kurumu – Duyurular",
+        "url": "https://www.sgk.gov.tr/duyuru/detay/02102026-SUT-Degisiklik-Tebligi-Islenmis-Guncel-2013-SUT-2026-10-02-02-50-06",
+        "published_at": "2026-10-02T00:00:00+00:00",
+        "status": "published",
+        "publish": true,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "Sosyal Güvenlik Kurumu Güncel SUT Değişiklik Tebliğini Yayımladı",
+        "summary": "Sosyal Güvenlik Kurumu tarafından 2 Ekim 2026 tarihli SUT Değişiklik Tebliği işlenmiş güncel 2013 Sağlık Uygulama Tebliği erişime açıldı. Genel Sağlık Sigortası Genel Müdürlüğü bünyesinde hazırlanan güncel metin duyurular sayfasında paylaşıldı. Yapılan düzenlemeler sağlık hizmetleri ve geri ödeme kapsamındaki uygulamaları yakından ilgilendiriyor. Vatandaşlar ve ilgili taraflar güncel tebliğ metnine kurumun resmi internet sitesi üzerinden ulaşabiliyor. Bu tür güncellemeler sağlık ve tedavi süreçlerinde uygulanan kuralların takibi açısından önem taşıyor. Yeni metin sigortalıların faydalandığı sağlık hizmetlerinin güncel kurallarını içeriyor.",
+        "decision": "publish"
+      },
+      {
+        "title": "2 Ekim 2026 02/10/2026 Tarihli ve 33388 Sayılı Resmî Gazete’de Yayımlanan “Sosyal Güvenlik Kurumu Sağlık Uygulama Tebliğinde Değişiklik Yapılmasına Dair Tebliğ\" GENEL SAĞLIK SİGORTASI GENEL MÜDÜRLÜĞÜ",
+        "source": "Sosyal Güvenlik Kurumu – Duyurular",
+        "url": "https://www.sgk.gov.tr/duyuru/detay/02102026-Tarihli-ve-33388-Sayili-Resm-Gazetede-Yayimlanan-Sosyal-Guvenlik-Kurumu-Saglik-Uygulama-Tebliginde-Degisiklik-Yapilmasina-Dair-Teblig-2026-10-02-02-48-55",
+        "published_at": "2026-10-02T00:00:00+00:00",
+        "status": "gemini_decision",
+        "publish": true,
+        "duplicate": true,
+        "duplicate_reason": "Mevcut sitedeki 'Sosyal Güvenlik Kurumu Güncel SUT Değişiklik Tebliğini Yayımlanedı' başlıklı haber ile aynı 2 Ekim 2026 tarihli ve 33388 sayılı Resmi Gazete'de yayımlanan SUT değişiklik tebliğini ve EK-4A ilaçlar listesini anlatmaktadır.",
+        "generated_title": "Sosyal Güvenlik Kurumu Sağlık Uygulama Tebliğinde Değişiklik Yapıldı",
+        "summary": "Sosyal Güvenlik Kurumu tarafından 2 Ekim 2026 tarihli Resmi Gazete'de yeni bir tebliğ yayımlandı. Yayımlanan tebliğ ile Sağlık Uygulama Tebliği'nde değişiklikler gerçekleştirildi. Düzenleme kapsamında bedeli ödenecek ilaçlar listesi güncellendi. İlgili dokümanlara ve güncel listelere kurumun internet sitesinden erişilebilmektedir.",
+        "decision": "duplicate"
+      }
+    ]
   }
 ]

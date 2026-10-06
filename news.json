@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-05T14:46:18.569583+00:00",
+  "updated_at": "2026-10-06T08:07:04.147968+00:00",
   "items": [
     {
       "id": "2b29cc734432099d7572",
@@ -18,6 +18,15 @@
       "url": "https://www.trthaber.com/haber/saglik/2-ilac-daha-geri-odeme-kapsamina-alindi-958880.html",
       "published_at": "2026-10-02T07:33:00+00:00",
       "created_at": "2026-10-02T12:40:44.668525+00:00"
+    },
+    {
+      "id": "64267a56ee55f76abc9f",
+      "title": "Sosyal Güvenlik Kurumu Güncel SUT Değişiklik Tebliğini Yayımladı",
+      "summary": "Sosyal Güvenlik Kurumu tarafından 2 Ekim 2026 tarihli SUT Değişiklik Tebliği işlenmiş güncel 2013 Sağlık Uygulama Tebliği erişime açıldı. Genel Sağlık Sigortası Genel Müdürlüğü bünyesinde hazırlanan güncel metin duyurular sayfasında paylaşıldı. Yapılan düzenlemeler sağlık hizmetleri ve geri ödeme kapsamındaki uygulamaları yakından ilgilendiriyor. Vatandaşlar ve ilgili taraflar güncel tebliğ metnine kurumun resmi internet sitesi üzerinden ulaşabiliyor. Bu tür güncellemeler sağlık ve tedavi süreçlerinde uygulanan kuralların takibi açısından önem taşıyor. Yeni metin sigortalıların faydalandığı sağlık hizmetlerinin güncel kurallarını içeriyor.",
+      "source": "Sosyal Güvenlik Kurumu – Duyurular",
+      "url": "https://www.sgk.gov.tr/duyuru/detay/02102026-SUT-Degisiklik-Tebligi-Islenmis-Guncel-2013-SUT-2026-10-02-02-50-06",
+      "published_at": "2026-10-02T00:00:00+00:00",
+      "created_at": "2026-10-06T08:07:04.147968+00:00"
     },
     {
       "id": "5f3d36cfaeda78a4c5cf",
@@ -81,15 +90,6 @@
       "url": "https://www.aile.gov.tr/eyhgm/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-konya-da-engelli-aktif-yasam-merkezi-acilisinda-konustu/",
       "published_at": "2026-09-30T00:00:00+00:00",
       "created_at": "2026-09-29T22:08:22.549473+00:00"
-    },
-    {
-      "id": "0828bc8cefa14da335d4",
-      "title": "Türkiye genelinde 117 kalp merkeziyle ileri sağlık hizmeti sunuluyor",
-      "summary": "Sağlık Bakanlığına bağlı kamu hastanelerinde faaliyet gösteren 101 erişkin ve 16 pediatrik olmak üzere toplam 117 kalp merkezi hizmet vermektedir. Bu merkezlerde kardiyoloji ve kalp damar cerrahisi alanlarında tanı, tedavi ve takip süreçleri bütüncül bir yaklaşımla yürütülmektedir. Geçtiğimiz yıl ülke genelinde toplam 46 kalp nakli gerçekleştirilmiştir. Bu yılın ilk yarısında ise yapılan kalp nakli sayısı 11 olarak kayıtlara geçmiştir. Uzman ekipler, nakil yapılan hastaların ameliyat sonrasındaki süreçlerini de düzenli olarak takip etmektedir. Birinci basamak sağlık hizmetlerinde kalp ve damar hastalıklarına yönelik risk değerlendirmeleri yapılmaktadır. Vatandaşların sağlıklı yaşam alışkanlıkları edinmesi ve risk faktörlerinden uzak durması teşvik edilmektedir.",
-      "source": "TRT Haber – Sağlık",
-      "url": "https://www.trthaber.com/haber/saglik/117-kalp-merkeziyle-ileri-tani-ve-tedavi-hizmeti-sunuluyor-958532.html",
-      "published_at": "2026-09-29T12:12:00+00:00",
-      "created_at": "2026-09-29T21:38:19.883927+00:00"
     }
   ],
   "pending": [],
@@ -103,6 +103,8 @@
     "https://www.trthaber.com/haber/saglik/saglik-ekiplerine-zorlu-kosullarda-mudahale-egitimi-958617.html": "2026-10-04T15:23:47.042097+00:00",
     "https://www.trthaber.com/haber/saglik/idris-demir-sigarayi-birakali-3-ay-oldu-saglik-sorunlarimin-cogu-gitti-958412.html": "2026-10-04T15:23:47.042097+00:00",
     "https://www.trthaber.com/haber/saglik/8-ayda-179-bini-askin-kisi-sigarayi-birakmak-icin-basvurdu-958394.html": "2026-10-04T15:23:47.042097+00:00",
-    "https://www.trthaber.com/haber/saglik/elektronik-sigara-akcigerleri-vuruyor-organ-ve-sistemleri-olumsuz-etkiliyor-958383.html": "2026-10-04T15:23:47.042097+00:00"
+    "https://www.trthaber.com/haber/saglik/elektronik-sigara-akcigerleri-vuruyor-organ-ve-sistemleri-olumsuz-etkiliyor-958383.html": "2026-10-04T15:23:47.042097+00:00",
+    "https://www.sgk.gov.tr/duyuru/detay/02102026-SUT-Degisiklik-Tebligi-Islenmis-Guncel-2013-SUT-2026-10-02-02-50-06": "2026-10-06T08:07:04.147968+00:00",
+    "https://www.sgk.gov.tr/duyuru/detay/02102026-Tarihli-ve-33388-Sayili-Resm-Gazetede-Yayimlanan-Sosyal-Guvenlik-Kurumu-Saglik-Uygulama-Tebliginde-Degisiklik-Yapilmasina-Dair-Teblig-2026-10-02-02-48-55": "2026-10-06T08:07:04.147968+00:00"
   }
 }
