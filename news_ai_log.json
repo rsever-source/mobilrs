@@ -1,10 +1,5 @@
 [
   {
-    "run_at": "2026-10-04T23:13:00.186104+00:00",
-    "model": "gemini-3.5-flash-lite",
-    "candidates": []
-  },
-  {
     "run_at": "2026-10-05T05:45:59.192913+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
@@ -75,5 +70,25 @@
     "run_at": "2026-10-07T01:34:54.170065+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
+  },
+  {
+    "run_at": "2026-10-07T08:43:37.097540+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": [
+      {
+        "title": "İtalya Başbakanı Meloni, yapay zekaya karşı sesini tescil ettirdi",
+        "source": "TRT Haber",
+        "url": "https://www.trthaber.com/haber/guncel/italya-basbakani-meloni-yapay-zekaya-karsi-sesini-tescil-ettirdi-959299.html",
+        "published_at": "2026-10-06T12:22:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": false,
+        "duplicate_reason": "",
+        "generated_title": "İtalya Başbakanı Meloni, Yapay Zekaya Karşı Sesini Tescil Ettirdi",
+        "summary": "İtalya Başbakanı Giorgia Meloni, yapay zeka ürünü deepfake tehditlerine karşı sesini yasal güvence altına almak amacıyla Avrupa Birliği Fikri Mülkiyet Ofisine başvurdu. Başvuru kapsamında Meloni, İtalyanca Ben Giorgiayım ifadesini seslendirdiği dört saniyelik bir kaydı tescil ettirdi. Karar, İtalyanın gelecek yıl yapılacak genel seçimleri öncesinde alındı. Daha önce ABDli oyuncu Matthew McConaughey ve şarkıcı Taylor Swift de benzer adımlar atmıştı. Yapay zeka ses kopyaları gerçek kişilerin kayıtları üzerinden eğitilerek oluşturuluyor. Meloni 2024 yılında da kendisine ait deepfake pornografik videolar nedeniyle yasal süreç başlatmıştı.",
+        "detail_summary": "İtalya Başbakanı Giorgia Meloni, yapay zeka ürünü deepfake tehditlerine karşı sesini yasal güvence altına almak için Avrupa Birliği Fikri Mülkiyet Ofisine başvuru yaptı. Başbakanlık ofisinin de doğruladığı süreçte Meloni, İtalyanca Ben Giorgiayım anlamına gelen Io sono Giorgia ifadesini iki kez seslendirdiği dört saniyelik bir ses kaydını tescil ettirdi. Kimliğini yapay zeka platformlarının izinsiz kullanımına karşı korumak isteyen tek isim olmayan Meloni'nin yanı sıra ocak ayında ABDli oyuncu Matthew McConaughey, nisan ayında ise şarkıcı Taylor Swift benzer yollara başvurmuştu. Ağustos ayında da İngilterede 80den fazla sanatçı sesin izinsiz kullanımına karşı yasal düzenleme talep etmişti. Meloni'nin sesini tescil ettirme kararı ülkenin gelecek yıl yapılacak genel seçimleri öncesine denk geldi. Io sono Giorgia ifadesi başbakanın 2021 tarihli otobiyografisinin adı olup siyasi kampanyalarıyla özdeşleşmiştir. Meloni 2024 yılında kendisine ait deepfake pornografik videoların yayılması üzerine 100 bin euro tazminat talebinde bulunmuştu.",
+        "decision": "reject"
+      }
+    ]
   }
 ]
