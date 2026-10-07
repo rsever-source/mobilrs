@@ -298,6 +298,7 @@ async def api_otv_yenile(request: Request):
         data = await asyncio.to_thread(refresh_otv_data, True)
     return JSONResponse(data)
 
+# TEMP: Cloud Run Resmi Gazete bağlantı testi
 @app.get("/api/test/resmigazete")
 async def test_resmigazete():
     import requests as _requests
