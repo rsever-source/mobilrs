@@ -1,10 +1,5 @@
 [
   {
-    "run_at": "2026-10-05T14:46:18.569583+00:00",
-    "model": "gemini-3.5-flash-lite",
-    "candidates": []
-  },
-  {
     "run_at": "2026-10-06T08:07:04.147968+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": [
@@ -88,6 +83,11 @@
   },
   {
     "run_at": "2026-10-07T12:43:46.659021+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": []
+  },
+  {
+    "run_at": "2026-10-07T12:56:56.874760+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
   }
