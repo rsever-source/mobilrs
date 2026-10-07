@@ -1,25 +1,5 @@
 [
   {
-    "run_at": "2026-10-06T21:00:27.644147+00:00",
-    "model": "gemini-3.5-flash-lite",
-    "candidates": [
-      {
-        "title": "Çin, ABD'nin Tayvan'a F16 satışına karşı çıkıyor",
-        "source": "TRT Haber",
-        "url": "https://www.trthaber.com/haber/guncel/cin-abdnin-tayvana-f-16-satisina-karsi-cikiyor-959320.html",
-        "published_at": "2026-10-06T18:06:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "Haber, Çin ve ABD'nin Tayvan'a F-16 satışı konusundaki jeopolitik gelişmeleri içermekte olup engelli bireylerin hakları, bakımı, istihdamı veya sosyal yardımlarıyla doğrudan bir ilişkisi bulunmamaktadır.",
-        "generated_title": "Çin'den ABD'nin Tayvan'a F-16 Satışına Tepki",
-        "summary": "Çin, ABD'nin Tayvan'a modernize edilmiş F-16 savaş uçakları satmasına tepki gösterdi. Çin Dışişleri Bakanlığı Sözcüsü Guo Ciakun, ABD'nin tek Çin ilkesine uyması gerektiğini belirtti. Tayvan sorunumun Çin'in iç işi olduğu vurgulandı. Tayvan'ın satın aldığı uçakların ilk teslimatının yapıldığı bildirildi.",
-        "detail_summary": "Çin, ABD'nin egemenlik ihtilafı içindeki Tayvan'a modernize edilmiş F-16 savaş uçakları satmasına karşı çıktığını açıkladı. Çin Dışişleri Bakanlığı Sözcüsü Guo Ciakun, iki ülke liderlerinin mutabakatı doğrultusunda ABD'nin tek Çin ilkesine uymasını istedi. Tayvan sorunumun Çin'in iç işi olduğu ve dış müdahalenin kabul edilemeyeceği ifade edildi. Tayvan'ın satın aldığı F-16V Block 70 tipi ilk uçakların Taitung ilindeki Chihhang Hava Üssü'ne getirildiği aktarıldı. Tayvan'ın ABD'den bu tipte toplam 65 savaş uçağı satın aldığı kaydedildi.",
-        "decision": "reject"
-      }
-    ]
-  },
-  {
     "run_at": "2026-10-07T01:34:54.170065+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
@@ -61,6 +41,11 @@
   },
   {
     "run_at": "2026-10-07T13:43:12.252546+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": []
+  },
+  {
+    "run_at": "2026-10-07T14:18:12.016433+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
   }
