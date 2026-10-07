@@ -162,25 +162,55 @@ def _html_items(source):
 
 
 def _resmigazete_items(source):
+    # Resmî Gazete ana sayfasındaki fihrist HTML'ini kullan.
+    # RSS kullanma; mevcut sayıdaki mevzuat bağlantılarını doğrudan tara.
     response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
     keywords = [str(k).lower() for k in source.get("keywords", [])]
+
+    # Ana sayfadaki "07 Ekim 2026 Tarihli ve 33393 Sayılı Resmî Gazete"
+    # başlığından sayı tarihini al. Böylece her mevzuat linki için ayrıca
+    # makale sayfasına istek atıp tarih okumaya gerek kalmaz.
+    month_map = {
+        "ocak": 1, "şubat": 2, "mart": 3, "nisan": 4, "mayıs": 5, "haziran": 6,
+        "temmuz": 7, "ağustos": 8, "eylül": 9, "ekim": 10, "kasım": 11, "aralık": 12,
+    }
+    published_at = None
+    page_text = _clean(soup.get_text(" ", strip=True))
+    match = re.search(
+        r"(\d{1,2})\s+(ocak|şubat|mart|nisan|mayıs|haziran|temmuz|ağustos|eylül|ekim|kasım|aralık)\s+(\d{4})\s+Tarihli",
+        page_text,
+        re.IGNORECASE,
+    )
+    if match:
+        day, month_name, year = match.groups()
+        month = month_map.get(month_name.lower())
+        if month:
+            published_at = datetime(int(year), month, int(day), tzinfo=timezone.utc).isoformat()
+    if not published_at:
+        published_at = datetime.now(timezone.utc).isoformat()
+
     items = []
     seen = set()
+    allowed_hosts = ("https://www.resmigazete.gov.tr/", "https://resmigazete.gov.tr/")
     for a in soup.find_all("a", href=True):
         title = _clean(a.get_text(" ", strip=True))
         href = urljoin(source["url"], a.get("href", ""))
         if not title or len(title) < 8 or href in seen:
             continue
-        if not href.startswith(("https://www.resmigazete.gov.tr/", "https://resmigazete.gov.tr/")):
+        if not href.startswith(allowed_hosts):
             continue
         if not any(k in title.lower() for k in keywords):
             continue
         seen.add(href)
-        published_at = _article_published_at(href) or datetime.now(timezone.utc).isoformat()
-        items.append({"source": source["name"], "title": title[:300], "url": href,
-                      "description": title, "published_at": published_at})
+        items.append({
+            "source": source["name"],
+            "title": title[:300],
+            "url": href,
+            "description": title,
+            "published_at": published_at,
+        })
     return items
 
 
