@@ -160,7 +160,33 @@ def _html_items(source):
     return items
 
 
+
+def _resmigazete_items(source):
+    response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
+    response.raise_for_status()
+    soup = BeautifulSoup(response.text, "html.parser")
+    keywords = [str(k).lower() for k in source.get("keywords", [])]
+    items = []
+    seen = set()
+    for a in soup.find_all("a", href=True):
+        title = _clean(a.get_text(" ", strip=True))
+        href = urljoin(source["url"], a.get("href", ""))
+        if not title or len(title) < 8 or href in seen:
+            continue
+        if not href.startswith("https://www.resmigazete.gov.tr/"):
+            continue
+        if not any(k in title.lower() for k in keywords):
+            continue
+        seen.add(href)
+        published_at = _article_published_at(href) or datetime.now(timezone.utc).isoformat()
+        items.append({"source": source["name"], "title": title[:300], "url": href,
+                      "description": title, "published_at": published_at})
+    return items
+
+
 def _source_items(source):
+    if source.get("kind") == "resmigazete":
+        return _resmigazete_items(source)
     if source.get("kind") == "html":
         return _html_items(source)
     return _feed_items(source)
