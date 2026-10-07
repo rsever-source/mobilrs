@@ -305,7 +305,7 @@ async def test_resmigazete():
     started = time.monotonic()
     try:
         resp = _requests.get(
-            "https://resmigazete.gov.tr/",
+            "https://resmigazete.gov.tr/rss",
             timeout=(10, 30),
             headers={"User-Agent": "Mozilla/5.0 (compatible; engelli.me-haber-botu/1.0)"},
         )
