@@ -1,37 +1,5 @@
 [
   {
-    "run_at": "2026-10-06T08:07:04.147968+00:00",
-    "model": "gemini-3.5-flash-lite",
-    "candidates": [
-      {
-        "title": "2 Ekim 2026 02/10/2026 SUT Değişiklik Tebliği İşlenmiş Güncel 2013 SUT GENEL SAĞLIK SİGORTASI GENEL MÜDÜRLÜĞÜ",
-        "source": "Sosyal Güvenlik Kurumu – Duyurular",
-        "url": "https://www.sgk.gov.tr/duyuru/detay/02102026-SUT-Degisiklik-Tebligi-Islenmis-Guncel-2013-SUT-2026-10-02-02-50-06",
-        "published_at": "2026-10-02T00:00:00+00:00",
-        "status": "published",
-        "publish": true,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Sosyal Güvenlik Kurumu Güncel SUT Değişiklik Tebliğini Yayımladı",
-        "summary": "Sosyal Güvenlik Kurumu tarafından 2 Ekim 2026 tarihli SUT Değişiklik Tebliği işlenmiş güncel 2013 Sağlık Uygulama Tebliği erişime açıldı. Genel Sağlık Sigortası Genel Müdürlüğü bünyesinde hazırlanan güncel metin duyurular sayfasında paylaşıldı. Yapılan düzenlemeler sağlık hizmetleri ve geri ödeme kapsamındaki uygulamaları yakından ilgilendiriyor. Vatandaşlar ve ilgili taraflar güncel tebliğ metnine kurumun resmi internet sitesi üzerinden ulaşabiliyor. Bu tür güncellemeler sağlık ve tedavi süreçlerinde uygulanan kuralların takibi açısından önem taşıyor. Yeni metin sigortalıların faydalandığı sağlık hizmetlerinin güncel kurallarını içeriyor.",
-        "decision": "publish"
-      },
-      {
-        "title": "2 Ekim 2026 02/10/2026 Tarihli ve 33388 Sayılı Resmî Gazete’de Yayımlanan “Sosyal Güvenlik Kurumu Sağlık Uygulama Tebliğinde Değişiklik Yapılmasına Dair Tebliğ\" GENEL SAĞLIK SİGORTASI GENEL MÜDÜRLÜĞÜ",
-        "source": "Sosyal Güvenlik Kurumu – Duyurular",
-        "url": "https://www.sgk.gov.tr/duyuru/detay/02102026-Tarihli-ve-33388-Sayili-Resm-Gazetede-Yayimlanan-Sosyal-Guvenlik-Kurumu-Saglik-Uygulama-Tebliginde-Degisiklik-Yapilmasina-Dair-Teblig-2026-10-02-02-48-55",
-        "published_at": "2026-10-02T00:00:00+00:00",
-        "status": "gemini_decision",
-        "publish": true,
-        "duplicate": true,
-        "duplicate_reason": "Mevcut sitedeki 'Sosyal Güvenlik Kurumu Güncel SUT Değişiklik Tebliğini Yayımlanedı' başlıklı haber ile aynı 2 Ekim 2026 tarihli ve 33388 sayılı Resmi Gazete'de yayımlanan SUT değişiklik tebliğini ve EK-4A ilaçlar listesini anlatmaktadır.",
-        "generated_title": "Sosyal Güvenlik Kurumu Sağlık Uygulama Tebliğinde Değişiklik Yapıldı",
-        "summary": "Sosyal Güvenlik Kurumu tarafından 2 Ekim 2026 tarihli Resmi Gazete'de yeni bir tebliğ yayımlandı. Yayımlanan tebliğ ile Sağlık Uygulama Tebliği'nde değişiklikler gerçekleştirildi. Düzenleme kapsamında bedeli ödenecek ilaçlar listesi güncellendi. İlgili dokümanlara ve güncel listelere kurumun internet sitesinden erişilebilmektedir.",
-        "decision": "duplicate"
-      }
-    ]
-  },
-  {
     "run_at": "2026-10-06T15:14:28.385009+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
@@ -88,6 +56,11 @@
   },
   {
     "run_at": "2026-10-07T12:56:56.874760+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": []
+  },
+  {
+    "run_at": "2026-10-07T13:17:56.489289+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
   }
