@@ -173,7 +173,7 @@ def _resmigazete_items(source):
         href = urljoin(source["url"], a.get("href", ""))
         if not title or len(title) < 8 or href in seen:
             continue
-        if not href.startswith("https://www.resmigazete.gov.tr/"):
+        if not href.startswith(("https://www.resmigazete.gov.tr/", "https://resmigazete.gov.tr/")):
             continue
         if not any(k in title.lower() for k in keywords):
             continue
