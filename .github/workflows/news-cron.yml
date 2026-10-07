@@ -37,7 +37,7 @@ jobs:
       - name: Bağımlılıkları kur
         run: pip install requests beautifulsoup4
 
-      - name: DIAGNOSTIC: Resmî Gazete connectivity test
+      - name: "DIAGNOSTIC: Resmî Gazete connectivity test"
         run: |
           curl -sS -o /dev/null --max-time 60 \
             -A "engelli.me-haber-botu/1.0" \
