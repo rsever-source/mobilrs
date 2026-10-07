@@ -298,6 +298,32 @@ async def api_otv_yenile(request: Request):
         data = await asyncio.to_thread(refresh_otv_data, True)
     return JSONResponse(data)
 
+@app.get("/api/test/resmigazete")
+async def test_resmigazete():
+    import requests as _requests
+    started = time.monotonic()
+    try:
+        resp = _requests.get(
+            "https://resmigazete.gov.tr/",
+            timeout=(10, 30),
+            headers={"User-Agent": "Mozilla/5.0 (compatible; engelli.me-haber-botu/1.0)"},
+        )
+        return JSONResponse({
+            "ok": True,
+            "status_code": resp.status_code,
+            "elapsed_seconds": round(time.monotonic() - started, 3),
+            "bytes": len(resp.content),
+            "final_url": resp.url,
+            "content_type": resp.headers.get("content-type", ""),
+            "sample": resp.text[:200],
+        })
+    except Exception as exc:
+        return JSONResponse({
+            "ok": False,
+            "elapsed_seconds": round(time.monotonic() - started, 3),
+            "error": f"{type(exc).__name__}: {exc}",
+        }, status_code=502)
+
 @app.get("/api/news")
 async def api_news():
     try:
