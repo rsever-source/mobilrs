@@ -162,10 +162,19 @@ def _html_items(source):
 
 
 def _resmigazete_items(source):
-    # Resmî Gazete ana sayfasındaki fihrist HTML'ini kullan.
-    # RSS kullanma; mevcut sayıdaki mevzuat bağlantılarını doğrudan tara.
-    response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
-    response.raise_for_status()
+    # Resmî Gazete ana sayfası GitHub Actions gibi dış ağlardan zaman zaman
+    # bağlantıyı kabul edip yanıt vermeden bekleyebiliyor. Günlük sayı sayfası
+    # ise doğrudan ilgili günün fihristini verdiği için önce onu kullan.
+    # Her iki URL de resmî Resmî Gazete alan adına aittir.
+    today = (datetime.now(timezone.utc) + timedelta(hours=3)).strftime("%d.%m.%Y")
+    dated_url = urljoin(source["url"], today)
+    try:
+        response = requests.get(dated_url, headers={"User-Agent": UA}, timeout=TIMEOUT)
+        response.raise_for_status()
+    except Exception as exc:
+        print("Resmî Gazete günlük sayı sayfası okunamadı:", repr(exc))
+        response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
+        response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
     keywords = [str(k).lower() for k in source.get("keywords", [])]
 
