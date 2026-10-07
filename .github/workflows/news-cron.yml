@@ -37,6 +37,13 @@ jobs:
       - name: Bağımlılıkları kur
         run: pip install requests beautifulsoup4
 
+      - name: DIAGNOSTIC: Resmî Gazete connectivity test
+        run: |
+          curl -sS -o /dev/null --max-time 60 \
+            -A "engelli.me-haber-botu/1.0" \
+            -w "%{http_code} dns=%{time_namelookup} connect=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer}\n" \
+            https://www.resmigazete.gov.tr/
+
       - name: Haberleri Gemini ile güncelle
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
