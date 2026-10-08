@@ -1,10 +1,5 @@
 [
   {
-    "run_at": "2026-10-08T13:59:22.763308+00:00",
-    "model": "gemini-3.5-flash-lite",
-    "candidates": []
-  },
-  {
     "run_at": "2026-10-08T14:20:54.529655+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
@@ -90,6 +85,26 @@
         "generated_title": "Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği",
         "summary": "Bu haber mevcut sitede yer alan içerikle mükerrer olduğu için yayımlanmamıştır.",
         "detail_summary": "Bu haber mevcut sitede yer alan içerikle mükerrer olduğu için yayımlanmamıştır.",
+        "decision": "duplicate"
+      }
+    ]
+  },
+  {
+    "run_at": "2026-10-08T16:44:59.444849+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": [
+      {
+        "title": "Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği",
+        "source": "Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
+        "url": "https://www.tbb.gov.tr/tr/mevzuat-duyurulari/engelli-bireylere-yonelik-ozel-bakim-merkezleri-yonetmeligi",
+        "published_at": "2026-10-07T00:00:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": true,
+        "duplicate_reason": "Mevcut sitede aynı yönetmeliği ele alan 'Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği' başlıklı haber halihazırda yer almaktadır.",
+        "generated_title": "",
+        "summary": "",
+        "detail_summary": "",
         "decision": "duplicate"
       }
     ]
