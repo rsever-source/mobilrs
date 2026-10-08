@@ -36,22 +36,22 @@
     "allowed_prefix": "https://www.sgk.gov.tr/"
   },
   {
-    "name": "Resmî Gazete",
-    "kind": "resmigazete",
-    "url": "https://resmigazete.gov.tr/",
+    "name": "Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
+    "kind": "tbb_mevzuat",
+    "url": "https://www.tbb.gov.tr/tr/mevzuat-duyurulari",
     "keywords": [
       "engelli",
-      "özel tüketim vergisi",
       "ötv",
+      "özel tüketim vergisi",
       "malul",
       "erişilebilirlik",
-      "ağır engelli",
       "engelli raporu",
       "engelli kimlik",
-      "4760 sayılı özel tüketim vergisi kanunu",
-      "ötv istisnası",
-      "ötv istisnasının",
-      "yerli katkı oranı"
+      "bakım",
+      "sosyal yardım",
+      "ulaşım",
+      "ücretsiz seyahat",
+      "engelli istihdam"
     ]
   }
 ]
