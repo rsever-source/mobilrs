@@ -18,7 +18,7 @@ MAX_PENDING = 30
 MAX_AI_CANDIDATES = 12
 LOOKBACK_HOURS = 168
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
-UA = "EngelliMe-NewsBot/1.0 (+https://engelli.me)"
+UA = "Mozilla/5.0 (compatible; EngelliMe-News/1.0; +https://engelli.me)"
 TIMEOUT = 20
 AI_TIMEOUT = 60
 
