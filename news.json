@@ -1,6 +1,16 @@
 {
-  "updated_at": "2026-10-08T14:20:54.529655+00:00",
+  "updated_at": "2026-10-08T14:34:14.432928+00:00",
   "items": [
+    {
+      "id": "19b97d3313ef058a52fa",
+      "title": "Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği",
+      "summary": "07 Ekim 2026 Tarihli ve 33393 Sayılı Resmî Gazete' de yayımlanmıştır.",
+      "detail_summary": "07 Ekim 2026 Tarihli ve 33393 Sayılı Resmî Gazete' de yayımlanmıştır.",
+      "source": "Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
+      "url": "https://www.tbb.gov.tr/tr/mevzuat-duyurulari/engelli-bireylere-yonelik-ozel-bakim-merkezleri-yonetmeligi",
+      "published_at": "2026-10-07T00:00:00+00:00",
+      "created_at": "2026-10-08T14:34:14.432928+00:00"
+    },
     {
       "id": "2b29cc734432099d7572",
       "title": "Son İki Yılda 5,1 Milyon Kişiye Meme Kanseri Taraması Yapıldı",
@@ -81,15 +91,6 @@
       "url": "https://www.aile.gov.tr/eyhgm/haberler/1-ekim-dunya-yaslilar-gunu-nde-81-ilde-es-zamanli-yuruyusler-gerceklestirilecek/",
       "published_at": "2026-09-30T00:00:00+00:00",
       "created_at": "2026-09-29T22:08:22.549473+00:00"
-    },
-    {
-      "id": "81c8f98e8016c545add8",
-      "title": "Konya'da Engelli Aktif Yaşam Merkezi Açıldı",
-      "summary": "Aile ve Sosyal Hizmetler Bakanlığı tarafından Konya'da Karatay Engelli Aktif Yaşam Merkezi'nin açılışı gerçekleştirildi. Bakan Mahinur Özdemir Göktaş, açılış töreninde yaptığı konuşmada gündüzlü hizmetlerin önemine dikkat çekti. Merkez bünyesinde müzik sınıfı, ergoterapi ve spor eğitimleri gibi çok yönlü destekler sunuluyor. Bakanlık ayrıca Aile Temelli Ulusal Erken Müdahale Sistemi'ni bu merkezde pilot uygulama olarak hayata geçirdi. Açılışın ardından Bakan Göktaş, SOBE Otizm Spor Oyunları'nın açılış kortejine de katıldı.",
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-konya-da-engelli-aktif-yasam-merkezi-acilisinda-konustu/",
-      "published_at": "2026-09-30T00:00:00+00:00",
-      "created_at": "2026-09-29T22:08:22.549473+00:00"
     }
   ],
   "pending": [],
@@ -108,6 +109,7 @@
     "https://www.sgk.gov.tr/duyuru/detay/02102026-Tarihli-ve-33388-Sayili-Resm-Gazetede-Yayimlanan-Sosyal-Guvenlik-Kurumu-Saglik-Uygulama-Tebliginde-Degisiklik-Yapilmasina-Dair-Teblig-2026-10-02-02-48-55": "2026-10-06T08:07:04.147968+00:00",
     "https://www.trthaber.com/haber/guncel/cin-abdnin-tayvana-f-16-satisina-karsi-cikiyor-959320.html": "2026-10-06T21:00:27.644147+00:00",
     "https://www.trthaber.com/haber/guncel/italya-basbakani-meloni-yapay-zekaya-karsi-sesini-tescil-ettirdi-959299.html": "2026-10-07T08:43:37.097540+00:00",
-    "https://www.trthaber.com/haber/saglik/anne-karninda-kan-nakli-ile-ikinci-cocugunu-kucagina-aldi-959473.html": "2026-10-08T06:09:37.687285+00:00"
+    "https://www.trthaber.com/haber/saglik/anne-karninda-kan-nakli-ile-ikinci-cocugunu-kucagina-aldi-959473.html": "2026-10-08T06:09:37.687285+00:00",
+    "https://www.tbb.gov.tr/tr/mevzuat-duyurulari/engelli-bireylere-yonelik-ozel-bakim-merkezleri-yonetmeligi": "2026-10-08T14:34:14.432928+00:00"
   }
 }
