@@ -432,6 +432,7 @@ Bu "summary" alanı haber kartlarında ve mobil haber detayında kullanılır; g
 Ayrıca "detail_summary" alanında aynı haberi biraz daha ayrıntılı anlatan 8-10 kısa ve tam cümle oluştur.
 "detail_summary" yeni bilgi uydurmasın; yalnızca kaynak metnindeki doğrulanabilir ayrıntıları daha düzenli biçimde anlatsın.
 İki özet aynı olmasın; detail_summary, summary'den yalnızca gerektiği kadar daha ayrıntılı olsun.
+detail_summary metnini tek ve uzun bir paragraf halinde yazma. Her ayrı bilgi veya cümle yeni bir satırda yer alsın ve metin okunabilir bir düzende ilerlesin; mümkünse bilgi grupları arasında birer boş satır bırak.
 Yalnızca kaynakta doğrulanabilen bilgileri içersin.
 Başlığı kaynağın anlamını koruyarak kısa ve doğal Türkçe yaz.
 Kaynak: {item["source"]}
