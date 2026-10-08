@@ -344,6 +344,20 @@ def update_news():
         except Exception as exc:
             print("Kaynak okunamadı:", source["name"], repr(exc))
 
+    # Daha önce kısa özetle kaydedilmiş TBB haberi varsa bir kez yeniden işle.
+    # Böylece yeni detail_summary alanı mevcut kayda da uygulanır.
+    for existing in existing_items:
+        if (
+            existing.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları"
+            and existing.get("detail_summary")
+            and existing.get("detail_summary") == existing.get("summary")
+            and existing.get("url")
+            and existing.get("id") not in candidate_ids
+        ):
+            candidates.append(dict(existing))
+            candidate_ids.add(existing.get("id"))
+            break
+
     print("Kaynak kayıtları:", source_counts)
     print("AI adayları:", len(candidates))
     added = []
@@ -359,7 +373,21 @@ def update_news():
             "status": "not_sent",
         }
         try:
-            article = item.get("description", "") if item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları" else _article_text(item["url"])
+            if item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları":
+                tbb_response = requests.get(item["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
+                tbb_response.raise_for_status()
+                tbb_soup = BeautifulSoup(tbb_response.text, "html.parser")
+                official_url = ""
+                for link in tbb_soup.find_all("a", href=True):
+                    href = urljoin(item["url"], link.get("href", ""))
+                    if "resmigazete.gov.tr/eskiler/" in href:
+                        official_url = href
+                        break
+                if not official_url:
+                    raise RuntimeError("TBB duyurusunda Resmî Gazete bağlantısı bulunamadı")
+                article = _article_text(official_url)
+            else:
+                article = _article_text(item["url"])
             source_context = ""
             if item.get("source") == "Sosyal Güvenlik Kurumu – Duyurular":
                 source_context = """SGK DUYURULARI İÇİN EK KURAL:
@@ -480,7 +508,8 @@ Kaynak metni:
             ai_log["candidates"].append(ai_entry)
             failed.append(item)
 
-    merged = added + existing_items
+    added_ids = {item.get("id") for item in added}
+    merged = added + [item for item in existing_items if item.get("id") not in added_ids]
     merged.sort(key=lambda item: item.get("published_at") or item.get("created_at") or "", reverse=True)
     failed_by_id = {item["id"]: item for item in failed}
     result = {
