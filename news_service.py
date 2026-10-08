@@ -167,7 +167,7 @@ def _resmigazete_items(source):
     # ise doğrudan ilgili günün fihristini verdiği için önce onu kullan.
     # Her iki URL de resmî Resmî Gazete alan adına aittir.
     today = (datetime.now(timezone.utc) + timedelta(hours=3)).strftime("%d.%m.%Y")
-    dated_url = urljoin(source["url"], today)
+    dated_url = urljoin(source["url"], f"fihrist?tarih={datetime.now(timezone.utc).strftime('%Y-%m-%d')}")
     try:
         response = requests.get(dated_url, headers={"User-Agent": UA}, timeout=TIMEOUT)
         response.raise_for_status()
