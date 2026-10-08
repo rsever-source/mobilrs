@@ -457,7 +457,7 @@ Kaynak metni:
             if item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları":
                 title = item.get("title", "")
                 summary = item.get("description", "")
-                detail_summary = summary
+                detail_summary = _clean(result.get("detail_summary"))
             else:
                 summary = _clean(result.get("summary"))
                 detail_summary = _clean(result.get("detail_summary")) or summary
