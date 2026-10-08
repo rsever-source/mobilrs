@@ -1,10 +1,5 @@
 [
   {
-    "run_at": "2026-10-08T13:43:35.038071+00:00",
-    "model": "gemini-3.5-flash-lite",
-    "candidates": []
-  },
-  {
     "run_at": "2026-10-08T13:59:22.763308+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
@@ -75,6 +70,26 @@
         "generated_title": "Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği Yayımlandı",
         "summary": "Aile ve Sosyal Hizmetler Bakanlığı ile Hazine ve Maliye Bakanlığı tarafından hazırlanan Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği Resmî Gazete'de yayımlandı. Yönetmelik, özel bakım merkezlerinin açılış, başvuru, çalışma, fiziki şartlar, personel standardı ve denetim usullerini belirliyor. Açılış değerlendirme komisyonu, bakım merkezi yönetim sistemi ve başvuru süreçlerine ilişkin detaylar düzenlendi. Merkezlerin açılış aşamaları başvuru, konum uygunluk, ön izin, açılış onayı ve faaliyet izni olarak belirlendi. Engelli bireylerin haklarına saygı gösterilmesi ve ev ortamına yakın yaşam alanlarının oluşturulması esas alındı. İşlemlerin Bakım Merkezi Yönetim Sistemi üzerinden yürütülmesi zorunlu kılındı.",
         "detail_summary": "Aile ve Sosyal Hizmetler Bakanlığı ile Hazine ve Maliye Bakanlığı tarafından hazırlanan Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği 7 Ekim 2026 tarihli Resmî Gazete'de yayımlanarak yürürlüğe girdi. Yönetmelik; özel bakım merkezlerinin başvuru, açılış, çalışma, fiziki şartlar, personel standardı, denetlenmeleri ve ücret tespiti gibi usul ve esasları düzenlemektedir. Sosyal Hizmetler Kanunu ve Engelliler Hakkında Kanun hükümlerine dayanılarak hazırlanan metin, açılış değerlendirme komisyonunun görevleri ve Bakım Merkezi Yönetim Sistemi (BMYS) üzerinden yürütülecek işlemleri kapsamaktadır. Temel ilkeler arasında engelli bireylerin insan onuruna saygı duyulması, aile bütünlüğünün korunması, ayrımcılığın önlenmesi ve erişilebilirliğin sağlanması yer almaktadır. Merkez açmak isteyen gerçek ve tüzel kişilerin uyması gereken başvuru, konum uygunluk, ön izin, açılış onayı ve faaliyet izni aşamaları detaylandırılmıştır. Ruhsal engelli bireylerin sağlık kuruluşlarından sürekli destek alması ve çalışan engellilerin istihdamına yönelik kurumlar arası iş birliği yapılması kararlaştırılmıştır.",
+        "decision": "duplicate"
+      }
+    ]
+  },
+  {
+    "run_at": "2026-10-08T16:37:30.804288+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": [
+      {
+        "title": "Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği",
+        "source": "Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
+        "url": "https://www.tbb.gov.tr/tr/mevzuat-duyurulari/engelli-bireylere-yonelik-ozel-bakim-merkezleri-yonetmeligi",
+        "published_at": "2026-10-07T00:00:00+00:00",
+        "status": "gemini_decision",
+        "publish": false,
+        "duplicate": true,
+        "duplicate_reason": "Mevcut sitede aynı gün (07 Ekim 2026) yayımlanan Resmi Gazete kararına ait 'Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği' konulu haber halihazırda bulunmaktadır.",
+        "generated_title": "Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği",
+        "summary": "Bu haber mevcut sitede yer alan içerikle mükerrer olduğu için yayımlanmamıştır.",
+        "detail_summary": "Bu haber mevcut sitede yer alan içerikle mükerrer olduğu için yayımlanmamıştır.",
         "decision": "duplicate"
       }
     ]
