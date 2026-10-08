@@ -1,25 +1,5 @@
 [
   {
-    "run_at": "2026-10-08T06:09:37.687285+00:00",
-    "model": "gemini-3.5-flash-lite",
-    "candidates": [
-      {
-        "title": "Anne karnında kan nakli ile ikinci çocuğunu kucağına aldı",
-        "source": "TRT Haber – Sağlık",
-        "url": "https://www.trthaber.com/haber/saglik/anne-karninda-kan-nakli-ile-ikinci-cocugunu-kucagina-aldi-959473.html",
-        "published_at": "2026-10-08T02:26:00+00:00",
-        "status": "gemini_decision",
-        "publish": false,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Anne karnında kan nakli ile ikinci çocuğunu kucağına aldı",
-        "summary": "Konya'da nadir görülen kan uyuşmazlığı nedeniyle daha önce bebeklerini kaybeden bir anne, uygulanan özel tedavi sayesinde ikinci çocuğunu sağlıklı şekilde kucağına aldı. Necmettin Erbakan Üniversitesi Tıp Fakültesi Hastanesi'nde gerçekleştirilen operasyonda anne karnındaki bebeğe özel yöntemle kan nakli yapıldı. Uzman doktorlar gözetiminde sürdürülen zorlu süreç başarıyla sonuçlandı. Aile, yaşanan bu tıbbi gelişmeyle büyük bir mutluluk yaşadı. Yapılan başarılı müdahaleler sayesinde bebek sağlıklı bir şekilde dünyaya geldi.",
-        "detail_summary": "Konya'da nadir görülen subgrup uyuşmazlığı nedeniyle daha önce bebeklerini kaybeden 40 yaşındaki Emine Dokuz, Necmettin Erbakan Üniversitesi Tıp Fakültesi Hastanesi'nde tedavi gördü. Prof. Dr. Ali Acar'ın yürüttüğü süreçte, anne karnındaki bebeğe iğne yardımıyla özel hazırlanan kan nakli gerçekleştirildi. İlk çocuğunda 10 kez bu işlemi yaşayan anne, ikinci gebeliğinde de 6 kez anne karnında kan nakli tedavisi aldı. Yaklaşık 36. haftada gerçekleştirilen başarılı doğumla İnci Ravza isimli bebek sağlıklı şekilde dünyaya geldi. Aile, zorlu geçen tedavi sürecinin ardından çocuklarına kavuşmanın mutluluğunu yaşadığını belirtti. Uzmanlar, bu tür vakalarda erken müdahale ve doğru zamanlamanın hayati önem taşıdığını vurguladı.",
-        "decision": "reject"
-      }
-    ]
-  },
-  {
     "run_at": "2026-10-08T13:28:29.685798+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
@@ -63,5 +43,10 @@
         "decision": "publish"
       }
     ]
+  },
+  {
+    "run_at": "2026-10-08T16:00:09.956055+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": []
   }
 ]
