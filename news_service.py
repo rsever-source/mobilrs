@@ -167,13 +167,14 @@ def _resmigazete_items(source):
     # ise doğrudan ilgili günün fihristini verdiği için önce onu kullan.
     # Her iki URL de resmî Resmî Gazete alan adına aittir.
     today = (datetime.now(timezone.utc) + timedelta(hours=3)).strftime("%d.%m.%Y")
-    dated_url = urljoin(source["url"], f"fihrist?tarih={datetime.now(timezone.utc).strftime('%Y-%m-%d')}")
+    dated_url = urljoin(source["url"], today)
     try:
         response = requests.get(dated_url, headers={"User-Agent": UA}, timeout=TIMEOUT)
         response.raise_for_status()
     except Exception as exc:
         print("Resmî Gazete günlük sayı sayfası okunamadı:", repr(exc))
-        response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
+        fihrist_url = urljoin(source["url"], f"fihrist?tarih={datetime.now(timezone.utc).strftime('%Y-%m-%d')}")
+        response = requests.get(fihrist_url, headers={"User-Agent": UA}, timeout=TIMEOUT)
         response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
     keywords = [str(k).lower() for k in source.get("keywords", [])]
