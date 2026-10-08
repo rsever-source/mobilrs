@@ -220,8 +220,9 @@ def _gemini(prompt):
                     "title": {"type": "STRING"},
                     "summary": {"type": "STRING"},
                     "short_summary": {"type": "STRING"},
+                    "detail_summary": {"type": "STRING"},
                 },
-                "required": ["publish", "duplicate", "duplicate_reason", "title", "summary"],
+                "required": ["publish", "duplicate", "duplicate_reason", "title", "summary", "detail_summary"],
             },
         },
     }
@@ -311,8 +312,9 @@ KURALLAR:
 3. ODAK: Merkez açma, şirket devri, inşaat ruhsatı gibi bürokratik konuları alma. Sadece engelli birey ve ailesini doğrudan ilgilendiren bakım, gelir hesabı, evde destek, refakat, izin, ücretsiz kabul, ödeme ve benzeri hükümleri seç.
 4. short_summary: Yalnızca bir kısa cümle yaz. Yorum veya değerlendirme yapma.
 5. summary: Yalnızca en önemli ilgili maddeleri kısa biçimde aktar. Her biri ayrı satırda "- Madde X: ..." biçiminde olsun ve 800 karakteri geçmesin.
-6. summary içinde yalnızca metinden doğrulanabilen madde numaraları ve hükümler yer alsın.
-7. Sadece geçerli JSON döndür.
+6. detail_summary: Aynı doğrulanmış maddeleri daha ayrıntılı açıkla. Her ilgili maddeyi ayrı satırda "- Madde X: ..." biçiminde aktar; toplamı 1600 karakteri geçmesin. Yeni bilgi veya yorum ekleme.
+7. summary ve detail_summary içinde yalnızca metinden doğrulanabilen madde numaraları ve hükümler yer alsın.
+8. Sadece geçerli JSON döndür.
 
 Kaynak başlığı: {item["title"]}
 Resmî Gazete metni:
@@ -377,7 +379,8 @@ duplicate_reason alanında kısa olarak neden mükerrer olduğunu belirt.
 
 Mükerrer değilse:
 Özgün ve tarafsız Türkçe özet hazırla; kaynak metnini kopyalama.
-Özet 6-7 kısa ve tam cümleden oluşsun. Cümleyi ortasında kesme veya yarım bırakma.
+summary alanı 6-7 kısa ve tam cümleden oluşsun. Cümleyi ortasında kesme veya yarım bırakma.
+detail_summary alanı aynı haberin PC/desktop görünümü için daha ayrıntılı sürümü olsun: 10-12 kısa ve tam cümleyle, olayın önemli ayrıntılarını, tarihleri, tutarları, kurumları ve uygulanacak hususları yalnızca kaynakta doğrulanabildiği ölçüde açıkla. detail_summary 1600 karakteri geçmesin.
 Yalnızca kaynakta doğrulanabilen bilgileri içersin.
 Başlığı kaynağın anlamını koruyarak kısa ve doğal Türkçe yaz.
 Kaynak: {item["source"]}
@@ -407,16 +410,16 @@ Kaynak metni:
             if not title:
                 continue
             if item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları":
-                if not short_summary or not summary:
+                if not short_summary or not summary or not _clean(result.get("detail_summary")):
                     continue
                 published_summary = short_summary[:500]
-                detail_summary = summary[:900]
+                detail_summary = _clean(result.get("detail_summary"))[:1600]
             else:
-                if not summary:
+                if not summary or not _clean(result.get("detail_summary")):
                     continue
                 first_sentence = re.match(r"^.*?[.!?](?:\\s|$)", summary)
                 published_summary = (first_sentence.group(0).strip() if first_sentence else summary)[:500]
-                detail_summary = summary[:900]
+                detail_summary = _clean(result.get("detail_summary"))[:1600]
             added.append({
                 "id": item["id"], "title": title[:180], "summary": published_summary,
                 "detail_summary": detail_summary,
