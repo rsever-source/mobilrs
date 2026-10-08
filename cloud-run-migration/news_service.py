@@ -175,6 +175,25 @@ def _strong_relevance(item):
     text = f"{item.get('title', '')} {item.get('description', '')}".lower()
     return any(keyword in text for keyword in STRONG_KEYWORDS)
 
+def _tbb_regulation_text(url):
+    response = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT)
+    response.raise_for_status()
+    soup = BeautifulSoup(response.text, "html.parser")
+    official_url = ""
+    for a in soup.find_all("a", href=True):
+        href = urljoin(url, a.get("href", ""))
+        if "resmigazete.gov.tr/eskiler/" in href:
+            official_url = href
+            break
+    if not official_url:
+        raise RuntimeError("TBB duyurusunda Resmî Gazete bağlantısı bulunamadı")
+    detail = requests.get(official_url, headers={"User-Agent": UA}, timeout=TIMEOUT)
+    detail.raise_for_status()
+    detail_soup = BeautifulSoup(detail.text, "html.parser")
+    for tag in detail_soup(["script", "style", "noscript", "svg", "nav", "footer"]):
+        tag.decompose()
+    return _clean(detail_soup.get_text(" ", strip=True))[:30000], official_url
+
 def _article_text(url):
     response = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT, allow_redirects=True)
     response.raise_for_status()
@@ -200,6 +219,7 @@ def _gemini(prompt):
                     "duplicate_reason": {"type": "STRING"},
                     "title": {"type": "STRING"},
                     "summary": {"type": "STRING"},
+                    "short_summary": {"type": "STRING"},
                 },
                 "required": ["publish", "duplicate", "duplicate_reason", "title", "summary"],
             },
@@ -278,8 +298,36 @@ def update_news():
     failed = []
     for item in candidates[:MAX_AI_CANDIDATES]:
         try:
-            article = _article_text(item["url"])
-            prompt = f"""Sen engelli.me için çalışan bir haber editörüsün.
+            is_tbb = item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları"
+            if is_tbb:
+                article, official_url = _tbb_regulation_text(item["url"])
+                item["official_url"] = official_url
+                prompt = f"""Aşağıdaki Resmî Gazete yönetmelik metnini Engelli.me için analiz et.
+Sadece verilen Resmî Gazete metnindeki doğrulanabilir bilgileri kullan.
+
+KURALLAR:
+1. SIFIR YORUM: Yorum, tahmin veya metin dışında bilgi ekleme.
+2. MADDE NUMARASI: Yalnızca metinde açıkça bulunan madde numaralarını kullan. Madde numarası tahmin etme veya oluşturma.
+3. ODAK: Merkez açma, şirket devri, inşaat ruhsatı gibi bürokratik konuları alma. Sadece engelli birey ve ailesini doğrudan ilgilendiren bakım, gelir hesabı, evde destek, refakat, izin, ücretsiz kabul, ödeme ve benzeri hükümleri seç.
+4. short_summary: Yalnızca bir kısa cümle yaz. Yorum veya değerlendirme yapma.
+5. summary: Yalnızca en önemli ilgili maddeleri kısa biçimde aktar. Her biri ayrı satırda "- Madde X: ..." biçiminde olsun ve 800 karakteri geçmesin.
+6. summary içinde yalnızca metinden doğrulanabilen madde numaraları ve hükümler yer alsın.
+7. Sadece geçerli JSON döndür.
+
+Kaynak başlığı: {item["title"]}
+Resmî Gazete metni:
+{article}
+
+Aşağıdaki mevcut haberlerle aynı olay/gelişme olup olmadığını da değerlendir.
+Mevcut sitedeki haberler:
+{{existing_news}}
+
+Mükerrer ise duplicate=true ve publish=false ver.
+Mükerrer değilse publish=true ver.
+"""
+            else:
+                article = _article_text(item["url"])
+                prompt = f"""Sen engelli.me için çalışan bir haber editörüsün.
 Yalnızca verilen kaynak metnindeki doğrulanabilir bilgileri kullan.
 Haber engelli bireylerin haklarını, gelir veya sosyal yardımlarını, bakımını, istihdamını,
 eğitimini, sağlığını, ulaşımını, erişilebilirliğini, araç/ÖTV durumunu veya ilgili mevzuatı
@@ -354,12 +402,25 @@ Kaynak metni:
             if not result.get("publish"):
                 continue
             summary = _clean(result.get("summary"))
+            short_summary = _clean(result.get("short_summary"))
             title = _clean(result.get("title"))
-            if not summary or not title:
+            if not title:
                 continue
+            if item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları":
+                if not short_summary or not summary:
+                    continue
+                published_summary = short_summary[:500]
+                detail_summary = summary[:900]
+            else:
+                if not summary:
+                    continue
+                first_sentence = re.match(r"^.*?[.!?](?:\\s|$)", summary)
+                published_summary = (first_sentence.group(0).strip() if first_sentence else summary)[:500]
+                detail_summary = summary[:900]
             added.append({
-                "id": item["id"], "title": title[:180], "summary": summary[:900],
-                "source": item["source"], "url": item["url"],
+                "id": item["id"], "title": title[:180], "summary": published_summary,
+                "detail_summary": detail_summary,
+                "source": item["source"], "url": item.get("official_url") or item["url"],
                 "published_at": item.get("published_at"), "created_at": now.isoformat()
             })
         except Exception as exc:
