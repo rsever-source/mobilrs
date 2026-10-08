@@ -413,7 +413,10 @@ Kaynak özeti: {item.get("description", "")}
 Kaynak metni:
 {article}
 """
-            existing_news = existing_items + added
+            existing_news = [
+                n for n in existing_items
+                if n.get("id") != item.get("id")
+            ] + added
             existing_news_text = "\n".join(
                 f"- Başlık: {n.get('title', '')}\n  Özet: {n.get('summary', '')}"
                 for n in existing_news
