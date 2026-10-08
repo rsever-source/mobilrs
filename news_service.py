@@ -190,7 +190,7 @@ def _tbb_mevzuat_items(source):
             detail_soup = BeautifulSoup(detail.text, "html.parser")
             detail_text = _clean(detail_soup.get_text(" ", strip=True))
             marker = re.search(
-                r"([0-9]{1,2}\s+(?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+[0-9]{4}\s+Tarihli.*?Resmî Gazete['’]?de yayımlanmıştır\.)",
+                r"([0-9]{1,2}\s+(?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+[0-9]{4}\s+Tarihli.*?Resmî Gazete['’]?\s*de yayımlanmıştır\.)",
                 detail_text,
                 re.IGNORECASE,
             )
