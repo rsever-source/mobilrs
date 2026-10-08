@@ -375,6 +375,14 @@ def update_news():
             else:
                 article = _article_text(item["url"])
             source_context = ""
+            if item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları":
+                source_context = """TBB / RESMÎ GAZETE DUYURULARI İÇİN EK KURAL:
+detail_summary içinde yönetmelikteki önemli maddeleri sırayla ve ayrı ayrı ver.
+Her madde mutlaka yeni bir satırda başlasın; maddeleri aynı paragrafta birleştirme.
+Format: "- Madde X: açıklama"
+Mümkünse maddelerin arasında birer boş satır bırak.
+Yalnızca Resmî Gazete metninde doğrulanabilen madde numaralarını ve içerikleri kullan; madde numarası uydurma.
+"""
             if item.get("source") == "Sosyal Güvenlik Kurumu – Duyurular":
                 source_context = """SGK DUYURULARI İÇİN EK KURAL:
 Bu kaynak SGK'nın resmi Duyurular sayfasıdır. Kaynağın SGK olması tek başına yayınlama nedeni değildir.
@@ -471,7 +479,9 @@ Kaynak metni:
             if item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları":
                 title = item.get("title", "")
                 summary = item.get("description", "")
-                detail_summary = _clean(result.get("detail_summary"))
+                raw_detail_summary = result.get("detail_summary")
+                detail_summary = re.sub(r"\s*([•-]\s*Madde\s+)", r"\n\n- Madde ", str(raw_detail_summary or ""), flags=re.IGNORECASE).strip()
+                detail_summary = re.sub(r"(?<!^)\s*- Madde\s+", "- Madde ", detail_summary)
             else:
                 summary = _clean(result.get("summary"))
                 detail_summary = _clean(result.get("detail_summary")) or summary
