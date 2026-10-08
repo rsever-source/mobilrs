@@ -161,72 +161,64 @@ def _html_items(source):
 
 
 
-def _resmigazete_items(source):
-    # Resmî Gazete ana sayfası GitHub Actions gibi dış ağlardan zaman zaman
-    # bağlantıyı kabul edip yanıt vermeden bekleyebiliyor. Günlük sayı sayfası
-    # ise doğrudan ilgili günün fihristini verdiği için önce onu kullan.
-    # Her iki URL de resmî Resmî Gazete alan adına aittir.
-    today = (datetime.now(timezone.utc) + timedelta(hours=3)).strftime("%d.%m.%Y")
-    dated_url = urljoin(source["url"], today)
-    try:
-        response = requests.get(dated_url, headers={"User-Agent": UA}, timeout=TIMEOUT)
-        response.raise_for_status()
-    except Exception as exc:
-        print("Resmî Gazete günlük sayı sayfası okunamadı:", repr(exc))
-        fihrist_url = urljoin(source["url"], f"fihrist?tarih={datetime.now(timezone.utc).strftime('%Y-%m-%d')}")
-        response = requests.get(fihrist_url, headers={"User-Agent": UA}, timeout=TIMEOUT)
-        response.raise_for_status()
+def _tbb_mevzuat_items(source):
+    response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
+    response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
     keywords = [str(k).lower() for k in source.get("keywords", [])]
-
-    # Ana sayfadaki "07 Ekim 2026 Tarihli ve 33393 Sayılı Resmî Gazete"
-    # başlığından sayı tarihini al. Böylece her mevzuat linki için ayrıca
-    # makale sayfasına istek atıp tarih okumaya gerek kalmaz.
-    month_map = {
-        "ocak": 1, "şubat": 2, "mart": 3, "nisan": 4, "mayıs": 5, "haziran": 6,
-        "temmuz": 7, "ağustos": 8, "eylül": 9, "ekim": 10, "kasım": 11, "aralık": 12,
-    }
-    published_at = None
-    page_text = _clean(soup.get_text(" ", strip=True))
-    match = re.search(
-        r"(\d{1,2})\s+(ocak|şubat|mart|nisan|mayıs|haziran|temmuz|ağustos|eylül|ekim|kasım|aralık)\s+(\d{4})\s+Tarihli",
-        page_text,
-        re.IGNORECASE,
-    )
-    if match:
-        day, month_name, year = match.groups()
-        month = month_map.get(month_name.lower())
-        if month:
-            published_at = datetime(int(year), month, int(day), tzinfo=timezone.utc).isoformat()
-    if not published_at:
-        published_at = datetime.now(timezone.utc).isoformat()
-
     items = []
     seen = set()
-    allowed_hosts = ("https://www.resmigazete.gov.tr/", "https://resmigazete.gov.tr/")
+
     for a in soup.find_all("a", href=True):
-        title = _clean(a.get_text(" ", strip=True))
         href = urljoin(source["url"], a.get("href", ""))
-        if not title or len(title) < 8 or href in seen:
+        title = _clean(a.get_text(" ", strip=True))
+        if not title or len(title) < 12 or href in seen:
             continue
-        if not href.startswith(allowed_hosts):
+        if not href.startswith("https://www.tbb.gov.tr/tr/mevzuat-duyurulari/"):
+            continue
+        if href.rstrip("/") == source["url"].rstrip("/"):
             continue
         if not any(k in title.lower() for k in keywords):
             continue
+
         seen.add(href)
+        published_at = _article_published_at(href)
+        if not published_at:
+            published_at = _title_published_at(title)
+        if not published_at:
+            continue
+
+        # TBB duyurusunda başlık ve Resmî Gazete'de yayımlandığına dair
+        # tek cümlelik kaynak bilgisi yeterli; Gemini'ye ayrıca özetlettirmeyiz.
+        description = ""
+        try:
+            detail = requests.get(href, headers={"User-Agent": UA}, timeout=TIMEOUT)
+            detail.raise_for_status()
+            detail_soup = BeautifulSoup(detail.text, "html.parser")
+            detail_text = _clean(detail_soup.get_text(" ", strip=True))
+            marker = re.search(
+                r"([0-9]{1,2}\s+(?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+[0-9]{4}\s+Tarihli.*?Resmî Gazete['’]?de yayımlanmıştır\.)",
+                detail_text,
+                re.IGNORECASE,
+            )
+            if marker:
+                description = marker.group(1)
+        except Exception as exc:
+            print("TBB mevzuat duyurusu okunamadı:", href, repr(exc))
+
         items.append({
             "source": source["name"],
             "title": title[:300],
             "url": href,
-            "description": title,
+            "description": description or title,
             "published_at": published_at,
         })
+
     return items
 
-
 def _source_items(source):
-    if source.get("kind") == "resmigazete":
-        return _resmigazete_items(source)
+    if source.get("kind") == "tbb_mevzuat":
+        return _tbb_mevzuat_items(source)
     if source.get("kind") == "html":
         return _html_items(source)
     return _feed_items(source)
@@ -357,7 +349,7 @@ def update_news():
             "status": "not_sent",
         }
         try:
-            article = _article_text(item["url"])
+            article = item.get("description", "") if item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları" else _article_text(item["url"])
             source_context = ""
             if item.get("source") == "Sosyal Güvenlik Kurumu – Duyurular":
                 source_context = """SGK DUYURULARI İÇİN EK KURAL:
@@ -452,9 +444,14 @@ Kaynak metni:
             if not result.get("publish"):
                 ai_log["candidates"].append(ai_entry)
                 continue
-            summary = _clean(result.get("summary"))
-            detail_summary = _clean(result.get("detail_summary")) or summary
-            title = _clean(result.get("title"))
+            if item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları":
+                title = item.get("title", "")
+                summary = item.get("description", "")
+                detail_summary = summary
+            else:
+                summary = _clean(result.get("summary"))
+                detail_summary = _clean(result.get("detail_summary")) or summary
+                title = _clean(result.get("title"))
             if not summary or not title:
                 ai_entry["status"] = "gemini_invalid_output"
                 ai_log["candidates"].append(ai_entry)
