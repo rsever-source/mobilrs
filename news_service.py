@@ -344,20 +344,6 @@ def update_news():
         except Exception as exc:
             print("Kaynak okunamadı:", source["name"], repr(exc))
 
-    # Daha önce kısa özetle kaydedilmiş TBB haberi varsa bir kez yeniden işle.
-    # Böylece yeni detail_summary alanı mevcut kayda da uygulanır.
-    for existing in existing_items:
-        if (
-            existing.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları"
-            and existing.get("detail_summary")
-            and existing.get("detail_summary") == existing.get("summary")
-            and existing.get("url")
-            and existing.get("id") not in candidate_ids
-        ):
-            candidates.append(dict(existing))
-            candidate_ids.add(existing.get("id"))
-            break
-
     print("Kaynak kayıtları:", source_counts)
     print("AI adayları:", len(candidates))
     added = []
