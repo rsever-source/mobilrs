@@ -283,6 +283,29 @@ def update_news():
         except Exception as exc:
             print("Kaynak okunamadı:", source["name"], repr(exc))
 
+    # Daha önce eklenmiş ancak detay özeti üretilememiş TBB kayıtlarını bir kez yeniden işle.
+    # Kaynak taraması mevcut ID'leri normalde atladığı için bu kontrol özellikle gereklidir.
+    stale_tbb = []
+    for existing in existing_items:
+        if (
+            existing.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları"
+            and existing.get("url")
+            and _clean(existing.get("detail_summary")) == _clean(existing.get("summary"))
+        ):
+            stale_tbb.append({
+                "id": existing["id"],
+                "source": existing["source"],
+                "title": existing.get("title", ""),
+                "url": existing["url"],
+                "description": existing.get("summary", ""),
+                "published_at": existing.get("published_at"),
+                "source_position": 0,
+            })
+    for item in stale_tbb:
+        if item["id"] not in candidate_ids:
+            candidates.append(item)
+            candidate_ids.add(item["id"])
+
     candidates = _collapse_obvious_source_repeats(candidates)
     print("Kaynak kayıtları:", source_counts)
     print("AI adayları (kaynak tekrarları ayıklandı):", len(candidates))
@@ -296,6 +319,7 @@ def update_news():
     )
 
     added = []
+    added_ids = set()
     failed = []
     for item in candidates[:MAX_AI_CANDIDATES]:
         try:
@@ -420,6 +444,7 @@ Kaynak metni:
                 first_sentence = re.match(r"^.*?[.!?](?:\\s|$)", summary)
                 published_summary = (first_sentence.group(0).strip() if first_sentence else summary)[:500]
                 detail_summary = _clean(result.get("detail_summary"))[:1600]
+            added_ids.add(item["id"])
             added.append({
                 "id": item["id"], "title": title[:180], "summary": published_summary,
                 "detail_summary": detail_summary,
@@ -430,7 +455,7 @@ Kaynak metni:
             print("Haber işlenemedi:", item.get("title"), repr(exc))
             failed.append(item)
 
-    merged = added + existing_items
+    merged = added + [item for item in existing_items if item.get("id") not in added_ids]
     merged.sort(key=lambda item: item.get("published_at") or item.get("created_at") or "", reverse=True)
     failed_by_id = {item["id"]: item for item in failed}
     result = {
