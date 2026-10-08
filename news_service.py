@@ -182,15 +182,8 @@ def _tbb_mevzuat_items(source):
             continue
 
         seen.add(href)
-        published_at = _article_published_at(href)
-        if not published_at:
-            published_at = _title_published_at(title)
-        if not published_at:
-            continue
-
-        # TBB duyurusunda başlık ve Resmî Gazete'de yayımlandığına dair
-        # tek cümlelik kaynak bilgisi yeterli; Gemini'ye ayrıca özetlettirmeyiz.
-        description = ""
+        description = title
+        published_at = None
         try:
             detail = requests.get(href, headers={"User-Agent": UA}, timeout=TIMEOUT)
             detail.raise_for_status()
@@ -203,14 +196,31 @@ def _tbb_mevzuat_items(source):
             )
             if marker:
                 description = marker.group(1)
+                date_match = re.search(
+                    r"([0-9]{1,2})\s+(Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+([0-9]{4})",
+                    description,
+                    re.IGNORECASE,
+                )
+                if date_match:
+                    months = {
+                        "ocak": 1, "şubat": 2, "mart": 3, "nisan": 4, "mayıs": 5, "haziran": 6,
+                        "temmuz": 7, "ağustos": 8, "eylül": 9, "ekim": 10, "kasım": 11, "aralık": 12,
+                    }
+                    day, month_name, year = date_match.groups()
+                    published_at = datetime(
+                        int(year), months[month_name.lower()], int(day), tzinfo=timezone.utc
+                    ).isoformat()
         except Exception as exc:
             print("TBB mevzuat duyurusu okunamadı:", href, repr(exc))
+
+        if not published_at:
+            continue
 
         items.append({
             "source": source["name"],
             "title": title[:300],
             "url": href,
-            "description": description or title,
+            "description": description[:900],
             "published_at": published_at,
         })
 
