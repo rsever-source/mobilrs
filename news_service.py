@@ -71,7 +71,8 @@ def _feed_items(source):
     response.raise_for_status()
     root = ET.fromstring(response.content)
     items = []
-    nodes = root.findall(".//item") or root.findall(".//{*}entry")
+    # RSS öğeleri bazı yayınlarda namespace ile gelir; hem RSS hem Atom biçimini destekle.
+    nodes = root.findall(".//{*}item") or root.findall(".//{*}entry")
     for node in nodes:
         title = _text(node, ["title", "{*}title"])
         link = _text(node, ["link", "{*}link"])
@@ -79,8 +80,8 @@ def _feed_items(source):
             link_node = node.find("{*}link")
             if link_node is not None:
                 link = _clean(link_node.attrib.get("href", ""))
-        description = _text(node, ["description", "summary", "{*}summary", "{*}description", "{*}content"])
-        published = _text(node, ["pubDate", "published", "updated", "{*}published", "{*}updated"])
+        description = _text(node, ["description", "{*}description", "summary", "{*}summary", "{*}encoded", "content", "{*}content"])
+        published = _text(node, ["pubDate", "{*}pubDate", "published", "{*}published", "updated", "{*}updated", "date", "{*}date"])
         pub = _date(published)
         if title and link:
             items.append({
@@ -95,39 +96,74 @@ def _article_published_at(url):
         response = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, "html.parser")
+
+        # Yaygın yayın tarihi meta etiketleri.
         for attrs in (
             {"property": "article:published_time"},
             {"name": "article:published_time"},
+            {"property": "og:article:published_time"},
             {"itemprop": "datePublished"},
             {"property": "datePublished"},
             {"name": "datePublished"},
+            {"name": "pubdate"},
+            {"name": "publishdate"},
+            {"name": "parsely-pub-date"},
+            {"name": "date"},
+            {"name": "DC.date"},
         ):
             node = soup.find("meta", attrs=attrs)
             if node and node.get("content"):
-                parsed = _date(node.get("content"))
+                parsed = _date(node.get("content")) or _date_from_text(node.get("content"))
                 if parsed:
                     return parsed.isoformat()
+
+        # JSON-LD haber şemalarında tarih çoğunlukla datePublished alanındadır.
+        for script in soup.find_all("script", type="application/ld+json"):
+            match = re.search(r'"datePublished"\\s*:\\s*"([^"]+)"', script.string or script.get_text())
+            if match:
+                parsed = _date(match.group(1))
+                if parsed:
+                    return parsed.isoformat()
+
         for node in soup.find_all("time"):
             value = node.get("datetime") or node.get_text(" ", strip=True)
-            parsed = _date(value)
+            parsed = _date(value) or _date_from_text(value)
             if parsed:
                 return parsed.isoformat()
     except Exception as exc:
         print("Haber tarihi okunamadı:", url, repr(exc))
     return None
 
+def _date_from_text(value):
+    """Türkçe haber listelerinde görülen tarihleri UTC ISO biçimine çevir."""
+    text = _clean(value)
+    match = re.search(r"(?<!\\d)(\\d{1,2})[./-](\\d{1,2})[./-](\\d{4})(?!\\d)", text)
+    if match:
+        day, month, year = map(int, match.groups())
+        try:
+            return datetime(year, month, day, tzinfo=timezone.utc)
+        except ValueError:
+            return None
+
+    months = {
+        "ocak": 1, "şubat": 2, "mart": 3, "nisan": 4, "mayıs": 5, "haziran": 6,
+        "temmuz": 7, "ağustos": 8, "eylül": 9, "ekim": 10, "kasım": 11, "aralık": 12,
+    }
+    match = re.search(
+        r"(?<!\\d)(\\d{1,2})\\s+(Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\\s+(\\d{4})(?!\\d)",
+        text, re.IGNORECASE,
+    )
+    if match:
+        day, month_name, year = match.groups()
+        try:
+            return datetime(int(year), months[month_name.lower()], int(day), tzinfo=timezone.utc)
+        except (ValueError, KeyError):
+            return None
+    return None
+
 
 def _title_published_at(title):
-    text = _clean(title)
-    match = re.search(r"(?<!\d)(\d{1,2})[./-](\d{1,2})[./-](\d{4})(?!\d)", text)
-    if not match:
-        return None
-    day, month, year = map(int, match.groups())
-    try:
-        return datetime(year, month, day, tzinfo=timezone.utc).isoformat()
-    except ValueError:
-        return None
-
+    return _date_from_text(title)
 
 def _html_items(source):
     response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
@@ -148,11 +184,31 @@ def _html_items(source):
             continue
         if href.startswith(source.get("allowed_prefix", "https://www.aa.com.tr/")):
             seen.add(href)
-            published_at = _title_published_at(title)
-            if not published_at:
+
+            # Bakanlık haber listelerinde tarih çoğu zaman detay sayfası yerine kartın
+            # yanında bulunur. Önce bağlantı başlığını ve en yakın kart kapsayıcılarını tara.
+            published = _title_published_at(title)
+            if not published:
+                parent = a
+                for _ in range(4):
+                    parent = parent.parent
+                    if parent is None:
+                        break
+                    context = _clean(parent.get_text(" ", strip=True))
+                    if len(context) <= 1200:
+                        published = _date_from_text(context)
+                        if published:
+                            break
+            if not published:
+                published = _date_from_text(_article_published_at(href) or "")
+            if not published:
+                # Son çare: detay sayfasındaki tarih alanlarını oku; bağlantı zaman aşımı
+                # olursa kaynak listesinde tarih bulunamadığı için sessizce kaybetme.
                 published_at = _article_published_at(href)
-            if not published_at:
-                continue
+                if not published_at:
+                    continue
+            else:
+                published_at = published.isoformat()
             items.append({
                 "source": source["name"], "title": title[:300], "url": href,
                 "description": title, "published_at": published_at
