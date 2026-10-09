@@ -67,12 +67,26 @@ def _text(node, names):
 
 
 def _feed_items(source):
+    started = time.monotonic()
     response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
+    elapsed_ms = round((time.monotonic() - started) * 1000)
+    print(
+        "Haber kaynağı HTTP:",
+        {"source": source["name"], "stage": "rss", "status": response.status_code,
+         "content_type": response.headers.get("Content-Type", ""),
+         "bytes": len(response.content), "elapsed_ms": elapsed_ms,
+         "final_url": response.url}
+    )
     response.raise_for_status()
     root = ET.fromstring(response.content)
     items = []
     # RSS öğeleri bazı yayınlarda namespace ile gelir; hem RSS hem Atom biçimini destekle.
     nodes = root.findall(".//{*}item") or root.findall(".//{*}entry")
+    print(
+        "Haber kaynağı ayrıştırma:",
+        {"source": source["name"], "stage": "rss", "root_tag": root.tag,
+         "item_or_entry_nodes": len(nodes)}
+    )
     for node in nodes:
         title = _text(node, ["title", "{*}title"])
         link = _text(node, ["link", "{*}link"])
@@ -88,6 +102,10 @@ def _feed_items(source):
                 "source": source["name"], "title": title, "url": link,
                 "description": description, "published_at": pub.isoformat() if pub else None
             })
+    print(
+        "Haber kaynağı sonuç:",
+        {"source": source["name"], "stage": "rss", "parsed_items": len(items)}
+    )
     return items
 
 
@@ -166,11 +184,26 @@ def _title_published_at(title):
     return _date_from_text(title)
 
 def _html_items(source):
+    started = time.monotonic()
     response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
+    elapsed_ms = round((time.monotonic() - started) * 1000)
+    print(
+        "Haber kaynağı HTTP:",
+        {"source": source["name"], "stage": "html_list", "status": response.status_code,
+         "content_type": response.headers.get("Content-Type", ""),
+         "bytes": len(response.content), "elapsed_ms": elapsed_ms,
+         "final_url": response.url}
+    )
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
     items = []
     seen = set()
+    links_seen = len(soup.find_all("a", href=True))
+    path_matches = 0
+    detail_attempts = 0
+    detail_successes = 0
+    dated_from_title = 0
+    dated_from_context = 0
     for a in soup.find_all("a", href=True):
         title = _clean(a.get_text(" ", strip=True))
         href = urljoin(source["url"], a.get("href", ""))
@@ -184,10 +217,13 @@ def _html_items(source):
             continue
         if href.startswith(source.get("allowed_prefix", "https://www.aa.com.tr/")):
             seen.add(href)
+            path_matches += 1
 
             # Bakanlık haber listelerinde tarih çoğu zaman detay sayfası yerine kartın
             # yanında bulunur. Önce bağlantı başlığını ve en yakın kart kapsayıcılarını tara.
             published = _title_published_at(title)
+            if published:
+                dated_from_title += 1
             if not published:
                 parent = a
                 for _ in range(4):
@@ -206,19 +242,29 @@ def _html_items(source):
                         if len(numeric_dates) + len(turkish_dates) == 1:
                             published = _date_from_text(context)
                             if published:
+                                dated_from_context += 1
                                 break
             if published:
                 published_at = published.isoformat()
             else:
                 # Liste kartında tarih yoksa detay sayfasının meta/JSON-LD/time alanlarına bak.
                 # Zaman aşımı olursa bu kaydı tarih uydurarak yayımlamak yerine atla.
+                detail_attempts += 1
                 published_at = _article_published_at(href)
                 if not published_at:
                     continue
+                detail_successes += 1
             items.append({
                 "source": source["name"], "title": title[:300], "url": href,
                 "description": title, "published_at": published_at
             })
+    print(
+        "Haber kaynağı sonuç:",
+        {"source": source["name"], "stage": "html_list", "anchors": links_seen,
+         "path_matches": path_matches, "dated_from_title": dated_from_title,
+         "dated_from_context": dated_from_context, "detail_attempts": detail_attempts,
+         "detail_successes": detail_successes, "parsed_items": len(items)}
+    )
     return items
 
 
