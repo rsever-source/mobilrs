@@ -776,8 +776,8 @@ Kaynak metni:
     if not isinstance(previous_ai_logs, list):
         previous_ai_logs = []
     previous_ai_logs.append(ai_log)
-    # Son 6 çalışmayı sakla: kaynak alarm eşiği bu pencere üzerinden hesaplanır.
-    previous_ai_logs = previous_ai_logs[-6:]
+    # Mevcut log geçmişini koru; alarm hesabı yalnızca son 6 çalışmayı kullanır.
+    previous_ai_logs = previous_ai_logs[-7:]
     _save_json(AI_LOG_FILE, previous_ai_logs)
     _update_source_alert(previous_ai_logs)
     _save_json(NEWS_FILE, result)
