@@ -119,7 +119,7 @@ def _article_published_at(url):
 
         # JSON-LD haber şemalarında tarih çoğunlukla datePublished alanındadır.
         for script in soup.find_all("script", type="application/ld+json"):
-            match = re.search(r'"datePublished"\\s*:\\s*"([^"]+)"', script.string or script.get_text())
+            match = re.search(r'"datePublished"\s*:\s*"([^"]+)"', script.string or script.get_text())
             if match:
                 parsed = _date(match.group(1))
                 if parsed:
@@ -137,7 +137,7 @@ def _article_published_at(url):
 def _date_from_text(value):
     """Türkçe haber listelerinde görülen tarihleri UTC ISO biçimine çevir."""
     text = _clean(value)
-    match = re.search(r"(?<!\\d)(\\d{1,2})[./-](\\d{1,2})[./-](\\d{4})(?!\\d)", text)
+    match = re.search(r"(?<!\d)(\d{1,2})[./-](\d{1,2})[./-](\d{4})(?!\d)", text)
     if match:
         day, month, year = map(int, match.groups())
         try:
@@ -150,7 +150,7 @@ def _date_from_text(value):
         "temmuz": 7, "ağustos": 8, "eylül": 9, "ekim": 10, "kasım": 11, "aralık": 12,
     }
     match = re.search(
-        r"(?<!\\d)(\\d{1,2})\\s+(Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\\s+(\\d{4})(?!\\d)",
+        r"(?<!\d)(\d{1,2})\s+(Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+(\d{4})(?!\d)",
         text, re.IGNORECASE,
     )
     if match:
@@ -199,16 +199,14 @@ def _html_items(source):
                         published = _date_from_text(context)
                         if published:
                             break
-            if not published:
-                published = _date_from_text(_article_published_at(href) or "")
-            if not published:
-                # Son çare: detay sayfasındaki tarih alanlarını oku; bağlantı zaman aşımı
-                # olursa kaynak listesinde tarih bulunamadığı için sessizce kaybetme.
+            if published:
+                published_at = published.isoformat()
+            else:
+                # Liste kartında tarih yoksa detay sayfasının meta/JSON-LD/time alanlarına bak.
+                # Zaman aşımı olursa bu kaydı tarih uydurarak yayımlamak yerine atla.
                 published_at = _article_published_at(href)
                 if not published_at:
                     continue
-            else:
-                published_at = published.isoformat()
             items.append({
                 "source": source["name"], "title": title[:300], "url": href,
                 "description": title, "published_at": published_at
