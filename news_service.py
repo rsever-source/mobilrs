@@ -196,9 +196,17 @@ def _html_items(source):
                         break
                     context = _clean(parent.get_text(" ", strip=True))
                     if len(context) <= 1200:
-                        published = _date_from_text(context)
-                        if published:
-                            break
+                        numeric_dates = re.findall(r"(?<!\d)\d{1,2}[./-]\d{1,2}[./-]\d{4}(?!\d)", context)
+                        turkish_dates = re.findall(
+                            r"(?<!\d)\d{1,2}\s+(?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+\d{4}(?!\d)",
+                            context, re.IGNORECASE,
+                        )
+                        # Yalnızca tek bir tarih içeren en yakın kartı kullan; tüm listeyi
+                        # kapsayan bir üst elemana ait tarihi başka habere kopyalama.
+                        if len(numeric_dates) + len(turkish_dates) == 1:
+                            published = _date_from_text(context)
+                            if published:
+                                break
             if published:
                 published_at = published.isoformat()
             else:
