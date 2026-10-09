@@ -50,14 +50,24 @@ jobs:
         run: |
           git config user.name "engelli.me news bot"
           git config user.email "actions@users.noreply.github.com"
-          git fetch origin cloud-run-migration
-          git reset --soft origin/cloud-run-migration
-          git add news.json news_ai_log.json
-          if git diff --cached --quiet; then
-            echo "Yeni haber yok."
-          else
+          cp news.json /tmp/news.json.updated
+          for attempt in 1 2 3 4 5; do
+            git fetch origin cloud-run-migration
+            git reset --hard origin/cloud-run-migration
+            cp /tmp/news.json.updated news.json
+            git add news.json
+            if git diff --cached --quiet; then
+              echo "Haber listesinde değişiklik yok."
+              exit 0
+            fi
             git commit -m "Güncel engelli haberlerini yenile"
-            git push origin HEAD:cloud-run-migration
-          fi
+            if git push origin HEAD:cloud-run-migration; then
+              exit 0
+            fi
+            echo "Branch değişti; güncel haber dosyası korunarak tekrar deneniyor ($attempt/5)."
+            git reset --hard origin/cloud-run-migration
+          done
+          echo "Haber listesi 5 denemede kaydedilemedi." >&2
+          exit 1
 
 # News source fallback enabled on cloud-run-migration
