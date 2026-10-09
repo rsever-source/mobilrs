@@ -130,7 +130,7 @@ def _prune(report, now):
 
 def _stable_details(value):
     # Workflow-run URLs change every check; they must not create a new commit every 30 minutes.
-    return re.sub(r"\\s*(?:\\|\\s*)?Çalışma:\\s+https?://\\S+", "", str(value or "")).strip()
+    return re.sub(r"\s*(?:\|\s*)?Çalışma:\s+https?://\S+", "", str(value or "")).strip()
 
 
 def _set_incident(report, component, status, details, now):
