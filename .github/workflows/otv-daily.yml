@@ -10,10 +10,21 @@ on:
       - 'otv_service.py'
       - 'excel_vlookup_api.py'
 
+permissions:
+  contents: write
+
 jobs:
   refresh-and-check:
     runs-on: ubuntu-latest
     steps:
+      - name: Merkezi rapor yazıcısını al
+        uses: actions/checkout@v4
+        with:
+          repository: rsever-source/mobilrs
+          ref: cloud-run-migration
+          path: report-tools
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Check RDV Asistan home
         run: |
           set -e
@@ -94,3 +105,17 @@ jobs:
         run: |
           curl --fail --silent --show-error --retry 3 --retry-delay 10 --max-time 60 https://mobilrs-test-987996487997.europe-west1.run.app/api/otv > /dev/null
           echo "OTV API OK"
+
+      - name: Merkezi rapora ÖTV Daily sonucunu yaz
+        if: always()
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          JOB_STATUS: ${{ job.status }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          STATUS=success
+          if [ "$JOB_STATUS" != "success" ]; then STATUS=failure; fi
+          DETAILS="Günlük ÖTV yenileme ve doğrulama kontrolü. Çalışma: $RUN_URL"
+          python report-tools/system_report.py check --component otv-daily --status "$STATUS" --details "$DETAILS"
