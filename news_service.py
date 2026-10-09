@@ -210,10 +210,30 @@ def _html_items(source):
         if not title or len(title) < 12 or href in seen:
             continue
         include = source.get("include_path")
-        if include:
-            if include not in href or href.rstrip("/") == source["url"].rstrip("/"):
-                continue
-        elif "/ayrimcilikhatti/engelsiz-yasam/" not in href or href.rstrip("/") == source["url"].rstrip("/"):
+        if href.rstrip("/") == source["url"].rstrip("/"):
+            continue
+
+        # AA bazen Engelsiz Yaşam haberlerini başka kategori URL'leriyle
+        # yayımlıyor. Liste sayfasındaki başlık engellilikle ilgiliyse,
+        # yalnızca URL yoluna bakarak haberi kaybetme; 7 günlük tarih filtresi
+        # ve Gemini'nin uygunluk/mükerrerlik kararı aynen uygulanır.
+        title_lower = title.casefold()
+        title_keywords = (
+            "engelli", "engelsiz", "engellilik", "erişilebilir",
+            "serebral palsi", "down sendrom", "özel bakım",
+            "bakım merkezi", "özel gereksinim", "görme engelli",
+            "işitme engelli", "otizm", "para yüzücü",
+        )
+        title_relevant = any(keyword in title_lower for keyword in title_keywords)
+        path_matches = (
+            include in href if include
+            else "/ayrimcilikhatti/engelsiz-yasam/" in href
+        )
+        if not path_matches and not (
+            source.get("name", "").startswith("Anadolu Ajansı")
+            and "/tr/ayrimcilikhatti/" in href
+            and title_relevant
+        ):
             continue
         if href.startswith(source.get("allowed_prefix", "https://www.aa.com.tr/")):
             seen.add(href)
