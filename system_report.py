@@ -4,6 +4,7 @@ import argparse
 import base64
 import json
 import os
+import re
 import sys
 import time
 from datetime import datetime, timedelta, timezone
@@ -127,6 +128,11 @@ def _prune(report, now):
     report["system_incidents"] = kept[-500:]
 
 
+def _stable_details(value):
+    # Workflow-run URLs change every check; they must not create a new commit every 30 minutes.
+    return re.sub(r"\\s*(?:\\|\\s*)?Çalışma:\\s+https?://\\S+", "", str(value or "")).strip()
+
+
 def _set_incident(report, component, status, details, now):
     incidents = report["system_incidents"]
     active = next(
@@ -143,8 +149,8 @@ def _set_incident(report, component, status, details, now):
                 "details": str(details or "Failure reported without details")[:2500],
             }
             incidents.append(active)
-        elif details and str(details) != active.get("details"):
-            # Only persist changed details, not every 30-minute heartbeat.
+        elif details and _stable_details(details) != _stable_details(active.get("details")):
+            # Only persist changed error details, not changing run URLs every 30 minutes.
             active["details"] = str(details)[:2500]
         first_seen = _parse(active.get("first_seen")) or now
         if now - first_seen >= REPORT_AFTER and active.get("status") == "pending_24h":
