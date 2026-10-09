@@ -139,21 +139,17 @@ def _set_incident(report, component, status, details, now):
             active = {
                 "component": component,
                 "first_seen": _iso(now),
-                "last_seen": _iso(now),
                 "status": "pending_24h",
-                "checks_failed": 1,
                 "details": str(details or "Failure reported without details")[:2500],
             }
             incidents.append(active)
-        else:
-            active["last_seen"] = _iso(now)
-            active["checks_failed"] = int(active.get("checks_failed", 0)) + 1
-            if details:
-                active["details"] = str(details)[:2500]
+        elif details and str(details) != active.get("details"):
+            # Only persist changed details, not every 30-minute heartbeat.
+            active["details"] = str(details)[:2500]
         first_seen = _parse(active.get("first_seen")) or now
-        if now - first_seen >= REPORT_AFTER:
+        if now - first_seen >= REPORT_AFTER and active.get("status") == "pending_24h":
             active["status"] = "reported"
-            active["reported_at"] = active.get("reported_at") or _iso(now)
+            active["reported_at"] = _iso(now)
         return
 
     if active is None:
@@ -170,7 +166,6 @@ def _set_incident(report, component, status, details, now):
         active["reported_at"] = _iso(now)
     active["status"] = "resolved"
     active["resolved_at"] = _iso(now)
-    active["last_seen"] = active.get("last_seen") or _iso(now)
     if details:
         active["recovery_details"] = str(details)[:1000]
 
@@ -181,8 +176,13 @@ def _save_with_retry(mutator, message):
     for attempt in range(8):
         try:
             report, sha = _read_report(repo, token)
+            before = json.dumps(report, ensure_ascii=False, sort_keys=True)
             mutator(report, _now())
             _prune(report, _now())
+            after = json.dumps(report, ensure_ascii=False, sort_keys=True)
+            if after == before:
+                # No state changed: avoid a Git commit for every healthy 30-minute check.
+                return report
             if _write_report(repo, token, report, sha, message):
                 return report
             last_error = "Concurrent report update; retrying with latest SHA"
