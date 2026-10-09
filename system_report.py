@@ -163,6 +163,11 @@ def _set_incident(report, component, status, details, now):
         # Brief incidents are not retained in the report, keeping it compact.
         incidents.remove(active)
         return
+    if active.get("status") == "pending_24h":
+        # If the next observation is recovery after 24h, retain the incident as reported
+        # before marking it resolved (important for once-daily OTV checks).
+        active["status"] = "reported"
+        active["reported_at"] = _iso(now)
     active["status"] = "resolved"
     active["resolved_at"] = _iso(now)
     active["last_seen"] = active.get("last_seen") or _iso(now)
