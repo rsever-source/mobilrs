@@ -461,6 +461,86 @@ def _id(item):
     return hashlib.sha256(item["url"].encode("utf-8")).hexdigest()[:20]
 
 
+
+def _update_source_alert(logs):
+    """6 çalışmanın en az 5'inde hata veren kaynaklar için tek GitHub Issue yönetir."""
+    token = os.environ.get("GITHUB_TOKEN", "")
+    repo = os.environ.get("GITHUB_REPOSITORY", "rsever-source/mobilrs")
+    if not token:
+        print("Kaynak alarmı: GITHUB_TOKEN yok; Issue güncellenmedi.")
+        return
+
+    recent_logs = logs[-6:]
+    failures = {}
+    for entry in recent_logs:
+        failed_sources = {
+            item.get("source")
+            for item in entry.get("source_errors", [])
+            if item.get("source")
+        }
+        for name in failed_sources:
+            failures[name] = failures.get(name, 0) + 1
+
+    active = {name: count for name, count in failures.items() if count >= 5}
+    title = "Engelli.me haber kaynakları hata alarmı"
+    api = f"https://api.github.com/repos/{repo}/issues"
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+    try:
+        response = requests.get(
+            api, headers=headers, params={"state": "open", "per_page": 100}, timeout=15
+        )
+        response.raise_for_status()
+        issue = next(
+            (
+                item for item in response.json()
+                if item.get("title") == title and "pull_request" not in item
+            ),
+            None,
+        )
+
+        if active:
+            details = "\n".join(
+                f"- **{name}**: son {len(recent_logs)} çalışmanın {count}'inde başarısız."
+                for name, count in sorted(active.items())
+            )
+            body = (
+                "Otomatik kaynak izleme alarmı. Aynı kaynak son 6 haber çalışmasının "
+                "en az 5'inde kaynak okuma hatası verdi.\n\n"
+                f"{details}\n\n"
+                f"Son kontrol: {datetime.now(timezone.utc).isoformat()}\n\n"
+                "Bu Issue otomatik olarak güncellenir ve sorunlu kaynaklar düzeldiğinde kapatılır."
+            )
+            if issue:
+                update = requests.patch(
+                    f"{api}/{issue['number']}", headers=headers,
+                    json={"body": body}, timeout=15
+                )
+                update.raise_for_status()
+                print(f"Kaynak alarmı güncellendi: #{issue['number']}")
+            else:
+                created = requests.post(
+                    api, headers=headers, json={"title": title, "body": body}, timeout=15
+                )
+                created.raise_for_status()
+                print(f"Kaynak alarmı açıldı: #{created.json().get('number')}")
+        elif issue:
+            close = requests.patch(
+                f"{api}/{issue['number']}", headers=headers,
+                json={"state": "closed", "state_reason": "completed"}, timeout=15
+            )
+            close.raise_for_status()
+            print(f"Kaynak alarmı kapatıldı: #{issue['number']}")
+        else:
+            print("Kaynak alarmı: alarm eşiğini aşan kaynak yok.")
+    except Exception as exc:
+        # Alarm sistemi arızası haber üretimini durdurmasın; hata Actions logunda görünür.
+        print("Kaynak alarmı GitHub Issue güncellenemedi:", repr(exc))
+
+
 def update_news():
     now = datetime.now(timezone.utc)
     sources = _load_json(SOURCES_FILE, [])
@@ -492,6 +572,7 @@ def update_news():
                 candidate_ids.add(item["id"])
 
     source_counts = {}
+    source_errors = []
     for source in sources:
         try:
             source_items = _source_items(source)
@@ -506,13 +587,25 @@ def update_news():
                 candidates.append(item)
                 candidate_ids.add(item["id"])
         except Exception as exc:
-            print("Kaynak okunamadı:", source["name"], repr(exc))
+            error_text = repr(exc)
+            print("Kaynak okunamadı:", source["name"], error_text)
+            source_errors.append({
+                "source": source["name"],
+                "error": error_text,
+                "kind": "source_fetch_error",
+            })
 
     print("Kaynak kayıtları:", source_counts)
+    print("Kaynak hataları:", source_errors)
     print("AI adayları:", len(candidates))
     added = []
     failed = []
-    ai_log = {"run_at": now.isoformat(), "model": GEMINI_MODEL, "candidates": []}
+    ai_log = {
+        "run_at": now.isoformat(),
+        "model": GEMINI_MODEL,
+        "source_errors": source_errors,
+        "candidates": [],
+    }
 
     for item in candidates:
         ai_entry = {
@@ -683,7 +776,10 @@ Kaynak metni:
     if not isinstance(previous_ai_logs, list):
         previous_ai_logs = []
     previous_ai_logs.append(ai_log)
-    _save_json(AI_LOG_FILE, previous_ai_logs[-7:])
+    # Son 6 çalışmayı sakla: kaynak alarm eşiği bu pencere üzerinden hesaplanır.
+    previous_ai_logs = previous_ai_logs[-6:]
+    _save_json(AI_LOG_FILE, previous_ai_logs)
+    _update_source_alert(previous_ai_logs)
     _save_json(NEWS_FILE, result)
     print(f"Yeni haber: {len(added)} | Toplam: {len(result['items'])} | Bekleyen: {len(result['pending'])}")
     return result
