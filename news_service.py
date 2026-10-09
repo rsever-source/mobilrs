@@ -225,11 +225,11 @@ def _html_items(source):
             "işitme engelli", "otizm", "para yüzücü",
         )
         title_relevant = any(keyword in title_lower for keyword in title_keywords)
-        path_matches = (
+        path_match = (
             include in href if include
             else "/ayrimcilikhatti/engelsiz-yasam/" in href
         )
-        if not path_matches and not (
+        if not path_match and not (
             source.get("name", "").startswith("Anadolu Ajansı")
             and "/tr/ayrimcilikhatti/" in href
             and title_relevant
