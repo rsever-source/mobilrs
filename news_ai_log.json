@@ -2,11 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-10-09T00:24:42.007672+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "candidates": []
-    },
-    {
       "run_at": "2026-10-09T09:09:07.495106+00:00",
       "model": "gemini-3.5-flash-lite",
       "candidates": [
@@ -222,6 +217,12 @@
     },
     {
       "run_at": "2026-10-09T12:58:17.084553+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "candidates": []
+    },
+    {
+      "run_at": "2026-10-09T13:25:20.548039+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
       "candidates": []
