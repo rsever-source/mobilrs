@@ -1,25 +1,5 @@
 [
   {
-    "run_at": "2026-10-08T14:34:14.432928+00:00",
-    "model": "gemini-3.5-flash-lite",
-    "candidates": [
-      {
-        "title": "Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği",
-        "source": "Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
-        "url": "https://www.tbb.gov.tr/tr/mevzuat-duyurulari/engelli-bireylere-yonelik-ozel-bakim-merkezleri-yonetmeligi",
-        "published_at": "2026-10-07T00:00:00+00:00",
-        "status": "published",
-        "publish": true,
-        "duplicate": false,
-        "duplicate_reason": "",
-        "generated_title": "Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği Yayımlandı",
-        "summary": "Türkiye Belediyeler Birliği tarafından mevzuat duyuruları paylaşıldı. Engelli bireylere yönelik hazırlanan özel bakım merkezleri yönetmeliği yürürlüğe girdi. İlgili düzenleme 07 Ekim 2026 tarihli ve 33393 sayılı Resmi Gazete'de yayımlandı. Yönetmelik engelli bakım hizmetlerine ilişkin usul ve esasları içeriyor. Bu gelişme engelli hakları ve bakım süreçlerini doğrudan ilgilendiriyor. İlgili taraflar resmi yayın üzerinden detaylara ulaşabilir.",
-        "detail_summary": "Türkiye Belediyeler Birliği tarafından yapılan mevzuat duyuruları kapsamında önemli bir düzenleme paylaşıldı. Engelli bireylere yönelik özel bakım merkezlerinin işleyişini belirleyen yönetmelik resmiyet kazandı. Söz konusu düzenleme 07 Ekim 2026 tarihli ve 33393 sayılı Resmi Gazete'de yayımlanarak kamuoyuna duyuruldu. Yönetmelik metni, engelli vatandaşların bakım hizmetlerinden yararlanma koşullarını ve merkezlerin standartlarını düzenlemektedir. Engelli bireylerin bakımı ve hakları açısından doğrudan ilgili olan bu gelişme, mevzuat takibi yapan kurumlar için önem taşımaktadır. İlgili taraflar ve vatandaşlar yayımlanan Resmi Gazete üzerinden metnin tüm detaylarına erişebilirler.",
-        "decision": "publish"
-      }
-    ]
-  },
-  {
     "run_at": "2026-10-08T16:00:09.956055+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
@@ -106,6 +86,11 @@
   },
   {
     "run_at": "2026-10-08T19:58:13.187517+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": []
+  },
+  {
+    "run_at": "2026-10-09T00:24:42.007672+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": []
   }
