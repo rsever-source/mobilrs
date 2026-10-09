@@ -2,54 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-10-09T11:10:43.459738+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "candidates": [
-        {
-          "title": "9 Ekim 2026 Yurt Dışından Gerçekleştirilecek Beşerî Tıbbi Ürün Alımları Dinamik Alım Sistemi Hakkında GENEL SAĞLIK SİGORTASI GENEL MÜDÜRLÜĞÜ",
-          "source": "Sosyal Güvenlik Kurumu – Duyurular",
-          "url": "https://www.sgk.gov.tr/duyuru/detay/Yurt-Disindan-Gerceklestirilecek-Beser-Tibbi-Urun-Alimlari-Dinamik-Alim-Sistemi-Hakkinda-2026-10-09-09-41-18",
-          "published_at": "2026-10-09T00:00:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "reject"
-        },
-        {
-          "title": "7 Ekim 2026 Bedeli Ödenecek İlaçlar Listesinde Yapılan Düzenlemeler Hakkında Duyuru 2026/39 GENEL SAĞLIK SİGORTASI GENEL MÜDÜRLÜĞÜ",
-          "source": "Sosyal Güvenlik Kurumu – Duyurular",
-          "url": "https://www.sgk.gov.tr/duyuru/detay/Bedeli-Odenecek-Ilaclar-Listesinde-Yapilan-Duzenlemeler-Hakkinda-Duyuru-202639-2026-10-07-04-54-48",
-          "published_at": "2026-10-07T00:00:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "reject"
-        },
-        {
-          "title": "5 Ekim 2026 Gayrimenkul Satış İlanı İNŞAAT VE EMLAK DAİRE BAŞKANLIĞI",
-          "source": "Sosyal Güvenlik Kurumu – Duyurular",
-          "url": "https://www.sgk.gov.tr/duyuru/detay/Gayrimenkul-Satis-Ilani-2026-10-05-11-35-26",
-          "published_at": "2026-10-05T00:00:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "Haber gayrimenkul satış ilanına ilişkin olup, engelli bireyleri doğrudan ve somut olarak etkileyen bir yönü bulunmamaktadır.",
-          "generated_title": "Sosyal Güvenlik Kurumu Gayrimenkul Satış İlanını Yayımladı",
-          "summary": "Sosyal Güvenlik Kurumu tarafından yeni bir gayrimenkul satış ilanı duyuruldu. İlana ait detaylar ve resimli duyuru belgesi kurumun resmi internet sitesinde paylaşıldı. Açıklanan ilan inşaat ve emlak daire başkanlığı tarafından hazırlandı. İlgili belgeler ve başvuru süreçleri belirlenen tarihler arasında erişime açık olacak. Bu tür duyurular kurumun taşınmaz işlemlerine ilişkin idari süreçlerini kapsamaktadır. Engelli bireylerin hakları, sosyal yardımları veya sağlık hizmetleri ile doğrudan bir ilişkisi bulunmuyor.",
-          "detail_summary": "Sosyal Güvenlik Kurumu bünyesindeki İnşaat ve Emlak Daire Başkanlığı tarafından yeni bir gayrimenkul satış ilanı yayımlandı. İlgili duyuru 5 Ekim 2026 tarihinde Kurumun resmi internet sayfasında erişime açıldı. Satış ilanına ait resimli metin ve detaylı belgelerin 21 Ekim ile 10 Kasım 2026 tarihleri arasında geçerli olacağı belirtildi. Paylaşılan bilgiler genel idari ve taşınmaz satış işlemlerini ilgilendiren duyurular niteliğindedir. Metin içerisinde engelli bireylere yönelik özel bir hak, istihdam, bakım veya sağlık düzenlemesi yer almamaktadır. Genel nitelikteki bu tür kurum duyuruları engelli.me yayın politikası ve kriterleri kapsamında değerlendirilmemektedir.",
-          "decision": "reject"
-        }
-      ]
-    },
-    {
       "run_at": "2026-10-09T11:20:11.392528+00:00",
       "model": "gemini-3.5-flash-lite",
       "candidates": [
@@ -209,6 +161,12 @@
     },
     {
       "run_at": "2026-10-09T17:00:26.486470+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "candidates": []
+    },
+    {
+      "run_at": "2026-10-09T22:41:20.292277+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
       "candidates": []
