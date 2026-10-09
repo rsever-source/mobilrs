@@ -1,25 +1,5 @@
 [
   {
-    "run_at": "2026-10-08T16:21:16.588054+00:00",
-    "model": "gemini-3.5-flash-lite",
-    "candidates": [
-      {
-        "title": "Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği",
-        "source": "Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
-        "url": "https://www.tbb.gov.tr/tr/mevzuat-duyurulari/engelli-bireylere-yonelik-ozel-bakim-merkezleri-yonetmeligi",
-        "published_at": "2026-10-07T00:00:00+00:00",
-        "status": "gemini_decision",
-        "publish": true,
-        "duplicate": true,
-        "duplicate_reason": "Mevcut sitede aynı gün ve aynı kanun maddelerine dayanarak yayımlanan Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği hakkında halihazırda bir haber bulunmaktadır.",
-        "generated_title": "Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği Yayımlandı",
-        "summary": "Aile ve Sosyal Hizmetler Bakanlığı ile Hazine ve Maliye Bakanlığı tarafından hazırlanan Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği Resmî Gazete'de yayımlandı. Yönetmelik, özel bakım merkezlerinin açılış, başvuru, çalışma, fiziki şartlar, personel standardı ve denetim usullerini belirliyor. Açılış değerlendirme komisyonu, bakım merkezi yönetim sistemi ve başvuru süreçlerine ilişkin detaylar düzenlendi. Merkezlerin açılış aşamaları başvuru, konum uygunluk, ön izin, açılış onayı ve faaliyet izni olarak belirlendi. Engelli bireylerin haklarına saygı gösterilmesi ve ev ortamına yakın yaşam alanlarının oluşturulması esas alındı. İşlemlerin Bakım Merkezi Yönetim Sistemi üzerinden yürütülmesi zorunlu kılındı.",
-        "detail_summary": "Aile ve Sosyal Hizmetler Bakanlığı ile Hazine ve Maliye Bakanlığı tarafından hazırlanan Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği 7 Ekim 2026 tarihli Resmî Gazete'de yayımlanarak yürürlüğe girdi. Yönetmelik; özel bakım merkezlerinin başvuru, açılış, çalışma, fiziki şartlar, personel standardı, denetlenmeleri ve ücret tespiti gibi usul ve esasları düzenlemektedir. Sosyal Hizmetler Kanunu ve Engelliler Hakkında Kanun hükümlerine dayanılarak hazırlanan metin, açılış değerlendirme komisyonunun görevleri ve Bakım Merkezi Yönetim Sistemi (BMYS) üzerinden yürütülecek işlemleri kapsamaktadır. Temel ilkeler arasında engelli bireylerin insan onuruna saygı duyulması, aile bütünlüğünün korunması, ayrımcılığın önlenmesi ve erişilebilirliğin sağlanması yer almaktadır. Merkez açmak isteyen gerçek ve tüzel kişilerin uyması gereken başvuru, konum uygunluk, ön izin, açılış onayı ve faaliyet izni aşamaları detaylandırılmıştır. Ruhsal engelli bireylerin sağlık kuruluşlarından sürekli destek alması ve çalışan engellilerin istihdamına yönelik kurumlar arası iş birliği yapılması kararlaştırılmıştır.",
-        "decision": "duplicate"
-      }
-    ]
-  },
-  {
     "run_at": "2026-10-08T16:37:30.804288+00:00",
     "model": "gemini-3.5-flash-lite",
     "candidates": [
@@ -134,6 +114,20 @@
         "summary": "Sosyal Güvenlik Kurumu tarafından yeni bir gayrimenkul satış ilanı duyuruldu. İlana ait detaylar ve resimli duyuru belgesi kurumun resmi internet sitesinde paylaşıldı. Açıklanan ilan inşaat ve emlak daire başkanlığı tarafından hazırlandı. İlgili belgeler ve başvuru süreçleri belirlenen tarihler arasında erişime açık olacak. Bu tür duyurular kurumun taşınmaz işlemlerine ilişkin idari süreçlerini kapsamaktadır. Engelli bireylerin hakları, sosyal yardımları veya sağlık hizmetleri ile doğrudan bir ilişkisi bulunmuyor.",
         "detail_summary": "Sosyal Güvenlik Kurumu bünyesindeki İnşaat ve Emlak Daire Başkanlığı tarafından yeni bir gayrimenkul satış ilanı yayımlandı. İlgili duyuru 5 Ekim 2026 tarihinde Kurumun resmi internet sayfasında erişime açıldı. Satış ilanına ait resimli metin ve detaylı belgelerin 21 Ekim ile 10 Kasım 2026 tarihleri arasında geçerli olacağı belirtildi. Paylaşılan bilgiler genel idari ve taşınmaz satış işlemlerini ilgilendiren duyurular niteliğindedir. Metin içerisinde engelli bireylere yönelik özel bir hak, istihdam, bakım veya sağlık düzenlemesi yer almamaktadır. Genel nitelikteki bu tür kurum duyuruları engelli.me yayın politikası ve kriterleri kapsamında değerlendirilmemektedir.",
         "decision": "reject"
+      }
+    ]
+  },
+  {
+    "run_at": "2026-10-09T11:20:11.392528+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "candidates": [
+      {
+        "title": "2828 Sayılı Kanun Kapsamında Sosyal Hizmet Modellerinden Yararlananların İstihdamına İlişkin Yerleştirme Sonuçları (7.10.2026)",
+        "source": "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular",
+        "url": "https://www.aile.gov.tr/duyurular/2828-sayili-kanun-kapsaminda-sosyal-hizmet-modellerinden-yararlananlarin-istihdamina-iliskin-yerlestirme-sonuclari-7-10-2026/",
+        "published_at": "2026-10-07T00:00:00+00:00",
+        "status": "not_processed",
+        "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='www.aile.gov.tr', port=443): Max retries exceeded with url: /duyurular/2828-sayili-kanun-kapsaminda-sosyal-hizmet-modellerinden-yararlananlarin-istihdamina-iliskin-yerlestirme-sonuclari-7-10-2026/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.aile.gov.tr', port=443) at 0x7f2864574810>, 'Connection to www.aile.gov.tr timed out. (connect timeout=20)'))\"))"
       }
     ]
   }
