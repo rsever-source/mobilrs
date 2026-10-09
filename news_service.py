@@ -7,6 +7,8 @@ from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from html import unescape
 from urllib.parse import urljoin
+
+from system_report import append_news_run
 from xml.etree import ElementTree as ET
 
 import requests
@@ -772,13 +774,19 @@ Kaynak metni:
         "pending": list(failed_by_id.values())[:MAX_PENDING],
         "seen_urls": seen_urls,
     }
-    previous_ai_logs = _load_json(AI_LOG_FILE, [])
-    if not isinstance(previous_ai_logs, list):
-        previous_ai_logs = []
-    previous_ai_logs.append(ai_log)
-    # Son 6 çalışmayı sakla: kaynak alarm eşiği bu pencere üzerinden hesaplanır.
-    previous_ai_logs = previous_ai_logs[-6:]
-    _save_json(AI_LOG_FILE, previous_ai_logs)
+    # Central report writer merges by latest GitHub SHA, so concurrent workflow writes
+    # cannot overwrite one another. News history remains limited to the latest six runs.
+    try:
+        previous_ai_logs = append_news_run(ai_log)
+        print("Merkezi Gemini/sistem raporu güncellendi.")
+    except Exception as exc:
+        previous_ai_logs = _load_json(AI_LOG_FILE, [])
+        if isinstance(previous_ai_logs, dict):
+            previous_ai_logs = previous_ai_logs.get("news_runs", [])
+        if not isinstance(previous_ai_logs, list):
+            previous_ai_logs = []
+        previous_ai_logs = (previous_ai_logs + [ai_log])[-6:]
+        print("Merkezi rapor yazılamadı; haber güncellemesi durdurulmadı:", repr(exc))
     _update_source_alert(previous_ai_logs)
     _save_json(NEWS_FILE, result)
     print(f"Yeni haber: {len(added)} | Toplam: {len(result['items'])} | Bekleyen: {len(result['pending'])}")
