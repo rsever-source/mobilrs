@@ -249,7 +249,7 @@ def record_check(component, status, details=""):
             repo, token = _repo()
             summary = _failed_step_summary(repo, token, os.environ.get("GITHUB_RUN_ID", ""))
             if summary:
-                details = (str(details) + "\\n" + summary).strip()
+                details = (str(details) + "\n" + summary).strip()
         except Exception as exc:
             print("Workflow hata ayrıntıları alınamadı:", str(exc))
 
