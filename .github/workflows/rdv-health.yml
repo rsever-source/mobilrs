@@ -16,6 +16,14 @@ jobs:
   health:
     runs-on: ubuntu-latest
     steps:
+      - name: Merkezi rapor yazıcısını al
+        uses: actions/checkout@v4
+        with:
+          repository: rsever-source/mobilrs
+          ref: cloud-run-migration
+          path: report-tools
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Check RDV Asistan on Cloud Run
         id: health
         shell: bash
@@ -131,3 +139,18 @@ jobs:
             gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body "RDV Asistan sağlık kontrolü tekrar normale döndü."
             gh issue close "$existing" --repo "$GITHUB_REPOSITORY"
           fi
+
+      - name: Merkezi rapora sağlık kontrolü sonucunu yaz
+        if: always()
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          JOB_STATUS: ${{ job.status }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          STATUS=success
+          if [ "$JOB_STATUS" != "success" ]; then STATUS=failure; fi
+          DETAILS="30 dakikalık site, ÖTV API ve kira/TÜFE sağlık kontrolü. Çalışma: $RUN_URL"
+          if [ -f /tmp/failure.txt ]; then DETAILS="$(cat /tmp/failure.txt) | Çalışma: $RUN_URL"; fi
+          python report-tools/system_report.py check --component rdv-health --status "$STATUS" --details "$DETAILS"
