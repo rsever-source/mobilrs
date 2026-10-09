@@ -2,26 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-10-09T09:09:07.495106+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "candidates": [
-        {
-          "title": "Araştırma: Zayıflama ilaçları tırnak sökülmesi riskini artırıyor",
-          "source": "TRT Haber – Sağlık",
-          "url": "https://www.trthaber.com/haber/saglik/arastirma-zayiflama-ilaclari-tirnak-sokulmesi-riskini-artiriyor-959597.html",
-          "published_at": "2026-10-09T04:20:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "Araştırma: Zayıflama İlaçları Tırnak Sorunları Riskini Artırabilir",
-          "summary": "Obezite ve tip 2 diyabet tedavisinde kullanılan GLP-1 ilaçları üzerine yapılan yeni bir araştırma tırnak sorunlarını inceledi. Dört ülkede bin 904 kişi üzerinde gerçekleştirilen çalışmada ilaç kullanıcılarının daha fazla tırnak ayrılması bildirdiği ifade edildi. Kontrol grubuna kıyasla ilaç kullanıcılarında tırnak renk değişimi ve çeşitli rahatsızlıkların daha yaygın olduğu gözlendi. Araştırmacılar semptomların nedeninin tam olarak bilinmediğini ve ileri araştırmalara ihtiyaç duyulduğunu belirtti. Aynı katılımcıları içeren eşlik eden bir diğer çalışma ise saç dökülmesi ve kafa derisi sorunlarını ele aldı. Uzmanlar bu tür belirtiler yaşayan kişilerin tedaviyi kendi başlarına bırakmak yerine doktorlarıyla görüşmelerini tavsiye etti.",
-          "detail_summary": "Obezite ve tip 2 diyabet tedavisinde kullanılan GLP-1 ilaçlarını inceleyen araştırmacılar, bu ilaçları kullananlar arasında tırnak sorunlarının yaygın olup olmadığını araştırdı. Fransa, ABD, Brezilya ve Meksika'dan bin 904 kişi üzerinde yapılan çalışmada, ilaç kullanıcılarının yüzde 39'u tırnak ayrılması bildirdi. İlaçları hiç kullanmamış tip 2 diyabet veya obezite hastalarının oluşturduğu kontrol grubunda ise bu oran yüzde 9 olarak kaydedildi. Kontrol grubunun yüzde 53'üne kıyasla, GLP-1 kullanıcılarının yüzde 66'sı en az bir tırnak rahatsızlığı bildirdi. Tırnakta renk değişimi kontrol grubunda yüzde 17 oranında görülürken, bu oran ilaç kullanıcılarında yüzde 46'ya ulaştı. Çalışma katılımcıların bildirimlerine dayandığı ve kesitsel bir yapıda gerçekleştirildiği için değişikliklerin doğrudan ilaçlardan kaynaklandığı kanıtlanamadı. Aynı katılımcıları kapsayan yan çalışmada ise kullanıcıların yüzde 50'si olağan dışı saç dökülmesi bildirdi. Saç dökülmesine sıklıkla kaşıntı, kızarıklık veya pullanma gibi kafa derisi semptomlarının eşlik ettiği aktarıldı. Uzmanlar, tırnak değişiklikleri veya saç dökülmesi fark eden kişilerin tedaviyi kendi başlarına bırakmayıp durumu doktorlarıyla görüşmeleri gerektiğini belirtti.",
-          "decision": "reject"
-        }
-      ]
-    },
-    {
       "run_at": "2026-10-09T11:10:43.459738+00:00",
       "model": "gemini-3.5-flash-lite",
       "candidates": [
@@ -223,6 +203,12 @@
     },
     {
       "run_at": "2026-10-09T13:25:20.548039+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "candidates": []
+    },
+    {
+      "run_at": "2026-10-09T17:00:26.486470+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
       "candidates": []
