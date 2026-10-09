@@ -12,6 +12,12 @@
     "allowed_prefix": "https://www.aa.com.tr/"
   },
   {
+    "name": "Anadolu Ajansı – Engelli haberleri (kategori yedeği)",
+    "kind": "html",
+    "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/musluman-karsitligi",
+    "allowed_prefix": "https://www.aa.com.tr/"
+  },
+  {
     "name": "TRT Haber",
     "kind": "rss",
     "url": "https://www.trthaber.com/guncel_articles.rss"
