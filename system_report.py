@@ -223,9 +223,35 @@ def append_news_run(entry):
     return report["news_runs"]
 
 
+def _failed_step_summary(repo, token, run_id):
+    if not run_id:
+        return ""
+    url = f"{API_ROOT}/repos/{repo}/actions/runs/{run_id}/jobs?per_page=100"
+    try:
+        _, data = _request("GET", url, token)
+        failures = []
+        for job in data.get("jobs", []):
+            for step in job.get("steps", []):
+                if step.get("conclusion") == "failure":
+                    failures.append(f"{job.get('name', 'job')}: {step.get('name', 'unknown step')}")
+        if failures:
+            return "Başarısız adımlar: " + "; ".join(failures[:12])
+    except Exception as exc:
+        print("Başarısız adımlar okunamadı:", str(exc))
+    return ""
+
+
 def record_check(component, status, details=""):
     if status not in ("success", "failure"):
         raise ValueError("status must be success or failure")
+    if status == "failure":
+        try:
+            repo, token = _repo()
+            summary = _failed_step_summary(repo, token, os.environ.get("GITHUB_RUN_ID", ""))
+            if summary:
+                details = (str(details) + "\\n" + summary).strip()
+        except Exception as exc:
+            print("Workflow hata ayrıntıları alınamadı:", str(exc))
 
     def mutate(report, now):
         _set_incident(report, component, status, details, now)
