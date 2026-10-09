@@ -29,6 +29,20 @@
     "allowed_prefix": "https://www.aile.gov.tr/"
   },
   {
+    "name": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
+    "kind": "html",
+    "url": "https://www.aile.gov.tr/haberler",
+    "include_path": "/haberler/",
+    "allowed_prefix": "https://www.aile.gov.tr/"
+  },
+  {
+    "name": "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular",
+    "kind": "html",
+    "url": "https://www.aile.gov.tr/duyurular",
+    "include_path": "/duyurular/",
+    "allowed_prefix": "https://www.aile.gov.tr/"
+  },
+  {
     "name": "Sosyal Güvenlik Kurumu – Duyurular",
     "kind": "html",
     "url": "https://www.sgk.gov.tr/duyuru",
