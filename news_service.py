@@ -11,6 +11,8 @@ from xml.etree import ElementTree as ET
 
 import requests
 from bs4 import BeautifulSoup
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 NEWS_FILE = "news.json"
 AI_LOG_FILE = "news_ai_log.json"
@@ -23,6 +25,21 @@ GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
 UA = "Mozilla/5.0 (compatible; EngelliMe-News/1.0; +https://engelli.me)"
 TIMEOUT = 20
 AI_TIMEOUT = 60
+
+def _make_session():
+    session = requests.Session()
+    session.headers.update({"User-Agent": UA})
+    retries = Retry(
+        total=3, connect=3, read=2, backoff_factor=1.0,
+        status_forcelist=(429, 500, 502, 503, 504),
+        allowed_methods=frozenset(["GET"]),
+    )
+    adapter = HTTPAdapter(max_retries=retries)
+    session.mount("https://", adapter)
+    session.mount("http://", adapter)
+    return session
+
+_SESSION = _make_session()
 GEMINI_MIN_INTERVAL = 4
 GEMINI_RETRY_DELAYS = (2, 4, 8, 16)
 _gemini_last_request_at = None
@@ -68,7 +85,7 @@ def _text(node, names):
 
 def _feed_items(source):
     started = time.monotonic()
-    response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
+    response = _SESSION.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
     elapsed_ms = round((time.monotonic() - started) * 1000)
     print(
         "Haber kaynağı HTTP:",
@@ -111,7 +128,7 @@ def _feed_items(source):
 
 def _article_published_at(url):
     try:
-        response = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT)
+        response = _SESSION.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, "html.parser")
 
@@ -183,9 +200,14 @@ def _date_from_text(value):
 def _title_published_at(title):
     return _date_from_text(title)
 
+def _same_page(href, base):
+    # Aynı sayfaya giden çıpa (ör. /eyhgm/haberler/#search) haber değildir.
+    return href.split("#", 1)[0].rstrip("/") == base.split("#", 1)[0].rstrip("/")
+
+
 def _html_items(source):
     started = time.monotonic()
-    response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
+    response = _SESSION.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
     elapsed_ms = round((time.monotonic() - started) * 1000)
     print(
         "Haber kaynağı HTTP:",
@@ -196,20 +218,26 @@ def _html_items(source):
     )
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
-    items = []
-    seen = set()
     links_seen = len(soup.find_all("a", href=True))
-    path_matches = 0
-    detail_attempts = 0
-    detail_successes = 0
-    dated_from_title = 0
-    dated_from_context = 0
+    include = source.get("include_path")
+    title_keywords = (
+        "engelli", "engelsiz", "engellilik", "erişilebilir",
+        "serebral palsi", "down sendrom", "özel bakım",
+        "bakım merkezi", "özel gereksinim", "görme engelli",
+        "işitme engelli", "otizm", "para yüzücü",
+    )
+    # Aynı haber listede birden çok bağlantı olarak geçebilir: Bakanlık
+    # listelerinde kenar çubuğunda tarihsiz, kartta tarihli bir bağlantı bulunur.
+    # Önceki davranış ilk görüleni (tarihsiz) seçip tarihli kartı atlıyordu; bu da
+    # tarihi detay sayfasından okumaya çalışıp (çoğu zaman başarısız/timeout) haberi
+    # kaybediyordu. Tarih sağlayan varyantı tercih et; aksi halde ilk görüleni koru.
+    variants = {}
+    order = []
     for a in soup.find_all("a", href=True):
         title = _clean(a.get_text(" ", strip=True))
         href = urljoin(source["url"], a.get("href", ""))
-        if not title or len(title) < 12 or href in seen:
+        if not title or len(title) < 12 or _same_page(href, source["url"]):
             continue
-        include = source.get("include_path")
         if href.rstrip("/") == source["url"].rstrip("/"):
             continue
 
@@ -218,12 +246,6 @@ def _html_items(source):
         # yalnızca URL yoluna bakarak haberi kaybetme; 7 günlük tarih filtresi
         # ve Gemini'nin uygunluk/mükerrerlik kararı aynen uygulanır.
         title_lower = title.casefold()
-        title_keywords = (
-            "engelli", "engelsiz", "engellilik", "erişilebilir",
-            "serebral palsi", "down sendrom", "özel bakım",
-            "bakım merkezi", "özel gereksinim", "görme engelli",
-            "işitme engelli", "otizm", "para yüzücü",
-        )
         title_relevant = any(keyword in title_lower for keyword in title_keywords)
         path_match = (
             include in href if include
@@ -235,49 +257,64 @@ def _html_items(source):
             and title_relevant
         ):
             continue
-        if href.startswith(source.get("allowed_prefix", "https://www.aa.com.tr/")):
-            seen.add(href)
-            path_matches += 1
+        if not href.startswith(source.get("allowed_prefix", "https://www.aa.com.tr/")):
+            continue
+        previous = variants.get(href)
+        if previous is None:
+            variants[href] = {"title": title, "anchor": a}
+            order.append(href)
+        elif _title_published_at(title) and not _title_published_at(previous["title"]):
+            variants[href] = {"title": title, "anchor": a}
 
-            # Bakanlık haber listelerinde tarih çoğu zaman detay sayfası yerine kartın
-            # yanında bulunur. Önce bağlantı başlığını ve en yakın kart kapsayıcılarını tara.
-            published = _title_published_at(title)
-            if published:
-                dated_from_title += 1
-            if not published:
-                parent = a
-                for _ in range(4):
-                    parent = parent.parent
-                    if parent is None:
-                        break
-                    context = _clean(parent.get_text(" ", strip=True))
-                    if len(context) <= 1200:
-                        numeric_dates = re.findall(r"(?<!\d)\d{1,2}[./-]\d{1,2}[./-]\d{4}(?!\d)", context)
-                        turkish_dates = re.findall(
-                            r"(?<!\d)\d{1,2}\s+(?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+\d{4}(?!\d)",
-                            context, re.IGNORECASE,
-                        )
-                        # Yalnızca tek bir tarih içeren en yakın kartı kullan; tüm listeyi
-                        # kapsayan bir üst elemana ait tarihi başka habere kopyalama.
-                        if len(numeric_dates) + len(turkish_dates) == 1:
-                            published = _date_from_text(context)
-                            if published:
-                                dated_from_context += 1
-                                break
-            if published:
-                published_at = published.isoformat()
-            else:
-                # Liste kartında tarih yoksa detay sayfasının meta/JSON-LD/time alanlarına bak.
-                # Zaman aşımı olursa bu kaydı tarih uydurarak yayımlamak yerine atla.
-                detail_attempts += 1
-                published_at = _article_published_at(href)
-                if not published_at:
-                    continue
-                detail_successes += 1
-            items.append({
-                "source": source["name"], "title": title[:300], "url": href,
-                "description": title, "published_at": published_at
-            })
+    items = []
+    path_matches = len(order)
+    detail_attempts = 0
+    detail_successes = 0
+    dated_from_title = 0
+    dated_from_context = 0
+    for href in order:
+        title = variants[href]["title"]
+        a = variants[href]["anchor"]
+
+        # Bakanlık haber listelerinde tarih çoğu zaman detay sayfası yerine kartın
+        # yanında bulunur. Önce bağlantı başlığını ve en yakın kart kapsayıcılarını tara.
+        published = _title_published_at(title)
+        if published:
+            dated_from_title += 1
+        if not published:
+            parent = a
+            for _ in range(4):
+                parent = parent.parent
+                if parent is None:
+                    break
+                context = _clean(parent.get_text(" ", strip=True))
+                if len(context) <= 1200:
+                    numeric_dates = re.findall(r"(?<!\d)\d{1,2}[./-]\d{1,2}[./-]\d{4}(?!\d)", context)
+                    turkish_dates = re.findall(
+                        r"(?<!\d)\d{1,2}\s+(?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+\d{4}(?!\d)",
+                        context, re.IGNORECASE,
+                    )
+                    # Yalnızca tek bir tarih içeren en yakın kartı kullan; tüm listeyi
+                    # kapsayan bir üst elemana ait tarihi başka habere kopyalama.
+                    if len(numeric_dates) + len(turkish_dates) == 1:
+                        published = _date_from_text(context)
+                        if published:
+                            dated_from_context += 1
+                            break
+        if published:
+            published_at = published.isoformat()
+        else:
+            # Liste kartında tarih yoksa detay sayfasının meta/JSON-LD/time alanlarına bak.
+            # Zaman aşımı olursa bu kaydı tarih uydurarak yayımlamak yerine atla.
+            detail_attempts += 1
+            published_at = _article_published_at(href)
+            if not published_at:
+                continue
+            detail_successes += 1
+        items.append({
+            "source": source["name"], "title": title[:300], "url": href,
+            "description": title, "published_at": published_at
+        })
     print(
         "Haber kaynağı sonuç:",
         {"source": source["name"], "stage": "html_list", "anchors": links_seen,
@@ -288,9 +325,8 @@ def _html_items(source):
     return items
 
 
-
 def _tbb_mevzuat_items(source):
-    response = requests.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
+    response = _SESSION.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
     keywords = [str(k).lower() for k in source.get("keywords", [])]
@@ -313,7 +349,7 @@ def _tbb_mevzuat_items(source):
         description = title
         published_at = None
         try:
-            detail = requests.get(href, headers={"User-Agent": UA}, timeout=TIMEOUT)
+            detail = _SESSION.get(href, headers={"User-Agent": UA}, timeout=TIMEOUT)
             detail.raise_for_status()
             detail_soup = BeautifulSoup(detail.text, "html.parser")
             detail_text = _clean(detail_soup.get_text(" ", strip=True))
@@ -363,7 +399,7 @@ def _source_items(source):
 
 
 def _article_text(url):
-    response = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT, allow_redirects=True)
+    response = _SESSION.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT, allow_redirects=True)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
     for tag in soup(["script", "style", "noscript", "svg", "nav", "footer"]):
@@ -488,7 +524,7 @@ def update_news():
         }
         try:
             if item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları":
-                tbb_response = requests.get(item["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
+                tbb_response = _SESSION.get(item["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
                 tbb_response.raise_for_status()
                 tbb_soup = BeautifulSoup(tbb_response.text, "html.parser")
                 official_url = ""
