@@ -1,6 +1,16 @@
 {
-  "updated_at": "2026-10-10T05:56:42.513212+00:00",
+  "updated_at": "2026-10-10T12:36:35.586943+00:00",
   "items": [
+    {
+      "id": "ea9d3111349bf8c8d82c",
+      "title": "Afyonkarahisar'da Marangoz Baba ve Engelli Oğlu At Arabalarını Yeniliyor",
+      "summary": "Afyonkarahisar'da yaşayan marangoz Rüştü Deniz, bedensel engelli oğluyla hurdacılardan topladığı eski at arabalarını yeniliyor. Evinin bahçesini atölyeye çeviren baba ve oğlu, at arabalarının ağaç ve demir aksamlarını onararak yeniden işlevsel hale getiriyor. İş kazası nedeniyle yürüme yetisini kaybeden Osman Deniz, tekerlekli sandalyesinden babasına el gücüyle destek oluyor. Nostaljik bir at arabasının yapımı yaklaşık bir ila iki ay sürüyor. Yenilenen at arabaları Ankara, İstanbul ve Konya gibi büyükşehirlerdeki otel ve restoranlara gönderiliyor. Deniz ailesi, bu çalışmayla hem nostaljiyi yaşatmayı hem de birlikte vakit geçirmeyi amaçlıyor.",
+      "detail_summary": "Afyonkarahisar'da yaşayan 78 yaşındaki marangoz Rüştü Deniz, 1970'li yıllarda babasından devraldığı faytonculuk mesleğini otomobillerin yaygınlaşmasıyla bırakmak zorunda kaldı. Emekli olduktan sonra hobi amacıyla nostaljik at arabalarını yenilemeye karar veren Deniz, evinin bahçesini bir atölyeye dönüştürdü. Daha önce geçirdiği iş kazası sonucunda yürüme yetisini kaybeden oğlu Osman Deniz de tekerlekli sandalyesinden babasına el gücüyle katkı sağlıyor. Baba ve oğul, hurdacılardan temin ettikleri eski at arabalarının kırık kısımlarını, ağaç ve demir aksamlarını onararak yeniliyor. Rüştü Deniz, asıl amaçlarının para kazanmak olmadığını, nostaljiyi yaşatarak gelecek nesillere aktarmak istediğini belirtiyor. Bir adet nostaljik at arabasının bakım ve onarım süreci yaklaşık bir ila iki ay sürerken, bu eserler 50 ila 60 bin lira arasında değişen fiyatlarla alıcı buluyor. Hazırlanan nostaljik at arabaları başta İstanbul, Ankara ve Konya olmak üzere Türkiye genelindeki çeşitli otel ve restoranlara ulaştırılıyor.",
+      "source": "Anadolu Ajansı – Engelli Yaşam",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/marangoz-baba-ve-engelli-oglu-hurdacilardan-aldiklari-at-arabalarini-yeniliyor/1832785",
+      "published_at": "2026-10-10T09:12:58+00:00",
+      "created_at": "2026-10-10T12:36:35.586943+00:00"
+    },
     {
       "id": "6d1a84f8cbf6fd5b8e85",
       "title": "2828 Sayılı Kanun Kapsamındaki İstihdam Yerleştirme Sonuçları Açıklandı",
@@ -86,15 +96,6 @@
       "url": "https://www.trthaber.com/haber/saglik/dokuz-ayda-4-milyonun-uzerinde-yasliya-saglik-degerlendirmesi-yapildi-958809.html",
       "published_at": "2026-10-01T13:53:00+00:00",
       "created_at": "2026-10-01T19:34:06.977539+00:00"
-    },
-    {
-      "id": "7a01db1673b68c08a73f",
-      "title": "Göztepe Semiha Şakir Huzurevi Yaşlı Bakım ve Rehabilitasyon Merkezi Açıldı",
-      "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, İstanbul'da Göztepe Semiha Şakir Huzurevi Yaşlı Bakım ve Rehabilitasyon Merkezi'nin açılışını gerçekleştirdi. Bakan Göktaş, merkezin 114 yatak kapasitesine sahip olduğunu ve yaşlıların bakım ile rehabilitasyon hizmetlerini aynı çatı altında alacağını belirtti. Konuşmasında hem kurumsal bakım hem de evde bakım hizmetlerini güçlendirmeye devam ettiklerini vurguladı. Sadece ocak ayından bu yana İstanbul'da evde bakım yardımı kapsamında 6,4 milyar lira kaynak aktarıldığını ifade etti. Türkiye genelinde 492 huzurevinde yaklaşık 30 bin vatandaşa yatılı hizmet sunulduğunu kaydetti. Açılış töreninin ardından Bakan Göktaş, merkezde kalan yaşlıları ziyaret ederek yetkililerden bilgi aldı.",
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-      "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktas-goztepe-semiha-sakir-huzurevi-yasli-bakim-ve-rehabilitasyon-merkezi-nin-acilisina-katildi/",
-      "published_at": "2026-09-30T00:00:00+00:00",
-      "created_at": "2026-09-30T05:36:31.729833+00:00"
     }
   ],
   "pending": [],
@@ -127,6 +128,8 @@
     "https://www.aile.gov.tr/haberler/bakanimiz-mahinur-ozdemir-goktas-riyad-da-uluslararasi-sosyal-sorumluluk-forumu-nda-konustu/": "2026-10-09T12:13:57.527890+00:00",
     "https://www.aile.gov.tr/haberler/ekim-ayi-yasli-ve-engelli-ayliklari-hesaplara-yatirilmaya-baslandi/": "2026-10-09T12:13:57.527890+00:00",
     "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-teknofest-guneydoguyu-ziyaret-etti/": "2026-10-09T12:13:57.527890+00:00",
-    "https://www.aile.gov.tr/haberler/bakan-goktas-gaziantep-te-sehit-aileleri-ve-gazilerle-vefa-bulusmasinda-bir-araya-geldi/": "2026-10-09T12:13:57.527890+00:00"
+    "https://www.aile.gov.tr/haberler/bakan-goktas-gaziantep-te-sehit-aileleri-ve-gazilerle-vefa-bulusmasinda-bir-araya-geldi/": "2026-10-09T12:13:57.527890+00:00",
+    "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/marangoz-baba-ve-engelli-oglu-hurdacilardan-aldiklari-at-arabalarini-yeniliyor/1832785": "2026-10-10T12:36:35.586943+00:00",
+    "https://www.trthaber.com/haber/saglik/sosyal-medyada-sonsuz-akis-tuzagi-959735.html": "2026-10-10T12:36:35.586943+00:00"
   }
 }
