@@ -2,20 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-10-09T11:20:11.392528+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "candidates": [
-        {
-          "title": "2828 Sayılı Kanun Kapsamında Sosyal Hizmet Modellerinden Yararlananların İstihdamına İlişkin Yerleştirme Sonuçları (7.10.2026)",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular",
-          "url": "https://www.aile.gov.tr/duyurular/2828-sayili-kanun-kapsaminda-sosyal-hizmet-modellerinden-yararlananlarin-istihdamina-iliskin-yerlestirme-sonuclari-7-10-2026/",
-          "published_at": "2026-10-07T00:00:00+00:00",
-          "status": "not_processed",
-          "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='www.aile.gov.tr', port=443): Max retries exceeded with url: /duyurular/2828-sayili-kanun-kapsaminda-sosyal-hizmet-modellerinden-yararlananlarin-istihdamina-iliskin-yerlestirme-sonuclari-7-10-2026/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.aile.gov.tr', port=443) at 0x7f2864574810>, 'Connection to www.aile.gov.tr timed out. (connect timeout=20)'))\"))"
-        }
-      ]
-    },
-    {
       "run_at": "2026-10-09T12:13:57.527890+00:00",
       "model": "gemini-3.5-flash-lite",
       "candidates": [
@@ -167,6 +153,12 @@
     },
     {
       "run_at": "2026-10-09T22:41:20.292277+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "candidates": []
+    },
+    {
+      "run_at": "2026-10-10T05:56:42.513212+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
       "candidates": []
