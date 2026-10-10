@@ -2,138 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-10-09T12:13:57.527890+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "candidates": [
-        {
-          "title": "2828 Sayılı Kanun Kapsamında Sosyal Hizmet Modellerinden Yararlananların İstihdamına İlişkin Yerleştirme Sonuçları (7.10.2026)",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular",
-          "url": "https://www.aile.gov.tr/duyurular/2828-sayili-kanun-kapsaminda-sosyal-hizmet-modellerinden-yararlananlarin-istihdamina-iliskin-yerlestirme-sonuclari-7-10-2026/",
-          "published_at": "2026-10-07T00:00:00+00:00",
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "2828 Sayılı Kanun Kapsamındaki İstihdam Yerleştirme Sonuçları Açıklandı",
-          "summary": "Aile ve Sosyal Hizmetler Bakanlığı, 2828 sayılı Kanun kapsamında sosyal hizmet modellerinden yararlananların istihdamına ilişkin kura sonuçlarını duyurdu. İlgili yerleştirme işlemleri 7 Ekim 2026 tarihinde gerçekleştirildi. Adaylar kura sonuçlarını e-Devlet üzerinden öğrenebilecek. Ayrıca sonuç sorgulama işlemleri bakanlığın e-Ailem portalı aracılığıyla da yapılabilecek. Yerleşen adayların sonraki süreçleri resmi platformlar üzerinden takip etmesi gerekiyor. Duyuru, sosyal hizmet modellerinden yararlanan vatandaşların işe yerleşme süreçlerini kapsamaktadır.",
-          "detail_summary": "Aile ve Sosyal Hizmetler Bakanlığı tarafından yürütülen 2828 sayılı Sosyal Hizmetler Kanunu kapsamındaki istihdam süreci sonuçlandı. Yapılan açıklamaya göre yerleştirme kurası 7 Ekim 2026 tarihinde tamamlandı. Sosyal hizmet modellerinden yararlanan vatandaşların işe yerleştirilmesine yönelik kura sonuçları erişime açıldı. İlgili adaylar sonuçlarını e-Devlet kapısı üzerinde yer alan 2828 Sayılı Sosyal Hizmetler Kanuna Göre Kurayla Yerleşim Sorgulama ekranından kontrol edebilir. Alternatif olarak ASHB e-Ailem Portal Sınav Sonuçları sayfası üzerinden de sorgulama yapılması mümkündür. Bu düzenleme, devlet koruması ve bakımından yararlanan bireylerin istihdam edilmesini amaçlamaktadır. Atanmaya hak kazanan vatandaşlar belirtilen bağlantı adresleri üzerinden detaylı sonuç bilgilerine ulaşabilir.",
-          "decision": "publish"
-        },
-        {
-          "title": "Bakan Göktaş'tan \"Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği\"ne ilişkin paylaşım",
-          "source": "Anadolu Ajansı – Engelli Yaşam",
-          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/bakan-goktastan-engelli-bireylere-yonelik-ozel-bakim-merkezleri-yonetmeligine-iliskin-paylasim/1832755",
-          "published_at": "2026-10-07T11:19:14+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": true,
-          "duplicate_reason": "Mevcut sitede yer alan 'Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği' başlıklı haber ile aynı 07 Ekim 2026 tarihli Resmi Gazete duyurusunu ve aynı yönetmeliği anlatmaktadır.",
-          "generated_title": "Bakan Göktaş'tan Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği Açıklaması",
-          "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Resmi Gazete'de yayımlanan yeni yönetmeliği duyurdu. Yönetmelikle özel bakım merkezlerinin yapısal sorunlarına bütüncül çözümler getiriliyor. Teknik yeterlilik ve engelli odaklı hizmet anlayışı esas alınıyor.",
-          "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği hakkında sosyal medya üzerinden paylaşımda bulundu. Yeni yönetmeliğin Resmi Gazete'de yayımlanarak yürürlüğe girdiğini belirten Bakan Göktaş, 81 ildeki özel bakım merkezlerinin açılışından denetimine kadar birçok sürece çözüm getirildiğini ifade etti. Merkezlerin ödeme süreçleri ve yerleştirme işlemlerindeki yapısal sorunlar ele alındı. Uygulama birliği, hukuki güvence ve şeffaflık ilkeleri ön planda tutuluyor. Süreçte engelli birey odaklı hizmet modeli esas alınıyor.",
-          "decision": "duplicate"
-        },
-        {
-          "title": "08.10.2026 Aile ve Sosyal Hizmetler Bakanlığımız ile AB Türkiye Delegasyonu arasında işbirliği protokolü imzalandı Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanligimiz-ile-ab-turkiye-delegasyonu-arasinda-isbirligi-protokolu-imzalandi/",
-          "published_at": "2026-10-08T00:00:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "Aile ve Sosyal Hizmetler Bakanlığı ile AB Türkiye Delegasyonu Arasında İşbirliği Protokolü İmzalandı",
-          "summary": "Aile ve Sosyal Hizmetler Bakanlığı ile AB Türkiye Delegasyonu arasında Yabancılara Yönelik Sosyal Uyum ve Eğitim Yardımları Programı işbirliği protokolü imzalandı. Bakan Mahinur Özdemir Göktaş, törende iki projenin tek çatı altında birleştirildiğini belirtti. Programla ihtiyaç sahibi yabancı ailelere ve çocuklara destek olunması amaçlanıyor. Düzenli nakit desteklerle ailelerin temel ihtiyaçlarının karşılanması hedefleniyor. Ayrıca çocukların okulla bağının kuvvetlendirilmesi ve eğitime devam etmelerinin sağlanması planlanıyor. Türk Kızılay ile işbirliği içinde sahadaki çalışmaların kesintisiz sürdürüleceği ifade edildi.",
-          "detail_summary": "Aile ve Sosyal Hizmetler Bakanlığı ile Avrupa Birliği Türkiye Delegasyonu arasında Yabancılara Yönelik Sosyal Uyum ve Eğitim Yardımları Programı işbirliği protokolü imzalandı. Bakan Mahinur Özdemir Göktaş, Bakanlıktaki imza töreninde sosyal yardım alanında önemli bir adım atıldığını ve geçmişte yürütülen iki ayrı projenin tek çatı altında birleştirildiğini açıkladı. Sosyal devlet anlayışıyla toplumun tüm kesimlerini kucakladıklarını belirten Göktaş, Bütünleşik Sosyal Yardım Bilgi Sistemi sayesinde desteklerin hızlı ve şeffaf biçimde ulaştırıldığını kaydetti. İmzalanan yeni protokol ile Avrupa Birliği'nin sağladığı finansal desteğin kırılgan durumdaki hanelere ulaştırılmaya devam edileceği ifade edildi. Düzenli nakit destekler sayesinde ailelerin gıda, barınma ve eğitim gibi temel ihtiyaçlarının karşılanması amaçlanıyor. Program kapsamında çocukların okulla bağının güçlendirilmesi ve okula düzenli devam eden çocukların ailelerine destek sunulması hedefleniyor. Çalışmaların Türk Kızılay ile işbirliği içinde sahada kesintisiz bir şekilde sürdürüleceği bildirildi.",
-          "decision": "reject"
-        },
-        {
-          "title": "07.10.2026 Bakanımız Göktaş, devlet korumasındaki gençlerin kamu kurumlarına yerleştirilmesi töreninde konuştu Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/bakanimiz-goktas-devlet-korumasindaki-genclerin-kamu-kurumlarina-yerlestirilmesi-toreninde-konustu-2/",
-          "published_at": "2026-10-07T00:00:00+00:00",
-          "status": "gemini_decision",
-          "publish": true,
-          "duplicate": true,
-          "duplicate_reason": "Mevcut sitedeki '2828 Sayılı Kanun Kapsamındaki İstihdam Yerleştirme Sonuçları Açıklandı' başlıklı haber ile aynı kura çekimi ve yerleştirme sonuçlarını anlatmaktadır.",
-          "generated_title": "Bakan Göktaş, Devlet Korumasındaki Gençlerin Kamu Kurumlarına Yerleştirilmesi Törenine Katıldı",
-          "summary": "Aile ve Sosyal Hizmetler Bakanlığı tarafından devlet korumasından yararlanan 394 gencin kamu kurumlarına yerleştirilmesi amacıyla kura töreni düzenlendi. Bakan Mahinur Özdemir Göktaş, gençlerin yeni görevlerinin hayırlı olmasını dileyerek atama sonuçlarının saat 17.00'den itibaren erişime açılacağını belirtti. Bakanlık, bugüne kadar toplam 66 bin 743 genci kamu kurumlarına yerleştirdiklerini açıkladı.",
-          "detail_summary": "Aile ve Sosyal Hizmetler Bakanlığı bünyesinde düzenlenen kura töreni ile 394 gencin kamu kurum ve kuruluşlarına yerleştirilmesi gerçekleştirildi. Bakan Mahinur Özdemir Göktaş, törende yaptığı konuşmada devlet korumasında büyüyen çocukların eğitim, spor ve sanat alanındaki başarılarına dikkat çekti. Koruyucu aile modeli sayesinde 11 bin 55 çocuğun sevgi ve güven içinde büyüdüğünü belirten Göktaş, bu yıl 258 gencin üniversiteye yerleştiğini ifade etti. Özel sektörde çalışan gençlerin SGK primlerinin devlet tarafından karşılandığını ve bugüne kadar 66 bin 743 gencin kamuya yerleştirildiğini aktardı. Atama sonuçlarına saat 17.00'den sonra bakanlığın web sayfası, e-Devlet ve e-Ailem sistemi üzerinden ulaşılabileceği bildirildi.",
-          "decision": "duplicate"
-        },
-        {
-          "title": "06.10.2026 Aile ve Sosyal Hizmetler Bakanımız Göktaş, \"6 Ekim Dünya Serebral Palsi Farkındalık Günü\" etkinliğinde konuştu Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-6-ekim-dunya-serebral-palsi-farkindalik-gunu-etkinliginde-konustu/",
-          "published_at": "2026-10-06T00:00:00+00:00",
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "Bakan Göktaş: Serebral Palsili Çocukların ve Ailelerinin Yanındayız",
-          "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, 6 Ekim Dünya Serebral Palsi Farkındalık Günü etkinliğine katıldı. Türkiye'de binde yedi oranında görülen bu durum için erken tanının önemine vurgu yapıldı. Bakanlık olarak erken müdahale, evde bakım ve gündüzlü merkezler ile ailelerin desteklendiği belirtildi. Ankara'daki gündüzlü merkezlerde binlerce saatlik hizmet sunulduğu ifade edildi. Etkinlik sonunda toplu fotoğraf çekimi yapıldı ve SERÇEV Korosu sahne aldı.",
-          "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Serebral Palsili Çocuklar Derneği (SERÇEV) tarafından Kuğulu Park'ta düzenlenen 6 Ekim Dünya Serebral Palsi Farkındalık Günü etkinliğine katıldı. Bakan Göktaş, Türkiye'de dünyaya gelen her bin bebekten yedisine serebral palsi tanısı konulduğunu belirterek erken tanı, doğru yönlendirme ve zamanında müdahalenin çocukların geleceği açısından kritik olduğunu söyledi. Bakanlık olarak engelli bireylerin hayatın her alanında bağımsız yer alması için çalıştıklarını vurgulayan Göktaş, Aile Temelli Ulusal Erken Müdahale sistemi ile 0-8 yaş arasındaki çocukların ve ailelerin ilk günden itibaren desteklendiğini kaydetti. Ülke genelinde evde bakım desteğinden 490 bin engelli vatandaşın faydalandığını aktaran Göktaş, sadece Ankara'da bu ay 20 bin 527 kişinin bu hizmeti aldığını ifade etti. Sayısı 150'ye ulaşan gündüzlü merkezler ile engelli bireylerin günlük yaşam becerilerini geliştirdiği, sosyal ve sportif faaliyetlere katıldığı belirtildi. Ankara'da 300 kapasiteli 6 gündüzlü merkez ile bugüne kadar 52 bin saate yakın hizmet sunulduğu açıklandı. Programın sonunda toplu fotoğraf çekimi gerçekleştirildi ve SERÇEV Korosu sahne aldı.",
-          "decision": "publish"
-        },
-        {
-          "title": "05.10.2026 Bakanımız Mahinur Özdemir Göktaş Riyad’da Uluslararası Sosyal Sorumluluk Forumu’nda konuştu: Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/bakanimiz-mahinur-ozdemir-goktas-riyad-da-uluslararasi-sosyal-sorumluluk-forumu-nda-konustu/",
-          "published_at": "2026-10-05T00:00:00+00:00",
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "Bakan Göktaş Riyad’da Uluslararası Sosyal Sorumluluk Forumu’na Katıldı",
-          "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Riyad'da düzenlenen Uluslararası Sosyal Sorumluluk Forumu'na katıldı. Bakan Göktaş, aileyi ve çocuğu merkeze alan kurumsal sosyal sorumluluk anlayışının önemine vurgu yaptı. Türkiye'nin insani yardım ve sosyal politika alanındaki tecrübelerini paylaştı. Ziyaret kapsamında çeşitli ülkelerin bakanlarıyla ikili görüşmeler gerçekleştirildi. Aile kurumunun güçlendirilmesi ve engelli bireylerin kapsayıcılığı ele alındı. Görüşmelerde uluslararası iş birliği imkanları değerlendirildi.",
-          "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Suudi Arabistan’ın başkenti Riyad’da gerçekleştirilen Uluslararası Sosyal Sorumluluk Forumu’nun Bakanlar Oturumu’nda konuştu. Konuşmasında Türkiye’nin köklü yardımlaşma geleneğini modern sosyal politikalarla geleceğe taşıdığını belirtti. Otomotiv sektörünün öncü firmalarıyla engelli bireylerin iş hayatına katılımını sağlayan destekli istihdam projeleri yürüttüklerini ifade etti. Kurumsal sosyal sorumlulukta ölçüm, uyum ve süreklilik ilkelerinin önemine dikkat çekti. Ziyaret çerçevesinde Singapur, Katar, Umman, Suudi Arabistan ve Bahreynli mevkidaşlarıyla ikili temaslarda bulundu. Toplantılarda ailelerin güçlendirilmesi, çocukların korunması ve engelli ile yaşlı bireylerin bakımı konularında deneyim paylaşımı yapıldı. Bakan Göktaş, mevkidaşlarını Mayıs 2027'de düzenlenmesi planlanan 2. Uluslararası Aile Forumu'na davet etti.",
-          "decision": "publish"
-        },
-        {
-          "title": "05.10.2026 Ekim ayı yaşlı ve engelli aylıkları hesaplara yatırılmaya başlandı Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/ekim-ayi-yasli-ve-engelli-ayliklari-hesaplara-yatirilmaya-baslandi/",
-          "published_at": "2026-10-05T00:00:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": true,
-          "duplicate_reason": "Mevcut sitede yer alan 'Evde Bakım Yardımı Hesaplara Yatırıldı' haberi farklı bir döneme (Eylül) aitken, mevcut yeni kaynak metni Ekim ayı yaşlı ve engelli aylıklarının yatırıldığını duyurmaktadır. Ancak sistemdeki diğer haberler ve genel akış değerlendirildiğinde, ekim ayı yaşlı ve engelli aylıkları ödemelerine ilişkin daha güncel veya kapsamlı benzer bir duyurunun siteye zaten eklenmiş olması ve bu metnin tarih/tutar bazında daha önceki aylık ödeme haberleriyle mükerrerlik oluşturması nedeniyle duplicate kabul edilmiştir.",
-          "generated_title": "",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "duplicate"
-        },
-        {
-          "title": "03.10.2026 Aile ve Sosyal Hizmetler Bakanımız Göktaş, TEKNOFEST Güneydoğu'yu ziyaret etti Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-teknofest-guneydoguyu-ziyaret-etti/",
-          "published_at": "2026-10-03T00:00:00+00:00",
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "Bakan Göktaş TEKNOFEST Güneydoğu'da Çocukların Teknolojik Üretimini Vurguladı",
-          "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Şanlıurfa'da düzenlenen TEKNOFEST Güneydoğu'yu ziyaret etti. Bakan Göktaş, devlet korumasındaki çocukların bu yıl festivalde 3 takımla yer aldığını açıkladı. Çocukların teknoloji tüketen değil üreten bireyler olmasını önemsediklerini belirtti. Bakanlığın standında engelli, çocuk, kadın ve aile hizmetleri ile dijital çalışmalar tanıtıldı. Festivalin çocukların yeteneklerini keşfetmesine ve ailelerin bir araya gelmesine olanak sağladığı ifade edildi.",
-          "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Şanlıurfa GAP Havalimanı'nda gerçekleştirilen TEKNOFEST Güneydoğu'yu ziyaret etti. Ziyaret kapsamında Bakan Göktaş, 'Bütün Mutlu Aileler Birbirine Benzer' sergisini gezerek yetkililerden bilgi aldı. Bakanlık standını da inceleyen Göktaş, engelli, yaşlı, kadın ve çocuklara yönelik hizmetlerin yanı sıra dijital dönüşüm çalışmalarının da tanıtıldığını aktardı. Devlet korumasındaki çocukların uzun süredir hazırlandığını belirten Göktaş, çocukların bu yıl festivalde 3 farklı takımla teknoloji yarışmalarına katıldığını müjdeledi. Şanlıurfa'nın Türkiye'nin en genç nüfusuna sahip illerinden biri olduğuna dikkat çeken Göktaş, festivalin farklı yaş gruplarını bir araya getirdiğini kaydetti. Çocukların genç yaşlardan itibaren sadece teknoloji tüketen değil, üreten bireyler olmasını desteklediklerini vurguladı. Festivalde yerli ve milli teknolojilerin sergilendiğini, çocukların yeteneklerini keşfetme imkanı bulduğunu dile getirdi. Bakanlık olarak çocukları sanatsal, sportif ve teknolojik alanlarda desteklemeye devam ettiklerini sözlerine ekledi.",
-          "decision": "publish"
-        },
-        {
-          "title": "03.10.2026 Bakan Göktaş, Gaziantep'te şehit aileleri ve gazilerle vefa buluşmasında bir araya geldi: Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/bakan-goktas-gaziantep-te-sehit-aileleri-ve-gazilerle-vefa-bulusmasinda-bir-araya-geldi/",
-          "published_at": "2026-10-03T00:00:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "reject"
-        }
-      ]
-    },
-    {
       "run_at": "2026-10-09T12:58:17.084553+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -162,6 +30,56 @@
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
       "candidates": []
+    },
+    {
+      "run_at": "2026-10-10T12:36:35.586943+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "filter_diagnostics": {
+        "parsed_total": 478,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 10,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 23,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 443,
+          "accepted_as_candidate": 2
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "Marangoz baba ve engelli oğlu hurdacılardan aldıkları at arabalarını yeniliyor",
+          "source": "Anadolu Ajansı – Engelli Yaşam",
+          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/marangoz-baba-ve-engelli-oglu-hurdacilardan-aldiklari-at-arabalarini-yeniliyor/1832785",
+          "published_at": "2026-10-10T09:12:58+00:00",
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "generated_title": "Afyonkarahisar'da Marangoz Baba ve Engelli Oğlu At Arabalarını Yeniliyor",
+          "summary": "Afyonkarahisar'da yaşayan marangoz Rüştü Deniz, bedensel engelli oğluyla hurdacılardan topladığı eski at arabalarını yeniliyor. Evinin bahçesini atölyeye çeviren baba ve oğlu, at arabalarının ağaç ve demir aksamlarını onararak yeniden işlevsel hale getiriyor. İş kazası nedeniyle yürüme yetisini kaybeden Osman Deniz, tekerlekli sandalyesinden babasına el gücüyle destek oluyor. Nostaljik bir at arabasının yapımı yaklaşık bir ila iki ay sürüyor. Yenilenen at arabaları Ankara, İstanbul ve Konya gibi büyükşehirlerdeki otel ve restoranlara gönderiliyor. Deniz ailesi, bu çalışmayla hem nostaljiyi yaşatmayı hem de birlikte vakit geçirmeyi amaçlıyor.",
+          "detail_summary": "Afyonkarahisar'da yaşayan 78 yaşındaki marangoz Rüştü Deniz, 1970'li yıllarda babasından devraldığı faytonculuk mesleğini otomobillerin yaygınlaşmasıyla bırakmak zorunda kaldı. Emekli olduktan sonra hobi amacıyla nostaljik at arabalarını yenilemeye karar veren Deniz, evinin bahçesini bir atölyeye dönüştürdü. Daha önce geçirdiği iş kazası sonucunda yürüme yetisini kaybeden oğlu Osman Deniz de tekerlekli sandalyesinden babasına el gücüyle katkı sağlıyor. Baba ve oğul, hurdacılardan temin ettikleri eski at arabalarının kırık kısımlarını, ağaç ve demir aksamlarını onararak yeniliyor. Rüştü Deniz, asıl amaçlarının para kazanmak olmadığını, nostaljiyi yaşatarak gelecek nesillere aktarmak istediğini belirtiyor. Bir adet nostaljik at arabasının bakım ve onarım süreci yaklaşık bir ila iki ay sürerken, bu eserler 50 ila 60 bin lira arasında değişen fiyatlarla alıcı buluyor. Hazırlanan nostaljik at arabaları başta İstanbul, Ankara ve Konya olmak üzere Türkiye genelindeki çeşitli otel ve restoranlara ulaştırılıyor.",
+          "decision": "publish"
+        },
+        {
+          "title": "Sosyal medyada sonsuz akış tuzağı",
+          "source": "TRT Haber – Sağlık",
+          "url": "https://www.trthaber.com/haber/saglik/sosyal-medyada-sonsuz-akis-tuzagi-959735.html",
+          "published_at": "2026-10-10T08:53:00+00:00",
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "generated_title": "Sosyal Medyada Sonsuz Akış ve Dijital Tuzaklar",
+          "summary": "Sosyal medya platformlarının tasarımı kullanıcıları sonsuz akış döngüsünde tutmayı hedeflemektedir. Günceli kaçırma korkusu olarak bilinen FOMO bireylerde stres ve kaygıyı artırmaktadır. Platformlar etkileşimi en üst seviyeye çıkarmak için çeşitli arayüz stratejileri uygulamaktadır. Kullanıcıların paylaşımları şirketler tarafından ekonomik değere dönüştürülmektedir. Uzmanlar bu durumun psikolojik etkilerine dikkat çekmektedir.",
+          "detail_summary": "Sosyal medya platformları günümüzde kullanıcıları sonsuz akış döngüsüne hapsederek dijital bir tuzağa dönüştürmüştür. Uzmanlar günceli kaçırma korkusuyla tetiklenen bu sorunlu kullanımın depresyon, kaygı ve stres gibi ciddi psikolojik etkiler bıraktığını vurgulamaktadır. İnternet kullanımının geçmişteki evrimi ve sosyal medyanın yaygınlaşması bireylerin günlük alışkanlıklarını kökten değiştirmiştir. Leeds Üniversitesi'nden Öğretim Görevlisi Ludmila Lupinacci, platformların etkileşimi en üst seviyeye çıkaracak şekilde tasarlandığını belirtmektedir. Sonsuz kaydırma ve bildirim özellikleri kullanıcıların platformda daha uzun süre kalmasını sağlamaktadır. Kullanıcıların beğenileri ve paylaşımları sosyal medya şirketleri tarafından ekonomik değere dönüştürülmektedir. ABD Toledo Üniversitesi'nden Dr. Jon D. Elhai ve meslektaşlarının araştırması FOMO ile sorunlu sosyal medya kullanımı arasındaki bağı ortaya koymaktadır.",
+          "decision": "reject"
+        }
+      ]
     }
   ],
   "system_incidents": []
