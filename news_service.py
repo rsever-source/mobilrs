@@ -552,6 +552,27 @@ def update_news():
     known = {item.get("id") for item in existing_items}
     candidates = []
     candidate_ids = set()
+    # Filtre kararlarını değiştirmeden, neden sayılarını raporla.
+    # Örnek başlıkları yalnızca sıfır aday durumunda ekleyerek raporu küçük tut.
+    filter_counts = {
+        "pending_unknown_or_expired_date": 0,
+        "already_published": 0,
+        "duplicate_in_this_run": 0,
+        "url_seen_within_7_days": 0,
+        "missing_date": 0,
+        "future_date": 0,
+        "older_than_7_days": 0,
+        "accepted_as_candidate": 0,
+    }
+    filter_examples = {}
+    def note_filter(reason, item):
+        filter_counts[reason] += 1
+        examples = filter_examples.setdefault(reason, [])
+        if len(examples) < 2:
+            examples.append({
+                "source": str(item.get("source") or "")[:120],
+                "title": str(item.get("title") or "")[:200],
+            })
     cutoff = now - timedelta(hours=LOOKBACK_HOURS)
     seen_cutoff = now - timedelta(hours=SEEN_URL_RETENTION_HOURS)
 
@@ -567,27 +588,54 @@ def update_news():
             seen_urls[url] = parsed.isoformat()
 
     for item in pending:
-        if item.get("id") and item["id"] not in known:
-            published = _date(item.get("published_at"))
-            if published and published <= now and published >= cutoff:
-                candidates.append(item)
-                candidate_ids.add(item["id"])
+        if not item.get("id") or item["id"] in known:
+            note_filter("already_published", item)
+            continue
+        published = _date(item.get("published_at"))
+        if not published:
+            note_filter("pending_unknown_or_expired_date", item)
+        elif published > now:
+            note_filter("future_date", item)
+        elif published < cutoff:
+            note_filter("older_than_7_days", item)
+        else:
+            candidates.append(item)
+            candidate_ids.add(item["id"])
+            filter_counts["accepted_as_candidate"] += 1
 
     source_counts = {}
     source_errors = []
+    parsed_total = 0
     for source in sources:
         try:
             source_items = _source_items(source)
             source_counts[source["name"]] = len(source_items)
+            parsed_total += len(source_items)
             for item in source_items:
                 item["id"] = _id(item)
-                if item["id"] in known or item["id"] in candidate_ids or item.get("url") in seen_urls:
+                if item["id"] in known:
+                    note_filter("already_published", item)
+                    continue
+                if item["id"] in candidate_ids:
+                    note_filter("duplicate_in_this_run", item)
+                    continue
+                if item.get("url") in seen_urls:
+                    note_filter("url_seen_within_7_days", item)
                     continue
                 published = _date(item.get("published_at"))
-                if not published or published > now or published < cutoff:
+                if not published:
+                    note_filter("missing_date", item)
+                    continue
+                if published > now:
+                    note_filter("future_date", item)
+                    continue
+                if published < cutoff:
+                    note_filter("older_than_7_days", item)
                     continue
                 candidates.append(item)
                 candidate_ids.add(item["id"])
+                filter_counts["accepted_as_candidate"] += 1
+
         except Exception as exc:
             error_text = repr(exc)
             print("Kaynak okunamadı:", source["name"], error_text)
@@ -599,6 +647,7 @@ def update_news():
 
     print("Kaynak kayıtları:", source_counts)
     print("Kaynak hataları:", source_errors)
+    print("Filtre nedenleri:", filter_counts)
     print("AI adayları:", len(candidates))
     added = []
     failed = []
@@ -606,6 +655,12 @@ def update_news():
         "run_at": now.isoformat(),
         "model": GEMINI_MODEL,
         "source_errors": source_errors,
+        "filter_diagnostics": {
+            "parsed_total": parsed_total,
+            "counts": filter_counts,
+            "examples": filter_examples if not candidates else {},
+            "zero_candidates_is_not_an_error": True,
+        },
         "candidates": [],
     }
 
