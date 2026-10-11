@@ -2,56 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-10-10T12:36:35.586943+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "filter_diagnostics": {
-        "parsed_total": 478,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 10,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 23,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 443,
-          "accepted_as_candidate": 2
-        },
-        "examples": {},
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": [
-        {
-          "title": "Marangoz baba ve engelli oğlu hurdacılardan aldıkları at arabalarını yeniliyor",
-          "source": "Anadolu Ajansı – Engelli Yaşam",
-          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/marangoz-baba-ve-engelli-oglu-hurdacilardan-aldiklari-at-arabalarini-yeniliyor/1832785",
-          "published_at": "2026-10-10T09:12:58+00:00",
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "Afyonkarahisar'da Marangoz Baba ve Engelli Oğlu At Arabalarını Yeniliyor",
-          "summary": "Afyonkarahisar'da yaşayan marangoz Rüştü Deniz, bedensel engelli oğluyla hurdacılardan topladığı eski at arabalarını yeniliyor. Evinin bahçesini atölyeye çeviren baba ve oğlu, at arabalarının ağaç ve demir aksamlarını onararak yeniden işlevsel hale getiriyor. İş kazası nedeniyle yürüme yetisini kaybeden Osman Deniz, tekerlekli sandalyesinden babasına el gücüyle destek oluyor. Nostaljik bir at arabasının yapımı yaklaşık bir ila iki ay sürüyor. Yenilenen at arabaları Ankara, İstanbul ve Konya gibi büyükşehirlerdeki otel ve restoranlara gönderiliyor. Deniz ailesi, bu çalışmayla hem nostaljiyi yaşatmayı hem de birlikte vakit geçirmeyi amaçlıyor.",
-          "detail_summary": "Afyonkarahisar'da yaşayan 78 yaşındaki marangoz Rüştü Deniz, 1970'li yıllarda babasından devraldığı faytonculuk mesleğini otomobillerin yaygınlaşmasıyla bırakmak zorunda kaldı. Emekli olduktan sonra hobi amacıyla nostaljik at arabalarını yenilemeye karar veren Deniz, evinin bahçesini bir atölyeye dönüştürdü. Daha önce geçirdiği iş kazası sonucunda yürüme yetisini kaybeden oğlu Osman Deniz de tekerlekli sandalyesinden babasına el gücüyle katkı sağlıyor. Baba ve oğul, hurdacılardan temin ettikleri eski at arabalarının kırık kısımlarını, ağaç ve demir aksamlarını onararak yeniliyor. Rüştü Deniz, asıl amaçlarının para kazanmak olmadığını, nostaljiyi yaşatarak gelecek nesillere aktarmak istediğini belirtiyor. Bir adet nostaljik at arabasının bakım ve onarım süreci yaklaşık bir ila iki ay sürerken, bu eserler 50 ila 60 bin lira arasında değişen fiyatlarla alıcı buluyor. Hazırlanan nostaljik at arabaları başta İstanbul, Ankara ve Konya olmak üzere Türkiye genelindeki çeşitli otel ve restoranlara ulaştırılıyor.",
-          "decision": "publish"
-        },
-        {
-          "title": "Sosyal medyada sonsuz akış tuzağı",
-          "source": "TRT Haber – Sağlık",
-          "url": "https://www.trthaber.com/haber/saglik/sosyal-medyada-sonsuz-akis-tuzagi-959735.html",
-          "published_at": "2026-10-10T08:53:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "Sosyal Medyada Sonsuz Akış ve Dijital Tuzaklar",
-          "summary": "Sosyal medya platformlarının tasarımı kullanıcıları sonsuz akış döngüsünde tutmayı hedeflemektedir. Günceli kaçırma korkusu olarak bilinen FOMO bireylerde stres ve kaygıyı artırmaktadır. Platformlar etkileşimi en üst seviyeye çıkarmak için çeşitli arayüz stratejileri uygulamaktadır. Kullanıcıların paylaşımları şirketler tarafından ekonomik değere dönüştürülmektedir. Uzmanlar bu durumun psikolojik etkilerine dikkat çekmektedir.",
-          "detail_summary": "Sosyal medya platformları günümüzde kullanıcıları sonsuz akış döngüsüne hapsederek dijital bir tuzağa dönüştürmüştür. Uzmanlar günceli kaçırma korkusuyla tetiklenen bu sorunlu kullanımın depresyon, kaygı ve stres gibi ciddi psikolojik etkiler bıraktığını vurgulamaktadır. İnternet kullanımının geçmişteki evrimi ve sosyal medyanın yaygınlaşması bireylerin günlük alışkanlıklarını kökten değiştirmiştir. Leeds Üniversitesi'nden Öğretim Görevlisi Ludmila Lupinacci, platformların etkileşimi en üst seviyeye çıkaracak şekilde tasarlandığını belirtmektedir. Sonsuz kaydırma ve bildirim özellikleri kullanıcıların platformda daha uzun süre kalmasını sağlamaktadır. Kullanıcıların beğenileri ve paylaşımları sosyal medya şirketleri tarafından ekonomik değere dönüştürülmektedir. ABD Toledo Üniversitesi'nden Dr. Jon D. Elhai ve meslektaşlarının araştırması FOMO ile sorunlu sosyal medya kullanımı arasındaki bağı ortaya koymaktadır.",
-          "decision": "reject"
-        }
-      ]
-    },
-    {
       "run_at": "2026-10-10T18:39:04.136264+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -245,6 +195,58 @@
     },
     {
       "run_at": "2026-10-11T18:57:15.764159+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "filter_diagnostics": {
+        "parsed_total": 478,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 10,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 14,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 454,
+          "accepted_as_candidate": 0
+        },
+        "examples": {
+          "already_published": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Bakan Göktaş, Ankara'da engellilere ve ailelerine yönelik ilk \"Nefes Merkezi\"nin açılışını yaptı"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Marangoz baba ve engelli oğlu hurdacılardan aldıkları at arabalarını yeniliyor"
+            }
+          ],
+          "url_seen_within_7_days": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Bakan Göktaş'tan \"Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği\"ne ilişkin paylaşım"
+            },
+            {
+              "source": "TRT Haber",
+              "title": "Çin, ABD'nin Tayvan'a F16 satışına karşı çıkıyor"
+            }
+          ],
+          "older_than_7_days": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Isparta'da görme engelliler için farkındalık etkinliği düzenlendi"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Kanseri yenen bisikletçi Hac Halit, tek bacağıyla hayallerinin peşinden pedal çeviriyor"
+            }
+          ]
+        },
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": []
+    },
+    {
+      "run_at": "2026-10-11T23:41:47.113815+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
       "filter_diagnostics": {
