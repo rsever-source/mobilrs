@@ -1,6 +1,16 @@
 {
-  "updated_at": "2026-10-11T05:51:32.728152+00:00",
+  "updated_at": "2026-10-11T12:55:15.694947+00:00",
   "items": [
+    {
+      "id": "f128abde31a8eccf9e21",
+      "title": "Ankara'da Engelli Aileleri İçin İlk Nefes Merkezi Hizmete Girdi",
+      "summary": "Aile ve Sosyal Hizmetler Bakanlığı, Ankara'da engelli bireylerin ailelerine kısa süreli bakım desteği sağlayacak ilk Nefes Merkezi'nin açılışını gerçekleştirdi. Saray Engelsiz Yaşam Bakım, Rehabilitasyon ve Aile Danışma Merkezi bünyesinde kurulan tesis 24 kişilik kapasiteye sahip bulunuyor. Merkez sayesinde aileler, ihtiyaç duyduklarında çocuklarını bir yıl içinde 30 güne kadar güvenle bırakabilecek. Bakan Mahinur Özdemir Göktaş, Türkiye genelinde benzer merkezlerin sayısının 48'e ulaştığını bildirdi. Hizmetten faydalanan engelli bireylerden herhangi bir ücret talep edilmiyor. Açılış töreninin ardından Bakan Göktaş, merkezdeki atölyeleri gezerek engelli bireylerle bir araya geldi.",
+      "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, başkentte Saray Engelsiz Yaşam Bakım, Rehabilitasyon ve Aile Danışma Merkezi bünyesinde hizmet verecek olan Ankara'nın ilk Nefes Merkezi'nin açılışını yaptı. Merkez, ameliyat veya şehir dışına çıkış gibi zorunlu durumlarda ailelere çocuklarını bir yıl içinde toplam 30 güne kadar emanet etme imkanı sunuyor. Toplam 24 kişi kapasiteli olan tesiste kadın ve erkekler için ayrı birimler oluşturuldu ve hizmetler tamamen ücretsiz olarak sağlanıyor. Bakan Göktaş, daha önce İstanbul Beylikdüzü'nde de benzer bir merkezin açıldığını hatırlatarak ülke genelindeki toplam merkez sayısının 48'e ulaştığını belirtti. Saray Engelsiz Yaşam Merkezi yerleşkesinde 779 engelli bireye rehabilitasyon, sosyal faaliyetler ve spor imkanları sunulurken, merkezde 53 lisanslı sporcu da bulunuyor. Ziyaret sırasında el sanatları atölyelerini gezen Göktaş, engelli bireylerin ürettiği ürünleri inceleyerek onlarla sohbet etti. Program kapsamında ayrıca vatandaşların gönüllü olarak katkı sağlayabileceği İyilik Var Platformu'nun e-Devlet üzerinden yürütülen faaliyetlerine de dikkat çekildi.",
+      "source": "Anadolu Ajansı – Engelli Yaşam",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/bakan-goktas-ankarada-engellilere-ve-ailelerine-yonelik-ilk-nefes-merkezinin-acilisini-yapti/1832795",
+      "published_at": "2026-10-11T08:18:49+00:00",
+      "created_at": "2026-10-11T12:55:15.694947+00:00"
+    },
     {
       "id": "ea9d3111349bf8c8d82c",
       "title": "Afyonkarahisar'da Marangoz Baba ve Engelli Oğlu At Arabalarını Yeniliyor",
@@ -87,15 +97,6 @@
       "url": "https://www.sgk.gov.tr/duyuru/detay/02102026-SUT-Degisiklik-Tebligi-Islenmis-Guncel-2013-SUT-2026-10-02-02-50-06",
       "published_at": "2026-10-02T00:00:00+00:00",
       "created_at": "2026-10-06T08:07:04.147968+00:00"
-    },
-    {
-      "id": "5f3d36cfaeda78a4c5cf",
-      "title": "Dokuz Ayda 4 Milyondan Fazla Yaşlıya Kapsamlı Sağlık Değerlendirmesi Yapıldı",
-      "summary": "Sağlık Bakanlığı, 1 Ekim Dünya Yaşlılar Günü dolayısıyla yaşlı sağlığı hizmetlerine ilişkin verileri paylaştı. Aile hekimleri ve aile sağlığı çalışanları tarafından yılın ilk dokuz ayında 4 milyondan fazla yaşlıya kapsamlı sağlık değerlendirmesi gerçekleştirildi. Hastalık Yönetim Platformu uygulaması ile 65 yaş ve üzerindeki bireylerin sağlık durumları yirmiden fazla parametre dikkate alınarak inceleniyor. Sağlıklı Yaş Alma Merkezleri genelgesi kapsamında ise seksen yaş ve üzerindeki kişilerin evinde tıbbi bakım ihtiyaçları takip ediliyor. Ayrıca e-Rapor sistemi sayesinde seksen yaş ve üzerindeki ile yatağa bağımlı vatandaşların rapor yenileme süreçleri kolaylaştırıldı. Sağlık Bakanı Kemal Memişoğlu, yayımladığı mesajda yaşlıların Dünya Yaşlılar Günü'nü kutladı.",
-      "source": "TRT Haber – Sağlık",
-      "url": "https://www.trthaber.com/haber/saglik/dokuz-ayda-4-milyonun-uzerinde-yasliya-saglik-degerlendirmesi-yapildi-958809.html",
-      "published_at": "2026-10-01T13:53:00+00:00",
-      "created_at": "2026-10-01T19:34:06.977539+00:00"
     }
   ],
   "pending": [],
@@ -130,6 +131,7 @@
     "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-teknofest-guneydoguyu-ziyaret-etti/": "2026-10-09T12:13:57.527890+00:00",
     "https://www.aile.gov.tr/haberler/bakan-goktas-gaziantep-te-sehit-aileleri-ve-gazilerle-vefa-bulusmasinda-bir-araya-geldi/": "2026-10-09T12:13:57.527890+00:00",
     "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/marangoz-baba-ve-engelli-oglu-hurdacilardan-aldiklari-at-arabalarini-yeniliyor/1832785": "2026-10-10T12:36:35.586943+00:00",
-    "https://www.trthaber.com/haber/saglik/sosyal-medyada-sonsuz-akis-tuzagi-959735.html": "2026-10-10T12:36:35.586943+00:00"
+    "https://www.trthaber.com/haber/saglik/sosyal-medyada-sonsuz-akis-tuzagi-959735.html": "2026-10-10T12:36:35.586943+00:00",
+    "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/bakan-goktas-ankarada-engellilere-ve-ailelerine-yonelik-ilk-nefes-merkezinin-acilisini-yapti/1832795": "2026-10-11T12:55:15.694947+00:00"
   }
 }
