@@ -2,12 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-10-09T22:41:20.292277+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "candidates": []
-    },
-    {
       "run_at": "2026-10-10T05:56:42.513212+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -218,6 +212,42 @@
         "zero_candidates_is_not_an_error": true
       },
       "candidates": []
+    },
+    {
+      "run_at": "2026-10-11T12:55:15.694947+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "filter_diagnostics": {
+        "parsed_total": 478,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 10,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 24,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 443,
+          "accepted_as_candidate": 1
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "Bakan Göktaş, Ankara'da engellilere ve ailelerine yönelik ilk \"Nefes Merkezi\"nin açılışını yaptı",
+          "source": "Anadolu Ajansı – Engelli Yaşam",
+          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/bakan-goktas-ankarada-engellilere-ve-ailelerine-yonelik-ilk-nefes-merkezinin-acilisini-yapti/1832795",
+          "published_at": "2026-10-11T08:18:49+00:00",
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "generated_title": "Ankara'da Engelli Aileleri İçin İlk Nefes Merkezi Hizmete Girdi",
+          "summary": "Aile ve Sosyal Hizmetler Bakanlığı, Ankara'da engelli bireylerin ailelerine kısa süreli bakım desteği sağlayacak ilk Nefes Merkezi'nin açılışını gerçekleştirdi. Saray Engelsiz Yaşam Bakım, Rehabilitasyon ve Aile Danışma Merkezi bünyesinde kurulan tesis 24 kişilik kapasiteye sahip bulunuyor. Merkez sayesinde aileler, ihtiyaç duyduklarında çocuklarını bir yıl içinde 30 güne kadar güvenle bırakabilecek. Bakan Mahinur Özdemir Göktaş, Türkiye genelinde benzer merkezlerin sayısının 48'e ulaştığını bildirdi. Hizmetten faydalanan engelli bireylerden herhangi bir ücret talep edilmiyor. Açılış töreninin ardından Bakan Göktaş, merkezdeki atölyeleri gezerek engelli bireylerle bir araya geldi.",
+          "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, başkentte Saray Engelsiz Yaşam Bakım, Rehabilitasyon ve Aile Danışma Merkezi bünyesinde hizmet verecek olan Ankara'nın ilk Nefes Merkezi'nin açılışını yaptı. Merkez, ameliyat veya şehir dışına çıkış gibi zorunlu durumlarda ailelere çocuklarını bir yıl içinde toplam 30 güne kadar emanet etme imkanı sunuyor. Toplam 24 kişi kapasiteli olan tesiste kadın ve erkekler için ayrı birimler oluşturuldu ve hizmetler tamamen ücretsiz olarak sağlanıyor. Bakan Göktaş, daha önce İstanbul Beylikdüzü'nde de benzer bir merkezin açıldığını hatırlatarak ülke genelindeki toplam merkez sayısının 48'e ulaştığını belirtti. Saray Engelsiz Yaşam Merkezi yerleşkesinde 779 engelli bireye rehabilitasyon, sosyal faaliyetler ve spor imkanları sunulurken, merkezde 53 lisanslı sporcu da bulunuyor. Ziyaret sırasında el sanatları atölyelerini gezen Göktaş, engelli bireylerin ürettiği ürünleri inceleyerek onlarla sohbet etti. Program kapsamında ayrıca vatandaşların gönüllü olarak katkı sağlayabileceği İyilik Var Platformu'nun e-Devlet üzerinden yürütülen faaliyetlerine de dikkat çekildi.",
+          "decision": "publish"
+        }
+      ]
     }
   ],
   "system_incidents": []
