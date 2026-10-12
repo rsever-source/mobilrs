@@ -2,58 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-10-10T18:39:04.136264+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "filter_diagnostics": {
-        "parsed_total": 478,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 10,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 24,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 444,
-          "accepted_as_candidate": 0
-        },
-        "examples": {
-          "already_published": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Marangoz baba ve engelli oğlu hurdacılardan aldıkları at arabalarını yeniliyor"
-            },
-            {
-              "source": "TRT Haber – Sağlık",
-              "title": "Ulusal Kanser Kontrol Programı ile 2 yılda 5,1 milyon kişiye meme kanseri taraması yapıldı"
-            }
-          ],
-          "url_seen_within_7_days": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Bakan Göktaş'tan \"Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği\"ne ilişkin paylaşım"
-            },
-            {
-              "source": "TRT Haber",
-              "title": "Çin, ABD'nin Tayvan'a F16 satışına karşı çıkıyor"
-            }
-          ],
-          "older_than_7_days": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Isparta'da görme engelliler için farkındalık etkinliği düzenlendi"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Kanseri yenen bisikletçi Hac Halit, tek bacağıyla hayallerinin peşinden pedal çeviriyor"
-            }
-          ]
-        },
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": []
-    },
-    {
       "run_at": "2026-10-10T23:35:23.870240+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -247,6 +195,58 @@
     },
     {
       "run_at": "2026-10-11T23:41:47.113815+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "filter_diagnostics": {
+        "parsed_total": 478,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 10,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 14,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 454,
+          "accepted_as_candidate": 0
+        },
+        "examples": {
+          "already_published": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Bakan Göktaş, Ankara'da engellilere ve ailelerine yönelik ilk \"Nefes Merkezi\"nin açılışını yaptı"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Marangoz baba ve engelli oğlu hurdacılardan aldıkları at arabalarını yeniliyor"
+            }
+          ],
+          "url_seen_within_7_days": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Bakan Göktaş'tan \"Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği\"ne ilişkin paylaşım"
+            },
+            {
+              "source": "TRT Haber",
+              "title": "Çin, ABD'nin Tayvan'a F16 satışına karşı çıkıyor"
+            }
+          ],
+          "older_than_7_days": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Isparta'da görme engelliler için farkındalık etkinliği düzenlendi"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Kanseri yenen bisikletçi Hac Halit, tek bacağıyla hayallerinin peşinden pedal çeviriyor"
+            }
+          ]
+        },
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": []
+    },
+    {
+      "run_at": "2026-10-12T06:03:06.689238+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
       "filter_diagnostics": {
