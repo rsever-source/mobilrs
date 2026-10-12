@@ -4,6 +4,15 @@ on:
   schedule:
     - cron: '17 */2 * * *'
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'update = normal haber güncellemesi | gib-test = yalnızca GİB kaynak testi (Gemini çağrılmaz)'
+        required: false
+        default: update
+        type: choice
+        options:
+          - update
+          - gib-test
   push:
     branches:
       - main
@@ -20,6 +29,8 @@ concurrency:
 
 jobs:
   update-news:
+    # Zamanlanmış/otomatik çalışma aynen sürer; elle "gib-test" seçilirse bu iş atlanır.
+    if: github.event_name != 'workflow_dispatch' || inputs.mode != 'gib-test'
     runs-on: ubuntu-latest
     steps:
       - name: Haber branch'ini al
@@ -69,5 +80,78 @@ jobs:
           done
           echo "Haber listesi 5 denemede kaydedilemedi." >&2
           exit 1
+
+  # Elle tetiklenen, Gemini çağırmayan ve hiçbir dosyayı yazmayan GİB kaynak testi.
+  # Normal haber güncellemesini ve news.json yazımını çalıştırmaz.
+  gib-test:
+    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'gib-test'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Haber branch'ini al
+        uses: actions/checkout@v4
+        with:
+          repository: rsever-source/mobilrs
+          ref: cloud-run-migration
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Python kurulumu
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Bağımlılıkları kur
+        run: pip install requests beautifulsoup4
+
+      - name: GİB kaynağını test et (Gemini yok, dosya yazımı yok)
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          import news_service as ns
+
+          def sha(path):
+              if not os.path.exists(path):
+                  return None
+              with open(path, "rb") as handle:
+                  return hashlib.sha256(handle.read()).hexdigest()
+
+          watched = ("news.json", "news_ai_log.json")
+          before = {name: sha(name) for name in watched}
+
+          sources = json.load(open("news_sources.json", encoding="utf-8"))
+          gib = next((s for s in sources if s.get("kind") == "gib_api"), None)
+          if gib is None:
+              raise SystemExit("HATA: news_sources.json icinde gib_api kaynagi yok")
+
+          print("GIB uc noktasi:", gib.get("url"))
+          items = ns._gib_api_items(gib)
+
+          after = {name: sha(name) for name in watched}
+
+          print("--- TEST SONUCLARI ---")
+          print("ayristirilan kayit :", len(items))
+          print("LOOKBACK_HOURS     :", ns.LOOKBACK_HOURS)
+          for item in items[:5]:
+              print("  ", item.get("published_at"), "|", str(item.get("title"))[:70])
+
+          problems = []
+          if not items:
+              problems.append("GIB kaynagindan hic kayit ayristirilamadi")
+          for item in items:
+              if not (item.get("title") and item.get("url")
+                      and item.get("published_at") and item.get("content")):
+                  problems.append("eksik alan: " + str(item.get("title"))[:60])
+              if "<" in str(item.get("description", "")) or "<" in str(item.get("title", "")):
+                  problems.append("HTML artigi: " + str(item.get("title"))[:60])
+          if ns.LOOKBACK_HOURS != 168:
+              problems.append("LOOKBACK_HOURS degismis (7 gunluk filtre korunmali)")
+          if before != after:
+              problems.append("news.json/news_ai_log.json DEGISTI; test hicbir dosya yazmamali")
+
+          if problems:
+              print("HATA:", problems)
+              raise SystemExit(1)
+          print("TAMAM: GIB kaynagi gercek API uzerinden dogrulandi; hicbir dosya yazilmadi.")
+          PY
 
 # News source fallback enabled on cloud-run-migration
