@@ -1055,7 +1055,7 @@ Kaynak metni:
         "seen_urls": seen_urls,
     }
     # Central report writer merges by latest GitHub SHA, so concurrent workflow writes
-    # cannot overwrite one another. News history remains limited to the latest seven runs.
+    # cannot overwrite one another. News history remains limited to the latest 31 runs.
     try:
         previous_ai_logs = append_news_run(ai_log)
         print("Merkezi Gemini/sistem raporu güncellendi.")
@@ -1065,7 +1065,7 @@ Kaynak metni:
             previous_ai_logs = previous_ai_logs.get("news_runs", [])
         if not isinstance(previous_ai_logs, list):
             previous_ai_logs = []
-        previous_ai_logs = (previous_ai_logs + [ai_log])[-7:]
+        previous_ai_logs = (previous_ai_logs + [ai_log])[-31:]
         print("Merkezi rapor yazılamadı; haber güncellemesi durdurulmadı:", repr(exc))
     _update_source_alert(previous_ai_logs)
     _save_json(NEWS_FILE, result)
