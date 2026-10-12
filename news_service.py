@@ -28,6 +28,9 @@ UA = "Mozilla/5.0 (compatible; EngelliMe-News/1.0; +https://engelli.me)"
 TIMEOUT = 20
 AI_TIMEOUT = 60
 
+# Per-run diagnostics for API-backed sources; included in the existing central news report.
+_GIB_SOURCE_DIAGNOSTICS = {}
+
 def _make_session():
     session = requests.Session()
     session.headers.update({"User-Agent": UA})
@@ -435,6 +438,7 @@ def _gib_api_items(source):
     keyword_eliminated = 0
     invalid_date = 0
     eliminated = []
+    source_error = None
 
     # Raporlama için: aynı duyuru daha önce yayımlanmış ya da işlenmiş mi?
     # update_news() ile aynı anahtarlar kullanılır (id = url özeti, seen_urls).
@@ -474,6 +478,7 @@ def _gib_api_items(source):
                  "timeout": isinstance(exc, requests.exceptions.Timeout),
                  "timeout_s": TIMEOUT, "detail": str(exc)[:300]}
             )
+            source_error = f"page {page}: {exc.__class__.__name__}: {str(exc)[:300]}"
             break
         elapsed_ms = round((time.monotonic() - started) * 1000)
         print(
@@ -490,13 +495,23 @@ def _gib_api_items(source):
                  "http_status": response.status_code, "timeout_s": TIMEOUT,
                  "detail": response.text[:300]}
             )
+            source_error = f"page {page}: HTTP {response.status_code}: {response.text[:300]}"
             break
         try:
             payload = response.json()
         except Exception as exc:
+            source_error = f"page {page}: JSON parse {exc.__class__.__name__}: {str(exc)[:300]}"
             print("GİB duyuru yanıtı ayrıştırılamadı:", page, repr(exc))
             break
-        rows = (payload.get("resultContainer") or {}).get("content") or []
+        if not isinstance(payload, dict) or not isinstance(payload.get("resultContainer"), dict):
+            source_error = f"page {page}: beklenmeyen JSON yanıt yapısı"
+            print("GİB duyuru yanıt yapısı beklenenden farklı:", page)
+            break
+        rows = payload["resultContainer"].get("content") or []
+        if not isinstance(rows, list):
+            source_error = f"page {page}: resultContainer.content liste değil"
+            print("GİB duyuru kayıt listesi beklenenden farklı:", page)
+            break
         if not rows:
             break
         scanned += len(rows)
@@ -555,11 +570,22 @@ def _gib_api_items(source):
                 "published_at": published_at,
             })
 
+    diagnostic = {
+        "stage": "gib_api", "scanned": scanned, "parsed_items": len(items),
+        "keyword_eliminated": keyword_eliminated, "invalid_date": invalid_date,
+        "invalid_rows": invalid_rows, "duplicate_in_scan": duplicate_in_scan,
+        "already_processed": already_processed, "in_7_day_window": in_window,
+        "new_candidates_for_gemini": new_candidates,
+        "lookback_hours": LOOKBACK_HOURS, "error": source_error,
+        "eliminated_examples": eliminated[:10],
+    }
+    _GIB_SOURCE_DIAGNOSTICS[source["name"]] = diagnostic
     if eliminated:
         print(
             "GİB duyuru eleme ayrıntısı:",
             {"source": source["name"], "stage": "gib_api",
-             "count": len(eliminated), "items": eliminated}
+             "count": len(eliminated), "items": eliminated[:10],
+             "truncated": len(eliminated) > 10}
         )
     print(
         "Haber kaynağı sonuç:",
@@ -569,7 +595,7 @@ def _gib_api_items(source):
          "duplicate_in_scan": duplicate_in_scan,
          "already_processed": already_processed, "in_7_day_window": in_window,
          "new_candidates_for_gemini": new_candidates,
-         "lookback_hours": LOOKBACK_HOURS}
+         "lookback_hours": LOOKBACK_HOURS, "error": source_error}
     )
     return items
 
@@ -728,6 +754,7 @@ def _update_source_alert(logs):
 
 
 def update_news():
+    _GIB_SOURCE_DIAGNOSTICS.clear()
     now = datetime.now(timezone.utc)
     sources = _load_json(SOURCES_FILE, [])
     old = _load_json(NEWS_FILE, {"updated_at": None, "items": [], "pending": []})
@@ -829,6 +856,17 @@ def update_news():
                 "kind": "source_fetch_error",
             })
 
+    # GİB API hataları fonksiyon içinde kısmi sonuçları korumak için yakalanır;
+    # bunları mevcut kaynak hata raporuna da ekle ki sessizce sıfır kayıt görünmesin.
+    for source_name, diagnostic in _GIB_SOURCE_DIAGNOSTICS.items():
+        if diagnostic.get("error") and not any(
+            entry.get("source") == source_name for entry in source_errors
+        ):
+            source_errors.append({
+                "source": source_name,
+                "error": diagnostic["error"],
+                "kind": "source_fetch_error",
+            })
     print("Kaynak kayıtları:", source_counts)
     print("Kaynak hataları:", source_errors)
     print("Filtre nedenleri:", filter_counts)
@@ -839,6 +877,7 @@ def update_news():
         "run_at": now.isoformat(),
         "model": GEMINI_MODEL,
         "source_errors": source_errors,
+        "source_diagnostics": dict(_GIB_SOURCE_DIAGNOSTICS),
         "filter_diagnostics": {
             "parsed_total": parsed_total,
             "counts": filter_counts,
