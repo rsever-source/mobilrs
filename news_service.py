@@ -392,9 +392,193 @@ def _tbb_mevzuat_items(source):
 
     return items
 
+def _gib_datetime(value):
+    """GİB zaman damgalarını UTC ISO biçimine çevir.
+
+    Duyuru tarihleri Türkiye saatine göre ve saat dilimi bilgisi olmadan gelir
+    (ör. 2026-10-11T10:35:00). Bu değerleri UTC+3 kabul et; aksi halde tarih
+    gelecekte görünür ve 7 günlük filtre duyuruyu atlar.
+    """
+    if not value:
+        return None
+    try:
+        parsed = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except Exception:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone(timedelta(hours=3)))
+    return parsed.astimezone(timezone.utc).isoformat()
+
+
+def _gib_api_items(source):
+    """GİB Duyuru Arşivi'ni JSON API'sinden oku.
+
+    Duyuru listesi sayfada istemci tarafında oluşturulduğu için liste HTML'inde
+    duyuru bulunmaz; veri sayfanın kullandığı listPublish uç noktasından alınır.
+    Duyuru gövdesi yanıttaki "description" alanındadır, detay sayfası kazınmaz.
+    Yalnızca engellilik ve ÖTV ile ilgili duyurular kaynakta süzülür.
+
+    Raporlama: alınan, anahtar kelime nedeniyle elenen, tarihi okunamayan,
+    daha önce işlenmiş ve 7 günlük pencereye giren kayıt sayıları; elenen
+    duyuruların başlığı ve elenme nedeni stdout'a yazılır (Cloud Run logları).
+    news.json burada yalnızca okunur; fonksiyon hiçbir dosyaya yazmaz.
+    """
+    keywords = [str(k).casefold() for k in source.get("keywords", [])]
+    detail_base = str(source.get("detail_url", "")).rstrip("/")
+    file_base = str(source.get("file_url", ""))
+    size = int(source.get("size", 10))
+    items = []
+    seen = set()
+    scanned = 0
+    invalid_rows = 0
+    duplicate_in_scan = 0
+    keyword_eliminated = 0
+    invalid_date = 0
+    eliminated = []
+
+    # Raporlama için: aynı duyuru daha önce yayımlanmış ya da işlenmiş mi?
+    # update_news() ile aynı anahtarlar kullanılır (id = url özeti, seen_urls).
+    previous = _load_json(NEWS_FILE, {})
+    if not isinstance(previous, dict):
+        previous = {}
+    raw_items = previous.get("items", [])
+    known_ids = {entry.get("id") for entry in raw_items if isinstance(entry, dict)}
+    seen_before = previous.get("seen_urls", {})
+    if not isinstance(seen_before, dict):
+        seen_before = {}
+    window_start = datetime.now(timezone.utc) - timedelta(hours=LOOKBACK_HOURS)
+    already_processed = 0
+    in_window = 0
+    new_candidates = 0
+
+    for page in range(int(source.get("pages", 1))):
+        params = {
+            "preview": "false",
+            "page": page,
+            "size": size,
+            "sortFieldName": "startdate",
+            "sortType": "DESC",
+        }
+        started = time.monotonic()
+        try:
+            response = _SESSION.post(
+                source["url"], json=source.get("body", {}), params=params,
+                headers={"Content-Type": "application/json"}, timeout=TIMEOUT,
+            )
+        except Exception as exc:
+            # Zaman aşımı/bağlantı hatası: yanıt gelmediği için durum kodu yok.
+            print(
+                "GİB duyuru API'si okunamadı:",
+                {"source": source["name"], "stage": "gib_api", "page": page,
+                 "http_status": None, "error": exc.__class__.__name__,
+                 "timeout": isinstance(exc, requests.exceptions.Timeout),
+                 "timeout_s": TIMEOUT, "detail": str(exc)[:300]}
+            )
+            break
+        elapsed_ms = round((time.monotonic() - started) * 1000)
+        print(
+            "Haber kaynağı HTTP:",
+            {"source": source["name"], "stage": "gib_api", "page": page,
+             "status": response.status_code,
+             "content_type": response.headers.get("Content-Type", ""),
+             "bytes": len(response.content), "elapsed_ms": elapsed_ms}
+        )
+        if response.status_code != 200:
+            print(
+                "GİB duyuru API'si hata döndü:",
+                {"source": source["name"], "stage": "gib_api", "page": page,
+                 "http_status": response.status_code, "timeout_s": TIMEOUT,
+                 "detail": response.text[:300]}
+            )
+            break
+        try:
+            payload = response.json()
+        except Exception as exc:
+            print("GİB duyuru yanıtı ayrıştırılamadı:", page, repr(exc))
+            break
+        rows = (payload.get("resultContainer") or {}).get("content") or []
+        if not rows:
+            break
+        scanned += len(rows)
+
+        for row in rows:
+            title = _clean(row.get("title"))
+            slug = str(row.get("slug") or "").strip()
+            if not title or not slug:
+                invalid_rows += 1
+                continue
+            url = f"{detail_base}/{slug}"
+            if url in seen:
+                duplicate_in_scan += 1
+                continue
+
+            description = _clean(row.get("description"))
+            searchable = f"{title} {description}".casefold()
+            if keywords and not any(keyword in searchable for keyword in keywords):
+                keyword_eliminated += 1
+                eliminated.append({"title": title[:120],
+                                   "reason": "anahtar kelime eşleşmedi"})
+                continue
+
+            published_at = _gib_datetime(row.get("startdate") or row.get("ts"))
+            if not published_at:
+                invalid_date += 1
+                eliminated.append({"title": title[:120],
+                                   "reason": "yayın tarihi okunamadı"})
+                continue
+
+            # Ek dosyalar (ör. PDF) duyuru metninde bağlantı olarak verilir;
+            # adresleri gövdeye ekle ki özet üretilirken kaybolmasın.
+            content = description
+            attachments = [
+                f"{file_base}{name}" for name in row.get("fileNames") or []
+                if name and file_base
+            ]
+            if attachments:
+                content = f"{description}\n\nEk dosyalar:\n" + "\n".join(attachments)
+
+            seen.add(url)
+            parsed_published = _date(published_at)
+            is_known = _id({"url": url}) in known_ids or url in seen_before
+            if is_known:
+                already_processed += 1
+            if parsed_published and parsed_published >= window_start:
+                in_window += 1
+                if not is_known:
+                    new_candidates += 1
+            items.append({
+                "source": source["name"],
+                "title": title[:300],
+                "url": url,
+                "description": description[:900],
+                "content": content[:18000],
+                "published_at": published_at,
+            })
+
+    if eliminated:
+        print(
+            "GİB duyuru eleme ayrıntısı:",
+            {"source": source["name"], "stage": "gib_api",
+             "count": len(eliminated), "items": eliminated}
+        )
+    print(
+        "Haber kaynağı sonuç:",
+        {"source": source["name"], "stage": "gib_api", "scanned": scanned,
+         "parsed_items": len(items), "keyword_eliminated": keyword_eliminated,
+         "invalid_date": invalid_date, "invalid_rows": invalid_rows,
+         "duplicate_in_scan": duplicate_in_scan,
+         "already_processed": already_processed, "in_7_day_window": in_window,
+         "new_candidates_for_gemini": new_candidates,
+         "lookback_hours": LOOKBACK_HOURS}
+    )
+    return items
+
+
 def _source_items(source):
     if source.get("kind") == "tbb_mevzuat":
         return _tbb_mevzuat_items(source)
+    if source.get("kind") == "gib_api":
+        return _gib_api_items(source)
     if source.get("kind") == "html":
         return _html_items(source)
     return _feed_items(source)
@@ -687,7 +871,9 @@ def update_news():
                     raise RuntimeError("TBB duyurusunda Resmî Gazete bağlantısı bulunamadı")
                 article = _article_text(official_url)
             else:
-                article = _article_text(item["url"])
+                # İstemci tarafında oluşturulan duyuru sayfalarında gövde kaynakta
+                # hazır gelir; detay sayfasını kazımaya gerek yok.
+                article = item.get("content") or _article_text(item["url"])
             source_context = ""
             if item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları":
                 source_context = """TBB / RESMÎ GAZETE DUYURULARI İÇİN EK KURAL:

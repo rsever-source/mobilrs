@@ -56,6 +56,17 @@
     "allowed_prefix": "https://www.sgk.gov.tr/"
   },
   {
+    "name": "Gelir İdaresi Başkanlığı – Güncel Duyurular",
+    "kind": "gib_api",
+    "url": "https://gib.gov.tr/api/gibportal/duyuru/listPublish",
+    "body": {"type": null, "ilkodu": "UNIVERSAL"},
+    "size": 10,
+    "pages": 3,
+    "keywords": ["engelli", "ötv", "özel tüketim vergisi"],
+    "detail_url": "https://www.gib.gov.tr/duyuru-arsivi/guncel",
+    "file_url": "https://cdn.gib.gov.tr/api/gibportal-file/file/getFile?objectKey="
+  },
+  {
     "name": "Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
     "kind": "tbb_mevzuat",
     "url": "https://www.tbb.gov.tr/tr/mevzuat-duyurulari",
