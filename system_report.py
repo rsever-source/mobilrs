@@ -13,7 +13,7 @@ from urllib.request import Request, urlopen
 
 REPORT_PATH = "news_ai_log.json"
 REPORT_BRANCH = "cloud-run-migration"
-MAX_NEWS_RUNS = 6
+MAX_NEWS_RUNS = 7
 INCIDENT_RETENTION_DAYS = 90
 REPORT_AFTER = timedelta(hours=24)
 API_ROOT = "https://api.github.com"
