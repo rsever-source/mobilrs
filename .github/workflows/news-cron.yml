@@ -81,6 +81,91 @@ jobs:
           echo "Haber listesi 5 denemede kaydedilemedi." >&2
           exit 1
 
+      - name: Canlı haber yayınını doğrula ve raporla
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: rsever-source/mobilrs
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json
+          import time
+          import requests
+          from system_report import record_check
+
+          with open("news.json", encoding="utf-8") as handle:
+              expected_data = json.load(handle)
+          expected_items = [
+              item for item in expected_data.get("items", [])[:10]
+              if str(item.get("url", "")).startswith(("https://", "http://"))
+              and item.get("id")
+          ]
+          if not expected_items:
+              record_check(
+                  "live-news-publication", "failure",
+                  "GitHub news.json içinde doğrulanabilecek yayın haberi bulunamadı.",
+                  immediate=True,
+              )
+              print("HATA: GitHub news.json içinde doğrulanabilecek haber yok.")
+              raise SystemExit(0)
+
+          live_data = None
+          last_error = ""
+          # /api/news CDN önbelleği 5 dakikaya kadar sürebildiğinden tekrar dene.
+          for attempt in range(6):
+              try:
+                  response = requests.get(
+                      "https://engelli.me/api/news",
+                      timeout=(5, 15),
+                      headers={"Cache-Control": "no-cache"},
+                  )
+                  response.raise_for_status()
+                  candidate = response.json()
+                  if not isinstance(candidate, dict) or not isinstance(candidate.get("items"), list):
+                      raise ValueError("Canlı /api/news yanıt biçimi beklenenden farklı")
+                  live_data = candidate
+                  expected_ids = {str(item["id"]) for item in expected_items}
+                  live_ids = {str(item.get("id")) for item in candidate["items"] if item.get("id")}
+                  missing = [item for item in expected_items if str(item["id"]) not in live_ids]
+                  if not missing:
+                      break
+                  if attempt < 5:
+                      print(f"Canlı API'de {len(missing)} güncel haber eksik; önbellek için 60 sn sonra tekrar denenecek.")
+              except Exception as exc:
+                  last_error = repr(exc)
+                  live_data = None
+                  if attempt < 5:
+                      print("Canlı API kontrolü başarısız; 60 sn sonra tekrar denenecek:", last_error)
+              if attempt < 5:
+                  time.sleep(60)
+
+          if live_data is None:
+              details = "Canlı /api/news kontrol edilemedi: " + (last_error or "geçerli yanıt alınamadı")
+              record_check("live-news-publication", "failure", details, immediate=True)
+              print("HATA:", details)
+          else:
+              live_ids = {str(item.get("id")) for item in live_data["items"] if item.get("id")}
+              missing = [item for item in expected_items if str(item["id"]) not in live_ids]
+              if missing:
+                  titles = " | ".join(str(item.get("title", ""))[:100] for item in missing[:3])
+                  details = (
+                      f"GitHub news.json listesindeki {len(missing)} haber canlı /api/news yanıtında yok. "
+                      f"Canlı updated_at: {live_data.get('updated_at') or 'bilinmiyor'}. "
+                      f"Eksik başlıklar: {titles}"
+                  )
+                  record_check("live-news-publication", "failure", details, immediate=True)
+                  print("HATA: Yeni haberler GitHub'da var ancak canlı sitede görünmüyor.")
+                  print(details)
+              else:
+                  details = (
+                      f"Canlı /api/news doğrulandı; GitHub listesindeki {len(expected_items)} haberin "
+                      "tamamı canlı yanıtta bulunuyor."
+                  )
+                  record_check("live-news-publication", "success", details, immediate=True)
+                  print("TAMAM:", details)
+          PY
+
   # Elle tetiklenen, Gemini çağırmayan ve hiçbir dosyayı yazmayan GİB kaynak testi.
   # Normal haber güncellemesini ve news.json yazımını çalıştırmaz.
   gib-test:
