@@ -526,7 +526,102 @@
           "decision": "reject"
         }
       ]
+    },
+    {
+      "run_at": "2026-10-13T16:02:39.456665+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 13,
+          "keyword_eliminated": 17,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılacak Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavına Katılacak Adaylar ",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Mirasçıların Vergisel Yükümlülükleri Rehberi ile Veraset ve İntikal Vergisi Broşürü Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Yurt Dışından Elde Edilen Kazanç ve İratlarda Vergi İstisnası Rehberi ile İnfografik Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 493,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 10,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 16,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 466,
+          "accepted_as_candidate": 1
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "Memişoğlu: Sigara düzenlemesinin insanları ifşa etmekle alakası yok",
+          "source": "TRT Haber – Sağlık",
+          "url": "https://www.trthaber.com/haber/saglik/memisoglu-sigara-duzenlemesinin-insanlari-ifsa-etmekle-alakasi-yok-960006.html",
+          "published_at": "2026-10-13T12:15:00+00:00",
+          "status": "not_processed",
+          "error": "HTTPError('503 Server Error: Service Unavailable for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent')"
+        }
+      ]
     }
   ],
-  "system_incidents": []
+  "system_incidents": [
+    {
+      "component": "news-item:321686d7e1ee0a5c",
+      "first_seen": "2026-10-13T16:04:00.938314+00:00",
+      "status": "pending_24h",
+      "details": "Memişoğlu: Sigara düzenlemesinin insanları ifşa etmekle alakası yok: HTTPError('503 Server Error: Service Unavailable for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent')"
+    }
+  ]
 }
