@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-13T17:56:19.780247+00:00",
+  "updated_at": "2026-10-13T21:17:39.332802+00:00",
   "items": [
     {
       "id": "2a79439419839ce2207e",
@@ -101,18 +101,8 @@
       "created_at": "2026-10-02T19:21:41.632894+00:00"
     }
   ],
-  "pending": [
-    {
-      "source": "TRT Haber – Sağlık",
-      "title": "Memişoğlu: Sigara düzenlemesinin insanları ifşa etmekle alakası yok",
-      "url": "https://www.trthaber.com/haber/saglik/memisoglu-sigara-duzenlemesinin-insanlari-ifsa-etmekle-alakasi-yok-960006.html",
-      "description": "Sağlık Bakanı Memişoğlu, \"18 yaş altına sigara satılması yasak. Biz de bununla ilgili kanun taslağımızda bir çalışma yapıyoruz. Bunun kişisel verilerle, insanları ifşa etme ile alakası yok. Dünyada örnekleri olduğu gibi, gelişmiş ülkede olduğu gibi insanlarımıza satarken özellikle gençlerimize yaşını soracağız.\" dedi.",
-      "published_at": "2026-10-13T12:15:00+00:00",
-      "id": "321686d7e1ee0a5ceeab"
-    }
-  ],
+  "pending": [],
   "seen_urls": {
-    "https://www.trthaber.com/haber/guncel/cin-abdnin-tayvana-f-16-satisina-karsi-cikiyor-959320.html": "2026-10-06T21:00:27.644147+00:00",
     "https://www.trthaber.com/haber/guncel/italya-basbakani-meloni-yapay-zekaya-karsi-sesini-tescil-ettirdi-959299.html": "2026-10-07T08:43:37.097540+00:00",
     "https://www.trthaber.com/haber/saglik/anne-karninda-kan-nakli-ile-ikinci-cocugunu-kucagina-aldi-959473.html": "2026-10-08T06:09:37.687285+00:00",
     "https://www.tbb.gov.tr/tr/mevzuat-duyurulari/engelli-bireylere-yonelik-ozel-bakim-merkezleri-yonetmeligi": "2026-10-08T16:44:59.444849+00:00",
@@ -137,6 +127,6 @@
     "https://www.aile.gov.tr/eyhgm/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-saray-engelsiz-yasam-merkezi-ndeki-nefes-merkezinin-acilisini-yapti/": "2026-10-12T15:32:28.703854+00:00",
     "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-saray-engelsiz-yasam-merkezi-ndeki-nefes-merkezinin-acilisini-yapti/": "2026-10-12T15:32:28.703854+00:00",
     "https://www.trthaber.com/haber/guncel/bu-ada-yapay-zeka-veri-merkezleri-yuzunden-susuz-kaldi-959955.html": "2026-10-13T06:49:40.722952+00:00",
-    "https://www.trthaber.com/haber/saglik/memisoglu-sigara-duzenlemesinin-insanlari-ifsa-etmekle-alakasi-yok-960006.html": "2026-10-13T17:56:19.780247+00:00"
+    "https://www.trthaber.com/haber/saglik/memisoglu-sigara-duzenlemesinin-insanlari-ifsa-etmekle-alakasi-yok-960006.html": "2026-10-13T21:17:39.332802+00:00"
   }
 }
