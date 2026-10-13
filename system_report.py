@@ -133,7 +133,7 @@ def _stable_details(value):
     return re.sub(r"\s*(?:\|\s*)?Çalışma:\s+https?://\S+", "", str(value or "")).strip()
 
 
-def _set_incident(report, component, status, details, now):
+def _set_incident(report, component, status, details, now, immediate=False):
     incidents = report["system_incidents"]
     active = next(
         (item for item in reversed(incidents)
@@ -153,7 +153,10 @@ def _set_incident(report, component, status, details, now):
             # Only persist changed error details, not changing run URLs every 30 minutes.
             active["details"] = str(details)[:2500]
         first_seen = _parse(active.get("first_seen")) or now
-        if now - first_seen >= REPORT_AFTER and active.get("status") == "pending_24h":
+        if immediate and active.get("status") == "pending_24h":
+            active["status"] = "reported"
+            active["reported_at"] = _iso(now)
+        elif now - first_seen >= REPORT_AFTER and active.get("status") == "pending_24h":
             active["status"] = "reported"
             active["reported_at"] = _iso(now)
         return
@@ -247,7 +250,7 @@ def _failed_step_summary(repo, token, run_id):
     return ""
 
 
-def record_check(component, status, details=""):
+def record_check(component, status, details="", immediate=False):
     if status not in ("success", "failure"):
         raise ValueError("status must be success or failure")
     if status == "failure":
@@ -260,7 +263,7 @@ def record_check(component, status, details=""):
             print("Workflow hata ayrıntıları alınamadı:", str(exc))
 
     def mutate(report, now):
-        _set_incident(report, component, status, details, now)
+        _set_incident(report, component, status, details, now, immediate=immediate)
 
     report = _save_with_retry(mutate, f"Update system report: {component} {status}")
     matching = [x for x in report["system_incidents"] if x.get("component") == component]
@@ -278,8 +281,12 @@ def main():
     check.add_argument("--component", required=True)
     check.add_argument("--status", choices=("success", "failure"), required=True)
     check.add_argument("--details", default="")
+    check.add_argument(
+        "--immediate", action="store_true",
+        help="Raporlanması gereken kritik durumu 24 saat beklemeden kaydet",
+    )
     args = parser.parse_args()
-    record_check(args.component, args.status, args.details)
+    record_check(args.component, args.status, args.details, immediate=args.immediate)
 
 
 if __name__ == "__main__":
