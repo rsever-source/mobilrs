@@ -3,6 +3,7 @@ from datetime import date
 from urllib.parse import urlparse
 
 import pandas as pd, pdfplumber, uvicorn
+import requests
 from fastapi import BackgroundTasks, FastAPI, UploadFile, File, Form, Header, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse, FileResponse, JSONResponse, Response
 from starlette.background import BackgroundTask
@@ -298,14 +299,45 @@ async def api_otv_yenile(request: Request):
         data = await asyncio.to_thread(refresh_otv_data, True)
     return JSONResponse(data)
 
-# TEMP: Cloud Run Resmi Gazete bağlantı testi
+# Haberleri çalışma anında GitHub'daki güncel dosyadan oku; ağ hatasında yerel yedeği kullan.
+_NEWS_SOURCE_URL = "https://raw.githubusercontent.com/rsever-source/mobilrs/cloud-run-migration/news.json"
+_NEWS_CACHE = {"expires_at": 0.0, "data": None}
+
+
+def _read_local_news_data():
+    try:
+        with open("news.json", encoding="utf-8") as handle:
+            data = json.load(handle)
+        if isinstance(data, dict) and isinstance(data.get("items"), list):
+            return data
+    except Exception:
+        pass
+    return {"updated_at": None, "items": []}
+
+
+def _load_news_data():
+    now = time.monotonic()
+    cached = _NEWS_CACHE.get("data")
+    if cached is not None and now < _NEWS_CACHE.get("expires_at", 0.0):
+        return cached
+    try:
+        url = _NEWS_SOURCE_URL + "?v=" + str(int(time.time() // 60))
+        response = requests.get(url, timeout=(3, 5), headers={"Cache-Control": "no-cache"})
+        response.raise_for_status()
+        data = response.json()
+        if not isinstance(data, dict) or not isinstance(data.get("items"), list):
+            raise ValueError("Invalid news JSON")
+        _NEWS_CACHE.update({"expires_at": now + 60.0, "data": data})
+        return data
+    except Exception:
+        data = _read_local_news_data()
+        _NEWS_CACHE.update({"expires_at": now + 15.0, "data": data})
+        return data
+
+
 @app.get("/api/news")
 async def api_news():
-    try:
-        with open("news.json", encoding="utf-8") as f:
-            data = json.load(f)
-    except Exception:
-        data = {"updated_at": None, "items": []}
+    data = await asyncio.to_thread(_load_news_data)
     items = []
     for item in data.get("items", [])[:10]:
         url = str(item.get("url", "")).strip()
@@ -329,11 +361,7 @@ async def index(request: Request):
         return HTMLResponse(CHAT_HTML.replace("<style>", f'<style nonce="{request.state.csp_nonce}">'))
     initial = load_otv_cache() or {}
     initial_json = __import__("json").dumps(initial, ensure_ascii=False).replace("</", "<\\/")
-    try:
-        with open("news.json", encoding="utf-8") as f:
-            initial_news = json.load(f)
-    except Exception:
-        initial_news = {"updated_at": None, "items": []}
+    initial_news = await asyncio.to_thread(_load_news_data)
     initial_news_json = json.dumps(initial_news, ensure_ascii=False).replace("</", "<\\/")
     html = (
         HOME_HTML
