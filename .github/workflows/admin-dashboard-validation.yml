@@ -35,6 +35,24 @@ jobs:
         run: pip install -r requirements.txt
       - name: Check Python syntax
         run: python -m py_compile admin_dashboard.py excel_vlookup_api.py
+      - name: Check embedded browser JavaScript syntax
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          source = Path("admin_dashboard.py").read_text(encoding="utf-8")
+          for name in ("LOGIN_HTML", "DASHBOARD_HTML"):
+              match = re.search(name + r" = r'''(.*?)'''", source, re.S)
+              if not match:
+                  raise SystemExit("Could not find " + name)
+              html = match.group(1).replace("{nonce}", "test-nonce").replace("{{", "{").replace("}}", "}")
+              scripts = re.findall(r"<script[^>]*>(.*?)</script>", html, re.S)
+              if not scripts:
+                  raise SystemExit("No script found in " + name)
+              Path("/tmp/" + name + ".js").write_text("\n".join(scripts), encoding="utf-8")
+          PY
+          node --check /tmp/LOGIN_HTML.js
+          node --check /tmp/DASHBOARD_HTML.js
       - name: Verify admin router imports and routes
         run: |
           python - <<'PY'
