@@ -1,4 +1,3 @@
-import base64
 import hashlib
 import hmac
 import json
@@ -257,5 +256,5 @@ async def admin_status(request: Request):
 
 @router.get("/admin/robots.txt", include_in_schema=False)
 async def admin_robots():
-    return Response("User-agent: *\\nDisallow: /\\n", media_type="text/plain",
+    return Response("User-agent: *\nDisallow: /\n", media_type="text/plain",
                     headers={"X-Robots-Tag": "noindex, nofollow, noarchive", "Cache-Control": "no-store"})
