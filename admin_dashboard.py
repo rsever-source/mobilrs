@@ -67,7 +67,11 @@ def _clear_session(response):
 
 def _origin_guard(request):
     origin = request.headers.get("origin", "").rstrip("/")
-    if origin != "https://engelli.me":
+    host = request.headers.get("host", "").split(":", 1)[0].lower()
+    # Accept the production domain and same-origin requests to a Cloud Run
+    # tagged URL used for safe testing. Never trust an unrelated Origin.
+    allowed_host = host == "engelli.me" or host.endswith(".a.run.app")
+    if not allowed_host or origin != "https://" + host:
         raise HTTPException(403, "İstek kaynağı doğrulanamadı.")
 
 
