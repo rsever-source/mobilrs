@@ -147,7 +147,7 @@ addJsonList(el('runs'),runs.slice().reverse(),(r,i)=>formatDate(r.run_at)+' · '
 el('apiDetails').replaceChildren(details('Canlı API yanıtı ve karşılaştırma',data.live_api||{{}}));el('logMeta').textContent=runs.length+' tarama kaydı · '+(log.system_incidents||[]).length+' sistem olayı';applySearch()}}
 function applySearch(){{const q=el('search').value.trim().toLocaleLowerCase('tr');el('runs').querySelectorAll('details').forEach(d=>d.style.display=!q||d.textContent.toLocaleLowerCase('tr').includes(q)?'':'none');el('incidents').querySelectorAll('details').forEach(d=>d.style.display=!q||d.textContent.toLocaleLowerCase('tr').includes(q)?'':'none')}}
 async function api(url,body){{const r=await fetch(url,{{method:body?'POST':'GET',credentials:'same-origin',headers:body?{{'Content-Type':'application/json'}}:{{}},body:body?JSON.stringify(body):undefined,cache:'no-store'}});const j=await r.json().catch(()=>({{}}));if(!r.ok)throw Error(j.detail||'İstek başarısız');return j}}
-async function refresh(){{el('message').textContent='GitHub Actions, loglar ve canlı API kontrol ediliyor…';el('refresh').disabled=true;try{{const data=await api('/admin/api/status');render(data);el('message').textContent=(data.errors&&data.errors.length?'Kontrol tamamlandı, ancak bazı kontroller başarısız: '+data.errors.join(' · '):'Kontrol tamamlandı. Yeni tarama başlatılmadı.')}}catch(e){{el('message').textContent=e.message}}finally{{el('refresh').disabled=false}}}}
+async function refresh(){{el('message').textContent='GitHub Actions, loglar ve canlı API kontrol ediliyor…';el('refresh').disabled=true;try{{const data=await api('/admin/api/status');try{{const live=await api('/api/news');if(!Array.isArray(live.items))throw Error('Canlı API yanıtında items listesi yok.');const liveItems=live.items.filter(i=>i&&String(i.url||'').startsWith('http'));const liveIds=new Set(liveItems.map(i=>String(i.id||'')).filter(Boolean));data.live_api={{ok:true,check_method:'browser_http',http_status:200,updated_at:live.updated_at||null,item_count:liveItems.length,items:liveItems,expected_count:data.live_api?.expected_count??0,missing_from_live:(data.live_api?.expected_items||[]).filter(i=>!liveIds.has(String(i.id)))}}}}catch(e){{data.live_api={{...(data.live_api||{{}}),ok:false,error:String(e.message||e)}};data.errors=[...(data.errors||[]),'Canlı API okunamadı: '+String(e.message||e)]}}render(data);el('message').textContent=(data.errors&&data.errors.length?'Kontrol tamamlandı, ancak bazı kontroller başarısız: '+data.errors.join(' · '):'Kontrol tamamlandı. Canlı /api/news uç noktası tarayıcı üzerinden doğrulandı; yeni tarama başlatılmadı.')}}catch(e){{el('message').textContent=e.message}}finally{{el('refresh').disabled=false}}}}
 function decode(s){{s=s.replace(/-/g,'+').replace(/_/g,'/');const raw=atob(s+'='.repeat((4-s.length%4)%4));return Uint8Array.from(raw,c=>c.charCodeAt(0))}}
 function encode(buf){{return btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}}
 async function post(url,data){{const r=await fetch(url,{{method:'POST',credentials:'same-origin',headers:{{'Content-Type':'application/json'}},body:JSON.stringify(data)}});const j=await r.json().catch(()=>({{}}));if(!r.ok)throw Error(j.detail||'İşlem başarısız');return j}}
@@ -234,48 +234,22 @@ def admin_status(request: Request):
     except Exception as exc:
         errors.append("Haber işlem logu okunamadı: " + str(exc))
     try:
-        # /api/news is served by this same FastAPI application. Calling the
-        # public Cloud Run URL from inside the service can stall on a self-request;
-        # reuse the exact data loader that the endpoint itself uses instead.
-        from excel_vlookup_api import _load_news_data
-
-        data = _load_news_data()
-        if not isinstance(data, dict) or not isinstance(data.get("items"), list):
-            raise ValueError("Canlı haber verisi beklenen biçimde değil.")
-        live_items = []
-        for item in data.get("items", [])[:10]:
-            url = str(item.get("url", "")).strip()
-            if not url.startswith(("https://", "http://")):
-                continue
-            live_items.append({
-                "id": str(item.get("id", "")),
-                "title": str(item.get("title", ""))[:180],
-                "summary": str(item.get("summary", ""))[:900],
-                "detail_summary": str(item.get("detail_summary", ""))[:1400],
-                "category": str(item.get("category", "Gündem"))[:50],
-                "source": str(item.get("source", ""))[:100],
-                "url": url,
-                "published_at": item.get("published_at"),
-            })
+        expected = _json_from_raw("news.json")
+        expected_items = [
+            i for i in expected.get("items", [])[:10]
+            if str(i.get("url", "")).startswith(("https://", "http://")) and i.get("id")
+        ]
         result["live_api"].update({
-            "ok": True, "check_method": "same_process_data_loader",
-            "updated_at": data.get("updated_at"),
-            "item_count": len(live_items), "items": live_items,
+            "check_method": "browser_http",
+            "expected_count": len(expected_items),
+            "expected_items": [
+                {"id": str(i.get("id")), "title": i.get("title"), "url": i.get("url")}
+                for i in expected_items
+            ],
         })
-        try:
-            expected = _json_from_raw("news.json")
-            expected_items = [i for i in expected.get("items", [])[:10] if str(i.get("url", "")).startswith(("https://", "http://")) and i.get("id")]
-            live_ids = {str(i.get("id")) for i in live_items if i.get("id")}
-            result["live_api"]["expected_count"] = len(expected_items)
-            result["live_api"]["missing_from_live"] = [
-                {"id": i.get("id"), "title": i.get("title"), "url": i.get("url")}
-                for i in expected_items if str(i["id"]) not in live_ids
-            ]
-        except Exception as exc:
-            result["live_api"]["comparison_error"] = str(exc)
     except Exception as exc:
-        result["live_api"]["error"] = str(exc)
-        errors.append("Canlı haber verisi okunamadı: " + str(exc))
+        result["live_api"]["error"] = "Beklenen haber listesi okunamadı: " + str(exc)
+        errors.append("Beklenen haber listesi okunamadı: " + str(exc))
     result["errors"] = errors
     return JSONResponse(result, headers={"Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow, noarchive"})
 
