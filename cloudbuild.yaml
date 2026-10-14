@@ -1,6 +1,6 @@
-# Cloud Build: build + push + TRAFİKSİZ deploy.
-# Yeni revision canlı trafik ALMAZ. "test" etiketli ayrı bir adresten denenir.
-# Canlıya almak elle yapılır (komut, cloudbuild.yaml'ın altında / yanıtta).
+# Cloud Build: build + push + trafiksiz deploy + smoke test + otomatik canlıya geçiş.
+# Ana sayfa ve /api/news testi başarılı olmazsa build kırmızı kalır ve canlı trafik değişmez.
+# Test başarılıysa en son revision'a trafik aktarılır.
 steps:
   - name: gcr.io/cloud-builders/docker
     id: Build
