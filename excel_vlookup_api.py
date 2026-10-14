@@ -10,8 +10,10 @@ from starlette.background import BackgroundTask
 
 from tufe_service import get_current_tufe, save_cache
 from otv_service import get_otv_data, refresh_otv_data, _load as load_otv_cache
+from admin_dashboard import router as admin_dashboard_router
 
 app = FastAPI(title="Rdv Asistan", docs_url=None, redoc_url=None, openapi_url=None)
+app.include_router(admin_dashboard_router)
 
 CHAT_HTML = r'''<!doctype html>
 <html lang="tr">
