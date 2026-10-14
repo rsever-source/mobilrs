@@ -277,9 +277,11 @@ async def admin_password_login(request: Request, body: PasswordLogin):
 
 
 async def _rate_attempt(request, action, limit=8, window=300):
-    # Do not trust client-supplied X-Forwarded-For values. Use the ASGI peer
-    # address for the per-peer bucket and a separate global bucket as a backstop.
-    peer = request.client.host if request.client else "unknown"
+    # The forwarded address is only an advisory per-address throttle, never
+    # an identity or authorization signal. A separate global bucket remains
+    # authoritative so rotating/spoofing this header cannot bypass all limits.
+    forwarded = request.headers.get("x-forwarded-for", "").split(",")[0].strip()
+    peer = forwarded[:128] if forwarded else (request.client.host if request.client else "unknown")
     r = _redis()
     peer_key = PREFIX + "rate:" + action + ":peer:" + hashlib.sha256(peer.encode()).hexdigest()
     peer_count = r.incr(peer_key)
