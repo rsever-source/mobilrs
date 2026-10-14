@@ -35,28 +35,66 @@ steps:
       - --update-secrets=ADMIN_PASSWORD=ADMIN_PASSWORD:latest
       - --quiet
 
-  # Emniyet kemeri: yeni revision herhangi bir trafik alıyorsa build'i KIRMIZI yapar.
+  # Smoke test: test etiketli revision hazır olmadan canlıya geçme.
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
-    id: VerifyNoTraffic
+    id: SmokeTest
     entrypoint: bash
     args:
       - -c
       - |
-        gcloud run services describe mobilrs-test --region=europe-west1 --format=json > /tmp/svc.json
-        python3 - <<'PY'
-        import json, sys
+        set -euo pipefail
+        gcloud run services describe mobilrs-test \
+          --region=europe-west1 \
+          --project=project-f671a84c-0cde-40b8-921 \
+          --format=json > /tmp/svc.json
+        TEST_URL="$(python3 - <<'PY'
+        import json
         d = json.load(open("/tmp/svc.json"))
-        new = d["status"]["latestCreatedRevisionName"]
+        new = d["status"].get("latestCreatedRevisionName")
         traffic = d["status"].get("traffic", [])
-        print("Yeni revision:", new)
-        for t in traffic:
-            print("  trafik:", t.get("revisionName"), t.get("percent", 0), "%", "(LATEST takibi)" if t.get("latestRevision") else "", t.get("tag", ""), t.get("url", ""))
-        bad = [t for t in traffic if t.get("percent", 0) > 0 and (t.get("latestRevision") or t.get("revisionName") == new)]
-        if bad:
-            print("HATA: Yeni revision canlı trafik alıyor!")
-            sys.exit(1)
-        print("TAMAM: Yeni revision trafik almıyor. Canlı site değişmedi.")
+        tagged = [t for t in traffic if t.get("tag") == "test" and t.get("url")]
+        if not tagged:
+            raise SystemExit("HATA: test etiketli URL bulunamadı")
+        print(tagged[-1]["url"])
+        print("Beklenen revision:", new, file=__import__("sys").stderr)
         PY
+        )"
+        echo "Test URL: $TEST_URL"
+        # Cloud Run revision'ın açılması için en fazla 2 dakika bekle.
+        ok=0
+        for i in $(seq 1 24); do
+          if curl --fail --silent --show-error --max-time 10 "$TEST_URL/" -o /tmp/home.html 2>/dev/null; then
+            ok=1
+            break
+          fi
+          sleep 5
+        done
+        if [ "$ok" -ne 1 ]; then
+          echo "HATA: test revision ana sayfaya yanıt vermedi; canlı trafik değiştirilmedi."
+          exit 1
+        fi
+        curl --fail --silent --show-error --max-time 30 "$TEST_URL/api/news" -o /tmp/news.json
+        python3 - <<'PY'
+        import json
+        d = json.load(open("/tmp/news.json"))
+        if not isinstance(d, dict) or not isinstance(d.get("items"), list):
+            raise SystemExit("HATA: /api/news beklenen JSON yapısını döndürmedi")
+        print("SMOKE TEST BAŞARILI: ana sayfa açıldı; /api/news geçerli JSON döndürdü; haber adedi:", len(d["items"]))
+        PY
+
+  # Yalnızca smoke test başarılıysa yeni revision'a canlı trafiği aktar.
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    id: PromoteToLive
+    entrypoint: gcloud
+    args:
+      - run
+      - services
+      - update-traffic
+      - mobilrs-test
+      - --region=europe-west1
+      - --project=project-f671a84c-0cde-40b8-921
+      - --to-latest
+      - --quiet
 
 options:
   logging: CLOUD_LOGGING_ONLY
