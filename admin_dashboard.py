@@ -127,7 +127,7 @@ header{{display:flex;gap:14px;align-items:center;justify-content:space-between;f
 <section><h2>Tüm haber işlem kayıtları</h2><div class="row"><input id="search" type="search" placeholder="Kayıtlarda ara…"><span class="muted" id="logMeta"></span></div><div id="runs"></div></section>
 <section><h2>Tüm sistem olayları</h2><div id="incidents"></div></section>
 <section><h2>Canlı API karşılaştırması</h2><div id="apiDetails"></div></section>
-<section><h2>Ham log verisi (tüm alanlar)</h2><div class="row"><button class="secondary" id="download">JSON olarak dışa aktar</button></div><pre id="rawLog">—</pre></section>
+
 </main>
 <script nonce="{nonce}">
 let state=null;
@@ -144,7 +144,7 @@ el('lastChecked').textContent='Kontrol zamanı: '+formatDate(data.checked_at);el
 el('runDetails').replaceChildren(details('Son tarama kaydının tüm alanları',last),details('En son GitHub Actions bilgisi',data.actions||{{}}));
 const sources=last.source_diagnostics||{{}};el('sources').replaceChildren();if(!Object.keys(sources).length)el('sources').append(node('p','Kaynak teşhisi bulunamadı.','muted'));Object.entries(sources).forEach(([name,v])=>{{const d=node('details'),s=node('summary',name),p=node('pre',pretty(v));d.append(s,p);el('sources').append(d)}});
 addJsonList(el('runs'),runs.slice().reverse(),(r,i)=>formatDate(r.run_at)+' · '+safeText(r.model)+' · '+((r.candidates||[]).length)+' aday');addJsonList(el('incidents'),(log.system_incidents||[]).slice().reverse(),(r)=>formatDate(r.updated_at||r.created_at||r.last_seen||r.first_seen)+' · '+safeText(r.component)+' · '+safeText(r.status));
-el('apiDetails').replaceChildren(details('Canlı API yanıtı ve karşılaştırma',data.live_api||{{}}));el('rawLog').textContent=pretty(log);el('logMeta').textContent=runs.length+' tarama kaydı · '+(log.system_incidents||[]).length+' sistem olayı';applySearch()}}
+el('apiDetails').replaceChildren(details('Canlı API yanıtı ve karşılaştırma',data.live_api||{{}}));el('logMeta').textContent=runs.length+' tarama kaydı · '+(log.system_incidents||[]).length+' sistem olayı';applySearch()}}
 function applySearch(){{const q=el('search').value.trim().toLocaleLowerCase('tr');el('runs').querySelectorAll('details').forEach(d=>d.style.display=!q||d.textContent.toLocaleLowerCase('tr').includes(q)?'':'none');el('incidents').querySelectorAll('details').forEach(d=>d.style.display=!q||d.textContent.toLocaleLowerCase('tr').includes(q)?'':'none')}}
 async function api(url,body){{const r=await fetch(url,{{method:body?'POST':'GET',credentials:'same-origin',headers:body?{{'Content-Type':'application/json'}}:{{}},body:body?JSON.stringify(body):undefined,cache:'no-store'}});const j=await r.json().catch(()=>({{}}));if(!r.ok)throw Error(j.detail||'İstek başarısız');return j}}
 async function refresh(){{el('message').textContent='GitHub Actions, loglar ve canlı API kontrol ediliyor…';el('refresh').disabled=true;try{{const data=await api('/admin/api/status');render(data);el('message').textContent=(data.errors&&data.errors.length?'Kontrol tamamlandı, ancak bazı kontroller başarısız: '+data.errors.join(' · '):'Kontrol tamamlandı. Yeni tarama başlatılmadı.')}}catch(e){{el('message').textContent=e.message}}finally{{el('refresh').disabled=false}}}}
@@ -152,7 +152,7 @@ function decode(s){{s=s.replace(/-/g,'+').replace(/_/g,'/');const raw=atob(s+'='
 function encode(buf){{return btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}}
 async function post(url,data){{const r=await fetch(url,{{method:'POST',credentials:'same-origin',headers:{{'Content-Type':'application/json'}},body:JSON.stringify(data)}});const j=await r.json().catch(()=>({{}}));if(!r.ok)throw Error(j.detail||'İşlem başarısız');return j}}
 el('refresh').addEventListener('click',refresh);el('search').addEventListener('input',applySearch);el('logout').addEventListener('click',async()=>{{try{{await post('/admin/api/logout',{{}})}}finally{{location.href='/admin/haber-durumu'}}}});
-el('download').addEventListener('click',()=>{{const blob=new Blob([pretty(state?.log||{{}})],{{type:'application/json;charset=utf-8'}});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='news_ai_log.json';a.click();URL.revokeObjectURL(url)}});
+
 refresh();
 </script></body></html>'''
 
