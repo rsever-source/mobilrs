@@ -1230,6 +1230,100 @@
           "decision": "publish"
         }
       ]
+    },
+    {
+      "run_at": "2026-10-14T23:16:02.439388+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 13,
+          "keyword_eliminated": 17,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılacak Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavına Katılacak Adaylar ",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Mirasçıların Vergisel Yükümlülükleri Rehberi ile Veraset ve İntikal Vergisi Broşürü Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Yurt Dışından Elde Edilen Kazanç ve İratlarda Vergi İstisnası Rehberi ile İnfografik Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 490,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 10,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 19,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 460,
+          "accepted_as_candidate": 1
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "İstanbul'da sağanak: Yollar göle döndü, trafik durma noktasına geldi",
+          "source": "TRT Haber",
+          "url": "https://www.trthaber.com/haber/guncel/istanbulda-saganak-yollar-gole-dondu-trafik-durma-noktasina-geldi-960118.html",
+          "published_at": "2026-10-14T15:10:00+00:00",
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "generated_title": "İstanbul'da Sağanak Yağış Ulaşımı ve Hayatı Olumsuz Etkiledi",
+          "summary": "İstanbul'da etkili olan sağanak nedeniyle kent genelinde su baskınları yaşandı ve yollar göle döndü. Birçok alt geçit suyla dolarken araçlar mahsur kaldı ve bazı toplu taşıma seferleri iptal edildi. Yağışın etkisiyle kentteki trafik yoğunluğu yüzde 89 seviyesine ulaştı. Olaylarda bazı vatandaşlar yaralanırken ekipler su tahliye çalışmaları yürüttü. Engelli bireylere veya dezavantajlı gruplara yönelik özel ve doğrudan bir gelişme içermemektedir. Bu nedenle haber Engelli.me yayın politikasına uygun değildir.",
+          "detail_summary": "İstanbul'da dün akşam saatlerinden itibaren aralıklarla etkisini sürdüren sağanak yağış hayatı olumsuz yönde etkiledi. Kent genelinde yaşanan su baskınları nedeniyle yollar, alt geçitler ve tüneller suyla doldu ve araçlar mahsur kaldı. Avcılar'da bir kişi merdivenlerden düşerek yaralanırken, Beykoz'da bir evin duvarının çökmesi sonucu iki kişi yaralandı. Şiddetli yağış nedeniyle Eyüpsultan'da yol çöktü, Kemerburgaz'da sokaklar ulaşıma kapandı ve bazı iş yerlerini su bastı. Metro İstanbul, hava muhalefeti nedeniyle bazı teleferik ve tramvay hatlarında seferlerin iptal edildiğini veya kısmi olarak yapıldığını duyurdu. Anadolu ve Avrupa yakalarındaki ana arterlerde ve aktarma merkezlerinde yoğunluk oluşurken, İBB verilerine göre trafik yoğunluğu yüzde 89'a çıktı.",
+          "decision": "reject"
+        }
+      ]
     }
   ],
   "system_incidents": []
