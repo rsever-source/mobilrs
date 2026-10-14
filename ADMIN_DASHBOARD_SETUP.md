@@ -14,7 +14,7 @@ Configure these on the Cloud Run service before exposing the page:
 Generate a password hash locally (this prints a salted hash, not the password):
 
 \`\`\`bash
-python -c "import os,hashlib; p=input('Admin password: '); s=os.urandom(16); n=310000; d=hashlib.pbkdf2_hmac('sha256',p.encode(),s,n).hex(); print(f'pbkdf2_sha256\${n}\${s.hex()}\${d}')"
+python -c 'import os,hashlib; p=input("Admin password: "); s=os.urandom(16); n=310000; d=hashlib.pbkdf2_hmac("sha256",p.encode(),s,n).hex(); print("pbkdf2_sha256$%s$%s$%s" % (n,s.hex(),d))'
 \`\`\`
 
 Store the printed value as the \`ADMIN_PASSWORD_HASH\` Cloud Run environment variable through the secure service settings. Do not paste it into source code, GitHub files, screenshots, or chat.
