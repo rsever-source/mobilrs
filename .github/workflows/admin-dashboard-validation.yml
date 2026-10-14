@@ -1,6 +1,15 @@
 name: Private admin validation
 
 on:
+  push:
+    branches:
+      - feature/private-news-admin
+    paths:
+      - "admin_dashboard.py"
+      - "excel_vlookup_api.py"
+      - "requirements.txt"
+      - "ADMIN_DASHBOARD_SETUP.md"
+      - ".github/workflows/admin-dashboard-validation.yml"
   pull_request:
     branches:
       - cloud-run-migration
