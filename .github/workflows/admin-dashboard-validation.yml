@@ -61,10 +61,6 @@ jobs:
           required = {
               "/admin/haber-durumu",
               "/admin/api/login/password",
-              "/admin/api/passkey/start",
-              "/admin/api/passkey/finish",
-              "/admin/api/passkey/register/start",
-              "/admin/api/passkey/register/finish",
               "/admin/api/status",
               "/admin/api/logout",
           }
