@@ -55,8 +55,11 @@ steps:
         tagged = [t for t in traffic if t.get("tag") == "test" and t.get("url")]
         if not tagged:
             raise SystemExit("HATA: test etiketli URL bulunamadı")
+        test_revision = tagged[-1].get("revisionName")
+        if new and test_revision and test_revision != new:
+            raise SystemExit(f"HATA: test URL'si {test_revision}, son revision {new}; canlıya geçiş iptal")
         print(tagged[-1]["url"])
-        print("Beklenen revision:", new, file=__import__("sys").stderr)
+        print("Test edilen revision:", test_revision or new, file=__import__("sys").stderr)
         PY
         )"
         echo "Test URL: $TEST_URL"
