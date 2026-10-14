@@ -201,7 +201,7 @@ async def admin_status(request: Request):
         github_token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
         if github_token:
             headers["Authorization"] = "Bearer " + github_token
-        response = requests.get(API + "/actions/workflows/news-cron.yml/runs?branch=" + quote(BRANCH) + "&per_page=1", headers=headers, timeout=(5, 20))
+        response = requests.get(API + "/actions/workflows/news-cron.yml/runs?per_page=1", headers=headers, timeout=(5, 20))
         response.raise_for_status()
         runs = response.json().get("workflow_runs", [])
         if runs:
