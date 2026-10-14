@@ -198,7 +198,10 @@ async def admin_status(request: Request):
     errors = []
     try:
         headers = {"Accept": "application/vnd.github+json", "User-Agent": "engellime-admin-status"}
-        response = requests.get(API + "/actions/workflows/news-cron.yml/runs?branch=" + quote(BRANCH) + "&per_page=1", headers=headers, timeout=(4, 12))
+        github_token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+        if github_token:
+            headers["Authorization"] = "Bearer " + github_token
+        response = requests.get(API + "/actions/workflows/news-cron.yml/runs?branch=" + quote(BRANCH) + "&per_page=1", headers=headers, timeout=(5, 20))
         response.raise_for_status()
         runs = response.json().get("workflow_runs", [])
         if runs:
@@ -231,7 +234,7 @@ async def admin_status(request: Request):
     except Exception as exc:
         errors.append("Haber işlem logu okunamadı: " + str(exc))
     try:
-        live_response = requests.get(LIVE_NEWS, timeout=(4, 12), headers={"Cache-Control": "no-cache"})
+        live_response = requests.get(LIVE_NEWS, timeout=(5, 30), headers={"Cache-Control": "no-cache", "Connection": "close"})
         live_response.raise_for_status()
         live = live_response.json()
         if not isinstance(live, dict) or not isinstance(live.get("items"), list):
