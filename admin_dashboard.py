@@ -112,7 +112,6 @@ header{{display:flex;gap:14px;align-items:center;justify-content:space-between;f
 <header><div><div class="muted">Engelli.me / Özel yönetim</div><h1>Haber sistemi durum raporu</h1><div class="muted" id="lastChecked">Henüz kontrol edilmedi</div></div><div class="row"><button id="refresh">Güncelle</button><button class="secondary" id="logout">Çıkış</button></div></header>
 <p id="message" role="status">Mevcut kayıtlar yükleniyor…</p>
 <div class="cards">
-<div class="card"><small>Son GitHub Actions</small><strong id="runStatus">—</strong><div class="muted" id="runTime"></div></div>
 <div class="card"><small>Son tarama adayı</small><strong id="candidateCount">—</strong><div class="muted">Son kayıtlı tarama</div></div>
 </div>
 <section><h2>Haber işlem özeti</h2><div class="cards">
@@ -133,7 +132,6 @@ function node(tag,text,cls){{const n=document.createElement(tag);if(text!==undef
 function counts(log){{const last=(log.news_runs||[]).slice(-1)[0]||{{}};const out={{published:0,duplicates:0,rejected:0,pending:0}};for(const c of (last.candidates||[])){{const s=String(c.status||'').toLowerCase(),d=String(c.decision||'').toLowerCase();if(s==='published'||c.publish===true||d==='publish')out.published++;else if(c.duplicate===true||d==='duplicate'||s.includes('duplicate'))out.duplicates++;else if(d==='reject'||c.publish===false||s==='rejected')out.rejected++;else out.pending++}}const f=last.filter_diagnostics?.counts||{{}};out.duplicates=Math.max(out.duplicates,Number(f.duplicate_in_this_run||0)+Number(f.url_seen_within_7_days||0)+Number(f.already_published||0));out.rejected=Math.max(out.rejected,Number(f.older_than_7_days||0)+Number(f.missing_date||0)+Number(f.future_date||0));out.pending=Math.max(out.pending,Number(f.pending_unknown_or_expired_date||0));return out}}
 function render(data){{state=data;const log=data.log||{{}};const runs=log.news_runs||[];const last=runs[runs.length-1]||{{}};const cs=counts(log);
  el('lastChecked').textContent='Kontrol zamanı: '+safeText(data.checked_at);
- el('runStatus').textContent=data.actions?.status||'Bilinmiyor';el('runTime').textContent=safeText(data.actions?.created_at);
  el('candidateCount').textContent=safeText(last.candidates?.length??last.filter_diagnostics?.counts?.accepted_as_candidate);
  el('published').textContent=cs.published;el('duplicates').textContent=cs.duplicates;el('rejected').textContent=cs.rejected;el('pending').textContent=cs.pending;
  renderErrors(data);
