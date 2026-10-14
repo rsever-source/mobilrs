@@ -121,7 +121,8 @@ header{{display:flex;gap:14px;align-items:center;justify-content:space-between;f
 <div class="card"><small>Filtreyle elenen</small><strong id="rejected">—</strong></div>
 <div class="card"><small>Bekleyen / belirsiz</small><strong id="pending">—</strong></div>
 </div><p class="muted">Sayılar yalnızca mevcut logda açıkça bulunan durum alanlarından hesaplanır; eksik bilgiler tahmin edilmez.</p></section>
-</section>
+<section><h2>Kaynak bazlı hatalar</h2><div id="sourceErrors" class="muted">Hata kayıtları yükleniyor…</div></section>
+<section><h2>Sistemdeki işlem hataları</h2><div id="systemErrors" class="muted">Hata kayıtları yükleniyor…</div></section>
 
 </main>
 <script nonce="{nonce}">
@@ -135,7 +136,46 @@ function render(data){{state=data;const log=data.log||{{}};const runs=log.news_r
  el('runStatus').textContent=data.actions?.status||'Bilinmiyor';el('runTime').textContent=safeText(data.actions?.created_at);
  el('candidateCount').textContent=safeText(last.candidates?.length??last.filter_diagnostics?.counts?.accepted_as_candidate);
  el('published').textContent=cs.published;el('duplicates').textContent=cs.duplicates;el('rejected').textContent=cs.rejected;el('pending').textContent=cs.pending;
-
+ renderErrors(data);
+}}
+function renderErrorItems(targetId,items,emptyText){{
+ const root=el(targetId);root.replaceChildren();
+ if(!items.length){{root.appendChild(node('p',emptyText,'muted'));return}}
+ for(const item of items.slice(-12).reverse()){{
+  const wrap=node('div',undefined,'report-item');
+  wrap.appendChild(node('strong',item.title||item.name||item.component||'Hata'));
+  if(item.when)wrap.appendChild(node('div',item.when,'muted'));
+  if(item.details)wrap.appendChild(node('div',item.details));
+  root.appendChild(wrap);
+ }}
+}}
+function renderErrors(data){{
+ const runs=(data.log?.news_runs||[]).slice(-8);
+ const sourceErrors=[];
+ const systemErrors=[];
+ for(const run of runs){{
+  for(const err of (run.source_errors||[])){{
+   sourceErrors.push({{title:err.source||'Bilinmeyen kaynak',when:'Tarama: '+safeText(run.run_at),details:err.error||'Kaynak hatası ayrıntısı kaydedilmemiş.'}});
+  }}
+  for(const item of (run.candidates||[])){{
+   if(item.status==='not_processed'||item.error){{
+    systemErrors.push({{title:item.title||item.url||'Haber işleme hatası',when:'Tarama: '+safeText(run.run_at),details:item.error||'Haber işlenemedi; ayrıntı kaydedilmemiş.'}});
+   }}
+  }}
+ }}
+ for(const incident of (data.log?.system_incidents||[])){{
+  if(incident.status!=='resolved'&&!String(incident.component||'').startsWith('news-source:')){{
+   systemErrors.push({{title:incident.component||'Sistem hatası',when:'İlk görülme: '+safeText(incident.first_seen),details:incident.details||'Ayrıntı kaydedilmemiş.'}});
+  }}
+ }}
+ for(const job of (data.actions?.jobs||[])){{
+  for(const step of (job.steps||[])){{
+   if(step.conclusion==='failure')systemErrors.push({{title:(job.name||'GitHub Actions')+' — '+(step.name||'Başarısız adım'),when:'Son iş akışı: '+safeText(data.actions?.created_at),details:'GitHub Actions adımı başarısız tamamlandı.'}});
+  }}
+ }}
+ for(const err of (data.errors||[]))systemErrors.push({{title:'Rapor verisi okunamadı',details:err}});
+ renderErrorItems('sourceErrors',sourceErrors,'Son 8 kayıtlı taramada kaynak hatası kaydedilmemiş.');
+ renderErrorItems('systemErrors',systemErrors,'Kayıtlı açık sistem işlem hatası bulunmuyor.');
 }}
 async function api(url,body){{const r=await fetch(url,{{method:body?'POST':'GET',credentials:'same-origin',headers:body?{{'Content-Type':'application/json'}}:{{}},body:body?JSON.stringify(body):undefined,cache:'no-store'}});const j=await r.json().catch(()=>({{}}));if(!r.ok)throw Error(j.detail||'İstek başarısız');return j}}
 async function refresh(){{el('message').textContent='Durum bilgisi yükleniyor…';el('refresh').disabled=true;try{{const data=await api('/admin/api/status');render(data);el('message').textContent='Durum bilgisi güncellendi.'}}catch(e){{el('message').textContent=e.message}}finally{{el('refresh').disabled=false}}}}
