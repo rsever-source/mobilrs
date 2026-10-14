@@ -134,6 +134,8 @@ let state=null;
 function el(id){{return document.getElementById(id)}}
 function safeText(v){{return v===null||v===undefined?'—':String(v)}}
 function node(tag,text,cls){{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n}}
+function formatDate(v){if(!v)return 'Tarih yok';const d=new Date(v);return Number.isNaN(d.getTime())?String(v):d.toLocaleString('tr-TR')}
+function counts(log){const last=(log.news_runs||[]).slice(-1)[0]||{};const out={published:0,duplicates:0,rejected:0,pending:0};for(const c of (last.candidates||[])){const s=String(c.status||'').toLowerCase(),d=String(c.decision||'').toLowerCase();if(s==='published'||c.publish===true||d==='publish')out.published++;else if(c.duplicate===true||d==='duplicate'||s.includes('duplicate'))out.duplicates++;else if(d==='reject'||c.publish===false||s==='rejected')out.rejected++;else out.pending++}const f=last.filter_diagnostics?.counts||{};out.duplicates=Math.max(out.duplicates,Number(f.duplicate_in_this_run||0)+Number(f.url_seen_within_7_days||0)+Number(f.already_published||0));out.rejected=Math.max(out.rejected,Number(f.older_than_7_days||0)+Number(f.missing_date||0)+Number(f.future_date||0));out.pending=Math.max(out.pending,Number(f.pending_unknown_or_expired_date||0));return out}
 function addText(parent,text,tag='p',cls=''){const n=document.createElement(tag);n.textContent=text;if(cls)n.className=cls;parent.append(n);return n}
 function addLink(parent,url,label){if(!url||!/^https?:\/\//i.test(String(url)))return;const a=document.createElement('a');a.href=url;a.textContent=label||url;a.target='_blank';a.rel='noopener noreferrer';parent.append(a)}
 function sectionTitle(parent,text){addText(parent,text,'h3')}
