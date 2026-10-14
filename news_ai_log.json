@@ -1136,6 +1136,100 @@
           "decision": "duplicate"
         }
       ]
+    },
+    {
+      "run_at": "2026-10-14T18:39:53.208952+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 13,
+          "keyword_eliminated": 17,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılacak Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavına Katılacak Adaylar ",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Mirasçıların Vergisel Yükümlülükleri Rehberi ile Veraset ve İntikal Vergisi Broşürü Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Yurt Dışından Elde Edilen Kazanç ve İratlarda Vergi İstisnası Rehberi ile İnfografik Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 493,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 10,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 18,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 464,
+          "accepted_as_candidate": 1
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "14 Ekim 2026 Bedeli Ödenecek İlaçlar Listesinde Yapılan Düzenlemeler Hakkında Duyuru 2026/40 GENEL SAĞLIK SİGORTASI GENEL MÜDÜRLÜĞÜ",
+          "source": "Sosyal Güvenlik Kurumu – Duyurular",
+          "url": "https://www.sgk.gov.tr/duyuru/detay/Bedeli-Odenecek-Ilaclar-Listesinde-Yapilan-Duzenlemeler-Hakkinda-Duyuru-202640-2026-10-14-04-50-38",
+          "published_at": "2026-10-14T00:00:00+00:00",
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "generated_title": "Sosyal Güvenlik Kurumu'ndan İlaç Listesi Düzenlemesi",
+          "summary": "Sosyal Güvenlik Kurumu, Bedeli Ödenecek İlaçlar Listesi'nde yeni düzenlemeler yapıldığını duyurdu. Genel Sağlık Sigortası Genel Müdürlüğü tarafından yayımlanan duyuru 14 Ekim 2026 tarihini taşıyor. Yapılan bu güncellemeler, sağlık hizmetlerinden yararlanan vatandaşların erişim koşullarını yakından ilgilendiriyor. İlaç geri ödeme listesine ilişkin detaylar ve ilgili dosyalar resmi internet sitesi üzerinden paylaşıldı. İlgili listeler ve maddeler doğrultusunda vatandaşlar işlemlerini takip edebilecekler.",
+          "detail_summary": "Sosyal Güvenlik Kurumu (SGK) Genel Sağlık Sigortası Genel Müdürlüğü tarafından 14 Ekim 2026 tarihinde yeni bir duyuru yayımlandı. Duyurunun konusu Bedeli Ödenecek İlaçlar Listesi'nde yapılan düzenlemeleri kapsıyor. Paylaşılan bilgilendirme kapsamında 12. maddeye ilişkin yayımlanan güncel Excel ve PDF formatındaki dosyalara yer verildi. Söz konusu düzenlemeler, ilaç geri ödeme süreçleri ve bedeli karşılanacak ilaçlarla ilgili güncel kuralları içeriyor. Vatandaşlar ve sağlık hizmeti alıcıları bu listelere kurumun resmi duyurular sayfasından ulaşabiliyor.",
+          "decision": "publish"
+        }
+      ]
     }
   ],
   "system_incidents": []
