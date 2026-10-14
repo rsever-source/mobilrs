@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-14T13:46:03.240093+00:00",
+  "updated_at": "2026-10-14T18:39:53.208952+00:00",
   "items": [
     {
       "id": "cafbb1e1e813fb8fe159",
@@ -10,6 +10,16 @@
       "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/otizmli-yuzucu-kaan-okyanuslari-asmak-icin-adalar-arasinda-yuzerek-antrenman-yapiyor-/1832817",
       "published_at": "2026-10-14T10:42:24+00:00",
       "created_at": "2026-10-14T13:46:03.240093+00:00"
+    },
+    {
+      "id": "c09fb59da80138b1c785",
+      "title": "Sosyal Güvenlik Kurumu'ndan İlaç Listesi Düzenlemesi",
+      "summary": "Sosyal Güvenlik Kurumu, Bedeli Ödenecek İlaçlar Listesi'nde yeni düzenlemeler yapıldığını duyurdu. Genel Sağlık Sigortası Genel Müdürlüğü tarafından yayımlanan duyuru 14 Ekim 2026 tarihini taşıyor. Yapılan bu güncellemeler, sağlık hizmetlerinden yararlanan vatandaşların erişim koşullarını yakından ilgilendiriyor. İlaç geri ödeme listesine ilişkin detaylar ve ilgili dosyalar resmi internet sitesi üzerinden paylaşıldı. İlgili listeler ve maddeler doğrultusunda vatandaşlar işlemlerini takip edebilecekler.",
+      "detail_summary": "Sosyal Güvenlik Kurumu (SGK) Genel Sağlık Sigortası Genel Müdürlüğü tarafından 14 Ekim 2026 tarihinde yeni bir duyuru yayımlandı. Duyurunun konusu Bedeli Ödenecek İlaçlar Listesi'nde yapılan düzenlemeleri kapsıyor. Paylaşılan bilgilendirme kapsamında 12. maddeye ilişkin yayımlanan güncel Excel ve PDF formatındaki dosyalara yer verildi. Söz konusu düzenlemeler, ilaç geri ödeme süreçleri ve bedeli karşılanacak ilaçlarla ilgili güncel kuralları içeriyor. Vatandaşlar ve sağlık hizmeti alıcıları bu listelere kurumun resmi duyurular sayfasından ulaşabiliyor.",
+      "source": "Sosyal Güvenlik Kurumu – Duyurular",
+      "url": "https://www.sgk.gov.tr/duyuru/detay/Bedeli-Odenecek-Ilaclar-Listesinde-Yapilan-Duzenlemeler-Hakkinda-Duyuru-202640-2026-10-14-04-50-38",
+      "published_at": "2026-10-14T00:00:00+00:00",
+      "created_at": "2026-10-14T18:39:53.208952+00:00"
     },
     {
       "id": "4243210d3a19c29d4022",
@@ -90,16 +100,6 @@
       "url": "https://www.tbb.gov.tr/tr/mevzuat-duyurulari/engelli-bireylere-yonelik-ozel-bakim-merkezleri-yonetmeligi",
       "published_at": "2026-10-07T00:00:00+00:00",
       "created_at": "2026-10-08T14:34:14.432928+00:00"
-    },
-    {
-      "id": "fac19f02c6138b1b91d1",
-      "title": "Bakan Göktaş: Serebral Palsili Çocukların ve Ailelerinin Yanındayız",
-      "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, 6 Ekim Dünya Serebral Palsi Farkındalık Günü etkinliğine katıldı. Türkiye'de binde yedi oranında görülen bu durum için erken tanının önemine vurgu yapıldı. Bakanlık olarak erken müdahale, evde bakım ve gündüzlü merkezler ile ailelerin desteklendiği belirtildi. Ankara'daki gündüzlü merkezlerde binlerce saatlik hizmet sunulduğu ifade edildi. Etkinlik sonunda toplu fotoğraf çekimi yapıldı ve SERÇEV Korosu sahne aldı.",
-      "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Serebral Palsili Çocuklar Derneği (SERÇEV) tarafından Kuğulu Park'ta düzenlenen 6 Ekim Dünya Serebral Palsi Farkındalık Günü etkinliğine katıldı. Bakan Göktaş, Türkiye'de dünyaya gelen her bin bebekten yedisine serebral palsi tanısı konulduğunu belirterek erken tanı, doğru yönlendirme ve zamanında müdahalenin çocukların geleceği açısından kritik olduğunu söyledi. Bakanlık olarak engelli bireylerin hayatın her alanında bağımsız yer alması için çalıştıklarını vurgulayan Göktaş, Aile Temelli Ulusal Erken Müdahale sistemi ile 0-8 yaş arasındaki çocukların ve ailelerin ilk günden itibaren desteklendiğini kaydetti. Ülke genelinde evde bakım desteğinden 490 bin engelli vatandaşın faydalandığını aktaran Göktaş, sadece Ankara'da bu ay 20 bin 527 kişinin bu hizmeti aldığını ifade etti. Sayısı 150'ye ulaşan gündüzlü merkezler ile engelli bireylerin günlük yaşam becerilerini geliştirdiği, sosyal ve sportif faaliyetlere katıldığı belirtildi. Ankara'da 300 kapasiteli 6 gündüzlü merkez ile bugüne kadar 52 bin saate yakın hizmet sunulduğu açıklandı. Programın sonunda toplu fotoğraf çekimi gerçekleştirildi ve SERÇEV Korosu sahne aldı.",
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-      "url": "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-6-ekim-dunya-serebral-palsi-farkindalik-gunu-etkinliginde-konustu/",
-      "published_at": "2026-10-06T00:00:00+00:00",
-      "created_at": "2026-10-09T12:13:57.527890+00:00"
     }
   ],
   "pending": [],
@@ -132,6 +132,7 @@
     "https://www.sgk.gov.tr/duyuru/detay/Yurt-Disindan-Gerceklestirilecek-Beser-Tibbi-Urun-Alimlari-Dinamik-Alim-Sistemi-Hakkinda-2026-10-14-09-32-08": "2026-10-14T07:40:56.279331+00:00",
     "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/otizmli-yuzucu-kaan-okyanuslari-asmak-icin-adalar-arasinda-yuzerek-antrenman-yapiyor-/1832817": "2026-10-14T13:46:03.240093+00:00",
     "https://www.aile.gov.tr/haberler/bakanimiz-goktas-canli-yayinda-sorulari-yanitladi/": "2026-10-14T13:46:03.240093+00:00",
-    "https://www.aile.gov.tr/haberler/bakanimiz-goktas-kabine-toplantisi-sonrasi-gazetecilerin-sorularini-yanitladi-2/": "2026-10-14T13:46:03.240093+00:00"
+    "https://www.aile.gov.tr/haberler/bakanimiz-goktas-kabine-toplantisi-sonrasi-gazetecilerin-sorularini-yanitladi-2/": "2026-10-14T13:46:03.240093+00:00",
+    "https://www.sgk.gov.tr/duyuru/detay/Bedeli-Odenecek-Ilaclar-Listesinde-Yapilan-Duzenlemeler-Hakkinda-Duyuru-202640-2026-10-14-04-50-38": "2026-10-14T18:39:53.208952+00:00"
   }
 }
