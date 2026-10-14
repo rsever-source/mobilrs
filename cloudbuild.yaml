@@ -32,6 +32,7 @@ steps:
       - --region=europe-west1
       - --no-traffic
       - --tag=test
+      - --update-secrets=ADMIN_PASSWORD=ADMIN_PASSWORD:latest
       - --quiet
 
   # Emniyet kemeri: yeni revision herhangi bir trafik alıyorsa build'i KIRMIZI yapar.
