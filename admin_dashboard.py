@@ -18,7 +18,7 @@ REPO = "rsever-source/mobilrs"
 BRANCH = "cloud-run-migration"
 RAW = "https://raw.githubusercontent.com/" + REPO + "/" + BRANCH + "/"
 API = "https://api.github.com/repos/" + REPO
-LIVE_NEWS = "https://engelli.me/api/news"
+LIVE_NEWS = os.environ.get("LIVE_NEWS_URL", "https://mobilrs-test-ltiv3pox5q-ew.a.run.app/api/news")
 
 
 def _admin_password():
