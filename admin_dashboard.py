@@ -11,7 +11,7 @@ from urllib.parse import quote
 import redis
 import requests
 from fastapi import APIRouter, HTTPException, Request
-from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse, Response
 from pydantic import BaseModel
 from webauthn import (
     generate_authentication_options,
@@ -276,22 +276,31 @@ async def admin_password_login(request: Request, body: PasswordLogin):
     return response
 
 
-async def _rate_login(request):
-    ip = request.headers.get("x-forwarded-for", "").split(",")[0].strip()
-    if not ip:
-        ip = request.client.host if request.client else "unknown"
+async def _rate_attempt(request, action, limit=8, window=300):
+    # Do not trust client-supplied X-Forwarded-For values. Use the ASGI peer
+    # address for the per-peer bucket and a separate global bucket as a backstop.
+    peer = request.client.host if request.client else "unknown"
     r = _redis()
-    key = PREFIX + "login-attempts:" + hashlib.sha256(ip.encode()).hexdigest()
-    attempts = r.incr(key)
-    if attempts == 1:
-        r.expire(key, 300)
-    if attempts > 8:
-        raise HTTPException(429, "Çok fazla giriş denemesi. 5 dakika sonra tekrar deneyin.")
+    peer_key = PREFIX + "rate:" + action + ":peer:" + hashlib.sha256(peer.encode()).hexdigest()
+    peer_count = r.incr(peer_key)
+    if peer_count == 1:
+        r.expire(peer_key, window)
+    global_key = PREFIX + "rate:" + action + ":global"
+    global_count = r.incr(global_key)
+    if global_count == 1:
+        r.expire(global_key, window)
+    if peer_count > limit or global_count > limit * 10:
+        raise HTTPException(429, "Çok fazla istek. Birkaç dakika sonra tekrar deneyin.")
+
+
+async def _rate_login(request):
+    await _rate_attempt(request, "password-login", limit=8, window=300)
 
 
 @router.post("/admin/api/passkey/start")
 async def passkey_login_start(request: Request, body: CeremonyStart):
     _origin_guard(request)
+    await _rate_attempt(request, "passkey-login-start", limit=8, window=300)
     r = _redis()
     credentials = _passkey_records(r)
     if not credentials:
@@ -344,6 +353,7 @@ async def passkey_login_finish(request: Request, body: CeremonyFinish):
 async def passkey_register_start(request: Request):
     _origin_guard(request)
     _require_session(request)
+    await _rate_attempt(request, "passkey-register-start", limit=5, window=300)
     r = _redis()
     credentials = _passkey_records(r)
     options = generate_registration_options(
@@ -412,7 +422,7 @@ async def admin_status(request: Request):
     errors = []
     try:
         headers = {"Accept": "application/vnd.github+json", "User-Agent": "engellime-admin-status"}
-        response = requests.get(API + "/actions/workflows/news-cron.yml/runs?per_page=1", headers=headers, timeout=(4, 12))
+        response = requests.get(API + "/actions/workflows/news-cron.yml/runs?branch=" + quote(BRANCH) + "&per_page=1", headers=headers, timeout=(4, 12))
         response.raise_for_status()
         runs = response.json().get("workflow_runs", [])
         if runs:
