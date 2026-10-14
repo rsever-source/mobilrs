@@ -71,5 +71,9 @@ jobs:
           missing = required - paths
           if missing:
               raise SystemExit("Missing routes: " + ", ".join(sorted(missing)))
-          print("Admin routes imported successfully.")
+          import excel_vlookup_api
+          app_paths = {route.path for route in excel_vlookup_api.app.routes}
+          if "/admin/haber-durumu" not in app_paths:
+              raise SystemExit("Admin router is not mounted in FastAPI app")
+          print("Admin routes and FastAPI integration verified.")
           PY
