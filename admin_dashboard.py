@@ -259,9 +259,9 @@ refresh();
 async def admin_page(request: Request):
     nonce = request.state.csp_nonce
     if _cookie_session(request):
-        html = DASHBOARD_HTML.replace("{nonce}", nonce)
+        html = DASHBOARD_HTML.replace("{nonce}", nonce).replace("{{", "{").replace("}}", "}")
     else:
-        html = LOGIN_HTML.replace("{nonce}", nonce)
+        html = LOGIN_HTML.replace("{nonce}", nonce).replace("{{", "{").replace("}}", "}")
     return HTMLResponse(html, headers={"X-Robots-Tag": "noindex, nofollow, noarchive", "Cache-Control": "no-store"})
 
 
