@@ -234,19 +234,38 @@ def admin_status(request: Request):
     except Exception as exc:
         errors.append("Haber işlem logu okunamadı: " + str(exc))
     try:
-        live_response = requests.get(LIVE_NEWS, timeout=(5, 30), headers={"Cache-Control": "no-cache", "Connection": "close"})
-        live_response.raise_for_status()
-        live = live_response.json()
-        if not isinstance(live, dict) or not isinstance(live.get("items"), list):
-            raise ValueError("Canlı API yanıt biçimi beklenenden farklı.")
+        # /api/news is served by this same FastAPI application. Calling the
+        # public Cloud Run URL from inside the service can stall on a self-request;
+        # reuse the exact data loader that the endpoint itself uses instead.
+        from excel_vlookup_api import _load_news_data
+
+        data = _load_news_data()
+        if not isinstance(data, dict) or not isinstance(data.get("items"), list):
+            raise ValueError("Canlı haber verisi beklenen biçimde değil.")
+        live_items = []
+        for item in data.get("items", [])[:10]:
+            url = str(item.get("url", "")).strip()
+            if not url.startswith(("https://", "http://")):
+                continue
+            live_items.append({
+                "id": str(item.get("id", "")),
+                "title": str(item.get("title", ""))[:180],
+                "summary": str(item.get("summary", ""))[:900],
+                "detail_summary": str(item.get("detail_summary", ""))[:1400],
+                "category": str(item.get("category", "Gündem"))[:50],
+                "source": str(item.get("source", ""))[:100],
+                "url": url,
+                "published_at": item.get("published_at"),
+            })
         result["live_api"].update({
-            "ok": True, "http_status": live_response.status_code, "updated_at": live.get("updated_at"),
-            "item_count": len(live["items"]), "items": live["items"],
+            "ok": True, "check_method": "same_process_data_loader",
+            "updated_at": data.get("updated_at"),
+            "item_count": len(live_items), "items": live_items,
         })
         try:
             expected = _json_from_raw("news.json")
             expected_items = [i for i in expected.get("items", [])[:10] if str(i.get("url", "")).startswith(("https://", "http://")) and i.get("id")]
-            live_ids = {str(i.get("id")) for i in live["items"] if i.get("id")}
+            live_ids = {str(i.get("id")) for i in live_items if i.get("id")}
             result["live_api"]["expected_count"] = len(expected_items)
             result["live_api"]["missing_from_live"] = [
                 {"id": i.get("id"), "title": i.get("title"), "url": i.get("url")}
@@ -256,7 +275,7 @@ def admin_status(request: Request):
             result["live_api"]["comparison_error"] = str(exc)
     except Exception as exc:
         result["live_api"]["error"] = str(exc)
-        errors.append("Canlı API okunamadı: " + str(exc))
+        errors.append("Canlı haber verisi okunamadı: " + str(exc))
     result["errors"] = errors
     return JSONResponse(result, headers={"Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow, noarchive"})
 
