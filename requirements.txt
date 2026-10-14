@@ -9,3 +9,4 @@ requests
 beautifulsoup4
 redis
 google-cloud-storage
+webauthn>=2.2,<3
