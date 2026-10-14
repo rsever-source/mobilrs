@@ -186,7 +186,7 @@ async def admin_logout(request: Request):
 
 
 @router.get("/admin/api/status")
-async def admin_status(request: Request):
+def admin_status(request: Request):
     _require_session(request)
     checked_at = datetime.now(timezone.utc).isoformat()
     result = {
