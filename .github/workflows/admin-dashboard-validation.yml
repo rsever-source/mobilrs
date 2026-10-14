@@ -1,0 +1,48 @@
+name: Private admin validation
+
+on:
+  pull_request:
+    branches:
+      - cloud-run-migration
+    paths:
+      - "admin_dashboard.py"
+      - "excel_vlookup_api.py"
+      - "requirements.txt"
+      - "ADMIN_DASHBOARD_SETUP.md"
+      - ".github/workflows/admin-dashboard-validation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Check Python syntax
+        run: python -m py_compile admin_dashboard.py excel_vlookup_api.py
+      - name: Verify admin router imports and routes
+        run: |
+          python - <<'PY'
+          import admin_dashboard
+          paths = {route.path for route in admin_dashboard.router.routes}
+          required = {
+              "/admin/haber-durumu",
+              "/admin/api/login/password",
+              "/admin/api/passkey/start",
+              "/admin/api/passkey/finish",
+              "/admin/api/passkey/register/start",
+              "/admin/api/passkey/register/finish",
+              "/admin/api/status",
+              "/admin/api/logout",
+          }
+          missing = required - paths
+          if missing:
+              raise SystemExit("Missing routes: " + ", ".join(sorted(missing)))
+          print("Admin routes imported successfully.")
+          PY
