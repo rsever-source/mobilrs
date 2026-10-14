@@ -107,7 +107,7 @@ DASHBOARD_HTML = r'''<!doctype html>
 <meta name="robots" content="noindex,nofollow,noarchive"><title>Engelli.me haber durumu</title>
 <style nonce="{nonce}">
 *{{box-sizing:border-box}}body{{margin:0;background:#f3f6fa;color:#172033;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}}main{{max-width:1180px;margin:auto;padding:20px}}
-header{{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:20px}}h1{{font-size:24px;margin:0}}.muted{{color:#657187;font-size:13px}}button,input{{font:inherit;border-radius:10px;padding:10px 13px}}button{{border:0;background:#155eef;color:white;font-weight:700;cursor:pointer}}button.secondary{{background:#e8eef8;color:#1c355d}}.cards{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}}.card,section{{background:#fff;border:1px solid #e1e7ef;border-radius:14px;padding:16px;min-width:0}}.card small{{display:block;color:#657187}}.card strong{{display:block;font-size:21px;margin-top:7px;overflow-wrap:anywhere}}section{{margin-top:14px}}h2{{font-size:17px;margin:0 0 12px}}.status{{font-weight:750}}.good{{color:#16803c}}.bad{{color:#b42318}}.warn{{color:#9a6700}}.grid2{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}.scroll{{overflow:auto}}table{{border-collapse:collapse;width:100%;font-size:13px}}td,th{{padding:9px;border-bottom:1px solid #e8edf3;text-align:left;vertical-align:top}}pre{{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;background:#f7f9fc;padding:12px;border-radius:8px;max-height:560px;overflow:auto}}.row{{display:flex;gap:8px;align-items:center;flex-wrap:wrap}}input[type=search]{{border:1px solid #cbd4e1;min-width:200px;flex:1}}details{{border-bottom:1px solid #e8edf3;padding:10px 0}}summary{{cursor:pointer;font-weight:650}}.pill{{display:inline-block;padding:3px 8px;border-radius:999px;background:#edf2f8;font-size:12px}}#message{{min-height:18px;margin:8px 0;color:#526174;font-size:13px}}@media(max-width:760px){{main{{padding:14px}}.cards{{grid-template-columns:repeat(2,minmax(0,1fr))}}.grid2{{grid-template-columns:1fr}}h1{{font-size:20px}}}}
+header{{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:20px}}h1{{font-size:24px;margin:0}}.muted{{color:#657187;font-size:13px}}button,input{{font:inherit;border-radius:10px;padding:10px 13px}}button{{border:0;background:#155eef;color:white;font-weight:700;cursor:pointer}}button.secondary{{background:#e8eef8;color:#1c355d}}.cards{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}}.card,section{{background:#fff;border:1px solid #e1e7ef;border-radius:14px;padding:16px;min-width:0}}.card small{{display:block;color:#657187}}.card strong{{display:block;font-size:21px;margin-top:7px;overflow-wrap:anywhere}}section{{margin-top:14px}}h2{{font-size:17px;margin:0 0 12px}}.status{{font-weight:750}}.good{{color:#16803c}}.bad{{color:#b42318}}.warn{{color:#9a6700}}.grid2{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}.scroll{{overflow:auto}}table{{border-collapse:collapse;width:100%;font-size:13px}}td,th{{padding:9px;border-bottom:1px solid #e8edf3;text-align:left;vertical-align:top}}pre{{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;background:#f7f9fc;padding:12px;border-radius:8px;max-height:560px;overflow:auto}}.row{{display:flex;gap:8px;align-items:center;flex-wrap:wrap}}input[type=search]{{border:1px solid #cbd4e1;min-width:200px;flex:1}}details{{border-bottom:1px solid #e8edf3;padding:10px 0}}summary{{cursor:pointer;font-weight:650}}.report-item{{border-bottom:1px solid #e8edf3;padding:12px 0}}.report-item:last-child{{border-bottom:0}}h3{{font-size:14px;margin:14px 0 8px}}a{{color:#155eef;overflow-wrap:anywhere}}.pill{{display:inline-block;padding:3px 8px;border-radius:999px;background:#edf2f8;font-size:12px}}#message{{min-height:18px;margin:8px 0;color:#526174;font-size:13px}}@media(max-width:760px){{main{{padding:14px}}.cards{{grid-template-columns:repeat(2,minmax(0,1fr))}}.grid2{{grid-template-columns:1fr}}h1{{font-size:20px}}}}
 </style></head><body><main>
 <header><div><div class="muted">Engelli.me / Özel yönetim</div><h1>Haber sistemi durum raporu</h1><div class="muted" id="lastChecked">Henüz kontrol edilmedi</div></div><div class="row"><button id="refresh">Güncelle</button><button class="secondary" id="logout">Çıkış</button></div></header>
 <p id="message" role="status">Mevcut kayıtlar yükleniyor…</p>
@@ -123,7 +123,9 @@ header{{display:flex;gap:14px;align-items:center;justify-content:space-between;f
 <div class="card"><small>Filtreyle elenen</small><strong id="rejected">—</strong></div>
 <div class="card"><small>Bekleyen / belirsiz</small><strong id="pending">—</strong></div>
 </div><p class="muted">Sayılar yalnızca mevcut logda açıkça bulunan durum alanlarından hesaplanır; eksik bilgiler tahmin edilmez.</p></section>
-<section><h2>Tüm sistem olayları</h2><div id="incidents"></div></section>
+<section><h2>Son çalıştırma raporu</h2><div id="runReport"></div></section>
+<section><h2>Kaynak tarama özeti</h2><div id="sourceReport"></div></section>
+<section><h2>Sistem olayları ve hatalar</h2><div id="incidents"></div></section>
 </section>
 
 </main>
@@ -132,15 +134,69 @@ let state=null;
 function el(id){{return document.getElementById(id)}}
 function safeText(v){{return v===null||v===undefined?'—':String(v)}}
 function node(tag,text,cls){{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n}}
-function pretty(v){{return JSON.stringify(v,null,2)}}
-function details(title,value){{const d=node('details'),s=node('summary',title),p=node('pre',pretty(value));d.append(s,p);return d}}
-function addJsonList(target,items,titleFn){{target.replaceChildren();if(!Array.isArray(items)||!items.length){{target.append(node('p','Kayıt bulunamadı.','muted'));return}}items.forEach((item,i)=>target.append(details(titleFn(item,i),item)))}}
-function formatDate(v){{if(!v)return 'Tarih yok';const d=new Date(v);return Number.isNaN(d.getTime())?String(v):d.toLocaleString('tr-TR')}}
-function counts(log){{const last=(log.news_runs||[]).slice(-1)[0]||{{}};const out={{published:0,duplicates:0,rejected:0,pending:0}};for(const c of (last.candidates||[])){{const s=String(c.status||'').toLowerCase();if(s==='published'||c.publish===true)out.published++;else if(c.duplicate===true||s.includes('duplicate'))out.duplicates++;else if(s==='pending'||s==='pending_review')out.pending++;else if(c.publish===false||s==='rejected')out.rejected++}}const f=last.filter_diagnostics?.counts||{{}};out.duplicates=Math.max(out.duplicates,Number(f.duplicate_in_this_run||0)+Number(f.url_seen_within_7_days||0)+Number(f.already_published||0));out.rejected=Math.max(out.rejected,Number(f.older_than_7_days||0)+Number(f.missing_date||0)+Number(f.future_date||0));out.pending=Math.max(out.pending,Number(f.pending_unknown_or_expired_date||0));return out}}
-function render(data){{state=data;const log=data.log||{{}};const runs=log.news_runs||[];const last=runs[runs.length-1]||{{}};const cs=counts(log);
-el('lastChecked').textContent='Kontrol zamanı: '+formatDate(data.checked_at);el('runStatus').textContent=data.actions?.status||'Bilinmiyor';el('runTime').textContent=formatDate(data.actions?.created_at);el('apiStatus').textContent=data.live_api?.ok?(data.live_api?.check_method==='same_process_data_loader'?'Veri kontrolü başarılı':'Çalışıyor'):'Kontrol başarısız';el('apiStatus').className=data.live_api?.ok?'good':'bad';el('apiTime').textContent=data.live_api?.updated_at?'Güncelleme: '+formatDate(data.live_api.updated_at):safeText(data.live_api?.error);el('candidateCount').textContent=safeText(last.candidates?.length??last.filter_diagnostics?.counts?.accepted_as_candidate);el('incidentCount').textContent=String((log.system_incidents||[]).length);el('published').textContent=cs.published;el('duplicates').textContent=cs.duplicates;el('rejected').textContent=cs.rejected;el('pending').textContent=cs.pending;
-addJsonList(el('incidents'),(log.system_incidents||[]).slice().reverse(),(r)=>formatDate(r.updated_at||r.created_at||r.last_seen||r.first_seen)+' · '+safeText(r.component)+' · '+safeText(r.status));
-}}
+function addText(parent,text,tag='p',cls=''){const n=document.createElement(tag);n.textContent=text;if(cls)n.className=cls;parent.append(n);return n}
+function addLink(parent,url,label){if(!url||!/^https?:\/\//i.test(String(url)))return;const a=document.createElement('a');a.href=url;a.textContent=label||url;a.target='_blank';a.rel='noopener noreferrer';parent.append(a)}
+function sectionTitle(parent,text){addText(parent,text,'h3')}
+function resultLabel(candidate){const d=String(candidate.decision||'').toLowerCase(),s=String(candidate.status||'').toLowerCase();if(candidate.publish===true||d==='publish'||s==='published')return 'KABUL EDİLDİ / YAYIMLANDI';if(candidate.duplicate===true||d==='duplicate')return 'TEKRAR — YAYIMLANMADI';if(d==='reject'||candidate.publish===false)return 'REDDEDİLDİ';return 'BEKLİYOR / BELİRSİZ'}
+function renderRunReport(log,actions){
+ const root=el('runReport');root.replaceChildren();const runs=Array.isArray(log.news_runs)?log.news_runs:[];const last=runs[runs.length-1];
+ if(!last){addText(root,'Son çalıştırma kaydı bulunamadı.');return}
+ addText(root,'Çalışma zamanı: '+formatDate(last.run_at)+' · Model: '+safeText(last.model),'p','muted');
+ const errs=[...(Array.isArray(last.source_errors)?last.source_errors:[])];
+ if(errs.length){sectionTitle(root,'Kaynak hataları');errs.forEach(e=>addText(root,typeof e==='string'?e:(e.source?e.source+': ':'')+(e.error||e.message||JSON.stringify(e)),'p','bad'))}
+ else addText(root,'Kaynak hatası: Yok','p','good');
+ sectionTitle(root,'Haber kararları');
+ const candidates=Array.isArray(last.candidates)?last.candidates:[];
+ if(!candidates.length)addText(root,'Bu çalıştırmada Gemini değerlendirmesine giren haber adayı yok. Bu tek başına hata değildir.','p','muted');
+ candidates.forEach((item)=>{
+  const card=addText(root,'','div','report-item');
+  const status=resultLabel(item);addText(card,status,'strong',status.startsWith('KABUL')?'good':status.startsWith('RED')?'bad':status.startsWith('TEKRAR')?'warn':'muted');
+  addText(card,item.generated_title||item.title||'Başlıksız haber','p');
+  addText(card,'Kaynak: '+safeText(item.source)+' · Tarih: '+formatDate(item.published_at),'p','muted');
+  const reason=item.duplicate_reason||item.reason||((item.decision==='reject')?'Gemini haberi yayıma uygun bulmadı.':'');
+  if(reason)addText(card,'Neden: '+reason,'p');
+  if(item.url)addLink(card,item.url,'Kaynak haberi aç');
+ });
+ const jobs=Array.isArray(actions?.jobs)?actions.jobs:[];
+ if(jobs.length){sectionTitle(root,'GitHub Actions adımları');jobs.forEach(job=>{addText(root,(job.name||'İş')+' — '+(job.conclusion||job.status||'durum bilinmiyor'),'p',job.conclusion==='success'?'good':job.conclusion==='failure'?'bad':'muted');(job.steps||[]).filter(s=>s.conclusion==='failure').forEach(s=>addText(root,'Hata adımı: '+s.name,'p','bad'))})}
+}
+function renderSourceReport(last){
+ const root=el('sourceReport');root.replaceChildren();const diag=last?.source_diagnostics||{};const entries=Object.entries(diag);
+ const counts=last?.filter_diagnostics?.counts||{};
+ const box=addText(root,'','div','report-item');sectionTitle(box,'Genel filtre sonucu');
+ addText(box,'Taranan kayıt: '+safeText(last?.filter_diagnostics?.parsed_total)+' · Gemini adayı: '+safeText(counts.accepted_as_candidate),'p');
+ addText(box,'Daha eski (7 günden fazla): '+safeText(counts.older_than_7_days)+' · Daha önce yayımlanmış: '+safeText(counts.already_published)+' · Son 7 günde görülmüş: '+safeText(counts.url_seen_within_7_days)+' · Eksik tarih: '+safeText(counts.missing_date)+' · Gelecek tarih: '+safeText(counts.future_date)+' · Tarihi belirsiz/bekleyen: '+safeText(counts.pending_unknown_or_expired_date),'p','muted');
+ if(!entries.length){addText(root,'Kaynak bazında ayrıntı kaydı yok.');return}
+ sectionTitle(root,'Kaynak bazında sonuç');
+ entries.forEach(([name,d])=>{
+  const card=addText(root,'','div','report-item');addText(card,name,'strong');
+  addText(card,'Taranan: '+safeText(d.scanned)+' · Ayrıştırılan: '+safeText(d.parsed_items)+' · Anahtar kelimeyle elenen: '+safeText(d.keyword_eliminated)+' · Yeni aday: '+safeText(d.new_candidates_for_gemini),'p');
+  if(d.error)addText(card,'HATA: '+d.error,'p','bad');else addText(card,'Kaynak hatası: Yok','p','good');
+  const examples=Array.isArray(d.eliminated_examples)?d.eliminated_examples:[];
+  if(examples.length){addText(card,'Örnek elenen kayıtlar:','p','muted');examples.slice(0,5).forEach(v=>addText(card,'• '+safeText(v.title)+' — '+safeText(v.reason),'p','muted'))}
+ });
+ const filterExamples=last?.filter_diagnostics?.examples||{};
+ Object.entries(filterExamples).forEach(([key,items])=>{if(!Array.isArray(items)||!items.length)return;sectionTitle(root,'Filtre örnekleri: '+key);items.slice(0,5).forEach(v=>addText(root,'• '+safeText(v.title||v.url||v.source),'p','muted'))});
+}
+function renderIncidents(log,errors){
+ const root=el('incidents');root.replaceChildren();let any=false;
+ (Array.isArray(log.system_incidents)?log.system_incidents:[]).slice().reverse().forEach(item=>{
+  any=true;const card=addText(root,'','div','report-item');addText(card,[item.component,item.status].filter(Boolean).join(' · ')||'Sistem olayı','strong');
+  addText(card,item.message||item.error||item.description||'Ayrıntılı açıklama kaydedilmemiş.','p');
+  addText(card,formatDate(item.updated_at||item.created_at||item.last_seen||item.first_seen),'p','muted');
+ });
+ (Array.isArray(errors)?errors:[]).forEach(err=>{any=true;addText(root,'HATA: '+err,'p','bad')});
+ if(!any)addText(root,'Kayıtlı sistem olayı veya rapor hatası yok.','p','good');
+}
+function render(data){state=data;const log=data.log||{};const runs=log.news_runs||[];const last=runs[runs.length-1]||{};const cs=counts(log);
+ el('lastChecked').textContent='Kontrol zamanı: '+formatDate(data.checked_at);
+ el('runStatus').textContent=data.actions?.status||'Bilinmiyor';el('runTime').textContent=formatDate(data.actions?.created_at);
+ el('apiStatus').textContent=data.live_api?.ok?(data.live_api?.check_method==='same_process_data_loader'?'Veri kontrolü başarılı':'Çalışıyor'):'Kontrol başarısız';el('apiStatus').className=data.live_api?.ok?'good':'bad';
+ el('apiTime').textContent=data.live_api?.updated_at?'Güncelleme: '+formatDate(data.live_api.updated_at):safeText(data.live_api?.error);
+ el('candidateCount').textContent=safeText(last.candidates?.length??last.filter_diagnostics?.counts?.accepted_as_candidate);el('incidentCount').textContent=String((log.system_incidents||[]).length);
+ el('published').textContent=cs.published;el('duplicates').textContent=cs.duplicates;el('rejected').textContent=cs.rejected;el('pending').textContent=cs.pending;
+ renderRunReport(log,data.actions||{});renderSourceReport(last);renderIncidents(log,data.errors||[]);
+}
 async function api(url,body){{const r=await fetch(url,{{method:body?'POST':'GET',credentials:'same-origin',headers:body?{{'Content-Type':'application/json'}}:{{}},body:body?JSON.stringify(body):undefined,cache:'no-store'}});const j=await r.json().catch(()=>({{}}));if(!r.ok)throw Error(j.detail||'İstek başarısız');return j}}
 async function refresh(){{el('message').textContent='GitHub Actions, loglar ve canlı API kontrol ediliyor…';el('refresh').disabled=true;try{{const data=await api('/admin/api/status');try{{const live=await api('/api/news');if(!Array.isArray(live.items))throw Error('Canlı API yanıtında items listesi yok.');const liveItems=live.items.filter(i=>i&&String(i.url||'').startsWith('http'));const liveIds=new Set(liveItems.map(i=>String(i.id||'')).filter(Boolean));data.live_api={{ok:true,check_method:'browser_http',http_status:200,updated_at:live.updated_at||null,item_count:liveItems.length,items:liveItems,expected_count:data.live_api?.expected_count??0,missing_from_live:(data.live_api?.expected_items||[]).filter(i=>!liveIds.has(String(i.id)))}}}}catch(e){{data.live_api={{...(data.live_api||{{}}),ok:false,error:String(e.message||e)}};data.errors=[...(data.errors||[]),'Canlı API okunamadı: '+String(e.message||e)]}}render(data);el('message').textContent=(data.errors&&data.errors.length?'Kontrol tamamlandı, ancak bazı kontroller başarısız: '+data.errors.join(' · '):'Kontrol tamamlandı. Canlı /api/news uç noktası tarayıcı üzerinden doğrulandı; yeni tarama başlatılmadı.')}}catch(e){{el('message').textContent=e.message}}finally{{el('refresh').disabled=false}}}}
 function decode(s){{s=s.replace(/-/g,'+').replace(/_/g,'/');const raw=atob(s+'='.repeat((4-s.length%4)%4));return Uint8Array.from(raw,c=>c.charCodeAt(0))}}
