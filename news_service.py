@@ -105,11 +105,23 @@ def _feed_items(source):
     items = []
     # RSS öğeleri bazı yayınlarda namespace ile gelir; hem RSS hem Atom biçimini destekle.
     nodes = root.findall(".//{*}item") or root.findall(".//{*}entry")
+    root_name = str(root.tag).split("}")[-1].lower()
+    rss_structure_errors = []
+    if root_name not in {"rss", "feed", "rdf"}:
+        rss_structure_errors.append(
+            f"Beklenmeyen RSS/Atom kök etiketi: {root.tag!r}"
+        )
+    _SOURCE_DIAGNOSTICS[source["name"]] = {
+        "stage": "rss", "root_tag": root.tag,
+        "item_or_entry_nodes": len(nodes), "errors": rss_structure_errors,
+    }
     print(
         "Haber kaynağı ayrıştırma:",
         {"source": source["name"], "stage": "rss", "root_tag": root.tag,
-         "item_or_entry_nodes": len(nodes)}
+         "item_or_entry_nodes": len(nodes), "errors": rss_structure_errors}
     )
+    if rss_structure_errors:
+        raise ValueError("; ".join(rss_structure_errors))
     for node in nodes:
         title = _text(node, ["title", "{*}title"])
         link = _text(node, ["link", "{*}link"])
