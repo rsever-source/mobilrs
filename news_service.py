@@ -111,6 +111,10 @@ def _feed_items(source):
         rss_structure_errors.append(
             f"Beklenmeyen RSS/Atom kök etiketi: {root.tag!r}"
         )
+    elif root_name == "rss" and root.find("channel") is None:
+        rss_structure_errors.append("RSS yanıtında beklenen channel düğümü bulunamadı.")
+    elif root_name == "feed" and not root.findall(".//{*}title"):
+        rss_structure_errors.append("Atom yanıtında beklenen title alanı bulunamadı.")
     _SOURCE_DIAGNOSTICS[source["name"]] = {
         "stage": "rss", "root_tag": root.tag,
         "item_or_entry_nodes": len(nodes), "errors": rss_structure_errors,
@@ -139,6 +143,10 @@ def _feed_items(source):
                 "source": source["name"], "title": title, "url": link,
                 "description": description, "published_at": pub.isoformat() if pub else None
             })
+    if nodes and not items:
+        rss_structure_errors.append(
+            "RSS/Atom içinde item/entry kayıtları var ancak başlık ve bağlantı alanları ayrıştırılamadı."
+        )
     _SOURCE_DIAGNOSTICS[source["name"]] = {
         "stage": "rss", "root_tag": root.tag,
         "item_or_entry_nodes": len(nodes), "parsed_items": len(items),
