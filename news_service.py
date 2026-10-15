@@ -337,6 +337,7 @@ def _html_items(source):
     path_matches = len(order)
     detail_attempts = 0
     detail_successes = 0
+    missing_date_items = []
     dated_from_title = 0
     dated_from_context = 0
     for href in order:
@@ -376,6 +377,7 @@ def _html_items(source):
             detail_attempts += 1
             published_at = _article_published_at(href)
             if not published_at:
+                missing_date_items.append({"title": title[:300], "url": href})
                 continue
             detail_successes += 1
         items.append({
@@ -387,6 +389,7 @@ def _html_items(source):
         "path_matches": path_matches, "dated_from_title": dated_from_title,
         "dated_from_context": dated_from_context, "detail_attempts": detail_attempts,
         "detail_successes": detail_successes, "parsed_items": len(items),
+        "missing_date_items": missing_date_items,
         "errors": [],
     }
     if links_seen == 0:
@@ -406,6 +409,7 @@ def _html_items(source):
          "path_matches": path_matches, "dated_from_title": dated_from_title,
          "dated_from_context": dated_from_context, "detail_attempts": detail_attempts,
          "detail_successes": detail_successes, "parsed_items": len(items),
+         "missing_date_items": missing_date_items,
          "errors": diagnostic["errors"]}
     )
     if diagnostic["errors"] and (links_seen == 0 or (include and path_matches == 0)):
