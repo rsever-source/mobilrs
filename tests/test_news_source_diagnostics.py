@@ -84,6 +84,35 @@ class NewsSourceDiagnosticsTests(unittest.TestCase):
         self.assertEqual(len(items), 1)
         self.assertEqual(ns._SOURCE_DIAGNOSTICS["Test HTML"]["errors"], [])
 
+    def test_aa_visible_header_date_is_parsed_when_no_metadata_exists(self):
+        html = (
+            "<html><body><main><div class='article-header'>"
+            "<h1>Bakan Göktaş'tan engelli bireylere ilişkin paylaşım</h1>"
+            "<div class='author'>Fatih Gökbulut</div><div class='date'>07.10.2026</div>"
+            "</div><div class='article-body'>Haber metni.</div></main></body></html>"
+        )
+        response = FakeResponse(
+            html,
+            url="https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/test/123",
+        )
+        with patch.object(ns._SESSION, "get", return_value=response):
+            published = ns._article_published_at(response.url)
+        self.assertEqual(published, "2026-10-07T00:00:00+00:00")
+
+    def test_visible_date_outside_article_header_is_not_guessed(self):
+        html = (
+            "<html><body><h1>Haber başlığı</h1><div class='related'>"
+            "Başka haber 01.10.2026</div><div class='related'>"
+            "Diğer haber 02.10.2026</div></body></html>"
+        )
+        response = FakeResponse(
+            html,
+            url="https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/test/124",
+        )
+        with patch.object(ns._SESSION, "get", return_value=response):
+            published = ns._article_published_at(response.url)
+        self.assertIsNone(published)
+
     def test_tbb_detail_failure_is_recorded(self):
         source = {
             "name": "Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
