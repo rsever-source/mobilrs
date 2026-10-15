@@ -120,6 +120,11 @@ def _feed_items(source):
         {"source": source["name"], "stage": "rss", "root_tag": root.tag,
          "item_or_entry_nodes": len(nodes), "errors": rss_structure_errors}
     )
+    if not nodes:
+        rss_structure_errors.append(
+            "RSS/Atom yanıtında item/entry kaydı bulunamadı; kaynak boş dönmüş veya akış yapısı değişmiş olabilir."
+        )
+        _SOURCE_DIAGNOSTICS[source["name"]]["errors"] = rss_structure_errors
     if rss_structure_errors:
         raise ValueError("; ".join(rss_structure_errors))
     for node in nodes:
@@ -928,10 +933,23 @@ def update_news():
     # kaybolmuş olabilir. Tanılama bulgularını açık kaynak hatalarına dönüştür.
     for source_name, diagnostic in _SOURCE_DIAGNOSTICS.items():
         errors = diagnostic.get("errors") or []
-        if errors and not any(entry.get("source") == source_name for entry in source_errors):
+        if not errors:
+            continue
+        matching_error = next(
+            (entry for entry in source_errors if entry.get("source") == source_name),
+            None,
+        )
+        diagnostic_text = "; ".join(str(error) for error in errors[:8])
+        if matching_error:
+            matching_error["kind"] = "source_parse_error"
+            if diagnostic_text not in matching_error.get("error", ""):
+                matching_error["error"] = (
+                    str(matching_error.get("error") or "") + "; " + diagnostic_text
+                ).strip("; ")
+        else:
             source_errors.append({
                 "source": source_name,
-                "error": "; ".join(str(error) for error in errors[:8]),
+                "error": diagnostic_text,
                 "kind": "source_parse_error",
             })
 
