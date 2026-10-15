@@ -121,7 +121,7 @@ header{{display:flex;gap:14px;align-items:center;justify-content:space-between;f
 <div class="card"><small>Kararı netleşmeyen aday</small><strong id="pending">—</strong></div>
 </div><p class="muted">Bu sayılar son taramanın kayıtlarından hesaplanır.</p></section>
 <section id="pendingNewsSection"><h2>Bekleyen haberler</h2><div id="pendingNews" class="muted">Yükleniyor…</div></section>
-<section id="sourceErrorsSection" hidden><h2>Haber kaynaklarına erişim ve okuma sorunları</h2><div id="sourceErrors" class="muted"></div></section>
+<section id="sourceErrorsSection"><h2>Haber kaynaklarına erişim ve okuma sorunları</h2><div id="sourceErrors" class="muted"></div></section>
 <section id="systemErrorsSection" hidden><h2>Haber işleme sorunları (Gemini ve diğer işlemler)</h2><div id="systemErrors" class="muted"></div></section>
 
 </main>
@@ -151,8 +151,8 @@ function renderPendingNews(items){{
 function renderErrorItems(targetId,items){{
  const root=el(targetId);root.replaceChildren();
  const section=el(targetId+'Section');
- if(section)section.hidden=!items.length;
- if(!items.length)return;
+ if(section)section.hidden=targetId!=='sourceErrors'&&!items.length;
+ if(!items.length){{if(targetId==='sourceErrors')root.appendChild(node('div','Kayıtlı haber kaynağı hatası yok.','muted'));return}}
  for(const item of items.slice(-12).reverse()){{
   const wrap=node('div',undefined,'report-item');
   wrap.appendChild(node('strong',item.title||item.name||item.component||'Hata'));
