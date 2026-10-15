@@ -135,15 +135,30 @@ function render(data){{state=data;const log=data.log||{{}};const runs=log.news_r
  el('lastChecked').textContent='Kontrol zamanı: '+safeText(data.checked_at);
  el('candidateCount').textContent=safeText(last.candidates?.length??last.filter_diagnostics?.counts?.accepted_as_candidate);
  el('published').textContent=cs.published;el('duplicates').textContent=cs.duplicates;el('rejected').textContent=cs.rejected;el('pending').textContent=cs.pending;
- renderPendingNews(data.news_pending||[]);
+ renderPendingNews(data.news_pending||[],log);
  renderErrors(data);
 }}
-function renderPendingNews(items){{
+function pendingAttemptInfo(item,log){{
+ const attempts=[];
+ for(const run of (log.news_runs||[])){{
+  for(const candidate of (run.candidates||[])){{
+   if(candidate.url===item.url&&candidate.status==='not_processed')attempts.push({{run_at:run.run_at,error:candidate.error}});
+  }}
+ }}
+ const latest=attempts[attempts.length-1];
+ if(attempts.length>1)return {{label:'Tekrar başarısız oldu',detail:'Yeniden denendi; raporda '+attempts.length+' başarısız deneme kayıtlı.'+(latest?.run_at?' Son deneme: '+latest.run_at:''),count:attempts.length}};
+ if(attempts.length===1)return {{label:'Bekliyor',detail:'İlk deneme başarısız oldu; yeniden denenmesi bekleniyor.'+(latest?.run_at?' Son deneme: '+latest.run_at:''),count:1}};
+ return {{label:'Bekliyor',detail:'Deneme geçmişi raporda bulunamadı; yeniden deneme sonucu doğrulanamıyor.',count:0}};
+}}
+function renderPendingNews(items,log){{
  const root=el('pendingNews');root.replaceChildren();
- if(!items.length){{root.appendChild(node('div','Bekleyen haber yok.','muted'));return}}
+ if(!items.length){{root.appendChild(node('div','Bekleyen haber yok. Başarıyla işlenen haberler bu listeden otomatik kaldırılır.','muted'));return}}
  for(const item of items){{
   const wrap=node('div',undefined,'report-item');
   wrap.appendChild(node('strong',item.title||'Başlıksız haber'));
+  const info=pendingAttemptInfo(item,log);
+  wrap.appendChild(node('div',info.label,info.count>1?'status bad':'status warn'));
+  wrap.appendChild(node('div',info.detail,'muted'));
   if(item.url){{const a=node('a',item.url);a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';wrap.appendChild(node('div',undefined,'muted')).appendChild(a)}}
   root.appendChild(wrap);
  }}
