@@ -140,6 +140,7 @@ def _feed_items(source):
     _SOURCE_DIAGNOSTICS[source["name"]] = {
         "stage": "rss", "root_tag": root.tag,
         "item_or_entry_nodes": len(nodes), "parsed_items": len(items),
+        "errors": rss_structure_errors,
     }
     print(
         "Haber kaynağı sonuç:",
