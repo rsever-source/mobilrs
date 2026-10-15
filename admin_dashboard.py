@@ -157,11 +157,11 @@ function readableGeminiError(value){{
  if(/ReadTimeout|read timed out|timed out.*read timeout/i.test(raw))return 'Gemini yanıt vermedi (60 sn zaman aşımı); haber işlenemedi.';
  if(/503|service unavailable/i.test(raw))return 'Gemini geçici olarak hizmet vermedi; haber işlenemedi.';
  if(/429|rate.?limit/i.test(raw))return 'Gemini istek sınırına takıldı; haber işlenemedi.';
- return readableError(raw);
+ return raw||'Hata ayrıntısı kaydedilmemiş.';
 }}
 function retryStatusForTitle(title,pendingTitles){{
  const found=pendingTitles.find(t=>title&&title.startsWith(t+':'));
- if(found)return pendingTitles.includes(found)?'Durum: Haber bekleyenler listesinde; yeniden denenmek üzere bekliyor.':'';
+ if(found)return 'Durum: Haber bekleyenler listesinde; yeniden denenmek üzere bekliyor.';
  return 'Durum: Haber güncel bekleyenler listesinde görünmüyor; yeniden deneneceği doğrulanamadı.';
 }}
 function renderErrors(data){{
