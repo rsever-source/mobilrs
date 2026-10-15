@@ -149,21 +149,34 @@ function renderErrorItems(targetId,items,emptyText){{
 }}
 function readableError(value){{
  const raw=String(value||'');
- if(/ReadTimeout|read timed out|timed out.*read timeout|timeout/i.test(raw))return 'Gemini yanıt vermedi (60 sn zaman aşımı); haber işlenemedi.';
+ if(/ReadTimeout|read timed out|timed out.*read timeout|timeout/i.test(raw))return 'Kaynak bağlantısı zaman aşımına uğradı.';
  return raw||'Hata ayrıntısı kaydedilmemiş.';
+}}
+function readableGeminiError(value){{
+ const raw=String(value||'');
+ if(/ReadTimeout|read timed out|timed out.*read timeout/i.test(raw))return 'Gemini yanıt vermedi (60 sn zaman aşımı); haber işlenemedi.';
+ if(/503|service unavailable/i.test(raw))return 'Gemini geçici olarak hizmet vermedi; haber işlenemedi.';
+ if(/429|rate.?limit/i.test(raw))return 'Gemini istek sınırına takıldı; haber işlenemedi.';
+ return readableError(raw);
+}}
+function retryStatusForTitle(title,pendingTitles){{
+ const found=pendingTitles.find(t=>title&&title.startsWith(t+':'));
+ if(found)return pendingTitles.includes(found)?'Durum: Haber bekleyenler listesinde; yeniden denenmek üzere bekliyor.':'';
+ return 'Durum: Haber güncel bekleyenler listesinde görünmüyor; yeniden deneneceği doğrulanamadı.';
 }}
 function renderErrors(data){{
  const runs=(data.log?.news_runs||[]).slice(-8);
  const sourceErrors=[];
  const systemErrors=[];
  const pendingByUrl=new Set((data.news_pending||[]).map(item=>item.url).filter(Boolean));
+ const pendingTitles=(data.news_pending||[]).map(item=>String(item.title||'')).filter(Boolean);
  for(const run of runs){{
   for(const err of (run.source_errors||[])){{
    sourceErrors.push({{title:err.source||'Bilinmeyen kaynak',when:'Tarama: '+safeText(run.run_at),details:readableError(err.error||'Kaynak hatası ayrıntısı kaydedilmemiş.')}});
   }}
   for(const item of (run.candidates||[])){{
    if(item.status==='not_processed'||item.error){{
-    systemErrors.push({{title:item.title||item.url||'Haber işleme hatası',when:'Tarama: '+safeText(run.run_at),details:(readableError(item.error)+' '+(pendingByUrl.has(item.url)?'Durum: Haber bekleyenler listesinde; yeniden denenmek üzere bekliyor.':'Durum: Haber güncel bekleyenler listesinde görünmüyor; yeniden deneneceği doğrulanamadı.'))}});
+    systemErrors.push({{title:item.title||item.url||'Haber işleme hatası',when:'Tarama: '+safeText(run.run_at),details:(readableGeminiError(item.error)+' '+(pendingByUrl.has(item.url)?'Durum: Haber bekleyenler listesinde; yeniden denenmek üzere bekliyor.':'Durum: Haber güncel bekleyenler listesinde görünmüyor; yeniden deneneceği doğrulanamadı.'))}});
    }}
   }}
  }}
@@ -174,7 +187,9 @@ function renderErrors(data){{
    sourceErrors.push({{title:component.slice('news-source:'.length)||'Bilinmeyen kaynak',when:'İlk görülme: '+safeText(incident.first_seen)+(incident.status==='resolved'?' · Durum: düzeldi':' · Durum: açık'),details:readableError(incident.details)}});
   }}else if(incident.status!=='resolved'){{
    const isNewsItem=component.startsWith('news-item:');
-   systemErrors.push({{title:isNewsItem?'Haber işleme sorunu':(component||'Sistem hatası'),when:'İlk görülme: '+safeText(incident.first_seen),details:readableError(incident.details)}});
+   const incidentDetails=String(incident.details||'');
+   const retryNote=isNewsItem?retryStatusForTitle(incidentDetails,pendingTitles):'';
+   systemErrors.push({{title:isNewsItem?'Haber işleme sorunu':(component||'Sistem hatası'),when:'İlk görülme: '+safeText(incident.first_seen),details:readableGeminiError(incidentDetails)+(retryNote?' '+retryNote:'')}});
   }}
  }}
  for(const job of (data.actions?.jobs||[])){{
