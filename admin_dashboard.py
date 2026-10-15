@@ -121,8 +121,8 @@ header{{display:flex;gap:14px;align-items:center;justify-content:space-between;f
 <div class="card"><small>Kararı netleşmeyen aday</small><strong id="pending">—</strong></div>
 </div><p class="muted">Bu sayılar son taramanın kayıtlarından hesaplanır.</p></section>
 <section id="pendingNewsSection"><h2>Bekleyen haberler</h2><div id="pendingNews" class="muted">Yükleniyor…</div></section>
-<section id="geminiRejectedSection"><h2>Gemini tarafından reddedilenler</h2><div class="muted">Son kayıtlı taramalardaki Gemini red kararları.</div><div id="geminiRejected" class="muted"></div></section>
-<section id="geminiDuplicatesSection"><h2>Gemini tekrar olarak işaretledikleri</h2><div class="muted">Gemini'nin daha önce yayımlanmış veya aynı gelişmeyi anlatan haber olarak belirlediği adaylar.</div><div id="geminiDuplicates" class="muted"></div></section>
+<section id="geminiRejectedSection"><h2>Gemini red (<span id="geminiRejectedCount">0</span>)</h2><div id="geminiRejected" class="muted"></div></section>
+<section id="geminiDuplicatesSection"><h2>Gemini tekrar (<span id="geminiDuplicatesCount">0</span>)</h2><div id="geminiDuplicates" class="muted"></div></section>
 <section id="sourceErrorsSection"><h2>Haber kaynaklarına erişim ve okuma sorunları</h2><div id="sourceErrors" class="muted"></div></section>
 <section id="systemErrorsSection" hidden><h2>Haber işleme sorunları (Gemini ve diğer işlemler)</h2><div id="systemErrors" class="muted"></div></section>
 
@@ -160,8 +160,10 @@ function renderGeminiDecisions(log){{
    target.push({{title:c.generated_title||c.title||'Başlıksız haber',source:c.source||'',url:c.url||'',reason:c.reason||c.reject_reason||c.duplicate_reason||c.error||'',decisionAt:run.run_at}});
   }}
  }}
- renderDecisionList('geminiRejected',rejected,'Gemini tarafından reddedilen haber kaydı yok.');
- renderDecisionList('geminiDuplicates',duplicates,'Gemini tarafından tekrar olarak işaretlenen haber kaydı yok.');
+ el('geminiRejectedCount').textContent=String(rejected.length);
+ el('geminiDuplicatesCount').textContent=String(duplicates.length);
+ renderDecisionList('geminiRejected',rejected,'Kayıt yok.');
+ renderDecisionList('geminiDuplicates',duplicates,'Kayıt yok.');
 }}
 function renderDecisionList(targetId,items,emptyMessage){{
  const root=el(targetId);root.replaceChildren();
