@@ -200,6 +200,16 @@ function renderErrorItems(targetId,items){{
   wrap.appendChild(node('strong',item.title||item.name||item.component||'Hata'));
   if(item.when)wrap.appendChild(node('div',item.when,'muted'));
   if(item.details)wrap.appendChild(node('div',item.details));
+  if(item.urls&&item.urls.length){{
+   const list=node('ul');list.style.paddingLeft='20px';
+   for(const detail of item.urls){{
+    const li=node('li');const a=node('a',detail.title||detail.url||'Detay sayfası');
+    if(detail.url){{a.href=detail.url;a.target='_blank';a.rel='noopener noreferrer'}}
+    li.appendChild(a);list.appendChild(li);
+   }}
+   wrap.appendChild(node('div','Tarihi okunamayan detay sayfaları: '+item.urls.length,'muted'));
+   wrap.appendChild(list);
+  }}
   root.appendChild(wrap);
  }}
 }}
@@ -228,7 +238,8 @@ function renderErrors(data){{
  const pendingTitles=(data.news_pending||[]).map(item=>String(item.title||'')).filter(Boolean);
  for(const run of runs){{
   for(const err of (run.source_errors||[])){{
-   sourceErrors.push({{title:err.source||'Bilinmeyen kaynak',when:'Tarama: '+safeText(run.run_at),details:readableError(err.error||'Kaynak hatası ayrıntısı kaydedilmemiş.')}});
+   const diagnostic=(run.source_diagnostics||{{}})[err.source]||{{}};
+   sourceErrors.push({{title:err.source||'Bilinmeyen kaynak',when:'Tarama: '+safeText(run.run_at),details:readableError(err.error||'Kaynak hatası ayrıntısı kaydedilmemiş.'),urls:diagnostic.missing_date_items||[]}});
   }}
   // Haber bazlı işlem hataları ayrı hata listesinde tekrarlanmaz; bekleyen haberler bölümünde yalnızca haber gösterilir.
  }}
