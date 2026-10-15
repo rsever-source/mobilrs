@@ -214,10 +214,10 @@ def _article_published_at(url):
                 if not context or len(context) > 2500:
                     continue
                 numeric_dates = re.findall(
-                    r"(?<!\\d)\\d{1,2}[./-]\\d{1,2}[./-]\\d{4}(?!\\d)", context
+                    r"(?<!\d)\d{1,2}[./-]\d{1,2}[./-]\d{4}(?!\d)", context
                 )
                 turkish_dates = re.findall(
-                    r"(?<!\\d)\\d{1,2}\\s+(?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\\s+\\d{4}(?!\\d)",
+                    r"(?<!\d)\d{1,2}\s+(?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+\d{4}(?!\d)",
                     context, re.IGNORECASE,
                 )
                 if len(numeric_dates) + len(turkish_dates) != 1:
