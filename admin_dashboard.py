@@ -118,10 +118,10 @@ header{{display:flex;gap:14px;align-items:center;justify-content:space-between;f
 <div class="card"><small>Yayımlanan</small><strong id="published">—</strong></div>
 <div class="card"><small>Tekrar / daha önce işlenmiş</small><strong id="duplicates">—</strong></div>
 <div class="card"><small>Filtreyle elenen</small><strong id="rejected">—</strong></div>
-<div class="card"><small>Bekleyen / belirsiz</small><strong id="pending">—</strong></div>
-</div><p class="muted">Sayılar yalnızca mevcut logda açıkça bulunan durum alanlarından hesaplanır; eksik bilgiler tahmin edilmez.</p></section>
-<section><h2>Kaynak bazlı hatalar</h2><div id="sourceErrors" class="muted">Hata kayıtları yükleniyor…</div></section>
-<section><h2>Sistemdeki işlem hataları</h2><div id="systemErrors" class="muted">Hata kayıtları yükleniyor…</div></section>
+<div class="card"><small>Kararı netleşmeyen aday</small><strong id="pending">—</strong></div>
+</div><p class="muted">Bu sayılar son taramanın kayıtlarından hesaplanır. Yeniden deneme durumu, ilgili haberin güncel bekleyenler listesiyle ayrıca karşılaştırılır.</p></section>
+<section><h2>Haber kaynaklarına erişim ve okuma sorunları</h2><div id="sourceErrors" class="muted">Hata kayıtları yükleniyor…</div></section>
+<section><h2>Haber işleme sorunları (Gemini ve diğer işlemler)</h2><div id="systemErrors" class="muted">Hata kayıtları yükleniyor…</div></section>
 
 </main>
 <script nonce="{nonce}">
@@ -147,23 +147,34 @@ function renderErrorItems(targetId,items,emptyText){{
   root.appendChild(wrap);
  }}
 }}
+function readableError(value){{
+ const raw=String(value||'');
+ if(/ReadTimeout|read timed out|timed out.*read timeout|timeout/i.test(raw))return 'Gemini yanıt vermedi (60 sn zaman aşımı); haber işlenemedi.';
+ return raw||'Hata ayrıntısı kaydedilmemiş.';
+}}
 function renderErrors(data){{
  const runs=(data.log?.news_runs||[]).slice(-8);
  const sourceErrors=[];
  const systemErrors=[];
+ const pendingByUrl=new Set((data.news_pending||[]).map(item=>item.url).filter(Boolean));
  for(const run of runs){{
   for(const err of (run.source_errors||[])){{
-   sourceErrors.push({{title:err.source||'Bilinmeyen kaynak',when:'Tarama: '+safeText(run.run_at),details:err.error||'Kaynak hatası ayrıntısı kaydedilmemiş.'}});
+   sourceErrors.push({{title:err.source||'Bilinmeyen kaynak',when:'Tarama: '+safeText(run.run_at),details:readableError(err.error||'Kaynak hatası ayrıntısı kaydedilmemiş.')}});
   }}
   for(const item of (run.candidates||[])){{
    if(item.status==='not_processed'||item.error){{
-    systemErrors.push({{title:item.title||item.url||'Haber işleme hatası',when:'Tarama: '+safeText(run.run_at),details:item.error||'Haber işlenemedi; ayrıntı kaydedilmemiş.'}});
+    systemErrors.push({{title:item.title||item.url||'Haber işleme hatası',when:'Tarama: '+safeText(run.run_at),details:(readableError(item.error)+' '+(pendingByUrl.has(item.url)?'Durum: Haber bekleyenler listesinde; yeniden denenmek üzere bekliyor.':'Durum: Haber güncel bekleyenler listesinde görünmüyor; yeniden deneneceği doğrulanamadı.'))}});
    }}
   }}
  }}
  for(const incident of (data.log?.system_incidents||[])){{
-  if(incident.status!=='resolved'&&!String(incident.component||'').startsWith('news-source:')){{
-   systemErrors.push({{title:incident.component||'Sistem hatası',when:'İlk görülme: '+safeText(incident.first_seen),details:incident.details||'Ayrıntı kaydedilmemiş.'}});
+  const component=String(incident.component||'');
+  const isSource=component.startsWith('news-source:');
+  if(isSource){{
+   sourceErrors.push({{title:component.slice('news-source:'.length)||'Bilinmeyen kaynak',when:'İlk görülme: '+safeText(incident.first_seen)+(incident.status==='resolved'?' · Durum: düzeldi':' · Durum: açık'),details:readableError(incident.details)}});
+  }}else if(incident.status!=='resolved'){{
+   const isNewsItem=component.startsWith('news-item:');
+   systemErrors.push({{title:isNewsItem?'Haber işleme sorunu':(component||'Sistem hatası'),when:'İlk görülme: '+safeText(incident.first_seen),details:readableError(incident.details)}});
   }}
  }}
  for(const job of (data.actions?.jobs||[])){{
@@ -172,8 +183,8 @@ function renderErrors(data){{
   }}
  }}
  for(const err of (data.errors||[]))systemErrors.push({{title:'Rapor verisi okunamadı',details:err}});
- renderErrorItems('sourceErrors',sourceErrors,'Son 8 kayıtlı taramada kaynak hatası kaydedilmemiş.');
- renderErrorItems('systemErrors',systemErrors,'Kayıtlı açık sistem işlem hatası bulunmuyor.');
+ renderErrorItems('sourceErrors',sourceErrors,'Son 8 taramada veya kalıcı hata kayıtlarında kaynak erişim/okuma sorunu bulunmuyor.');
+ renderErrorItems('systemErrors',systemErrors,'Kayıtlı haber işleme sorunu bulunmuyor.');
 }}
 async function api(url,body){{const r=await fetch(url,{{method:body?'POST':'GET',credentials:'same-origin',headers:body?{{'Content-Type':'application/json'}}:{{}},body:body?JSON.stringify(body):undefined,cache:'no-store'}});const j=await r.json().catch(()=>({{}}));if(!r.ok)throw Error(j.detail||'İstek başarısız');return j}}
 async function refresh(){{el('message').textContent='Durum bilgisi yükleniyor…';el('refresh').disabled=true;try{{const data=await api('/admin/api/status');render(data);el('message').textContent='Durum bilgisi güncellendi.'}}catch(e){{el('message').textContent=e.message}}finally{{el('refresh').disabled=false}}}}
@@ -267,6 +278,10 @@ def admin_status(request: Request):
         expected_items = [
             i for i in expected.get("items", [])[:10]
             if str(i.get("url", "")).startswith(("https://", "http://")) and i.get("id")
+        ]
+        result["news_pending"] = [
+            {"title": str(i.get("title") or "Başlıksız haber"), "url": str(i.get("url") or "")}
+            for i in expected.get("pending", []) if isinstance(i, dict)
         ]
         result["live_api"].update({
             "check_method": "browser_http",
