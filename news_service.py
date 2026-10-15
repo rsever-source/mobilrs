@@ -138,10 +138,13 @@ def _feed_items(source):
         description = _text(node, ["description", "{*}description", "summary", "{*}summary", "{*}encoded", "content", "{*}content"])
         published = _text(node, ["pubDate", "{*}pubDate", "published", "{*}published", "updated", "{*}updated", "date", "{*}date"])
         pub = _date(published)
+        published_at = pub.isoformat() if pub else None
+        if title and link and not published_at and source.get("name", "").startswith("Anadolu Ajansı"):
+            published_at = _article_published_at(link)
         if title and link:
             items.append({
                 "source": source["name"], "title": title, "url": link,
-                "description": description, "published_at": pub.isoformat() if pub else None
+                "description": description, "published_at": published_at
             })
     if nodes and not items:
         rss_structure_errors.append(
