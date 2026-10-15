@@ -62,11 +62,11 @@ steps:
         print("Test edilen revision:", test_revision or new, file=__import__("sys").stderr)
         PY
         )"
-        echo "Test URL: $TEST_URL"
+        echo "Test URL: $$TEST_URL"
         # Cloud Run revision'ın açılması için en fazla 2 dakika bekle.
         ok=0
         for i in $(seq 1 24); do
-          if curl --fail --silent --show-error --max-time 10 "$TEST_URL/" -o /tmp/home.html 2>/dev/null; then
+          if curl --fail --silent --show-error --max-time 10 "$$TEST_URL/" -o /tmp/home.html 2>/dev/null; then
             ok=1
             break
           fi
@@ -76,7 +76,7 @@ steps:
           echo "HATA: test revision ana sayfaya yanıt vermedi; canlı trafik değiştirilmedi."
           exit 1
         fi
-        curl --fail --silent --show-error --max-time 30 "$TEST_URL/api/news" -o /tmp/news.json
+        curl --fail --silent --show-error --max-time 30 "$$TEST_URL/api/news" -o /tmp/news.json
         python3 - <<'PY'
         import json
         d = json.load(open("/tmp/news.json"))
