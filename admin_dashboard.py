@@ -156,27 +156,13 @@ function renderGeminiDecisions(log){{
    if(!isDuplicate&&!isRejected)continue;
    const key=String(c.url||c.title||'')+'|'+(isDuplicate?'duplicate':'reject');
    const target=isDuplicate?duplicates:rejected;const seen=isDuplicate?seenDuplicates:seenRejected;
-   if(seen.has(key))continue;seen.add(key);
-   target.push({{title:c.generated_title||c.title||'Başlıksız haber',source:c.source||'',url:c.url||'',reason:c.reason||c.reject_reason||c.duplicate_reason||c.error||'',decisionAt:run.run_at}});
+   if(seen.has(key))continue;seen.add(key);target.push(key);
   }}
  }}
  el('geminiRejectedCount').textContent=String(rejected.length);
  el('geminiDuplicatesCount').textContent=String(duplicates.length);
- renderDecisionList('geminiRejected',rejected,'Kayıt yok.');
- renderDecisionList('geminiDuplicates',duplicates,'Kayıt yok.');
-}}
-function renderDecisionList(targetId,items,emptyMessage){{
- const root=el(targetId);root.replaceChildren();
- if(!items.length){{root.appendChild(node('div',emptyMessage,'muted'));return}}
- for(const item of items.slice().reverse()){{
-  const wrap=node('div',undefined,'report-item');
-  wrap.appendChild(node('strong',item.title));
-  if(item.source)wrap.appendChild(node('div',item.source,'muted'));
-  if(item.decisionAt)wrap.appendChild(node('div','Tarama: '+safeText(item.decisionAt),'muted'));
-  if(item.reason)wrap.appendChild(node('div','Karar gerekçesi: '+item.reason));
-  if(item.url){{const a=node('a','Haberi aç');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';wrap.appendChild(node('div',undefined,'muted')).appendChild(a)}}
-  root.appendChild(wrap);
- }}
+ el('geminiRejected').replaceChildren();
+ el('geminiDuplicates').replaceChildren();
 }}
 function pendingAttemptInfo(item,log){{
  const attempts=[];
