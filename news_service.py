@@ -120,11 +120,8 @@ def _feed_items(source):
         {"source": source["name"], "stage": "rss", "root_tag": root.tag,
          "item_or_entry_nodes": len(nodes), "errors": rss_structure_errors}
     )
-    if not nodes:
-        rss_structure_errors.append(
-            "RSS/Atom yanıtında item/entry kaydı bulunamadı; kaynak boş dönmüş veya akış yapısı değişmiş olabilir."
-        )
-        _SOURCE_DIAGNOSTICS[source["name"]]["errors"] = rss_structure_errors
+    # Geçerli RSS/Atom akışında sıfır öğe tek başına hata değildir:
+    # kaynak gerçekten boş olabilir. Sayı source_diagnostics içinde yine görünür.
     if rss_structure_errors:
         raise ValueError("; ".join(rss_structure_errors))
     for node in nodes:
