@@ -119,7 +119,8 @@ header{{display:flex;gap:14px;align-items:center;justify-content:space-between;f
 <div class="card"><small>Tekrar / daha önce işlenmiş</small><strong id="duplicates">—</strong></div>
 <div class="card"><small>Filtreyle elenen</small><strong id="rejected">—</strong></div>
 <div class="card"><small>Kararı netleşmeyen aday</small><strong id="pending">—</strong></div>
-</div><p class="muted">Bu sayılar son taramanın kayıtlarından hesaplanır. Yeniden deneme durumu, ilgili haberin güncel bekleyenler listesiyle ayrıca karşılaştırılır.</p></section>
+</div><p class="muted">Bu sayılar son taramanın kayıtlarından hesaplanır.</p></section>
+<section id="pendingNewsSection"><h2>Bekleyen haberler</h2><div id="pendingNews" class="muted">Yükleniyor…</div></section>
 <section id="sourceErrorsSection" hidden><h2>Haber kaynaklarına erişim ve okuma sorunları</h2><div id="sourceErrors" class="muted"></div></section>
 <section id="systemErrorsSection" hidden><h2>Haber işleme sorunları (Gemini ve diğer işlemler)</h2><div id="systemErrors" class="muted"></div></section>
 
@@ -134,7 +135,18 @@ function render(data){{state=data;const log=data.log||{{}};const runs=log.news_r
  el('lastChecked').textContent='Kontrol zamanı: '+safeText(data.checked_at);
  el('candidateCount').textContent=safeText(last.candidates?.length??last.filter_diagnostics?.counts?.accepted_as_candidate);
  el('published').textContent=cs.published;el('duplicates').textContent=cs.duplicates;el('rejected').textContent=cs.rejected;el('pending').textContent=cs.pending;
+ renderPendingNews(data.news_pending||[]);
  renderErrors(data);
+}}
+function renderPendingNews(items){{
+ const root=el('pendingNews');root.replaceChildren();
+ if(!items.length){{root.appendChild(node('div','Bekleyen haber yok.','muted'));return}}
+ for(const item of items){{
+  const wrap=node('div',undefined,'report-item');
+  wrap.appendChild(node('strong',item.title||'Başlıksız haber'));
+  if(item.url){{const a=node('a',item.url);a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';wrap.appendChild(node('div',undefined,'muted')).appendChild(a)}}
+  root.appendChild(wrap);
+ }}
 }}
 function renderErrorItems(targetId,items){{
  const root=el(targetId);root.replaceChildren();
@@ -176,11 +188,7 @@ function renderErrors(data){{
   for(const err of (run.source_errors||[])){{
    sourceErrors.push({{title:err.source||'Bilinmeyen kaynak',when:'Tarama: '+safeText(run.run_at),details:readableError(err.error||'Kaynak hatası ayrıntısı kaydedilmemiş.')}});
   }}
-  for(const item of (run.candidates||[])){{
-   if((item.status==='not_processed'||item.error) && item.url && pendingByUrl.has(item.url)){{
-    systemErrors.push({{title:item.title||item.url||'Haber işleme hatası',when:'Tarama: '+safeText(run.run_at),details:readableGeminiError(item.error)+' Durum: Haber güncel bekleyenler listesinde.'}});
-   }}
-  }}
+  // Haber bazlı işlem hataları ayrı hata listesinde tekrarlanmaz; bekleyen haberler bölümünde yalnızca haber gösterilir.
  }}
  for(const incident of (data.log?.system_incidents||[])){{
   const component=String(incident.component||'');
@@ -190,15 +198,8 @@ function renderErrors(data){{
   }}else if(incident.status!=='resolved'){{
    const isNewsItem=component.startsWith('news-item:');
    const incidentDetails=String(incident.details||'');
-   if(isNewsItem){{
-    const incidentRef=component.slice('news-item:'.length);
-    const matchingPending=(data.news_pending||[]).some(item=>
-     (item.url && (incidentRef.includes(item.url)||incidentDetails.includes(item.url))) ||
-     (item.title && (incidentDetails.includes(item.title)||incidentRef.includes(item.title)))
-    );
-    if(!matchingPending)continue;
-   }}
-   systemErrors.push({{title:isNewsItem?'Bekleyen haber işleme sorunu':(component||'Sistem hatası'),when:'İlk görülme: '+safeText(incident.first_seen),details:readableGeminiError(incidentDetails)+(isNewsItem?' Durum: Haber güncel bekleyenler listesinde.':'')}});
+   if(isNewsItem)continue;
+   systemErrors.push({{title:component||'Sistem hatası',when:'İlk görülme: '+safeText(incident.first_seen),details:readableGeminiError(incidentDetails)}});
   }}
  }}
  for(const job of (data.actions?.jobs||[])){{
