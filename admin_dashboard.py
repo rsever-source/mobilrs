@@ -120,8 +120,8 @@ header{{display:flex;gap:14px;align-items:center;justify-content:space-between;f
 <div class="card"><small>Filtreyle elenen</small><strong id="rejected">—</strong></div>
 <div class="card"><small>Kararı netleşmeyen aday</small><strong id="pending">—</strong></div>
 </div><p class="muted">Bu sayılar son taramanın kayıtlarından hesaplanır. Yeniden deneme durumu, ilgili haberin güncel bekleyenler listesiyle ayrıca karşılaştırılır.</p></section>
-<section><h2>Haber kaynaklarına erişim ve okuma sorunları</h2><div id="sourceErrors" class="muted">Hata kayıtları yükleniyor…</div></section>
-<section><h2>Haber işleme sorunları (Gemini ve diğer işlemler)</h2><div id="systemErrors" class="muted">Hata kayıtları yükleniyor…</div></section>
+<section id="sourceErrorsSection" hidden><h2>Haber kaynaklarına erişim ve okuma sorunları</h2><div id="sourceErrors" class="muted"></div></section>
+<section id="systemErrorsSection" hidden><h2>Haber işleme sorunları (Gemini ve diğer işlemler)</h2><div id="systemErrors" class="muted"></div></section>
 
 </main>
 <script nonce="{nonce}">
@@ -136,9 +136,11 @@ function render(data){{state=data;const log=data.log||{{}};const runs=log.news_r
  el('published').textContent=cs.published;el('duplicates').textContent=cs.duplicates;el('rejected').textContent=cs.rejected;el('pending').textContent=cs.pending;
  renderErrors(data);
 }}
-function renderErrorItems(targetId,items,emptyText){{
+function renderErrorItems(targetId,items){{
  const root=el(targetId);root.replaceChildren();
- if(!items.length){{root.appendChild(node('p',emptyText,'muted'));return}}
+ const section=el(targetId+'Section');
+ if(section)section.hidden=!items.length;
+ if(!items.length)return;
  for(const item of items.slice(-12).reverse()){{
   const wrap=node('div',undefined,'report-item');
   wrap.appendChild(node('strong',item.title||item.name||item.component||'Hata'));
@@ -198,8 +200,8 @@ function renderErrors(data){{
   }}
  }}
  for(const err of (data.errors||[]))systemErrors.push({{title:'Rapor verisi okunamadı',details:err}});
- renderErrorItems('sourceErrors',sourceErrors,'Son 8 taramada veya kalıcı hata kayıtlarında kaynak erişim/okuma sorunu bulunmuyor.');
- renderErrorItems('systemErrors',systemErrors,'Kayıtlı haber işleme sorunu bulunmuyor.');
+ renderErrorItems('sourceErrors',sourceErrors);
+ renderErrorItems('systemErrors',systemErrors);
 }}
 async function api(url,body){{const r=await fetch(url,{{method:body?'POST':'GET',credentials:'same-origin',headers:body?{{'Content-Type':'application/json'}}:{{}},body:body?JSON.stringify(body):undefined,cache:'no-store'}});const j=await r.json().catch(()=>({{}}));if(!r.ok)throw Error(j.detail||'İstek başarısız');return j}}
 async function refresh(){{el('message').textContent='Durum bilgisi yükleniyor…';el('refresh').disabled=true;try{{const data=await api('/admin/api/status');render(data);el('message').textContent='Durum bilgisi güncellendi.'}}catch(e){{el('message').textContent=e.message}}finally{{el('refresh').disabled=false}}}}
