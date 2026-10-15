@@ -121,6 +121,8 @@ header{{display:flex;gap:14px;align-items:center;justify-content:space-between;f
 <div class="card"><small>Kararı netleşmeyen aday</small><strong id="pending">—</strong></div>
 </div><p class="muted">Bu sayılar son taramanın kayıtlarından hesaplanır.</p></section>
 <section id="pendingNewsSection"><h2>Bekleyen haberler</h2><div id="pendingNews" class="muted">Yükleniyor…</div></section>
+<section id="geminiRejectedSection"><h2>Gemini tarafından reddedilenler</h2><div class="muted">Son kayıtlı taramalardaki Gemini red kararları.</div><div id="geminiRejected" class="muted"></div></section>
+<section id="geminiDuplicatesSection"><h2>Gemini tekrar olarak işaretledikleri</h2><div class="muted">Gemini'nin daha önce yayımlanmış veya aynı gelişmeyi anlatan haber olarak belirlediği adaylar.</div><div id="geminiDuplicates" class="muted"></div></section>
 <section id="sourceErrorsSection"><h2>Haber kaynaklarına erişim ve okuma sorunları</h2><div id="sourceErrors" class="muted"></div></section>
 <section id="systemErrorsSection" hidden><h2>Haber işleme sorunları (Gemini ve diğer işlemler)</h2><div id="systemErrors" class="muted"></div></section>
 
@@ -140,7 +142,39 @@ function render(data){{state=data;const log=data.log||{{}};const runs=log.news_r
  el('candidateCount').textContent=safeText(last.candidates?.length??last.filter_diagnostics?.counts?.accepted_as_candidate);
  el('published').textContent=cs.published;el('duplicates').textContent=cs.duplicates;el('rejected').textContent=cs.rejected;el('pending').textContent=cs.pending;
  renderPendingNews(data.news_pending||[],log);
+ renderGeminiDecisions(log);
  renderErrors(data);
+}}
+function renderGeminiDecisions(log){{
+ const rejected=[];const duplicates=[];const seenRejected=new Set();const seenDuplicates=new Set();
+ for(const run of (log.news_runs||[]).slice(-31)){{
+  for(const c of (run.candidates||[])){{
+   const decision=String(c.decision||'').toLowerCase();
+   const status=String(c.status||'').toLowerCase();
+   const isDuplicate=c.duplicate===true||decision==='duplicate'||status.includes('duplicate');
+   const isRejected=!isDuplicate&&(decision==='reject'||status==='rejected');
+   if(!isDuplicate&&!isRejected)continue;
+   const key=String(c.url||c.title||'')+'|'+(isDuplicate?'duplicate':'reject');
+   const target=isDuplicate?duplicates:rejected;const seen=isDuplicate?seenDuplicates:seenRejected;
+   if(seen.has(key))continue;seen.add(key);
+   target.push({{title:c.generated_title||c.title||'Başlıksız haber',source:c.source||'',url:c.url||'',reason:c.reason||c.reject_reason||c.duplicate_reason||c.error||'',decisionAt:run.run_at}});
+  }}
+ }}
+ renderDecisionList('geminiRejected',rejected,'Gemini tarafından reddedilen haber kaydı yok.');
+ renderDecisionList('geminiDuplicates',duplicates,'Gemini tarafından tekrar olarak işaretlenen haber kaydı yok.');
+}}
+function renderDecisionList(targetId,items,emptyMessage){{
+ const root=el(targetId);root.replaceChildren();
+ if(!items.length){{root.appendChild(node('div',emptyMessage,'muted'));return}}
+ for(const item of items.slice().reverse()){{
+  const wrap=node('div',undefined,'report-item');
+  wrap.appendChild(node('strong',item.title));
+  if(item.source)wrap.appendChild(node('div',item.source,'muted'));
+  if(item.decisionAt)wrap.appendChild(node('div','Tarama: '+safeText(item.decisionAt),'muted'));
+  if(item.reason)wrap.appendChild(node('div','Karar gerekçesi: '+item.reason));
+  if(item.url){{const a=node('a','Haberi aç');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';wrap.appendChild(node('div',undefined,'muted')).appendChild(a)}}
+  root.appendChild(wrap);
+ }}
 }}
 function pendingAttemptInfo(item,log){{
  const attempts=[];
