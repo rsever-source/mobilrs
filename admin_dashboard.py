@@ -198,7 +198,7 @@ function retryStatusForTitle(title,pendingTitles){{
  return 'Durum: Haber güncel bekleyenler listesinde görünmüyor; yeniden deneneceği doğrulanamadı.';
 }}
 function renderErrors(data){{
- const runs=(data.log?.news_runs||[]).slice(-8);
+ const runs=(data.log?.news_runs||[]).slice(-1);
  const sourceErrors=[];
  const systemErrors=[];
  const pendingByUrl=new Set((data.news_pending||[]).map(item=>item.url).filter(Boolean));
@@ -212,9 +212,9 @@ function renderErrors(data){{
  for(const incident of (data.log?.system_incidents||[])){{
   const component=String(incident.component||'');
   const isSource=component.startsWith('news-source:');
-  if(isSource){{
-   sourceErrors.push({{title:component.slice('news-source:'.length)||'Bilinmeyen kaynak',when:'İlk görülme: '+safeText(incident.first_seen)+(incident.status==='resolved'?' · Durum: düzeldi':' · Durum: açık'),details:readableError(incident.details)}});
-  }}else if(incident.status!=='resolved'){{
+  if(isSource&&incident.status!=='resolved'){{
+   sourceErrors.push({{title:component.slice('news-source:'.length)||'Bilinmeyen kaynak',when:'İlk görülme: '+safeText(incident.first_seen)+' · Durum: açık',details:readableError(incident.details)}});
+  }}else if(!isSource&&incident.status!=='resolved'){{
    const isNewsItem=component.startsWith('news-item:');
    const incidentDetails=String(incident.details||'');
    if(isNewsItem)continue;
