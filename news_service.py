@@ -139,8 +139,12 @@ def _feed_items(source):
         published = _text(node, ["pubDate", "{*}pubDate", "published", "{*}published", "updated", "{*}updated", "date", "{*}date"])
         pub = _date(published)
         published_at = pub.isoformat() if pub else None
-        if title and link and not published_at and source.get("name", "").startswith("Anadolu Ajansı"):
-            published_at = _article_published_at(link)
+        # AA RSS öğelerinin her birinin detay sayfasını ayrıca aç; mümkünse
+        # yayın tarihini doğrudan haber sayfasından al, okunamazsa RSS tarihini koru.
+        if title and link and source.get("name", "").startswith("Anadolu Ajansı"):
+            detail_published_at = _article_published_at(link)
+            if detail_published_at:
+                published_at = detail_published_at
         if title and link:
             items.append({
                 "source": source["name"], "title": title, "url": link,
