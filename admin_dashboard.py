@@ -164,8 +164,6 @@ function renderGeminiDecisions(log){{
  }}
  el('geminiRejectedCount').textContent=String(rejected.length);
  el('geminiDuplicatesCount').textContent=String(duplicates.length);
- el('geminiRejected').replaceChildren();
- el('geminiDuplicates').replaceChildren();
 }}
 function pendingAttemptInfo(item,log){{
  const attempts=[];
