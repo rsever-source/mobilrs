@@ -177,8 +177,8 @@ function renderErrors(data){{
    sourceErrors.push({{title:err.source||'Bilinmeyen kaynak',when:'Tarama: '+safeText(run.run_at),details:readableError(err.error||'Kaynak hatası ayrıntısı kaydedilmemiş.')}});
   }}
   for(const item of (run.candidates||[])){{
-   if(item.status==='not_processed'||item.error){{
-    systemErrors.push({{title:item.title||item.url||'Haber işleme hatası',when:'Tarama: '+safeText(run.run_at),details:(readableGeminiError(item.error)+' '+(pendingByUrl.has(item.url)?'Durum: Haber bekleyenler listesinde; yeniden denenmek üzere bekliyor.':'Durum: Haber güncel bekleyenler listesinde görünmüyor; yeniden deneneceği doğrulanamadı.'))}});
+   if((item.status==='not_processed'||item.error) && item.url && pendingByUrl.has(item.url)){{
+    systemErrors.push({{title:item.title||item.url||'Haber işleme hatası',when:'Tarama: '+safeText(run.run_at),details:readableGeminiError(item.error)+' Durum: Haber güncel bekleyenler listesinde.'}});
    }}
   }}
  }}
@@ -190,8 +190,15 @@ function renderErrors(data){{
   }}else if(incident.status!=='resolved'){{
    const isNewsItem=component.startsWith('news-item:');
    const incidentDetails=String(incident.details||'');
-   const retryNote=isNewsItem?retryStatusForTitle(incidentDetails,pendingTitles):'';
-   systemErrors.push({{title:isNewsItem?'Haber işleme sorunu':(component||'Sistem hatası'),when:'İlk görülme: '+safeText(incident.first_seen),details:readableGeminiError(incidentDetails)+(retryNote?' '+retryNote:'')}});
+   if(isNewsItem){{
+    const incidentRef=component.slice('news-item:'.length);
+    const matchingPending=(data.news_pending||[]).some(item=>
+     (item.url && (incidentRef.includes(item.url)||incidentDetails.includes(item.url))) ||
+     (item.title && (incidentDetails.includes(item.title)||incidentRef.includes(item.title)))
+    );
+    if(!matchingPending)continue;
+   }}
+   systemErrors.push({{title:isNewsItem?'Bekleyen haber işleme sorunu':(component||'Sistem hatası'),when:'İlk görülme: '+safeText(incident.first_seen),details:readableGeminiError(incidentDetails)+(isNewsItem?' Durum: Haber güncel bekleyenler listesinde.':'')}});
   }}
  }}
  for(const job of (data.actions?.jobs||[])){{
