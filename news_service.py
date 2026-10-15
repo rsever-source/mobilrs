@@ -28,8 +28,9 @@ UA = "Mozilla/5.0 (compatible; EngelliMe-News/1.0; +https://engelli.me)"
 TIMEOUT = 20
 AI_TIMEOUT = 60
 
-# Per-run diagnostics for API-backed sources; included in the existing central news report.
+# Per-run diagnostics included in the central news report.
 _GIB_SOURCE_DIAGNOSTICS = {}
+_SOURCE_DIAGNOSTICS = {}
 
 def _make_session():
     session = requests.Session()
@@ -104,11 +105,29 @@ def _feed_items(source):
     items = []
     # RSS öğeleri bazı yayınlarda namespace ile gelir; hem RSS hem Atom biçimini destekle.
     nodes = root.findall(".//{*}item") or root.findall(".//{*}entry")
+    root_name = str(root.tag).split("}")[-1].lower()
+    rss_structure_errors = []
+    if root_name not in {"rss", "feed", "rdf"}:
+        rss_structure_errors.append(
+            f"Beklenmeyen RSS/Atom kök etiketi: {root.tag!r}"
+        )
+    elif root_name == "rss" and root.find("channel") is None:
+        rss_structure_errors.append("RSS yanıtında beklenen channel düğümü bulunamadı.")
+    elif root_name == "feed" and not root.findall(".//{*}title"):
+        rss_structure_errors.append("Atom yanıtında beklenen title alanı bulunamadı.")
+    _SOURCE_DIAGNOSTICS[source["name"]] = {
+        "stage": "rss", "root_tag": root.tag,
+        "item_or_entry_nodes": len(nodes), "errors": rss_structure_errors,
+    }
     print(
         "Haber kaynağı ayrıştırma:",
         {"source": source["name"], "stage": "rss", "root_tag": root.tag,
-         "item_or_entry_nodes": len(nodes)}
+         "item_or_entry_nodes": len(nodes), "errors": rss_structure_errors}
     )
+    # Geçerli RSS/Atom akışında sıfır öğe tek başına hata değildir:
+    # kaynak gerçekten boş olabilir. Sayı source_diagnostics içinde yine görünür.
+    if rss_structure_errors:
+        raise ValueError("; ".join(rss_structure_errors))
     for node in nodes:
         title = _text(node, ["title", "{*}title"])
         link = _text(node, ["link", "{*}link"])
@@ -124,6 +143,15 @@ def _feed_items(source):
                 "source": source["name"], "title": title, "url": link,
                 "description": description, "published_at": pub.isoformat() if pub else None
             })
+    if nodes and not items:
+        rss_structure_errors.append(
+            "RSS/Atom içinde item/entry kayıtları var ancak başlık ve bağlantı alanları ayrıştırılamadı."
+        )
+    _SOURCE_DIAGNOSTICS[source["name"]] = {
+        "stage": "rss", "root_tag": root.tag,
+        "item_or_entry_nodes": len(nodes), "parsed_items": len(items),
+        "errors": rss_structure_errors,
+    }
     print(
         "Haber kaynağı sonuç:",
         {"source": source["name"], "stage": "rss", "parsed_items": len(items)}
@@ -320,13 +348,34 @@ def _html_items(source):
             "source": source["name"], "title": title[:300], "url": href,
             "description": title, "published_at": published_at
         })
+    diagnostic = {
+        "stage": "html_list", "anchors": links_seen,
+        "path_matches": path_matches, "dated_from_title": dated_from_title,
+        "dated_from_context": dated_from_context, "detail_attempts": detail_attempts,
+        "detail_successes": detail_successes, "parsed_items": len(items),
+        "errors": [],
+    }
+    if links_seen == 0:
+        diagnostic["errors"].append("Sayfada bağlantı bulunamadı; beklenen HTML yapısı değişmiş olabilir.")
+    elif include and path_matches == 0:
+        diagnostic["errors"].append(
+            f"Beklenen haber bağlantısı yolu bulunamadı: include_path={include!r}"
+        )
+    if detail_attempts > detail_successes:
+        diagnostic["errors"].append(
+            f"{detail_attempts - detail_successes} detay sayfasından yayın tarihi okunamadı."
+        )
+    _SOURCE_DIAGNOSTICS[source["name"]] = diagnostic
     print(
         "Haber kaynağı sonuç:",
         {"source": source["name"], "stage": "html_list", "anchors": links_seen,
          "path_matches": path_matches, "dated_from_title": dated_from_title,
          "dated_from_context": dated_from_context, "detail_attempts": detail_attempts,
-         "detail_successes": detail_successes, "parsed_items": len(items)}
+         "detail_successes": detail_successes, "parsed_items": len(items),
+         "errors": diagnostic["errors"]}
     )
+    if diagnostic["errors"] and (links_seen == 0 or (include and path_matches == 0)):
+        raise RuntimeError("; ".join(diagnostic["errors"]))
     return items
 
 
@@ -337,6 +386,10 @@ def _tbb_mevzuat_items(source):
     keywords = [str(k).lower() for k in source.get("keywords", [])]
     items = []
     seen = set()
+    article_links = 0
+    detail_attempts = 0
+    detail_errors = []
+    missing_dates = []
 
     for a in soup.find_all("a", href=True):
         href = urljoin(source["url"], a.get("href", ""))
@@ -347,12 +400,14 @@ def _tbb_mevzuat_items(source):
             continue
         if href.rstrip("/") == source["url"].rstrip("/"):
             continue
+        article_links += 1
         if not any(k in title.lower() for k in keywords):
             continue
 
         seen.add(href)
         description = title
         published_at = None
+        detail_attempts += 1
         try:
             detail = _SESSION.get(href, headers={"User-Agent": UA}, timeout=TIMEOUT)
             detail.raise_for_status()
@@ -380,9 +435,13 @@ def _tbb_mevzuat_items(source):
                         int(year), months[month_name.lower()], int(day), tzinfo=timezone.utc
                     ).isoformat()
         except Exception as exc:
+            error = f"Detay sayfası okunamadı ({href}): {type(exc).__name__}: {str(exc)[:250]}"
+            detail_errors.append(error)
             print("TBB mevzuat duyurusu okunamadı:", href, repr(exc))
 
         if not published_at:
+            if not any(error.startswith(f"Detay sayfası okunamadı ({href})") for error in detail_errors):
+                missing_dates.append(f"Yayın tarihi çözümlenemedi: {href}")
             continue
 
         items.append({
@@ -393,7 +452,25 @@ def _tbb_mevzuat_items(source):
             "published_at": published_at,
         })
 
+    errors = []
+    if len(soup.find_all("a", href=True)) == 0:
+        errors.append("Sayfada bağlantı bulunamadı; beklenen HTML yapısı değişmiş olabilir.")
+    elif article_links == 0:
+        errors.append("TBB mevzuat duyurusu bağlantıları bulunamadı; sayfa yapısı değişmiş olabilir.")
+    errors.extend(detail_errors)
+    errors.extend(missing_dates)
+    _SOURCE_DIAGNOSTICS[source["name"]] = {
+        "stage": "tbb_mevzuat", "anchors": len(soup.find_all("a", href=True)),
+        "article_links": article_links, "keyword_matches": len(seen),
+        "detail_attempts": detail_attempts, "detail_errors": len(detail_errors),
+        "missing_dates": len(missing_dates), "parsed_items": len(items),
+        "errors": errors[:30],
+    }
+    if errors and (not article_links or detail_errors or missing_dates):
+        # Partial results remain usable; update_news records the diagnostic as a source error.
+        print("TBB kaynak tanılama hataları:", source["name"], errors[:10])
     return items
+
 
 def _gib_datetime(value):
     """GİB zaman damgalarını UTC ISO biçimine çevir.
@@ -755,6 +832,7 @@ def _update_source_alert(logs):
 
 def update_news():
     _GIB_SOURCE_DIAGNOSTICS.clear()
+    _SOURCE_DIAGNOSTICS.clear()
     now = datetime.now(timezone.utc)
     sources = _load_json(SOURCES_FILE, [])
     old = _load_json(NEWS_FILE, {"updated_at": None, "items": [], "pending": []})
@@ -856,6 +934,30 @@ def update_news():
                 "kind": "source_fetch_error",
             })
 
+    # HTML/TBB sayfaları HTTP 200 dönse bile beklenen yapı veya tarih alanları
+    # kaybolmuş olabilir. Tanılama bulgularını açık kaynak hatalarına dönüştür.
+    for source_name, diagnostic in _SOURCE_DIAGNOSTICS.items():
+        errors = diagnostic.get("errors") or []
+        if not errors:
+            continue
+        matching_error = next(
+            (entry for entry in source_errors if entry.get("source") == source_name),
+            None,
+        )
+        diagnostic_text = "; ".join(str(error) for error in errors[:8])
+        if matching_error:
+            matching_error["kind"] = "source_parse_error"
+            if diagnostic_text not in matching_error.get("error", ""):
+                matching_error["error"] = (
+                    str(matching_error.get("error") or "") + "; " + diagnostic_text
+                ).strip("; ")
+        else:
+            source_errors.append({
+                "source": source_name,
+                "error": diagnostic_text,
+                "kind": "source_parse_error",
+            })
+
     # GİB API hataları fonksiyon içinde kısmi sonuçları korumak için yakalanır;
     # bunları mevcut kaynak hata raporuna da ekle ki sessizce sıfır kayıt görünmesin.
     for source_name, diagnostic in _GIB_SOURCE_DIAGNOSTICS.items():
@@ -877,7 +979,10 @@ def update_news():
         "run_at": now.isoformat(),
         "model": GEMINI_MODEL,
         "source_errors": source_errors,
-        "source_diagnostics": dict(_GIB_SOURCE_DIAGNOSTICS),
+        "source_diagnostics": {
+            **_SOURCE_DIAGNOSTICS,
+            **_GIB_SOURCE_DIAGNOSTICS,
+        },
         "filter_diagnostics": {
             "parsed_total": parsed_total,
             "counts": filter_counts,
