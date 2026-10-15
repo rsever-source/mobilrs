@@ -132,7 +132,11 @@ function safeText(v){{return v===null||v===undefined?'—':String(v)}}
 function node(tag,text,cls){{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n}}
 function counts(log){{const last=(log.news_runs||[]).slice(-1)[0]||{{}};const out={{published:0,duplicates:0,rejected:0,pending:0}};for(const c of (last.candidates||[])){{const s=String(c.status||'').toLowerCase(),d=String(c.decision||'').toLowerCase();if(s==='published'||c.publish===true||d==='publish')out.published++;else if(c.duplicate===true||d==='duplicate'||s.includes('duplicate'))out.duplicates++;else if(d==='reject'||c.publish===false||s==='rejected')out.rejected++;else out.pending++}}const f=last.filter_diagnostics?.counts||{{}};out.duplicates=Math.max(out.duplicates,Number(f.duplicate_in_this_run||0)+Number(f.url_seen_within_7_days||0)+Number(f.already_published||0));out.rejected=Math.max(out.rejected,Number(f.older_than_7_days||0)+Number(f.missing_date||0)+Number(f.future_date||0));out.pending=Math.max(out.pending,Number(f.pending_unknown_or_expired_date||0));return out}}
 function render(data){{state=data;const log=data.log||{{}};const runs=log.news_runs||[];const last=runs[runs.length-1]||{{}};const cs=counts(log);
- el('lastChecked').textContent='Kontrol zamanı: '+safeText(data.checked_at);
+ const checkedAt=data.checked_at?new Date(data.checked_at):null;
+ const localCheckedAt=checkedAt&&!Number.isNaN(checkedAt.getTime())
+  ?new Intl.DateTimeFormat('tr-TR',{timeZone:'Europe/Istanbul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).format(checkedAt)+' (Türkiye saati)'
+  :safeText(data.checked_at);
+ el('lastChecked').textContent='Kontrol zamanı: '+localCheckedAt;
  el('candidateCount').textContent=safeText(last.candidates?.length??last.filter_diagnostics?.counts?.accepted_as_candidate);
  el('published').textContent=cs.published;el('duplicates').textContent=cs.duplicates;el('rejected').textContent=cs.rejected;el('pending').textContent=cs.pending;
  renderPendingNews(data.news_pending||[],log);
