@@ -198,6 +198,33 @@ def _article_published_at(url):
             parsed = _date(value) or _date_from_text(value)
             if parsed:
                 return parsed.isoformat()
+
+        # AA'nın bazı haberlerinde tarih meta/JSON-LD/time alanında değil,
+        # başlık-yazar-tarih bloğunda normal görünür metin olarak yer alıyor.
+        # Sayfanın tamamını taramak yan haber tarihini seçebileceğinden yalnızca
+        # başlığın yakınındaki küçük kapsayıcıları kontrol et ve tek tarih varsa kabul et.
+        heading = soup.find("h1")
+        if heading:
+            parent = heading
+            for _ in range(5):
+                parent = parent.parent
+                if parent is None:
+                    break
+                context = _clean(parent.get_text(" ", strip=True))
+                if not context or len(context) > 2500:
+                    continue
+                numeric_dates = re.findall(
+                    r"(?<!\d)\d{1,2}[./-]\d{1,2}[./-]\d{4}(?!\d)", context
+                )
+                turkish_dates = re.findall(
+                    r"(?<!\d)\d{1,2}\s+(?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+\d{4}(?!\d)",
+                    context, re.IGNORECASE,
+                )
+                if len(numeric_dates) + len(turkish_dates) != 1:
+                    continue
+                parsed = _date_from_text(context)
+                if parsed:
+                    return parsed.isoformat()
     except Exception as exc:
         print("Haber tarihi okunamadı:", url, repr(exc))
     return None
