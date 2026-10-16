@@ -3294,6 +3294,192 @@
           "decision": "publish"
         }
       ]
+    },
+    {
+      "run_at": "2026-10-16T13:17:04.438125+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 15,
+          "parsed_items": 15,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 479,
+          "path_matches": 293,
+          "dated_from_title": 293,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 293,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "anchors": 87,
+          "article_links": 12,
+          "keyword_matches": 1,
+          "detail_attempts": 1,
+          "detail_errors": 0,
+          "missing_dates": 0,
+          "parsed_items": 1,
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 12,
+          "keyword_eliminated": 18,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılacak Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavına Katılacak Adaylar ",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Mirasçıların Vergisel Yükümlülükleri Rehberi ile Veraset ve İntikal Vergisi Broşürü Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 513,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 19,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 21,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 472,
+          "accepted_as_candidate": 1
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "131 ilaç daha geri ödeme listesine eklendi",
+          "source": "TRT Haber",
+          "url": "https://www.trthaber.com/haber/guncel/131-ilac-daha-geri-odeme-listesine-eklendi-960310.html",
+          "published_at": "2026-10-16T11:43:00+00:00",
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "generated_title": "SGK Geri Ödeme Listesine 131 İlaç Daha Eklendi",
+          "summary": "Çalışma ve Sosyal Güvenlik Bakanlığı yeni bir ilaç düzenlemesi duyurdu. Sosyal Güvenlik Kurumu aracılığıyla toplam 131 ilaç geri ödeme listesine alındı. Eklenen ilaçların 119'unun yerli üretim olduğu açıklandı. Listede kanser ve diyabet gibi çeşitli hastalıkların tedavisinde kullanılan ilaçlar yer alıyor. Bakan Vedat Işıkhan vatandaşların tedavi imkanlarına erişimini kolaylaştırmayı amaçladıklarını belirtti. Yıl başından bu yana listeye dahil edilen toplam ilaç sayısı 380'e ulaştı.",
+          "detail_summary": "Çalışma ve Sosyal Güvenlik Bakanı Vedat Işıkhan sosyal medya üzerinden yeni bir açıklama yaptı. Sosyal Güvenlik Kurumu aracılığıyla 119'u yerli üretim olmak üzere 131 ilacın daha geri ödeme listesine dahil edildiği bildirildi. Yapılan güncellemeyle birlikte bu yılın başından itibaren listeye giren toplam ilaç sayısı 380 oldu. Yeni eklenen ilaçlar arasında 34 kanser ilacının yanı sıra çeşitli kategorilerde ürünler bulunuyor. Geri ödeme listesine eklenen 131 ilacın dağılımında 6 kanser, 22 diyabet ve 14 pulmoner hipertansiyon ilacı yer alıyor. Listede ayrıca 4 kan ürünü ile 2 alerji aşısı da vatandaşların erişimine sunuldu. Bakan Işıkhan açıklamasında ilaçların hastalara şifa olmasını diledi.",
+          "decision": "publish"
+        }
+      ]
     }
   ],
   "system_incidents": []
