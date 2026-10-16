@@ -233,9 +233,74 @@ def _article_published_at(url, diagnostics=None):
                 if parsed:
                     return parsed.isoformat()
         if diagnostics is not None:
+            # Başarısız ayrıştırmada gerçek HTML yapısını teşhis et; sayfanın
+            # tamamını loglamadan başlıkları ve tarih içeren küçük DOM parçalarını kaydet.
+            headings = [
+                {"tag": node.name, "text": _clean(node.get_text(" ", strip=True))[:100]}
+                for node in soup.find_all(["h1", "h2", "h3"])[:8]
+            ]
+            date_pattern = re.compile(
+                r"(?<!\\d)(?:\\d{1,2}[./-]\\d{1,2}[./-]\\d{4}|"
+                r"\\d{1,2}\\s+(?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|"
+                r"Ağustos|Eylül|Ekim|Kasım|Aralık)\\s+\\d{4})(?!\\d)",
+                re.IGNORECASE,
+            )
+            date_nodes = []
+            for node in soup.find_all(True):
+                node_text = _clean(node.get_text(" ", strip=True))
+                matches = date_pattern.findall(node_text)
+                if not matches:
+                    continue
+                # Üst kapsayıcıların tekrar eden metnini azalt: yaprak/alt öğe
+                # veya tarih sınıfı taşıyan öğeler daha ayırt edicidir.
+                child_has_date = any(
+                    date_pattern.search(_clean(child.get_text(" ", strip=True)))
+                    for child in node.find_all(True, recursive=False)
+                )
+                classes = node.get("class", [])
+                class_text = " ".join(classes) if isinstance(classes, list) else str(classes)
+                if child_has_date and not re.search(r"date|time|publish|article|author|meta", class_text + " " + str(node.get("id", "")), re.I):
+                    continue
+                ancestors = []
+                parent = node
+                for _ in range(3):
+                    parent = parent.parent
+                    if parent is None or not getattr(parent, "name", None):
+                        break
+                    parent_classes = parent.get("class", [])
+                    if isinstance(parent_classes, list):
+                        parent_classes = " ".join(parent_classes)
+                    ancestors.append({
+                        "tag": parent.name,
+                        "class": str(parent_classes)[:80],
+                        "id": str(parent.get("id", ""))[:60],
+                        "contains_heading": bool(
+                            headings and any(
+                                heading["text"] and heading["text"] in _clean(parent.get_text(" ", strip=True))
+                                for heading in headings[:3]
+                            )
+                        ),
+                    })
+                date_nodes.append({
+                    "tag": node.name,
+                    "class": str(class_text)[:80],
+                    "id": str(node.get("id", ""))[:60],
+                    "dates": matches[:3],
+                    "text": node_text[:140],
+                    "ancestors": ancestors,
+                })
+                if len(date_nodes) >= 8:
+                    break
+            diagnostic_detail = {
+                "h1_found": soup.find("h1") is not None,
+                "headings": headings,
+                "date_nodes": date_nodes,
+                "main_found": soup.find("main") is not None,
+                "article_found": soup.find("article") is not None,
+            }
             diagnostics.append(
-                f"HTTP {response.status_code}; sayfa açıldı ({len(response.content)} bayt), "
-                "ancak desteklenen meta/JSON-LD/time/başlık alanlarında yayın tarihi bulunamadı."
+                f"HTTP {response.status_code}; bytes={len(response.content)}; "
+                f"DOM tanısı={json.dumps(diagnostic_detail, ensure_ascii=False, separators=(',', ':'))}"
             )
     except Exception as exc:
         reason = f"{type(exc).__name__}: {exc}"
