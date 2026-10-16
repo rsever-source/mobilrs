@@ -12,7 +12,7 @@ permissions:
 jobs:
   report-workflow-result:
     # Kendi sonucunu tetikleyerek sonsuz döngü oluşturmasın.
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow.name != 'Workflow Hata İzleme'
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.name != 'Workflow Hata İzleme'
     runs-on: ubuntu-latest
     steps:
       - name: Rapor kodunu al
@@ -28,13 +28,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: rsever-source/mobilrs
           EVENT_NAME: ${{ github.event_name }}
-          WORKFLOW_NAME: ${{ github.event.workflow.name }}
+          WORKFLOW_NAME: ${{ github.event.workflow_run.name }}
           WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
           WORKFLOW_URL: ${{ github.event.workflow_run.html_url }}
           WORKFLOW_BRANCH: ${{ github.event.workflow_run.head_branch }}
           WORKFLOW_RUN_NUMBER: ${{ github.event.workflow_run.run_number }}
           WORKFLOW_RUN_ID: ${{ github.event.workflow_run.id }}
-          WORKFLOW_ID: ${{ github.event.workflow.id }}
+          WORKFLOW_ID: ${{ github.event.workflow_run.workflow_id }}
         run: |
           python - <<'PY'
           import os
