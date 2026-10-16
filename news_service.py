@@ -240,9 +240,9 @@ def _article_published_at(url, diagnostics=None):
                 for node in soup.find_all(["h1", "h2", "h3"])[:8]
             ]
             date_pattern = re.compile(
-                r"(?<!\\d)(?:\\d{1,2}[./-]\\d{1,2}[./-]\\d{4}|"
-                r"\\d{1,2}\\s+(?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|"
-                r"Ağustos|Eylül|Ekim|Kasım|Aralık)\\s+\\d{4})(?!\\d)",
+                r"(?<!\d)(?:\d{1,2}[./-]\d{1,2}[./-]\d{4}|"
+                r"\d{1,2}\s+(?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|"
+                r"Ağustos|Eylül|Ekim|Kasım|Aralık)\s+\d{4})(?!\d)",
                 re.IGNORECASE,
             )
             date_nodes = []
