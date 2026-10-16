@@ -3482,5 +3482,13 @@
       ]
     }
   ],
-  "system_incidents": []
+  "system_incidents": [
+    {
+      "component": "news-workflow-stale",
+      "first_seen": "2026-10-16T17:51:45.682080+00:00",
+      "status": "reported",
+      "details": "Son başarılı zamanlanmış haber workflow'u bulunamadı. Haber akışı çalışmıyor olabilir. Kontrol: https://api.github.com/repos/rsever-source/mobilrs/actions/workflows/news-cron.yml/runs?per_page=100",
+      "reported_at": "2026-10-16T17:51:45.682080+00:00"
+    }
+  ]
 }
