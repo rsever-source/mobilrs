@@ -1,6 +1,16 @@
 {
-  "updated_at": "2026-10-16T10:50:45.725800+00:00",
+  "updated_at": "2026-10-16T13:17:04.438125+00:00",
   "items": [
+    {
+      "id": "12107c33e28fbe5573a1",
+      "title": "SGK Geri Ödeme Listesine 131 İlaç Daha Eklendi",
+      "summary": "Çalışma ve Sosyal Güvenlik Bakanlığı yeni bir ilaç düzenlemesi duyurdu. Sosyal Güvenlik Kurumu aracılığıyla toplam 131 ilaç geri ödeme listesine alındı. Eklenen ilaçların 119'unun yerli üretim olduğu açıklandı. Listede kanser ve diyabet gibi çeşitli hastalıkların tedavisinde kullanılan ilaçlar yer alıyor. Bakan Vedat Işıkhan vatandaşların tedavi imkanlarına erişimini kolaylaştırmayı amaçladıklarını belirtti. Yıl başından bu yana listeye dahil edilen toplam ilaç sayısı 380'e ulaştı.",
+      "detail_summary": "Çalışma ve Sosyal Güvenlik Bakanı Vedat Işıkhan sosyal medya üzerinden yeni bir açıklama yaptı. Sosyal Güvenlik Kurumu aracılığıyla 119'u yerli üretim olmak üzere 131 ilacın daha geri ödeme listesine dahil edildiği bildirildi. Yapılan güncellemeyle birlikte bu yılın başından itibaren listeye giren toplam ilaç sayısı 380 oldu. Yeni eklenen ilaçlar arasında 34 kanser ilacının yanı sıra çeşitli kategorilerde ürünler bulunuyor. Geri ödeme listesine eklenen 131 ilacın dağılımında 6 kanser, 22 diyabet ve 14 pulmoner hipertansiyon ilacı yer alıyor. Listede ayrıca 4 kan ürünü ile 2 alerji aşısı da vatandaşların erişimine sunuldu. Bakan Işıkhan açıklamasında ilaçların hastalara şifa olmasını diledi.",
+      "source": "TRT Haber",
+      "url": "https://www.trthaber.com/haber/guncel/131-ilac-daha-geri-odeme-listesine-eklendi-960310.html",
+      "published_at": "2026-10-16T11:43:00+00:00",
+      "created_at": "2026-10-16T13:17:04.438125+00:00"
+    },
     {
       "id": "c9a2327aa64e18072262",
       "title": "Görme Engelli Otomobil Tutkunu Levent Karadöl'den Hız Rekoru Hayali",
@@ -110,32 +120,10 @@
       "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/otizmli-yuzucu-kaan-okyanuslari-asmak-icin-adalar-arasinda-yuzerek-antrenman-yapiyor-/1832817",
       "published_at": "2026-10-14T10:42:24+00:00",
       "created_at": "2026-10-14T13:46:03.240093+00:00"
-    },
-    {
-      "id": "1cfc06115a685dc64132",
-      "title": "Bakan Göktaş Hatay'da Sosyal Hizmet Merkezlerinin Toplu Açılışını Yaptı",
-      "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Hatay'da düzenlenen toplu açılış töreninde kente yedi yeni sosyal hizmet merkezi kazandırdıklarını açıkladı. Açılışta konuşan Bakan Göktaş, deprem bölgesindeki engelli, yaşlı ve çocuklara yönelik hizmetlerin artarak süreceğini vurguladı. Kalıcı konutlarına geçecek 1759 haneye taşınma ve kira desteği verileceğini müjdeleyen Göktaş, Hatay'daki yatırımların kararlılıkla devam edeceğini belirtti.",
-      "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Hatay Mustafa Kemal Üniversitesinin akademik yıl açılış törenine katılarak gençlerle bir araya geldi ve \"İyilik Var\" dijital gönüllülük platformunu tanıttı. Bakan Göktaş, Hatay Aile ve Sosyal Hizmetler İl Müdürlüğü önünde gerçekleştirilen toplu açılış töreninde kentte yedi yeni hizmet binasının faaliyete geçirildiğini duyurdu. Açılışı yapılan tesisler arasında il müdürlüğü binası, çeşitli ilçelerdeki sosyal hizmet merkezleri ve Antakya Engelsiz Yaşam Bakım ve Rehabilitasyon Merkezi de yer alıyor. Bakanlık olarak son çeyrek asırda Hatay'a toplam 55 milyar liralık yatırım ve destek sağlandığı, kentteki 47 kuruluşla engelli, yaşlı, kadın ve çocukların ihtiyaçlarının karşılandığı ifade edildi. Konuşmada ayrıca bu yıl SED kapsamında 486 milyon lira kaynak aktarıldığı ve Hataylılar için 1,63 milyar lira evde bakım desteği sağlandığı bilgisi paylaşıldı. Konteynerde kalmakta olup kalıcı konutlarına çıkacak olan sosyal yardım yararlanıcısı 1759 haneye taşınma ve kira desteğinde bulunulacağı açıklandı. İlerleyen süreçte Antakya'da iki yeni huzurevi yaşlı bakım ve rehabilitasyon merkezinin yanı sıra Samandağ, Defne ve Reyhanlı'da yeni sosyal hizmet merkezlerinin açılacağı bildirildi.",
-      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-      "url": "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-hatayda-konustu/",
-      "published_at": "2026-10-14T00:00:00+00:00",
-      "created_at": "2026-10-16T09:59:02.909268+00:00"
     }
   ],
   "pending": [],
   "seen_urls": {
-    "https://www.sgk.gov.tr/duyuru/detay/Yurt-Disindan-Gerceklestirilecek-Beser-Tibbi-Urun-Alimlari-Dinamik-Alim-Sistemi-Hakkinda-2026-10-09-09-41-18": "2026-10-09T11:10:43.459738+00:00",
-    "https://www.sgk.gov.tr/duyuru/detay/Bedeli-Odenecek-Ilaclar-Listesinde-Yapilan-Duzenlemeler-Hakkinda-Duyuru-202639-2026-10-07-04-54-48": "2026-10-09T11:10:43.459738+00:00",
-    "https://www.sgk.gov.tr/duyuru/detay/Gayrimenkul-Satis-Ilani-2026-10-05-11-35-26": "2026-10-09T11:10:43.459738+00:00",
-    "https://www.aile.gov.tr/duyurular/2828-sayili-kanun-kapsaminda-sosyal-hizmet-modellerinden-yararlananlarin-istihdamina-iliskin-yerlestirme-sonuclari-7-10-2026/": "2026-10-09T12:13:57.527890+00:00",
-    "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/bakan-goktastan-engelli-bireylere-yonelik-ozel-bakim-merkezleri-yonetmeligine-iliskin-paylasim/1832755": "2026-10-09T12:13:57.527890+00:00",
-    "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanligimiz-ile-ab-turkiye-delegasyonu-arasinda-isbirligi-protokolu-imzalandi/": "2026-10-09T12:13:57.527890+00:00",
-    "https://www.aile.gov.tr/haberler/bakanimiz-goktas-devlet-korumasindaki-genclerin-kamu-kurumlarina-yerlestirilmesi-toreninde-konustu-2/": "2026-10-09T12:13:57.527890+00:00",
-    "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-6-ekim-dunya-serebral-palsi-farkindalik-gunu-etkinliginde-konustu/": "2026-10-09T12:13:57.527890+00:00",
-    "https://www.aile.gov.tr/haberler/bakanimiz-mahinur-ozdemir-goktas-riyad-da-uluslararasi-sosyal-sorumluluk-forumu-nda-konustu/": "2026-10-09T12:13:57.527890+00:00",
-    "https://www.aile.gov.tr/haberler/ekim-ayi-yasli-ve-engelli-ayliklari-hesaplara-yatirilmaya-baslandi/": "2026-10-09T12:13:57.527890+00:00",
-    "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-teknofest-guneydoguyu-ziyaret-etti/": "2026-10-09T12:13:57.527890+00:00",
-    "https://www.aile.gov.tr/haberler/bakan-goktas-gaziantep-te-sehit-aileleri-ve-gazilerle-vefa-bulusmasinda-bir-araya-geldi/": "2026-10-09T12:13:57.527890+00:00",
     "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/marangoz-baba-ve-engelli-oglu-hurdacilardan-aldiklari-at-arabalarini-yeniliyor/1832785": "2026-10-10T12:36:35.586943+00:00",
     "https://www.trthaber.com/haber/saglik/sosyal-medyada-sonsuz-akis-tuzagi-959735.html": "2026-10-10T12:36:35.586943+00:00",
     "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/bakan-goktas-ankarada-engellilere-ve-ailelerine-yonelik-ilk-nefes-merkezinin-acilisini-yapti/1832795": "2026-10-11T12:55:15.694947+00:00",
@@ -165,6 +153,7 @@
     "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-hatayda-konustu/": "2026-10-16T09:59:02.909268+00:00",
     "https://www.aile.gov.tr/haberler/bakanimiz-goktas-ntv-canli-yayininda-sorulari-yanitladi/": "2026-10-16T09:59:02.909268+00:00",
     "https://www.sgk.gov.tr/duyuru/detay/Recete-Teslim-Suresinin-Uzatilmasi-2026-10-16-10-33-39": "2026-10-16T09:59:02.909268+00:00",
-    "https://www.sgk.gov.tr/duyuru/detay/20261-Donem-Ilac-Geri-Odeme-Komisyonu-ve-2026-Yili-3-Olaganustu-Ilac-Geri-Odeme-Komisyonu-Kararlarina-Istinaden-Bedeli-Odenecek-Ilaclar-Listesinde-2026-10-16-11-37-43": "2026-10-16T10:50:45.725800+00:00"
+    "https://www.sgk.gov.tr/duyuru/detay/20261-Donem-Ilac-Geri-Odeme-Komisyonu-ve-2026-Yili-3-Olaganustu-Ilac-Geri-Odeme-Komisyonu-Kararlarina-Istinaden-Bedeli-Odenecek-Ilaclar-Listesinde-2026-10-16-11-37-43": "2026-10-16T10:50:45.725800+00:00",
+    "https://www.trthaber.com/haber/guncel/131-ilac-daha-geri-odeme-listesine-eklendi-960310.html": "2026-10-16T13:17:04.438125+00:00"
   }
 }
