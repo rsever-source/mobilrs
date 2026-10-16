@@ -210,6 +210,12 @@ def _article_published_at(url, diagnostics=None):
         # başlık-yazar-tarih bloğunda normal görünür metin olarak yer alıyor.
         # Sayfanın tamamını taramak yan haber tarihini seçebileceğinden yalnızca
         # başlığın yakınındaki küçük kapsayıcıları kontrol et ve tek tarih varsa kabul et.
+        # AA haber sayfalarında başlık h1 değil; yayın tarihi yazar-tarih
+        # bloğunda (div.news-writeby / div.news-maindiv) düz metin olarak
+        # yer alır. h1/main bulunmasa da bu bloğu oku.
+        aa_published = _aa_byline_published_at(soup)
+        if aa_published:
+            return aa_published.isoformat()
         heading = soup.find("h1")
         if heading:
             parent = heading
@@ -334,6 +340,71 @@ def _date_from_text(value):
             return datetime(int(year), months[month_name.lower()], int(day), tzinfo=timezone.utc)
         except (ValueError, KeyError):
             return None
+    return None
+
+
+# Türkçe haber sayfalarında görülen tarih biçimleri (sayısal ve ay adlı).
+_TR_DATE_TOKEN = (
+    r"(?:\d{1,2}[./-]\d{1,2}[./-]\d{4}"
+    r"|\d{1,2}\s+(?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+\d{4})"
+)
+# Yalnızca baştan sona tarihten (isteğe bağlı saatle) oluşan metinler.
+_DATE_ONLY_RE = re.compile(
+    r"^\s*" + _TR_DATE_TOKEN + r"(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?\s*$",
+    re.IGNORECASE,
+)
+# Haber gövdesindeki (ör. haberde anılan geçmiş olay) tarihlerin yayın tarihi
+# sanılmaması için gövde metni kaplarını dışla.
+_BODY_CONTAINER_SELECTORS = (
+    ".contentBodyDiv", ".article-body", ".news-detail-body", ".body-text", ".haber-metni",
+)
+
+
+def _unique_date_in_text(text):
+    """Metinde tek bir belirgin tarih varsa onu döndür; aksi halde None."""
+    matches = {match.strip() for match in re.findall(_TR_DATE_TOKEN, text, re.IGNORECASE)}
+    if len(matches) == 1:
+        return _date_from_text(next(iter(matches)))
+    return None
+
+
+def _aa_byline_published_at(soup):
+    """AA haber sayfalarında yayın tarihini h1/main olmadan oku.
+
+    AA makalelerinde başlık h1 değil (spot h3, alt başlık h2), tarih ise
+    yazar-tarih bloğunda (div.news-writeby) veya onu saran div.news-maindiv
+    içinde düz metin olarak bulunur. Yalnızca tek bir belirgin tarih varsa
+    kabul et; gövde metnindeki tarihleri ele ve güvenilir tarih yoksa None
+    döndürerek uydurma tarih üretme.
+    """
+    body_containers = soup.select(", ".join(_BODY_CONTAINER_SELECTORS))
+
+    def in_body(node):
+        return any(
+            node is container or container in node.parents
+            for container in body_containers
+        )
+
+    for selector in ("[class*='writeby']", "[class*='news-maindiv']"):
+        for container in soup.select(selector):
+            # Yazar-tarih şeridi kısa olduğundan tek bir tarih içeriyorsa doğrudan kullan.
+            if selector == "[class*='writeby']":
+                parsed = _unique_date_in_text(_clean(container.get_text(" ", strip=True)))
+                if parsed:
+                    return parsed
+            # Yalnızca tamamen tarihten oluşan ve haber gövdesinin dışındaki öğeler.
+            candidates = set()
+            for node in container.find_all(True):
+                if in_body(node):
+                    continue
+                text = _clean(node.get_text(" ", strip=True))
+                if not text or len(text) > 32 or not _DATE_ONLY_RE.match(text):
+                    continue
+                parsed = _date_from_text(text)
+                if parsed:
+                    candidates.add(parsed)
+            if len(candidates) == 1:
+                return next(iter(candidates))
     return None
 
 

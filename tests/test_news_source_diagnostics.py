@@ -154,6 +154,57 @@ class NewsSourceDiagnosticsTests(unittest.TestCase):
         errors = ns._SOURCE_DIAGNOSTICS[source["name"]]["errors"]
         self.assertTrue(any("Detay sayfası okunamadı" in error for error in errors))
 
+    def test_aa_byline_date_is_parsed_without_h1(self):
+        # Gerçek AA DOM yapısı: başlık h1 değil; tarih div.news-writeby içinde
+        # düz metin, gövdede ise haberde anılan geçmiş bir tarih var.
+        html = (
+            "<html><body><div class='news-maindiv'><div class='news-detail'>"
+            "<h3 class='spot'>10 yaşındaki otizmli şampiyon yüzücü Kaan, Manş Denizi'ni geçmeyi hedefliyor.</h3>"
+            "<div class='news-writeby'><div class='author'>Fatih Gökbulut</div>"
+            "<div>15.10.2026</div></div>"
+            "<div class='contentBodyDiv'><p>Fırsat verilmesi halinde ABD'li Dan Parker'ın "
+            "31 Mart 2022'de kırdığı rekoru geliştirebilir.</p></div>"
+            "</div></div></body></html>"
+        )
+        response = FakeResponse(
+            html,
+            url="https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/otizmli-yuzucu/3456",
+        )
+        with patch.object(ns._SESSION, "get", return_value=response):
+            published = ns._article_published_at(response.url)
+        self.assertEqual(published, "2026-10-15T00:00:00+00:00")
+
+    def test_aa_maindiv_date_is_parsed_when_writeby_absent(self):
+        html = (
+            "<html><body><div class='news-maindiv'><h3>Spot metni başlık</h3>"
+            "<div>16.10.2026</div>"
+            "<div class='contentBodyDiv'><p>Metin 01.01.2020'de başladı.</p></div>"
+            "</div></body></html>"
+        )
+        response = FakeResponse(
+            html,
+            url="https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/test/3457",
+        )
+        with patch.object(ns._SESSION, "get", return_value=response):
+            published = ns._article_published_at(response.url)
+        self.assertEqual(published, "2026-10-16T00:00:00+00:00")
+
+    def test_aa_page_without_reliable_date_returns_none(self):
+        # Yazar-tarih bloğunda tarih yok; gövdedeki tarih yayın tarihi sanılmamalı.
+        html = (
+            "<html><body><div class='news-maindiv'>"
+            "<div class='news-writeby'><div class='author'>Muhabir</div></div>"
+            "<div class='contentBodyDiv'><p>Etkinlik 15.10.2026 tarihinde düzenlendi.</p></div>"
+            "</div></body></html>"
+        )
+        response = FakeResponse(
+            html,
+            url="https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/test/3458",
+        )
+        with patch.object(ns._SESSION, "get", return_value=response):
+            published = ns._article_published_at(response.url)
+        self.assertIsNone(published)
+
     def test_tbb_unparseable_publication_date_is_recorded(self):
         source = {
             "name": "Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
