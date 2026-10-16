@@ -2,6 +2,13 @@ name: Workflow Hata İzleme
 
 on:
   workflow_run:
+    workflows:
+      - Engelli Haberleri Otomatik Güncelle
+      - Haber Workflow Zaman Aşımı Kontrolü
+      - RDV OTV Daily Update
+      - OTV Manuel Guncelle
+      - RDV Asistan Health Monitor
+      - TUFE read test
     types: [completed]
   workflow_dispatch:
 
