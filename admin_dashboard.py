@@ -113,6 +113,7 @@ header{{display:flex;gap:14px;align-items:center;justify-content:space-between;f
 <p id="message" role="status">Mevcut kayıtlar yükleniyor…</p>
 <div class="cards">
 <div class="card"><small>Son tarama adayı</small><strong id="candidateCount">—</strong><div class="muted">Son kayıtlı tarama</div></div>
+<div class="card"><small>Workflow hatası</small><strong id="workflowErrorStatus">Kontrol yok</strong></div>
 </div>
 <section><h2>Haber işlem özeti</h2><div class="cards report-summary-cards">
 <div class="card"><small>Yayımlanan</small><strong id="published">—</strong></div>
@@ -143,10 +144,33 @@ function render(data){{state=data;const log=data.log||{{}};const runs=log.news_r
   :safeText(data.checked_at);
  el('lastChecked').textContent='Kontrol zamanı: '+localCheckedAt;
  el('candidateCount').textContent=safeText(last.candidates?.length??last.filter_diagnostics?.counts?.accepted_as_candidate);
+ renderWorkflowError(log);
  el('published').textContent=cs.published;el('duplicates').textContent=cs.duplicates;el('rejected').textContent=cs.rejected;el('pending').textContent=cs.pending;
  renderPendingNews(data.news_pending||[],log);
  renderGeminiDecisions(log);
  renderErrors(data);
+}}
+function renderWorkflowError(log){{
+ const statusEl=el('workflowErrorStatus');
+ if(!Array.isArray(log.system_incidents)){{
+  statusEl.textContent='Kontrol yok';
+  statusEl.className='warn';
+  return;
+ }}
+ const active=(log.system_incidents||[]).filter(item=>{{
+  const component=String(item.component||'');
+  return item.status!=='resolved'&&(component.startsWith('workflow:')||component==='news-workflow-stale');
+ }});
+ if(active.some(item=>item.component==='news-workflow-stale')){{
+  statusEl.textContent='Akış durdu';
+  statusEl.className='bad';
+ }}else if(active.length){{
+  statusEl.textContent='Hata var';
+  statusEl.className='bad';
+ }}else{{
+  statusEl.textContent='Hata yok';
+  statusEl.className='good';
+ }}
 }}
 function renderGeminiDecisions(log){{
  const rejected=[];const duplicates=[];const seenRejected=new Set();const seenDuplicates=new Set();
