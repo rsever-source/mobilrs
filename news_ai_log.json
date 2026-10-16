@@ -3094,20 +3094,207 @@
           "decision": "reject"
         }
       ]
-    }
-  ],
-  "system_incidents": [
-    {
-      "component": "news-source:Anadolu Ajansı – Engelsiz Yaşam (yedek)",
-      "first_seen": "2026-10-15T11:35:18.240162+00:00",
-      "status": "pending_24h",
-      "details": "20 detay sayfasından yayın tarihi okunamadı."
     },
     {
-      "component": "news-item:c9a2327aa64e1807",
-      "first_seen": "2026-10-16T10:01:11.279597+00:00",
-      "status": "pending_24h",
-      "details": "Levent Karadöl görme engelliler hız rekorunu kırmayı düşlüyor: HTTPError('503 Server Error: Service Unavailable for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent')"
+      "run_at": "2026-10-16T10:50:45.725800+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 15,
+          "parsed_items": 15,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 479,
+          "path_matches": 293,
+          "dated_from_title": 293,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 293,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "anchors": 87,
+          "article_links": 12,
+          "keyword_matches": 1,
+          "detail_attempts": 1,
+          "detail_errors": 0,
+          "missing_dates": 0,
+          "parsed_items": 1,
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 12,
+          "keyword_eliminated": 18,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılacak Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavına Katılacak Adaylar ",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Mirasçıların Vergisel Yükümlülükleri Rehberi ile Veraset ve İntikal Vergisi Broşürü Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 513,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 16,
+          "duplicate_in_this_run": 2,
+          "url_seen_within_7_days": 33,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 461,
+          "accepted_as_candidate": 2
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "Levent Karadöl görme engelliler hız rekorunu kırmayı düşlüyor",
+          "source": "Anadolu Ajansı – Engelli Yaşam",
+          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/levent-karadol-gorme-engelliler-hiz-rekorunu-kirmayi-dusluyor/1832849",
+          "published_at": "2026-10-16T09:34:47+00:00",
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "generated_title": "Görme Engelli Otomobil Tutkunu Levent Karadöl'den Hız Rekoru Hayali",
+          "summary": "Görme engelli psikolojik danışman Levent Karadöl, otomobil ve motor sporlarına olan tutkusuyla dikkat çekiyor. Küçük yaşlardan itibaren motor seslerine ilgi duyan Karadöl, Formula 1 yarışlarını yakından takip ediyor. Daha önce trafiğe kapalı alanda test sürüşü yaparak saatte 244 kilometre hıza ulaşan Karadöl, bu deneyimi büyük bir heyecanla anlatıyor. Fırsat verilmesi durumunda, görme engelliler hız rekorunu kırmak en büyük hayalleri arasında yer alıyor. Uygun bir otomobil ve havalimanı desteğiyle bu rekoru kırarak ülkesini temsil etmek istiyor. Geçmişte ünlü pilot Felipe Massa ile İstanbul Park'ta piste çıkan Karadöl, unutulmaz bir anı yaşadı.",
+          "detail_summary": "Yedi aylıkken geçirdiği menenjit nedeniyle görme duyusunu kaybeden 48 yaşındaki Levent Karadöl, psikolojik danışmanlık yapmasının yanı sıra koyu bir Formula 1 ve otomobil tutkunu olarak biliniyor. Motor seslerine olan merakı beş yaşındayken evdeki elektrik süpürgesiyle başlayan Karadöl, okul yıllarında kalorifer dairesindeki kazan ve brütör seslerini dinleyerek stres attığını belirtiyor. TRT'deki Start programı sayesinde motor sporlarıyla tanışan Karadöl, 32 yıldır Formula 1 yarışlarını büyük bir titizlikle takip ediyor. Bursa'daki Yunuseli Havalimanı'nda katıldığı bir etkinlikte, test sürüşü sırasında spor modunda saatte 244 kilometre hıza ulaştığını ifade ediyor. ABD'li Dan Parker'ın saatte 339,64 kilometreyle elinde bulundurduğu görme engelliler hız rekorunu kırmayı hedefleyen Karadöl, yeterli imkanlar tanındığında bu başarıyı elde edebileceğine inanıyor. Teknik bilgisine güvenen Karadöl, rekor denemesi için kilo vermeye ve gerekli hazırlıkları yapmaya hazır olduğunu vurguluyor. Ayrıca geçmişte hayranı olduğu Brezilyalı eski pilot Felipe Massa ile İstanbul Park'ta bir araya gelerek piste çıkma fırsatı bulduğunu ve bunun hayatının en özel anlarından biri olduğunu dile getiriyor.",
+          "decision": "publish"
+        },
+        {
+          "title": "16 Ekim 2026 2026/1. Dönem İlaç Geri Ödeme Komisyonu ve 2026 Yılı 3. Olağanüstü İlaç Geri Ödeme Komisyonu Kararlarına İstinaden Bedeli Ödenecek İlaçlar Listesinde Yapılan Düzenlemeler Hakkında Duyuru GENEL SAĞLIK SİGORTASI GENEL MÜDÜRLÜĞÜ",
+          "source": "Sosyal Güvenlik Kurumu – Duyurular",
+          "url": "https://www.sgk.gov.tr/duyuru/detay/20261-Donem-Ilac-Geri-Odeme-Komisyonu-ve-2026-Yili-3-Olaganustu-Ilac-Geri-Odeme-Komisyonu-Kararlarina-Istinaden-Bedeli-Odenecek-Ilaclar-Listesinde-2026-10-16-11-37-43",
+          "published_at": "2026-10-16T00:00:00+00:00",
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "generated_title": "SGK'dan İlaç Geri Ödeme Listesi Düzenlemesi",
+          "summary": "Sosyal Güvenlik Kurumu, İlaç Geri Ödeme Komisyonu kararları doğrultusunda yeni düzenlemeler yaptı. Yapılan güncellemeler bedeli ödenecek ilaçlar listesinde yer aldı. Genel Sağlık Sigortası Genel Müdürlüğü tarafından duyurulan kararlar erişime açıldı. Düzenleme kapsamında ilgili ilaç listeleri güncellendi.",
+          "detail_summary": "Sosyal Güvenlik Kurumu tarafından 2026 yılına ait ilaç geri ödeme komisyonu kararları yayımlandı. 2026/1. Dönem İlaç Geri Ödeme Komisyonu ile 2026 Yılı 3. Olağanüstü İlaç Geri Ödeme Komisyonu kararları açıklandı. Alınan kararlara istinaden bedeli ödenecek ilaçlar listesinde çeşitli düzenlemeler yapıldı. Genel Sağlık Sigortası Genel Müdürlüğü tarafından yapılan duyuru resmi internet sitesi üzerinden paylaşıldı. İlgili düzenlemelere dair detaylı liste ve duyuru dokümanı PDF formatında erişime sunuldu.",
+          "decision": "publish"
+        }
+      ]
     }
-  ]
+  ],
+  "system_incidents": []
 }
