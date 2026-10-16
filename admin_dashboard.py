@@ -205,7 +205,9 @@ function renderErrorItems(targetId,items){{
    for(const detail of item.urls){{
     const li=node('li');const a=node('a',detail.title||detail.url||'Detay sayfası');
     if(detail.url){{a.href=detail.url;a.target='_blank';a.rel='noopener noreferrer'}}
-    li.appendChild(a);list.appendChild(li);
+    li.appendChild(a);
+    if(detail.reason)li.appendChild(node('div',detail.reason,'muted'));
+    list.appendChild(li);
    }}
    wrap.appendChild(node('div','Tarihi okunamayan detay sayfaları: '+item.urls.length,'muted'));
    wrap.appendChild(list);
