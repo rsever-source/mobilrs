@@ -2,7 +2,7 @@ name: Haber Workflow Zaman Aşımı Kontrolü
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '17 */5 * * *'
   workflow_dispatch:
 
 permissions:
@@ -76,9 +76,9 @@ jobs:
               f"çalışma: {run_url}"
           )
 
-          if age_hours > 3:
+          if age_hours > 5:
               details = (
-                  f"3 saatten uzun süredir başarılı zamanlanmış haber çalışması yok "
+                  f"5 saatten uzun süredir başarılı zamanlanmış haber çalışması yok "
                   f"({age_hours:.2f} saat). Haber workflow'u durmuş veya başarısız oluyor olabilir. "
                   + details
               )

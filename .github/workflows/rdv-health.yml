@@ -2,7 +2,7 @@ name: RDV Asistan Health Monitor
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '0 * * * *'
   workflow_dispatch:
   push:
     paths:
@@ -123,7 +123,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           TS=$(TZ=Europe/Istanbul date '+%d.%m.%Y %H:%M')
-          BODY="@rsever-source\n\nRDV Asistan 30 dakikalık sağlık kontrolünde hata bulundu.\n\n"
+          BODY="@rsever-source\n\nRDV Asistan saatlik sağlık kontrolünde hata bulundu.\n\n"
           if [ -f /tmp/failure.txt ]; then BODY="$BODY$(cat /tmp/failure.txt)"; else BODY="$BODY- Sağlık kontrolü beklenmedik şekilde başarısız oldu."; fi
           BODY="$BODY\n\nKontrol zamanı: $TS (Türkiye)\nCanlı site: https://mobilrs-test-987996487997.europe-west1.run.app"
           existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search 'RDV Asistan sağlık alarmı in:title' --json number --jq '.[0].number // empty')
@@ -151,6 +151,6 @@ jobs:
         run: |
           STATUS=success
           if [ "$JOB_STATUS" != "success" ]; then STATUS=failure; fi
-          DETAILS="30 dakikalık site, ÖTV API ve kira/TÜFE sağlık kontrolü. Çalışma: $RUN_URL"
+          DETAILS="Saatlik site, ÖTV API ve kira/TÜFE sağlık kontrolü. Çalışma: $RUN_URL"
           if [ -f /tmp/failure.txt ]; then DETAILS="$(cat /tmp/failure.txt) | Çalışma: $RUN_URL"; fi
           python report-tools/system_report.py check --component rdv-health --status "$STATUS" --details "$DETAILS"
