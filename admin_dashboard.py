@@ -150,17 +150,17 @@ function render(data){{state=data;const log=data.log||{{}};const runs=log.news_r
 }}
 function renderGeminiDecisions(log){{
  const rejected=[];const duplicates=[];const seenRejected=new Set();const seenDuplicates=new Set();
- for(const run of (log.news_runs||[]).slice(-31)){{
-  for(const c of (run.candidates||[])){{
-   const decision=String(c.decision||'').toLowerCase();
-   const status=String(c.status||'').toLowerCase();
-   const isDuplicate=c.duplicate===true||decision==='duplicate'||status.includes('duplicate');
-   const isRejected=!isDuplicate&&(decision==='reject'||status==='rejected');
-   if(!isDuplicate&&!isRejected)continue;
-   const key=String(c.url||c.title||'')+'|'+(isDuplicate?'duplicate':'reject');
-   const target=isDuplicate?duplicates:rejected;const seen=isDuplicate?seenDuplicates:seenRejected;
-   if(seen.has(key))continue;seen.add(key);target.push(key);
-  }}
+ const runs=log.news_runs||[];
+ const latestRun=runs.length?runs[runs.length-1]:null;
+ for(const c of (latestRun?.candidates||[])){{
+  const decision=String(c.decision||'').toLowerCase();
+  const status=String(c.status||'').toLowerCase();
+  const isDuplicate=c.duplicate===true||decision==='duplicate'||status.includes('duplicate');
+  const isRejected=!isDuplicate&&(decision==='reject'||status==='rejected');
+  if(!isDuplicate&&!isRejected)continue;
+  const key=String(c.url||c.title||'')+'|'+(isDuplicate?'duplicate':'reject');
+  const target=isDuplicate?duplicates:rejected;const seen=isDuplicate?seenDuplicates:seenRejected;
+  if(seen.has(key))continue;seen.add(key);target.push(key);
  }}
  el('geminiRejectedCount').textContent=String(rejected.length);
  el('geminiDuplicatesCount').textContent=String(duplicates.length);
