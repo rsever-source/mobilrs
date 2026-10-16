@@ -99,6 +99,26 @@ class NewsSourceDiagnosticsTests(unittest.TestCase):
             published = ns._article_published_at(response.url)
         self.assertEqual(published, "2026-10-07T00:00:00+00:00")
 
+    def test_date_failure_diagnostic_reports_dom_location_without_guessing(self):
+        html = (
+            "<html><body><div class='story-title'>Haber başlığı</div>"
+            "<section class='article-meta'><span class='publish-date'>15.10.2026</span></section>"
+            "</body></html>"
+        )
+        response = FakeResponse(
+            html,
+            url="https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/test/125",
+        )
+        diagnostics = []
+        with patch.object(ns._SESSION, "get", return_value=response):
+            published = ns._article_published_at(response.url, diagnostics=diagnostics)
+        self.assertIsNone(published)
+        self.assertTrue(diagnostics)
+        self.assertIn('"h1_found":false', diagnostics[0])
+        self.assertIn('"class":"publish-date"', diagnostics[0])
+        self.assertIn('"dates":["15.10.2026"]', diagnostics[0])
+        self.assertIn('"contains_heading":false', diagnostics[0])
+
     def test_visible_date_outside_article_header_is_not_guessed(self):
         html = (
             "<html><body><h1>Haber başlığı</h1><div class='related'>"
