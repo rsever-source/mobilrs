@@ -1,0 +1,70 @@
+name: Workflow Hata İzleme
+
+on:
+  workflow_run:
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  report-workflow-result:
+    # Kendi sonucunu tetikleyerek sonsuz döngü oluşturmasın.
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow.name != 'Workflow Hata İzleme'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rapor kodunu al
+        uses: actions/checkout@v4
+        with:
+          repository: rsever-source/mobilrs
+          ref: cloud-run-migration
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Workflow sonucunu AI loga yaz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: rsever-source/mobilrs
+          EVENT_NAME: ${{ github.event_name }}
+          WORKFLOW_NAME: ${{ github.event.workflow.name }}
+          WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          WORKFLOW_URL: ${{ github.event.workflow_run.html_url }}
+          WORKFLOW_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          WORKFLOW_RUN_NUMBER: ${{ github.event.workflow_run.run_number }}
+          WORKFLOW_RUN_ID: ${{ github.event.workflow_run.id }}
+          WORKFLOW_ID: ${{ github.event.workflow.id }}
+        run: |
+          python - <<'PY'
+          import os
+          from system_report import record_check
+
+          name = os.environ.get("WORKFLOW_NAME") or "Bilinmeyen workflow"
+          conclusion = os.environ.get("WORKFLOW_CONCLUSION") or "unknown"
+          url = os.environ.get("WORKFLOW_URL") or ""
+          branch = os.environ.get("WORKFLOW_BRANCH") or "bilinmiyor"
+          number = os.environ.get("WORKFLOW_RUN_NUMBER") or "?"
+          run_id = os.environ.get("WORKFLOW_RUN_ID") or "?"
+          workflow_id = os.environ.get("WORKFLOW_ID") or name
+          component = "workflow:" + str(workflow_id)
+          details = (
+              f"Workflow: {name}; sonuç: {conclusion}; dal: {branch}; "
+              f"çalışma no: {number}; run ID: {run_id}; çalışma: {url}"
+          )
+
+          # Elle tetikleme, izleyicinin kendisini test etmek içindir.
+          if os.environ.get("EVENT_NAME") == "workflow_dispatch":
+              record_check(
+                  "workflow-monitor-self-test", "success",
+                  "Workflow hata izleyicisi elle tetiklendi ve AI log yazımı denenecek.",
+                  immediate=True,
+              )
+          elif conclusion == "success":
+              record_check(component, "success", details, immediate=True)
+          elif conclusion in ("neutral", "skipped"):
+              # Atlanan/etkisiz işler hata sayılmaz.
+              print("Hata raporlanmadı:", details)
+          else:
+              record_check(component, "failure", details, immediate=True)
+          PY
