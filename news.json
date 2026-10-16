@@ -1,6 +1,16 @@
 {
-  "updated_at": "2026-10-16T00:26:06.737952+00:00",
+  "updated_at": "2026-10-16T07:13:47.192382+00:00",
   "items": [
+    {
+      "id": "b03e1e58edf7f5b59b63",
+      "title": "Çorum'da Beyaz Baston İçin Farkındalık Yürüyüşü",
+      "summary": "Çorum'da 15 Ekim Dünya Beyaz Baston Görme Engelliler Günü kapsamında farkındalık yürüyüşü gerçekleştirildi. Altı Nokta Körler Derneği Çorum Şubesi üyeleri ve katılımcılar beyaz bastonlarıyla yürüdü. Dernek başkanı, beyaz bastonun bağımsız hareket etmeyi sağladığını vurguladı. Esnaftan kılavuz çizgilerini kapatmamaları konusunda duyarlılık istendi. Belediyeden erişilebilirlik çalışmalarının sürdüğü ifade edildi.",
+      "detail_summary": "Çorum'da 15 Ekim Dünya Beyaz Baston Görme Engelliler ve Güvenlik Günü dolayısıyla özel bir farkındalık yürüyüşü düzenlendi. Altı Nokta Körler Derneği Çorum Şubesi üyeleri ile çok sayıda katılımcı, Kadeş Barış Meydanı'ndan Saat Kulesi'ne kadar beyaz bastonlarıyla yürüyüş gerçekleştirdi. Yürüyüş sırasında katılımcılar kılavuz çizgilerini takip ederek hareket etti. Dernek Başkanı Şaban Kabakçı, beyaz bastonun görme engelli bireylerin güvenli ve bağımsız hareket etmesini sağladığını belirtti ve esnaftan kılavuz çizgileri üzerine eşya koymamalarını talep etti. Çorum Belediye Başkan Yardımcısı İsmail Yağbat, kentteki erişilebilirliği artırmaya yönelik çalışmaların sürdüğünü ve vatandaş duyarlılığının önemini dile getirdi. Etkinliğe hastane başhekimi, kurum müdürleri, dernek üyeleri ve engelli bireyler katılım sağladı.",
+      "source": "Anadolu Ajansı – Engelli Yaşam",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/corumda-gorme-engellilerden-farkindalik-yuruyusu/1832840",
+      "published_at": "2026-10-16T06:45:55+00:00",
+      "created_at": "2026-10-16T07:13:47.192382+00:00"
+    },
     {
       "id": "234291fe1c69d6e2eeaa",
       "title": "Görme Engelli İsmail Merter Hurda Malzemelerden Elektrikli Araç Üretti",
@@ -90,16 +100,6 @@
       "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/aksarayli-kadin-hayalini-kurdugu-is-yerini-iskurun-engelli-hibe-destegiyle-acti/1832811",
       "published_at": "2026-10-12T08:50:47+00:00",
       "created_at": "2026-10-12T15:32:28.703854+00:00"
-    },
-    {
-      "id": "0f6f900ed41898f87c66",
-      "title": "Adana'da İkiz Kardeşten Serebral Palsili Masal'a Büyük Destek",
-      "summary": "Adana'da prematüre doğan ve beyin kanaması sonucu serebral palsi tanısı alan 6 yaşındaki Masal İnal'ın yaşamını kolaylaştırmak için ailesi büyük çaba harcıyor. İlkokul birinci sınıf öğrencisi olan ikizi Kumsal da evde hazırladığı oyunlar ve etkinliklerle kardeşinin gelişimine destek oluyor. Anne Burcu İnal, zorlu tedavi sürecinde Kumsal'ın kardeşinin en büyük destekçisi olduğunu belirtti. Kumsal, okulda öğrendiklerini eve gelerek ikiziyle paylaşıyor ve onunla vakit geçiriyor. Aile, Masal'ın hayatına dokunan bu dayanışma ile her zorluğun üstesinden gelmeye çalışıyor.",
-      "detail_summary": "Adana'da 2019 yılında prematüre olarak dünyaya gelen Masal İnal, iki haftalıkken hastanede beyin kanaması geçirdi. Yapılan kontrollerin ardından serebral palsi tanısı konulan Masal, ailesiyle birlikte uzun ve zorlu bir tedavi sürecine başladı. Tedavi için Ankara, İstanbul ve İzmir gibi birçok farklı ile giden aile, Masal'ın hayatını kolaylaştırmak için mücadele ediyor. İlkokul birinci sınıfa devam eden 6 yaşındaki ikizi Kumsal, Masal'ın gelişimine evde hazırladığı oyunlar ve etkinliklerle katkı sunuyor. Okuldan gelir gelmez ikizinin yanına giden Kumsal, gün içinde yaptıklarını anlatarak onunla resim yapıyor ve oyunlar oynuyor. Anne Burcu İnal, Kumsal'ın kardeşini bir an olsun yalnız bırakmadığını ve adeta bir terapist gibi ona destek olduğunu vurguluyor. Kumsal ise kardeşiyle vakit geçirmekten mutluluk duyduğunu ve onunla aynı okula gitmeyi çok istediğini ifade ediyor.",
-      "source": "Anadolu Ajansı – Engelli Yaşam",
-      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/serebral-palsili-masal-ikizinin-destegiyle-hayata-gulumsuyor-/1832808",
-      "published_at": "2026-10-12T08:40:44+00:00",
-      "created_at": "2026-10-12T15:32:28.703854+00:00"
     }
   ],
   "pending": [],
@@ -137,6 +137,7 @@
     "https://www.aile.gov.tr/eyhgm/haberler/evde-bakim-yardimi-odemeleri-hesaplara-yatirilmaya-baslandi/": "2026-10-15T11:34:18.863421+00:00",
     "https://www.aile.gov.tr/haberler/evde-bakim-yardimi-odemeleri-hesaplara-yatirilmaya-baslandi/": "2026-10-15T11:34:18.863421+00:00",
     "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/gorme-engelli-mucit-dayi-hurda-malzemeler-kullanarak-elektrikli-araclar-uretiyor/1832835": "2026-10-15T17:05:01.251054+00:00",
-    "https://www.aile.gov.tr/haberler/ekim-ayina-iliskin-sed-odemeleri-hesaplara-yatirildi/": "2026-10-15T17:05:01.251054+00:00"
+    "https://www.aile.gov.tr/haberler/ekim-ayina-iliskin-sed-odemeleri-hesaplara-yatirildi/": "2026-10-15T17:05:01.251054+00:00",
+    "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/corumda-gorme-engellilerden-farkindalik-yuruyusu/1832840": "2026-10-16T07:13:47.192382+00:00"
   }
 }
