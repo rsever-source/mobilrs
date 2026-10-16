@@ -19,7 +19,7 @@ from urllib3.util.retry import Retry
 NEWS_FILE = "news.json"
 AI_LOG_FILE = "news_ai_log.json"
 SOURCES_FILE = "news_sources.json"
-MAX_ITEMS = 10
+MAX_ITEMS = 12
 MAX_PENDING = 30
 LOOKBACK_HOURS = 168
 SEEN_URL_RETENTION_HOURS = 168
