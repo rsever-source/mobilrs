@@ -65,6 +65,7 @@ jobs:
               )
               record_check("news-workflow-stale", "failure", details, immediate=True)
               print("HATA:", details)
+              raise SystemExit(0)
 
           completed = datetime.fromisoformat(latest["completed_at"].replace("Z", "+00:00"))
           age_hours = (now - completed).total_seconds() / 3600
@@ -83,7 +84,7 @@ jobs:
               )
               record_check("news-workflow-stale", "failure", details, immediate=True)
               print("HATA:", details)
-
-          record_check("news-workflow-stale", "success", details, immediate=True)
-          print("TAMAM:", details)
+          else:
+              record_check("news-workflow-stale", "success", details, immediate=True)
+              print("TAMAM:", details)
           PY
