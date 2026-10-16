@@ -1,0 +1,91 @@
+name: Haber Workflow Zaman Aşımı Kontrolü
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  check-last-success:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rapor kodunu al
+        uses: actions/checkout@v4
+        with:
+          repository: rsever-source/mobilrs
+          ref: cloud-run-migration
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Son başarılı zamanlanmış haber çalışmasını kontrol et
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: rsever-source/mobilrs
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from datetime import datetime, timezone
+          from urllib.request import Request, urlopen
+          from system_report import record_check
+
+          repo = os.environ["GITHUB_REPOSITORY"]
+          token = os.environ["GITHUB_TOKEN"]
+          url = f"https://api.github.com/repos/{repo}/actions/workflows/news-cron.yml/runs?per_page=100"
+          request = Request(url, headers={
+              "Authorization": "Bearer " + token,
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28",
+              "User-Agent": "EngelliMe-News-Workflow-Watchdog",
+          })
+
+          with urlopen(request, timeout=20) as response:
+              data = json.loads(response.read().decode("utf-8"))
+
+          runs = data.get("workflow_runs", [])
+          # Only scheduled runs count. Manual GİB tests must not hide a stopped news schedule.
+          successful = [
+              run for run in runs
+              if run.get("event") == "schedule"
+              and run.get("conclusion") == "success"
+              and run.get("completed_at")
+          ]
+          latest = max(successful, key=lambda run: run["completed_at"], default=None)
+          now = datetime.now(timezone.utc)
+
+          if latest is None:
+              details = (
+                  "Son başarılı zamanlanmış haber workflow'u bulunamadı. "
+                  "Haber akışı çalışmıyor olabilir. Kontrol: " + url
+              )
+              record_check("news-workflow-stale", "failure", details, immediate=True)
+              print("HATA:", details)
+              raise SystemExit(1)
+
+          completed = datetime.fromisoformat(latest["completed_at"].replace("Z", "+00:00"))
+          age_hours = (now - completed).total_seconds() / 3600
+          run_url = latest.get("html_url", "")
+          details = (
+              f"Son başarılı zamanlanmış haber çalışması: {latest.get('run_number')}; "
+              f"tamamlanma: {latest['completed_at']}; geçen süre: {age_hours:.2f} saat; "
+              f"çalışma: {run_url}"
+          )
+
+          if age_hours > 3:
+              details = (
+                  f"3 saatten uzun süredir başarılı zamanlanmış haber çalışması yok "
+                  f"({age_hours:.2f} saat). Haber workflow'u durmuş veya başarısız oluyor olabilir. "
+                  + details
+              )
+              record_check("news-workflow-stale", "failure", details, immediate=True)
+              print("HATA:", details)
+              raise SystemExit(1)
+
+          record_check("news-workflow-stale", "success", details, immediate=True)
+          print("TAMAM:", details)
+          PY
