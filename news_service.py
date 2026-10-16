@@ -166,7 +166,7 @@ def _feed_items(source):
     return items
 
 
-def _article_published_at(url):
+def _article_published_at(url, diagnostics=None):
     try:
         response = _SESSION.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT)
         response.raise_for_status()
@@ -232,8 +232,16 @@ def _article_published_at(url):
                 parsed = _date_from_text(context)
                 if parsed:
                     return parsed.isoformat()
+        if diagnostics is not None:
+            diagnostics.append(
+                f"HTTP {response.status_code}; sayfa açıldı ({len(response.content)} bayt), "
+                "ancak desteklenen meta/JSON-LD/time/başlık alanlarında yayın tarihi bulunamadı."
+            )
     except Exception as exc:
-        print("Haber tarihi okunamadı:", url, repr(exc))
+        reason = f"{type(exc).__name__}: {exc}"
+        print("Haber tarihi okunamadı:", url, reason)
+        if diagnostics is not None:
+            diagnostics.append(reason)
     return None
 
 def _date_from_text(value):
@@ -375,9 +383,13 @@ def _html_items(source):
             # Liste kartında tarih yoksa detay sayfasının meta/JSON-LD/time alanlarına bak.
             # Zaman aşımı olursa bu kaydı tarih uydurarak yayımlamak yerine atla.
             detail_attempts += 1
-            published_at = _article_published_at(href)
+            detail_diagnostic = []
+            published_at = _article_published_at(href, diagnostics=detail_diagnostic)
             if not published_at:
-                missing_date_items.append({"title": title[:300], "url": href})
+                missing_date_items.append({
+                    "title": title[:300], "url": href,
+                    "reason": detail_diagnostic[-1] if detail_diagnostic else "Yayın tarihi bulunamadı; neden ayrıntısı yok."
+                })
                 continue
             detail_successes += 1
         items.append({
