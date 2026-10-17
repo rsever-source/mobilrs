@@ -70,6 +70,12 @@ jobs:
 
           if conclusion == "success":
               record_check(component, "success", details, immediate=True)
+              if name == "Engelli Haberleri Otomatik Güncelle":
+                  record_check(
+                      "news-workflow-stale", "success",
+                      "Engelli Haberleri Otomatik Güncelle başarıyla tamamlandı; akış durdu uyarısı kapatıldı. " + details,
+                      immediate=True,
+                  )
           elif conclusion in ("neutral", "skipped"):
               print("Atlanan/etkisiz workflow hata sayılmadı:", details)
           else:
