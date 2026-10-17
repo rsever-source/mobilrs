@@ -109,7 +109,7 @@ jobs:
 
           repo = os.environ["GITHUB_REPOSITORY"]
           token = os.environ["GITHUB_TOKEN"]
-          url = f"https://api.github.com/repos/{repo}/actions/workflows/366403151/runs?per_page=100"
+          url = f"https://api.github.com/repos/{repo}/actions/runs?event=schedule&per_page=100"
           request = Request(url, headers={
               "Authorization": "Bearer " + token,
               "Accept": "application/vnd.github+json",
@@ -123,7 +123,8 @@ jobs:
           runs = data.get("workflow_runs", [])
           successful = [
               run for run in runs
-              if run.get("event") == "schedule"
+              if run.get("path") == ".github/workflows/news-cron.yml"
+              and run.get("event") == "schedule"
               and run.get("conclusion") == "success"
               and run.get("completed_at")
           ]
