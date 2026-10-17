@@ -120,15 +120,21 @@ jobs:
           with urlopen(request, timeout=20) as response:
               data = json.loads(response.read().decode("utf-8"))
 
+          def completion_time(run):
+              # GitHub bu depodaki tamamlanmış çalışmalar için completed_at alanını
+              # null döndürüyor; bitiş zamanı için updated_at güvenilir yedektir.
+              return run.get("completed_at") or run.get("updated_at") or run.get("run_started_at")
+
           runs = data.get("workflow_runs", [])
           successful = [
               run for run in runs
               if run.get("path") == ".github/workflows/news-cron.yml"
               and run.get("event") == "schedule"
+              and run.get("status") == "completed"
               and run.get("conclusion") == "success"
-              and run.get("completed_at")
+              and completion_time(run)
           ]
-          latest = max(successful, key=lambda run: run["completed_at"], default=None)
+          latest = max(successful, key=completion_time, default=None)
           now = datetime.now(timezone.utc)
 
           if latest is None:
@@ -140,12 +146,13 @@ jobs:
               print("HATA:", details)
               raise SystemExit(0)
 
-          completed = datetime.fromisoformat(latest["completed_at"].replace("Z", "+00:00"))
+          completed_at = completion_time(latest)
+          completed = datetime.fromisoformat(completed_at.replace("Z", "+00:00"))
           age_hours = (now - completed).total_seconds() / 3600
           run_url = latest.get("html_url", "")
           details = (
               f"Son başarılı zamanlanmış haber çalışması: {latest.get('run_number')}; "
-              f"tamamlanma: {latest['completed_at']}; geçen süre: {age_hours:.2f} saat; "
+              f"tamamlanma: {completed_at}; geçen süre: {age_hours:.2f} saat; "
               f"çalışma: {run_url}"
           )
 
