@@ -109,7 +109,7 @@ jobs:
 
           repo = os.environ["GITHUB_REPOSITORY"]
           token = os.environ["GITHUB_TOKEN"]
-          url = f"https://api.github.com/repos/{repo}/actions/workflows/news-cron.yml/runs?per_page=100"
+          url = f"https://api.github.com/repos/{repo}/actions/workflows/366403151/runs?per_page=100"
           request = Request(url, headers={
               "Authorization": "Bearer " + token,
               "Accept": "application/vnd.github+json",
