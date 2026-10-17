@@ -4294,9 +4294,11 @@
     {
       "component": "news-workflow-stale",
       "first_seen": "2026-10-16T17:51:45.682080+00:00",
-      "status": "reported",
+      "status": "resolved",
       "details": "Son başarılı zamanlanmış haber workflow'u bulunamadı. Haber akışı çalışmıyor olabilir. Kontrol: https://api.github.com/repos/rsever-source/mobilrs/actions/runs?event=schedule&per_page=100",
-      "reported_at": "2026-10-16T17:51:45.682080+00:00"
+      "reported_at": "2026-10-16T17:51:45.682080+00:00",
+      "resolved_at": "2026-10-17T09:37:31.118977+00:00",
+      "recovery_details": "Son başarılı zamanlanmış haber çalışması: 129; tamamlanma: 2026-10-17T07:00:19Z; geçen süre: 2.62 saat; çalışma: https://github.com/rsever-source/mobilrs/actions/runs/39011949015"
     }
   ]
 }
