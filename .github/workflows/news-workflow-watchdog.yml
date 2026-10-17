@@ -4,13 +4,80 @@ on:
   schedule:
     - cron: '17 */5 * * *'
   workflow_dispatch:
+  workflow_run:
+    workflows:
+      - Engelli Haberleri Otomatik Güncelle
+      - RDV OTV Daily Update
+      - OTV Manuel Guncelle
+      - RDV Asistan Health Monitor
+      - TUFE read test
+    types: [completed]
 
 permissions:
   actions: read
   contents: write
 
 jobs:
+  report-workflow-result:
+    if: github.event_name == 'workflow_run' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rapor kodunu al
+        uses: actions/checkout@v4
+        with:
+          repository: rsever-source/mobilrs
+          ref: cloud-run-migration
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Tamamlanan workflow sonucunu merkezi rapora yaz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: rsever-source/mobilrs
+          EVENT_NAME: ${{ github.event_name }}
+          WORKFLOW_NAME: ${{ github.event.workflow_run.name }}
+          WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          WORKFLOW_URL: ${{ github.event.workflow_run.html_url }}
+          WORKFLOW_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          WORKFLOW_RUN_NUMBER: ${{ github.event.workflow_run.run_number }}
+          WORKFLOW_RUN_ID: ${{ github.event.workflow_run.id }}
+          WORKFLOW_ID: ${{ github.event.workflow_run.workflow_id }}
+        run: |
+          python - <<'PY'
+          import os
+          from system_report import record_check
+
+          if os.environ.get("EVENT_NAME") == "workflow_dispatch":
+              record_check(
+                  "workflow-monitor-self-test", "success",
+                  "Haber workflow izleyicisi elle tetiklendi; merkezi rapor yazımı çalıştı.",
+                  immediate=True,
+              )
+              raise SystemExit(0)
+
+          name = os.environ.get("WORKFLOW_NAME") or "Bilinmeyen workflow"
+          conclusion = os.environ.get("WORKFLOW_CONCLUSION") or "unknown"
+          url = os.environ.get("WORKFLOW_URL") or ""
+          branch = os.environ.get("WORKFLOW_BRANCH") or "bilinmiyor"
+          number = os.environ.get("WORKFLOW_RUN_NUMBER") or "?"
+          run_id = os.environ.get("WORKFLOW_RUN_ID") or "?"
+          workflow_id = os.environ.get("WORKFLOW_ID") or name
+          component = "workflow:" + str(workflow_id)
+          details = (
+              f"Workflow: {name}; sonuç: {conclusion}; dal: {branch}; "
+              f"çalışma no: {number}; run ID: {run_id}; çalışma: {url}"
+          )
+
+          if conclusion == "success":
+              record_check(component, "success", details, immediate=True)
+          elif conclusion in ("neutral", "skipped"):
+              print("Atlanan/etkisiz workflow hata sayılmadı:", details)
+          else:
+              record_check(component, "failure", details, immediate=True)
+          PY
+
   check-last-success:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Rapor kodunu al
@@ -48,7 +115,6 @@ jobs:
               data = json.loads(response.read().decode("utf-8"))
 
           runs = data.get("workflow_runs", [])
-          # Only scheduled runs count. Manual GİB tests must not hide a stopped news schedule.
           successful = [
               run for run in runs
               if run.get("event") == "schedule"
