@@ -2,84 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-10-12T15:32:28.703854+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "filter_diagnostics": {
-        "parsed_total": 480,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 10,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 14,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 452,
-          "accepted_as_candidate": 4
-        },
-        "examples": {},
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": [
-        {
-          "title": "Aksaraylı kadın hayalini kurduğu iş yerini İŞKUR'un engelli hibe desteğiyle açtı",
-          "source": "Anadolu Ajansı – Engelli Yaşam",
-          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/aksarayli-kadin-hayalini-kurdugu-is-yerini-iskurun-engelli-hibe-destegiyle-acti/1832811",
-          "published_at": "2026-10-12T08:50:47+00:00",
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "Aksaraylı Kadın İŞKUR Engelli Hibe Desteğiyle Fırın Açtı",
-          "summary": "Aksaray'da yaşayan ve yüzde 59 engelli raporu bulunan Rabia Hatipoğlu, İŞKUR'dan aldığı 735 bin liralık hibe desteğiyle pide ve etli ekmek fırını açtı. Doğuştan kalbinde delik bulunan iki çocuk annesi Hatipoğlu, maddi imkansızlıklar nedeniyle kuramadığı iş yerini hibe sayesinde hayata geçirdi. Dört ay gibi kısa sürede projesi onaylanan girişimci, gerekli ekipmanları temin ederek fırını hizmete sundu. İş yerinde eşi dahil dört kişiye istihdam sağlayan Hatipoğlu, yoğun dönemlerde tezgahın başına geçerek çalışmalara destek oluyor. Aksaray İŞKUR İl Müdürü Ferhat Kocaer, bakanlığın engelli vatandaşların kendi işlerini kurmalarını kararlılıkla desteklediğini belirtti. Kocaer, engelli bireylerin proje destek biriminden ücretsiz danışmanlık alabileceğini vurguladı. Hatipoğlu ise benzer durumdaki kişilere hibe desteklerinden yararlanarak kendi iş yerlerini açma çağrısında bulundu.",
-          "detail_summary": "Aksaray Nakkaş Mahallesi'nde yaşayan 38 yaşındaki iki çocuk annesi Rabia Hatipoğlu, kalbindeki doğuştan delik rahatsızlığı nedeniyle yüzde 59 engelli raporuna sahip bulunuyor. Yıllardır kendi iş yerini açmayı hayal eden ancak maddi imkansızlıklar yaşayan Hatipoğlu, sosyal medyada İŞKUR'un engellilere yönelik hibe desteğini öğrenerek kuruma başvurdu. Hazırladığı projenin onaylanmasının ardından dört ay gibi kısa bir sürede 735 bin liralık hibe desteğini alan Hatipoğlu, doğal gazlı fırın ile hamur makinelerini temin etti. İş yerini kısa sürede hizmete açan girişimci kadın, etli ekmek, pide, lahmacun ve tava yemekleri hazırlayarak müşterilerine hizmet vermeye başladı. Fırında eşi dahil toplam 4 kişiye istihdam sağlayan Hatipoğlu, işlerin yoğun olduğu zamanlarda hamur tezgahının ve fırının başına geçerek çalışanlarına yardım ediyor. Aksaray İŞKUR İl Müdürü Ferhat Kocaer, kurumun engelli ve eski hükümlü vatandaşların kendi işlerinin patronu olmalarını desteklediğini ifade etti. Kocaer, tüm engelli vatandaşların proje destek biriminden ücretsiz danışmanlık alabileceğini ve bu hibe desteklerinden faydalanabileceğini kaydetti. Kendi işini kurmanın mutluluğunu yaşayan Rabia Hatipoğlu, engelli bireylerin bu destekler sayesinde kendi iş yerlerini açabileceğini ve bunun büyük bir güç olduğunu dile getirdi.",
-          "decision": "publish"
-        },
-        {
-          "title": "Serebral palsili Masal ikizinin desteğiyle hayata gülümsüyor",
-          "source": "Anadolu Ajansı – Engelli Yaşam",
-          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/serebral-palsili-masal-ikizinin-destegiyle-hayata-gulumsuyor-/1832808",
-          "published_at": "2026-10-12T08:40:44+00:00",
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "Adana'da İkiz Kardeşten Serebral Palsili Masal'a Büyük Destek",
-          "summary": "Adana'da prematüre doğan ve beyin kanaması sonucu serebral palsi tanısı alan 6 yaşındaki Masal İnal'ın yaşamını kolaylaştırmak için ailesi büyük çaba harcıyor. İlkokul birinci sınıf öğrencisi olan ikizi Kumsal da evde hazırladığı oyunlar ve etkinliklerle kardeşinin gelişimine destek oluyor. Anne Burcu İnal, zorlu tedavi sürecinde Kumsal'ın kardeşinin en büyük destekçisi olduğunu belirtti. Kumsal, okulda öğrendiklerini eve gelerek ikiziyle paylaşıyor ve onunla vakit geçiriyor. Aile, Masal'ın hayatına dokunan bu dayanışma ile her zorluğun üstesinden gelmeye çalışıyor.",
-          "detail_summary": "Adana'da 2019 yılında prematüre olarak dünyaya gelen Masal İnal, iki haftalıkken hastanede beyin kanaması geçirdi. Yapılan kontrollerin ardından serebral palsi tanısı konulan Masal, ailesiyle birlikte uzun ve zorlu bir tedavi sürecine başladı. Tedavi için Ankara, İstanbul ve İzmir gibi birçok farklı ile giden aile, Masal'ın hayatını kolaylaştırmak için mücadele ediyor. İlkokul birinci sınıfa devam eden 6 yaşındaki ikizi Kumsal, Masal'ın gelişimine evde hazırladığı oyunlar ve etkinliklerle katkı sunuyor. Okuldan gelir gelmez ikizinin yanına giden Kumsal, gün içinde yaptıklarını anlatarak onunla resim yapıyor ve oyunlar oynuyor. Anne Burcu İnal, Kumsal'ın kardeşini bir an olsun yalnız bırakmadığını ve adeta bir terapist gibi ona destek olduğunu vurguluyor. Kumsal ise kardeşiyle vakit geçirmekten mutluluk duyduğunu ve onunla aynı okula gitmeyi çok istediğini ifade ediyor.",
-          "decision": "publish"
-        },
-        {
-          "title": "12.10.2026 Aile ve Sosyal Hizmetler Bakanımız Göktaş, Saray Engelsiz Yaşam Merkezi’ndeki \"Nefes Merkezi\"nin açılışını yaptı Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
-          "url": "https://www.aile.gov.tr/eyhgm/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-saray-engelsiz-yasam-merkezi-ndeki-nefes-merkezinin-acilisini-yapti/",
-          "published_at": "2026-10-12T00:00:00+00:00",
-          "status": "gemini_decision",
-          "publish": true,
-          "duplicate": true,
-          "duplicate_reason": "Mevcut sitedeki 'Ankara'da Engelli Aileleri İçin İlk Nefes Merkezi Hizmete Girdi' başlıklı haber ile bu haber aynı somut olayı, yani Ankara'daki Nefes Merkezi'nin açılışını anlatmaktadır.",
-          "generated_title": "Ankara'da Engelli Aileleri İçin İlk Nefes Merkezi Açıldı",
-          "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Ankara'da engelli ailelerine kısa süreli bakım desteği sağlayacak ilk Nefes Merkezi'nin açılışını gerçekleştirdi. Saray Engelsiz Yaşam Bakım, Rehabilitasyon ve Aile Danışma Merkezi bünyesindeki 24 kişilik kapasiteli tesis, ailelere çocuklarını bir yıl içinde 30 güne kadar güvenle bırakma imkanı sunuyor. Bakan Göktaş, benzer merkezlerin sayısının ülke genelinde 48'e ulaştığını ve bir ay içinde 81 ile yaygınlaştırılmasının amaçlandığını bildirdi. Hizmetten faydalanan engelli bireylerden hiçbir ücret talep edilmiyor. Açılış töreninin ardından Bakan Göktaş, merkezdeki atölyeleri gezerek engelli bireylerle bir araya geldi ve İyilik Var standını ziyaret etti.",
-          "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Ankara'da engelli bireylerin ailelerine kısa süreli bakım desteği sunacak olan ilk Nefes Merkezi'nin açılışını yaptı. Saray Engelsiz Yaşam Bakım, Rehabilitasyon ve Aile Danışma Merkezi bünyesinde kurulan 24 kişilik kapasiteli bu yeni merkez, kadın ve erkekler için ayrı birimler olacak şekilde tasarlandı. Merkez sayesinde aileler, ameliyat veya şehir dışına çıkma gibi zorunlu ihtiyaç anlarında çocuklarını bir yıl içinde 30 güne kadar güvenle bırakabilecek. Bakan Göktaş, Türkiye genelinde bu merkezlerin sayısının şu anda 48 olduğunu belirterek bir ay içerisinde peyderpey 81 ile yaygınlaştırılmasının amaçlandığını ifade etti. Saray Engelsiz Yaşam Merkezi'nin toplamda 779 engelli bireye hizmet verdiğini ve yerleşkede rehabilitasyonun yanı sıra sosyal ile kültürel faaliyetlerin de yürütüldüğünü aktardı. Merkezde kalan engelli bireylere verilen tüm bu hizmetlerin tamamen ücretsiz olduğu ve tesiste 53 lisanslı engelli sporcunun bulunduğu kaydedildi. Program kapsamında İyilik Var platformu standını da ziyaret eden Bakan Göktaş, vatandaşları e-Devlet üzerinden gönüllü olmaya ve platforma kayıt yaptırmaya davet etti.",
-          "decision": "duplicate"
-        },
-        {
-          "title": "11.10.2026 Aile ve Sosyal Hizmetler Bakanımız Göktaş, Saray Engelsiz Yaşam Merkezi’ndeki \"Nefes Merkezi\"nin açılışını yaptı Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-saray-engelsiz-yasam-merkezi-ndeki-nefes-merkezinin-acilisini-yapti/",
-          "published_at": "2026-10-11T00:00:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": true,
-          "duplicate_reason": "Mevcut sitede yer alan 'Ankara'da Engelli Aileleri İçin İlk Nefes Merkezi Hizmete Girdi' başlıklı haber ile aynı konuyu ve aynı somut açılış olayını anlatmaktadır.",
-          "generated_title": "",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "duplicate"
-        }
-      ]
-    },
-    {
       "run_at": "2026-10-12T18:55:30.487196+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -5314,6 +5236,208 @@
             {
               "source": "Anadolu Ajansı – Engelli Yaşam",
               "title": "Bakan Göktaş'tan \"Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği\"ne ilişkin paylaşım"
+            }
+          ]
+        },
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": []
+    },
+    {
+      "run_at": "2026-10-18T14:03:20.528968+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 15,
+          "parsed_items": 15,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 480,
+          "path_matches": 294,
+          "dated_from_title": 294,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 294,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "anchors": 87,
+          "article_links": 12,
+          "keyword_matches": 1,
+          "detail_attempts": 1,
+          "detail_errors": 0,
+          "missing_dates": 0,
+          "parsed_items": 1,
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 12,
+          "keyword_eliminated": 18,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılacak Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavına Katılacak Adaylar ",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Mirasçıların Vergisel Yükümlülükleri Rehberi ile Veraset ve İntikal Vergisi Broşürü Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 514,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 21,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 21,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 472,
+          "accepted_as_candidate": 0
+        },
+        "examples": {
+          "already_published": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Erzurumlu anne \"3 günden fazla yaşamaz\" denilen oğluna 22 yıldır sevgiyle bakıyor"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Konya'da \"özel hastalar\" evden çıkmadan engelli raporlarını yeniletebiliyor"
+            }
+          ],
+          "url_seen_within_7_days": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Otizmli yüzücü Kaan, okyanusları aşmak için adalar arasında yüzerek antrenman yapıyor"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Aksaraylı kadın hayalini kurduğu iş yerini İŞKUR'un engelli hibe desteğiyle açtı"
+            }
+          ],
+          "older_than_7_days": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Bakan Göktaş, Ankara'da engellilere ve ailelerine yönelik ilk \"Nefes Merkezi\"nin açılışını yaptı"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Marangoz baba ve engelli oğlu hurdacılardan aldıkları at arabalarını yeniliyor"
             }
           ]
         },
