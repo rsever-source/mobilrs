@@ -14,7 +14,7 @@ on:
     types: [completed]
 
 permissions:
-  actions: read
+  actions: write
   contents: write
 
 jobs:
@@ -138,32 +138,56 @@ jobs:
           now = datetime.now(timezone.utc)
 
           if latest is None:
+              age_hours = float("inf")
+              details = "Son başarılı zamanlanmış haber workflow'u bulunamadı. Kontrol: " + url
+          else:
+              completed_at = completion_time(latest)
+              completed = datetime.fromisoformat(completed_at.replace("Z", "+00:00"))
+              age_hours = (now - completed).total_seconds() / 3600
               details = (
-                  "Son başarılı zamanlanmış haber workflow'u bulunamadı. "
-                  "Haber akışı çalışmıyor olabilir. Kontrol: " + url
+                  f"Son başarılı zamanlanmış haber çalışması: {latest.get('run_number')}; "
+                  f"tamamlanma: {completed_at}; geçen süre: {age_hours:.2f} saat; "
+                  f"çalışma: {latest.get('html_url', '')}"
               )
-              record_check("news-workflow-stale", "failure", details, immediate=True)
-              print("HATA:", details)
-              raise SystemExit(0)
-
-          completed_at = completion_time(latest)
-          completed = datetime.fromisoformat(completed_at.replace("Z", "+00:00"))
-          age_hours = (now - completed).total_seconds() / 3600
-          run_url = latest.get("html_url", "")
-          details = (
-              f"Son başarılı zamanlanmış haber çalışması: {latest.get('run_number')}; "
-              f"tamamlanma: {completed_at}; geçen süre: {age_hours:.2f} saat; "
-              f"çalışma: {run_url}"
-          )
 
           if age_hours > 5:
-              details = (
-                  f"5 saatten uzun süredir başarılı zamanlanmış haber çalışması yok "
-                  f"({age_hours:.2f} saat). Haber workflow'u durmuş veya başarısız oluyor olabilir. "
-                  + details
+              age_text = f"{age_hours:.2f} saat" if age_hours != float("inf") else "başarılı schedule kaydı yok"
+              stale_details = (
+                  f"5 saatten uzun süredir başarılı zamanlanmış haber çalışması yok ({age_text}). "
+                  "Otomatik kurtarma tetiklemesi deneniyor. " + details
               )
-              record_check("news-workflow-stale", "failure", details, immediate=True)
-              print("HATA:", details)
+              print("UYARI:", stale_details)
+
+              # Mevcut haber workflow'unu yeniden tetikle; yeni workflow oluşturulmaz.
+              dispatch_url = f"https://api.github.com/repos/{repo}/actions/workflows/news-cron.yml/dispatches"
+              payload = json.dumps({"ref": "main"}).encode("utf-8")
+              dispatch_request = Request(
+                  dispatch_url,
+                  data=payload,
+                  method="POST",
+                  headers={
+                      "Authorization": "Bearer " + token,
+                      "Accept": "application/vnd.github+json",
+                      "X-GitHub-Api-Version": "2022-11-28",
+                      "User-Agent": "EngelliMe-News-Workflow-Watchdog",
+                      "Content-Type": "application/json",
+                  },
+              )
+              try:
+                  with urlopen(dispatch_request, timeout=20) as response:
+                      if response.status not in (200, 201, 204):
+                          raise RuntimeError(f"GitHub API HTTP {response.status}")
+                  record_check(
+                      "news-workflow-stale", "failure",
+                      stale_details + " Yeniden tetikleme GitHub tarafından kabul edildi; "
+                      "haber workflow'unun sonucunu tamamlanma raporu üzerinden izle.",
+                      immediate=True,
+                  )
+                  print("KURTARMA TETİKLENDİ: Engelli Haberleri Otomatik Güncelle yeniden başlatıldı.")
+              except Exception as exc:
+                  failure_details = stale_details + " Yeniden tetikleme başarısız: " + repr(exc)
+                  record_check("news-workflow-stale", "failure", failure_details, immediate=True)
+                  print("HATA:", failure_details)
           else:
               record_check("news-workflow-stale", "success", details, immediate=True)
               print("TAMAM:", details)
