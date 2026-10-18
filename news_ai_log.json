@@ -5181,6 +5181,13 @@
       "reported_at": "2026-10-16T17:51:45.682080+00:00",
       "resolved_at": "2026-10-17T09:37:31.118977+00:00",
       "recovery_details": "Son başarılı zamanlanmış haber çalışması: 129; tamamlanma: 2026-10-17T07:00:19Z; geçen süre: 2.62 saat; çalışma: https://github.com/rsever-source/mobilrs/actions/runs/39011949015"
+    },
+    {
+      "component": "news-workflow-stale",
+      "first_seen": "2026-10-18T09:41:54.740818+00:00",
+      "status": "reported",
+      "details": "5 saatten uzun süredir başarılı zamanlanmış haber çalışması yok (5.05 saat). Haber workflow'u durmuş veya başarısız oluyor olabilir. Son başarılı zamanlanmış haber çalışması: 134; tamamlanma: 2026-10-18T04:39:08Z; geçen süre: 5.05 saat; çalışma: https://github.com/rsever-source/mobilrs/actions/runs/39097792659",
+      "reported_at": "2026-10-18T09:41:54.740818+00:00"
     }
   ]
 }
