@@ -166,6 +166,27 @@ jobs:
                   print("TAMAM:", details)
           PY
 
+
+      - name: Başarılı haber akışında zaman aşımı uyarısını kapat
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: rsever-source/mobilrs
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import os
+          from system_report import record_check
+
+          run_id = os.environ.get("GITHUB_RUN_ID", "")
+          details = (
+              "Engelli Haberleri Otomatik Güncelle başarıyla tamamlandı; "
+              "haber akışı durdu uyarısı kapatıldı. "
+              f"Çalışma: https://github.com/rsever-source/mobilrs/actions/runs/{run_id}"
+          )
+          record_check("news-workflow-stale", "success", details, immediate=True)
+          PY
+
   # Elle tetiklenen, Gemini çağırmayan ve hiçbir dosyayı yazmayan GİB kaynak testi.
   # Normal haber güncellemesini ve news.json yazımını çalıştırmaz.
   gib-test:
