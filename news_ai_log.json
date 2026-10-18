@@ -2,100 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-10-13T06:49:40.722952+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "source_diagnostics": {
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 13,
-          "keyword_eliminated": 17,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 0,
-          "in_7_day_window": 0,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "26 Eylül 2026 Tarihinde Yapılacak Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavına Katılacak Adaylar ",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Mirasçıların Vergisel Yükümlülükleri Rehberi ile Veraset ve İntikal Vergisi Broşürü Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Yurt Dışından Elde Edilen Kazanç ve İratlarda Vergi İstisnası Rehberi ile İnfografik Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 493,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 10,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 17,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 465,
-          "accepted_as_candidate": 1
-        },
-        "examples": {},
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": [
-        {
-          "title": "Bu ada yapay zeka veri merkezleri yüzünden susuz kaldı",
-          "source": "TRT Haber",
-          "url": "https://www.trthaber.com/haber/guncel/bu-ada-yapay-zeka-veri-merkezleri-yuzunden-susuz-kaldi-959955.html",
-          "published_at": "2026-10-13T05:09:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "Endonezya'da Yapay Zeka Veri Merkezleri Su Krizine Yol Açtı",
-          "summary": "Endonezya'nın Batam adasında yaşayan vatandaşlar, yapay zeka veri merkezlerinin aşırı su tüketimi ve su hatlarının kesilmesi nedeniyle protesto düzenledi. Bölge sakinleri aylardır musluklarından su akmadığını ve tankerlerle dağıtılan sulara bağımlı hale geldiklerini belirtti. Su idaresi sorun için çalışma yürütüldüğünü açıklarken, BP Batam ajansı iddiaları reddederek durumu kuraklık mevsimine bağladı. Küresel çapta artan veri merkezi yatırımları ve su tüketimi çevre kaygılarını artırırken, Batam'daki projelerin yatırımları milyarlarca doları aştı. Yerel halk, yetkililerden milyarlık yatırımlar yerine temel insani ihtiyaçlara öncelik verilmesini talep ediyor.",
-          "detail_summary": "Endonezya'nın Batam adasında yer alan Nongsa Dijital Parkı'ndaki yapay zeka veri merkezlerinin makinelerini soğutmak için yoğun su tüketmesi, bölge halkı arasında protestolara neden oldu. Köy sakinleri, veri merkezlerinin faaliyete geçmesinden bu yana musluklarından aylardır su akmadığını ifade ederek tankerlerle dağıtılan kirli ve kokulu sulara bağımlı kaldıklarını dile getirdi. Batam su idaresi sorunu çözmeye çalıştığını belirtirken, kesintilerin doğrudan veri merkezleriyle bağlantılı olup olmadığı konusunda bilgi vermedi. Ticaret ve sanayi faaliyetlerini denetleyen BP Batam ajansı ise iddiaları reddederek su krizinin uzun süren kuraklık mevsiminden kaynaklandığını savundu. Yetkililer, protestoların ardından adada yeni veri merkezi açacak firmaların tatlı su kaynakları yerine kendi arıtma tesislerini kurmaları yönünde karar bildirdi. Singapur'un veri merkezi inşasına yönelik kısıtlamaları ve Batam'ın düşük işletme maliyetleri, adayı uluslararası yatırımcılar için cazibe merkezi haline getirdi ve yatırımlar 6,7 milyar doları aştı. Adadaki altı yapay rezervuardan sağlanan suyun 1,3 milyonluk nüfusa yetersiz kaldığı belirtilirken, bölge sakinleri yetkililerden temel yaşam ihtiyaçlarına duyarlılık gösterilmesini istiyor.",
-          "decision": "reject"
-        }
-      ]
-    },
-    {
       "run_at": "2026-10-13T16:02:39.456665+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -5487,6 +5393,208 @@
     },
     {
       "run_at": "2026-10-18T15:49:31.034491+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 15,
+          "parsed_items": 15,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 480,
+          "path_matches": 294,
+          "dated_from_title": 294,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 294,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "anchors": 87,
+          "article_links": 12,
+          "keyword_matches": 1,
+          "detail_attempts": 1,
+          "detail_errors": 0,
+          "missing_dates": 0,
+          "parsed_items": 1,
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 12,
+          "keyword_eliminated": 18,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılacak Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavına Katılacak Adaylar ",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Mirasçıların Vergisel Yükümlülükleri Rehberi ile Veraset ve İntikal Vergisi Broşürü Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 514,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 21,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 21,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 472,
+          "accepted_as_candidate": 0
+        },
+        "examples": {
+          "already_published": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Erzurumlu anne \"3 günden fazla yaşamaz\" denilen oğluna 22 yıldır sevgiyle bakıyor"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Konya'da \"özel hastalar\" evden çıkmadan engelli raporlarını yeniletebiliyor"
+            }
+          ],
+          "url_seen_within_7_days": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Otizmli yüzücü Kaan, okyanusları aşmak için adalar arasında yüzerek antrenman yapıyor"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Aksaraylı kadın hayalini kurduğu iş yerini İŞKUR'un engelli hibe desteğiyle açtı"
+            }
+          ],
+          "older_than_7_days": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Bakan Göktaş, Ankara'da engellilere ve ailelerine yönelik ilk \"Nefes Merkezi\"nin açılışını yaptı"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Marangoz baba ve engelli oğlu hurdacılardan aldıkları at arabalarını yeniliyor"
+            }
+          ]
+        },
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": []
+    },
+    {
+      "run_at": "2026-10-18T16:00:58.622176+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
       "source_diagnostics": {
