@@ -2,114 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-10-14T07:40:56.279331+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "source_diagnostics": {
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 13,
-          "keyword_eliminated": 17,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 0,
-          "in_7_day_window": 0,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "26 Eylül 2026 Tarihinde Yapılacak Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavına Katılacak Adaylar ",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Mirasçıların Vergisel Yükümlülükleri Rehberi ile Veraset ve İntikal Vergisi Broşürü Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Yurt Dışından Elde Edilen Kazanç ve İratlarda Vergi İstisnası Rehberi ile İnfografik Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 492,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 10,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 15,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 465,
-          "accepted_as_candidate": 2
-        },
-        "examples": {},
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": [
-        {
-          "title": "13.10.2026 Bakanımız Göktaş \"Hukuki Süreçlerde Aile Danışmanlığı Hizmetlerinin Etkinliğinin Artırılması Çalıştayı\"nda konuştu Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/bakanimiz-goktas-hukuki-sureclerde-aile-danismanligi-hizmetlerinin-etkinliginin-artirilmasi-calistayinda-konustu/",
-          "published_at": "2026-10-13T00:00:00+00:00",
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "Bakan Göktaş: Hukuki Süreçlerde Aile Danışmanlığı Hizmetlerinin Etkinliğini Artırıyoruz",
-          "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Hukuki Süreçlerde Aile Danışmanlığı Hizmetlerinin Etkinliğinin Artırılması Çalıştayı'na katıldı. Ankara Hakimevi'nde düzenlenen çalıştay, Adalet Bakanlığı ile ortaklaşa gerçekleştirildi. Bakan Göktaş, ailelerin zorlu dönemlerinde doğru rehberlik desteği almasının önemine vurgu yaptı. Türkiye'de aile danışmanlığı ve destek hizmetleriyle bugüne kadar milyonlarca vatandaşa ulaşıldığı belirtildi. Boşanma süreçlerinde aile danışmanlığı hizmetlerinin güçlendirilmesi için il eylem planları hayata geçirildi. Uzman danışmanlar, ailelerin yaşadıkları güçlükleri sağlıklı yürütmelerine ve çocukların üzerindeki yükü hafifletmeye destek oluyor.",
-          "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Ankara Hakimevi'nde düzenlenen Hukuki Süreçlerde Aile Danışmanlığı Hizmetlerinin Etkinliğinin Artırılması Çalıştayı'nda konuştu. Adalet Bakanlığı ile ortaklaşa düzenlenen çalıştayın ortak bir hassasiyetten doğduğunu belirten Göktaş, ailelerin zorlu dönemlerinde doğru rehberlik ve danışmanlık desteğine ulaşmasını amaçladıklarını söyledi. Sosyal bağların hızla dönüştüğü dünyada aile kurumunun bu değişimden etkilendiğini ifade eden Bakan Göktaş, 4787 sayılı Aile Mahkemeleri Kanunu'nun hukuk ile sosyal hizmetin aynı süreçte buluşmasını sağladığını vurguladı. Bakanlık olarak evlilik öncesi eğitimden aile danışmanlığına kadar uzanan hizmetlerle 10,8 milyon vatandaşa ulaştıklarını, ayrıca İlk Öğretmenim Ailem mobil uygulamasıyla 2 milyondan fazla kullanıcıya rehberlik ettiklerini kaydetti. 2025 yılında ihtisaslaşmış aile danışmanlığı birimleri oluşturduklarını belirten Göktaş, boşanma oranlarının yüksek olduğu ilçelerde ve 81 ildeki adli destek birimlerinde yürütülen çalışmalara değindi. Eylül ayında Boşanma Sürecinde Danışmanlık Hizmetlerinin Güçlendirilmesi İl Eylem Planı'nı uygulamaya koyduklarını hatırlatan Göktaş, anne ve babaların çocuklarının ihtiyaçlarını doğru karşılamasını destekleyeceklerini ifade etti. Aile danışmanlığı hizmetlerinin eşlere kararlarını sakin bir zeminde gözden geçirme imkanı sunduğunu belirten Göktaş, amaçlarının ailelerin bu süreçte yalnız olmadığını hissettirmek olduğunu sözlerine ekledi.",
-          "decision": "publish"
-        },
-        {
-          "title": "9 Ekim 2026 Yurt Dışından Gerçekleştirilecek Beşerî Tıbbi Ürün Alımları Dinamik Alım Sistemi Hakkında GENEL SAĞLIK SİGORTASI GENEL MÜDÜRLÜĞÜ",
-          "source": "Sosyal Güvenlik Kurumu – Duyurular",
-          "url": "https://www.sgk.gov.tr/duyuru/detay/Yurt-Disindan-Gerceklestirilecek-Beser-Tibbi-Urun-Alimlari-Dinamik-Alim-Sistemi-Hakkinda-2026-10-14-09-32-08",
-          "published_at": "2026-10-09T00:00:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "Bu duyuru genel bir tedarik ve ihale sistemine ilişkindir ve engelli bireyler üzerinde doğrudan somut bir etki veya özel bir hak düzenlemesi içermemektedir.",
-          "generated_title": "",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "reject"
-        }
-      ]
-    },
-    {
       "run_at": "2026-10-14T13:46:03.240093+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -6222,6 +6114,206 @@
         "zero_candidates_is_not_an_error": true
       },
       "candidates": []
+    },
+    {
+      "run_at": "2026-10-19T10:53:34.495085+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 15,
+          "parsed_items": 15,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 480,
+          "path_matches": 294,
+          "dated_from_title": 294,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 294,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "anchors": 87,
+          "article_links": 12,
+          "keyword_matches": 1,
+          "detail_attempts": 1,
+          "detail_errors": 0,
+          "missing_dates": 0,
+          "parsed_items": 1,
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 12,
+          "keyword_eliminated": 18,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılacak Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavına Katılacak Adaylar ",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Mirasçıların Vergisel Yükümlülükleri Rehberi ile Veraset ve İntikal Vergisi Broşürü Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 514,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 21,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 21,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 470,
+          "accepted_as_candidate": 2
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "18.10.2026 \"İyilik Var\"da bir ayda gönüllü sayısı 20 bine ulaştı Haberin Detayı",
+          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
+          "url": "https://www.aile.gov.tr/haberler/iyilik-varda-bir-ayda-gonullu-sayisi-20-bine-ulasti/",
+          "published_at": "2026-10-18T00:00:00+00:00",
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "generated_title": "",
+          "summary": "",
+          "detail_summary": "",
+          "decision": "reject"
+        },
+        {
+          "title": "16.10.2026 Aile ve Sosyal Hizmetler Bakanımız Göktaş, \"Mersin Çalıştayı Sonuç Konferansı\"nda konuştu: Haberin Detayı",
+          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
+          "url": "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-mersin-calistayi-sonuc-konferansinda-konustu/",
+          "published_at": "2026-10-16T00:00:00+00:00",
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "Bu haber Mersin Çalıştayı Sonuç Konferansı'nda yapılan sıfır atık, engelli hakları ve sosyal hizmet çalışmalarına dair yeni bir gelişmeyi içermektedir.",
+          "generated_title": "Bakan Göktaş: Dayanıklı şehrin ölçüsü yaşlıyı ve engelliyi koruyabilmektir",
+          "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Mersin Çalıştayı Sonuç Konferansı'na katıldı. Bakan Göktaş, dayanıklı bir şehrin en önemli ölçüsünün yaşlı ve engelli vatandaşları korumak olduğunu belirtti. Sıfır atık uygulamaları kapsamında 9 bin 500 personelin eğitiminin tamamlandığı açıklandı. Türk Hava Yolları ile yürütülen projeyle engelsiz yaşam merkezlerinde kumaş ve kağıt malzemeler değerlendiriliyor. Kadınlara ve çocuklara yönelik sıfır atık projelerinin ülke genelinde yaygınlaştırılacağı ifade edildi.",
+          "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Mersin Üniversitesi Akdeniz Kültür Merkezi'nde düzenlenen Mersin Çalıştayı Sonuç Konferansı'nda açıklamalarda bulundu. Bakan Göktaş, dayanıklı şehrin en önemli ölçüsünün ailesini, çocuğunu, yaşlısını ve engelli vatandaşını koruyabilmek olduğunu vurguladı. Sürdürülebilir sosyal hizmet anlayışı doğrultusunda sıfır atık uygulamaları konusunda 9 bin 500 personelin eğitimi tamamlandı. Türk Hava Yolları ile başlatılan Engelsiz Tasarımlarla İleri Dönüşüm Projesi ile huzurevleri ve engelsiz yaşam merkezlerindeki yaşlı ve engelli bireylerin üretkenliği destekleniyor. Kadının Güçlenmesi Eylem Planı kapsamında 1 milyon kadına ulaşılması hedeflenen Kadınlarla Atıksız Sürdürülebilir Yaşam projesi hayata geçiriliyor. Çocuk Hakları Komitelerinin iklim değişikliğine yönelik önerilerinin COP31 Zirvesi'nde dünyayla buluşacağı belirtildi.",
+          "decision": "publish"
+        }
+      ]
     }
   ],
   "system_incidents": [
