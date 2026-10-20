@@ -898,11 +898,13 @@ def _gemini(prompt):
                     "publish": {"type": "BOOLEAN"},
                     "duplicate": {"type": "BOOLEAN"},
                     "duplicate_reason": {"type": "STRING"},
+                    "reject_reason": {"type": "STRING"},
+                    "reject_label": {"type": "STRING"},
                     "title": {"type": "STRING"},
                     "summary": {"type": "STRING"},
                     "detail_summary": {"type": "STRING"},
                 },
-                "required": ["publish", "duplicate", "duplicate_reason", "title", "summary", "detail_summary"],
+                "required": ["publish", "duplicate", "duplicate_reason", "reject_reason", "reject_label", "title", "summary", "detail_summary"],
             },
         },
     }
@@ -1237,6 +1239,8 @@ Genel ekonomi, siyaset, savaş, trafik veya gündem haberlerini yalnızca engell
 üzerinde açık ve somut bir etkisi varsa publish=true ver.
 Aksi durumda publish=false ver.
 
+RET GEREKÇESİ: duplicate=false ve publish=false olduğunda reject_reason alanına neden uygun olmadığını tek kısa Türkçe cümleyle yaz; reject_label alanına aynı nedeni 1-2 kelimeyle yaz (ör. "İlgisiz içerik", "Genel sağlık", "Destek yok"). Uygun haberlerde veya mükerrer haberlerde iki alanı da boş bırak. Gerekçeyi yalnızca kaynak metnine dayanarak yaz; tahmin yürütme.
+
 ÖNEMLİ: MÜKERRER HABER KONTROLÜ YAP.
 Aşağıdaki "Mevcut sitedeki haberler" listesini yeni haberle karşılaştır.
 duplicate kararı yalnızca başlık veya genel konu benzerliğine göre verilmemeli.
@@ -1292,6 +1296,8 @@ Kaynak metni:
             ai_entry["publish"] = bool(result.get("publish"))
             ai_entry["duplicate"] = bool(result.get("duplicate"))
             ai_entry["duplicate_reason"] = _clean(result.get("duplicate_reason"))
+            ai_entry["reject_reason"] = _clean(result.get("reject_reason"))[:180] if not result.get("publish") and not result.get("duplicate") else ""
+            ai_entry["reject_label"] = " ".join(_clean(result.get("reject_label")).split()[:2]) if not result.get("publish") and not result.get("duplicate") else ""
             ai_entry["generated_title"] = _clean(result.get("title"))
             ai_entry["summary"] = _clean(result.get("summary"))
             ai_entry["detail_summary"] = _clean(result.get("detail_summary"))
