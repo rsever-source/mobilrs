@@ -2,209 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-10-15T17:05:01.251054+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [
-        {
-          "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
-          "error": "19 detay sayfasından yayın tarihi okunamadı.",
-          "kind": "source_parse_error"
-        }
-      ],
-      "source_diagnostics": {
-        "Anadolu Ajansı – Engelli Yaşam": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 13,
-          "parsed_items": 13,
-          "errors": []
-        },
-        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
-          "stage": "html_list",
-          "anchors": 72,
-          "path_matches": 19,
-          "dated_from_title": 0,
-          "dated_from_context": 0,
-          "detail_attempts": 19,
-          "detail_successes": 0,
-          "parsed_items": 0,
-          "errors": [
-            "19 detay sayfasından yayın tarihi okunamadı."
-          ]
-        },
-        "TRT Haber": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "TRT Haber – Sağlık": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
-          "stage": "html_list",
-          "anchors": 200,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
-          "stage": "html_list",
-          "anchors": 186,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
-          "stage": "html_list",
-          "anchors": 479,
-          "path_matches": 293,
-          "dated_from_title": 293,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 293,
-          "errors": []
-        },
-        "Sosyal Güvenlik Kurumu – Duyurular": {
-          "stage": "html_list",
-          "anchors": 94,
-          "path_matches": 10,
-          "dated_from_title": 10,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 10,
-          "errors": []
-        },
-        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
-          "stage": "tbb_mevzuat",
-          "anchors": 87,
-          "article_links": 12,
-          "keyword_matches": 1,
-          "detail_attempts": 1,
-          "detail_errors": 0,
-          "missing_dates": 0,
-          "parsed_items": 1,
-          "errors": []
-        },
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 12,
-          "keyword_eliminated": 18,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 0,
-          "in_7_day_window": 0,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "26 Eylül 2026 Tarihinde Yapılacak Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavına Katılacak Adaylar ",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Mirasçıların Vergisel Yükümlülükleri Rehberi ile Veraset ve İntikal Vergisi Broşürü Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 491,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 10,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 21,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 458,
-          "accepted_as_candidate": 2
-        },
-        "examples": {},
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": [
-        {
-          "title": "Görme engelli \"mucit dayı\" hurda malzemeler kullanarak elektrikli araçlar üretiyor",
-          "source": "Anadolu Ajansı – Engelli Yaşam",
-          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/gorme-engelli-mucit-dayi-hurda-malzemeler-kullanarak-elektrikli-araclar-uretiyor/1832835",
-          "published_at": "2026-10-15T12:39:16+00:00",
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "Görme Engelli İsmail Merter Hurda Malzemelerden Elektrikli Araç Üretti",
-          "summary": "Afyonkarahisar'da yaşayan görme engelli İsmail Merter, hurda ve yedek parçaları kullanarak güneş enerjisiyle şarj edilebilen elektrikli araçlar tasarladı. Çevresinde \"mucit dayı\" olarak bilinen Merter, ürettiği araçları ailesinin günlük işlerinde kullanmasını sağlıyor. Doğuştan görme engelli olan Merter, bugüne kadar biri traktör olmak üzere beş farklı elektrikli araç yaptı. Araçlar saatte 25 ila 30 kilometre hıza ulaşabiliyor ve mahalle arasında rahatlıkla kullanılıyor. Merter, bahçesine kurduğu güneş enerjisi panelleri sayesinde araçları ücretsiz olarak şarj ediyor. Altınokta Körler Derneği Afyonkarahisar Şube Başkanı Hakan Erdoğan, Merter'in engeline rağmen ürettiği bu araçların herkes için ilham verici olduğunu belirtti.",
-          "detail_summary": "Afyonkarahisar'da yaşayan doştan görme engelli 40 yaşındaki İsmail Merter, hurda malzemelerden elektrikli araçlar üretiyor. Hasta yeğeni için 2020 yılında evinin yanına kurduğu atölyede çalışmaya başlayan Merter, hurdacılardan ve yedek parçacılardan temin ettiği malzemeleri değerlendirdi. Zamanla kendini geliştiren Merter; motosiklet parçaları, aküler ve otomobil direksiyonları kullanarak üç ve dört tekerlekli toplam beş araç tasarladı. İki ayda tamamladığı araçlar saatte yaklaşık 25 ila 30 kilometre hıza ulaşabiliyor ve üç ileri bir geri vites sistemine sahip bulunuyor. Bahçesini sürmek için bir elektrikli traktör de yapan Merter, istediği verimi alamayınca bu çalışmayı bir kenara bıraktı. Evine kurduğu güneş enerjisi panellerinin montaj ve kablo bağlantılarını kendi yapan mucit, araçlarını tamamen ücretsiz olarak şarj edebiliyor. Ürettiği araçlar aile bireyleri tarafından günlük işlerde rahatlıkla kullanılırken, mahalle sakinleri ve çevredeki vatandaşlar da araçlara büyük ilgi gösteriyor. Altınokta Körler Derneği Afyonkarahisar Şube Başkanı Hakan Erdoğan, Merter'in engelinin üretim yapmasına asla engel olmadığını ve hayallerini gerçeğe dönüştürdüğünü vurguladı.",
-          "decision": "publish"
-        },
-        {
-          "title": "15.10.2026 Ekim ayına ilişkin SED ödemeleri hesaplara yatırıldı Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/ekim-ayina-iliskin-sed-odemeleri-hesaplara-yatirildi/",
-          "published_at": "2026-10-15T00:00:00+00:00",
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "generated_title": "Ekim Ayı SED Ödemeleri Hesaplara Yatırıldı",
-          "summary": "Aile ve Sosyal Hizmetler Bakanlığı, ekim ayına ilişkin Sosyal ve Ekonomik Destek ödemelerini hak sahiplerinin hesaplarına yatırdı. Çocukların eğitim giderlerini karşılamak ve sosyal açıdan desteklemek amacıyla toplam 2 milyar 233 milyon lira ödeme yapıldı. Bakan Mahinur Özdemir Göktaş, çocukların öncelikli olarak aile şefkatiyle yetişmelerini önemsediklerini belirtti. Aile odaklı hizmet modelleriyle çocukların toplumsal değerlere sahip bireyler olarak hayata hazırlanması hedefleniyor. Yapılan bu destekler sayesinde çocukların kendi aile çevrelerinde büyümesi ve gelişim göstermesi sağlanıyor.",
-          "detail_summary": "Aile ve Sosyal Hizmetler Bakanlığı, çocukların sosyal yönden desteklenmesi ve eğitim giderlerinin karşılanması amacıyla yürütülen Sosyal ve Ekonomik Destek ödemelerinin ekim ayı tutarını hesaplara aktardı. Bakan Mahinur Özdemir Göktaş tarafından yapılan açıklamada, ekim ayına yönelik toplam 2 milyar 233 milyon lira tutarındaki ödemenin hak sahiplerinin hesaplarına yatırıldığı bildirildi. Bakan Göktaş, çocukların ailelerinin yanında ve kendi sosyal çevreleri içerisinde desteklenmesine büyük önem verdiklerini vurguladı. Çocukların milli değerlere sahip, kendine güvenen, eğitimli ve sağlıklı bireyler olarak yetişmesi için çalışmaların kararlılıkla sürdürüldüğü ifade edildi. Aile odaklı sosyal hizmet modelleri sayesinde çocukların öncelikli olarak aile şefkati ve sıcaklığı ile büyümesi hedefleniyor. Bakanlık, çocukların kendi aile ortamında yetişmesinin toplumsal değerlerin korunmasında vazgeçilmez bir role sahip olduğuna inanıyor.",
-          "decision": "publish"
-        }
-      ]
-    },
-    {
       "run_at": "2026-10-15T21:26:25.959045+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [
@@ -6669,6 +6466,220 @@
         "zero_candidates_is_not_an_error": true
       },
       "candidates": []
+    },
+    {
+      "run_at": "2026-10-20T10:09:31.173127+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 15,
+          "parsed_items": 15,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 480,
+          "path_matches": 294,
+          "dated_from_title": 294,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 294,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "anchors": 87,
+          "article_links": 12,
+          "keyword_matches": 1,
+          "detail_attempts": 1,
+          "detail_errors": 0,
+          "missing_dates": 0,
+          "parsed_items": 1,
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 12,
+          "keyword_eliminated": 18,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılacak Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavına Katılacak Adaylar ",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Mirasçıların Vergisel Yükümlülükleri Rehberi ile Veraset ve İntikal Vergisi Broşürü Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 514,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 21,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 16,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 474,
+          "accepted_as_candidate": 3
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "Pasifik'teki ada ülkesi Vanuatu açıklarında 6,3 büyüklüğünde deprem",
+          "source": "TRT Haber",
+          "url": "https://www.trthaber.com/haber/guncel/pasifikteki-ada-ulkesi-vanuatu-aciklarinda-63-buyuklugunde-deprem-960609.html",
+          "published_at": "2026-10-20T07:12:00+00:00",
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "generated_title": "Vanuatu açıklarında 6,3 büyüklüğünde deprem meydana geldi",
+          "summary": "Pasifik'teki ada ülkesi Vanuatu açıklarında 6,3 büyüklüğünde deprem kaydedildi. ABD Jeolojik Araştırmalar Kurumu depremin merkez üssünü Port-Olry'nin kuzeybatısı olarak duyurdu. Deprem yerin 16 kilometre derinliğinde gerçekleşti. Sarsıntının ardından herhangi bir tsunami uyarısı yapılmadı. Olay sonucunda ilk belirlemelere göre can veya mal kaybı bildirilmedi.",
+          "detail_summary": "Pasifik bölgesindeki ada ülkesi Vanuatu açıklarında 6,3 büyüklüğünde bir deprem meydana geldi. ABD Jeolojik Araştırmalar Kurumu tarafından yapılan açıklamada, depremin merkez üssünün Port-Olry bölgesinin 197 kilometre kuzeybatısı olduğu bildirildi. Sarsıntının yerin 16 kilometre derinliğinde kaydedildiği belirtildi. Yetkililer tarafından yapılan değerlendirmelerde depremin ardından tsunami uyarısı yapılmadığı aktarıldı. Yaşanan sarsıntı sonrasında şu ana kadar herhangi bir can veya mal kaybı rapor edilmedi.",
+          "decision": "reject"
+        },
+        {
+          "title": "Bakan Memişoğlu: Yerli ultrason cihazı üretim tesisimizi kuruyoruz",
+          "source": "TRT Haber – Sağlık",
+          "url": "https://www.trthaber.com/haber/saglik/bakan-memisoglu-yerli-ultrason-cihazi-uretim-tesisimizi-kuruyoruz-960624.html",
+          "published_at": "2026-10-20T08:37:00+00:00",
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "none",
+          "generated_title": "Bakan Memişoğlu: Yerli ultrason cihazı üretim tesisimizi kuruyoruz",
+          "summary": "Sağlık Bakanı Kemal Memişoğlu, tıbbi teknolojilerde yerli üretim kapasitesini artırmak amacıyla yeni adımlar atıldığını duyurdu. Güney Kore'de gerçekleştirilen temaslar kapsamında Samsung Medison tesisi ziyaret edildi. Yapay zeka destekli ultrason sistemlerinin Türkiye'de üretilmesi için üretim tesisi kurulacağı açıklandı. Başlatılan teknoloji transferi süreciyle ultrason cihazlarının yerli olarak üretilmesi hedefleniyor. Monitörden yazılıma kadar cihazların en az yüzde 71 yerlilik oranıyla üretileceği belirtildi.",
+          "detail_summary": "Sağlık Bakanı Kemal Memişoğlu, resmi temaslarda bulunmak üzere gittiği Güney Kore'de önemli açıklamalarda bulundu. Bakan Memişoğlu, tıbbi görüntüleme teknolojileri alanında faaliyet gösteren Samsung Medison'u ziyaret ettiklerini bildirdi. Ziyaret sırasında yapay zeka destekli ultrason sistemleri ve işbirliği süreçleri yerinde değerlendirildi. Geçtiğimiz yıl başlatılan teknoloji transferiyle ultrason cihazı üretimine adım atıldığı hatırlatıldı. Sürecin Türkiye'de kurulacak üretim tesisiyle devam edeceği ve yerli üretim kapasitesinin artırılacağı ifade edildi. Cihazların monitöründen probuna, yazılımından donanımına kadar en az yüzde 71 yerlilik oranıyla üretileceği kaydedildi.",
+          "decision": "reject"
+        },
+        {
+          "title": "20.10.2026 Kadınlar için yapay zeka ve dijital güçlenme eğitimleri 7 pilot ilde başlıyor Haberin Detayı",
+          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
+          "url": "https://www.aile.gov.tr/haberler/kadinlar-icin-yapay-zeka-ve-dijital-guclenme-egitimleri-7-pilot-ilde-basliyor/",
+          "published_at": "2026-10-20T00:00:00+00:00",
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "generated_title": "Kadınlar İçin Yapay Zeka ve Dijital Güçlenme Eğitimleri 7 Pilot İlde Başlıyor",
+          "summary": "Aile ve Sosyal Hizmetler Bakanlığı, Turkcell ve KADEM iş birliğiyle kadınlar için yapay zeka ve dijital güçlenme eğitimleri başlatılıyor. Proje ile kadınların yapay zeka ve güvenli internet alanındaki yetkinliklerinin artırılması hedefleniyor. Eğitimler yedi pilot ilde gerçekleştirilecek ve 27 Ekim'de Van'da başlayacak. Program kapsamında günlük yaşamda karşılığı olan çeşitli konularda bilgilendirme yapılacak. Katılımcıların çocuklarıyla gelebilmesi için Bakanlık personeli tarafından çocuk bakım hizmeti sunulacak.",
+          "detail_summary": "Aile ve Sosyal Hizmetler Bakanlığı, Turkcell ve Kadın ve Demokrasi Vakfı iş birliğiyle kadınlara yönelik yapay zeka ve dijital güçlenme eğitimleri hayata geçiriliyor. Eğitimler ile kadınların yapay zeka ve güvenli internet alanlarında yetkinlik kazanması amaçlanıyor. Program yedi pilot ilde uygulanacak olup ilk eğitim 27 Ekim tarihinde Van'da yapılacak. Diğer illerdeki eğitim takvimi kapsamında 3 Kasım'da İzmir, 12 Kasım'da Ankara, 1 Aralık'ta Bursa ve Gaziantep, 8 Aralık'ta ise Adana ve Samsun illerinde düzenlenecek. Eğitimlerde dijital ebeveynlik, akıllı ev yönetimi, dijital güvenlik, ev ekonomisi ve güvenli alışveriş gibi konular ele alınacak. Kadınların eğitime katılımını kolaylaştırmak amacıyla çocuklarıyla gelen katılımcılara Bakanlık personeli tarafından çocuk bakım hizmeti sağlanacak. Programın 2027 yılında ülke genelindeki diğer illerde de yaygınlaştırılması planlanıyor.",
+          "decision": "reject"
+        }
+      ]
     }
   ],
   "system_incidents": [
