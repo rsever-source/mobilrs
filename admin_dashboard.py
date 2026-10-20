@@ -13,7 +13,7 @@ from fastapi.responses import HTMLResponse, JSONResponse, Response
 from pydantic import BaseModel, Field
 
 router = APIRouter()
-SESSION_TTL = 12 * 60 * 60
+SESSION_TTL = 7 * 24 * 60 * 60
 REPO = "rsever-source/mobilrs"
 BRANCH = "cloud-run-migration"
 RAW = "https://raw.githubusercontent.com/" + REPO + "/" + BRANCH + "/"
