@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20T05:02:48.391670+00:00",
+  "updated_at": "2026-10-20T10:09:31.173127+00:00",
   "items": [
     {
       "id": "fbf66648e8cd3f08ad50",
@@ -124,7 +124,6 @@
   ],
   "pending": [],
   "seen_urls": {
-    "https://www.trthaber.com/haber/guncel/bu-ada-yapay-zeka-veri-merkezleri-yuzunden-susuz-kaldi-959955.html": "2026-10-13T06:49:40.722952+00:00",
     "https://www.trthaber.com/haber/saglik/memisoglu-sigara-duzenlemesinin-insanlari-ifsa-etmekle-alakasi-yok-960006.html": "2026-10-13T21:17:39.332802+00:00",
     "https://www.aile.gov.tr/haberler/bakanimiz-goktas-hukuki-sureclerde-aile-danismanligi-hizmetlerinin-etkinliginin-artirilmasi-calistayinda-konustu/": "2026-10-14T07:40:56.279331+00:00",
     "https://www.sgk.gov.tr/duyuru/detay/Yurt-Disindan-Gerceklestirilecek-Beser-Tibbi-Urun-Alimlari-Dinamik-Alim-Sistemi-Hakkinda-2026-10-14-09-32-08": "2026-10-14T07:40:56.279331+00:00",
@@ -152,6 +151,9 @@
     "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/konyada-ozel-hastalar-evden-cikmadan-engelli-raporlarini-yeniletebiliyor/1832866": "2026-10-17T12:13:17.057279+00:00",
     "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/gorme-engelli-ogrenciler-ingilizceyi-dokunarak-ve-hareket-ederek-kesfediyor/1832862": "2026-10-17T12:13:17.057279+00:00",
     "https://www.aile.gov.tr/haberler/iyilik-varda-bir-ayda-gonullu-sayisi-20-bine-ulasti/": "2026-10-19T10:53:34.495085+00:00",
-    "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-mersin-calistayi-sonuc-konferansinda-konustu/": "2026-10-19T10:53:34.495085+00:00"
+    "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-mersin-calistayi-sonuc-konferansinda-konustu/": "2026-10-19T10:53:34.495085+00:00",
+    "https://www.trthaber.com/haber/guncel/pasifikteki-ada-ulkesi-vanuatu-aciklarinda-63-buyuklugunde-deprem-960609.html": "2026-10-20T10:09:31.173127+00:00",
+    "https://www.trthaber.com/haber/saglik/bakan-memisoglu-yerli-ultrason-cihazi-uretim-tesisimizi-kuruyoruz-960624.html": "2026-10-20T10:09:31.173127+00:00",
+    "https://www.aile.gov.tr/haberler/kadinlar-icin-yapay-zeka-ve-dijital-guclenme-egitimleri-7-pilot-ilde-basliyor/": "2026-10-20T10:09:31.173127+00:00"
   }
 }
