@@ -106,8 +106,8 @@ DASHBOARD_HTML = r'''<!doctype html>
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive"><title>Engelli.me haber durumu</title>
 <style nonce="{nonce}">
-*{{box-sizing:border-box}}body{{margin:0;background:#f3f6fa;color:#172033;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}}main{{max-width:1180px;margin:auto;padding:20px}}
-header{{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:20px}}h1{{font-size:24px;margin:0}}.muted{{color:#657187;font-size:13px}}button,input{{font:inherit;border-radius:10px;padding:10px 13px}}button{{border:0;background:#155eef;color:white;font-weight:700;cursor:pointer}}button.secondary{{background:#e8eef8;color:#1c355d}}.cards{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}}.card,section{{background:#fff;border:1px solid #e1e7ef;border-radius:14px;padding:16px;min-width:0}}.report-summary-cards{{grid-template-columns:repeat(4,minmax(0,1fr))}}.report-summary-cards .card{{min-height:104px}}.report-grid{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px;align-items:stretch}}.report-grid section{{margin-top:0}}.report-grid #pendingNewsSection,.report-grid #sourceErrorsSection{{grid-column:1/-1}}.report-grid #systemErrorsSection{{min-width:0;min-height:104px;overflow:auto}}.card small{{display:block;color:#657187}}.card strong{{display:block;font-size:21px;margin-top:7px;overflow-wrap:anywhere}}section{{margin-top:14px}}h2{{font-size:17px;margin:0 0 12px}}.status{{font-weight:750}}.good{{color:#16803c}}.bad{{color:#b42318}}.warn{{color:#9a6700}}.grid2{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}.scroll{{overflow:auto}}table{{border-collapse:collapse;width:100%;font-size:13px}}td,th{{padding:9px;border-bottom:1px solid #e8edf3;text-align:left;vertical-align:top}}pre{{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;background:#f7f9fc;padding:12px;border-radius:8px;max-height:560px;overflow:auto}}.row{{display:flex;gap:8px;align-items:center;flex-wrap:wrap}}input[type=search]{{border:1px solid #cbd4e1;min-width:200px;flex:1}}details{{border-bottom:1px solid #e8edf3;padding:10px 0}}summary{{cursor:pointer;font-weight:650}}.report-item{{border-bottom:1px solid #e8edf3;padding:12px 0}}.report-item:last-child{{border-bottom:0}}h3{{font-size:14px;margin:14px 0 8px}}a{{color:#155eef;overflow-wrap:anywhere}}.pill{{display:inline-block;padding:3px 8px;border-radius:999px;background:#edf2f8;font-size:12px}}#message{{min-height:18px;margin:8px 0;color:#526174;font-size:13px}}@media(max-width:760px){{main{{padding:14px}}.cards{{grid-template-columns:repeat(2,minmax(0,1fr))}}.report-summary-cards{{grid-template-columns:repeat(2,minmax(0,1fr))}}.grid2{{grid-template-columns:1fr}}.report-grid{{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}.report-grid section{{padding:12px}}h1{{font-size:20px}}}}
+*{{box-sizing:border-box}}body{{margin:0;background:#edf1f7;color:#152238;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:14px}}main{{max-width:1240px;margin:0 auto;padding:24px 24px 40px}}
+header{{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:18px;background:#0b1f38;color:#fff;border-radius:16px;padding:20px 24px}}header h1{{font-size:24px;line-height:1.2;margin:5px 0 0;letter-spacing:-.3px;color:#fff}}.muted{{color:#5b6779;font-size:13px;line-height:1.45}}header .muted{{color:#a9bdd6;font-size:12.5px}}header .muted:first-child{{color:#7fb2ff;font-size:11px;font-weight:750;letter-spacing:.08em;text-transform:uppercase}}button,input{{font:inherit;border-radius:10px;padding:11px 16px}}button{{min-height:42px;border:1px solid transparent;background:#155eef;color:#fff;font-weight:700;cursor:pointer}}button:hover{{background:#0f4fd0}}button:focus-visible,a:focus-visible,summary:focus-visible{{outline:3px solid #6ea8ff;outline-offset:2px}}button.secondary{{background:transparent;border-color:rgba(255,255,255,.42);color:#eaf1fb}}button.secondary:hover{{background:rgba(255,255,255,.14)}}.cards{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}}.card,section{{background:#fff;border:1px solid #dde5f0;border-radius:16px;padding:18px;min-width:0}}.report-summary-cards{{grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}}.report-summary-cards .card{{min-height:96px;padding:16px 14px}}.report-summary-cards .card small{{text-transform:none;letter-spacing:0;font-weight:600;font-size:12px}}.report-grid{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px;align-items:start}}.report-grid section{{margin-top:0}}.report-grid #systemErrorsSection{{min-width:0;grid-column:1/-1}}.card small{{display:block;color:#5f6d83;font-size:11px;font-weight:750;letter-spacing:.05em;line-height:1.4;text-transform:uppercase}}.card strong{{display:block;font-size:28px;line-height:1.15;margin-top:8px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums;letter-spacing:-.5px}}.cards:not(.report-summary-cards)>.card{{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:12px;row-gap:2px}}.cards:not(.report-summary-cards)>.card small{{grid-column:1;grid-row:1}}.cards:not(.report-summary-cards)>.card strong{{grid-column:2;grid-row:1/span 2;margin:0;font-size:30px}}#workflowErrorStatus{{display:inline-block;margin:0;padding:5px 11px;border-radius:999px;font-size:13px;font-weight:750;letter-spacing:0;background:#eef2f8;color:#3c4a5f}}#workflowErrorStatus.good{{background:#e5f6ec;color:#116533}}#workflowErrorStatus.bad{{background:#fde9e6;color:#9d2518}}#workflowErrorStatus.warn{{background:#fff3df;color:#855600}}.cards:not(.report-summary-cards)>.card .muted{{grid-column:1;grid-row:2}}section{{margin-top:16px}}h2{{display:flex;align-items:center;gap:8px;font-size:15px;line-height:1.3;margin:0 0 12px;letter-spacing:-.1px}}h2::before{{content:"";width:4px;height:18px;border-radius:2px;background:#155eef;flex:0 0 4px}}#pendingNewsSection h2::before{{background:#c07a00}}#sourceErrorsSection h2::before,#systemErrorsSection h2::before{{background:#c0392b}}.status{{font-weight:750}}#pendingNews .status{{display:inline-block;margin-top:8px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:750}}#pendingNews .status.warn{{background:#fff3df;color:#855600}}#pendingNews .status.bad{{background:#fde9e6;color:#9d2518}}.good{{color:#16803c}}.bad{{color:#b42318}}.warn{{color:#9a6700}}.row{{display:flex;gap:8px;align-items:center;flex-wrap:wrap}}details{{border-bottom:1px solid #e8edf3;padding:10px 0}}summary{{cursor:pointer;font-weight:650}}.report-item{{background:#f7fafd;border:1px solid #e4ebf5;border-radius:12px;padding:12px 14px;margin-bottom:9px;overflow-wrap:anywhere}}.report-item:last-child{{margin-bottom:0}}.report-item>strong{{display:block;font-size:13.5px;line-height:1.45;color:#13233b}}.report-item details{{border:0;border-top:1px dashed #d9e2ee;padding:8px 0 0;margin-top:8px}}.report-item details summary{{color:#155eef;font-size:12px;font-weight:700}}.report-item .report-detail{{margin-top:6px}}a{{color:#155eef;overflow-wrap:anywhere;text-decoration:none}}a:hover{{text-decoration:underline}}#message{{min-height:20px;margin:0 0 14px;color:#5b6779;font-size:12.5px}}@media(max-width:1040px){{.report-summary-cards{{grid-template-columns:repeat(3,minmax(0,1fr))}}.report-grid{{grid-template-columns:1fr}}}}@media(max-width:560px){{.cards:not(.report-summary-cards)>.card{{display:block}}.cards:not(.report-summary-cards)>.card strong{{margin-top:6px;font-size:26px}}}}@media(max-width:760px){{main{{padding:14px 14px 28px}}header{{padding:18px;gap:12px}}header h1{{font-size:20px}}.cards{{gap:10px}}.report-summary-cards{{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}.report-summary-cards .card{{min-height:86px;padding:14px 12px}}.report-summary-cards .card strong{{font-size:24px}}button{{min-height:46px}}.row{{width:100%}}.row button{{flex:1}}.report-grid{{grid-template-columns:1fr;gap:12px}}.report-grid section{{padding:15px}}.report-item{{padding:12px}}}}
 </style></head><body><main>
 <header><div><div class="muted">Engelli.me / Özel yönetim</div><h1>Haber sistemi durum raporu</h1><div class="muted" id="lastChecked">Henüz kontrol edilmedi</div></div><div class="row"><button id="refresh">Güncelle</button><button class="secondary" id="logout">Çıkış</button></div></header>
 <p id="message" role="status">Mevcut kayıtlar yükleniyor…</p>
@@ -214,6 +214,14 @@ function renderPendingNews(items,log){{
   root.appendChild(wrap);
  }}
 }}
+function errorDetailBlock(value){{
+ const text=String(value);
+ if(text.length<=140)return node('div',text);
+ const box=node('details',undefined,'report-more');
+ box.appendChild(node('summary','Ayrıntı'));
+ box.appendChild(node('div',text,'report-detail'));
+ return box;
+}}
 function renderErrorItems(targetId,items){{
  const root=el(targetId);root.replaceChildren();
  const section=el(targetId+'Section');
@@ -223,8 +231,13 @@ function renderErrorItems(targetId,items){{
   const wrap=node('div',undefined,'report-item');
   wrap.appendChild(node('strong',item.title||item.name||item.component||'Hata'));
   if(item.when)wrap.appendChild(node('div',item.when,'muted'));
-  if(item.details)wrap.appendChild(node('div',item.details));
+  if(item.details)wrap.appendChild(errorDetailBlock(item.details));
   if(item.urls&&item.urls.length){{
+   const collapsible=item.urls.length>2;
+   const box=collapsible?node('details',undefined,'report-more'):node('div');
+   const listLabel='Tarihi okunamayan detay sayfaları: '+item.urls.length;
+   box.appendChild(collapsible?node('summary',listLabel):node('div',listLabel,'muted'));
+   const detailBody=node('div',undefined,'report-detail');
    const list=node('ul');list.style.paddingLeft='20px';
    for(const detail of item.urls){{
     const li=node('li');const a=node('a',detail.title||detail.url||'Detay sayfası');
@@ -233,8 +246,9 @@ function renderErrorItems(targetId,items){{
     if(detail.reason)li.appendChild(node('div',detail.reason,'muted'));
     list.appendChild(li);
    }}
-   wrap.appendChild(node('div','Tarihi okunamayan detay sayfaları: '+item.urls.length,'muted'));
-   wrap.appendChild(list);
+   detailBody.appendChild(list);
+   box.appendChild(detailBody);
+   wrap.appendChild(box);
   }}
   root.appendChild(wrap);
  }}
@@ -250,11 +264,6 @@ function readableGeminiError(value){{
  if(/503|service unavailable/i.test(raw))return 'Gemini geçici olarak hizmet vermedi; haber işlenemedi.';
  if(/429|rate.?limit/i.test(raw))return 'Gemini istek sınırına takıldı; haber işlenemedi.';
  return raw||'Hata ayrıntısı kaydedilmemiş.';
-}}
-function retryStatusForTitle(title,pendingTitles){{
- const found=pendingTitles.find(t=>title&&title.startsWith(t+':'));
- if(found)return 'Durum: Haber bekleyenler listesinde; yeniden denenmek üzere bekliyor.';
- return 'Durum: Haber güncel bekleyenler listesinde görünmüyor; yeniden deneneceği doğrulanamadı.';
 }}
 function renderErrors(data){{
  const runs=(data.log?.news_runs||[]).slice(-1);
@@ -294,8 +303,6 @@ function renderErrors(data){{
 }}
 async function api(url,body){{const r=await fetch(url,{{method:body?'POST':'GET',credentials:'same-origin',headers:body?{{'Content-Type':'application/json'}}:{{}},body:body?JSON.stringify(body):undefined,cache:'no-store'}});const j=await r.json().catch(()=>({{}}));if(!r.ok)throw Error(j.detail||'İstek başarısız');return j}}
 async function refresh(){{el('message').textContent='Durum bilgisi yükleniyor…';el('refresh').disabled=true;try{{const data=await api('/admin/api/status');render(data);el('message').textContent='Durum bilgisi güncellendi.'}}catch(e){{el('message').textContent=e.message}}finally{{el('refresh').disabled=false}}}}
-function decode(s){{s=s.replace(/-/g,'+').replace(/_/g,'/');const raw=atob(s+'='.repeat((4-s.length%4)%4));return Uint8Array.from(raw,c=>c.charCodeAt(0))}}
-function encode(buf){{return btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}}
 async function post(url,data){{const r=await fetch(url,{{method:'POST',credentials:'same-origin',headers:{{'Content-Type':'application/json'}},body:JSON.stringify(data)}});const j=await r.json().catch(()=>({{}}));if(!r.ok)throw Error(j.detail||'İşlem başarısız');return j}}
 el('refresh').addEventListener('click',refresh);el('logout').addEventListener('click',async()=>{{try{{await post('/admin/api/logout',{{}})}}finally{{location.href='/admin/haber-durumu'}}}});
 
