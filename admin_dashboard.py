@@ -190,7 +190,7 @@ function renderGeminiDecisions(log){{
  el('geminiDuplicatesCount').textContent=String(duplicates.length);
  const reasons=el('geminiRejectedReasons');reasons.replaceChildren();
  for(const c of rejected.slice(0,3)){{
-  const label=String(c.reject_label||'').trim().split(/\\s+/).filter(Boolean).slice(0,2).join(' ');
+  const label=String(c.reject_label||'').trim().split(/\s+/).filter(Boolean).slice(0,2).join(' ');
   if(label)reasons.appendChild(node('span',label,'reject-reason-tag'));
  }}
 }}
