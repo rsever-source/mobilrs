@@ -1254,6 +1254,14 @@ Ancak aynı konu hakkında daha sonra gerçekleşen yeni bir gelişme duplicate 
 duplicate_reason alanında mükerrerliği somut olay veya dönem üzerinden açıkla.
 Sadece "aynı konu", "benzer haber" veya "aynı alan" gibi genel gerekçeler duplicate için yeterli değildir.
 
+KANIT EŞİĞİ:
+- Mevcut haber listesinde her haberin başlığını, kaynağını, tarihini ve URL'sini dikkate al. URL ve tarih tek başına karar verdirmez; somut olayın aynı olup olmadığını anlamaya yardımcı olur.
+- Yeni adayın kaynak metnini, mevcut haberin özetinde anlatılan somut olayla karşılaştır. Mevcut haberin özeti yeni adayın ayrıntılarını doğrulamaya yetmiyorsa, aynı olay olduğunu varsayma.
+- Aynı kurumun aynı konu başlığında yayımladığı farklı tarihli veya farklı numaralı duyurular otomatik olarak mükerrer değildir. Yeni duyuru yeni karar, liste sürümü, değişiklik, yürürlük tarihi, tutar, dönem veya başka yeni bilgi içeriyorsa duplicate=false ver.
+- Resmî duyurularda duyuru/karar numarası ve ek dosya adı farklıysa bunları ayrı yayınlar olarak değerlendir; eklerin içeriği karşılaştırılmadan aynı içerik olduklarını varsayma.
+- İki duyurunun ekleri veya tam metinleri elinde yoksa ve aynı somut gelişmeyi anlattıkları kanıtlanamıyorsa duplicate=true verme; duplicate=false ver, çünkü yalnızca konu benzerliği mükerrerlik kanıtı değildir.
+- duplicate=true için mevcut haberle ortak olan somut olayı açıkça belirt. Yalnızca aynı kurum, konu veya anahtar kelimeleri sayma.
+
 Mevcut sitedeki haberler:
 {{existing_news}}
 
@@ -1278,7 +1286,11 @@ Kaynak metni:
 """
             existing_news = existing_items + added
             existing_news_text = "\n".join(
-                f"- Başlık: {n.get('title', '')}\n  Özet: {n.get('summary', '')}"
+                f"- Başlık: {n.get('title', '')}\n"
+                f"  Kaynak: {n.get('source', '')}\n"
+                f"  Yayın tarihi: {n.get('published_at', n.get('date', 'bilinmiyor'))}\n"
+                f"  URL: {n.get('url', '')}\n"
+                f"  Özet: {n.get('summary', '')}"
                 for n in existing_news
             ) or "Henüz yayınlanmış haber yok."
             prompt = prompt.replace("{existing_news}", existing_news_text)
