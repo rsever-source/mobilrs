@@ -1,11 +1,13 @@
 import hashlib
 import hmac
 import json
+import logging
 import os
 import secrets
+import sys
 import time
 from datetime import datetime, timezone
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 
 import requests
 from fastapi import APIRouter, HTTPException, Request
@@ -20,6 +22,25 @@ RAW = "https://raw.githubusercontent.com/" + REPO + "/" + BRANCH + "/"
 API = "https://api.github.com/repos/" + REPO
 LIVE_NEWS = os.environ.get("LIVE_NEWS_URL", "https://mobilrs-test-ltiv3pox5q-ew.a.run.app/api/news")
 
+# Tanı satırları Cloud Run'da görünmesi için kendi stdout handler'ı ile yazılır;
+# kök logger yapılandırılmadığında INFO kayıtları aksi halde düşer.
+logger = logging.getLogger("engelli.admin_session")
+if not logger.handlers:
+    _log_handler = logging.StreamHandler(sys.stdout)
+    _log_handler.setFormatter(logging.Formatter("%(message)s"))
+    logger.addHandler(_log_handler)
+    logger.setLevel(logging.INFO)
+    logger.propagate = False
+
+# Oturum çerezi tanısı için kaba durum kodları. Log satırlarında yalnızca bu
+# sabitler görünür; çerez değeri, imza ve parola hiçbir zaman yazılmaz.
+SESSION_VALID = "valid"
+SESSION_MISSING = "missing"
+SESSION_EXPIRED = "expired"
+SESSION_MALFORMED = "malformed"
+SESSION_BAD_SIGNATURE = "bad_signature"
+SESSION_NO_SECRET = "no_secret"
+
 
 def _admin_password():
     return os.environ.get("ADMIN_PASSWORD", "")
@@ -33,20 +54,76 @@ def _session_signature(expiry, nonce):
     return hmac.new(secret.encode("utf-8"), payload.encode("utf-8"), hashlib.sha256).hexdigest()
 
 
-def _cookie_session(request):
+def _session_state(request):
+    """Oturum çerezini değerlendirir ve kaba bir durum kodu döndürür.
+
+    Yalnızca yukarıdaki SESSION_* sabitlerinden biri döner. Çerez değeri, imza
+    veya parola dışarı verilmez; _cookie_session() ile tanı logu aynı
+    değerlendirmeyi paylaşır.
+    """
     token = request.cookies.get("eng_admin_session", "")
+    if not token:
+        return SESSION_MISSING
+    if not _admin_password():
+        return SESSION_NO_SECRET
     try:
         expiry, nonce, signature = token.split(".", 2)
-        if int(expiry) < int(time.time()) or len(nonce) > 128:
-            return False
-        expected = _session_signature(expiry, nonce)
-        return bool(expected) and hmac.compare_digest(signature, expected)
+        expires_at = int(expiry)
     except (ValueError, TypeError):
-        return False
+        return SESSION_MALFORMED
+    if expires_at < int(time.time()):
+        return SESSION_EXPIRED
+    if len(nonce) > 128:
+        return SESSION_MALFORMED
+    expected = _session_signature(expiry, nonce)
+    if not expected or not hmac.compare_digest(signature, expected):
+        return SESSION_BAD_SIGNATURE
+    return SESSION_VALID
 
 
-def _require_session(request):
-    if not _cookie_session(request):
+def _cookie_session(request):
+    return _session_state(request) == SESSION_VALID
+
+
+def _safe_header(request, name):
+    """Başlığı loga yazılabilir kısa ve güvenli bir değere indirger."""
+    raw = request.headers.get(name, "")
+    cleaned = "".join(ch for ch in raw[:64] if ch.isalnum() or ch in "-_/:.")
+    return cleaned or "-"
+
+
+def _referer_host(request):
+    referer = request.headers.get("referer", "")
+    if not referer:
+        return "-"
+    try:
+        return urlsplit(referer).hostname or "-"
+    except ValueError:
+        return "-"
+
+
+def _log_session_state(request, endpoint, state):
+    """Sır içermeyen tanı satırı: durum + isteğin şekli (çerez sayısı, fetch türü)."""
+    cookies = request.cookies
+    logger.info(json.dumps({
+        "severity": "INFO",
+        "message": "admin_session",
+        "endpoint": endpoint,
+        "state": state,
+        "session_cookie": "eng_admin_session" in cookies,
+        "cookie_count": len(cookies),
+        "host": _safe_header(request, "host"),
+        "fetch_site": _safe_header(request, "sec-fetch-site"),
+        "fetch_mode": _safe_header(request, "sec-fetch-mode"),
+        "fetch_dest": _safe_header(request, "sec-fetch-dest"),
+        "referer_host": _referer_host(request),
+    }, ensure_ascii=False, separators=(",", ":")))
+
+
+def _require_session(request, endpoint="api-status"):
+    state = _session_state(request)
+    if state != SESSION_VALID:
+        _log_session_state(request, endpoint, state)
         raise HTTPException(401, "Oturum açılması gerekiyor.")
     return True
 
@@ -317,7 +394,9 @@ refresh();
 @router.get("/admin/haber-durumu", response_class=HTMLResponse)
 async def admin_page(request: Request):
     nonce = request.state.csp_nonce
-    html = DASHBOARD_HTML if _cookie_session(request) else LOGIN_HTML
+    state = _session_state(request)
+    _log_session_state(request, "haber-durumu", state)
+    html = DASHBOARD_HTML if state == SESSION_VALID else LOGIN_HTML
     html = html.replace("{nonce}", nonce).replace("{{", "{").replace("}}", "}")
     return HTMLResponse(html, headers={"X-Robots-Tag": "noindex, nofollow, noarchive", "Cache-Control": "no-store"})
 
@@ -332,6 +411,10 @@ async def admin_password_login(request: Request, body: PasswordLogin):
         raise HTTPException(401, "Parola hatalı.")
     response = JSONResponse({"ok": True})
     _set_session(response)
+    logger.info(json.dumps({
+        "severity": "INFO", "message": "admin_session", "event": "issued",
+        "endpoint": "login", "ttl_seconds": SESSION_TTL,
+    }, separators=(",", ":")))
     return response
 
 
