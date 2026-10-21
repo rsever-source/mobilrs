@@ -1,12 +1,15 @@
 # Cloud Build: build + push + trafiksiz deploy + smoke test + doğrulanmış revision'ı canlıya al.
 #
-# ÖNEMLİ: Servis trafiği artık "latestRevision" yerine ADI BELİRLİ bir revision'a
+# ÖNEMLİ: Servis trafiği "latestRevision" yerine ADI BELİRLİ bir revision'a
 # sabitlenmelidir. Trafik latestRevision'a bağlıyken yeni revision oluşturulduğu
 # anda %100 trafik alır ve başarısız build bile canlıya çıkar. Bu yüzden:
 #   1) Deploy adımı --no-traffic ile revision oluşturur (trafik değişmez),
 #   2) Smoke test tag URL'i üzerinde çalışır,
 #   3) yalnızca smoke test geçerse o revision adıyla %100'e alınır.
 # Herhangi bir adım başarısız olursa canlı trafik mevcut revision'da kalır.
+#
+# Not: adım içindeki shell değişkenleri $$ ile yazılır; tek $ Cloud Build
+# substitution olarak yorumlanır ve build reddedilir.
 steps:
   - name: gcr.io/cloud-builders/docker
     id: Build
@@ -49,13 +52,13 @@ steps:
       - -c
       - |
         set -eu
-        REV="$(gcloud run services describe mobilrs-test --region=europe-west1 --project=project-f671a84c-0cde-40b8-921 --format='value(status.latestCreatedRevisionName)')"
-        URL="$(gcloud run services describe mobilrs-test --region=europe-west1 --project=project-f671a84c-0cde-40b8-921 --format='value(status.url)')"
-        BASE="$(printf '%s' "$URL" | sed 's#https://#https://test---#')"
-        echo "$REV" > /workspace/revision.txt
-        echo "$BASE" > /workspace/base_url.txt
-        echo "revision=$REV"
-        echo "base=$BASE"
+        REV="$$(gcloud run services describe mobilrs-test --region=europe-west1 --project=project-f671a84c-0cde-40b8-921 --format='value(status.latestCreatedRevisionName)')"
+        URL="$$(gcloud run services describe mobilrs-test --region=europe-west1 --project=project-f671a84c-0cde-40b8-921 --format='value(status.url)')"
+        BASE="$$(echo "$$URL" | sed 's#https://#https://test---#')"
+        echo "$$REV" > /workspace/revision.txt
+        echo "$$BASE" > /workspace/base_url.txt
+        echo "revision=$$REV"
+        echo "base=$$BASE"
 
   # Canlı trafik değişmeden, tag URL'i üzerinde gerçek HTTP kontrolü.
   # (Ekstra image çekmemek için gcloud adımıyla aynı image + python3 kullanılır.)
@@ -65,7 +68,7 @@ steps:
     args:
       - -c
       - |
-        import sys, time, urllib.request, urllib.error
+        import time, urllib.request, urllib.error
 
         base = open("/workspace/base_url.txt").read().strip()
         print("Smoke test:", base, flush=True)
@@ -108,12 +111,12 @@ steps:
       - -c
       - |
         set -eu
-        REV="$(cat /workspace/revision.txt)"
-        echo "Smoke test gecti; trafik $REV revision'ina aliniyor."
+        REV="$$(cat /workspace/revision.txt)"
+        echo "Smoke test gecti; trafik $$REV revision'ina aliniyor."
         gcloud run services update-traffic mobilrs-test \
           --region=europe-west1 \
           --project=project-f671a84c-0cde-40b8-921 \
-          --to-revisions="$REV=100" \
+          --to-revisions="$$REV=100" \
           --quiet
 
 options:
