@@ -1288,7 +1288,7 @@ Kaynak metni:
             existing_news_text = "\n".join(
                 f"- Başlık: {n.get('title', '')}\n"
                 f"  Kaynak: {n.get('source', '')}\n"
-                f"  Yayın tarihi: {n.get('published_at', n.get('date', 'bilinmiyor'))}\n"
+                f"  Yayın tarihi: {n.get('published_at') or n.get('date') or 'bilinmiyor'}\n"
                 f"  URL: {n.get('url', '')}\n"
                 f"  Özet: {n.get('summary', '')}"
                 for n in existing_news
@@ -1304,6 +1304,11 @@ Kaynak metni:
             })
 
             result = _gemini(prompt)
+            # duplicate=true için gerekçe zorunlu: duplicate_reason boş veya yalnızca
+            # boşluk ise kanıt yoktur, haber mükerrer sayılmaz; publish/reject kararı
+            # normal akışa bırakılır.
+            if result.get("duplicate") and not _clean(result.get("duplicate_reason")):
+                result["duplicate"] = False
             ai_entry["status"] = "gemini_decision"
             ai_entry["publish"] = bool(result.get("publish"))
             ai_entry["duplicate"] = bool(result.get("duplicate"))
