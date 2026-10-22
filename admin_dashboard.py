@@ -41,6 +41,13 @@ SESSION_MALFORMED = "malformed"
 SESSION_BAD_SIGNATURE = "bad_signature"
 SESSION_NO_SECRET = "no_secret"
 
+# Oturum çerezi SameSite=Lax olmalı. Strict iken iOS Safari (ve diğer
+# tarayıcılar) başka bir siteden/uygulamadan gelen üst düzey gezinmede çerezi
+# göndermiyor; sunucu çerezi hiç görmeyip giriş sayfası döndürüyordu. Lax,
+# üst düzey GET gezinmesinde çerezi gönderir ama siteler arası POST/fetch
+# isteklerinde göndermez; CSRF koruması _origin_guard ile birlikte sürer.
+SESSION_COOKIE_SAMESITE = "lax"
+
 
 def _admin_password():
     return os.environ.get("ADMIN_PASSWORD", "")
@@ -134,12 +141,14 @@ def _set_session(response):
     signature = _session_signature(expiry, nonce)
     response.set_cookie(
         "eng_admin_session", expiry + "." + nonce + "." + signature,
-        max_age=SESSION_TTL, httponly=True, secure=True, samesite="strict", path="/admin"
+        max_age=SESSION_TTL, httponly=True, secure=True,
+        samesite=SESSION_COOKIE_SAMESITE, path="/admin"
     )
 
 
 def _clear_session(response):
-    response.delete_cookie("eng_admin_session", path="/admin", secure=True, httponly=True, samesite="strict")
+    response.delete_cookie("eng_admin_session", path="/admin", secure=True, httponly=True,
+                           samesite=SESSION_COOKIE_SAMESITE)
 
 
 def _origin_guard(request):
