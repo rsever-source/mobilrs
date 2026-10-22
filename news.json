@@ -1,6 +1,16 @@
 {
-  "updated_at": "2026-10-22T05:05:13.618695+00:00",
+  "updated_at": "2026-10-22T10:17:51.647410+00:00",
   "items": [
+    {
+      "id": "71d52884821f999edde0",
+      "title": "TİHEK'ten belediyelere erişilebilirlik cezası",
+      "summary": "Türkiye İnsan Hakları ve Eşitlik Kurumu, görme engelli bir vatandaşın güzergahında erişilebilirlik koşullarını sağlamayan Eskişehir Büyükşehir Belediyesi ile Tepebaşı Belediyesine idari para cezası verdi. Kurum incelemesinde yaya geçidi, rampa ve hissedilebilir yüzey işaretlerinin eksik olduğu tespit edildi. Belediyelerin tedbirleri yetersiz bulundu.",
+      "detail_summary": "Türkiye İnsan Hakları ve Eşitlik Kurumu, görme engelli bir kişinin işe gidiş ve dönüş güzergahında erişilebilirlik koşullarının sağlanmaması nedeniyle Eskişehir Büyükşehir Belediyesi ile Tepebaşı Belediyesine 50'şer bin lira idari para cezası verdi. Yüzde 52 oranında görme engeli bulunan vatandaş, güzergahta yaya geçidi ve hız kesici bulunmadığını, kaldırımların standartlara uygun olmadığını belirterek kuruma başvurdu. Erişilebilirlik İzleme ve Denetleme Komisyonu tarafından yapılan teknik incelemede, kaldırımlarda kesintisiz ve engelsiz geçişin sağlanamadığı, elektrik direkleri ile tabelaların geçişi engellediği belirlendi. İncelemede ayrıca rampa, yaya geçidi ve hissedilebilir yüzey işaretlerinin bulunmadığı, kaldırım zeminlerinin onarıma ihtiyaç duyduğu tespit edildi. TİHEK, belediyeler tarafından alınan alternatif tedbirlerin yetersiz kaldığını ve görme engelli başvuranın dezavantajlı konuma sokularak ayrımcılık yasağının ihlal edildiğini kararlaştırdı.",
+      "source": "Anadolu Ajansı – Engelli Yaşam",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/tihekten-belediyelere-engelli-yaya-gecidi-cezasi/1832908",
+      "published_at": "2026-10-22T00:00:00+00:00",
+      "created_at": "2026-10-22T10:17:51.647410+00:00"
+    },
     {
       "id": "f8cbc455565e6b33d162",
       "title": "Türkiye'nin İlk İşitme Engelli Dragon Bot Takımı Sessiz Ejderhalar Dünya Kupası'nı Hedefliyor",
@@ -110,16 +120,6 @@
       "url": "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-mersin-calistayi-sonuc-konferansinda-konustu/",
       "published_at": "2026-10-16T00:00:00+00:00",
       "created_at": "2026-10-19T10:53:34.495085+00:00"
-    },
-    {
-      "id": "e9c0e9fa760fac51ef8b",
-      "title": "SGK'dan İlaç Geri Ödeme Listesi Düzenlemesi",
-      "summary": "Sosyal Güvenlik Kurumu, İlaç Geri Ödeme Komisyonu kararları doğrultusunda yeni düzenlemeler yaptı. Yapılan güncellemeler bedeli ödenecek ilaçlar listesinde yer aldı. Genel Sağlık Sigortası Genel Müdürlüğü tarafından duyurulan kararlar erişime açıldı. Düzenleme kapsamında ilgili ilaç listeleri güncellendi.",
-      "detail_summary": "Sosyal Güvenlik Kurumu tarafından 2026 yılına ait ilaç geri ödeme komisyonu kararları yayımlandı. 2026/1. Dönem İlaç Geri Ödeme Komisyonu ile 2026 Yılı 3. Olağanüstü İlaç Geri Ödeme Komisyonu kararları açıklandı. Alınan kararlara istinaden bedeli ödenecek ilaçlar listesinde çeşitli düzenlemeler yapıldı. Genel Sağlık Sigortası Genel Müdürlüğü tarafından yapılan duyuru resmi internet sitesi üzerinden paylaşıldı. İlgili düzenlemelere dair detaylı liste ve duyuru dokümanı PDF formatında erişime sunuldu.",
-      "source": "Sosyal Güvenlik Kurumu – Duyurular",
-      "url": "https://www.sgk.gov.tr/duyuru/detay/20261-Donem-Ilac-Geri-Odeme-Komisyonu-ve-2026-Yili-3-Olaganustu-Ilac-Geri-Odeme-Komisyonu-Kararlarina-Istinaden-Bedeli-Odenecek-Ilaclar-Listesinde-2026-10-16-11-37-43",
-      "published_at": "2026-10-16T00:00:00+00:00",
-      "created_at": "2026-10-16T10:50:45.725800+00:00"
     }
   ],
   "pending": [],
@@ -154,6 +154,9 @@
     "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/kanser-surecinde-tanistigi-kagit-kivirma-sanati-duygu-pakelin-hayatini-degistirdi/1832900": "2026-10-21T13:58:29.562679+00:00",
     "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/ilk-isitme-engelli-dragon-bot-takimi-turkiyeyi-dunyada-temsil-etmek-icin-kurek-cekiyor/1832899": "2026-10-21T13:58:29.562679+00:00",
     "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-ozbekistanda-basin-mensuplarina-degerlendirmede-bulundu/": "2026-10-21T13:58:29.562679+00:00",
-    "https://www.sgk.gov.tr/duyuru/detay/Bedeli-Odenecek-Ilaclar-Listesinde-Yapilan-Duzenlemeler-Hakkinda-Duyuru-202641-2026-10-21-04-46-33": "2026-10-21T18:47:09.270250+00:00"
+    "https://www.sgk.gov.tr/duyuru/detay/Bedeli-Odenecek-Ilaclar-Listesinde-Yapilan-Duzenlemeler-Hakkinda-Duyuru-202641-2026-10-21-04-46-33": "2026-10-21T18:47:09.270250+00:00",
+    "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/tihekten-belediyelere-engelli-yaya-gecidi-cezasi/1832908": "2026-10-22T10:17:51.647410+00:00",
+    "https://www.trthaber.com/haber/saglik/ust-solunum-yolu-vakalari-artti-960866.html": "2026-10-22T10:17:51.647410+00:00",
+    "https://www.aile.gov.tr/haberler/bakanimiz-goktas-ozbekistanda-cocuklarin-refahina-yatirim-yapmak-konulu-zirvede-konustu/": "2026-10-22T10:17:51.647410+00:00"
   }
 }
