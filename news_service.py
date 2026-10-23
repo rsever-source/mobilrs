@@ -397,7 +397,8 @@ def _aa_byline_published_at(soup):
             for node in container.find_all(True):
                 if in_body(node):
                     continue
-                text = _clean(node.get_text(" ", strip=True))                if not text or len(text) > 32 or not _DATE_ONLY_RE.match(text):
+                text = _clean(node.get_text(" ", strip=True))
+                if not text or len(text) > 32 or not _DATE_ONLY_RE.match(text):
                     continue
                 parsed = _date_from_text(text)
                 if parsed:
@@ -1196,7 +1197,8 @@ def update_news():
                 for link in tbb_soup.find_all("a", href=True):
                     href = urljoin(item["url"], link.get("href", ""))
                     if "resmigazete.gov.tr/eskiler/" in href:
-                        official_url = href                        break
+                        official_url = href
+                        break
                 if not official_url:
                     raise RuntimeError("TBB duyurusunda Resmî Gazete bağlantısı bulunamadı")
                 article = _article_text(official_url)
