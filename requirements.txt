@@ -6,6 +6,7 @@ xlrd
 python-multipart
 pdfplumber
 requests
+certifi>=2026.10.19
 beautifulsoup4
 redis
 google-cloud-storage
