@@ -797,6 +797,7 @@ def _gib_api_items(source):
                 eliminated.append({"title": title[:120],
                                    "reason": "anahtar kelime eşleşmedi"})
                 continue
+
             published_at = _gib_datetime(row.get("startdate") or row.get("ts"))
             if not published_at:
                 invalid_date += 1
@@ -897,14 +898,13 @@ def _gemini(prompt):
                     "publish": {"type": "BOOLEAN"},
                     "duplicate": {"type": "BOOLEAN"},
                     "duplicate_reason": {"type": "STRING"},
-                    "duplicate_label": {"type": "STRING"},
                     "reject_reason": {"type": "STRING"},
                     "reject_label": {"type": "STRING"},
                     "title": {"type": "STRING"},
                     "summary": {"type": "STRING"},
                     "detail_summary": {"type": "STRING"},
                 },
-                "required": ["publish", "duplicate", "duplicate_reason", "duplicate_label", "reject_reason", "reject_label", "title", "summary", "detail_summary"],
+                "required": ["publish", "duplicate", "duplicate_reason", "reject_reason", "reject_label", "title", "summary", "detail_summary"],
             },
         },
     }
@@ -1251,8 +1251,7 @@ Ancak aynı konu hakkında daha sonra gerçekleşen yeni bir gelişme duplicate 
 Örneğin:
 - Eylül Evde Bakım Yardımı ödemelerinin farklı kaynaklardaki duyuruları aynı Eylül ödemesini anlatıyorsa mükerrerdir.
 - Ekim Evde Bakım Yardımı ödemesi Eylül haberinden ayrı, yeni bir gelişmedir.
-duplicate_reason alanında mükerrerliği somut olay veya dönem üzerinden tek kısa Türkçe cümleyle açıkla.
-duplicate_label alanına aynı gerekçenin raporda gösterilecek 1-2 kelimelik, açık ve özgül özetini yaz. Başlığı kısaltma; mükerrerliğin nedenini belirt. Uygun örnekler: "Aynı duyuru", "Aynı ödeme", "Aynı karar". Mükerrer değilse iki alanı da boş bırak.
+duplicate_reason alanında mükerrerliği somut olay veya dönem üzerinden açıkla.
 Sadece "aynı konu", "benzer haber" veya "aynı alan" gibi genel gerekçeler duplicate için yeterli değildir.
 
 KANIT EŞİĞİ:
@@ -1313,8 +1312,7 @@ Kaynak metni:
             ai_entry["status"] = "gemini_decision"
             ai_entry["publish"] = bool(result.get("publish"))
             ai_entry["duplicate"] = bool(result.get("duplicate"))
-            ai_entry["duplicate_reason"] = _clean(result.get("duplicate_reason"))[:180] if result.get("duplicate") else ""
-            ai_entry["duplicate_label"] = " ".join(_clean(result.get("duplicate_label")).split()[:2]) if result.get("duplicate") else ""
+            ai_entry["duplicate_reason"] = _clean(result.get("duplicate_reason"))
             ai_entry["reject_reason"] = _clean(result.get("reject_reason"))[:180] if not result.get("publish") and not result.get("duplicate") else ""
             ai_entry["reject_label"] = " ".join(_clean(result.get("reject_label")).split()[:2]) if not result.get("publish") and not result.get("duplicate") else ""
             ai_entry["generated_title"] = _clean(result.get("title"))
