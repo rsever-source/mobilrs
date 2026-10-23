@@ -207,7 +207,7 @@ header{{display:flex;gap:18px;align-items:center;justify-content:space-between;f
 <div class="card"><small>Filtreyle elenen</small><strong id="rejected">—</strong></div>
 <div class="card"><small>Kararı netleşmeyen aday</small><strong id="pending">—</strong></div>
 <div class="card"><small>Gemini red</small><strong id="geminiRejectedCount">0</strong><div id="geminiRejectedReasons" class="reject-reason-labels" aria-label="Son ret gerekçeleri"></div></div>
-<div class="card"><small>Gemini tekrar</small><strong id="geminiDuplicatesCount">0</strong></div>
+<div class="card"><small>Gemini tekrar</small><strong id="geminiDuplicatesCount">0</strong><div id="geminiDuplicateReasons" class="reject-reason-labels" aria-label="Son mükerrerlik nedenleri"></div></div>
 <div class="card" id="systemErrorsCard" hidden><small>Haber işleme sorunları</small><strong id="systemErrorsCount">0</strong></div>
 </div><p class="muted">Bu sayılar son taramanın kayıtlarından hesaplanır.</p></section>
 <div class="report-grid">
@@ -278,6 +278,14 @@ function renderGeminiDecisions(log){{
  for(const c of rejected.slice(0,3)){{
   const label=String(c.reject_label||'').trim().split(/\s+/).filter(Boolean).slice(0,2).join(' ');
   if(label)reasons.appendChild(node('span',label,'reject-reason-tag'));
+ }}
+ const duplicateReasons=el('geminiDuplicateReasons');duplicateReasons.replaceChildren();
+ for(const c of (latestRun?.candidates||[])){{
+  const isDuplicate=c.duplicate===true||String(c.decision||'').toLowerCase()==='duplicate'||String(c.status||'').toLowerCase().includes('duplicate');
+  if(!isDuplicate)continue;
+  const label=String(c.duplicate_label||'').trim().split(/\s+/).filter(Boolean).slice(0,2).join(' ');
+  if(label)duplicateReasons.appendChild(node('span',label,'reject-reason-tag'));
+  if(duplicateReasons.children.length>=3)break;
  }}
 }}
 function pendingAttemptInfo(item,log){{
