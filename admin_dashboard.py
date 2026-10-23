@@ -177,8 +177,7 @@ LOGIN_HTML = r'''<!doctype html>
 <style nonce="{nonce}">
 *{{box-sizing:border-box}}body{{margin:0;background:#f3f6fa;color:#172033;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh;display:grid;place-items:center;padding:20px}}
 main{{width:min(100%,420px);background:white;border:1px solid #e1e7ef;border-radius:20px;padding:26px;box-shadow:0 12px 36px #15223a12}}
-h1{{font-size:22px;margin:0 0 8px}}p{{color:#647084;font-size:14px;line-height:1.5}}label{{display:block;font-weight:650;font-size:14px;margin:18px 0 7px}}
-input,button{{width:100%;padding:13px 14px;border-radius:10px;font:inherit}}input{{border:1px solid #cbd4e1}}button{{border:0;background:#155eef;color:white;font-weight:700;margin-top:12px;cursor:pointer}}#msg{{min-height:22px;color:#a32020;font-size:13px}}.brand{{font-weight:850;color:#155eef;margin-bottom:22px}}.brand span{{color:#172033}}
+h1{{font-size:22px;margin:0 0 8px}}p{{color:#647084;font-size:14px;line-height:1.5}}label{{display:block;font-weight:650;font-size:14px;margin:18px 0 7px}}input,button{{width:100%;padding:13px 14px;border-radius:10px;font:inherit}}input{{border:1px solid #cbd4e1}}button{{border:0;background:#155eef;color:white;font-weight:700;margin-top:12px;cursor:pointer}}#msg{{min-height:22px;color:#a32020;font-size:13px}}.brand{{font-weight:850;color:#155eef;margin-bottom:22px}}.brand span{{color:#172033}}
 </style></head><body><main><div class="brand">Engelli<span>.me</span></div><h1>Haber raporu</h1>
 <p>Bu alan yalnızca yetkili yönetici içindir.</p>
 <form id="passwordForm"><label for="password">Yönetici parolası</label><input id="password" type="password" autocomplete="current-password" required maxlength="256"><button type="submit">Giriş yap</button></form>
@@ -207,7 +206,7 @@ header{{display:flex;gap:18px;align-items:center;justify-content:space-between;f
 <div class="card"><small>Filtreyle elenen</small><strong id="rejected">—</strong></div>
 <div class="card"><small>Kararı netleşmeyen aday</small><strong id="pending">—</strong></div>
 <div class="card"><small>Gemini red</small><strong id="geminiRejectedCount">0</strong><div id="geminiRejectedReasons" class="reject-reason-labels" aria-label="Son ret gerekçeleri"></div></div>
-<div class="card"><small>Gemini tekrar</small><strong id="geminiDuplicatesCount">0</strong></div>
+<div class="card"><small>Gemini tekrar</small><strong id="geminiDuplicatesCount">0</strong><div id="geminiDuplicateReasons" class="reject-reason-labels" aria-label="Son mükerrerlik nedenleri"></div></div>
 <div class="card" id="systemErrorsCard" hidden><small>Haber işleme sorunları</small><strong id="systemErrorsCount">0</strong></div>
 </div><p class="muted">Bu sayılar son taramanın kayıtlarından hesaplanır.</p></section>
 <div class="report-grid">
@@ -278,6 +277,14 @@ function renderGeminiDecisions(log){{
  for(const c of rejected.slice(0,3)){{
   const label=String(c.reject_label||'').trim().split(/\s+/).filter(Boolean).slice(0,2).join(' ');
   if(label)reasons.appendChild(node('span',label,'reject-reason-tag'));
+ }}
+ const duplicateReasons=el('geminiDuplicateReasons');duplicateReasons.replaceChildren();
+ for(const c of (latestRun?.candidates||[])){{
+  const isDuplicate=c.duplicate===true||String(c.decision||'').toLowerCase()==='duplicate'||String(c.status||'').toLowerCase().includes('duplicate');
+  if(!isDuplicate)continue;
+  const label=String(c.duplicate_label||'').trim().split(/\s+/).filter(Boolean).slice(0,2).join(' ');
+  if(label)duplicateReasons.appendChild(node('span',label,'reject-reason-tag'));
+  if(duplicateReasons.children.length>=3)break;
  }}
 }}
 function pendingAttemptInfo(item,log){{
@@ -357,8 +364,7 @@ function readableGeminiError(value){{
  return raw||'Hata ayrıntısı kaydedilmemiş.';
 }}
 function renderErrors(data){{
- const runs=(data.log?.news_runs||[]).slice(-1);
- const sourceErrors=[];
+ const runs=(data.log?.news_runs||[]).slice(-1); const sourceErrors=[];
  const systemErrors=[];
  const pendingByUrl=new Set((data.news_pending||[]).map(item=>item.url).filter(Boolean));
  const pendingTitles=(data.news_pending||[]).map(item=>String(item.title||'')).filter(Boolean);
