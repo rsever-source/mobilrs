@@ -1,11 +1,14 @@
 # Cloud Build: build + push + trafiksiz deploy + smoke test + doğrulanmış revision'ı canlıya al.
 #
-# ÖNEMLİ: Servis trafiği "latestRevision" yerine ADI BELİRLİ bir revision'a
-# sabitlenmelidir. Trafik latestRevision'a bağlıyken yeni revision oluşturulduğu
-# anda %100 trafik alır ve başarısız build bile canlıya çıkar. Bu yüzden:
-#   1) Deploy adımı --no-traffic ile revision oluşturur (trafik değişmez),
-#   2) Smoke test tag URL'i üzerinde çalışır,
-#   3) yalnızca smoke test geçerse o revision adıyla %100'e alınır.
+# ÖNEMLİ: Her build kendi benzersiz image ve Cloud Run tag'ini kullanır
+# (BUILD_ID). Böylece paralel build'ler birbirinin revision'ını seçemez veya
+# canlıya alamaz. Trafik yine "latestRevision" yerine ADI BELİRLİ bir revision'a
+# sabitlenir:
+#   1) Deploy adımı --no-traffic ve build'e özel tag ile revision oluşturur,
+#   2) Smoke test yalnızca bu build'in tag URL'i üzerinde çalışır,
+#   3) revision adı latestCreatedRevisionName'den değil, bu build'in tag'inden
+#      okunur,
+#   4) yalnızca smoke test geçerse o revision adıyla %100'e alınır.
 # Herhangi bir adım başarısız olursa canlı trafik mevcut revision'da kalır.
 #
 # Not: adım içindeki shell değişkenleri $$ ile yazılır; tek $ Cloud Build
@@ -18,6 +21,8 @@ steps:
       - --no-cache
       - -t
       - europe-west1-docker.pkg.dev/project-f671a84c-0cde-40b8-921/cloud-run-source-deploy/mobilrs-test:$COMMIT_SHA
+      - -t
+      - europe-west1-docker.pkg.dev/project-f671a84c-0cde-40b8-921/cloud-run-source-deploy/mobilrs-test:$BUILD_ID
       - .
       - -f
       - Dockerfile
@@ -26,41 +31,80 @@ steps:
     id: Push
     args:
       - push
-      - europe-west1-docker.pkg.dev/project-f671a84c-0cde-40b8-921/cloud-run-source-deploy/mobilrs-test:$COMMIT_SHA
+      - --all-tags
+      - europe-west1-docker.pkg.dev/project-f671a84c-0cde-40b8-921/cloud-run-source-deploy/mobilrs-test
 
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     id: Deploy
-    entrypoint: gcloud
-    args:
-      - run
-      - services
-      - update
-      - mobilrs-test
-      - --platform=managed
-      - --image=europe-west1-docker.pkg.dev/project-f671a84c-0cde-40b8-921/cloud-run-source-deploy/mobilrs-test:$COMMIT_SHA
-      - --region=europe-west1
-      - --no-traffic
-      - --tag=test
-      - --update-secrets=ADMIN_PASSWORD=ADMIN_PASSWORD:latest
-      - --quiet
-
-  # Bu build'in oluşturduğu revision adını ve tag URL'ini dosyaya yaz.
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
-    id: CaptureRevision
-    entrypoint: sh
+    entrypoint: bash
     args:
       - -c
       - |
-        set -eu
-        REV="$$(gcloud run services describe mobilrs-test --region=europe-west1 --project=project-f671a84c-0cde-40b8-921 --format='value(status.latestCreatedRevisionName)')"
-        URL="$$(gcloud run services describe mobilrs-test --region=europe-west1 --project=project-f671a84c-0cde-40b8-921 --format='value(status.url)')"
-        BASE="$$(echo "$$URL" | sed 's#https://#https://test---#')"
-        echo "$$REV" > /workspace/revision.txt
-        echo "$$BASE" > /workspace/base_url.txt
-        echo "revision=$$REV"
-        echo "base=$$BASE"
+        set -euo pipefail
+        TAG="test-$BUILD_ID"
+        for attempt in 1 2 3 4 5; do
+          if gcloud run services update mobilrs-test \
+            --platform=managed \
+            --image=europe-west1-docker.pkg.dev/project-f671a84c-0cde-40b8-921/cloud-run-source-deploy/mobilrs-test:$BUILD_ID \
+            --region=europe-west1 \
+            --no-traffic \
+            --tag="$$TAG" \
+            --update-secrets=ADMIN_PASSWORD=ADMIN_PASSWORD:latest \
+            --quiet; then
+            echo "Revision deployed with tag $$TAG"
+            exit 0
+          fi
+          echo "Deploy conflict; retrying ($$attempt/5)..."
+          sleep $$((attempt * 5))
+        done
+        echo "HATA: deploy 5 denemede tamamlanamadi." >&2
+        exit 1
 
-  # Canlı trafik değişmeden, tag URL'i üzerinde gerçek HTTP kontrolü.
+  # Bu build'in oluşturduğu revision adını ve tag URL'ini dosyaya yaz.
+  # Revision, servisin global latestCreatedRevisionName alanından DEĞİL, yalnızca
+  # bu build'e ait benzersiz tag'den okunur.
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    id: CaptureRevision
+    entrypoint: python3
+    args:
+      - -c
+      - |
+        import json
+        import subprocess
+
+        TAG = "test-$BUILD_ID"
+        SERVICE = "mobilrs-test"
+        REGION = "europe-west1"
+        PROJECT = "project-f671a84c-0cde-40b8-921"
+
+        data = json.loads(subprocess.check_output([
+            "gcloud", "run", "services", "describe", SERVICE,
+            "--region=" + REGION,
+            "--project=" + PROJECT,
+            "--format=json",
+        ], text=True))
+        entries = [t for t in data.get("status", {}).get("traffic", []) if t.get("tag") == TAG]
+        if len(entries) != 1:
+            raise SystemExit("HATA: " + TAG + " tag'i tek bir revision'a isaret etmiyor: " + repr(entries))
+        revision = entries[0].get("revisionName")
+        if not revision:
+            raise SystemExit("HATA: " + TAG + " tag'i icin revision adi bulunamadi")
+        base = entries[0].get("url") or ""
+        if not base:
+            service_url = data.get("status", {}).get("url", "")
+            if not service_url.startswith("https://"):
+                raise SystemExit("HATA: servis URL'i okunamadi")
+            base = service_url.replace("https://", "https://" + TAG + "---", 1)
+        if not base.startswith("https://" + TAG + "---"):
+            raise SystemExit("HATA: smoke test URL'i bu build'in tag'ine ait degil: " + base)
+        with open("/workspace/revision.txt", "w") as handle:
+            handle.write(revision + "\n")
+        with open("/workspace/base_url.txt", "w") as handle:
+            handle.write(base + "\n")
+        print("revision=" + revision)
+        print("base=" + base)
+
+  # Canlı trafik değişmeden, bu build'e ait tag URL'i üzerinde gerçek HTTP kontrolü.
   # (Ekstra image çekmemek için gcloud adımıyla aynı image + python3 kullanılır.)
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     id: SmokeTest
@@ -103,21 +147,72 @@ steps:
             raise SystemExit("HATA: yonetim sayfasi beklenen icerigi dondurmedi")
         print("SMOKE OK", flush=True)
 
-  # Smoke test geçtiyse YALNIZCA bu revision'ı canlıya al (latestRevision'a dönme).
+  # Smoke test geçtiyse YALNIZCA bu build'in doğrulanmış revision'ını canlıya al.
+  # Eşzamanlı trafik güncellemeleri Cloud Run'da ABORTED dönebilir; aynı revision
+  # hedefiyle sınırlı sayıda yeniden denenir.
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     id: PromoteVerifiedRevision
-    entrypoint: sh
+    entrypoint: bash
     args:
       - -c
       - |
-        set -eu
+        set -euo pipefail
         REV="$$(cat /workspace/revision.txt)"
         echo "Smoke test gecti; trafik $$REV revision'ina aliniyor."
-        gcloud run services update-traffic mobilrs-test \
-          --region=europe-west1 \
-          --project=project-f671a84c-0cde-40b8-921 \
-          --to-revisions="$$REV=100" \
-          --quiet
+        promoted=0
+        for attempt in 1 2 3 4 5; do
+          if gcloud run services update-traffic mobilrs-test \
+            --region=europe-west1 \
+            --project=project-f671a84c-0cde-40b8-921 \
+            --to-revisions="$$REV=100" \
+            --quiet; then
+            promoted=1
+            break
+          fi
+          echo "Trafik guncellemesi cakisti; tekrar deneniyor ($$attempt/5)..."
+          sleep $$((attempt * 5))
+        done
+        if [ "$$promoted" != "1" ]; then
+          echo "HATA: trafik 5 denemede guncellenemedi." >&2
+          exit 1
+        fi
+
+  # %100 trafiğin gerçekten bu build'in revision'ında olduğunu doğrula.
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    id: VerifyTraffic
+    entrypoint: python3
+    args:
+      - -c
+      - |
+        import json
+        import subprocess
+
+        revision = open("/workspace/revision.txt").read().strip()
+        data = json.loads(subprocess.check_output([
+            "gcloud", "run", "services", "describe", "mobilrs-test",
+            "--region=europe-west1",
+            "--project=project-f671a84c-0cde-40b8-921",
+            "--format=json",
+        ], text=True))
+        live = [t for t in data.get("status", {}).get("traffic", []) if t.get("percent") == 100]
+        if len(live) != 1 or live[0].get("revisionName") != revision:
+            raise SystemExit("HATA: %100 trafik beklenen revision'da degil: " + repr(live))
+        print("TAMAM: %100 trafik " + revision + " revision'inda.")
+
+  # Build'e özel tag'i temizle; başarısız olsa bile canlı trafiği etkilemez.
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    id: CleanupTag
+    entrypoint: gcloud
+    args:
+      - run
+      - services
+      - update-traffic
+      - mobilrs-test
+      - --region=europe-west1
+      - --project=project-f671a84c-0cde-40b8-921
+      - --remove-tags=test-$BUILD_ID
+      - --quiet
+    allowFailure: true
 
 options:
   logging: CLOUD_LOGGING_ONLY
