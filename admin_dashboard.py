@@ -161,6 +161,21 @@ def _origin_guard(request):
         raise HTTPException(403, "İstek kaynağı doğrulanamadı.")
 
 
+def _github_get_readonly(url, headers, timeout):
+    """GitHub'ın herkese açık depo okumasında geçersiz eski PAT'i kullanmadan yeniden dene."""
+    response = requests.get(url, headers=headers, timeout=timeout)
+    effective_headers = headers
+    if response.status_code == 401 and headers.get("Authorization"):
+        # Depo herkese açık: yalnızca bu salt-okunur GET isteğinde yetkilendirmeyi kaldır.
+        # Token değerini loglama ve başka endpoint/yazma işlemlerinde kullanma.
+        effective_headers = {
+            key: value for key, value in headers.items()
+            if key.lower() != "authorization"
+        }
+        response = requests.get(url, headers=effective_headers, timeout=timeout)
+    return response, effective_headers
+
+
 def _json_from_raw(path):
     response = requests.get(RAW + path, timeout=(4, 12), headers={"Cache-Control": "no-cache"})
     response.raise_for_status()
@@ -459,7 +474,7 @@ def admin_status(request: Request):
         github_token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
         if github_token:
             headers["Authorization"] = "Bearer " + github_token
-        response = requests.get(API + "/actions/workflows/news-cron.yml/runs?per_page=1", headers=headers, timeout=(5, 20))
+        response, headers = _github_get_readonly(API + "/actions/workflows/news-cron.yml/runs?per_page=1", headers, timeout=(5, 20))
         response.raise_for_status()
         runs = response.json().get("workflow_runs", [])
         if runs:
@@ -472,7 +487,7 @@ def admin_status(request: Request):
             }
             if run.get("id"):
                 try:
-                    jobs_response = requests.get(API + "/actions/runs/" + str(run["id"]) + "/jobs?per_page=100", headers=headers, timeout=(4, 10))
+                    jobs_response, headers = _github_get_readonly(API + "/actions/runs/" + str(run["id"]) + "/jobs?per_page=100", headers, timeout=(4, 10))
                     jobs_response.raise_for_status()
                     result["actions"]["jobs"] = [
                         {"name": j.get("name"), "conclusion": j.get("conclusion"), "status": j.get("status"),
