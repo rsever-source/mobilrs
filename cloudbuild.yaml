@@ -11,6 +11,10 @@
 #   4) yalnızca smoke test geçerse o revision adıyla %100'e alınır.
 # Herhangi bir adım başarısız olursa canlı trafik mevcut revision'da kalır.
 #
+# Cloud Run, trafik tag'i ile servis adının toplamının 46 karakteri geçmesine
+# izin vermez. Bu yüzden tag, BUILD_ID'nin ilk 20 karakteriyle üretilir:
+# "test-" + 20 = 25 karakter; "mobilrs-test" (12) ile toplam 37 <= 46.
+#
 # Not: adım içindeki shell değişkenleri $$ ile yazılır; tek $ Cloud Build
 # substitution olarak yorumlanır ve build reddedilir.
 steps:
@@ -37,11 +41,13 @@ steps:
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     id: Deploy
     entrypoint: bash
+    env:
+      - 'BUILD_ID=$BUILD_ID'
     args:
       - -c
       - |
         set -euo pipefail
-        TAG="test-$BUILD_ID"
+        TAG="test-$${BUILD_ID:0:20}"
         for attempt in 1 2 3 4 5; do
           if gcloud run services update mobilrs-test \
             --platform=managed \
@@ -66,13 +72,16 @@ steps:
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     id: CaptureRevision
     entrypoint: python3
+    env:
+      - 'BUILD_ID=$BUILD_ID'
     args:
       - -c
       - |
         import json
+        import os
         import subprocess
 
-        TAG = "test-$BUILD_ID"
+        TAG = "test-" + os.environ["BUILD_ID"][:20]
         SERVICE = "mobilrs-test"
         REGION = "europe-west1"
         PROJECT = "project-f671a84c-0cde-40b8-921"
@@ -202,16 +211,17 @@ steps:
   # Build'e özel tag'i temizle; başarısız olsa bile canlı trafiği etkilemez.
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     id: CleanupTag
-    entrypoint: gcloud
+    entrypoint: bash
+    env:
+      - 'BUILD_ID=$BUILD_ID'
     args:
-      - run
-      - services
-      - update-traffic
-      - mobilrs-test
-      - --region=europe-west1
-      - --project=project-f671a84c-0cde-40b8-921
-      - --remove-tags=test-$BUILD_ID
-      - --quiet
+      - -c
+      - |
+        gcloud run services update-traffic mobilrs-test \
+          --region=europe-west1 \
+          --project=project-f671a84c-0cde-40b8-921 \
+          --remove-tags="test-$${BUILD_ID:0:20}" \
+          --quiet
     allowFailure: true
 
 options:
