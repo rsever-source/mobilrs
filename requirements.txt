@@ -6,7 +6,12 @@ xlrd
 python-multipart
 pdfplumber
 requests
-certifi>=2026.10.19
+# eMudhra/emSign güven kararı (2026.10.23 itibarıyla): upstream certifi yalnızca
+# emSign Root CA - G1'i güvenilir sayıyor; etkilenen G3 zincirinin kökü
+# (emSign ECC Root CA - G3) pakette yok, bu zincire dayanan sertifikalar reddedilir.
+# Özel CA override eklenmez; sürüm bu değerin altına düşürülmez.
+# Yükseltmelerde eMudhra G3 köklerinin yeniden eklenmediği kontrol edilmeli.
+certifi>=2026.10.23
 beautifulsoup4
 redis
 google-cloud-storage
