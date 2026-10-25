@@ -623,7 +623,7 @@ def admin_status(request: Request):
             raise ValueError("Log JSON nesnesi değil.")
     except Exception as exc:
         result["reporting_warnings"].append(_warning(
-            "Haber işlem kaydı okunamadı",
+            "Haber işleme kayıt dosyası okunamadı.",
             "news_ai_log.json okunamadı (" + type(exc).__name__ + "); son tarama sonuçları "
             "doğrulanamıyor. Panel bu dosyayı yalnızca okur.",
         ))
@@ -648,7 +648,7 @@ def admin_status(request: Request):
     except Exception as exc:
         result["live_api"]["error"] = "Beklenen haber listesi okunamadı: " + str(exc)
         result["reporting_warnings"].append(_warning(
-            "Beklenen haber listesi okunamadı",
+            "Haber listesi dosyası okunamadı.",
             "news.json okunamadı (" + type(exc).__name__ + "); canlı yayın karşılaştırması "
             "yapılamıyor. Panel bu dosyayı yalnızca okur.",
         ))
