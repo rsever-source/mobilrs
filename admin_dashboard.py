@@ -177,8 +177,9 @@ def _github_get_readonly(url, headers, timeout):
 
 
 # GitHub Actions raporu için kısa ömürlü bellek içi önbellek: panelin her
-# yenilemesinde aynı iki GitHub isteğini tekrarlamayı önler. Yalnızca başarılı
-# yanıtlar önbelleğe alınır; hata yanıtları bir sonraki yenilemede yeniden denenir.
+# yenilemesinde aynı iki GitHub isteğini tekrarlamayı önler. Yalnızca çalışma
+# listesi alınmış yanıtlar önbelleğe alınır; çalışma listesi hiç alınamayan
+# hatalar önbelleğe alınmaz ve bir sonraki yenilemede yeniden denenir.
 ACTIONS_CACHE_TTL_SECONDS = 45
 _actions_cache = {"expires_at": 0.0, "data": None}
 
@@ -194,32 +195,66 @@ def _cache_actions_status(data):
     _actions_cache["expires_at"] = time.monotonic() + ACTIONS_CACHE_TTL_SECONDS
 
 
-def _rate_limit_warning(exc):
-    """403 rate limit hatasını haber işleme hatasından ayıran raporlama uyarısına çevirir."""
+# Durum bilgisi okunamadığında gösterilen uyarılar. Bunlar haber işleme
+# sorunlarından ayrı tutulur: veri okunamaması, verinin bildirdiği gerçek bir
+# işleme hatasıyla aynı şey değildir. Aynı hata iki bölümde tekrarlanmaz.
+_STATUS_SCOPE = (
+    "Bu uyarı yalnızca GitHub Actions durum bilgisinin okunmasını etkiler; "
+    "haber işleme sorunları ayrı bölümde gösterilir."
+)
+
+
+def _warning(title, details, retry_after=None):
+    return {"title": title, "retry_after": retry_after, "details": details}
+
+
+def _reporting_warning(exc):
+    """Durum bilgisi okuma hatasını, haber işleme hatasından ayrı bir uyarıya çevirir."""
     response = getattr(exc, "response", None)
-    if response is None or response.status_code != 403:
-        return None
-    message = str(getattr(response, "text", "") or "")
-    try:
-        payload = response.json()
-        if isinstance(payload, dict):
-            message += " " + str(payload.get("message", ""))
-    except ValueError:
-        pass
-    if "rate limit" not in (message + " " + str(exc)).lower():
-        return None
+    status = getattr(response, "status_code", None)
+    message = ""
+    if response is not None:
+        message = str(getattr(response, "text", "") or "")
+        try:
+            payload = response.json()
+            if isinstance(payload, dict):
+                message += " " + str(payload.get("message", ""))
+        except ValueError:
+            pass
     retry_after = None
     reset = str((getattr(response, "headers", None) or {}).get("X-RateLimit-Reset", ""))
     if reset.isdigit():
         retry_after = datetime.fromtimestamp(int(reset), timezone.utc).isoformat()
-    return {
-        "title": "GitHub Actions raporu geçici olarak okunamadı",
-        "retry_after": retry_after,
-        "details": (
-            "GitHub API kota sınırı (403 rate limit). Bu durum yalnızca raporun GitHub Actions "
-            "bölümünü etkiler; haberlerin işlenmesi ve yayımlanması etkilenmedi."
-        ),
-    }
+    combined = (message + " " + str(exc)).lower()
+    if status == 403 and "rate limit" in combined:
+        return _warning(
+            "GitHub Actions durum bilgisi geçici olarak alınamıyor",
+            "GitHub API istek sınırı doldu (403 rate limit). " + _STATUS_SCOPE,
+            retry_after,
+        )
+    if status == 401:
+        return _warning(
+            "GitHub kimlik doğrulaması reddedildi",
+            "GitHub, durum bilgisi isteğini yetkisiz buldu (401). " + _STATUS_SCOPE,
+            retry_after,
+        )
+    if status == 403:
+        return _warning(
+            "GitHub erişimi reddedildi",
+            "GitHub, durum bilgisi isteğini reddetti (403). " + _STATUS_SCOPE,
+            retry_after,
+        )
+    if status is not None and status >= 500:
+        return _warning(
+            "GitHub sunucu hatası",
+            "GitHub " + str(status) + " yanıtı döndürdü. " + _STATUS_SCOPE,
+            retry_after,
+        )
+    if isinstance(exc, (requests.exceptions.Timeout, requests.exceptions.ConnectionError)):
+        reason = "GitHub isteği zaman aşımına uğradı veya bağlantı kurulamadı."
+    else:
+        reason = "GitHub isteği tamamlanamadı."
+    return _warning("GitHub Actions durum bilgisi alınamıyor", reason + " " + _STATUS_SCOPE, retry_after)
 
 
 def _json_from_raw(path):
@@ -422,7 +457,7 @@ function formatTrTimestamp(value){{
 }}
 function renderReportingWarnings(data){{
  const items=(data.reporting_warnings||[]).map(w=>{{
-  return {{title:w.title||'Raporlama uyarısı',when:w.retry_after?('Kota yenilenmesi: '+formatTrTimestamp(w.retry_after)):'',details:w.details||''}};
+  return {{title:w.title||'Raporlama uyarısı',when:w.retry_after?('Tahmini yenilenme: '+formatTrTimestamp(w.retry_after)):'',details:w.details||''}};
  }});
  renderErrorItems('reportingWarnings',items);
 }}
@@ -533,6 +568,9 @@ def admin_status(request: Request):
         cached_actions = _cached_actions_status()
         if cached_actions is not None:
             result["actions"] = cached_actions
+            if cached_actions.get("jobs_warning"):
+                # Önbellekteki kısmi veride de aynı uyarı görünmeli.
+                result["reporting_warnings"].append(cached_actions["jobs_warning"])
         else:
             headers = {"Accept": "application/vnd.github+json", "User-Agent": "engellime-admin-status"}
             github_token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
@@ -542,7 +580,7 @@ def admin_status(request: Request):
             response.raise_for_status()
             runs = response.json().get("workflow_runs", [])
             if not runs:
-                raise LookupError("GitHub Actions için çalışma kaydı bulunamadı.")
+                raise LookupError("boş çalışma listesi")
             run = runs[0]
             actions = {
                 "id": run.get("id"), "name": run.get("name"), "status": run.get("conclusion") or run.get("status"),
@@ -561,23 +599,34 @@ def admin_status(request: Request):
                     ]
                 except Exception as exc:
                     actions["jobs_error"] = str(exc)
+                    jobs_warning = _reporting_warning(exc)
+                    jobs_warning["title"] = "GitHub Actions iş adımları okunamadı"
+                    jobs_warning["details"] = (
+                        "Son çalışma özeti alındı ancak iş adımları okunamadı. "
+                        + jobs_warning["details"]
+                    )
+                    actions["jobs_warning"] = jobs_warning
+                    result["reporting_warnings"].append(jobs_warning)
             result["actions"] = actions
             _cache_actions_status(actions)
-    except LookupError as exc:
-        errors.append(str(exc))
+    except LookupError:
+        result["reporting_warnings"].append(_warning(
+            "GitHub Actions çalışma kaydı bulunamadı",
+            "GitHub, haber workflow'u için kayıtlı bir çalışma döndürmedi. " + _STATUS_SCOPE,
+        ))
     except Exception as exc:
-        warning = _rate_limit_warning(exc)
-        if warning:
-            # GitHub kotası raporlamayı etkiler; haber işleme hatası sayılmaz.
-            result["reporting_warnings"].append(warning)
-        else:
-            errors.append("GitHub Actions okunamadı: " + str(exc))
+        # Durum bilgisi okunamadı; haber işleme hatası sayılmaz.
+        result["reporting_warnings"].append(_reporting_warning(exc))
     try:
         result["log"] = _json_from_raw("news_ai_log.json")
         if not isinstance(result["log"], dict):
             raise ValueError("Log JSON nesnesi değil.")
     except Exception as exc:
-        errors.append("Haber işlem logu okunamadı: " + str(exc))
+        result["reporting_warnings"].append(_warning(
+            "Haber işlem kaydı okunamadı",
+            "news_ai_log.json okunamadı (" + type(exc).__name__ + "); son tarama sonuçları "
+            "doğrulanamıyor. Panel bu dosyayı yalnızca okur.",
+        ))
     try:
         expected = _json_from_raw("news.json")
         expected_items = [
@@ -598,7 +647,11 @@ def admin_status(request: Request):
         })
     except Exception as exc:
         result["live_api"]["error"] = "Beklenen haber listesi okunamadı: " + str(exc)
-        errors.append("Beklenen haber listesi okunamadı: " + str(exc))
+        result["reporting_warnings"].append(_warning(
+            "Beklenen haber listesi okunamadı",
+            "news.json okunamadı (" + type(exc).__name__ + "); canlı yayın karşılaştırması "
+            "yapılamıyor. Panel bu dosyayı yalnızca okur.",
+        ))
     result["errors"] = errors
     return JSONResponse(result, headers={"Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow, noarchive"})
 
