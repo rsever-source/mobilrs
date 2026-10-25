@@ -176,6 +176,52 @@ def _github_get_readonly(url, headers, timeout):
     return response, effective_headers
 
 
+# GitHub Actions raporu için kısa ömürlü bellek içi önbellek: panelin her
+# yenilemesinde aynı iki GitHub isteğini tekrarlamayı önler. Yalnızca başarılı
+# yanıtlar önbelleğe alınır; hata yanıtları bir sonraki yenilemede yeniden denenir.
+ACTIONS_CACHE_TTL_SECONDS = 45
+_actions_cache = {"expires_at": 0.0, "data": None}
+
+
+def _cached_actions_status():
+    if _actions_cache["data"] is not None and time.monotonic() < _actions_cache["expires_at"]:
+        return _actions_cache["data"]
+    return None
+
+
+def _cache_actions_status(data):
+    _actions_cache["data"] = data
+    _actions_cache["expires_at"] = time.monotonic() + ACTIONS_CACHE_TTL_SECONDS
+
+
+def _rate_limit_warning(exc):
+    """403 rate limit hatasını haber işleme hatasından ayıran raporlama uyarısına çevirir."""
+    response = getattr(exc, "response", None)
+    if response is None or response.status_code != 403:
+        return None
+    message = str(getattr(response, "text", "") or "")
+    try:
+        payload = response.json()
+        if isinstance(payload, dict):
+            message += " " + str(payload.get("message", ""))
+    except ValueError:
+        pass
+    if "rate limit" not in (message + " " + str(exc)).lower():
+        return None
+    retry_after = None
+    reset = str((getattr(response, "headers", None) or {}).get("X-RateLimit-Reset", ""))
+    if reset.isdigit():
+        retry_after = datetime.fromtimestamp(int(reset), timezone.utc).isoformat()
+    return {
+        "title": "GitHub Actions raporu geçici olarak okunamadı",
+        "retry_after": retry_after,
+        "details": (
+            "GitHub API kota sınırı (403 rate limit). Bu durum yalnızca raporun GitHub Actions "
+            "bölümünü etkiler; haberlerin işlenmesi ve yayımlanması etkilenmedi."
+        ),
+    }
+
+
 def _json_from_raw(path):
     response = requests.get(RAW + path, timeout=(4, 12), headers={"Cache-Control": "no-cache"})
     response.raise_for_status()
@@ -208,7 +254,7 @@ DASHBOARD_HTML = r'''<!doctype html>
 <meta name="robots" content="noindex,nofollow,noarchive"><title>Engelli.me haber durumu</title>
 <style nonce="{nonce}">
 *{{box-sizing:border-box}}body{{margin:0;background:#edf1f7;color:#152238;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:14px}}main{{max-width:1240px;margin:0 auto;padding:24px 24px 40px}}
-header{{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:18px;background:#0b1f38;color:#fff;border-radius:16px;padding:20px 24px}}header h1{{font-size:24px;line-height:1.2;margin:5px 0 0;letter-spacing:-.3px;color:#fff}}.muted{{color:#5b6779;font-size:13px;line-height:1.45}}header .muted{{color:#a9bdd6;font-size:12.5px}}header .muted:first-child{{color:#7fb2ff;font-size:11px;font-weight:750;letter-spacing:.08em;text-transform:uppercase}}button,input{{font:inherit;border-radius:10px;padding:11px 16px}}button{{min-height:42px;border:1px solid transparent;background:#155eef;color:#fff;font-weight:700;cursor:pointer}}button:hover{{background:#0f4fd0}}button:focus-visible,a:focus-visible,summary:focus-visible{{outline:3px solid #6ea8ff;outline-offset:2px}}button.secondary{{background:transparent;border-color:rgba(255,255,255,.42);color:#eaf1fb}}button.secondary:hover{{background:rgba(255,255,255,.14)}}.cards{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}}.card,section{{background:#fff;border:1px solid #dde5f0;border-radius:16px;padding:18px;min-width:0}}.report-summary-cards{{grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}}.report-summary-cards .card{{min-height:96px;padding:16px 14px}}.report-summary-cards .card small{{text-transform:none;letter-spacing:0;font-weight:600;font-size:12px}}.reject-reason-labels{{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}}.reject-reason-tag{{display:inline-block;max-width:100%;padding:2px 6px;border-radius:6px;background:#eef2f8;color:#43516a;font-size:10px;line-height:1.3;overflow-wrap:anywhere}}.report-grid{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px;align-items:start}}.report-grid section{{margin-top:0}}.report-grid #systemErrorsSection{{min-width:0;grid-column:1/-1}}.card small{{display:block;color:#5f6d83;font-size:11px;font-weight:750;letter-spacing:.05em;line-height:1.4;text-transform:uppercase}}.card strong{{display:block;font-size:28px;line-height:1.15;margin-top:8px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums;letter-spacing:-.5px}}.cards:not(.report-summary-cards)>.card{{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:12px;row-gap:2px}}.cards:not(.report-summary-cards)>.card small{{grid-column:1;grid-row:1}}.cards:not(.report-summary-cards)>.card strong{{grid-column:2;grid-row:1/span 2;margin:0;font-size:30px}}#workflowErrorStatus{{display:inline-block;margin:0;padding:5px 11px;border-radius:999px;font-size:13px;font-weight:750;letter-spacing:0;background:#eef2f8;color:#3c4a5f}}#workflowErrorStatus.good{{background:#e5f6ec;color:#116533}}#workflowErrorStatus.bad{{background:#fde9e6;color:#9d2518}}#workflowErrorStatus.warn{{background:#fff3df;color:#855600}}.cards:not(.report-summary-cards)>.card .muted{{grid-column:1;grid-row:2}}section{{margin-top:16px}}h2{{display:flex;align-items:center;gap:8px;font-size:15px;line-height:1.3;margin:0 0 12px;letter-spacing:-.1px}}h2::before{{content:"";width:4px;height:18px;border-radius:2px;background:#155eef;flex:0 0 4px}}#pendingNewsSection h2::before{{background:#c07a00}}#sourceErrorsSection h2::before,#systemErrorsSection h2::before{{background:#c0392b}}.status{{font-weight:750}}#pendingNews .status{{display:inline-block;margin-top:8px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:750}}#pendingNews .status.warn{{background:#fff3df;color:#855600}}#pendingNews .status.bad{{background:#fde9e6;color:#9d2518}}.good{{color:#16803c}}.bad{{color:#b42318}}.warn{{color:#9a6700}}.row{{display:flex;gap:8px;align-items:center;flex-wrap:wrap}}details{{border-bottom:1px solid #e8edf3;padding:10px 0}}summary{{cursor:pointer;font-weight:650}}.report-item{{background:#f7fafd;border:1px solid #e4ebf5;border-radius:12px;padding:12px 14px;margin-bottom:9px;overflow-wrap:anywhere}}.report-item:last-child{{margin-bottom:0}}.report-item>strong{{display:block;font-size:13.5px;line-height:1.45;color:#13233b}}.report-item details{{border:0;border-top:1px dashed #d9e2ee;padding:8px 0 0;margin-top:8px}}.report-item details summary{{color:#155eef;font-size:12px;font-weight:700}}.report-item .report-detail{{margin-top:6px}}a{{color:#155eef;overflow-wrap:anywhere;text-decoration:none}}a:hover{{text-decoration:underline}}#message{{min-height:20px;margin:0 0 14px;color:#5b6779;font-size:12.5px}}@media(max-width:1040px){{.report-summary-cards{{grid-template-columns:repeat(3,minmax(0,1fr))}}.report-grid{{grid-template-columns:1fr}}}}@media(max-width:560px){{.cards:not(.report-summary-cards)>.card{{display:block}}.cards:not(.report-summary-cards)>.card strong{{margin-top:6px;font-size:26px}}}}@media(max-width:760px){{main{{padding:14px 14px 28px}}header{{padding:18px;gap:12px}}header h1{{font-size:20px}}.cards{{gap:10px}}.report-summary-cards{{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}.report-summary-cards .card{{min-height:86px;padding:14px 12px}}.report-summary-cards .card strong{{font-size:24px}}button{{min-height:46px}}.row{{width:100%}}.row button{{flex:1}}.report-grid{{grid-template-columns:1fr;gap:12px}}.report-grid section{{padding:15px}}.report-item{{padding:12px}}}}
+header{{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:18px;background:#0b1f38;color:#fff;border-radius:16px;padding:20px 24px}}header h1{{font-size:24px;line-height:1.2;margin:5px 0 0;letter-spacing:-.3px;color:#fff}}.muted{{color:#5b6779;font-size:13px;line-height:1.45}}header .muted{{color:#a9bdd6;font-size:12.5px}}header .muted:first-child{{color:#7fb2ff;font-size:11px;font-weight:750;letter-spacing:.08em;text-transform:uppercase}}button,input{{font:inherit;border-radius:10px;padding:11px 16px}}button{{min-height:42px;border:1px solid transparent;background:#155eef;color:#fff;font-weight:700;cursor:pointer}}button:hover{{background:#0f4fd0}}button:focus-visible,a:focus-visible,summary:focus-visible{{outline:3px solid #6ea8ff;outline-offset:2px}}button.secondary{{background:transparent;border-color:rgba(255,255,255,.42);color:#eaf1fb}}button.secondary:hover{{background:rgba(255,255,255,.14)}}.cards{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}}.card,section{{background:#fff;border:1px solid #dde5f0;border-radius:16px;padding:18px;min-width:0}}.report-summary-cards{{grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}}.report-summary-cards .card{{min-height:96px;padding:16px 14px}}.report-summary-cards .card small{{text-transform:none;letter-spacing:0;font-weight:600;font-size:12px}}.reject-reason-labels{{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}}.reject-reason-tag{{display:inline-block;max-width:100%;padding:2px 6px;border-radius:6px;background:#eef2f8;color:#43516a;font-size:10px;line-height:1.3;overflow-wrap:anywhere}}.report-grid{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px;align-items:start}}.report-grid section{{margin-top:0}}.report-grid #systemErrorsSection,.report-grid #reportingWarningsSection{{min-width:0;grid-column:1/-1}}.card small{{display:block;color:#5f6d83;font-size:11px;font-weight:750;letter-spacing:.05em;line-height:1.4;text-transform:uppercase}}.card strong{{display:block;font-size:28px;line-height:1.15;margin-top:8px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums;letter-spacing:-.5px}}.cards:not(.report-summary-cards)>.card{{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:12px;row-gap:2px}}.cards:not(.report-summary-cards)>.card small{{grid-column:1;grid-row:1}}.cards:not(.report-summary-cards)>.card strong{{grid-column:2;grid-row:1/span 2;margin:0;font-size:30px}}#workflowErrorStatus{{display:inline-block;margin:0;padding:5px 11px;border-radius:999px;font-size:13px;font-weight:750;letter-spacing:0;background:#eef2f8;color:#3c4a5f}}#workflowErrorStatus.good{{background:#e5f6ec;color:#116533}}#workflowErrorStatus.bad{{background:#fde9e6;color:#9d2518}}#workflowErrorStatus.warn{{background:#fff3df;color:#855600}}.cards:not(.report-summary-cards)>.card .muted{{grid-column:1;grid-row:2}}section{{margin-top:16px}}h2{{display:flex;align-items:center;gap:8px;font-size:15px;line-height:1.3;margin:0 0 12px;letter-spacing:-.1px}}h2::before{{content:"";width:4px;height:18px;border-radius:2px;background:#155eef;flex:0 0 4px}}#pendingNewsSection h2::before{{background:#c07a00}}#sourceErrorsSection h2::before,#systemErrorsSection h2::before{{background:#c0392b}}.status{{font-weight:750}}#pendingNews .status{{display:inline-block;margin-top:8px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:750}}#pendingNews .status.warn{{background:#fff3df;color:#855600}}#pendingNews .status.bad{{background:#fde9e6;color:#9d2518}}.good{{color:#16803c}}.bad{{color:#b42318}}.warn{{color:#9a6700}}.row{{display:flex;gap:8px;align-items:center;flex-wrap:wrap}}details{{border-bottom:1px solid #e8edf3;padding:10px 0}}summary{{cursor:pointer;font-weight:650}}.report-item{{background:#f7fafd;border:1px solid #e4ebf5;border-radius:12px;padding:12px 14px;margin-bottom:9px;overflow-wrap:anywhere}}.report-item:last-child{{margin-bottom:0}}.report-item>strong{{display:block;font-size:13.5px;line-height:1.45;color:#13233b}}.report-item details{{border:0;border-top:1px dashed #d9e2ee;padding:8px 0 0;margin-top:8px}}.report-item details summary{{color:#155eef;font-size:12px;font-weight:700}}.report-item .report-detail{{margin-top:6px}}a{{color:#155eef;overflow-wrap:anywhere;text-decoration:none}}a:hover{{text-decoration:underline}}#message{{min-height:20px;margin:0 0 14px;color:#5b6779;font-size:12.5px}}@media(max-width:1040px){{.report-summary-cards{{grid-template-columns:repeat(3,minmax(0,1fr))}}.report-grid{{grid-template-columns:1fr}}}}@media(max-width:560px){{.cards:not(.report-summary-cards)>.card{{display:block}}.cards:not(.report-summary-cards)>.card strong{{margin-top:6px;font-size:26px}}}}@media(max-width:760px){{main{{padding:14px 14px 28px}}header{{padding:18px;gap:12px}}header h1{{font-size:20px}}.cards{{gap:10px}}.report-summary-cards{{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}.report-summary-cards .card{{min-height:86px;padding:14px 12px}}.report-summary-cards .card strong{{font-size:24px}}button{{min-height:46px}}.row{{width:100%}}.row button{{flex:1}}.report-grid{{grid-template-columns:1fr;gap:12px}}.report-grid section{{padding:15px}}.report-item{{padding:12px}}}}
 </style></head><body><main>
 <header><div><div class="muted">Engelli.me / Özel yönetim</div><h1>Haber sistemi durum raporu</h1><div class="muted" id="lastChecked">Henüz kontrol edilmedi</div></div><div class="row"><button id="refresh">Güncelle</button><button class="secondary" id="logout">Çıkış</button></div></header>
 <p id="message" role="status">Mevcut kayıtlar yükleniyor…</p>
@@ -228,6 +274,7 @@ header{{display:flex;gap:18px;align-items:center;justify-content:space-between;f
 <div class="report-grid">
 <section id="pendingNewsSection"><h2>Bekleyen haberler</h2><div id="pendingNews" class="muted">Yükleniyor…</div></section>
 <section id="sourceErrorsSection"><h2>Haber kaynaklarına erişim ve okuma sorunları</h2><div id="sourceErrors" class="muted"></div></section>
+<section id="reportingWarningsSection" hidden><h2>Raporlama uyarıları</h2><div id="reportingWarnings" class="muted"></div></section>
 <section id="systemErrorsSection" hidden><h2>Haber işleme sorunları (Gemini ve diğer işlemler)</h2><div id="systemErrors" class="muted"></div></section>
 </div>
 
@@ -250,6 +297,7 @@ function render(data){{state=data;const log=data.log||{{}};const runs=log.news_r
  renderPendingNews(data.news_pending||[],log);
  renderGeminiDecisions(log);
  renderErrors(data);
+ renderReportingWarnings(data);
 }}
 function renderWorkflowError(log){{
  const statusEl=el('workflowErrorStatus');
@@ -367,6 +415,17 @@ function renderErrorItems(targetId,items){{
   root.appendChild(wrap);
  }}
 }}
+function formatTrTimestamp(value){{
+ const d=value?new Date(value):null;
+ if(!d||Number.isNaN(d.getTime()))return '';
+ return new Intl.DateTimeFormat('tr-TR',{{timeZone:'Europe/Istanbul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}}).format(d)+' (Türkiye saati)';
+}}
+function renderReportingWarnings(data){{
+ const items=(data.reporting_warnings||[]).map(w=>{{
+  return {{title:w.title||'Raporlama uyarısı',when:w.retry_after?('Kota yenilenmesi: '+formatTrTimestamp(w.retry_after)):'',details:w.details||''}};
+ }});
+ renderErrorItems('reportingWarnings',items);
+}}
 function readableError(value){{
  const raw=String(value||'');
  if(/ReadTimeout|read timed out|timed out.*read timeout|timeout/i.test(raw))return 'Kaynak bağlantısı zaman aşımına uğradı.';
@@ -465,21 +524,27 @@ def admin_status(request: Request):
     result = {
         "checked_at": checked_at,
         "actions": {},
+        "reporting_warnings": [],
         "log": {},
         "live_api": {"ok": False, "error": None, "updated_at": None, "item_count": 0, "missing_from_live": []},
     }
     errors = []
     try:
-        headers = {"Accept": "application/vnd.github+json", "User-Agent": "engellime-admin-status"}
-        github_token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
-        if github_token:
-            headers["Authorization"] = "Bearer " + github_token
-        response, headers = _github_get_readonly(API + "/actions/workflows/news-cron.yml/runs?per_page=1", headers, timeout=(5, 20))
-        response.raise_for_status()
-        runs = response.json().get("workflow_runs", [])
-        if runs:
+        cached_actions = _cached_actions_status()
+        if cached_actions is not None:
+            result["actions"] = cached_actions
+        else:
+            headers = {"Accept": "application/vnd.github+json", "User-Agent": "engellime-admin-status"}
+            github_token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+            if github_token:
+                headers["Authorization"] = "Bearer " + github_token
+            response, headers = _github_get_readonly(API + "/actions/workflows/news-cron.yml/runs?per_page=1", headers, timeout=(5, 20))
+            response.raise_for_status()
+            runs = response.json().get("workflow_runs", [])
+            if not runs:
+                raise LookupError("GitHub Actions için çalışma kaydı bulunamadı.")
             run = runs[0]
-            result["actions"] = {
+            actions = {
                 "id": run.get("id"), "name": run.get("name"), "status": run.get("conclusion") or run.get("status"),
                 "created_at": run.get("created_at"), "updated_at": run.get("updated_at"),
                 "html_url": run.get("html_url"), "head_branch": run.get("head_branch"), "head_sha": run.get("head_sha"),
@@ -489,17 +554,24 @@ def admin_status(request: Request):
                 try:
                     jobs_response, headers = _github_get_readonly(API + "/actions/runs/" + str(run["id"]) + "/jobs?per_page=100", headers, timeout=(4, 10))
                     jobs_response.raise_for_status()
-                    result["actions"]["jobs"] = [
+                    actions["jobs"] = [
                         {"name": j.get("name"), "conclusion": j.get("conclusion"), "status": j.get("status"),
                          "steps": [{"name": s.get("name"), "conclusion": s.get("conclusion"), "number": s.get("number")} for s in j.get("steps", [])]}
                         for j in jobs_response.json().get("jobs", [])
                     ]
                 except Exception as exc:
-                    result["actions"]["jobs_error"] = str(exc)
-        else:
-            errors.append("GitHub Actions için çalışma kaydı bulunamadı.")
+                    actions["jobs_error"] = str(exc)
+            result["actions"] = actions
+            _cache_actions_status(actions)
+    except LookupError as exc:
+        errors.append(str(exc))
     except Exception as exc:
-        errors.append("GitHub Actions okunamadı: " + str(exc))
+        warning = _rate_limit_warning(exc)
+        if warning:
+            # GitHub kotası raporlamayı etkiler; haber işleme hatası sayılmaz.
+            result["reporting_warnings"].append(warning)
+        else:
+            errors.append("GitHub Actions okunamadı: " + str(exc))
     try:
         result["log"] = _json_from_raw("news_ai_log.json")
         if not isinstance(result["log"], dict):
