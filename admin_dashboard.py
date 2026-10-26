@@ -161,11 +161,18 @@ def _origin_guard(request):
         raise HTTPException(403, "İstek kaynağı doğrulanamadı.")
 
 
-def _github_get_readonly(url, headers, timeout):
-    """GitHub'ın herkese açık depo okumasında geçersiz eski PAT'i kullanmadan yeniden dene."""
+def _github_get_readonly(url, headers, timeout, warnings=None):
+    """GitHub'ın herkese açık depo okumasında geçersiz eski PAT'i kullanmadan yeniden dene.
+
+    Token 401 alırsa yetkilendirme yalnızca bu salt-okunur GET isteğinde kaldırılıp
+    istek anonim olarak yeniden denenir. Anonim deneme başarılı olsa bile bu durum
+    ``warnings`` listesine bir kez bildirilir; token değeri hiçbir yere yazılmaz.
+    """
     response = requests.get(url, headers=headers, timeout=timeout)
     effective_headers = headers
     if response.status_code == 401 and headers.get("Authorization"):
+        # Uyarı, anonim yeniden deneme hata verse bile kaybolmasın diye önce eklenir.
+        _note_token_rejected(warnings)
         # Depo herkese açık: yalnızca bu salt-okunur GET isteğinde yetkilendirmeyi kaldır.
         # Token değerini loglama ve başka endpoint/yazma işlemlerinde kullanma.
         effective_headers = {
@@ -206,6 +213,26 @@ _STATUS_SCOPE = (
 
 def _warning(title, details, retry_after=None):
     return {"title": title, "retry_after": retry_after, "details": details}
+
+
+_TOKEN_REJECTED_TITLE = "GitHub erişim anahtarı reddedildi; anonim okumaya geçildi."
+
+
+def _note_token_rejected(warnings):
+    """401 alındığında anonim okumaya geçildiğini tek uyarı olarak ekler.
+
+    Token değeri hiçbir zaman uyarıya veya loga yazılmaz. Aynı yanıtta birden
+    fazla istek 401 alsa bile uyarı bir kez eklenir.
+    """
+    if warnings is None:
+        return
+    if any(str(item.get("title")) == _TOKEN_REJECTED_TITLE for item in warnings):
+        return
+    warnings.append(_warning(
+        _TOKEN_REJECTED_TITLE,
+        "Tanımlı GitHub erişim anahtarı reddedildi (401); durum bilgisi anonim okumaya "
+        "geçilerek alındı. " + _STATUS_SCOPE,
+    ))
 
 
 def _reporting_warning(exc):
@@ -304,7 +331,7 @@ header{{display:flex;gap:18px;align-items:center;justify-content:space-between;f
 <div class="card"><small>Kararı netleşmeyen aday</small><strong id="pending">—</strong></div>
 <div class="card"><small>Gemini red</small><strong id="geminiRejectedCount">0</strong><div id="geminiRejectedReasons" class="reject-reason-labels" aria-label="Son ret gerekçeleri"></div></div>
 <div class="card"><small>Gemini tekrar</small><strong id="geminiDuplicatesCount">0</strong><div id="geminiDuplicateReasons" class="reject-reason-labels" aria-label="Son mükerrerlik nedenleri"></div></div>
-<div class="card" id="systemErrorsCard" hidden><small>Haber işleme sorunları</small><strong id="systemErrorsCount">0</strong></div>
+<div class="card" id="systemErrorsCard" hidden><small>Raporlama uyarıları</small><strong id="systemErrorsCount">0</strong></div>
 </div><p class="muted">Bu sayılar son taramanın kayıtlarından hesaplanır.</p></section>
 <div class="report-grid">
 <section id="pendingNewsSection"><h2>Bekleyen haberler</h2><div id="pendingNews" class="muted">Yükleniyor…</div></section>
@@ -460,6 +487,8 @@ function renderReportingWarnings(data){{
   return {{title:w.title||'Raporlama uyarısı',when:w.retry_after?('Tahmini yenilenme: '+formatTrTimestamp(w.retry_after)):'',details:w.details||''}};
  }});
  renderErrorItems('reportingWarnings',items);
+ el('systemErrorsCount').textContent=String(items.length);
+ el('systemErrorsCard').hidden=items.length===0;
 }}
 function readableError(value){{
  const raw=String(value||'');
@@ -506,8 +535,6 @@ function renderErrors(data){{
  for(const err of (data.errors||[]))systemErrors.push({{title:'Rapor verisi okunamadı',details:err}});
  renderErrorItems('sourceErrors',sourceErrors);
  renderErrorItems('systemErrors',systemErrors);
- el('systemErrorsCount').textContent=String(systemErrors.length);
- el('systemErrorsCard').hidden=systemErrors.length===0;
 }}
 async function api(url,body){{const r=await fetch(url,{{method:body?'POST':'GET',credentials:'same-origin',headers:body?{{'Content-Type':'application/json'}}:{{}},body:body?JSON.stringify(body):undefined,cache:'no-store'}});const j=await r.json().catch(()=>({{}}));if(!r.ok)throw Error(j.detail||'İstek başarısız');return j}}
 async function refresh(){{el('message').textContent='Durum bilgisi yükleniyor…';el('refresh').disabled=true;try{{const data=await api('/admin/api/status');render(data);el('message').textContent='Durum bilgisi güncellendi.'}}catch(e){{el('message').textContent=e.message}}finally{{el('refresh').disabled=false}}}}
@@ -571,12 +598,20 @@ def admin_status(request: Request):
             if cached_actions.get("jobs_warning"):
                 # Önbellekteki kısmi veride de aynı uyarı görünmeli.
                 result["reporting_warnings"].append(cached_actions["jobs_warning"])
+            if cached_actions.get("token_warning"):
+                # 401 uyarısı önbellek isabetinde kaybolmasın; tekrar eklenmez.
+                result["reporting_warnings"].append(cached_actions["token_warning"])
         else:
             headers = {"Accept": "application/vnd.github+json", "User-Agent": "engellime-admin-status"}
             github_token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
             if github_token:
                 headers["Authorization"] = "Bearer " + github_token
-            response, headers = _github_get_readonly(API + "/actions/workflows/news-cron.yml/runs?per_page=1", headers, timeout=(5, 20))
+            response, headers = _github_get_readonly(
+                API + "/actions/workflows/news-cron.yml/runs?per_page=1",
+                headers,
+                timeout=(5, 20),
+                warnings=result["reporting_warnings"],
+            )
             response.raise_for_status()
             runs = response.json().get("workflow_runs", [])
             if not runs:
@@ -590,7 +625,12 @@ def admin_status(request: Request):
             }
             if run.get("id"):
                 try:
-                    jobs_response, headers = _github_get_readonly(API + "/actions/runs/" + str(run["id"]) + "/jobs?per_page=100", headers, timeout=(4, 10))
+                    jobs_response, headers = _github_get_readonly(
+                        API + "/actions/runs/" + str(run["id"]) + "/jobs?per_page=100",
+                        headers,
+                        timeout=(4, 10),
+                        warnings=result["reporting_warnings"],
+                    )
                     jobs_response.raise_for_status()
                     actions["jobs"] = [
                         {"name": j.get("name"), "conclusion": j.get("conclusion"), "status": j.get("status"),
@@ -608,6 +648,11 @@ def admin_status(request: Request):
                     actions["jobs_warning"] = jobs_warning
                     result["reporting_warnings"].append(jobs_warning)
             result["actions"] = actions
+            for warning in result["reporting_warnings"]:
+                if str(warning.get("title")) == _TOKEN_REJECTED_TITLE:
+                    # Önbellek isabetinde de görünsün diye uyarı çalışma özetiyle saklanır.
+                    actions["token_warning"] = warning
+                    break
             _cache_actions_status(actions)
     except LookupError:
         result["reporting_warnings"].append(_warning(
