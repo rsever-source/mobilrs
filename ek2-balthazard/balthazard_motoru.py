@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Ortak Balthazard hesaplama motoru.
 
-Sözleşme: ``ORTAK-MOTOR-SOZLESME.md`` (sürüm 0.3, 28.10.2026).
+Sözleşme: ``SOZLESME.md`` §2 (sürüm 1.0, 28.10.2026).
 Bu modül **yalnızca hesap yapar**; katalog okumaz, hastalık/etiket/kimlik bilmez.
 
 Tek genel giriş noktası ``balthazard(girdi)``'dir. İki araç da (Araç-1 ve Araç-2)
@@ -53,7 +53,7 @@ gönderilmezse sözleşme gereği varsayılan ``True``'dur. ``"false"``, ``0``, 
 ``None``, ``0.0`` gibi değerler **sessizce** ``bool()`` ile dönüştürülmez; çağrı
 ``ok=False`` ile reddedilir.
 
-Sözleşmede (``ORTAK-MOTOR-SOZLESME.md`` §5) bu alan için **ayrı hata kodu yoktur**
+Sözleşmede (``SOZLESME.md`` §2.3) bu alan için **ayrı hata kodu yoktur**
 ve bu modül **yeni kod uydurmaz**. Kullanılan eşleme:
 
 * kod: ``E_YAS_GECERSIZ`` — alan yaş grubuna aittir (ek oranın uygulanıp

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Araç-2 — Balthazard ekranı için küçük, bağımsız sunucu (prototip).
 
-Amaç: ``ARAC-2-WIREFRAME.md`` (0.4) tasarımını **çalışan** bir ekran olarak
+Amaç: ``SOZLESME.md`` §5 tasarımını **çalışan** bir ekran olarak
 göstermek ve onaylı ortak motoru (``balthazard_motoru``) hiç kopyalamadan
 kullanmak. Ekran kendi hesabını yapmaz; tüm sayılar motordan gelir.
 

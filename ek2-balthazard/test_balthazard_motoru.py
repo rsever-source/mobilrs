@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Ortak Balthazard motoru testleri.
 
-Sözleşme: ``ORTAK-MOTOR-SOZLESME.md`` (0.3). Testler yalnız standart kütüphane
+Sözleşme: ``SOZLESME.md`` §2 (1.0). Testler yalnız standart kütüphane
 kullanır (``unittest``); ek paket gerekmez.
 
 Çalıştırma (bu klasörde):
