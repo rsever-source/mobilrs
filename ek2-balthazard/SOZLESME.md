@@ -1,6 +1,6 @@
 # EK-2 Balthazard — Bağlayıcı Sözleşme
 
-Sürüm: 1.0 · Tarih: 28.10.2026 · Durum: **uygulama öncesi son**
+Sürüm: 1.1 · Tarih: 28.10.2026 · Durum: **uygulama öncesi son**
 Kapsam: ortak hesaplama motoru, Araç-1 (Engel Oranı Bul) veri/ekran kuralları,
 Araç-2 (Balthazard Hesapla) davranışı, resmî kaynak karşılaştırması ve karar durumu.
 
@@ -1122,8 +1122,8 @@ geçerlidir.
 
 ## 8. Doğrulama sonuçları
 
-Veri dosyaları **değiştirilmedi**; aşağıdaki değerler 28.10.2026 oturumunda yeniden
-hesaplandı.
+Veri dosyalarına bu pakette **yazılmadı** (salt okunur doğrulama); aşağıdaki değerler
+28.10.2026 tarihinde yeniden hesaplandı.
 
 ### 8.1 Katalog sayıları
 
@@ -1155,6 +1155,65 @@ kaynaklanır (s.19 eritroderma 40; s.21 KTCL 3. madde 40). s.21 kaydı **D-141**
 kataloğa girdi; X-D06 (eritroderma) belirsizde kaldı. Üç bölümde oran aralığı olmadığı
 ayrıca kontrol edildi.
 
+#### 8.1.1 Katalog kontrol kanıtları (28.10.2026)
+
+Kataloğa aktarılan 11 satır, alınmadan önce üç eksende kontrol edildi: **(1)** resmî sayfa,
+**(2)** kaynakta yazan oran, **(3)** mevcut şemaya uyum. Aşağıdaki sonuçlar 28.10.2026
+tarihinde dosyalar üzerinde yeniden doğrulandı.
+
+| Kontrol | Sonuç |
+| --- | --- |
+| Sayfa + oran eşleşmesi | **11/11** doğru; hiçbirinde sayfa kayması yok (eşleme tablosu §3.10) |
+| Kullanılan alanlar | Yalnız mevcut alanlar: `id, bolum, hastalik, alt_tur, oran, sayfa, kisit, kaynak_not` (+ DERİ'de `grup`) |
+| `oran` / `sayfa` tipi | Hepsi tek tam sayı; `oran` 0–100 (0 değeri şemada serbest: `Z-012`, `Z-015`, `Z-022` de 0) |
+| Kısıt kodları | Yalnız mevcut kodlar: `R-YILLIK`, `R-GECICI`, `R-VERGI`, `R-REMISYON`; **yeni kod gerekmedi** |
+| `grup` değerleri (DERİ) | `X`, `VI-C`, `XIII` — üçü de `meta.grup_adlari` içinde tanımlı |
+| `bolum` değerleri | Mevcut üç bölüm adıyla birebir |
+| Kimlik çakışması | **Yok**; `(hastalik, alt_tur)` çifti hâlâ tekil |
+| `kaynak_not` | Alan tanımlı; 6 kayıtta yalnız kaynağa dair uyarı için kullanıldı, oranı değiştirmez |
+
+**Çakışma kontrolü (özet):** her aday, aynı ailedeki mevcut kayıtlarla karşılaştırıldı ve
+hepsinde **eksik madde** tamamlandı: Z-055 ↔ Z-018…Z-021 · Z-056 ↔ Z-031…Z-036 ·
+D-139 ↔ D-049/D-050 · D-140 ↔ D-066 · D-141 ↔ D-119…D-123 · D-142 ↔ aynı aile ·
+H-074 ↔ H-001/H-002 · H-075 ↔ H-014 · H-076 ↔ H-020 · H-077 ↔ H-052…H-055 ·
+H-078 ↔ H-061…H-064. Hiçbiri mevcut bir kaydın tekrarı değildir.
+
+**Sayaç değişimi (uygulanan paket):**
+
+| Ölçü | Önce | Sonra |
+| --- | --- | --- |
+| Kesin / belirsiz | 265 / 21 | **276 / 10** |
+| Z kesin / belirsiz | 54 / 4 | 56 / 2 |
+| D kesin / belirsiz | 138 / 10 | 142 / 6 |
+| H kesin / belirsiz | 73 / 7 | 78 / 2 |
+| Oran toplamı | 8.350 | **8.990** (+640 = 11 kaydın oran toplamı) |
+| Toplam satır | 286 | **286** (değişmedi) |
+
+12. aday (X-D03, %5) da alınsaydı 277 / 9 ve 8.995 olurdu; **alınmadı**.
+
+**X-D03 neden bloke:** X-D03, X-D04 ve X-D05 ile **aynı NOT bloğunu** paylaşır. NOT (a)
+"ayrıca %5 eklenir" der (ek mi, yerine mi belirsiz); NOT (b) "tanımlanmış başka bir hastalık
+varsa puan almaz" der ve bu, oranın **uygulanıp uygulanmayacağını** değiştirir. `kaynak_not`
+"oranı değiştirmez" alanıdır, bu kural oraya yazılamaz; doğru yer `kisit` olurdu ve
+`R-BASKAH` kodu **yoktur**. Üçünü ayırmanın metinden dayanağı olmadığı için üçü birlikte
+belirsizde bekler (A-1, A-2).
+
+**`kaynak_not` değerleri (6 kayıt; oranı değiştirmez):**
+
+| id | `kaynak_not` |
+| --- | --- |
+| Z-055 | Kaynakta iki ayrı madde "d)" ile numaralanmış (atipik otizm ve otizm); harf tekrarı düzeltilmedi. |
+| D-139 | Kaynak metin yalnız iki kategori veriyor (10 ve 80); ara kombinasyonlar tanımsız. |
+| H-074 | İki ölçüt birlikte aranır; yalnız biri sağlanırsa 1. madde (ağır olmayan, 40) uygulanır. |
+| H-076 | İki ölçüt birlikte; sağlanmıyorsa 2. madde (40). Parantezdeki ifade sitopenileri niteler. |
+| H-077 | Kaynakta "ya da veya" ve "__" yazım artefaktı var; anlam değişmedi. |
+| H-078 | Kaynakta 5 numaralı madde yok; numaralandırma 4'ten 6'ya atlıyor, düzeltilmedi. |
+
+**Hash geçmişi:** kontrol raporu alındığında dosyalar 265 / 21 durumundaydı (rapor anındaki
+kısa hash'ler `4B75FC52…`, `782DE5E7…`). 11 kayıt işlendikten sonra dosyalar değişti;
+**güncel** değerler §8.1'deki `B77AEF76…` / `89AE83AA…` MD5'leridir. Rapor hash'leri
+tarihsel izdir, güncel doğrulamada kullanılmaz.
+
 ### 8.2 Kısıt sayıları
 
 R-YILLIK **142** · R-GECICI **34** · R-VERGI **34** · R-NAKIL **6** · R-REMISYON **4** ·
@@ -1184,7 +1243,7 @@ değiştirilmez), UTF-8, 404.
 
 | Kontrol | Sonuç |
 | --- | --- |
-| Eski sayılar (265 / 21 / 12 / 138 / 177 / 252 / 73) | Yalnız tarihsel/arşiv belgelerinde; bu pakette temiz |
+| Eski sayılar (265 / 21 / 12 / 138 / 177 / 252 / 73) | 265 / 21 yalnız §8.1.1'de **geçiş tablosu** olarak bilinçli; diğerleri yalnız tarihsel/arşiv belgelerinde |
 | "X-D09 örneği" | Yalnız değişiklik notunda ("X-D09 → X-D03"); örnek X-D03 |
 | Motor imzası | `balthazard({oranlar, yas, yas_ekle=true})` her yerde aynı |
 | Tekrar uyarısı metni | Aynı; onay istemez |
@@ -1199,7 +1258,8 @@ değiştirilmez), UTF-8, 404.
 
 - Bu sözleşme **kod değildir**; uygulama kodu, build ve deploy bu belgenin kapsamı
   dışındadır. Araç-1 ekranı henüz geliştirilmedi.
-- Katalog verisi, oranlar ve kısıt değerleri değişmez; JSON'lar bu depoda yoktur.
+- Katalog verisi, oranlar ve kısıt değerleri bu pakette değiştirilmez; JSON dosyaları
+  depoda tutulmaz, yalnız salt okunur doğrulanır (kanıtlar §8.1.1).
 - Göz, işitme, konuşma ve kas-iskelet bölümleri kapsam dışıdır; oran uydurulmaz.
 - 11 çözülen kayıt tekrar eklenmez; 10 belirsiz kayıt kesin oran gibi gösterilmez.
 - Canlı FastAPI uygulaması, workflow'lar ve dağıtım ayarları değiştirilmez.
@@ -1216,3 +1276,4 @@ değiştirilmez), UTF-8, 404.
 | 0.3 | 28.10.2026 | O-1, O-2 kapandı; 65 yaş Araç-1'de bilgi bloğu; O-3 kaynak araştırması |
 | 0.4 | 28.10.2026 | G-1…G-4 gösterim kararı; B-3 kapandı; test vektörleri 14–20; Araç-2 §12.3 |
 | **1.0** | 28.10.2026 | Altı belge tek `SOZLESME.md` + `README.md` olarak birleştirildi; içerik korundu, tekrarlar kaldırıldı |
+| **1.1** | 28.10.2026 | "Katalog JSON'ları okunmadı" ifadesi düzeltildi (yalnız salt okunur doğrulama); katalog kontrol kanıtları §8.1.1'e kalıcı olarak eklendi |

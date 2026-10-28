@@ -1,6 +1,6 @@
 # EK-2 Balthazard — inceleme paketi
 
-Sürüm: 1.0 · Tarih: 28.10.2026 · Durum: **inceleme/prototip — üretime bağlı değil**
+Sürüm: 1.1 · Tarih: 28.10.2026 · Durum: **inceleme/prototip — üretime bağlı değil**
 
 Bu klasör, EK-2 (Erişkinler İçin Engellilik Değerlendirmesi) kapsamındaki üç bölüm
 (ZİHİNSEL/RUHSAL/DAVRANIŞSAL, DERİ, HEMATOLOJİK) için hazırlanan **ortak Balthazard
@@ -110,10 +110,12 @@ Ayrıntı: `SOZLESME.md` §7.3 ve §3.11.
 
 ---
 
-## Katalog verisi (bu depoda yok)
+## Katalog verisi (dosyalar bu depoda yok)
 
 Katalog JSON'ları (`katalog_taslak.json`, `belirsiz.json`) **bu klasörde ve depoda
-değildir**; değiştirilmedi ve eklenmedi. Özet durum:
+değildir**; dosyalara yazılmadı, depoya eklenmedi. Aşağıdaki sayılar ve MD5 değerleri bu
+dosyaların 28.10.2026 tarihinde **salt okunur** incelenmesiyle doğrulandı: depoda verinin
+kendisi değil, **doğrulama sonuçları** durur. Özet durum:
 
 | Ölçü | Değer |
 | --- | --- |
@@ -137,7 +139,8 @@ bölümleri bu çalışmanın kapsamı dışındadır.
 
 - Bu paket **üretim koduna entegre edilmedi**: FastAPI uç noktaları, workflow'lar,
   `cloudbuild.yaml` ve dağıtım ayarları değişmedi.
-- Katalog JSON'ları okunmadı/değiştirilmedi; depoya eklenmedi.
+- Katalog JSON'ları yalnız **doğrulama için okundu** (salt okunur); değiştirilmedi ve
+  depoya eklenmedi. Sayı, MD5 ve şema kanıtları `SOZLESME.md` §8.1.1'dedir.
 - Araç-1 ekranı geliştirilmedi; yalnız sözleşmesi korunuyor.
 - Nashi projesine ve ilgisiz dosyalara dokunulmadı.
 - Ekran görüntüleri, ölçüm betikleri ve geçici dosyalar depoya eklenmedi.
@@ -149,11 +152,17 @@ bölümleri bu çalışmanın kapsamı dışındadır.
 - 28.10.2026 sadeleştirmesi: altı ayrı belge (`OKUBENI`, `ORTAK-MOTOR-SOZLESME`,
   `ARAC-1-SOZLESME`, `ARAC-1-WIREFRAME`, `ARAC-2-WIREFRAME`, `ARAC-1-2-HAZIRLIK-RAPORU`)
   içerik kaybı olmadan bu iki belgeye birleştirildi.
-- Eski belgelerdeki **265 kayıt / 21 belirsiz / 12 tek kayıtlı grup** sayıları ve eski MD5
-  değerleri geçersizdir; yalnız tarihsel kayıttır. Güncel sayılar yukarıdadır.
+- Eski belgelerdeki **265 kayıt / 21 belirsiz** sayıları 11 kayıt uygulanmadan önceki
+  durumu gösterir (tarihsel); güncel sayılar yukarıdadır ve `SOZLESME.md` §8.1.1'de
+  geçiş tablosu vardır. **12 tek kayıtlı grup** sayısı ve eski MD5 değerleri geçersizdir.
 - Belirsiz kayıt örneği eskiden X-D09 idi; X-D09 çözülüp **D-141** olduğu için örnek
   **X-D03**'e taşındı.
 - `YARIN-DEVAM.md`, `BELIRSIZ-COZUM-RAPORU.md`, `KATALOG-SON-KONTROL.md` ve `_yedek/`
-  arşiv/veri raporlarıdır; bu pakete alınmadı. İçlerindeki sayılar güncel değildir.
+  arşiv/veri raporlarıdır; **bu pakete alınmadı, depoya yüklenmedi**. Bu dosyalardaki
+  sayılar güncel değildir. Katalog kontrol raporundaki güncel ve önemli kanıtlar
+  (şema uyumu, çakışma kontrolü, sayaç değişimi, `kaynak_not` değerleri, hash geçmişi)
+  kaybolmasın diye `SOZLESME.md` §8.1.1'e taşındı.
+- Yedekler ve eski devam notları bilinçli olarak yüklenmez: GitHub'daki dal **güncel
+  doğrulama sonuçlarını** taşır, ham veri ve geçici çalışma dosyalarını değil.
 - Bu çalışma `feature/ek2-balthazard-arac2` dalında yürütülür; ana dala merge ve canlı
   deploy yapılmaz.
