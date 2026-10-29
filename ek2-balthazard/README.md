@@ -1,14 +1,14 @@
 # EK-2 Balthazard — inceleme paketi
 
-Sürüm: 1.2 · Tarih: 28.10.2026 · Durum: **inceleme/prototip — üretime bağlı değil**
+Sürüm: 1.3 · Tarih: 29.10.2026 · Durum: **inceleme/prototip — üretime bağlı değil**
 
 Bu klasör, EK-2 (Erişkinler İçin Engellilik Değerlendirmesi) kapsamındaki üç bölüm
 (ZİHİNSEL/RUHSAL/DAVRANIŞSAL, DERİ, HEMATOLOJİK) için hazırlanan **ortak Balthazard
-motorunu**, **Araç-2 ekran prototipini** ve iki aracın **bağlayıcı sözleşmesini** tek
-yerde toplar.
+motorunu**, **Araç-1 ve Araç-2 ekran prototiplerini** ve iki aracın **bağlayıcı
+sözleşmesini** tek yerde toplar.
 
 - **Araç-1 (Engel Oranı Bul):** hastalık + seviye seçiminden EK-2'de tanımlı tek oranı
-  bulur. Sözleşmesi hazırdır; **ekranı henüz geliştirilmedi**.
+  bulur. Çalışan prototipi `arac1/` altındadır; katalog verisini salt okunur yükler.
 - **Araç-2 (Balthazard Hesapla):** elle girilen oranların bileşkesini hesaplar.
   Çalışan prototipi `arac2/` altındadır.
 - **Ortak motor:** iki araç da aynı `balthazard()` fonksiyonunu çağırır; kopya hesap
@@ -26,9 +26,15 @@ ek2-balthazard/
 ├── SOZLESME.md                   ortak motor + Araç-1 + Araç-2 bağlayıcı sözleşmesi
 ├── balthazard_motoru.py          ortak motor (stdlib, MOTOR_SURUMU = "0.2")
 ├── test_balthazard_motoru.py     77 unittest
+├── katalog_okuyucu.py            salt okunur katalog yükleyici (§3.4 değişmezleri)
+├── test_katalog_okuyucu.py       27 unittest
 ├── veri/
 │   ├── katalog.json              276 doğrulanmış kesin kayıt (değiştirilmez)
 │   └── belirsiz.json             21 satır: 11 çözüldü + 10 belirsiz
+├── arac1/
+│   ├── arac1.html                Araç-1 ekranı (HTML + CSS + JS, harici bağımlılık yok)
+│   ├── arac1_sunucu.py           stdlib http.server; 127.0.0.1:8766
+│   └── test_arac1.py             30 unittest
 └── arac2/
     ├── arac2.html                Araç-2 ekranı (HTML + CSS + JS, harici bağımlılık yok)
     ├── arac2_sunucu.py           stdlib http.server; yerel prototip sunucusu
@@ -40,9 +46,31 @@ paket, `requirements.txt` değişikliği veya dış servis gerekmez.
 
 ---
 
-## Çalıştırma (Araç-2 prototipi)
+## Çalıştırma
 
-Python 3.10+ yeterlidir. Sunucu yalnız `127.0.0.1` üzerinde dinler, dışarıya açılmaz.
+Python 3.10+ yeterlidir. İki prototip **birbirinden bağımsızdır** ve yalnız
+`127.0.0.1` üzerinde dinler; dışarıya açılmaz.
+
+### Araç-1 — Engel Oranı Bul (8766)
+
+```
+cd ek2-balthazard/arac1
+python arac1_sunucu.py            # http://127.0.0.1:8766
+python arac1_sunucu.py 9000       # başka port
+```
+
+Uç noktalar (yalnız `GET`): `/arac1` (ekran), `/saglik`, `/api/bolumler`,
+`/api/gezinme?bolum=…`, `/api/ara?metin=&bolum=`, `/api/kayit/<id>`,
+`/api/belirsiz/<id>`. Yazma/hesaplama ucu **yoktur** (POST `405` döner): Araç-1
+katalog oranını motordan `balthazard({…, yas_ekle: false})` ile okur, kendi hesabını
+yapmaz.
+
+Katalog açılışta bir kez, **salt okunur** yüklenir (`katalog_okuyucu.py`); §3.4
+değişmezlerinden biri bozulursa uygulama açılmaz. "Hesaplamaya ekle" listesi yalnız
+tarayıcı oturumunda tutulur; Araç-2'ye otomatik aktarım **yapılmaz**, kullanıcı listeyi
+kopyalayıp Araç-2'ye elle girer (S-1a).
+
+### Araç-2 — Balthazard Hesapla (8765)
 
 ```
 cd ek2-balthazard/arac2
@@ -54,8 +82,8 @@ Uç noktalar: `GET /` ve `GET /arac2` (ekran), `GET /saglik` (sağlık kontrolü
 `POST /api/hesapla` (motor çağrısı). Gövde hatasında transport katmanı
 `400 {"ok": false, "mesaj": …}` döner; **yeni motor hata kodu uydurulmaz**.
 
-Prototip canlı FastAPI uygulamasına **bağlanmadı**; `/api/hesapla` yalnız yerel sunucuda
-vardır.
+Prototipler canlı FastAPI uygulamasına **bağlanmadı**; `/api/*` uçları yalnız yerel
+sunucularda vardır.
 
 ---
 
@@ -63,14 +91,19 @@ vardır.
 
 ```
 cd ek2-balthazard
-python -m unittest -v test_balthazard_motoru     # beklenen: 77 test, OK
+python -m unittest -v test_balthazard_motoru          # beklenen: 77 test, OK
+python -m unittest -v test_katalog_okuyucu            # beklenen: 27 test, OK
+
+cd ek2-balthazard/arac1
+python -m unittest -v test_arac1                      # beklenen: 30 test, OK
 
 cd ek2-balthazard/arac2
-python -m unittest -v test_arac2                 # beklenen: 11 test, OK
+python -m unittest -v test_arac2                      # beklenen: 11 test, OK
 ```
 
-Testler `unittest` ile yazılmıştır (pytest gerekmez). 28.10.2026 doğrulaması: **77 + 11
-test OK**.
+Testler `unittest` ile yazılmıştır (pytest gerekmez). 29.10.2026 doğrulaması:
+**77 + 27 + 30 + 11 = 145 test OK**. Araç-1 testleri rastgele bir yerel portta
+çalışır; katalog dosyalarının `mtime`/boyut değişmediğini de denetler.
 
 ---
 
@@ -88,6 +121,8 @@ Ayrıntı ve gerekçeler `SOZLESME.md` §7'dedir.
 | **B-6** | Aynı oranın tekrarı | Engellenmez; her giriş hesaba katılır; yalnız bilgilendirici uyarı |
 | **B-7** | Ondalıklı giriş | İlk sürümde tam sayı — **ürün tercihi**, mevzuat kuralı değil |
 | **G-1…G-4** | Gösterim | En fazla **2 ondalık**, **yarı yukarı** (`ROUND_HALF_UP`), tam sayıda ondalık yok, sondaki sıfırlar atılır, Türkçe virgül; yuvarlama **tek kez ve yalnız sunumda** |
+| **S-1a** | Araç-2'ye aktarım | Liste yalnız Araç-1'de (oturum içi); **kopyala + bağlantı**, otomatik aktarım yok |
+| **S-2a** | Sayfa düzeni | İki uygulama **ayrı sunucu/port** (8766 / 8765); üstte karşılıklı bağlantı |
 
 **Değişmeyen hesap:** motorun çıktısı (`sonuc.deger`, `adimlar[]`, `yuvarlama`) gösterim
 kararından etkilenmez. Biçimlendirme yalnız `bicimle_gosterim()` ile yapılır; ekranlar
@@ -143,16 +178,20 @@ Kaynak künyesi: *Erişkinler İçin Engellilik Değerlendirmesi Hakkında Yöne
 (RG **20.02.2019, 30692**), EK-2 kılavuzu s.13-26. Göz, işitme, konuşma ve kas-iskelet
 bölümleri bu çalışmanın kapsamı dışındadır.
 
+Araç-1 bu dosyaları `katalog_okuyucu.py` ile **salt okunur** yükler: §3.4
+değişmezleri açılışta doğrulanır, türetilmiş alanlar yalnız bellekte tutulur,
+dosyalara yazılmaz.
+
 ---
 
 ## Sınırlar
 
 - Bu paket **üretim koduna entegre edilmedi**: FastAPI uç noktaları, workflow'lar,
   `cloudbuild.yaml` ve dağıtım ayarları değişmedi.
-- Katalog dosyaları `veri/` altında **değiştirilmeden** depoda tutulur; uygulama henüz
-  bunları okumaz, entegrasyon ayrı adımdır. Sayı, şema ve çakışma kanıtları
-  `SOZLESME.md` §8.1.1'dedir.
-- Araç-1 ekranı geliştirilmedi; yalnız sözleşmesi korunuyor.
+- Katalog dosyaları `veri/` altında **değiştirilmeden** depoda tutulur; Araç-1 bunları
+  salt okunur yükler, yazmaz. Sayı, şema ve çakışma kanıtları `SOZLESME.md` §8.1.1'dedir.
+- Araç-1 ekranı **yerel prototip** olarak geliştirildi (`arac1/`); canlı uygulamaya
+  bağlanmadı, dağıtılmadı. Araç-2 davranışı ve 11 testi değişmedi.
 - Nashi projesine ve ilgisiz dosyalara dokunulmadı.
 - Ekran görüntüleri, ölçüm betikleri ve geçici dosyalar depoya eklenmedi.
 

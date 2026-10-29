@@ -1,6 +1,6 @@
 # EK-2 Balthazard — Bağlayıcı Sözleşme
 
-Sürüm: 1.2 · Tarih: 28.10.2026 · Durum: **uygulama öncesi son**
+Sürüm: 1.3 · Tarih: 29.10.2026 · Durum: **Araç-1/Araç-2 yerel prototipleri çalışıyor**
 Kapsam: ortak hesaplama motoru, Araç-1 (Engel Oranı Bul) veri/ekran kuralları,
 Araç-2 (Balthazard Hesapla) davranışı, resmî kaynak karşılaştırması ve karar durumu.
 
@@ -654,6 +654,9 @@ Her iki aracın altında kalıcı not:
 ### 4.1 Yerleşim
 
 - İki araç **ayrı sekmelerdir**: "Engel Oranı Bul" ve "Balthazard Hesapla".
+  Uygulama notu (S-2a): iki prototip **ayrı sunucu ve portta** çalışır (Araç-1
+  `127.0.0.1:8766`, Araç-2 `127.0.0.1:8765`); her ekranın üstünde diğer araca
+  bağlantı bulunur. İki uygulama birbirine bağımlı değildir (§4.12).
 - Araç-1 tek sayfadır: arama + bölüm çipleri (Tümü / Ruh Sağlığı / Deri / Hematoloji)
   üstte, sonuç alanı altta; modal/açılır pencere yok.
 - Her ekranda kalıcı alt bilgi vardır (§3.16).
@@ -751,6 +754,13 @@ Metin ve kurallar için §3.14.
 - Araç-2'ye yalnız **sayı + kısa etiket** geçer; hastalık bilgisi taşınmaz.
 - Aynı kayıt ikinci kez eklenirse uyarı: "Bu kayıt zaten listede." (engellenmez)
 
+**Uygulama notu (S-1a, 29.10.2026):** Bu turda liste **yalnız Araç-1'de** (tarayıcı
+oturumunda) tutulur; Araç-2'ye **otomatik aktarım yapılmaz**. Kullanıcı listeyi
+kopyalayıp Araç-2'ye elle girer; ekranda Araç-2'ye bağlantı verilir. Kısa etiket
+`EK-2 kaydı <id> · s.<sayfa>` biçimindedir, hastalık adı taşımaz. Araç-2'nin kodu ve
+davranışı bu kararla değişmemiştir; `?oranlar=` benzeri bir aktarım yeni ve onaylı bir
+adım gerektirir.
+
 ### 4.10 Metin sözlüğü ve yasak ibareler
 
 | Yer | Metin |
@@ -778,6 +788,35 @@ referansıdır; birebir kopyalanmadı, oradaki metin/oranlar doğru kabul edilme
 **Alınmayanlar:** anatomi figürü (3 bölüm için gereksiz, erişilebilirlik yükü); boşken
 `%0` gösteren halka ("oran var" izlenimi); dev gradyan başlık bandı; 19 kategori çipi;
 oranı yuvarlak "skor" gibi sunma ("nihai oran" izlenimi).
+
+### 4.12 Uygulama notu — Araç-1 prototipi (29.10.2026)
+
+Bu bölüm **teknik uygulama** bilgisidir; hukuki/veri kararı içermez ve §7.3'teki açık
+maddeleri (B-4, B-5, B-8, O-3, A-1…A-6) kapatmaz.
+
+| Bileşen | Dosya | Görev |
+| --- | --- | --- |
+| Yükleyici | `katalog_okuyucu.py` | Salt okunur okuma, §3.4 değişmez denetimi, §3.3 türetilmiş alanlar |
+| Sunucu | `arac1/arac1_sunucu.py` | stdlib `http.server`, `127.0.0.1:8766`, yalnız `GET` |
+| Ekran | `arac1/arac1.html` | Arama, bölüm çipleri, gezinme, sonuç, eklenen oranlar |
+
+Uçlar: `/arac1` (ekran), `/saglik`, `/api/bolumler`, `/api/gezinme?bolum=…`,
+`/api/ara?metin=&bolum=`, `/api/kayit/<id>`, `/api/belirsiz/<id>`. `POST` → `405`
+(Araç-1 hesap yapmaz, yazmaz).
+
+Bağlı uygulama kuralları:
+
+- Her oran motordan `balthazard({"oranlar": [oran], "yas": "65_alti", "yas_ekle": False})`
+  ve `bicimle_gosterim()` ile alınır; Araç-1'de kopya formül yoktur (§2, O-1).
+- `—` değeri ekranda hiç görünmez: seviye etiketi `alt_tur` → `hastalik` ayracının sağı →
+  "tek oran" sırasıyla türetilir (§3.9).
+- Belirsiz kayıt yanıtında `oran`, kısıt ve "hesaplamaya ekle" alanı **hiç üretilmez**;
+  `durum: cozuldu` satırları `404` döner (§3.10).
+- Kısıtlar §4.4 tablosundaki tür/önem/ikon/açıklama ile birebir taşınır; 65 yaş bloğu ve
+  hematoloji bölüm notu ayrı nötr bloklardır, oranı değiştirmez, kısıt sayılmaz.
+- Katalog dosyaları çalışma sırasında **değişmez**; testler `mtime`/boyut sabitliğini
+  doğrular (§3.17/8).
+- Araç-2'ye otomatik aktarım yoktur (S-1a); iki uygulama ayrı portta bağımsızdır (S-2a).
 
 ---
 
@@ -1064,6 +1103,8 @@ Yuvarlama sorusu kesin olarak kapandı: **Ek-3'te yuvarlama hükmü yok.** Yaş 
 | **B-6** | Aynı oranın tekrarı | Engellenmez; her giriş hesaba katılır; bilgilendirici uyarı |
 | **B-7** | Ondalıklı giriş | İlk sürümde tam sayı — **ürün tercihi**, mevzuat kuralı değil |
 | **G-1…G-4** | Gösterim | En fazla 2 ondalık, yarı yukarı, tam sayıda ondalık yok, sondaki sıfırlar atılır, Türkçe virgül; tek kez ve yalnız sunumda |
+| **S-1a** | Araç-1 → Araç-2 aktarım | **29.10.2026, teknik karar:** liste yalnız Araç-1 oturumunda; kopyala + bağlantı. Otomatik aktarım yok, Araç-2 değişmedi |
+| **S-2a** | Sayfa düzeni | **29.10.2026, teknik karar:** iki uygulama ayrı sunucu/port (8766 / 8765), üstte karşılıklı bağlantı |
 
 ### 7.2 Kaynak çelişkileri (kayıtlı)
 
@@ -1111,12 +1152,12 @@ Yuvarlama sorusu kesin olarak kapandı: **Ek-3'te yuvarlama hükmü yok.** Yaş 
 | — | 72 imla/biçim kalemi | Bloklamıyor | Uygulanmadı |
 
 **Kapalı olduğu için bu tabloya eklenmeyenler:** B-1, B-2, B-3, B-6, B-7, G-1…G-4,
-O-1, O-2.
+O-1, O-2, S-1a, S-2a.
 
-**Özet:** 8 karar grubu kapandı; **3 madde açık** (B-4, B-5, B-8) + O-3'ün izi +
-A-1…A-6 ve üç veri/şema notu. Açık maddelerin hiçbiri motoru **bloklamıyor**: motor ham
-değerle, kırpma yapmadan, tam sayı maskesiyle çalışır; gösterim kuralı kapalı olduğu için
-iki araç aynı metni üretir.
+**Özet:** 10 karar grubu kapandı (8 motor/ürün + 2 teknik uygulama: S-1a, S-2a);
+**3 madde açık** (B-4, B-5, B-8) + O-3'ün izi + A-1…A-6 ve üç veri/şema notu. Açık
+maddelerin hiçbiri motoru **bloklamıyor**: motor ham değerle, kırpma yapmadan, tam sayı
+maskesiyle çalışır; gösterim kuralı kapalı olduğu için iki araç aynı metni üretir.
 
 ### 7.4 Kayıt kuralı
 
@@ -1220,7 +1261,9 @@ belirsizde bekler (A-1, A-2).
 **Ad / yol eşlemesi:** kaynak `katalog_taslak.json` → depoda `veri/katalog.json`;
 `belirsiz.json` → `veri/belirsiz.json`. Depoya alınırken içerik değişmedi: iki dosya da
 kaynak sürümle **bayt düzeyinde aynı** (SHA-256 eşit), MD5'ler §8.1'deki gibidir.
-Uygulama bu dosyaları henüz **okumaz**; entegrasyon ayrı adımdır.
+Uygulama bu dosyaları **salt okunur** okur (`katalog_okuyucu.py`); yazma yolu yoktur,
+dosyaların mtime/boyut değerleri çalışma sırasında değişmez. Canlı sisteme entegrasyon
+ayrı ve onaylı bir adımdır.
 
 **Hash geçmişi:** kontrol raporu alındığında dosyalar 265 / 21 durumundaydı (rapor anındaki
 kısa hash'ler `4B75FC52…`, `782DE5E7…`). 11 kayıt işlendikten sonra dosyalar değişti;
@@ -1247,7 +1290,15 @@ kısıtsız kayıt.
 | Grup | Komut | Sonuç |
 | --- | --- | --- |
 | Ortak motor | `python -m unittest -v test_balthazard_motoru` | **77 test, OK** |
+| Katalog yükleyici | `python -m unittest -v test_katalog_okuyucu` | **27 test, OK** |
+| Araç-1 | `python -m unittest -v test_arac1` | **30 test, OK** |
 | Araç-2 | `python -m unittest -v test_arac2` | **11 test, OK** |
+
+Toplam **145** test; 29.10.2026 tarihinde depo kökünden çalıştırıldı ve tamamı geçti.
+
+Araç-1 testleri: sayı/dağılım değişmezleri, arama (§3.6), 276 sonucun alanları, `—` ve
+H-065 seviyesi, 9 tek kayıtlı grup, 10 belirsiz / 11 çözülen ayrımı, 7 kısıt metni,
+`R-VERGI` sayısı, 65 yaş bloğu, hematoloji notu, yasak ibareler, `mtime` sabitliği.
 
 Araç-2 testleri: gösterim katmanı, `POST /api/hesapla`, hata geçişi (motor kodu
 değiştirilmez), UTF-8, 404.
@@ -1270,9 +1321,10 @@ değiştirilmez), UTF-8, 404.
 ## 9. Sınırlar
 
 - Bu sözleşme **kod değildir**; uygulama kodu, build ve deploy bu belgenin kapsamı
-  dışındadır. Araç-1 ekranı henüz geliştirilmedi.
+  dışındadır. Araç-1 ekranı `arac1/` altında **yerel prototip** olarak geliştirildi
+  (§4.12); canlı uygulamaya bağlanmadı.
 - Katalog verisi, oranlar ve kısıt değerleri değiştirilmez; dosyalar `veri/` altında depoda
-  saklanır, uygulama bunları henüz okumaz (entegrasyon ayrı adım; kanıtlar §8.1.1).
+  saklanır, Araç-1 bunları yalnız **okur** (yazma yolu yoktur; kanıtlar §8.1.1).
 - Göz, işitme, konuşma ve kas-iskelet bölümleri kapsam dışıdır; oran uydurulmaz.
 - 11 çözülen kayıt tekrar eklenmez; 10 belirsiz kayıt kesin oran gibi gösterilmez.
 - Canlı FastAPI uygulaması, workflow'lar ve dağıtım ayarları değiştirilmez.
@@ -1291,3 +1343,4 @@ değiştirilmez), UTF-8, 404.
 | **1.0** | 28.10.2026 | Altı belge tek `SOZLESME.md` + `README.md` olarak birleştirildi; içerik korundu, tekrarlar kaldırıldı |
 | **1.1** | 28.10.2026 | "Katalog JSON'ları okunmadı" ifadesi düzeltildi (yalnız salt okunur doğrulama); katalog kontrol kanıtları §8.1.1'e kalıcı olarak eklendi |
 | **1.2** | 28.10.2026 | Katalog verisi `veri/katalog.json` + `veri/belirsiz.json` olarak depoya alındı (içerik değişmedi); §3.1 ve §8 yolları güncellendi |
+| **1.3** | 29.10.2026 | Araç-1 ekranı ve salt okunur yükleyici geliştirildi; §4.1/§4.9 uygulama notları, §4.12 ve S-1a/S-2a teknik kararları eklendi; test toplamı 145. Açık kararlar (B-4, B-5, B-8, O-3, A-1…A-6) değişmedi |
