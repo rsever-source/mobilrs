@@ -1,6 +1,6 @@
 # EK-2 Balthazard — Bağlayıcı Sözleşme
 
-Sürüm: 1.1 · Tarih: 28.10.2026 · Durum: **uygulama öncesi son**
+Sürüm: 1.2 · Tarih: 28.10.2026 · Durum: **uygulama öncesi son**
 Kapsam: ortak hesaplama motoru, Araç-1 (Engel Oranı Bul) veri/ekran kuralları,
 Araç-2 (Balthazard Hesapla) davranışı, resmî kaynak karşılaştırması ve karar durumu.
 
@@ -297,10 +297,16 @@ Dayanak: mevzuatta (Yönetmelik, EK-2 kılavuzu, Ek-3) **gösterim hükmü yoktu
 
 | Dosya | Rol | Yazma |
 | --- | --- | --- |
-| `katalog_taslak.json` | **276 kesin kayıt** | **hayır** |
-| `belirsiz.json` | 21 satır (11 `cozuldu`, 10 `belirsiz`) | **hayır** |
+| `veri/katalog.json` | **276 kesin kayıt** | **hayır** |
+| `veri/belirsiz.json` | 21 satır (11 `cozuldu`, 10 `belirsiz`) | **hayır** |
 
-`belirsiz.json` içindeki `cozuldu` satırlar **tarihsel iz**tir: kataloğa aktarılmışlardır,
+Dosyalar depoda `ek2-balthazard/veri/` altında tutulur ve EK-2 çalışmalarında tek doğruluk
+kaynağıdır. Kaynak sürümler geçici klasörde `katalog_taslak.json` / `belirsiz.json` adıyla
+duruyordu; depoya alınırken **yalnız ad ve yol** değişti, içerik **bayt düzeyinde aynıdır**
+(MD5 §8.1). Katalog verisi kendiliğinden yorumlanmaz; açık kararlar bu dosyaya bakılarak
+kapatılmaz.
+
+`veri/belirsiz.json` içindeki `cozuldu` satırlar **tarihsel iz**tir: kataloğa aktarılmışlardır,
 arama sonucu olarak **gösterilmezler**. Yalnız `durum: "belirsiz"` olan 10 satır §3.10'a
 girer.
 
@@ -347,7 +353,7 @@ Yükleme anında doğrulanır; biri bozulursa uygulama **açılmaz**, hata verir
   sayfa sırasını izler; sonradan eklenen 11 kayıt mevcut kimlikler yeniden
   numaralandırılmadan **bölüm sonuna** eklenmiştir (`meta.id_kurali`). Bu nedenle eklenen
   blokta sayfa sırası bölümün tamamı için geçerli değildir. Belirsiz satırlar bu dosyada
-  yer almaz; `belirsiz.json` içinde `X-Z##`/`X-D##`/`X-H##` kimlikleriyle **ayrı dizide**
+  yer almaz; `veri/belirsiz.json` içinde `X-Z##`/`X-D##`/`X-H##` kimlikleriyle **ayrı dizide**
   tutulur.
 
 #### 3.4.1 Katalog kaydı sayılmayanlar
@@ -363,7 +369,7 @@ Bunlar katalogda kayıt değildir; hesap motoruna oran olarak girmez:
 3. **Tek başına ölçüm aralıkları** (IQ bantları, Hb eşikleri, faktör aktivitesi, kaplanan
    vücut yüzeyi). Bunlar aynı kaydın `alt_tur` metnidir, ayrı seçenek değildir.
 4. **Ekleme kuralları.** DERİ'de iki "ayrıca … 15" satırı ve pigment bozukluklarındaki
-   "ayrıca %5" NOT'u bağımsız oran değildir; `belirsiz.json` içinde `ekleme_kurali` olarak
+   "ayrıca %5" NOT'u bağımsız oran değildir; `veri/belirsiz.json` içinde `ekleme_kurali` olarak
    ayrı tutuldu, Balthazard zincirine sokulmaması gerekir.
 5. **NOT'lar.** Remisyon (s.14), vergi indirimi + yıllık değerlendirme (s.15), iktiyozis
    grup bütünü (s.20), ektodermal displazi grup bütünü (s.21), nakilde rapor süresi (s.26)
@@ -487,7 +493,7 @@ da bir ekleme kuralına tabi.
 - Mesaj teşhis veya kesin tıbbi yönlendirme içermez.
 - Kesinleştirme, tahmin veya birleştirme **yapılmaz**.
 
-**Çözülüp kesin kataloğa aktarılan 11 satır** (izlenebilirlik; `belirsiz.json` satırları
+**Çözülüp kesin kataloğa aktarılan 11 satır** (izlenebilirlik; `veri/belirsiz.json` satırları
 silinmedi, `durum: cozuldu` + `cozum_tarihi` + `kaynak_sayfa` ile işaretlendi):
 
 | Belirsiz satır | Yeni katalog kimliği | Sayfa | Oran |
@@ -1122,17 +1128,18 @@ geçerlidir.
 
 ## 8. Doğrulama sonuçları
 
-Veri dosyalarına bu pakette **yazılmadı** (salt okunur doğrulama); aşağıdaki değerler
-28.10.2026 tarihinde yeniden hesaplandı.
+Katalog dosyaları depoda `veri/` altında **değiştirilmeden** saklanır; bu pakette veriye
+yazılmadı (salt okunur doğrulama). Aşağıdaki değerler 28.10.2026 tarihinde yeniden
+hesaplandı.
 
 ### 8.1 Katalog sayıları
 
 | Kontrol | Sonuç |
 | --- | --- |
-| `katalog_taslak.json` kayıt | **276** |
+| `veri/katalog.json` kayıt | **276** |
 | Oran toplamı | **8.990** |
 | Bölüm dağılımı | Z **56** · D **142** · H **78** |
-| `belirsiz.json` satır | **21** (belirsiz **10** / çözüldü **11**) |
+| `veri/belirsiz.json` satır | **21** (belirsiz **10** / çözüldü **11**) |
 | Toplam satır | **286** (276 + 10) |
 | Grup sayısı (ayraç solu) | **78**; tek kayıtlı **9** |
 | Durum matrisi | 266 + 1 + 9 = **276** |
@@ -1142,6 +1149,7 @@ Veri dosyalarına bu pakette **yazılmadı** (salt okunur doğrulama); aşağıd
 | JSON geçerliliği | İki dosya da hatasız parse |
 | katalog MD5 | `B77AEF76A1310DE4AE93E703183E2A09` (68.914 B) |
 | belirsiz MD5 | `89AE83AAFFF9D6541B75D4073FC1BE82` (19.037 B) |
+| Depodaki kopya | `veri/katalog.json` / `veri/belirsiz.json`; kaynakla bayt düzeyinde aynı |
 
 **Sayfa bazında kesin kayıt dağılımı (s.13-26):** 22 · 16 · 18 · 5 · 27 · 21 · 21 · 28 ·
 25 · 15 · 21 · 26 · 27 · 4.
@@ -1170,7 +1178,7 @@ tarihinde dosyalar üzerinde yeniden doğrulandı.
 | `grup` değerleri (DERİ) | `X`, `VI-C`, `XIII` — üçü de `meta.grup_adlari` içinde tanımlı |
 | `bolum` değerleri | Mevcut üç bölüm adıyla birebir |
 | Kimlik çakışması | **Yok**; `(hastalik, alt_tur)` çifti hâlâ tekil |
-| `kaynak_not` | Alan tanımlı; 6 kayıtta yalnız kaynağa dair uyarı için kullanıldı, oranı değiştirmez |
+| `kaynak_not` | Alan tanımlı; **yeni 6 kayıtta** yalnız kaynağa dair uyarı için kullanıldı (mevcut `H-019` ile toplam 7), oranı değiştirmez |
 
 **Çakışma kontrolü (özet):** her aday, aynı ailedeki mevcut kayıtlarla karşılaştırıldı ve
 hepsinde **eksik madde** tamamlandı: Z-055 ↔ Z-018…Z-021 · Z-056 ↔ Z-031…Z-036 ·
@@ -1208,6 +1216,11 @@ belirsizde bekler (A-1, A-2).
 | H-076 | İki ölçüt birlikte; sağlanmıyorsa 2. madde (40). Parantezdeki ifade sitopenileri niteler. |
 | H-077 | Kaynakta "ya da veya" ve "__" yazım artefaktı var; anlam değişmedi. |
 | H-078 | Kaynakta 5 numaralı madde yok; numaralandırma 4'ten 6'ya atlıyor, düzeltilmedi. |
+
+**Ad / yol eşlemesi:** kaynak `katalog_taslak.json` → depoda `veri/katalog.json`;
+`belirsiz.json` → `veri/belirsiz.json`. Depoya alınırken içerik değişmedi: iki dosya da
+kaynak sürümle **bayt düzeyinde aynı** (SHA-256 eşit), MD5'ler §8.1'deki gibidir.
+Uygulama bu dosyaları henüz **okumaz**; entegrasyon ayrı adımdır.
 
 **Hash geçmişi:** kontrol raporu alındığında dosyalar 265 / 21 durumundaydı (rapor anındaki
 kısa hash'ler `4B75FC52…`, `782DE5E7…`). 11 kayıt işlendikten sonra dosyalar değişti;
@@ -1258,8 +1271,8 @@ değiştirilmez), UTF-8, 404.
 
 - Bu sözleşme **kod değildir**; uygulama kodu, build ve deploy bu belgenin kapsamı
   dışındadır. Araç-1 ekranı henüz geliştirilmedi.
-- Katalog verisi, oranlar ve kısıt değerleri bu pakette değiştirilmez; JSON dosyaları
-  depoda tutulmaz, yalnız salt okunur doğrulanır (kanıtlar §8.1.1).
+- Katalog verisi, oranlar ve kısıt değerleri değiştirilmez; dosyalar `veri/` altında depoda
+  saklanır, uygulama bunları henüz okumaz (entegrasyon ayrı adım; kanıtlar §8.1.1).
 - Göz, işitme, konuşma ve kas-iskelet bölümleri kapsam dışıdır; oran uydurulmaz.
 - 11 çözülen kayıt tekrar eklenmez; 10 belirsiz kayıt kesin oran gibi gösterilmez.
 - Canlı FastAPI uygulaması, workflow'lar ve dağıtım ayarları değiştirilmez.
@@ -1277,3 +1290,4 @@ değiştirilmez), UTF-8, 404.
 | 0.4 | 28.10.2026 | G-1…G-4 gösterim kararı; B-3 kapandı; test vektörleri 14–20; Araç-2 §12.3 |
 | **1.0** | 28.10.2026 | Altı belge tek `SOZLESME.md` + `README.md` olarak birleştirildi; içerik korundu, tekrarlar kaldırıldı |
 | **1.1** | 28.10.2026 | "Katalog JSON'ları okunmadı" ifadesi düzeltildi (yalnız salt okunur doğrulama); katalog kontrol kanıtları §8.1.1'e kalıcı olarak eklendi |
+| **1.2** | 28.10.2026 | Katalog verisi `veri/katalog.json` + `veri/belirsiz.json` olarak depoya alındı (içerik değişmedi); §3.1 ve §8 yolları güncellendi |

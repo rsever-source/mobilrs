@@ -1,6 +1,6 @@
 # EK-2 Balthazard — inceleme paketi
 
-Sürüm: 1.1 · Tarih: 28.10.2026 · Durum: **inceleme/prototip — üretime bağlı değil**
+Sürüm: 1.2 · Tarih: 28.10.2026 · Durum: **inceleme/prototip — üretime bağlı değil**
 
 Bu klasör, EK-2 (Erişkinler İçin Engellilik Değerlendirmesi) kapsamındaki üç bölüm
 (ZİHİNSEL/RUHSAL/DAVRANIŞSAL, DERİ, HEMATOLOJİK) için hazırlanan **ortak Balthazard
@@ -26,6 +26,9 @@ ek2-balthazard/
 ├── SOZLESME.md                   ortak motor + Araç-1 + Araç-2 bağlayıcı sözleşmesi
 ├── balthazard_motoru.py          ortak motor (stdlib, MOTOR_SURUMU = "0.2")
 ├── test_balthazard_motoru.py     77 unittest
+├── veri/
+│   ├── katalog.json              276 doğrulanmış kesin kayıt (değiştirilmez)
+│   └── belirsiz.json             21 satır: 11 çözüldü + 10 belirsiz
 └── arac2/
     ├── arac2.html                Araç-2 ekranı (HTML + CSS + JS, harici bağımlılık yok)
     ├── arac2_sunucu.py           stdlib http.server; yerel prototip sunucusu
@@ -110,12 +113,19 @@ Ayrıntı: `SOZLESME.md` §7.3 ve §3.11.
 
 ---
 
-## Katalog verisi (dosyalar bu depoda yok)
+## Katalog verisi
 
-Katalog JSON'ları (`katalog_taslak.json`, `belirsiz.json`) **bu klasörde ve depoda
-değildir**; dosyalara yazılmadı, depoya eklenmedi. Aşağıdaki sayılar ve MD5 değerleri bu
-dosyaların 28.10.2026 tarihinde **salt okunur** incelenmesiyle doğrulandı: depoda verinin
-kendisi değil, **doğrulama sonuçları** durur. Özet durum:
+Katalog dosyaları depoda **`veri/`** altındadır ve EK-2 çalışmalarında tek doğruluk
+kaynağıdır:
+
+| Dosya | İçerik |
+| --- | --- |
+| `veri/katalog.json` | **276** doğrulanmış kesin kayıt (kaynak `katalog_taslak.json`'ın kopyası) |
+| `veri/belirsiz.json` | **21** satır: 11 `cozuldu` (tarihsel iz) + 10 `belirsiz` |
+
+İçerik kaynak sürümle **bayt düzeyinde aynıdır**; yalnız dosya adı ve yolu değişti. Aşağıdaki
+sayılar ve MD5 değerleri bu dosyaların 28.10.2026 tarihinde salt okunur doğrulanmasının
+sonucudur:
 
 | Ölçü | Değer |
 | --- | --- |
@@ -127,7 +137,7 @@ kendisi değil, **doğrulama sonuçları** durur. Özet durum:
 | Kısıtlı / kısıtsız kayıt | 182 / 94 |
 | Tek kayıtlı grup | 9 |
 | `alt_tur = "—"` | 6 (D-013, D-014, D-017, D-062, H-056, H-065) |
-| Doğrulanan MD5 | `katalog_taslak.json` `B77AEF76A1310DE4AE93E703183E2A09` · `belirsiz.json` `89AE83AAFFF9D6541B75D4073FC1BE82` |
+| Doğrulanan MD5 | `veri/katalog.json` `B77AEF76A1310DE4AE93E703183E2A09` · `veri/belirsiz.json` `89AE83AAFFF9D6541B75D4073FC1BE82` |
 
 Kaynak künyesi: *Erişkinler İçin Engellilik Değerlendirmesi Hakkında Yönetmelik*
 (RG **20.02.2019, 30692**), EK-2 kılavuzu s.13-26. Göz, işitme, konuşma ve kas-iskelet
@@ -139,8 +149,9 @@ bölümleri bu çalışmanın kapsamı dışındadır.
 
 - Bu paket **üretim koduna entegre edilmedi**: FastAPI uç noktaları, workflow'lar,
   `cloudbuild.yaml` ve dağıtım ayarları değişmedi.
-- Katalog JSON'ları yalnız **doğrulama için okundu** (salt okunur); değiştirilmedi ve
-  depoya eklenmedi. Sayı, MD5 ve şema kanıtları `SOZLESME.md` §8.1.1'dedir.
+- Katalog dosyaları `veri/` altında **değiştirilmeden** depoda tutulur; uygulama henüz
+  bunları okumaz, entegrasyon ayrı adımdır. Sayı, şema ve çakışma kanıtları
+  `SOZLESME.md` §8.1.1'dedir.
 - Araç-1 ekranı geliştirilmedi; yalnız sözleşmesi korunuyor.
 - Nashi projesine ve ilgisiz dosyalara dokunulmadı.
 - Ekran görüntüleri, ölçüm betikleri ve geçici dosyalar depoya eklenmedi.
@@ -162,7 +173,7 @@ bölümleri bu çalışmanın kapsamı dışındadır.
   sayılar güncel değildir. Katalog kontrol raporundaki güncel ve önemli kanıtlar
   (şema uyumu, çakışma kontrolü, sayaç değişimi, `kaynak_not` değerleri, hash geçmişi)
   kaybolmasın diye `SOZLESME.md` §8.1.1'e taşındı.
-- Yedekler ve eski devam notları bilinçli olarak yüklenmez: GitHub'daki dal **güncel
-  doğrulama sonuçlarını** taşır, ham veri ve geçici çalışma dosyalarını değil.
+- Yedekler ve eski devam notları bilinçli olarak yüklenmez; depoda **güncel katalog verisi**
+  (`veri/`) ve doğrulama sonuçları durur, geçici çalışma dosyaları durmaz.
 - Bu çalışma `feature/ek2-balthazard-arac2` dalında yürütülür; ana dala merge ve canlı
   deploy yapılmaz.
