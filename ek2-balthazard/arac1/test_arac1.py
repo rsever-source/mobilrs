@@ -170,6 +170,13 @@ class Arac1Testleri(unittest.TestCase):
         self.assertIn("otomatik aktarılmaz", self.html)
         self.assertIn("Bu kayıt zaten listede.", self.html)
 
+    def test_html_kopyalama_yedegi_ve_klavye_erisimi(self):
+        self.assertIn("function yedekKopyala(metin)", self.html)
+        self.assertIn("document.execCommand(\"copy\")", self.html)
+        self.assertIn("Kopyalama başarısız oldu. Listeyi seçip elle kopyalayabilirsiniz.", self.html)
+        self.assertIn(":focus-visible", self.html)
+        self.assertIn('id="sepet-temizle">Listeyi temizle</button>', self.html)
+
     # --- sağlık / bölüm / gezinme ------------------------------------------
 
     def test_saglik_ucu(self):
