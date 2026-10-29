@@ -94,6 +94,7 @@
     padding:11px 16px;font-size:14.5px;font-family:inherit;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
   .dugme.birincil{background:var(--accent);border-color:var(--accent);color:#fff}
   .dugme:hover{border-color:var(--accent)}
+  .dugme:focus-visible,.cip:focus-visible,.satir:focus-visible,.sil:focus-visible,.sekme:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 
   .uyari{border:1px solid #eddfc0;background:var(--warn-soft);border-radius:12px;padding:12px 14px;margin-bottom:12px}
   .uyari.belirsiz{border-color:#d9dde6;background:#f7f8fa}
@@ -161,7 +162,7 @@
       <div class="dugme-satir">
         <a class="dugme birincil" href="http://127.0.0.1:8765/arac2">Balthazard ile hesapla →</a>
         <button class="dugme" type="button" id="listeyi-kopyala">Listeyi kopyala</button>
-        <button class="dugme" type="button" id="sepet-temizle">Alışverişe devam</button>
+        <button class="dugme" type="button" id="sepet-temizle">Listeyi temizle</button>
       </div>
       <p class="ipucu" style="margin-top:10px">Bu liste yalnız bu sayfada tutulur; Araç-2'ye
         otomatik aktarılmaz. Araç-2 yalnızca girdiğiniz oranları birleştirir; oranların
@@ -587,15 +588,37 @@
     araKutusunaDon();
   });
 
+  function yedekKopyala(metin) {
+    var alan = el("textarea");
+    alan.value = metin;
+    alan.setAttribute("readonly", "");
+    alan.setAttribute("aria-hidden", "true");
+    alan.style.position = "fixed";
+    alan.style.opacity = "0";
+    alan.style.pointerEvents = "none";
+    document.body.appendChild(alan);
+    alan.select();
+    var basarili = false;
+    try { basarili = document.execCommand("copy"); } catch (_) { basarili = false; }
+    alan.remove();
+    return basarili;
+  }
+
   document.getElementById("listeyi-kopyala").addEventListener("click", function () {
     var metin = durum.sepet.map(function (s) { return "%" + s.gosterim + " — " + s.etiket; }).join("\n");
     if (!metin) { sepetBildirim.textContent = "Liste boş."; return; }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(metin).then(function () {
         sepetBildirim.textContent = "Liste kopyalandı; Araç-2'ye elle girebilirsiniz.";
-      }, function () { sepetBildirim.textContent = "Kopyalama başarısız oldu."; });
+      }).catch(function () {
+        sepetBildirim.textContent = yedekKopyala(metin)
+          ? "Liste kopyalandı; Araç-2'ye elle girebilirsiniz."
+          : "Kopyalama başarısız oldu. Listeyi seçip elle kopyalayabilirsiniz.";
+      });
     } else {
-      sepetBildirim.textContent = "Tarayıcı kopyalamayı desteklemiyor.";
+      sepetBildirim.textContent = yedekKopyala(metin)
+        ? "Liste kopyalandı; Araç-2'ye elle girebilirsiniz."
+        : "Kopyalama başarısız oldu. Listeyi seçip elle kopyalayabilirsiniz.";
     }
   });
 
