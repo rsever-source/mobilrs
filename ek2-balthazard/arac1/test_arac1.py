@@ -152,7 +152,8 @@ class Arac1Testleri(unittest.TestCase):
         self.assertIn("<title>Araç-1", govde)
         self.assertIn("Engel Oranı Bul", govde)
         self.assertIn("Balthazard Hesapla", govde)
-        self.assertIn("127.0.0.1:8765/arac2", govde)
+        # Canlı yolda Araç-2 bağlantısı göreli (/arac2); 5bf2a6c bunu bilerek böyle yaptı.
+        self.assertIn('href="/arac2"', govde)
         self.assertIn("Arama 3 karakterden sonra çalışır", govde)
         self.assertIn(ALT_BILGI, govde)
         self.assertIn("Resmî engelli sağlık kurulu raporu yerine geçmez", govde)
