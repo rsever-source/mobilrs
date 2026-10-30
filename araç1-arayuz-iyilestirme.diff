@@ -1,0 +1,812 @@
+From ade0cab19f1cca2c9e747d877b04b99dc42605c5 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Fri, 30 Oct 2026 20:35:47 +0000
+Subject: [PATCH] =?UTF-8?q?Ara=C3=A7-1:=20b=C3=B6l=C3=BCm/alt=20ba=C5=9Fl?=
+ =?UTF-8?q?=C4=B1k=20d=C3=BCzeni,=20pasif=20b=C3=B6l=C3=BCmler,=20e=C5=9Fa?=
+ =?UTF-8?q?nlaml=C4=B1=20arama=20ve=20belirsiz=20sat=C4=B1rlar?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Yalnız arayüz değişikliği; katalog, sunucu ve API sözleşmesi aynı.
+
+- Bölüm adları tutarlı: Ruh Sağlığı, Deri, Hematoloji ("Tümü" -> "Tüm bölümler").
+- Roma rakamlı grup adları yerine anlamlı alt başlıklar. Alt başlık -> madde ->
+  kayıt kimliği eşlemesi arac1.html içindeki ayrı JSON bloğunda (arayuz-esleme);
+  oran/ad/sayfa hep API'den okunur. Eşlenmemiş kayıt "Diğer kayıtlar"da kalır.
+- Diğer 12 bölüm pasif (arama, seçim, oran yok): "Bu bölüm Araç-1'de henüz
+  desteklenmiyor". Varsayılan kapalı <details>; mobilde yer kaplamaz.
+- Belirsiz satırlar (Eritroderma, Pigment bozuklukları, Fankoni, ağır nöbet
+  seviyeleri, X-D01/X-D02 ek kuralları) listede "Oran belirsiz" rozetiyle,
+  oransız; açınca mevcut belirsiz kartı.
+- Kontrollü eşanlamlı arama (talasemi, sedef, depresyon, tssb, zekâ geriliği,
+  anoreksiya, kemik iliği nakli, miyelom, saç dökülmesi, aşırı terleme, kelebek
+  hastalığı, eritrodermi). Her biri doğrulanmış kayıt kimliğine bağlı;
+  "multipl miyelom" kaynak metinde geçmediği için eklenmedi.
+- Mobil: çipler sarılır, dokunmatikte 44 px hedef, viewport-fit=cover, seçili
+  çipte ✓ işareti.
+- test_arac1.py: 5bf2a6c Araç-2 bağlantısını göreli (/arac2) yaptığı için bayat
+  kalan 127.0.0.1:8765 beklentisi güncellendi (mevcut başarısızlık).
+- test_arac1_arayuz.py: 14 yeni test (eşleme bölüntüsü, belirsiz kayıtlar,
+  pasif bölümler, eşanlamlıların kayıtlara bağlılığı).
+
+Deploy/birleştirme yok.
+---
+ ek2-balthazard/arac1/arac1.html           | 371 +++++++++++++++++++++-
+ ek2-balthazard/arac1/test_arac1.py        |   3 +-
+ ek2-balthazard/arac1/test_arac1_arayuz.py | 233 ++++++++++++++
+ 3 files changed, 591 insertions(+), 16 deletions(-)
+ create mode 100644 ek2-balthazard/arac1/test_arac1_arayuz.py
+
+diff --git a/ek2-balthazard/arac1/arac1.html b/ek2-balthazard/arac1/arac1.html
+index 9281ab5..bfaf8ff 100644
+--- a/ek2-balthazard/arac1/arac1.html
++++ b/ek2-balthazard/arac1/arac1.html
+@@ -2,7 +2,7 @@
+ <html lang="tr">
+ <head>
+ <meta charset="utf-8">
+-<meta name="viewport" content="width=device-width, initial-scale=1">
++<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+ <title>Araç-1 — Engel Oranı Bul | Engelli.me</title>
+ <style>
+   :root{
+@@ -13,7 +13,7 @@
+   *{box-sizing:border-box}
+   body{margin:0;background:var(--bg);color:var(--ink);
+     font-family:Inter,Aptos,"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.5}
+-  .sayfa{max-width:960px;margin:0 auto;padding:0 16px 56px}
++  .sayfa{max-width:960px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right)) 56px max(16px,env(safe-area-inset-left))}
+   h1{font-size:clamp(22px,4vw,30px);margin:18px 0 6px}
+   h2{font-size:16px;margin:0 0 10px}
+   h3{font-size:15px;margin:0}
+@@ -32,10 +32,15 @@
+   .arama input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+   .ipucu{font-size:12.5px;color:var(--muted)}
+ 
+-  .cipler{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 12px;scrollbar-width:thin}
++  .cipler{display:flex;flex-wrap:wrap;gap:8px;padding:2px 2px 12px}
+   .cip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);
+     padding:8px 14px;border-radius:999px;font-size:14px;font-family:inherit;cursor:pointer}
+   .cip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:600}
++  .cip[aria-pressed="true"]::before{content:"\2713\00a0"}
++  .cip.pasif{color:var(--muted);background:#f1f3f6;border-style:dashed;cursor:default}
++  .pasif-kutu{margin:0 0 14px;font-size:13.5px}
++  .pasif-kutu summary{cursor:pointer;color:var(--muted);font-weight:600;padding:6px 0}
++  .pasif-kutu summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+ 
+   .kart{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:16px}
+   .iki-sutun{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:14px}
+@@ -56,6 +61,7 @@
+   .rozet{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.02em;
+     padding:2px 8px;border-radius:999px;background:#eef1f6;color:var(--muted);white-space:nowrap}
+   .rozet.bolum{background:var(--accent-soft);color:var(--accent)}
++  .rozet.belirsiz{background:#eef0f4;color:var(--muted)}
+ 
+   .sonuc-ust{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+   .oran-kutu{min-width:132px;text-align:center;border:1px solid var(--line);border-radius:14px;
+@@ -112,6 +118,10 @@
+ 
+   .alt-bilgi{border-top:1px solid var(--line);margin-top:24px;padding-top:12px;color:var(--muted);font-size:12.5px}
+   .alt-bilgi p{margin:0 0 4px}
++  @media (pointer:coarse){
++    .cip,.satir{min-height:44px}
++    .sepet-satir .sil{min-height:44px;min-width:44px}
++  }
+   .gizli{display:none}
+   .bosluk{height:8px}
+ </style>
+@@ -136,6 +146,13 @@
+ 
+   <div class="cipler" id="cipler" role="group" aria-label="Bölüm seçimi"></div>
+ 
++  <details class="pasif-kutu" id="pasif-kutu">
++    <summary id="pasif-ozet">Henüz desteklenmeyen bölümler</summary>
++    <p class="ipucu">Bu bölümler Araç-1'de henüz desteklenmiyor; bunlarda arama, seçim veya oran gösterimi yapılmaz.</p>
++    <div class="cipler" id="pasif-cipler" role="group" aria-label="Henüz desteklenmeyen bölümler"></div>
++    <p class="bildirim" id="pasif-not" role="status"></p>
++  </details>
++
+   <main>
+     <section id="liste" class="kart gizli" aria-live="polite" aria-labelledby="liste-baslik">
+       <h2 id="liste-baslik">Arama sonuçları</h2>
+@@ -144,7 +161,7 @@
+ 
+     <div id="gezinme" class="iki-sutun gizli">
+       <section class="kart" aria-labelledby="gruplar-baslik">
+-        <h2 id="gruplar-baslik">Grup / başlık</h2>
++        <h2 id="gruplar-baslik">Alt başlık</h2>
+         <ul class="liste" id="gruplar"></ul>
+       </section>
+       <section class="kart" aria-labelledby="hastalik-baslik">
+@@ -177,11 +194,174 @@
+   </footer>
+ </div>
+ 
++<!--
++  Arayüz eşlemesi (yalnız görünüm). Resmî Ek-2 kataloğunun ve API'nin yerine geçmez:
++  - altBasliklar: bölümdeki alt başlık → madde → katalog kayıt kimlikleri (ids) ve
++    oranı belirlenmemiş satır kimlikleri (belirsiz). Oran/ad/sayfa bilgisi hep API'den okunur.
++  - esanlamlilar: halk dili terimi → katalogdaki arama terimi (ara) + doğrulanmış kayıt kimlikleri.
++  - pasifBolumler: Araç-1'de henüz desteklenmeyen bölüm adları (arama/seçim/oran yok).
++  Katalogla uyum test_arac1_arayuz.py ile denetlenir.
++-->
++<script type="application/json" id="arayuz-esleme">
++{
++  "surum": 1,
++  "pasifBolumler": ["Kulak Burun Boğaz", "Kalp Hastalıkları", "Göz (Görme Sistemi)", "Sindirim Sistemi", "Kadın Hastalıkları", "Böbrek ve İdrar Yolları", "Endokrin ve Metabolizma", "Göğüs Hastalıkları", "Onkoloji (Kanserler)", "Sinir Sistemi", "Kas-İskelet Sistemi", "Romatizmal Hastalıklar"],
++  "bolumler": [
++    {"bolum": "Ruh Sağlığı", "altBasliklar": [
++      {"ad": "Zekâ İşlev Bozuklukları", "maddeler": [
++        {"ad":"Zekâ işlev bozuklukları","ids":["Z-001","Z-002","Z-003","Z-004","Z-005"],"belirsiz":[]}
++      ]},
++      {"ad": "Psikotik Bozukluklar", "maddeler": [
++        {"ad":"Şizofreni","ids":["Z-006","Z-007","Z-008"],"belirsiz":[]},
++        {"ad":"Şizoaffektif bozukluk (manik, depresif ve karışık tip)","ids":["Z-009","Z-010","Z-011"],"belirsiz":[]},
++        {"ad":"Sanrısal bozukluklar (paranoya, paranoid psikoz, parafreni tanılarını içerir)","ids":["Z-012","Z-013","Z-014"],"belirsiz":[]},
++        {"ad":"Atipik veya başka türlü adlandırılamayan psikozlar","ids":["Z-015","Z-016","Z-017"],"belirsiz":[]}
++      ]},
++      {"ad": "Yaygın Gelişimsel Bozukluklar", "maddeler": [
++        {"ad":"Yaygın gelişimsel bozukluklar","ids":["Z-018","Z-019","Z-020","Z-021","Z-055"],"belirsiz":[]}
++      ]},
++      {"ad": "Geçici Fonksiyon Kaybına Neden Olan Ruhsal Hastalıklar", "maddeler": [
++        {"ad":"Organik hâllusinozis, organik katatonik bozukluk, organik delüzyonel [şizofreni-benzeri] bozukluklar","ids":["Z-022","Z-023","Z-024"],"belirsiz":[]},
++        {"ad":"Organik duygu [affektivite] bozuklukları, organik anksiyete bozuklukları, organik disosiyatif bozukluk, organik duygusal labilite [astenik] bozukluk, hafif bilişsel bozukluk","ids":["Z-025","Z-026","Z-027"],"belirsiz":[]},
++        {"ad":"Beyin hasarı, beyin işlev bozukluğuna bağlı davranış bozuklukları (organik kişilik bozukluğu, frontal lob sendromu, beyin sarsılması sonrası postkontüzyonel sendrom)","ids":["Z-028","Z-029","Z-030"],"belirsiz":[]},
++        {"ad":"Manik nöbet, bipolar duygudurum bozukluğu","ids":["Z-031","Z-032","Z-033"],"belirsiz":[]},
++        {"ad":"Yineleyen depresif bozukluk","ids":["Z-034","Z-035","Z-036"],"belirsiz":[]},
++        {"ad":"Yineleyen depresif bozukluk, şimdiki nöbet psikotik belirtili olan, olmayan, ağır","ids":["Z-056"],"belirsiz":["X-Z03","X-Z04"]},
++        {"ad":"Anksiyete bozukluları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi) ve somatoform bozukluklar","ids":["Z-037","Z-038","Z-039"],"belirsiz":[]},
++        {"ad":"Obsesif-kompulsif bozukluk","ids":["Z-040","Z-041","Z-042"],"belirsiz":[]},
++        {"ad":"Travma sonrası stres bozukluğu","ids":["Z-043","Z-044","Z-045"],"belirsiz":[]},
++        {"ad":"Yeme bozuklukları (Anoreksia nervosa ve bulimia nervosa )","ids":["Z-046","Z-047","Z-048"],"belirsiz":[]},
++        {"ad":"alkol hâlusinozisi, alkol paranoyası)","ids":["Z-049","Z-050","Z-051"],"belirsiz":[]},
++        {"ad":"Kişilik bozuklukları","ids":["Z-052","Z-053","Z-054"],"belirsiz":[]}
++      ]}
++    ]},
++    {"bolum": "Deri", "altBasliklar": [
++      {"ad": "Bez ve Kıl Folikülü Hastalıkları", "maddeler": [
++        {"ad":"Rozasea","ids":["D-001","D-002","D-003"],"belirsiz":[]},
++        {"ad":"Hidradenitis supurativa, akne konglobata ve folliküler oklüzyon triadı","ids":["D-004","D-005","D-006","D-007"],"belirsiz":[]},
++        {"ad":"Saçlı derinin diseke edici folliküliti","ids":["D-008","D-009"],"belirsiz":[]},
++        {"ad":"Hiperhidrosis","ids":["D-010","D-011","D-012"],"belirsiz":[]},
++        {"ad":"Alopesi totalis","ids":["D-013"],"belirsiz":[]},
++        {"ad":"Alopesi universalis","ids":["D-014"],"belirsiz":[]},
++        {"ad":"Hirsutizm","ids":["D-015","D-016"],"belirsiz":[]},
++        {"ad":"Saç rengi ve saç gövdesi anormallikleri (moniletrix vb.)","ids":["D-017"],"belirsiz":[]}
++      ]},
++      {"ad": "Ekzema ve İnflamatuvar Deri Hastalıkları", "maddeler": [
++        {"ad":"Atopik dermatit","ids":["D-018","D-019","D-020","D-021"],"belirsiz":[]},
++        {"ad":"Dermatitler (kontakt dermatit, staz dermatit, dishidrotik ekzema)","ids":["D-022","D-023","D-024"],"belirsiz":[]},
++        {"ad":"Psoriasis","ids":["D-025","D-026","D-027","D-028"],"belirsiz":[]},
++        {"ad":"Pitriasis rubra pilaris, liken planus","ids":["D-029","D-030","D-031","D-032"],"belirsiz":[]},
++        {"ad":"Perforan dermatozlar (Kryle hastalığı vb.)","ids":["D-033","D-034","D-035"],"belirsiz":[]},
++        {"ad":"Psikiyatrik etyolojili deri hastalıkları (nörotik ekskoriasyon, faktisiyel dermatit vb.)","ids":["D-036","D-037","D-038"],"belirsiz":[]},
++        {"ad":"Eritroderma","ids":[],"belirsiz":["X-D06"]}
++      ]},
++      {"ad": "Deri Tümörleri ve Skarlar", "maddeler": [
++        {"ad":"Kongenital melanositik nevus","ids":["D-039","D-040"],"belirsiz":[]},
++        {"ad":"Kan damarlarının benign neoplazm ve hiperplazileri (kapiller anjiom, kavernöz anjiom, lenfanjiom, lenfohemanjiom, anjiokeratom, Klippel-Trenanuay-Weber vb.)","ids":["D-041","D-042","D-043","D-044"],"belirsiz":["X-D01"]},
++        {"ad":"Hipertrofik skar ve keloid","ids":["D-045","D-046","D-047","D-048"],"belirsiz":["X-D02"]},
++        {"ad":"Derinin premalign tümörleri","ids":["D-049"],"belirsiz":[]},
++        {"ad":"Derinin malign tümörleri","ids":["D-050","D-139"],"belirsiz":[]}
++      ]},
++      {"ad": "Işık, Pigment ve Bağışıklık Kaynaklı Deri Hastalıkları", "maddeler": [
++        {"ad":"Solar ürtiker, aktinik retikuloid, persistan ışık reaksiyonu, polimorf ışık erüpsiyonu","ids":["D-051","D-052","D-053"],"belirsiz":[]},
++        {"ad":"Porfirialar","ids":["D-054","D-055","D-056","D-057"],"belirsiz":[]},
++        {"ad":"Pigment bozuklukları (vitiligo, depigmentasyon ve melanoderma yapan hastalıklar)","ids":[],"belirsiz":["X-D03","X-D04","X-D05"]},
++        {"ad":"Vaskulitler","ids":["D-058","D-059","D-060","D-061"],"belirsiz":[]},
++        {"ad":"Kronik ve/veya tedaviye dirençli ürtiker ve anjioödem","ids":["D-062"],"belirsiz":[]},
++        {"ad":"Pannikülitler (lezyon şiddetine göre değerlendirilir)","ids":["D-063","D-064","D-065"],"belirsiz":[]},
++        {"ad":"Behçet hastalığı","ids":["D-066","D-140"],"belirsiz":[]},
++        {"ad":"Otoimmün büllü hastalıklar (pemfigus vulgaris, büllöz pemfigoid, dermatitis herpetiformis ve diğer otoimmün büllü hastalıklar)","ids":["D-067","D-068","D-069","D-070"],"belirsiz":[]},
++        {"ad":"Kronik bağ doku hastalıkları","ids":["D-071","D-072","D-073","D-074"],"belirsiz":[]},
++        {"ad":"Reiter sendromu","ids":["D-075"],"belirsiz":[]},
++        {"ad":"Pyoderma gangrenosum","ids":["D-076","D-077","D-078","D-079"],"belirsiz":[]},
++        {"ad":"Sarkoidozis","ids":["D-080","D-081"],"belirsiz":[]},
++        {"ad":"Kronik graft versus host hastalığı","ids":["D-082","D-083","D-084","D-085"],"belirsiz":[]},
++        {"ad":"Metabolik, endokrin bozukluklar, depolanma hastalıkları ve sistemik malignitelerin deri bulguları","ids":["D-086"],"belirsiz":[]}
++      ]},
++      {"ad": "Genetik Geçişli Deri Hastalıkları", "maddeler": [
++        {"ad":"İktiyozis grubu hastalıklar","ids":["D-087","D-088","D-089","D-090"],"belirsiz":[]},
++        {"ad":"Herediter palmoplanter keratodermiler, Unna Thost, Mal de Melada vb.","ids":["D-091","D-092","D-093","D-094"],"belirsiz":[]},
++        {"ad":"Nörokutanöz hastalıklar (nörofibromatosis, tuberoz skleroz, psödoksantoma elastikum, ataksi telenjiektazi vb.)","ids":["D-095","D-096"],"belirsiz":[]},
++        {"ad":"Epidermolizis büllosa","ids":["D-097","D-098","D-099","D-100"],"belirsiz":[]},
++        {"ad":"Hailey Hailey hastalığı","ids":["D-101","D-102","D-103"],"belirsiz":[]},
++        {"ad":"Kseroderma pigmentozum, Rothmund-Thompson sendromu, diskeratozis konjenita, Werner sendromu vb.","ids":["D-104","D-105","D-106","D-107"],"belirsiz":[]},
++        {"ad":"Anhidrotik/hipohidrotik ve hidrotik ektodermal displazi","ids":["D-108","D-109","D-110","D-111"],"belirsiz":[]}
++      ]},
++      {"ad": "Damar, Lenfoma ve Enfeksiyon Kaynaklı Deri Hastalıkları", "maddeler": [
++        {"ad":"Kronik bacak ülserleri (lezyon şiddetine göre)","ids":["D-112","D-113","D-114","D-115"],"belirsiz":[]},
++        {"ad":"Dekubitus ülseri (lezyon şiddetine göre)","ids":["D-116","D-117","D-118"],"belirsiz":[]},
++        {"ad":"Kütanöz T hücreli lenfoma","ids":["D-119","D-120","D-121","D-122","D-123","D-141","D-142"],"belirsiz":[]},
++        {"ad":"MF dışı diğer kutanöz lenfomalar","ids":["D-124","D-125","D-126","D-127"],"belirsiz":[]},
++        {"ad":"Kutanöz (Langerhans hücreli) histiyositozlar","ids":["D-128","D-129","D-130"],"belirsiz":[]},
++        {"ad":"Kutanöz mastositozis","ids":["D-131","D-132","D-133"],"belirsiz":[]},
++        {"ad":"Lepra, kutanöz tüberkülozlar, sistemik fungal infeksiyonlar, mukokütanöz layşmanyazis","ids":["D-134"],"belirsiz":[]},
++        {"ad":"Diğer deri hastalıkları (Yukarıdaki listede yer almayan deri hastalıkları ve sekellerine bağlı fonksiyon kayıplarının değerlendirilmesinde hastalığın şiddetine göre değerlendirme yapılır.)","ids":["D-135","D-136","D-137","D-138"],"belirsiz":[]}
++      ]}
++    ]},
++    {"bolum": "Hematoloji", "altBasliklar": [
++      {"ad": "Anemiler", "maddeler": [
++        {"ad":"Aplastik anemi","ids":["H-001","H-002","H-074"],"belirsiz":[]},
++        {"ad":"Fankoni aplastik anemisi ve diğer konjenital aplastik anemiler","ids":[],"belirsiz":["X-H02","X-H03"]},
++        {"ad":"Diamond Blackfan anemisi (konjenital hipoplastik anemi)","ids":["H-003","H-004","H-005"],"belirsiz":[]},
++        {"ad":"Eritrosit enzim defektleri, membran defektleri","ids":["H-006","H-007","H-008"],"belirsiz":[]},
++        {"ad":"Paroksismal nokturnal hemoglobinüri","ids":["H-009","H-010"],"belirsiz":[]},
++        {"ad":"Otoimmün hemolitik anemiler (idiyopatik ve sekonder otoimmün hemolitik anemiler)","ids":["H-011","H-012","H-013"],"belirsiz":[]},
++        {"ad":"Orak hücreli anemi","ids":["H-014","H-075"],"belirsiz":[]},
++        {"ad":"Thalassemi","ids":["H-015","H-016","H-017"],"belirsiz":[]},
++        {"ad":"Diğerleri (anormal hemoglobinler)","ids":["H-018","H-019"],"belirsiz":[]}
++      ]},
++      {"ad": "Kemik İliği ve Kan Kanserleri", "maddeler": [
++        {"ad":"Miyelofibrozis","ids":["H-020","H-076"],"belirsiz":[]},
++        {"ad":"Miyelodisplastik sendrom","ids":["H-021","H-022","H-023"],"belirsiz":[]},
++        {"ad":"Akut lösemiler","ids":["H-024","H-025","H-026","H-027"],"belirsiz":[]},
++        {"ad":"Kronik myelositik lösemi","ids":["H-028","H-029","H-030"],"belirsiz":[]},
++        {"ad":"Kronik lenfositik lösemi","ids":["H-031","H-032","H-033"],"belirsiz":[]},
++        {"ad":"Monoklonal gammapatiler","ids":["H-034","H-035","H-036","H-037"],"belirsiz":[]},
++        {"ad":"Hemofagositik sendrom","ids":["H-038","H-039"],"belirsiz":[]},
++        {"ad":"KML ve myelofibrozis dışında kalan myeloproliferatif hastalıklar (esansiyel trombositemi, polisitemia vera vb.)","ids":["H-040","H-041","H-042","H-043"],"belirsiz":[]},
++        {"ad":"Hodgkin lenfoma","ids":["H-057","H-058","H-059","H-060"],"belirsiz":[]},
++        {"ad":"Non-Hodgkin lenfoma","ids":["H-061","H-062","H-063","H-064","H-078"],"belirsiz":[]},
++        {"ad":"Kronik nötropeniler","ids":["H-065","H-066","H-067"],"belirsiz":[]},
++        {"ad":"Allojenik kemik iliği/kök hücre nakli","ids":["H-068","H-069","H-070"],"belirsiz":[]},
++        {"ad":"Otolog kemik iliği/kök hücre nakli","ids":["H-071","H-072","H-073"],"belirsiz":[]}
++      ]},
++      {"ad": "Pıhtılaşma ve Kanama Bozuklukları", "maddeler": [
++        {"ad":"Primer hemostaz bozuklukları (İTP, trombosit fonksiyon bozuklukları, vasküler nedenler)","ids":["H-044","H-045","H-046"],"belirsiz":[]},
++        {"ad":"Koagülopatiler (hemofili A, B, C ve diğer faktör eksiklikleri, Von Willebrand hastalığı tip III)","ids":["H-047","H-048","H-049"],"belirsiz":[]},
++        {"ad":"Hipofibrinojenemi, afibrinojenemi ve disfibrinojenemi","ids":["H-050","H-051"],"belirsiz":[]},
++        {"ad":"Akkiz ve herediter trombotik durumlar","ids":["H-052","H-053","H-077"],"belirsiz":[]},
++        {"ad":"Trombotik trombositopenik purpura (TTP)","ids":["H-054","H-055"],"belirsiz":[]},
++        {"ad":"Dissemine intravasküler koagülopati (kronik)","ids":["H-056"],"belirsiz":[]}
++      ]}
++    ]}
++  ],
++  "esanlamlilar": [
++    {"terimler":["talasemi"],"ara":"Thalassemi","ids":["H-015","H-016","H-017"]},
++    {"terimler":["sedef","sedef hastalığı"],"ara":"Psoriasis","ids":["D-025","D-026","D-027","D-028"]},
++    {"terimler":["depresyon"],"ara":"Yineleyen depresif","ids":["Z-034","Z-035","Z-036","Z-056","X-Z03","X-Z04"]},
++    {"terimler":["tssb"],"ara":"Travma sonrası stres","ids":["Z-043","Z-044","Z-045"]},
++    {"terimler":["zihinsel yetersizlik","zekâ geriliği"],"ara":"Zekâ işlev","ids":["Z-001","Z-002","Z-003","Z-004","Z-005"]},
++    {"terimler":["yeme bozukluğu","anoreksiya","bulimiya"],"ara":"Anoreksia nervosa","ids":["Z-046","Z-047","Z-048"]},
++    {"terimler":["kemik iliği nakli"],"ara":"kök hücre nakli","ids":["H-068","H-069","H-070","H-071","H-072","H-073"]},
++    {"terimler":["miyelom"],"ara":"myeloma","ids":["H-035"]},
++    {"terimler":["saç dökülmesi"],"ara":"Alopesi","ids":["D-013","D-014"]},
++    {"terimler":["aşırı terleme"],"ara":"Hiperhidrosis","ids":["D-010","D-011","D-012"]},
++    {"terimler":["kelebek hastalığı"],"ara":"Epidermolizis","ids":["D-097","D-098","D-099","D-100"]},
++    {"terimler":["eritrodermi"],"ara":"Eritroderma","ids":["X-D06"]}
++  ]
++}
++</script>
+ <script>
+ (function () {
+   "use strict";
+ 
+-  var durum = { bolum: "", gruplar: [], sepet: [] };
++  var durum = { bolum: "", bolumKisa: "", gruplar: [], sepet: [] };
++  var esleme = { bolumler: [], pasifBolumler: [], esanlamlilar: [] };
++  try {
++    esleme = JSON.parse(document.getElementById("arayuz-esleme").textContent);
++  } catch (hata) {
++    // Yapılandırma okunamazsa ekran API'nin kendi grup düzeniyle çalışmaya devam eder.
++  }
+   var cipler = document.getElementById("cipler");
+   var giris = document.getElementById("q");
+   var listeKutu = document.getElementById("liste");
+@@ -214,7 +394,7 @@
+   // --- bölüm çipleri -------------------------------------------------------
+   function cipleriKur(bolumler) {
+     cipler.innerHTML = "";
+-    var tumu = el("button", "cip", "Tümü");
++    var tumu = el("button", "cip", "Tüm bölümler");
+     tumu.type = "button";
+     tumu.dataset.bolum = "";
+     tumu.setAttribute("aria-pressed", "true");
+@@ -225,10 +405,32 @@
+       dugme.type = "button";
+       dugme.dataset.bolum = b.ad;
+       dugme.setAttribute("aria-pressed", "false");
+-      dugme.title = b.ad + " · " + b.kayit_sayisi + " kayıt";
+-      dugme.addEventListener("click", function () { bolumSec(b.ad); });
++      dugme.title = b.kisa + " · " + b.kayit_sayisi + " kayıt";
++      dugme.addEventListener("click", function () { bolumSec(b.ad, b.kisa); });
+       cipler.appendChild(dugme);
+     });
++    pasifBolumleriKur();
++  }
++
++  // --- henüz desteklenmeyen bölümler: yalnız bilgi, hiçbir istek/seçim yok ---
++  function pasifBolumleriKur() {
++    var kap = document.getElementById("pasif-kutu");
++    var kutu = document.getElementById("pasif-cipler");
++    var not = document.getElementById("pasif-not");
++    var adlar = esleme.pasifBolumler || [];
++    kutu.innerHTML = "";
++    kap.classList.toggle("gizli", !adlar.length);
++    document.getElementById("pasif-ozet").textContent =
++      "Henüz desteklenmeyen bölümler (" + adlar.length + ")";
++    adlar.forEach(function (ad) {
++      var dugme = el("button", "cip pasif", ad);
++      dugme.type = "button";
++      dugme.setAttribute("aria-disabled", "true");
++      dugme.addEventListener("click", function () {
++        not.textContent = ad + ": Bu bölüm Araç-1'de henüz desteklenmiyor.";
++      });
++      kutu.appendChild(dugme);
++    });
+   }
+   function cipIsaretle() {
+     Array.prototype.forEach.call(cipler.children, function (dugme) {
+@@ -237,8 +439,9 @@
+     });
+   }
+ 
+-  function bolumSec(ad) {
++  function bolumSec(ad, kisa) {
+     durum.bolum = ad;
++    durum.bolumKisa = kisa || "";
+     durum.gruplar = [];
+     cipIsaretle();
+     sonucKutu.classList.add("gizli");
+@@ -249,13 +452,68 @@
+       return;
+     }
+     json("/api/gezinme?bolum=" + encodeURIComponent(ad)).then(function (yanit) {
+-      durum.gruplar = yanit.gruplar || [];
++      durum.gruplar = altBasliklariKur(durum.bolumKisa, yanit.gruplar || []);
+       gezinme.classList.remove("gizli");
+       gruplariCiz();
+       if (durum.gruplar.length) { grupSec(0); }
+     }).catch(hataGoster);
+   }
+ 
++  // Alt başlık düzeni arayüz eşlemesinden gelir; kayıtların kendisi (ad, seviye, oran,
++  // sayfa) API'den okunur. Eşlemede olmayan hiçbir kayıt kaybolmaz: "Diğer kayıtlar".
++  function altBasliklariKur(kisa, apiGruplar) {
++    var seviyeBul = {};
++    var hastalikBul = {};
++    apiGruplar.forEach(function (g) {
++      g.hastaliklar.forEach(function (h) {
++        h.seviyeler.forEach(function (s) { seviyeBul[s.id] = s; hastalikBul[s.id] = h; });
++      });
++    });
++    var yapi = null;
++    (esleme.bolumler || []).forEach(function (b) { if (b.bolum === kisa) { yapi = b; } });
++    if (!yapi) { return apiGruplar; }
++
++    var kullanildi = {};
++    var sonuc = [];
++    yapi.altBasliklar.forEach(function (ab) {
++      var maddeler = [];
++      var kayit = 0;
++      var belirsiz = 0;
++      ab.maddeler.forEach(function (m) {
++        var seviyeler = [];
++        m.ids.forEach(function (id) {
++          if (seviyeBul[id] && !kullanildi[id]) { seviyeler.push(seviyeBul[id]); kullanildi[id] = true; }
++        });
++        var bel = m.belirsiz || [];
++        if (!seviyeler.length && !bel.length) { return; }
++        var tek = seviyeler.length === 1 && !bel.length && hastalikBul[seviyeler[0].id].tek_kayit === true;
++        maddeler.push({ ad: m.ad, seviyeler: seviyeler, belirsiz: bel, tek_kayit: tek });
++        kayit += seviyeler.length;
++        belirsiz += bel.length;
++      });
++      if (maddeler.length) {
++        sonuc.push({ ad: ab.ad, kayit_sayisi: kayit, belirsiz_sayisi: belirsiz, hastaliklar: maddeler });
++      }
++    });
++
++    var kalan = [];
++    var kalanSayi = 0;
++    apiGruplar.forEach(function (g) {
++      g.hastaliklar.forEach(function (h) {
++        var s = h.seviyeler.filter(function (x) { return !kullanildi[x.id]; });
++        if (s.length) {
++          kalan.push({ ad: h.ad, seviyeler: s, belirsiz: [],
++                       tek_kayit: h.tek_kayit === true && s.length === h.seviyeler.length });
++          kalanSayi += s.length;
++        }
++      });
++    });
++    if (kalan.length) {
++      sonuc.push({ ad: "Diğer kayıtlar", kayit_sayisi: kalanSayi, belirsiz_sayisi: 0, hastaliklar: kalan });
++    }
++    return sonuc;
++  }
++
+   function gruplariCiz(secilen) {
+     gruplarKutu.innerHTML = "";
+     durum.gruplar.forEach(function (grup, i) {
+@@ -265,8 +523,9 @@
+       dugme.setAttribute("aria-current", i === secilen ? "true" : "false");
+       var metin = el("span", "metin");
+       var ad = el("span", "ad", grup.ad);
+-      var ayrinti = el("span", "ayrinti", grup.kayit_sayisi + " kayıt · " +
+-        grup.hastaliklar.length + " hastalık");
++      var ayrintiMetni = grup.kayit_sayisi + " kayıt · " + grup.hastaliklar.length + " madde";
++      if (grup.belirsiz_sayisi) { ayrintiMetni += " · " + grup.belirsiz_sayisi + " oranı belirsiz satır"; }
++      var ayrinti = el("span", "ayrinti", ayrintiMetni);
+       metin.appendChild(ad); metin.appendChild(ayrinti);
+       dugme.appendChild(metin);
+       if (grup.rozet) { dugme.appendChild(el("span", "rozet", grup.rozet)); }
+@@ -290,11 +549,15 @@
+       dugme.type = "button";
+       var metin = el("span", "metin");
+       metin.appendChild(el("span", "ad", hastalik.ad));
++      var nKesin = hastalik.seviyeler.length;
++      var nBelirsiz = (hastalik.belirsiz || []).length;
+       var ayrinti = hastalik.tek_kayit
+         ? "tek oran · şiddet basamağı yok"
+-        : hastalik.seviyeler.length + " seviye";
++        : (nKesin ? nKesin + " seviye" : "") + (nKesin && nBelirsiz ? " · " : "") +
++          (nBelirsiz ? nBelirsiz + " oranı belirsiz satır" : "");
+       metin.appendChild(el("span", "ayrinti", ayrinti));
+       dugme.appendChild(metin);
++      if (!nKesin) { dugme.appendChild(el("span", "rozet belirsiz", "Oran belirsiz")); }
+       dugme.addEventListener("click", function () {
+         if (hastalik.tek_kayit) {
+           kayitAc(hastalik.seviyeler[0].id);
+@@ -326,6 +589,28 @@
+       satir.appendChild(dugme);
+       kutu.appendChild(satir);
+     });
++    // Oranı belirlenmemiş satırlar: oran gösterilmez; kayıt kartı mevcut belirsiz ekranını açar.
++    (hastalik.belirsiz || []).forEach(function (kimlik) {
++      var satir = el("li");
++      var dugme = el("button", "satir");
++      dugme.type = "button";
++      var metin = el("span", "metin");
++      var ad = el("span", "ad", "Oranı belirlenmemiş satır");
++      var ayrinti = el("span", "ayrinti", kimlik);
++      metin.appendChild(ad);
++      metin.appendChild(ayrinti);
++      dugme.appendChild(metin);
++      dugme.appendChild(el("span", "rozet belirsiz", "Oran belirsiz"));
++      dugme.addEventListener("click", function () { kayitAc(kimlik); });
++      json("/api/kayit/" + encodeURIComponent(kimlik)).then(function (y) {
++        if (y && y.ok) {
++          ad.textContent = y.seviye || y.ad;
++          ayrinti.textContent = "kaynak s." + y.sayfa + " · " + kimlik;
++        }
++      }).catch(function () { /* satır kimlikle görünmeye devam eder */ });
++      satir.appendChild(dugme);
++      kutu.appendChild(satir);
++    });
+     li.appendChild(kutu);
+   }
+ 
+@@ -345,10 +630,62 @@
+     if (giris.value.trim().length >= 3) { ara(giris.value.trim()); }
+   });
+ 
+-  function ara(metin) {
++  // Türkçe yazım farkına duyarsız karşılaştırma (sunucudaki aramayla aynı anlayış).
++  var KATLA = { "ç": "c", "ğ": "g", "ı": "i", "ö": "o", "ş": "s", "ü": "u", "â": "a", "î": "i", "û": "u" };
++  function katla(metin) {
++    return String(metin).replace(/İ/g, "i").replace(/I/g, "ı").toLowerCase()
++      .replace(/[çğıöşüâîû]/g, function (h) { return KATLA[h]; })
++      .replace(/\s+/g, " ").trim();
++  }
++  function esanlamlilariBul(metin) {
++    var q = katla(metin);
++    return (esleme.esanlamlilar || []).filter(function (e) {
++      return e.terimler.some(function (t) {
++        var k = katla(t);
++        return q === k || (q.length >= 4 && k.indexOf(q) === 0);
++      });
++    });
++  }
++  function aramaIste(metin) {
+     var url = "/api/ara?metin=" + encodeURIComponent(metin);
+     if (durum.bolum) { url += "&bolum=" + encodeURIComponent(durum.bolum); }
+-    json(url).then(function (yanit) {
++    return json(url);
++  }
++  // Eşanlamlı yalnız doğrulanmış kayıt kimliklerine bağlıdır; arama sonucundan yalnız onlar alınır.
++  function esanlamliSonuc(e) {
++    return aramaIste(e.ara).then(function (y) {
++      var izinli = {};
++      e.ids.forEach(function (id) { izinli[id] = true; });
++      return {
++        sonuclar: (y.sonuclar || []).filter(function (k) { return izinli[k.id]; }),
++        belirsizler: (y.belirsizler || []).filter(function (k) { return izinli[k.id]; }),
++        hedef: e.ara
++      };
++    }).catch(function () { return { sonuclar: [], belirsizler: [], hedef: e.ara }; });
++  }
++  function aramaBirlestir(temel, ekler) {
++    var yanit = temel;
++    var var_ = {};
++    (yanit.sonuclar || []).forEach(function (k) { var_[k.id] = true; });
++    (yanit.belirsizler || []).forEach(function (k) { var_[k.id] = true; });
++    yanit.sonuclar = (yanit.sonuclar || []).slice();
++    yanit.belirsizler = (yanit.belirsizler || []).slice();
++    var hedefler = [];
++    ekler.forEach(function (ek) {
++      var eklendi = false;
++      ek.sonuclar.forEach(function (k) { if (!var_[k.id]) { var_[k.id] = true; yanit.sonuclar.push(k); eklendi = true; } });
++      ek.belirsizler.forEach(function (k) { if (!var_[k.id]) { var_[k.id] = true; yanit.belirsizler.push(k); eklendi = true; } });
++      if (eklendi) { hedefler.push(ek.hedef); }
++    });
++    if (hedefler.length) { yanit.mesaj = null; yanit.ipucu = null; yanit.esanlamli = hedefler; }
++    return yanit;
++  }
++
++  function ara(metin) {
++    var ekler = esanlamlilariBul(metin).map(esanlamliSonuc);
++    Promise.all([aramaIste(metin), Promise.all(ekler)]).then(function (ikili) {
++      return aramaBirlestir(ikili[0], ikili[1]);
++    }).then(function (yanit) {
+       listeKutu.classList.remove("gizli");
+       listeIcerik.innerHTML = "";
+       var baslik = document.getElementById("liste-baslik");
+@@ -366,6 +703,10 @@
+         return;
+       }
+       if (yanit.mesaj) { listeIcerik.appendChild(el("p", "ipucu", yanit.mesaj)); }
++      if (yanit.esanlamli && yanit.esanlamli.length) {
++        listeIcerik.appendChild(el("p", "ipucu", "“" + metin + "” için katalogdaki karşılık gösteriliyor: " +
++          yanit.esanlamli.join(", ") + "."));
++      }
+ 
+       if ((yanit.belirsizler || []).length) {
+         var not = el("div", "uyari belirsiz");
+diff --git a/ek2-balthazard/arac1/test_arac1.py b/ek2-balthazard/arac1/test_arac1.py
+index 669e2b6..d39d539 100644
+--- a/ek2-balthazard/arac1/test_arac1.py
++++ b/ek2-balthazard/arac1/test_arac1.py
+@@ -152,7 +152,8 @@ class Arac1Testleri(unittest.TestCase):
+         self.assertIn("<title>Araç-1", govde)
+         self.assertIn("Engel Oranı Bul", govde)
+         self.assertIn("Balthazard Hesapla", govde)
+-        self.assertIn("127.0.0.1:8765/arac2", govde)
++        # Canlı yolda Araç-2 bağlantısı göreli (/arac2); 5bf2a6c bunu bilerek böyle yaptı.
++        self.assertIn('href="/arac2"', govde)
+         self.assertIn("Arama 3 karakterden sonra çalışır", govde)
+         self.assertIn(ALT_BILGI, govde)
+         self.assertIn("Resmî engelli sağlık kurulu raporu yerine geçmez", govde)
+diff --git a/ek2-balthazard/arac1/test_arac1_arayuz.py b/ek2-balthazard/arac1/test_arac1_arayuz.py
+new file mode 100644
+index 0000000..d18aafd
+--- /dev/null
++++ b/ek2-balthazard/arac1/test_arac1_arayuz.py
+@@ -0,0 +1,233 @@
++# -*- coding: utf-8 -*-
++"""Araç-1 arayüz eşlemesi testleri (kategori / alt başlık / pasif bölüm / eşanlamlı).
++
++Çalıştırma (depo kökünden):
++
++    python -m unittest discover -s ek2-balthazard/arac1 -p "test_arac1_arayuz.py" -v
++
++Eşleme ``arac1.html`` içindeki ``<script type="application/json" id="arayuz-esleme">``
++bloğundadır ve **yalnız görünümü** belirler. Kayıtların oranı/adı/sayfası hep API'den
++gelir. Bu testler eşlemenin resmî Ek-2 kataloğuyla tutarlı kaldığını denetler:
++hiçbir kesin kayıt kaybolmaz, hiçbiri iki yerde görünmez, belirsiz satırlar oran
++almaz, eşanlamlılar yalnız doğrulanmış kayıt kimliklerine bağlıdır.
++"""
++
++from __future__ import annotations
++
++import json
++import re
++import threading
++import unittest
++import urllib.parse
++import urllib.request
++from http.server import ThreadingHTTPServer
++from pathlib import Path
++
++import arac1_sunucu as a  # noqa: E402  (sys.path'i kendisi kurar)
++
++VERI = Path(__file__).resolve().parent.parent / "veri"
++
++PASIF_ACIKLAMA = "Bu bölüm Araç-1'de henüz desteklenmiyor"
++
++# Kullanıcının istediği eşanlamlılar (hepsi yapılandırmada bulunmalı).
++ISTENEN_TERIMLER = (
++    "talasemi", "sedef", "depresyon", "tssb", "zihinsel yetersizlik", "zekâ geriliği",
++    "yeme bozukluğu", "anoreksiya", "kemik iliği nakli", "miyelom", "saç dökülmesi",
++    "aşırı terleme", "kelebek hastalığı",
++)
++
++_KATLA = str.maketrans({"ç": "c", "ğ": "g", "ı": "i", "ö": "o", "ş": "s", "ü": "u",
++                        "â": "a", "î": "i", "û": "u"})
++
++
++def katla(metin: str) -> str:
++    """Tarayıcıdaki katla() ile aynı Türkçe duyarsız karşılaştırma."""
++    t = metin.replace("İ", "i").replace("I", "ı").lower().translate(_KATLA)
++    return re.sub(r"\s+", " ", t).strip()
++
++
++class Arac1ArayuzTestleri(unittest.TestCase):
++    @classmethod
++    def setUpClass(cls):
++        cls.sunucu = ThreadingHTTPServer(("127.0.0.1", 0), a.Isleyici)
++        cls.port = cls.sunucu.server_address[1]
++        threading.Thread(target=cls.sunucu.serve_forever, daemon=True).start()
++
++        cls.html = cls._al("/arac1").decode("utf-8")
++        blok = re.search(
++            r'<script type="application/json" id="arayuz-esleme">\s*(.*?)\s*</script>',
++            cls.html, re.S)
++        assert blok, "arayuz-esleme bloğu bulunamadı"
++        cls.esleme = json.loads(blok.group(1))
++
++        cls.kayitlar = json.loads((VERI / "katalog.json").read_text(encoding="utf-8"))["kayitlar"]
++        satirlar = json.loads((VERI / "belirsiz.json").read_text(encoding="utf-8"))["kayitlar"]
++        cls.belirsiz = [s for s in satirlar if s["durum"] == "belirsiz"]
++        cls.cozuldu = [s for s in satirlar if s["durum"] != "belirsiz"]
++        cls.bolumler = json.loads(cls._al("/api/bolumler"))["bolumler"]
++        cls.kisa_ad = {b["kisa"]: b["ad"] for b in cls.bolumler}
++
++    @classmethod
++    def tearDownClass(cls):
++        cls.sunucu.shutdown()
++        cls.sunucu.server_close()
++
++    @classmethod
++    def _al(cls, yol: str) -> bytes:
++        with urllib.request.urlopen("http://127.0.0.1:%d%s" % (cls.port, yol), timeout=10) as y:
++            return y.read()
++
++    @classmethod
++    def _json(cls, yol: str) -> dict:
++        return json.loads(cls._al(yol))
++
++    def _maddeler(self):
++        for b in self.esleme["bolumler"]:
++            for ab in b["altBasliklar"]:
++                for m in ab["maddeler"]:
++                    yield b["bolum"], ab["ad"], m
++
++    # --- bölümler ---------------------------------------------------------
++    def test_surum_ve_bolum_adlari_tutarli(self):
++        self.assertEqual(self.esleme["surum"], 1)
++        yapilandirilan = [b["bolum"] for b in self.esleme["bolumler"]]
++        self.assertEqual(yapilandirilan, ["Ruh Sağlığı", "Deri", "Hematoloji"])
++        self.assertEqual(sorted(yapilandirilan), sorted(self.kisa_ad))
++
++    # --- kategori / alt başlık eşlemesi ----------------------------------
++    def test_hicbir_kesin_kayit_kaybolmaz_ve_cift_gorunmez(self):
++        kimlikler = [i for _, _, m in self._maddeler() for i in m["ids"]]
++        self.assertEqual(len(kimlikler), len(set(kimlikler)), "bir kayıt birden fazla yerde")
++        self.assertEqual(set(kimlikler), {k["id"] for k in self.kayitlar})
++        self.assertEqual(len(kimlikler), 276)
++
++    def test_kayitlar_dogru_bolumde(self):
++        bolum_of = {k["id"]: k["bolum"] for k in self.kayitlar}
++        for bolum, _, m in self._maddeler():
++            for kimlik in m["ids"]:
++                self.assertEqual(bolum_of[kimlik], self.kisa_ad[bolum],
++                                 "%s yanlış bölümde: %s" % (kimlik, bolum))
++
++    def test_alt_basliklar_anlamli_ve_benzersiz(self):
++        for b in self.esleme["bolumler"]:
++            adlar = [ab["ad"] for ab in b["altBasliklar"]]
++            self.assertEqual(len(adlar), len(set(adlar)), b["bolum"])
++            for ad in adlar:
++                self.assertTrue(ad.strip())
++                self.assertIsNone(re.fullmatch(r"[IVXLC]+|\d+", ad.strip()),
++                                  "Roma/sayı adı kullanıcıya gösterilmez: " + ad)
++        for _, _, m in self._maddeler():
++            self.assertTrue(m["ad"].strip())
++            self.assertTrue(m["ids"] or m["belirsiz"], "boş madde: " + m["ad"])
++
++    def test_maddelerdeki_seviye_etiketleri_ayirt_edilir(self):
++        ad_of = {}
++        for b in self.bolumler:
++            for g in self._json("/api/gezinme?bolum=" + urllib.parse.quote(b["ad"]))["gruplar"]:
++                for h in g["hastaliklar"]:
++                    for s in h["seviyeler"]:
++                        ad_of[s["id"]] = s["seviye"]
++        for _, _, m in self._maddeler():
++            etiketler = [ad_of[i] for i in m["ids"]]
++            self.assertEqual(len(etiketler), len(set(etiketler)), m["ad"])
++
++    # --- belirsiz kayıtlar ------------------------------------------------
++    def test_belirsiz_kimlikler_tam_ve_cozulenler_haric(self):
++        bel = [i for _, _, m in self._maddeler() for i in m["belirsiz"]]
++        self.assertEqual(sorted(bel), sorted(s["id"] for s in self.belirsiz))
++        self.assertEqual(len(bel), len(set(bel)))
++        for s in self.cozuldu:
++            self.assertNotIn(s["id"], bel)
++
++    def test_belirsiz_kayitlar_kesin_oran_uretmez(self):
++        kesin = {k["id"] for k in self.kayitlar}
++        for _, _, m in self._maddeler():
++            for kimlik in m["belirsiz"]:
++                self.assertNotIn(kimlik, kesin)
++                self.assertNotIn(kimlik, m["ids"])
++                yanit = self._json("/api/kayit/" + urllib.parse.quote(kimlik))
++                self.assertEqual(yanit.get("tur"), "belirsiz", kimlik)
++                self.assertNotIn("oran", yanit, kimlik)
++                self.assertNotIn("kisitlar", yanit, kimlik)
++
++    def test_belirlenen_belirsiz_maddeler_eslenmis(self):
++        adlar = {m["ad"]: m for _, _, m in self._maddeler()}
++        def bul(parca):
++            bulunan = [m for ad, m in adlar.items() if parca.lower() in ad.lower()]
++            self.assertEqual(len(bulunan), 1, parca)
++            return bulunan[0]
++        self.assertEqual(bul("Eritroderma")["ids"], [])
++        self.assertEqual(bul("Pigment bozuklukları")["ids"], [])
++        self.assertEqual(bul("Fankoni")["ids"], [])
++        self.assertEqual(bul("şimdiki nöbet psikotik")["belirsiz"], ["X-Z03", "X-Z04"])
++        self.assertEqual(len(bul("şimdiki nöbet psikotik")["ids"]), 1)
++        self.assertIn("X-D01", bul("Kan damarlarının benign")["belirsiz"])
++        self.assertIn("X-D02", bul("Hipertrofik skar")["belirsiz"])
++
++    # --- pasif bölümler ---------------------------------------------------
++    def test_pasif_bolumler(self):
++        pasif = self.esleme["pasifBolumler"]
++        self.assertEqual(len(pasif), 12)
++        self.assertEqual(len(set(pasif)), 12)
++        for ad in pasif:
++            self.assertNotIn(ad, self.kisa_ad)
++        for beklenen in ("Kulak Burun Boğaz", "Kas-İskelet Sistemi", "Romatizmal Hastalıklar",
++                         "Onkoloji (Kanserler)", "Göz (Görme Sistemi)"):
++            self.assertIn(beklenen, pasif)
++        self.assertIn(PASIF_ACIKLAMA, self.html)
++
++    def test_pasif_bolum_islevi_istek_yapmaz(self):
++        govde = re.search(r"function pasifBolumleriKur\(\) \{.*?\n  \}\n", self.html, re.S)
++        self.assertIsNotNone(govde)
++        for yasak in ("fetch(", "json(", "kayitAc(", "ara(", "sepeteEkle("):
++            self.assertNotIn(yasak, govde.group(0))
++
++    # --- eşanlamlılar -----------------------------------------------------
++    def test_istenen_esanlamlilar_var_ve_dogrulanamayan_yok(self):
++        terimler = [katla(t) for e in self.esleme["esanlamlilar"] for t in e["terimler"]]
++        self.assertEqual(len(terimler), len(set(terimler)), "yinelenen terim")
++        for t in ISTENEN_TERIMLER:
++            self.assertIn(katla(t), terimler, t)
++        # "multipl miyelom" kaynak metinde geçmez; yalnız kaynakta geçen "myeloma" bağlanır.
++        for t in terimler:
++            self.assertNotIn("multipl", t)
++
++    def test_esanlamlilar_gercek_kayitlara_baglidir(self):
++        metin_of = {}
++        for k in self.kayitlar:
++            metin_of[k["id"]] = katla(k["hastalik"] + " " + str(k["alt_tur"]))
++        for s in self.belirsiz:
++            metin_of[s["id"]] = katla(s["hastalik"] + " " + str(s["alt_tur"]))
++        for e in self.esleme["esanlamlilar"]:
++            self.assertTrue(e["terimler"] and e["ids"], e)
++            self.assertTrue(set(e["ids"]) <= set(metin_of), e)
++            # Arama hedefi kaynak metinde geçmeli (doğrulanabilir karşılık).
++            hedef = katla(e["ara"])
++            self.assertTrue(any(hedef in metin_of[i] for i in e["ids"]),
++                            "kaynakta doğrulanamadı: " + e["ara"])
++            # Arama hedefi, bağlı kimliklerin hepsini döndürmeli.
++            yanit = self._json("/api/ara?metin=" + urllib.parse.quote(e["ara"]))
++            bulunan = {k["id"] for k in yanit["sonuclar"]} | {k["id"] for k in yanit["belirsizler"]}
++            self.assertTrue(set(e["ids"]) <= bulunan, (e["ara"], set(e["ids"]) - bulunan))
++
++    def test_belirsiz_baglantili_esanlamli_oran_vermez(self):
++        for e in self.esleme["esanlamlilar"]:
++            bel = [i for i in e["ids"] if i.startswith("X-")]
++            if not bel:
++                continue
++            yanit = self._json("/api/ara?metin=" + urllib.parse.quote(e["ara"]))
++            kesin = {k["id"] for k in yanit["sonuclar"]}
++            for i in bel:
++                self.assertNotIn(i, kesin)
++
++    # --- ekran ------------------------------------------------------------
++    def test_ekran_yedegi_ve_kapsam_siniri(self):
++        self.assertIn("Diğer kayıtlar", self.html)          # eşlenmemiş kayıt kaybolmaz
++        self.assertIn("Tüm bölümler", self.html)
++        self.assertNotIn('type="checkbox"', self.html)       # 65 yaş ilavesi/anahtar yok
++        self.assertNotIn("/api/hesapla", self.html)          # Araç-1 hesap yapmaz
++        self.assertNotIn('src="http', self.html)
++
++
++if __name__ == "__main__":
++    unittest.main()
+-- 
+2.43.0
+
