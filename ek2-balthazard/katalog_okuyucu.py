@@ -81,13 +81,15 @@ SORUN_TIPLERI = {
 }
 
 # §3.4 — değişmezler.
-BEKLENEN_KESIN = 276
-BEKLENEN_BELIRSIZ = 10
-BEKLENEN_TOPLAM = 286
+BEKLENEN_KESIN = 424
+BEKLENEN_BELIRSIZ = 16
+BEKLENEN_TOPLAM = 440
 BEKLENEN_BOLUM_DAGILIMI = {
     "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR": 56,
     "DERİ": 142,
     "HEMATOLOJİK HASTALIKLAR": 78,
+    "KULAK BURUN BOĞAZ": 87,
+    "KARDİYOVASKÜLER SİSTEM": 61,
 }
 # §3.10 — çözülen belirsiz satır → kataloğa aktarılan kimlik (11 satır).
 BEKLENEN_COZULEN = {
@@ -107,13 +109,16 @@ BEKLENEN_BELIRSIZ_IDLER = (
     "X-Z03", "X-Z04",
     "X-D01", "X-D02", "X-D03", "X-D04", "X-D05", "X-D06",
     "X-H02", "X-H03",
+    "X-K01", "X-K02",
+    "X-V01", "X-V02", "X-V03", "X-V04",
 )
 BEKLENEN_TIRE_IDLER = ("D-013", "D-014", "D-017", "D-062", "H-056", "H-065")
 BEKLENEN_TEK_KAYITLI = ("D-013", "D-014", "D-017", "D-049", "D-062",
-                        "D-075", "D-086", "D-134", "H-056")
+                        "D-075", "D-086", "D-134", "H-056",
+                        "K-082", "V-042")
 
 _TIRE = "—"
-_KIMLIK = re.compile(r"^(Z|D|H)-(\d{3})$")
+_KIMLIK = re.compile(r"^(Z|D|H|K|V)-(\d{3})$")
 # "VI- Yaygın ...", "VI-A Benign ...", "I- A. Aplastik ..." gibi ön ekler.
 # Numaradan sonra alt harf varsa (``I- A.`` / ``VI-A ``) rozete eklenir; yoksa
 # yalnız ayraç (``- ``) yutulur ve hastalık adı temiz kalır.
@@ -374,6 +379,12 @@ def _bolum_2_anahtari(kayit: dict, rozet: str) -> tuple[str, str]:
         ad = (kayit.get("_grup_adlari") or {}).get(grup, grup)
         return f"grup:{grup}", ad
     if not rozet:
+        # K/V bölümlerinde rozet None olabilir, grup kullan
+        if kayit.get("bolum") in ("KULAK BURUN BOĞAZ", "KARDİYOVASKÜLER SİSTEM"):
+            grup = kayit.get("grup")
+            if not grup:
+                raise KatalogHatasi(f"{kayit['id']}: {kayit['bolum']} kaydında 'grup' yok.")
+            return f"baslik:{grup}", grup
         raise KatalogHatasi(f"{kayit['id']}: Roma başlığı belirlenemedi.")
     temel = rozet.split("-", 1)[0]
     return f"baslik:{temel}", temel

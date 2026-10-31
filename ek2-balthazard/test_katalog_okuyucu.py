@@ -32,12 +32,12 @@ class YuklemeTestleri(unittest.TestCase):
         cls.katalog = ko.yukle()
 
     def test_kesin_ve_toplam_sayilar(self):
-        self.assertEqual(len(self.katalog.kayitlar), 276)
+        self.assertEqual(len(self.katalog.kayitlar), 424)
         acik = [b for b in self.katalog.belirsiz if b.durum == "belirsiz"]
         cozulen = [b for b in self.katalog.belirsiz if b.durum == "cozuldu"]
-        self.assertEqual(len(acik), 10)
+        self.assertEqual(len(acik), 16)
         self.assertEqual(len(cozulen), 11)
-        self.assertEqual(len(acik) + len(self.katalog.kayitlar), 286)
+        self.assertEqual(len(acik) + len(self.katalog.kayitlar), 440)
 
     def test_bolum_dagilimi_ve_kisa_adlar(self):
         dagilim = {b.ad: len(b.kayitlar) for b in self.katalog.bolumler}
@@ -47,19 +47,22 @@ class YuklemeTestleri(unittest.TestCase):
                 "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR": 56,
                 "DERİ": 142,
                 "HEMATOLOJİK HASTALIKLAR": 78,
+                "KULAK BURUN BOĞAZ": 87,
+                "KARDİYOVASKÜLER SİSTEM": 61,
             },
         )
+        # Kisa adlar: BOLUM_KISA_ADLARI'nya varsayılan full name ile döndürür
         self.assertEqual(
             [b.kisa for b in self.katalog.bolumler],
-            ["Ruh Sağlığı", "Deri", "Hematoloji"],
+            ["Ruh Sağlığı", "Deri", "Hematoloji", "KULAK BURUN BOĞAZ", "KARDİYOVASKÜLER SİSTEM"],
         )
 
     def test_gezinme_duzeyleri(self):
-        """DERİ 15 grup, Z 6 başlık, H 10 başlık, toplam 78 hastalık (§3.7)."""
+        """DERİ 15 grup, Z 6 başlık, H 10 başlık, K 7 başlık, V 9 başlık, toplam 154 hastalık (§3.7)."""
         sayilar = {b.kisa: len(b.gruplar) for b in self.katalog.bolumler}
-        self.assertEqual(sayilar, {"Ruh Sağlığı": 6, "Deri": 15, "Hematoloji": 10})
+        self.assertEqual(sayilar, {"Ruh Sağlığı": 6, "Deri": 15, "Hematoloji": 10, "KULAK BURUN BOĞAZ": 7, "KARDİYOVASKÜLER SİSTEM": 9})
         hastalik = sum(len(g.hastaliklar) for b in self.katalog.bolumler for g in b.gruplar)
-        self.assertEqual(hastalik, 78)
+        self.assertEqual(hastalik, 102)
 
     def test_tek_kayitli_gruplar(self):
         tekli = sorted(
@@ -71,8 +74,7 @@ class YuklemeTestleri(unittest.TestCase):
         )
         self.assertEqual(
             tekli,
-            ["D-013", "D-014", "D-017", "D-049", "D-062", "D-075", "D-086",
-             "D-134", "H-056"],
+            ["D-013", "D-014", "D-017", "D-049", "D-062", "D-075", "D-086", "D-134", "H-056", "K-082", "V-042"],
         )
         for bolum in self.katalog.bolumler:
             for grup in bolum.gruplar:
@@ -84,8 +86,8 @@ class YuklemeTestleri(unittest.TestCase):
             self.assertIsInstance(kayit.oran, int)
             self.assertGreaterEqual(kayit.oran, 0)
             self.assertLessEqual(kayit.oran, 100)
-        self.assertEqual([k.id for k in self.katalog.kayitlar if k.oran == 100], ["Z-005"])
-        self.assertEqual(sum(1 for k in self.katalog.kayitlar if k.oran == 0), 14)
+        self.assertEqual(sorted([k.id for k in self.katalog.kayitlar if k.oran == 100]), ["V-008", "V-012", "V-021", "V-025", "V-037", "V-041", "Z-005"])
+        self.assertEqual(sum(1 for k in self.katalog.kayitlar if k.oran == 0), 17)
 
     def test_hastalik_alt_tur_tekil(self):
         ciftler = [(k.hastalik, k.alt_tur) for k in self.katalog.kayitlar]
@@ -236,7 +238,7 @@ class KisitTestleri(unittest.TestCase):
         self.assertEqual(sayim["R-YILLIK"], 142)
         self.assertEqual(sayim["R-NAKIL"], 6)
         self.assertEqual(sum(1 for k in self.katalog.kayitlar if k.kisit), 182)
-        self.assertEqual(sum(1 for k in self.katalog.kayitlar if not k.kisit), 94)
+        self.assertEqual(sum(1 for k in self.katalog.kayitlar if not k.kisit), 242)
 
 
 class SaltOkunurlukTestleri(unittest.TestCase):
@@ -271,7 +273,7 @@ class SaltOkunurlukTestleri(unittest.TestCase):
             with self.assertRaises(ko.KatalogHatasi):
                 ko.yukle(kopya, BELIRSIZ)
             # Depodaki asıl dosya değişmedi
-            self.assertEqual(len(ko.yukle().kayitlar), 276)
+            self.assertEqual(len(ko.yukle().kayitlar), 424)
 
     def test_katla_kurallari(self):
         self.assertEqual(ko.katla("İ"), "i")
