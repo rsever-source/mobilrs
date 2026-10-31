@@ -56,6 +56,8 @@ BOLUM_KISA_ADLARI = {
     "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR": "Ruh Sağlığı",
     "DERİ": "Deri",
     "HEMATOLOJİK HASTALIKLAR": "Hematoloji",
+    "KULAK BURUN BOĞAZ": "KBB",
+    "KARDİYOVASKÜLER SİSTEM": "Kalp-Damar",
 }
 
 # §3.11 / §4.4 — katalogda yalnız bu yedi kod bulunur.
