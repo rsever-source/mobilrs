@@ -34,7 +34,7 @@ ek2-balthazard/
 ├── arac1/
 │   ├── arac1.html                Araç-1 ekranı (HTML + CSS + JS, harici bağımlılık yok)
 │   ├── arac1_sunucu.py           stdlib http.server; 127.0.0.1:8766
-│   └── test_arac1.py             30 unittest
+│   └── test_arac1.py             33 unittest
 └── arac2/
     ├── arac2.html                Araç-2 ekranı (HTML + CSS + JS, harici bağımlılık yok)
     ├── arac2_sunucu.py           stdlib http.server; yerel prototip sunucusu
@@ -102,7 +102,7 @@ python -m unittest -v test_arac2                      # beklenen: 11 test, OK
 ```
 
 Testler `unittest` ile yazılmıştır (pytest gerekmez). 29.10.2026 doğrulaması:
-**77 + 27 + 30 + 11 = 145 test OK**. Araç-1 testleri rastgele bir yerel portta
+**77 + 27 + 33 + 11 = 148 test OK**. Araç-1 testleri rastgele bir yerel portta
 çalışır; katalog dosyalarının `mtime`/boyut değişmediğini de denetler.
 
 ---

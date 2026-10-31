@@ -1291,10 +1291,10 @@ kısıtsız kayıt.
 | --- | --- | --- |
 | Ortak motor | `python -m unittest -v test_balthazard_motoru` | **77 test, OK** |
 | Katalog yükleyici | `python -m unittest -v test_katalog_okuyucu` | **27 test, OK** |
-| Araç-1 | `python -m unittest -v test_arac1` | **30 test, OK** |
+| Araç-1 | `python -m unittest -v test_arac1` | **33 test, OK** |
 | Araç-2 | `python -m unittest -v test_arac2` | **11 test, OK** |
 
-Toplam **145** test; 29.10.2026 tarihinde depo kökünden çalıştırıldı ve tamamı geçti.
+Toplam **148** test; 29.10.2026 tarihinde depo kökünden çalıştırıldı ve tamamı geçti.
 
 Araç-1 testleri: sayı/dağılım değişmezleri, arama (§3.6), 276 sonucun alanları, `—` ve
 H-065 seviyesi, 9 tek kayıtlı grup, 10 belirsiz / 11 çözülen ayrımı, 7 kısıt metni,
