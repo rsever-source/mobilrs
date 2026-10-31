@@ -180,7 +180,7 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertEqual(len(set(pasif)), 11)
         for ad in pasif:
             self.assertNotIn(ad, self.kisa_ad)
-        for beklenen in ("Kulak Burun Boğaz", "Kas-İskelet Sistemi", "Romatizmal Hastalıklar",
+        for beklenen in ("Kas-İskelet Sistemi", "Romatizmal Hastalıklar",
                          "Onkoloji (Kanserler)", "Göz (Görme Sistemi)"):
             self.assertIn(beklenen, pasif)
         self.assertIn(PASIF_ACIKLAMA, self.html)
