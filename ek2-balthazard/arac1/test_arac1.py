@@ -184,14 +184,14 @@ class Arac1Testleri(unittest.TestCase):
         durum, tur, veri = self._json("/saglik")
         self.assertEqual(durum, 200)
         self.assertTrue(veri["ok"])
-        self.assertEqual(veri["kayit"], 276)
+        self.assertEqual(veri["kayit"], 424)
         self.assertEqual(veri["belirsiz"], 10)
         self.assertEqual(veri["bolumler"], ["Ruh Sağlığı", "Deri", "Hematoloji"])
 
     def test_bolumler_ucu(self):
         veri = self.bolumler
         self.assertTrue(veri["ok"])
-        self.assertEqual(len(veri["bolumler"]), 3)
+        self.assertEqual(len(veri["bolumler"]), 5)
         sayilar = {b["kisa"]: b["kayit_sayisi"] for b in veri["bolumler"]}
         self.assertEqual(sayilar, {"Ruh Sağlığı": 56, "Deri": 142, "Hematoloji": 78})
         self.assertTrue(any("GÖRME" in k for k in veri["kapsam_disi"]))
@@ -287,7 +287,7 @@ class Arac1Testleri(unittest.TestCase):
     # --- sonuç --------------------------------------------------------------
 
     def test_tum_sonuclar_zorunlu_alanlari_tasir(self):
-        self.assertEqual(len(self.sonuclar), 276)
+        self.assertEqual(len(self.sonuclar), 424)
         for kayit in self.katalog.kayitlar:
             veri = self.sonuclar[kayit.id]
             self.assertTrue(veri["ok"], kayit.id)
@@ -384,7 +384,7 @@ class Arac1Testleri(unittest.TestCase):
     # --- belirsiz / çözülen -------------------------------------------------
 
     def test_belirsiz_ekrani_oran_gostermez(self):
-        self.assertEqual(len(self.belirsiz_ekran), 10)
+        self.assertEqual(len(self.belirsiz_ekran), 16)
         for kimlik, veri in self.belirsiz_ekran.items():
             self.assertTrue(veri["ok"], kimlik)
             self.assertEqual(veri["tur"], "belirsiz")
