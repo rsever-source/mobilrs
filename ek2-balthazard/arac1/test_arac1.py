@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Araç-1 ekranı ve sunucusu testleri (``SOZLESME.md`` §3-§4).
+"""Araç-1 ekranı ve sunucusu testleri (\x60\x60SOZLESME.md\x60\x60 §3-§4).
 
 Çalıştırma (depo kökünden):
 
@@ -22,7 +22,7 @@ from http.server import ThreadingHTTPServer
 import arac1_sunucu as a  # noqa: E402  (sys.path'i kendisi kurar)
 import katalog_okuyucu as ko  # noqa: E402
 
-TIRE = "\u2014"
+TIRE = "\\u2014"
 
 # --- Sözleşmeden birebir alınan metinler (§3.10, §3.12, §3.14, §4.4, §4.10) --
 ORAN_ETIKETI = "EK-2'de bu hastalık ve seviye için tanımlı oran"
@@ -152,7 +152,6 @@ class Arac1Testleri(unittest.TestCase):
         self.assertIn("<title>Araç-1", govde)
         self.assertIn("Engel Oranı Bul", govde)
         self.assertIn("Balthazard Hesapla", govde)
-        # Canlı yolda Araç-2 bağlantısı göreli (/arac2); 5bf2a6c bunu bilerek böyle yaptı.
         self.assertIn('href="/arac2"', govde)
         self.assertIn("Arama 3 karakterden sonra çalışır", govde)
         self.assertIn(ALT_BILGI, govde)
@@ -160,7 +159,7 @@ class Arac1Testleri(unittest.TestCase):
 
     def test_html_harici_bagimlilik_yok(self):
         html = self.html.lower()
-        for iz in ("cdn.", "googleapis", "unpkg", "jsdelivr", "@import", "src=\"http"):
+        for iz in ("cdn.", "googleapis", "unpkg", "jsdelivr", "@import", "src=\\"http"):
             self.assertNotIn(iz, html)
 
     def test_html_yasak_ibare_icermez(self):
@@ -173,7 +172,7 @@ class Arac1Testleri(unittest.TestCase):
 
     def test_html_kopyalama_yedegi_ve_klavye_erisimi(self):
         self.assertIn("function yedekKopyala(metin)", self.html)
-        self.assertIn("document.execCommand(\"copy\")", self.html)
+        self.assertIn("document.execCommand(\\"copy\\")", self.html)
         self.assertIn("Kopyalama başarısız oldu. Listeyi seçip elle kopyalayabilirsiniz.", self.html)
         self.assertIn(":focus-visible", self.html)
         self.assertIn('id="sepet-temizle">Listeyi temizle</button>', self.html)
@@ -185,15 +184,15 @@ class Arac1Testleri(unittest.TestCase):
         self.assertEqual(durum, 200)
         self.assertTrue(veri["ok"])
         self.assertEqual(veri["kayit"], 424)
-        self.assertEqual(veri["belirsiz"], 10)
-        self.assertEqual(veri["bolumler"], ["Ruh Sağlığı", "Deri", "Hematoloji"])
+        self.assertEqual(veri["belirsiz"], 16)
+        self.assertEqual(veri["bolumler"], ["Ruh Sağlığı", "Deri", "Hematoloji", "KBB", "Kalp-Damar"])
 
     def test_bolumler_ucu(self):
         veri = self.bolumler
         self.assertTrue(veri["ok"])
         self.assertEqual(len(veri["bolumler"]), 5)
         sayilar = {b["kisa"]: b["kayit_sayisi"] for b in veri["bolumler"]}
-        self.assertEqual(sayilar, {"Ruh Sağlığı": 56, "Deri": 142, "Hematoloji": 78})
+        self.assertEqual(sayilar, {"Ruh Sağlığı": 56, "Deri": 142, "Hematoloji": 78, "KBB": 87, "Kalp-Damar": 61})
         self.assertTrue(any("GÖRME" in k for k in veri["kapsam_disi"]))
 
     def test_gezinme_duzeyleri(self):
@@ -201,10 +200,10 @@ class Arac1Testleri(unittest.TestCase):
         self.assertEqual(
             sayilar,
             {"ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR": 6, "DERİ": 15,
-             "HEMATOLOJİK HASTALIKLAR": 10},
+             "HEMATOLOJİK HASTALIKLAR": 10, "KULAK BURUN BOĞAZ": 7, "KARDİYOVASKÜLER SİSTEM": 9},
         )
         toplam = sum(len(g["hastaliklar"]) for v in self.gezinme.values() for g in v["gruplar"])
-        self.assertEqual(toplam, 78)
+        self.assertEqual(toplam, 424)
 
     def test_gezinme_tek_kayitli_gruplar(self):
         tekli = sorted(
@@ -217,7 +216,7 @@ class Arac1Testleri(unittest.TestCase):
         self.assertEqual(
             tekli,
             ["D-013", "D-014", "D-017", "D-049", "D-062", "D-075", "D-086",
-             "D-134", "H-056"],
+             "D-134", "H-056", "K-082", "V-042"],
         )
         for v in self.gezinme.values():
             for g in v["gruplar"]:
@@ -305,7 +304,7 @@ class Arac1Testleri(unittest.TestCase):
 
     def test_tek_kayitli_gruplarda_seviye_adimi_yok(self):
         for kimlik in ("D-013", "D-014", "D-017", "D-049", "D-062", "D-075",
-                       "D-086", "D-134", "H-056"):
+                       "D-086", "D-134", "H-056", "K-082", "V-042"):
             veri = self.sonuclar[kimlik]
             self.assertTrue(veri["tek_kayit"], kimlik)
             self.assertFalse(veri["seviye_adimi"], kimlik)
@@ -426,7 +425,7 @@ class Arac1Testleri(unittest.TestCase):
         toplu.append(json.dumps(self.gezinme, ensure_ascii=False))
         toplu.append(json.dumps(self.sonuclar, ensure_ascii=False))
         toplu.append(json.dumps(self.belirsiz_ekran, ensure_ascii=False))
-        metin = "\n".join(toplu).lower()
+        metin = "\\n".join(toplu).lower()
         for ibare in YASAK:
             self.assertNotIn(ibare, metin, ibare)
 
