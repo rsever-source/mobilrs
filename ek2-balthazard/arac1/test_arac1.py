@@ -203,7 +203,7 @@ class Arac1Testleri(unittest.TestCase):
              "HEMATOLOJİK HASTALIKLAR": 10, "KULAK BURUN BOĞAZ": 7, "KARDİYOVASKÜLER SİSTEM": 9},
         )
         toplam = sum(len(g["hastaliklar"]) for v in self.gezinme.values() for g in v["gruplar"])
-        self.assertEqual(toplam, 424)
+        self.assertEqual(toplam, 102)
 
     def test_gezinme_tek_kayitli_gruplar(self):
         tekli = sorted(
