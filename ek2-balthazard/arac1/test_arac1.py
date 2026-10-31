@@ -159,7 +159,7 @@ class Arac1Testleri(unittest.TestCase):
 
     def test_html_harici_bagimlilik_yok(self):
         html = self.html.lower()
-        for iz in ("cdn.", "googleapis", "unpkg", "jsdelivr", "@import", "src=\\"http"):
+        for iz in ("cdn.", "googleapis", "unpkg", "jsdelivr", "@import", 'src="http'):
             self.assertNotIn(iz, html)
 
     def test_html_yasak_ibare_icermez(self):
@@ -172,7 +172,7 @@ class Arac1Testleri(unittest.TestCase):
 
     def test_html_kopyalama_yedegi_ve_klavye_erisimi(self):
         self.assertIn("function yedekKopyala(metin)", self.html)
-        self.assertIn("document.execCommand(\\"copy\\")", self.html)
+        self.assertIn('document.execCommand("copy")', self.html)
         self.assertIn("Kopyalama başarısız oldu. Listeyi seçip elle kopyalayabilirsiniz.", self.html)
         self.assertIn(":focus-visible", self.html)
         self.assertIn('id="sepet-temizle">Listeyi temizle</button>', self.html)
