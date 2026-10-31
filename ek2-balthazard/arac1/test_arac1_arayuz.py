@@ -92,14 +92,21 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertEqual(self.esleme["surum"], 1)
         yapilandirilan = [b["bolum"] for b in self.esleme["bolumler"]]
         self.assertEqual(yapilandirilan, ["Ruh Sağlığı", "Deri", "Hematoloji"])
-        self.assertEqual(sorted(yapilandirilan), sorted(self.kisa_ad))
+        # KBB ve Kalp-Damar API'den doğrudan gösterilir; özel alt başlık
+        # eşlemesi bulunmayan kayıtlar "Diğer kayıtlar" fallback'ine düşer.
+        self.assertEqual(set(self.kisa_ad), {"Ruh Sağlığı", "Deri", "Hematoloji", "KBB", "Kalp-Damar"})
+        self.assertIn('sonuc.push({ ad: "Diğer kayıtlar"', self.html)
 
     # --- kategori / alt başlık eşlemesi ----------------------------------
     def test_hicbir_kesin_kayit_kaybolmaz_ve_cift_gorunmez(self):
         kimlikler = [i for _, _, m in self._maddeler() for i in m["ids"]]
         self.assertEqual(len(kimlikler), len(set(kimlikler)), "bir kayıt birden fazla yerde")
-        self.assertEqual(set(kimlikler), {k["id"] for k in self.kayitlar})
-        self.assertEqual(len(kimlikler), 276)
+        # Özel eşleme üç bölüm içindir; KBB ve Kalp-Damar API ağacından gelir.
+        eslenen = {k["id"] for k in self.kayitlar if k["bolum"] in
+                   {"ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR", "DERİ", "HEMATOLOJİK HASTALIKLAR"}}
+        self.assertEqual(set(kimlikler), eslenen)
+        self.assertEqual(len(kimlikler), len(eslenen))
+        self.assertEqual(len(self.kayitlar), 424)
 
     def test_kayitlar_dogru_bolumde(self):
         bolum_of = {k["id"]: k["bolum"] for k in self.kayitlar}
@@ -134,7 +141,9 @@ class Arac1ArayuzTestleri(unittest.TestCase):
     # --- belirsiz kayıtlar ------------------------------------------------
     def test_belirsiz_kimlikler_tam_ve_cozulenler_haric(self):
         bel = [i for _, _, m in self._maddeler() for i in m["belirsiz"]]
-        self.assertEqual(sorted(bel), sorted(s["id"] for s in self.belirsiz))
+        eslenen_belirsiz = {s["id"] for s in self.belirsiz if s["bolum"] in
+                            {"ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR", "DERİ", "HEMATOLOJİK HASTALIKLAR"}}
+        self.assertEqual(sorted(bel), sorted(eslenen_belirsiz))
         self.assertEqual(len(bel), len(set(bel)))
         for s in self.cozuldu:
             self.assertNotIn(s["id"], bel)
@@ -167,8 +176,8 @@ class Arac1ArayuzTestleri(unittest.TestCase):
     # --- pasif bölümler ---------------------------------------------------
     def test_pasif_bolumler(self):
         pasif = self.esleme["pasifBolumler"]
-        self.assertEqual(len(pasif), 12)
-        self.assertEqual(len(set(pasif)), 12)
+        self.assertEqual(len(pasif), 11)
+        self.assertEqual(len(set(pasif)), 11)
         for ad in pasif:
             self.assertNotIn(ad, self.kisa_ad)
         for beklenen in ("Kulak Burun Boğaz", "Kas-İskelet Sistemi", "Romatizmal Hastalıklar",
