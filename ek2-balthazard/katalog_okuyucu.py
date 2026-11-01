@@ -58,7 +58,7 @@ BOLUM_KISA_ADLARI = {
     "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR": "Ruh Sağlığı",
     "DERİ": "Deri",
     "HEMATOLOJİK HASTALIKLAR": "Hematoloji",
-    "KULAK BURUN BOĞAZ": "KBB",
+    "KULAK BURUN BOĞAZ": "Kulak Burun Boğaz",
     "KARDİYOVASKÜLER SİSTEM": "Kalp-Damar",
 }
 
