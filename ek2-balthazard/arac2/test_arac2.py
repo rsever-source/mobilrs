@@ -100,6 +100,23 @@ class Sunucu(unittest.TestCase):
         _, veri = self._post(json.dumps({"oranlar": [40]}).encode("utf-8"))
         self.assertEqual(veri["hata"]["kod"], "E_YAS_SECILMEDI")
 
+    def test_gecerli_json_sozluk_degilse_motor_hatasi_aynen_gecer(self):
+        for govde in ([], 40, None):
+            with self.subTest(govde=govde):
+                _, veri = self._post(json.dumps(govde).encode("utf-8"))
+                self.assertFalse(veri["ok"])
+                self.assertEqual(veri["hata"]["kod"], "E_ORAN_TIP")
+                self.assertEqual(veri["hata"]["alan"], "girdi")
+
+    def test_html_baglantilar_ve_girdi_filtresi(self):
+        with urllib.request.urlopen(self.adres + "/", timeout=5) as yanit:
+            html = yanit.read().decode("utf-8")
+        self.assertIn('href="http://127.0.0.1:8766/arac1"', html)
+        self.assertIn("function oranFiltresiKur", html)
+        self.assertIn("yalnız tam sayı kabul eder", html)
+        for parca in ("id=\"eski-uyari\"", "id=\"yas-eki-satiri\"", "id=\"adimlar\"", "window.confirm"):
+            self.assertIn(parca, html)
+
     def test_bozuk_govde_400(self):
         istek = urllib.request.Request(
             self.adres + "/api/hesapla",
