@@ -58,11 +58,19 @@ class YuklemeTestleri(unittest.TestCase):
         )
 
     def test_gezinme_duzeyleri(self):
-        """DERİ 15 grup, Z 6 başlık, H 10 başlık, K 7 başlık, V 9 başlık, toplam 154 hastalık (§3.7)."""
+        """DERİ 15 grup, Z 6 başlık, H 10 başlık, K 7 başlık, V 9 başlık, toplam 102 hastalık (§3.7)."""
         sayilar = {b.kisa: len(b.gruplar) for b in self.katalog.bolumler}
         self.assertEqual(sayilar, {"Ruh Sağlığı": 6, "Deri": 15, "Hematoloji": 10, "KBB": 7, "Kalp-Damar": 9})
         hastalik = sum(len(g.hastaliklar) for b in self.katalog.bolumler for g in b.gruplar)
         self.assertEqual(hastalik, 102)
+
+    def test_kv_grup_rozetleri(self):
+        for bolum in self.katalog.bolumler:
+            if bolum.ad not in ("KULAK BURUN BOĞAZ", "KARDİYOVASKÜLER SİSTEM"):
+                continue
+            for grup in bolum.gruplar:
+                self.assertEqual(grup.rozet, grup.kayitlar[0].grup)
+                self.assertTrue(grup.rozet, f"{bolum.kisa}: {grup.anahtar}")
 
     def test_tek_kayitli_gruplar(self):
         tekli = sorted(
