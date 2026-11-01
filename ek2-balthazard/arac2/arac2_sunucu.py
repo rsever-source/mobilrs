@@ -38,6 +38,7 @@ from balthazard_motoru import balthazard, bicimle_gosterim  # noqa: E402
 
 SAYFA = BURASI / "arac2.html"
 AZAMI_GOVDE = 64 * 1024
+_GOVDE_HATASI = object()
 VARSAYILAN_PORT = 8765
 
 
@@ -106,7 +107,7 @@ class Isleyici(BaseHTTPRequestHandler):
             return
 
         girdi = self._govde_oku()
-        if girdi is None:
+        if girdi is _GOVDE_HATASI:
             return
 
         sonuc = balthazard(girdi)  # tüm doğrulama ve hesap motorda
@@ -126,7 +127,7 @@ class Isleyici(BaseHTTPRequestHandler):
             self._json(
                 {"ok": False, "mesaj": "İstek okunamadı."}, HTTPStatus.BAD_REQUEST
             )
-            return None
+            return _GOVDE_HATASI
 
         ham = self.rfile.read(uzunluk)
         try:
@@ -135,7 +136,7 @@ class Isleyici(BaseHTTPRequestHandler):
             self._json(
                 {"ok": False, "mesaj": "İstek okunamadı."}, HTTPStatus.BAD_REQUEST
             )
-            return None
+            return _GOVDE_HATASI
 
         # JSON sözdizimi geçerliyse tür doğrulamasını ortak motor yapar;
         # böylece E_ORAN_TIP sözleşmesi ve hata gövdesi korunur.
