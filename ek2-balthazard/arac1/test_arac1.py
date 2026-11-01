@@ -181,7 +181,7 @@ class Arac1Testleri(unittest.TestCase):
 
     def test_html_aktarim_notu(self):
         self.assertIn("otomatik aktarılmaz", self.html)
-        self.assertIn("Bu kayıt zaten listede.", self.html)
+        self.assertIn("Bu kayıt zaten seçilenler listesinde.", self.html)
 
     def test_html_kopyalama_yedegi_ve_klavye_erisimi(self):
         self.assertIn("navigator.clipboard", self.html)
@@ -196,7 +196,7 @@ class Arac1Testleri(unittest.TestCase):
         self.assertIn('return "%" + s.gosterim', self.html)
         self.assertNotIn("Alışverişe devam", self.html)
         self.assertNotIn("Balthazard ile hesapla →", self.html)
-        self.assertIn("Araç-2'ye otomatik aktarım yapılmaz", self.html)
+        self.assertIn("Araç-2'ye otomatik aktarılmaz", self.html)
 
     # --- sağlık / bölüm / gezinme ------------------------------------------
 
