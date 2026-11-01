@@ -33,22 +33,23 @@
   .ipucu{font-size:12.5px;color:var(--muted)}
 
   .cipler{display:flex;flex-wrap:wrap;gap:8px;padding:2px 2px 12px}
-  .vucut-secici{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr);gap:18px;align-items:center}
-  .vucut-resim{width:100%;max-height:330px;background:#f1f3f6;border-radius:14px;padding:10px}
+  .vucut-secici{display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,240px);grid-template-areas:"controls figure" "note figure";gap:12px 24px;align-items:center}
+  .vucut-resim{grid-area:figure;width:100%;max-width:240px;max-height:330px;justify-self:end;background:linear-gradient(160deg,#f4f7fa,#edf1f6);border:1px solid #e1e7ef;border-radius:18px;padding:12px;box-shadow:0 8px 18px rgba(24,34,52,.07)}
   .vucut-bolge{cursor:pointer;outline:none}
   .vucut-bolge:focus-visible path,.vucut-bolge:focus-visible circle{stroke:var(--accent);stroke-width:4}
   .vucut-bolge.secili path,.vucut-bolge.secili circle{fill:#55b7a6;stroke:#167d70;stroke-width:2}
-  .vucut-dugmeler{display:flex;flex-wrap:wrap;gap:8px}
-  .vucut-dugmeler .cip{min-height:42px}
-  .vucut-aciklama{font-size:13px;color:var(--muted);margin:8px 0 0}
+  .vucut-dugmeler{grid-area:controls;display:flex;flex-wrap:wrap;align-content:center;gap:8px}
+  .vucut-dugmeler .cip{flex:1 1 180px;min-height:42px;text-align:left}
+  .vucut-aciklama{grid-area:note;font-size:13px;color:var(--muted);margin:0}
   #gruplar.liste{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
   #gruplar .satir{height:100%}
   #hastaliklar .hastalik-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
   #hastaliklar .hastalik-grid>li.acik{grid-column:1/-1}
   #hastaliklar .hastalik-grid .seviyeler{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
   @media (max-width:720px){
-    .vucut-secici{grid-template-columns:minmax(100px,34%) minmax(0,1fr);gap:10px}
-    .vucut-resim{padding:5px}
+    .vucut-secici{grid-template-columns:minmax(0,1fr);grid-template-areas:"figure" "controls" "note";gap:10px}
+    .vucut-resim{width:min(100%,220px);padding:8px;justify-self:center}
+    .vucut-dugmeler .cip{flex-basis:100%}
     #gruplar.liste,#hastaliklar .hastalik-grid{grid-template-columns:minmax(0,1fr)}
     #hastaliklar .hastalik-grid .seviyeler{grid-template-columns:minmax(0,1fr)}
   }
@@ -60,6 +61,8 @@
   .pasif-kutu{margin:0 0 14px;font-size:13.5px}
   .pasif-kutu summary{cursor:pointer;color:var(--muted);font-weight:600;padding:6px 0}
   .pasif-kutu summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  .pasif-kutu .cipler{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:8px;padding-top:8px}
+  .pasif-kutu .cip.pasif{display:block;width:100%;white-space:normal;line-height:1.35;text-align:left;opacity:1}
 
   .kart{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:16px}
   .iki-sutun{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:14px}
@@ -1484,29 +1487,23 @@
   function pasifBolumleriKur() {
     var kap = document.getElementById("pasif-kutu");
     var kutu = document.getElementById("pasif-cipler");
-    var not = document.getElementById("pasif-not");
     var adlar = esleme.pasifBolumler || [];
     kutu.innerHTML = "";
     kap.classList.toggle("gizli", !adlar.length);
     document.getElementById("pasif-ozet").textContent =
       "Henüz desteklenmeyen bölümler (" + adlar.length + ")";
     adlar.forEach(function (ad) {
-      var dugme = el("button", "cip pasif", ad);
-      dugme.type = "button";
+      var dugme = el("span", "cip pasif", ad);
+      dugme.setAttribute("role", "listitem");
       dugme.setAttribute("aria-disabled", "true");
-      dugme.addEventListener("click", function () {
-        var detay = (esleme.pasifDetaylari || []).find(function (x) { return x.bolum === ad; });
-        if (!detay) { not.textContent = ad + ": Bu bölüm henüz desteklenmiyor."; return; }
-        var sayi = detay.altBasliklar.reduce(function (toplam, alt) { return toplam + alt.maddeler.length; }, 0);
-        var maddeler = detay.altBasliklar.map(function (alt) {
-          return alt.ad + ": " + alt.maddeler.join(", ");
-        }).join(" · ");
-        var metin = detay.bolum + ": Bu bölüm henüz desteklenmiyor. " + sayi + " hastalık/alt madde kapsamda. " + maddeler;
-        if (detay.not) { metin += " " + detay.not; }
-        var kaynak = (esleme.pasifKaynaklari || [])[0];
-        if (kaynak) { metin += " Kaynak: " + kaynak.ad + " (" + kaynak.rol + "; " + kaynak.durum + ")."; }
-        not.textContent = metin;
-      });
+      var detay = (esleme.pasifDetaylari || []).find(function (x) { return x.bolum === ad; });
+      var sayi = detay ? detay.altBasliklar.reduce(function (toplam, alt) {
+        return toplam + alt.maddeler.length;
+      }, 0) : 0;
+      var kaynak = (esleme.pasifKaynaklari || [])[0];
+      dugme.title = "Bu bölüm henüz desteklenmiyor." +
+        (detay ? " " + sayi + " hastalık/alt madde kapsamda." : "") +
+        (kaynak ? " Kaynak: " + kaynak.ad + " (" + kaynak.durum + ")." : "");
       kutu.appendChild(dugme);
     });
   }
