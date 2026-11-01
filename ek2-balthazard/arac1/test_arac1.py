@@ -39,7 +39,7 @@ BOLUM_NOTU_METIN = (
     "raporun geçerlilik süresi belirtilmelidir."
 )
 BOS_YAZIM = "Yazımı kontrol edin veya bölüm seçerek ilerleyin."
-BOS_KAPSAM = "Göz, işitme, konuşma ve kas-iskelet bölümleri bu araçta henüz yok."
+BOS_KAPSAM = "Görme ve kas-iskelet sistemindeki bazı değerlendirmeler ölçüm, tablo dönüşümü veya birden fazla adım gerektirir; bunlar tek bir sabit oran olarak gösterilmez."
 ALT_BILGI = "Bu araç bilgilendirme amaçlıdır. Resmî engelli sağlık kurulu raporu yerine geçmez."
 SIFIR_ACIKLAMA = "Bu basamakta kaynak 0 oran veriyor"
 TEK_SEVIYE_NOTU = "Bu hastalıkta kaynak tek oran veriyor, şiddet basamağı yok."
@@ -154,6 +154,10 @@ class Arac1Testleri(unittest.TestCase):
         self.assertIn("Balthazard Hesapla", govde)
         self.assertIn("127.0.0.1:8765/arac2", govde)
         self.assertIn("Arama 3 karakterden sonra çalışır", govde)
+        self.assertIn("class=\"sag-panel\"", govde)
+        self.assertIn("position:sticky", govde)
+        self.assertIn("id=\"model-bolum-listesi\"", govde)
+        self.assertIn("/api/ozel-hesaplamalar", govde)
         self.assertIn(ALT_BILGI, govde)
         self.assertIn("Resmî engelli sağlık kurulu raporu yerine geçmez", govde)
 
@@ -178,14 +182,20 @@ class Arac1Testleri(unittest.TestCase):
         self.assertTrue(veri["ok"])
         self.assertEqual(veri["kayit"], 276)
         self.assertEqual(veri["belirsiz"], 10)
-        self.assertEqual(veri["bolumler"], ["Ruh Sağlığı", "Deri", "Hematoloji"])
+        self.assertEqual(veri["bolumler"][:3], ["Ruh Sağlığı", "Deri", "Hematoloji"])
+        self.assertEqual(len(veri["bolumler"]), 11)
+        self.assertEqual(veri["ek_kayit"], 136)
+        self.assertEqual(veri["ozel_hesaplama"], 5)
 
     def test_bolumler_ucu(self):
         veri = self.bolumler
         self.assertTrue(veri["ok"])
-        self.assertEqual(len(veri["bolumler"]), 3)
+        self.assertEqual(len(veri["bolumler"]), 11)
         sayilar = {b["kisa"]: b["kayit_sayisi"] for b in veri["bolumler"]}
-        self.assertEqual(sayilar, {"Ruh Sağlığı": 56, "Deri": 142, "Hematoloji": 78})
+        self.assertEqual({k: sayilar[k] for k in ("Ruh Sağlığı", "Deri", "Hematoloji")},
+                         {"Ruh Sağlığı": 56, "Deri": 142, "Hematoloji": 78})
+        self.assertEqual(sum(v for k, v in sayilar.items()
+                             if k not in ("Ruh Sağlığı", "Deri", "Hematoloji")), 136)
         self.assertTrue(any("GÖRME" in k for k in veri["kapsam_disi"]))
 
     def test_gezinme_duzeyleri(self):
