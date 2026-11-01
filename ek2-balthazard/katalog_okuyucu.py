@@ -564,8 +564,14 @@ def yukle(katalog_yolu: Path | str | None = None,
                 )
                 for hastalik_adi in hastalik_sirasi
             )
-            rozet = uyeler[0].grup if bolum_adi == "DERİ" else (
-                uyeler[0].rozet.split("-", 1)[0]
+            rozet = (
+                uyeler[0].grup
+                if bolum_adi in (
+                    "DERİ",
+                    "KULAK BURUN BOĞAZ",
+                    "KARDİYOVASKÜLER SİSTEM",
+                )
+                else uyeler[0].rozet.split("-", 1)[0]
             )
             gruplar.append(
                 Grup(anahtar=anahtar, ad=ad, rozet=rozet, kayitlar=uyeler,
@@ -578,6 +584,10 @@ def yukle(katalog_yolu: Path | str | None = None,
             raise KatalogHatasi(f"Z başlık sayısı {len(gruplar)}; beklenen 6.")
         if bolum_adi == "HEMATOLOJİK HASTALIKLAR" and len(gruplar) != 10:
             raise KatalogHatasi(f"H başlık sayısı {len(gruplar)}; beklenen 10.")
+        if bolum_adi == "KULAK BURUN BOĞAZ" and len(gruplar) != 7:
+            raise KatalogHatasi(f"KBB grup sayısı {len(gruplar)}; beklenen 7.")
+        if bolum_adi == "KARDİYOVASKÜLER SİSTEM" and len(gruplar) != 9:
+            raise KatalogHatasi(f"Kalp-Damar grup sayısı {len(gruplar)}; beklenen 9.")
 
         bolumler.append(
             Bolum(
@@ -680,7 +690,7 @@ def yukle(katalog_yolu: Path | str | None = None,
     if sayi.get("toplam_sayisal_satir") != BEKLENEN_TOPLAM:
         raise KatalogHatasi("meta.sayi toplam satır sayısı beklenenle uyuşmuyor.")
     if len(kayitlar) + len(acik) != BEKLENEN_TOPLAM:
-        raise KatalogHatasi("Kesin + belirsiz toplamı 286 değil.")
+        raise KatalogHatasi(f"Kesin + belirsiz toplamı {BEKLENEN_TOPLAM} değil.")
 
     dosya_ozeti = MappingProxyType(
         {
