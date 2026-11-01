@@ -42,7 +42,7 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertIn("grid-row:2", html)
         self.assertIn('id="ozel-hesaplama-kutusu"', html)
         self.assertIn('<details class="kart" id="ozel-hesaplama-kutusu"', html)
-        self.assertIn('data-bolum-eslesme="Kalp-Damar"', html)
+        self.assertIn('data-bolum-eslesme="Göz"', html)
         self.assertIn("ozelHesaplamalariCiz", html)
         self.assertNotIn("Hakkında", html)
         self.assertNotIn("v2.0", html)
