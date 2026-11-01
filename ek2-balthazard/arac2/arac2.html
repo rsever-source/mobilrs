@@ -184,6 +184,71 @@
   .sekme{border:1px solid #d5e2f2;background:#fff;color:#172642;padding:10px 17px;border-radius:12px;font-size:15px;text-decoration:none;font-weight:650;box-shadow:0 2px 8px #193c6610}
   .sekme[aria-current="page"]{background:#075bc7;border-color:#075bc7;color:#fff}
   .sekme:hover{border-color:#8db9ed}
+  /* Sonuç özeti: seçilen oranlar + Balthazard bileşkesi */
+  .liste-baslik h2{font-size:18px;font-weight:800;color:#172642}
+  ol.liste{border:0;margin-top:8px}
+  ol.liste li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;grid-template-areas:"etiket sayi eylem";gap:10px;align-items:center;padding:12px 4px;border-top:1px solid #e9eef5}
+  ol.liste .sira{display:none}
+  ol.liste .etiket{grid-area:etiket;white-space:normal;overflow-wrap:anywhere;font-weight:650;color:#25334a}
+  ol.liste .etiket.bos{font-weight:400}
+  ol.liste .sayi{grid-area:sayi;color:#075bc7;font-size:16px}
+  ol.liste .satir-eylem{grid-area:eylem;display:flex;gap:5px}
+  ol.liste .satir-eylem button{min-width:30px;padding:5px 8px}
+  .yas-secim{gap:10px 18px}
+  .yas-secim label{display:inline-flex;padding:8px 12px;border:1px solid #d8e4f3;border-radius:10px;background:#f8fbff}
+  .sonuc-kart{border-color:#d7e4f5}
+  .sonuc-ust-baslik{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}
+  .sonuc-ust-etiket{margin:0 0 3px;color:#70839d;font-size:10px;font-weight:850;letter-spacing:.09em}
+  .sonuc-ust-baslik h2{margin:0;font-size:19px;color:#172642}
+  .sonuc-bilgi{padding:6px 10px;border-radius:999px;background:#eef5ff;color:#245fae;font-size:11px;font-weight:750;white-space:nowrap}
+  .sonuc-ozet-duzeni{display:grid;grid-template-columns:minmax(170px,.8fr) minmax(0,1.2fr);gap:18px;align-items:center;padding:14px 8px 16px}
+  .sonuc-halka-alani{position:relative;display:grid;place-items:center;min-width:0}
+  .sonuc-halka-svg{display:block;width:min(100%,188px);height:auto;overflow:visible}
+  .sonuc-halka-zemin,.sonuc-halka-dolgu{fill:none;stroke-width:12}
+  .sonuc-halka-zemin{stroke:#edf0f4}
+  .sonuc-halka-dolgu{stroke:#16b6a5;stroke-linecap:round;stroke-dasharray:427.26;stroke-dashoffset:427.26;transform:rotate(-90deg);transform-origin:84px 84px;transition:stroke-dashoffset .35s ease}
+  .sonuc-halka-merkez{position:absolute;display:flex;align-items:center;flex-direction:column;justify-content:center;text-align:center;gap:3px}
+  .sonuc-halka-merkez strong{font-size:42px;line-height:1;color:#172033;letter-spacing:-1.5px;font-variant-numeric:tabular-nums}
+  .sonuc-halka-merkez span{font-size:11px;color:#72819a;font-weight:600}
+  .sonuc-katkilar{min-width:0}
+  .sonuc-katkilar h3{margin:0 0 9px;color:#657792;font-size:12px;font-weight:800;text-transform:none;letter-spacing:0}
+  .sonuc-katkilar ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+  .sonuc-katkilar li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 9px;align-items:center}
+  .sonuc-katkilar .katki-ad{font-size:12px;font-weight:650;color:#33445c;overflow-wrap:anywhere}
+  .sonuc-katkilar .katki-oran{font-size:13px;font-weight:850;color:#075bc7;font-variant-numeric:tabular-nums}
+  .sonuc-katkilar .katki-cizgi{grid-column:1/-1;height:5px;border-radius:99px;background:#edf3fb;overflow:hidden}
+  .sonuc-katkilar .katki-cizgi span{display:block;height:100%;border-radius:99px;background:#72a9ef}
+  .sonuc-yas-ozet{margin:12px 0 0;color:#62738e;font-size:11px}
+  .sonuc-yuvarlama-notu{margin-top:0;font-size:11px}
+  .hesaplama-adimlari{margin-top:12px;padding:11px 0;border-top:1px solid #e7edf5}
+  .hesaplama-adimlari summary{font-size:13px;font-weight:750;color:#27364c;cursor:pointer}
+  .hesaplama-adimlari ol{padding-left:23px;margin:10px 0 3px}
+  .hesaplama-adimlari li{font-size:12.5px;line-height:1.55;overflow-wrap:anywhere;margin:6px 0}
+  .sonuc-eylemler{display:flex;flex-direction:column;gap:8px}
+  .sonuc-eylemler button{min-height:42px}
+  .sonuc-eylemler #sonucu-indir{background:#eef4ff;color:#075bc7;border:1px solid #8eb8f3;font-weight:800}
+  .sonuc-eylemler #sonucu-indir:hover{background:#e2edff}
+  @media(max-width:640px){
+    .sonuc-ozet-duzeni{grid-template-columns:minmax(130px,.8fr) minmax(0,1.2fr);gap:10px;padding:10px 0 13px}
+    .sonuc-halka-svg{width:min(100%,158px)}
+    .sonuc-halka-merkez strong{font-size:34px}
+    .sonuc-halka-merkez span{font-size:10px}
+    .sonuc-ust-baslik h2{font-size:17px}
+    .sonuc-bilgi{font-size:10px;padding:5px 7px}
+    .sonuc-katkilar .katki-ad{font-size:11px}
+    .sonuc-katkilar .katki-oran{font-size:12px}
+    .sonuc-katkilar ul{gap:7px}
+    .sonuc-eylemler{gap:7px}
+    .sonuc-eylemler button{width:100%}
+    ol.liste li{gap:7px;padding:11px 1px}
+    ol.liste .satir-eylem button{min-width:28px;padding:5px 6px}
+  }
+  @media(max-width:360px){
+    .sonuc-ozet-duzeni{grid-template-columns:1fr}
+    .sonuc-halka-svg{width:166px}
+    .sonuc-katkilar{width:100%}
+    .sonuc-ust-baslik{align-items:flex-start;flex-direction:column}
+  }
 </style>
 </head>
 <body>
@@ -255,7 +320,7 @@
 
     <section class="kart" id="liste-kart" aria-labelledby="liste-baslik" hidden>
       <div class="liste-baslik">
-        <h2 id="liste-baslik">Girdiğiniz oranlar (<span id="adet">0</span>)</h2>
+        <h2 id="liste-baslik">Seçtikleriniz (<span id="adet">0</span>)</h2>
         <button type="button" class="baglanti" id="tumunu-sil">Tümünü sil</button>
       </div>
       <ol class="liste" id="liste"></ol>
@@ -287,25 +352,48 @@
         (aritmetik +10 değil, Balthazard).</p>
     </details>
 
-    <section class="kart" id="sonuc-kart" aria-labelledby="sonuc-baslik" hidden>
+    <section class="kart sonuc-kart" id="sonuc-kart" aria-labelledby="sonuc-baslik" hidden>
       <p class="eski-uyari" id="eski-uyari" role="status" hidden>
-        ⚠ Bu sonuç önceki girdilere ait. Güncellemek için “Hesapla”ya basın.
+        Bu sonuç önceki girdilere ait. Güncel sonucu görmek için yeniden hesaplayın.
       </p>
 
-      <div class="sonuc-sayi" aria-live="polite">
-        <strong id="sonuc-deger">—</strong>
-        <span>Bileşke oran</span>
+      <div class="sonuc-ust-baslik">
+        <div>
+          <p class="sonuc-ust-etiket">HESAPLAMA SONUCU</p>
+          <h2 id="sonuc-baslik">Olası Toplam Engel Oranı</h2>
+        </div>
+        <span class="sonuc-bilgi">Balthazard bileşkesi</span>
       </div>
-      <h2 id="sonuc-baslik" class="sr-only">Sonuç</h2>
 
-      <h3>Hesaplama adımları (büyükten küçüğe)</h3>
-      <ol class="adimlar" id="adimlar"></ol>
+      <div class="sonuc-ozet-duzeni">
+        <div class="sonuc-halka-alani" role="img" aria-label="Hesaplanan toplam engel oranı">
+          <svg class="sonuc-halka-svg" viewBox="0 0 168 168" aria-hidden="true">
+            <circle class="sonuc-halka-zemin" cx="84" cy="84" r="68"></circle>
+            <circle class="sonuc-halka-dolgu" id="sonuc-halka" cx="84" cy="84" r="68"></circle>
+          </svg>
+          <div class="sonuc-halka-merkez">
+            <strong id="sonuc-yuvarlak">%0</strong>
+            <span id="sonuc-deger">Tam değer: %0</span>
+          </div>
+        </div>
 
-      <p class="meta" id="yuvarlama-satiri"></p>
+        <div class="sonuc-katkilar">
+          <h3>Girdiğiniz oranlar</h3>
+          <ul id="sonuc-katkilar-listesi" aria-label="Hesaplamaya katılan oranlar"></ul>
+          <p class="sonuc-yas-ozet" id="sonuc-yas-ozet"></p>
+        </div>
+      </div>
+
+      <p class="meta sonuc-yuvarlama-notu" id="yuvarlama-satiri"></p>
       <p class="meta" id="yas-eki-satiri" hidden></p>
 
-      <p class="kisa-not">ⓘ Bu sonuç yalnızca girdiğiniz oranların bileşkesidir.
-        Hastalık kısıtları denetlenmemiştir.</p>
+      <details class="hesaplama-adimlari">
+        <summary>Balthazard hesaplama adımları</summary>
+        <ol class="adimlar" id="adimlar"></ol>
+      </details>
+
+      <p class="kisa-not">Bu sonuç yalnızca girdiğiniz oranların bileşkesidir. Hastalıkların
+        mevzuata özgü kısıtları ve rapor koşulları bu araçta denetlenmez; resmî rapor yerine geçmez.</p>
 
       <div id="kaynak" hidden>
         <p class="kaynak">Kaynak: Erişkinler İçin Engellilik Değerlendirmesi Hakkında
@@ -314,7 +402,8 @@
           formülü.</p>
       </div>
 
-      <div class="eylemler">
+      <div class="eylemler sonuc-eylemler">
+        <button type="button" class="birincil" id="sonucu-indir">Sonucu Görsel Olarak İndir</button>
         <button type="button" id="yeni">Yeni hesaplama</button>
         <button type="button" id="kopya-ham">Ham değeri kopyala</button>
         <button type="button" id="kopya-girdi">Girdileri kopyala</button>
@@ -408,7 +497,7 @@ function satirKur(oge, sira) {
   if (oge.etiket) etiket.title = oge.etiket;
 
   const eylem = document.createElement("span");
-  eylem.style.display = "flex";
+  eylem.className = "satir-eylem";
   eylem.style.gap = "6px";
 
   const duzenle = document.createElement("button");
@@ -607,7 +696,36 @@ function sonucuCiz(veri) {
   kart.hidden = false;
   D("eski-uyari").hidden = true;
 
-  D("sonuc-deger").textContent = "%" + veri.gosterim.sonuc;
+  const hamDeger = Number(veri.sonuc.deger);
+  const halka = D("sonuc-halka");
+  const cevre = 2 * Math.PI * 68;
+  const oran = Math.max(0, Math.min(100, Number.isFinite(hamDeger) ? hamDeger : 0));
+  halka.style.strokeDasharray = cevre.toFixed(2);
+  halka.style.strokeDashoffset = (cevre * (1 - oran / 100)).toFixed(2);
+  D("sonuc-yuvarlak").textContent = "%" + Math.round(oran);
+  D("sonuc-deger").textContent = "Tam değer: %" + veri.gosterim.sonuc;
+
+  const katkiListesi = D("sonuc-katkilar-listesi");
+  katkiListesi.replaceChildren();
+  [...durum.oranlar].sort((a, b) => b.deger - a.deger).forEach((oge) => {
+    const li = document.createElement("li");
+    const ad = document.createElement("span");
+    ad.className = "katki-ad";
+    ad.textContent = etiketMetni(oge);
+    const yuzde = document.createElement("span");
+    yuzde.className = "katki-oran";
+    yuzde.textContent = "%" + oge.deger;
+    const cizgi = document.createElement("span");
+    cizgi.className = "katki-cizgi";
+    const dolgu = document.createElement("span");
+    dolgu.style.width = Math.max(0, Math.min(100, oge.deger)) + "%";
+    cizgi.append(dolgu);
+    li.append(ad, yuzde, cizgi);
+    katkiListesi.append(li);
+  });
+  D("sonuc-yas-ozet").textContent = durum.yas === "65_ve_uzeri"
+    ? "65 yaş ve üzeri seçildi; %10 ek, Balthazard yöntemiyle uygulandı."
+    : "65 yaş altı seçildi; yaş eklemesi uygulanmadı.";
 
   const ol = D("adimlar");
   ol.replaceChildren();
@@ -626,7 +744,7 @@ function sonucuCiz(veri) {
   });
 
   D("yuvarlama-satiri").textContent =
-    "Yuvarlama: uygulanmadı (motor ham değer döndürür).";
+    "Büyük gösterim en yakın tam sayıdır; tam değer ondalıklı hâliyle korunur.";
 
   const yasSatiri = D("yas-eki-satiri");
   if (veri.yas_eklemesi.uygulandi) {
@@ -680,6 +798,100 @@ async function kopyala(metin, basariMetni) {
   }
 }
 
+function sonucuGorselIndir() {
+  if (!durum.sonuc) return;
+  const canvas = document.createElement("canvas");
+  const oranlar = [...durum.oranlar].sort((a, b) => b.deger - a.deger);
+  const adimMetinleri = Array.from(D("adimlar").children).map((li) => li.textContent);
+  const width = 1000;
+  const rowHeight = 58;
+  const stepHeight = 44;
+  const height = 315 + oranlar.length * rowHeight + adimMetinleri.length * stepHeight + 135;
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) { bildir("Görsel oluşturulamadı.", 4000); return; }
+
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, width, height);
+  ctx.strokeStyle = "#d9e4f2";
+  ctx.lineWidth = 2;
+  ctx.strokeRect(18, 18, width - 36, height - 36);
+
+  ctx.fillStyle = "#13243d";
+  ctx.font = "700 34px Arial, sans-serif";
+  ctx.fillText("Engelli.me · Balthazard Hesaplama", 52, 78);
+  ctx.fillStyle = "#71819a";
+  ctx.font = "700 16px Arial, sans-serif";
+  ctx.fillText("SEÇTİKLERİNİZ", 52, 122);
+
+  let y = 160;
+  oranlar.forEach((oge) => {
+    ctx.fillStyle = "#26364d";
+    ctx.font = "600 21px Arial, sans-serif";
+    const label = etiketMetni(oge);
+    ctx.fillText(label.length > 58 ? label.slice(0, 55) + "…" : label, 58, y);
+    ctx.textAlign = "right";
+    ctx.fillStyle = "#075bc7";
+    ctx.font = "700 22px Arial, sans-serif";
+    ctx.fillText("%" + oge.deger, width - 58, y);
+    ctx.textAlign = "left";
+    ctx.strokeStyle = "#e7edf5";
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(52, y + 17); ctx.lineTo(width - 52, y + 17); ctx.stroke();
+    y += rowHeight;
+  });
+
+  y += 10;
+  ctx.fillStyle = "#687a93";
+  ctx.font = "600 17px Arial, sans-serif";
+  ctx.fillText(durum.yas === "65_ve_uzeri" ? "65 yaş ve üzeri" : "65 yaş altı", 58, y);
+  y += 66;
+
+  const ham = Number(durum.sonuc.sonuc.deger);
+  ctx.fillStyle = "#13243d";
+  ctx.font = "700 22px Arial, sans-serif";
+  ctx.fillText("OLASI TOPLAM ENGEL ORANI", 58, y);
+  y += 66;
+  ctx.fillStyle = "#075bc7";
+  ctx.font = "800 68px Arial, sans-serif";
+  ctx.fillText("%" + Math.round(ham), 58, y);
+  ctx.fillStyle = "#63758f";
+  ctx.font = "600 24px Arial, sans-serif";
+  ctx.fillText("Tam değer: %" + durum.sonuc.gosterim.sonuc, 290, y - 8);
+  y += 58;
+
+  ctx.fillStyle = "#13243d";
+  ctx.font = "700 21px Arial, sans-serif";
+  ctx.fillText("Balthazard hesaplama adımları", 58, y);
+  y += 42;
+  ctx.fillStyle = "#34445b";
+  ctx.font = "17px Arial, sans-serif";
+  adimMetinleri.forEach((line) => {
+    const max = 102;
+    const pieces = [];
+    for (let i = 0; i < line.length; i += max) pieces.push(line.slice(i, i + max));
+    pieces.forEach((piece) => { ctx.fillText(piece, 58, y); y += 25; });
+    y += 7;
+  });
+
+  y += 18;
+  ctx.strokeStyle = "#e7edf5";
+  ctx.beginPath(); ctx.moveTo(52, y); ctx.lineTo(width - 52, y); ctx.stroke();
+  y += 34;
+  ctx.fillStyle = "#6b7c92";
+  ctx.font = "15px Arial, sans-serif";
+  ctx.fillText("Bu sonuç yalnızca girilen oranların bileşkesidir; resmî sağlık kurulu raporu yerine geçmez.", 58, y);
+
+  const link = document.createElement("a");
+  link.download = "engellime-balthazard-sonucu.png";
+  link.href = canvas.toDataURL("image/png");
+  document.body.append(link);
+  link.click();
+  link.remove();
+  bildir("Sonuç görseli indirildi.");
+}
+
 // --- Olaylar ---------------------------------------------------------------
 
 D("ekle-form").addEventListener("submit", ekle);
@@ -702,6 +914,7 @@ D("geri-al-btn").addEventListener("click", () => {
 });
 
 D("hesapla").addEventListener("click", hesapla);
+D("sonucu-indir").addEventListener("click", sonucuGorselIndir);
 
 document.querySelectorAll('input[name="yas"]').forEach((radio) => {
   radio.addEventListener("change", () => {

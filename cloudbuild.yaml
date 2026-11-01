@@ -155,10 +155,15 @@ steps:
             check(path, want)
 
         home = urllib.request.urlopen(base + "/", timeout=30).read()
-        if b"EK-2 Hastal" not in home or b"Balthazard Oran" not in home:
-            raise SystemExit("HATA: ana sayfada EK-2 arac kartlari bulunamadi")
+        if "Hastalık Oranı Bulma".encode("utf-8") not in home or "Balthazard Oranı Hesaplama".encode("utf-8") not in home:
+            raise SystemExit("HATA: ana sayfada hastalık oranı veya Balthazard araç kartı bulunamadı")
         arac1 = urllib.request.urlopen(base + "/arac1", timeout=30).read()
         arac2 = urllib.request.urlopen(base + "/arac2", timeout=30).read()
+        if "Araç-2'ye geç".encode("utf-8") in arac1:
+            raise SystemExit("HATA: Araç-1 alt eylem alanında gereksiz Araç-2 geçiş düğmesi var")
+        if (b'id="sonuc-halka"' not in arac2 or b'id="sonuc-katkilar-listesi"' not in arac2 or
+                b'id="sonucu-indir"' not in arac2):
+            raise SystemExit("HATA: Araç-2 sonuç özeti bileşenleri eksik")
         for arac_adi, sayfa in (("Araç-1", arac1), ("Araç-2", arac2)):
             if (b'<header class="site-header" role="banner">' not in sayfa or
                     b'class="site-brand" href="/" aria-label="Engelli.me ana sayfa"' not in sayfa or

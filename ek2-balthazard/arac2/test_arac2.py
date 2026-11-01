@@ -168,6 +168,14 @@ class Sunucu(unittest.TestCase):
         self.assertNotIn('aria-selected="true"', nav)
         self.assertIn('aria-current="page">Balthazard Hesapla</a>', nav)
         self.assertIn("yaş aralığını seçin".lower(), govde.lower())
+        self.assertIn("Seçtikleriniz", govde)
+        self.assertIn("Olası Toplam Engel Oranı", govde)
+        self.assertIn('id="sonuc-halka"', govde)
+        self.assertIn('id="sonuc-katkilar-listesi"', govde)
+        self.assertIn('id="sonucu-indir"', govde)
+        self.assertIn("function sonucuGorselIndir()", govde)
+        self.assertIn("Balthazard hesaplama adımları", govde)
+        self.assertIn("Tam değer:", govde)
 
     def test_bilinmeyen_yol_404(self):
         with self.assertRaises(urllib.error.HTTPError) as baglam:
