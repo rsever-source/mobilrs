@@ -1,0 +1,31 @@
+name: EK-2 Araç-1 tests
+
+on:
+  pull_request:
+    paths:
+      - "ek2-balthazard/**"
+      - ".github/workflows/ek2-arac1-tests.yml"
+  push:
+    branches:
+      - "fix/ek2-katalog-kv-rozet-ve-dogrulama"
+    paths:
+      - "ek2-balthazard/**"
+      - ".github/workflows/ek2-arac1-tests.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  arac1-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test catalog reader
+        run: python -m unittest discover -s ek2-balthazard -p "test_katalog_okuyucu.py" -v
+      - name: Test Araç-1 API and interface mapping
+        run: python -m unittest discover -s ek2-balthazard/arac1 -p "test_arac1_arayuz.py" -v
