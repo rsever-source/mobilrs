@@ -52,6 +52,10 @@ SAYFA = BURASI / "arac1.html"
 VARSAYILAN_PORT = 8766
 ARAC2_ADRESI = "http://127.0.0.1:8765/arac2"
 AZAMI_SORGU = 120
+EK_KATALOG_YOLU = KOK / "veri" / "katalog_ek2_ek.json"
+OZEL_HESAPLAMA_YOLU = KOK / "veri" / "ozel_hesaplamalar.json"
+_EK_KATALOG: dict | None = None
+_OZEL_HESAPLAMALAR: dict | None = None
 
 # --- Sözleşme metinleri (§3.10, §3.12, §3.14, §3.16, §4.4, §4.10) -----------
 
@@ -189,6 +193,42 @@ def tek_kayitli_kimlikler() -> set[str]:
             for kayit in hastalik.kayitlar
         }
     return _TEK_KAYITLI
+
+
+def ek_katalog() -> dict:
+    """Sabit oranlı ek kayıtları ana kataloğun değişmezlerinden ayrı, salt okunur yükler."""
+    global _EK_KATALOG
+    if _EK_KATALOG is None:
+        try:
+            veri = json.loads(EK_KATALOG_YOLU.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as hata:
+            raise KatalogHatasi("Ek katalog yüklenemedi: %s" % hata) from hata
+        kimlikler = set()
+        for bolum in veri.get("bolumler", []):
+            for kayit in bolum.get("kayitlar", []):
+                if not kayit.get("id") or kayit["id"] in kimlikler:
+                    raise KatalogHatasi("Ek katalogda boş/tekrarlı kimlik.")
+                if not isinstance(kayit.get("oran"), int) or not 0 <= kayit["oran"] <= 100:
+                    raise KatalogHatasi("Ek katalogda geçersiz oran: %s" % kayit.get("id"))
+                if not kayit.get("hastalik") or not kayit.get("sayfa"):
+                    raise KatalogHatasi("Ek katalogda zorunlu alan eksik: %s" % kayit["id"])
+                kimlikler.add(kayit["id"])
+        _EK_KATALOG = veri
+    return _EK_KATALOG
+
+
+def ozel_hesaplamalar() -> dict:
+    """Formül/tablo gerektiren kaynak yöntemleri; bunlar sabit oran olarak sunulmaz."""
+    global _OZEL_HESAPLAMALAR
+    if _OZEL_HESAPLAMALAR is None:
+        try:
+            veri = json.loads(OZEL_HESAPLAMA_YOLU.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as hata:
+            raise KatalogHatasi("Özel hesaplama kataloğu yüklenemedi: %s" % hata) from hata
+        if not isinstance(veri.get("ozel_hesaplamalar"), list):
+            raise KatalogHatasi("Özel hesaplama kataloğu biçimi geçersiz.")
+        _OZEL_HESAPLAMALAR = veri
+    return _OZEL_HESAPLAMALAR
 
 
 def kisa_etiket(kayit_id: str, sayfa: int) -> str:
@@ -376,8 +416,28 @@ def arama_yuku(metin: str, bolum_adi: str | None) -> dict:
             return {"ok": False, "mesaj": "Bilinmeyen bölüm."}
         bolum_adi = bolum.ad
 
-    kayitlar = katalog_nesnesi.ara(temiz, bolum_adi)
-    belirsizler = katalog_nesnesi.belirsiz_ara(temiz, bolum_adi)
+    kayitlar = list(katalog_nesnesi.ara(temiz, bolum_adi))
+    belirsizler = list(katalog_nesnesi.belirsiz_ara(temiz, bolum_adi))
+    # EK-2 ek kayıtları ayrı dosyada doğrulanır; ana kataloğun sayım değişmezleri korunur.
+    for bolum in ek_katalog().get("bolumler", []):
+        if bolum_adi and bolum_adi not in (bolum.get("ad"), bolum.get("kisa")):
+            continue
+        for satir in bolum.get("kayitlar", []):
+            metin_satir = katla(" ".join((satir.get("hastalik", ""), satir.get("alt_tur", ""), bolum.get("ad", ""))))
+            if katla(temiz) not in metin_satir:
+                continue
+            oran = oran_gosterim(satir["oran"])
+            kayitlar.append({
+                "id": satir["id"],
+                "ad": satir["hastalik"],
+                "seviye": satir["alt_tur"],
+                "rozet": "EK-2 ek kayıt",
+                "bolum": bolum["ad"],
+                "bolum_kisa": bolum.get("kisa", bolum["ad"]),
+                "grup": None,
+                "oran": satir["oran"],
+                "oran_gosterim": oran["gosterim"],
+            })
     yanit = {
         "ok": True,
         "metin": temiz,
@@ -445,6 +505,8 @@ class Isleyici(BaseHTTPRequestHandler):
             self._saglik()
         elif yol == "/api/bolumler":
             self._json(gezinme_yuku(None))
+        elif yol == "/api/ozel-hesaplamalar":
+            self._json({"ok": True, **ozel_hesaplamalar()})
         elif yol == "/api/gezinme":
             veri = gezinme_yuku(_ilk(sorgu, "bolum"))
             self._json(veri, HTTPStatus.OK if veri.get("ok") else HTTPStatus.NOT_FOUND)
@@ -484,6 +546,33 @@ class Isleyici(BaseHTTPRequestHandler):
             self._json({"ok": False, "mesaj": "Kayıt kimliği gerekli."}, HTTPStatus.BAD_REQUEST)
             return
         katalog_nesnesi = katalog()
+        if kimlik.startswith(("KV-", "KH-", "UG-", "SS-", "EM-", "GH-", "ON-", "SN-")):
+            for bolum in ek_katalog().get("bolumler", []):
+                for satir in bolum.get("kayitlar", []):
+                    if satir.get("id") != kimlik:
+                        continue
+                    gosterim = oran_gosterim(satir["oran"])
+                    self._json({
+                        "ok": True, "tur": "sonuc", "id": satir["id"],
+                        "ad": satir["hastalik"], "seviye": satir["alt_tur"],
+                        "rozet": "EK-2 ek kayıt", "bolum": bolum["ad"],
+                        "bolum_kisa": bolum.get("kisa", bolum["ad"]),
+                        "grup": None, "grup_rozet": None,
+                        "oran": {"ham": gosterim["ham"], "gosterim": gosterim["gosterim"],
+                                 "etiket": "EK-2 kaynak satırında açıkça belirtilen sabit oran"},
+                        "sifir": satir["oran"] == 0, "sifir_aciklama": None,
+                        "kaynak": "Kaynak: EK-2, sayfa %s · kayıt %s" % (satir["sayfa"], satir["id"]),
+                        "kaynak_not": satir.get("kaynak_not", "Ek katalog kaydı."),
+                        "kisitlar": [], "kisit_basligi": "Bu oran için geçerli kurallar (0)",
+                        "tek_kayit": True, "seviye_adimi": False,
+                        "tek_seviye_notu": "Bu kaynak satırı ayrı kayıt olarak aktarılmıştır; bölümün tamamı henüz eksiksiz değildir.",
+                        "yas_bloku": dict(YAS_BLOGU), "bolum_notu": None,
+                        "kisa_etiket": kisa_etiket(satir["id"], satir["sayfa"]),
+                        "alt_bilgi": dict(ALT_BILGI),
+                    })
+                    return
+            self._json({"ok": False, "mesaj": "Ek katalog kaydı bulunamadı."}, HTTPStatus.NOT_FOUND)
+            return
         if kimlik.startswith("X-"):
             satir = katalog_nesnesi.belirsiz_kayit(kimlik)
             if satir is None:
