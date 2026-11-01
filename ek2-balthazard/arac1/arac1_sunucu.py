@@ -46,7 +46,7 @@ KOK = BURASI.parent
 sys.path.insert(0, str(KOK))
 
 from balthazard_motoru import YAS_ALTI, balthazard, bicimle_gosterim  # noqa: E402
-from katalog_okuyucu import Katalog, KatalogHatasi, katla, yukle  # noqa: E402
+from katalog_okuyucu import (Katalog, KatalogHatasi, katla, yukle, yukle_ek_katalog, yukle_ozel_hesaplamalar)  # noqa: E402
 
 SAYFA = BURASI / "arac1.html"
 VARSAYILAN_PORT = 8766
@@ -199,21 +199,7 @@ def ek_katalog() -> dict:
     """Sabit oranlı ek kayıtları ana kataloğun değişmezlerinden ayrı, salt okunur yükler."""
     global _EK_KATALOG
     if _EK_KATALOG is None:
-        try:
-            veri = json.loads(EK_KATALOG_YOLU.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError) as hata:
-            raise KatalogHatasi("Ek katalog yüklenemedi: %s" % hata) from hata
-        kimlikler = set()
-        for bolum in veri.get("bolumler", []):
-            for kayit in bolum.get("kayitlar", []):
-                if not kayit.get("id") or kayit["id"] in kimlikler:
-                    raise KatalogHatasi("Ek katalogda boş/tekrarlı kimlik.")
-                if not isinstance(kayit.get("oran"), int) or not 0 <= kayit["oran"] <= 100:
-                    raise KatalogHatasi("Ek katalogda geçersiz oran: %s" % kayit.get("id"))
-                if not kayit.get("hastalik") or not kayit.get("sayfa"):
-                    raise KatalogHatasi("Ek katalogda zorunlu alan eksik: %s" % kayit["id"])
-                kimlikler.add(kayit["id"])
-        _EK_KATALOG = veri
+        _EK_KATALOG = yukle_ek_katalog(EK_KATALOG_YOLU)
     return _EK_KATALOG
 
 
@@ -221,13 +207,7 @@ def ozel_hesaplamalar() -> dict:
     """Formül/tablo gerektiren kaynak yöntemleri; bunlar sabit oran olarak sunulmaz."""
     global _OZEL_HESAPLAMALAR
     if _OZEL_HESAPLAMALAR is None:
-        try:
-            veri = json.loads(OZEL_HESAPLAMA_YOLU.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError) as hata:
-            raise KatalogHatasi("Özel hesaplama kataloğu yüklenemedi: %s" % hata) from hata
-        if not isinstance(veri.get("ozel_hesaplamalar"), list):
-            raise KatalogHatasi("Özel hesaplama kataloğu biçimi geçersiz.")
-        _OZEL_HESAPLAMALAR = veri
+        _OZEL_HESAPLAMALAR = yukle_ozel_hesaplamalar(OZEL_HESAPLAMA_YOLU)
     return _OZEL_HESAPLAMALAR
 
 
