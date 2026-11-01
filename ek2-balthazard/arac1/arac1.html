@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Araç-1 — Engel Oranı Bul | Engelli.me</title>
+<title>Engel Oranı Bulma (Kılavuza Göre) | Engelli.me</title>
 <style>
   :root{
     --ink:#182234; --muted:#697386; --line:#e4e8ef; --bg:#f4f6f9; --card:#fff;
@@ -158,11 +158,11 @@
 <body>
 <div class="sayfa">
   <nav class="sekmeler" aria-label="Araçlar">
-    <a class="sekme" href="/arac1" aria-current="page">Engel Oranı Bul</a>
-    <a class="sekme" href="__ARAC2_ADRESI__">Balthazard Hesapla</a>
+    <a class="sekme" href="/arac1" aria-current="page">Engel Oranı Bulma</a>
+    <a class="sekme" href="__ARAC2_ADRESI__">Balthazard Hesaplama</a>
   </nav>
 
-  <h1>Engel Oranı Bul</h1>
+  <h1>Engel Oranı Bulma (Kılavuza Göre)</h1>
   <p class="giris">EK-2 kapsamındaki beş bölümde hastalık ve seviye seçerek kaynakta tanımlı
     oranı bulun. Araç hesap yapmaz; oranlar EK-2 kılavuzundan okunur.</p>
 
@@ -214,7 +214,7 @@
 
   <details class="pasif-kutu" id="pasif-kutu">
     <summary id="pasif-ozet">Henüz desteklenmeyen bölümler</summary>
-    <p class="ipucu">Bu bölümler Araç-1'de henüz desteklenmiyor; bunlarda arama, seçim veya oran gösterimi yapılmaz.</p>
+    <p class="ipucu">Bu bölümler henüz desteklenmiyor; bunlarda arama, seçim veya oran gösterimi yapılmaz.</p>
     <div class="cipler" id="pasif-cipler" role="group" aria-label="Henüz desteklenmeyen bölümler"></div>
     <p class="bildirim" id="pasif-not" role="status"></p>
   </details>
@@ -247,8 +247,8 @@
         <button class="dugme" type="button" id="listeyi-kopyala">Listeyi kopyala</button>
         <button class="dugme" type="button" id="sepet-temizle">Listeyi temizle</button>
       </div>
-      <p class="ipucu" style="margin-top:10px">Bu liste yalnız bu sayfada tutulur; Araç-2'ye
-        otomatik aktarılmaz. Araç-2 yalnızca girdiğiniz oranları birleştirir; oranların
+      <p class="ipucu" style="margin-top:10px">Bu liste yalnız bu sayfada tutulur; Balthazard hesaplama sayfasına
+        otomatik aktarılmaz. Balthazard hesaplama yalnızca girdiğiniz oranları birleştirir; oranların
         doğruluğu ve kullanım kuralları orada denetlenmez.</p>
     </section>
   </main>
@@ -265,7 +265,7 @@
   - altBasliklar: bölümdeki alt başlık → madde → katalog kayıt kimlikleri (ids) ve
     oranı belirlenmemiş satır kimlikleri (belirsiz). Oran/ad/sayfa bilgisi hep API'den okunur.
   - esanlamlilar: halk dili terimi → katalogdaki arama terimi (ara) + doğrulanmış kayıt kimlikleri.
-  - pasifBolumler: Araç-1'de henüz desteklenmeyen bölüm adları (arama/seçim/oran yok).
+  - pasifBolumler: Bu sayfada henüz desteklenmeyen bölüm adları (arama/seçim/oran yok).
   Katalogla uyum test_arac1_arayuz.py ile denetlenir.
 -->
 <script type="application/json" id="arayuz-esleme">
@@ -291,7 +291,7 @@
       "url": "https://www.engelliler.biz/engel-orani-hesaplama/",
       "rol": "çapraz kontrol ve ek hastalık keşfi",
       "durum": "resmî EK-2 yerine geçmez",
-      "not": "101 somut hastalık/alt madde ve Romatizmal Hastalıklar için oran üretmeyen yönlendirme karşılaştırıldı. Resmî satır doğrulaması olmayan oranlar Araç-1 hesabına alınmaz."
+      "not": "101 somut hastalık/alt madde ve Romatizmal Hastalıklar için oran üretmeyen yönlendirme karşılaştırıldı. Resmî satır doğrulaması olmayan oranlar oran hesabına alınmaz."
     }
   ],
   "pasifDetaylari": [
@@ -1496,12 +1496,12 @@
       dugme.setAttribute("aria-disabled", "true");
       dugme.addEventListener("click", function () {
         var detay = (esleme.pasifDetaylari || []).find(function (x) { return x.bolum === ad; });
-        if (!detay) { not.textContent = ad + ": Bu bölüm Araç-1'de henüz desteklenmiyor."; return; }
+        if (!detay) { not.textContent = ad + ": Bu bölüm henüz desteklenmiyor."; return; }
         var sayi = detay.altBasliklar.reduce(function (toplam, alt) { return toplam + alt.maddeler.length; }, 0);
         var maddeler = detay.altBasliklar.map(function (alt) {
           return alt.ad + ": " + alt.maddeler.join(", ");
         }).join(" · ");
-        var metin = detay.bolum + ": Bu bölüm Araç-1'de henüz desteklenmiyor. " + sayi + " hastalık/alt madde kapsamda. " + maddeler;
+        var metin = detay.bolum + ": Bu bölüm henüz desteklenmiyor. " + sayi + " hastalık/alt madde kapsamda. " + maddeler;
         if (detay.not) { metin += " " + detay.not; }
         var kaynak = (esleme.pasifKaynaklari || [])[0];
         if (kaynak) { metin += " Kaynak: " + kaynak.ad + " (" + kaynak.rol + "; " + kaynak.durum + ")."; }
@@ -2052,15 +2052,15 @@
     if (!metin) { sepetBildirim.textContent = "Liste boş."; return; }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(metin).then(function () {
-        sepetBildirim.textContent = "Liste kopyalandı; Araç-2'ye elle girebilirsiniz.";
+        sepetBildirim.textContent = "Liste kopyalandı; Balthazard hesaplama sayfasına elle girebilirsiniz.";
       }).catch(function () {
         sepetBildirim.textContent = yedekKopyala(metin)
-          ? "Liste kopyalandı; Araç-2'ye elle girebilirsiniz."
+          ? "Liste kopyalandı; Balthazard hesaplama sayfasına elle girebilirsiniz."
           : "Kopyalama başarısız oldu. Listeyi seçip elle kopyalayabilirsiniz.";
       });
     } else {
       sepetBildirim.textContent = yedekKopyala(metin)
-        ? "Liste kopyalandı; Araç-2'ye elle girebilirsiniz."
+        ? "Liste kopyalandı; Balthazard hesaplama sayfasına elle girebilirsiniz."
         : "Kopyalama başarısız oldu. Listeyi seçip elle kopyalayabilirsiniz.";
     }
   });

@@ -27,7 +27,7 @@ import arac1_sunucu as a  # noqa: E402  (sys.path'i kendisi kurar)
 
 VERI = Path(__file__).resolve().parent.parent / "veri"
 
-PASIF_ACIKLAMA = "Bu bölüm Araç-1'de henüz desteklenmiyor"
+PASIF_ACIKLAMA = "Bu bölüm henüz desteklenmiyor"
 
 # Kullanıcının istediği eşanlamlılar (hepsi yapılandırmada bulunmalı).
 ISTENEN_TERIMLER = (
