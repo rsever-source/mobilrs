@@ -350,7 +350,32 @@ def gezinme_yuku(bolum_adi: str | None) -> dict:
     if bolum_adi:
         bolum = katalog_nesnesi.bolum(bolum_adi)
         if bolum is None:
-            return {"ok": False, "mesaj": "Bilinmeyen bölüm."}
+            ek = next((b for b in ek_katalog().get("bolumler", [])
+                       if bolum_adi in (b.get("ad"), b.get("kisa"))), None)
+            if ek is None:
+                return {"ok": False, "mesaj": "Bilinmeyen bölüm."}
+            hastalik_haritasi = {}
+            for satir in ek.get("kayitlar", []):
+                hastalik_haritasi.setdefault(satir["hastalik"], []).append(satir)
+            hastaliklar = []
+            for ad, satirlar in hastalik_haritasi.items():
+                hastaliklar.append({
+                    "anahtar": ad, "ad": ad, "tek_kayit": len(satirlar) == 1,
+                    "seviyeler": [{
+                        "id": s["id"], "seviye": s["alt_tur"],
+                        "oran": s["oran"], "oran_gosterim": oran_gosterim(s["oran"])["gosterim"],
+                        "sayfa": s["sayfa"],
+                    } for s in satirlar],
+                })
+            return {
+                "ok": True,
+                "bolum": {"ad": ek["ad"], "kisa": ek.get("kisa", ek["ad"]),
+                          "kayit_sayisi": len(ek.get("kayitlar", []))},
+                "gruplar": [{
+                    "anahtar": ek["ad"], "ad": "EK-2 ek kayıtlar", "rozet": "EK-2",
+                    "kayit_sayisi": len(ek.get("kayitlar", [])), "hastaliklar": hastaliklar,
+                }],
+            }
         return {
             "ok": True,
             "bolum": {"ad": bolum.ad, "kisa": bolum.kisa, "kayit_sayisi": len(bolum.kayitlar)},
@@ -365,17 +390,20 @@ def gezinme_yuku(bolum_adi: str | None) -> dict:
                 for grup in bolum.gruplar
             ],
         }
+    bolum_listesi = [
+        {
+            "ad": bolum.ad, "kisa": bolum.kisa,
+            "kayit_sayisi": len(bolum.kayitlar), "grup_sayisi": len(bolum.gruplar),
+        } for bolum in katalog_nesnesi.bolumler
+    ]
+    for ek in ek_katalog().get("bolumler", []):
+        bolum_listesi.append({
+            "ad": ek["ad"], "kisa": ek.get("kisa", ek["ad"]),
+            "kayit_sayisi": len(ek.get("kayitlar", [])), "grup_sayisi": 1,
+        })
     return {
         "ok": True,
-        "bolumler": [
-            {
-                "ad": bolum.ad,
-                "kisa": bolum.kisa,
-                "kayit_sayisi": len(bolum.kayitlar),
-                "grup_sayisi": len(bolum.gruplar),
-            }
-            for bolum in katalog_nesnesi.bolumler
-        ],
+        "bolumler": bolum_listesi,
         "kapsam_disi": list(katalog_nesnesi.meta.get("kapsam_disi") or []),
     }
 
