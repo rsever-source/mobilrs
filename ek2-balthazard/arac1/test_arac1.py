@@ -156,9 +156,13 @@ class Arac1Testleri(unittest.TestCase):
         self.assertNotIn('id="model-bolum-listesi"', govde)
         self.assertIn('id="ozel-hesaplama-kutusu"', govde)
         self.assertIn('class="insan-model-gorsel"', govde)
-        self.assertIn('data-model-target="ozel:OZ-GOR-001"', govde)
-        self.assertIn('data-model-target="ozel:OZ-KIS-001"', govde)
-        self.assertIn('id="yas-ek-goster" type="checkbox" checked', govde)
+        self.assertIn('id="model-secim-cagri"', govde)
+        self.assertIn("function modeliGuncelle(bolumAdi)", govde)
+        self.assertIn('id="yas-ek-goster" type="checkbox" aria-controls="yas-ek-bilgi"', govde)
+        self.assertNotIn('id="yas-ek-goster" type="checkbox" checked', govde)
+        self.assertNotIn("Vücut üzerindeki işaretleri seçerek ilgili hastalık bölümüne geçin.", govde)
+        self.assertIn("@media(max-width:520px)", govde)
+        self.assertIn("position:static", govde)
         self.assertIn("position:sticky", govde)
         self.assertNotIn("Hakkında", govde)
         self.assertNotIn("v2.0", govde)
@@ -197,7 +201,7 @@ class Arac1Testleri(unittest.TestCase):
         self.assertEqual(veri["ek_kayit"], 136)
         self.assertEqual(veri["ozel_hesaplama"], 5)
         self.assertEqual(veri["bolumler"], [
-            "Ruh Sağlığı", "Deri", "Hematoloji", "KBB", "Kalp-Damar",
+            "Ruh Sağlığı", "Deri", "Hematoloji", "Kulak Burun Boğaz", "Kalp-Damar",
             "Kadın Hastalıkları", "Böbrek ve İdrar", "Sindirim",
             "Endokrin ve Metabolizma", "Göğüs Hastalıkları", "Onkoloji", "Sinir Sistemi"
         ])
@@ -228,7 +232,7 @@ class Arac1Testleri(unittest.TestCase):
         self.assertEqual(len(veri["bolumler"]), 12)
         sayilar = {b["kisa"]: b["kayit_sayisi"] for b in veri["bolumler"]}
         self.assertEqual(sayilar, {
-            "Ruh Sağlığı": 56, "Deri": 142, "Hematoloji": 78, "KBB": 87,
+            "Ruh Sağlığı": 56, "Deri": 142, "Hematoloji": 78, "Kulak Burun Boğaz": 87,
             "Kalp-Damar": 93, "Kadın Hastalıkları": 3, "Böbrek ve İdrar": 18,
             "Sindirim": 22, "Endokrin ve Metabolizma": 28,
             "Göğüs Hastalıkları": 5, "Onkoloji": 7, "Sinir Sistemi": 21
