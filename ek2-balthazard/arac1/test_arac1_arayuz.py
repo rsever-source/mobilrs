@@ -185,11 +185,43 @@ class Arac1ArayuzTestleri(unittest.TestCase):
             self.assertIn(beklenen, pasif)
         self.assertIn(PASIF_ACIKLAMA, self.html)
 
+    def test_pasif_bolumler_hastalik_alt_baslik_kapsamini_tasir(self):
+        detay = self.esleme["pasifDetaylari"]
+        self.assertTrue({x["bolum"] for x in detay} <= set(self.esleme["pasifBolumler"]))
+        madde_sayisi = sum(
+            len(alt["maddeler"])
+            for b in detay
+            for alt in b["altBasliklar"]
+        )
+        self.assertEqual(madde_sayisi, 102)
+        for b in detay:
+            self.assertTrue(b["altBasliklar"])
+            for alt in b["altBasliklar"]:
+                self.assertTrue(alt["ad"].strip())
+                self.assertTrue(alt["maddeler"])
+                for madde in alt["maddeler"]:
+                    self.assertTrue(madde.strip())
+        self.assertIn("hastalık/alt madde kapsamda", self.html)
+        self.assertIn("Görme kaybı (görme keskinliği ve görme alanı ile)", self.html)
+
+    def test_pasif_kapsam_kaynagini_ve_hesap_disini_belirtir(self):
+        kaynaklar = self.esleme["pasifKaynaklari"]
+        self.assertEqual(len(kaynaklar), 1)
+        kaynak = kaynaklar[0]
+        self.assertEqual(kaynak["ad"], "Engelliler.Biz Engel Oranı Hesaplama")
+        self.assertEqual(kaynak["rol"], "çapraz kontrol ve ek hastalık keşfi")
+        self.assertEqual(kaynak["durum"], "resmî EK-2 yerine geçmez")
+        self.assertIn("hesabına alınmaz", kaynak["not"])
+        self.assertIn("Kaynak:", self.html)
+
     def test_pasif_bolum_islevi_istek_yapmaz(self):
-        govde = re.search(r"function pasifBolumleriKur\(\) \{.*?\n  \}\n", self.html, re.S)
-        self.assertIsNotNone(govde)
+        bas = self.html.find("function pasifBolumleriKur() {")
+        son = self.html.find("function cipIsaretle", bas)
+        govde = self.html[bas:son]
+        self.assertGreaterEqual(bas, 0)
+        self.assertGreater(son, bas)
         for yasak in ("fetch(", "json(", "kayitAc(", "ara(", "sepeteEkle("):
-            self.assertNotIn(yasak, govde.group(0))
+            self.assertNotIn(yasak, govde)
 
     # --- eşanlamlılar -----------------------------------------------------
     def test_istenen_esanlamlilar_var_ve_dogrulanamayan_yok(self):
