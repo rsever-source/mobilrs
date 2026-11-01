@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01T06:29:02.092518+00:00",
+  "updated_at": "2026-11-01T15:20:01.425258+00:00",
   "items": [
     {
       "id": "fdd15eb2eacb2ef7d1af",
@@ -124,8 +124,6 @@
   ],
   "pending": [],
   "seen_urls": {
-    "https://www.trthaber.com/haber/saglik/recelde-meyve-orani-artiyor-1-kilogramda-en-az-450-gram-meyve-961123.html": "2026-10-25T11:49:31.733424+00:00",
-    "https://www.aile.gov.tr/haberler/ailem-engelsiz-iletisim-merkezi-335-bin-288-cagriya-ceviri-destegi-sagladi/": "2026-10-25T11:49:31.733424+00:00",
     "https://www.trthaber.com/haber/guncel/modern-savunma-teknolojileri-afrikada-vitrine-cikiyor-961163.html": "2026-10-25T16:37:23.520318+00:00",
     "https://www.aile.gov.tr/eyhgm/haberler/ailem-engelsiz-iletisim-merkezi-335-bin-288-cagriya-ceviri-destegi-sagladi/": "2026-10-25T20:59:44.654015+00:00",
     "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktastan-il-mudurlerine-sahada-aktif-yonetim-ve-habersiz-denetim-talimati/": "2026-10-26T07:56:34.219647+00:00",
@@ -145,6 +143,8 @@
     "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/engellilere-yonelik-gunduzlu-ve-gecici-bakim-hizmetleri-yayginlastirilacak/1832970": "2026-10-30T13:14:39.698886+00:00",
     "https://www.sgk.gov.tr/duyuru/detay/Eczanelerden-Ilac-Teminine-Iliskin-Protokol-Hakkinda-2026-10-30-03-09-11": "2026-10-30T13:14:39.698886+00:00",
     "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/yagmurdan-kacan-ogrencilerin-arasindan-engelli-arkadasinin-yardimina-kostu/1832978": "2026-10-31T12:51:23.062440+00:00",
-    "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanligindan-kimsesizler-icin-genelge/": "2026-10-31T12:51:23.062440+00:00"
+    "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanligindan-kimsesizler-icin-genelge/": "2026-10-31T12:51:23.062440+00:00",
+    "https://www.trthaber.com/haber/guncel/turk-dunyasi-diyalog-forumu-tamamlandi-961868.html": "2026-11-01T15:20:01.425258+00:00",
+    "https://www.trthaber.com/haber/saglik/bakan-memisoglu-robotik-cerrahi-cihazi-turkiyede-uretilecek-961873.html": "2026-11-01T15:20:01.425258+00:00"
   }
 }
