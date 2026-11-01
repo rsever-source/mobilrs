@@ -181,8 +181,8 @@ steps:
             raise SystemExit("HATA: Araç-1 HTML içinde id=\"sepet\" bulunamadı")
         if not (aside_start < sepet_pos < aside_end):
             raise SystemExit("HATA: id=\"sepet\" sağ panel <aside class=\"sag-panel\"> içinde değil")
-        if b'id="model-secili-isaretler"' not in arac1:
-            raise SystemExit("HATA: Araç-1 HTML içinde id=\"model-secili-isaretler\" bulunamadı")
+        if b'id="model-secili-isaretler"' in arac1:
+            raise SystemExit("HATA: Figürsüz Araç-1 arayüzünde kaldırılmış id=\"model-secili-isaretler\" öğesi hâlâ HTML içinde")
         if b'id="listeyi-kopyala"' in arac1:
             raise SystemExit("HATA: Eski id=\"listeyi-kopyala\" kopyalama düğmesi hâlâ HTML içinde")
         if (b'id="balthazard-onizleme"' not in arac1 or b'fetch("/api/hesapla"' not in arac1):
