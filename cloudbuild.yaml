@@ -163,7 +163,7 @@ steps:
         import json
         bolumler = json.loads(urllib.request.urlopen(base + "/api/bolumler", timeout=30).read())
         ozel = json.loads(urllib.request.urlopen(base + "/api/ozel-hesaplamalar", timeout=30).read())
-        if len(bolumler.get("bolumler", [])) != 11 or len(ozel.get("ozel_hesaplamalar", [])) != 5:
+        if len(bolumler.get("bolumler", [])) != 12 or len(ozel.get("ozel_hesaplamalar", [])) != 5:
             raise SystemExit("HATA: EK-2 katalog veya ozel hesaplama verisi eksik")
         print("SMOKE OK", flush=True)
 
