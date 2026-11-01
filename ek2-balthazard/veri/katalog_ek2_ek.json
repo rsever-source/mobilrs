@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "ad": "EK-2 ek bölümler — doğrulanmış kayıt partisi",
+    "surum": "0.1",
+    "kaynak": "20.02.2019 tarihli ve 30692 sayılı Resmî Gazete, EK-2",
+    "durum": "İlk doğrulanmış parti; mevcut katalog okuyucusuna henüz bağlanmadı",
+    "not": "Yalnız kaynak sayfa görüntüsünde oran ve koşul eşleşmesi açıkça okunabilen sabit oranlı satırlar alındı. Tablo/formül gerektiren sistemler bu dosyada sabit oran gibi temsil edilmez."
+  },
+  "bolumler": [
+    {
+      "ad": "KARDİYOVASKÜLER SİSTEM",
+      "kisa": "Kalp ve Damar",
+      "kaynak_sayfalar": [142, 143],
+      "kayitlar": [
+        {"id":"KV-001","hastalik":"Aritmiler","alt_tur":"Klas 1 — Günlük aktivitelerde asemptomatik; EKG veya Holter'de aritmi gösterilmiş","oran":10,"sayfa":142},
+        {"id":"KV-002","hastalik":"Aritmiler","alt_tur":"Klas 1 — Ablasyon veya cerrahi işlem yapılmış ve günlük aktivitede asemptomatik","oran":10,"sayfa":142},
+        {"id":"KV-003","hastalik":"Aritmiler","alt_tur":"Klas 2 — İlaç tedavisi veya kalıcı kalp pili ile semptomları giderilmiş","oran":20,"sayfa":142},
+        {"id":"KV-004","hastalik":"Aritmiler","alt_tur":"Klas 2 — Aritmi devam ediyor ve organik kalp hastalığı var","oran":20,"sayfa":142},
+        {"id":"KV-005","hastalik":"Aritmiler","alt_tur":"Klas 2 — Aritmi nedeniyle ICD implante edilmiş","oran":30,"sayfa":142},
+        {"id":"KV-006","hastalik":"Aritmiler","alt_tur":"Klas 3 — İlaç tedavisi veya kalıcı kalp piline rağmen semptomlar sürüyor; EKG/Holter'de aritmi gösterilmiş (fonksiyonel kapasite 3)","oran":40,"sayfa":142},
+        {"id":"KV-007","hastalik":"Aritmiler","alt_tur":"Klas 3 — Ablasyon, cerrahi işlem veya ICD implantasyonuna rağmen semptomlar sürüyor (fonksiyonel kapasite 3)","oran":50,"sayfa":142},
+        {"id":"KV-008","hastalik":"Aritmiler","alt_tur":"Klas 4 — Tedavi/işlem uygulanmasına rağmen aritmi semptomları devamlı ve günlük aktiviteleri engelliyor (fonksiyonel kapasite 3 veya 4)","oran":100,"sayfa":142},
+        {"id":"KV-009","hastalik":"Pulmoner hipertansiyon","alt_tur":"Klas 1 — Asemptomatik; PASB 30–40 mmHg","oran":10,"sayfa":142},
+        {"id":"KV-010","hastalik":"Pulmoner hipertansiyon","alt_tur":"Klas 2 — Hafif aktivite kısıtlılığı (NYHA 2); PASB 40–50 mmHg","oran":25,"sayfa":142},
+        {"id":"KV-011","hastalik":"Pulmoner hipertansiyon","alt_tur":"Klas 3 — Ağır aktivite kısıtlılığı (NYHA 3); PASB 50–70 mmHg","oran":50,"sayfa":142},
+        {"id":"KV-012","hastalik":"Pulmoner hipertansiyon","alt_tur":"Klas 4 — İstirahatte dispne/göğüs ağrısı/presenkop veya sağ ventrikül yetmezliği bulguları; PASB 70 mmHg üzeri","oran":100,"sayfa":142},
+        {"id":"KV-013","hastalik":"Hipertansiyon","alt_tur":"Klas 1 — Antihipertansif tedavi kullanıyor, komplikasyon yok","oran":10,"sayfa":143},
+        {"id":"KV-014","hastalik":"Hipertansiyon","alt_tur":"Klas 2 — Antihipertansif tedavi ve listelenen komplikasyonlardan biri","oran":20,"sayfa":143},
+        {"id":"KV-015","hastalik":"Hipertansiyon","alt_tur":"Klas 3 — Antihipertansif tedavi ve listelenen komplikasyonlardan en az ikisi","oran":50,"sayfa":143},
+        {"id":"KV-016","hastalik":"Perikard hastalıkları","alt_tur":"Evre I — Tanı konmuş; NYHA sınıf I ve konstriksiyon bulgusu yok","oran":10,"sayfa":143},
+        {"id":"KV-017","hastalik":"Perikard hastalıkları","alt_tur":"Evre II — İki veya daha fazla perikardit atağı; NYHA sınıf I ve konstriksiyon bulgusu yok","oran":20,"sayfa":143},
+        {"id":"KV-018","hastalik":"Perikard hastalıkları","alt_tur":"Evre III — Konstriktif perikardit tanısı veya perikardiektomi; NYHA sınıf II","oran":30,"sayfa":143},
+        {"id":"KV-019","hastalik":"Hipertrofik kardiyomiyopati","alt_tur":"Evre I — Tanı konmuş ve asemptomatik","oran":50,"sayfa":143},
+        {"id":"KV-020","hastalik":"Hipertrofik kardiyomiyopati","alt_tur":"Evre II — Tanı konmuş ve tedaviye rağmen semptomatik","oran":100,"sayfa":143},
+        {"id":"KV-021","hastalik":"Kalp yetmezliği","alt_tur":"Evre I — Hafif kalp yetmezliği; NYHA sınıf I","oran":10,"sayfa":143},
+        {"id":"KV-022","hastalik":"Kalp yetmezliği","alt_tur":"Evre II — EF %50–60 ve tedaviye rağmen NYHA sınıf II","oran":30,"sayfa":143},
+        {"id":"KV-023","hastalik":"Kalp yetmezliği","alt_tur":"Evre III — EF %30–50 ve tedaviye rağmen NYHA sınıf III","oran":50,"sayfa":144},
+        {"id":"KV-024","hastalik":"Kalp yetmezliği","alt_tur":"Evre IV — EF %30'un altında veya NYHA sınıf IV","oran":100,"sayfa":144},
+        {"id":"KV-025","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 1 — A grubu","oran":5,"sayfa":144},
+        {"id":"KV-026","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 2 — B grubu","oran":30,"sayfa":144},
+        {"id":"KV-027","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 3 — A grubu","oran":45,"sayfa":144},
+        {"id":"KV-028","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 3 — B grubu; ameliyat sonrası tedaviye rağmen kalp yetmezliği semptomları devam ediyor","oran":50,"sayfa":144},
+        {"id":"KV-029","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 4 — A grubu","oran":15,"sayfa":145},
+        {"id":"KV-030","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 4 — B grubu","oran":80,"sayfa":145}
+      ]
+    }
+  ]
+}
