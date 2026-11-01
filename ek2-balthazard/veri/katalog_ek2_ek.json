@@ -80,6 +80,35 @@
         {"id":"UG-017","hastalik":"Üretra hastalıkları","alt_tur":"Sık tekrarlayan ve yeterli kür sağlanamayan komplike üretra darlığı","oran":40,"sayfa":189},
         {"id":"UG-018","hastalik":"Üretra hastalıkları","alt_tur":"Üretrektomi","oran":5,"sayfa":189}
       ]
+    },
+    {
+      "ad": "SİNDİRİM SİSTEMİ",
+      "kisa": "Sindirim",
+      "kaynak_sayfalar": [180, 184],
+      "kayitlar": [
+        {"id":"SS-001","hastalik":"Üst sindirim kanalı kalıcı bozuklukları","alt_tur":"Sınıf 1 — Sürekli tedavi gerekmiyor; istenen kiloyu sürdürebilme veya operasyon sonrası sekel olmaması","oran":10,"sayfa":180},
+        {"id":"SS-002","hastalik":"Üst sindirim kanalı kalıcı bozuklukları","alt_tur":"Sınıf 2 — Semptom ve işaretler kontrol altında; uygun diyet ve ilaç tedavisi gerekiyor veya nütrisyonel yetmezlik var; ideal kilonun en fazla %10 altında","oran":25,"sayfa":180},
+        {"id":"SS-003","hastalik":"Üst sindirim kanalı kalıcı bozuklukları","alt_tur":"Sınıf 3 — Uygun diyet kısıtlaması ve ilaç tedavisiyle tamamen düzelmeyen semptomlar; ideal kilonun %10–20 altında olma durumu da ölçütler arasındadır","oran":50,"sayfa":180},
+        {"id":"SS-004","hastalik":"Üst sindirim kanalı kalıcı bozuklukları","alt_tur":"Sınıf 4 — Tedaviyle kontrol altına alınamayan semptomlar veya rahatsızlık nedeniyle ideal kilonun %20'den fazla altında olma","oran":75,"sayfa":180},
+        {"id":"SS-005","hastalik":"Kolon ve rektum hastalıklarına bağlı kalıcı bozukluklar","alt_tur":"Sınıf 1 — Nadir ve kısa süreli belirtiler; aktivite kısıtlaması, özel diyet veya tedavi gerekmiyor; sistemik bozukluk yok","oran":10,"sayfa":181},
+        {"id":"SS-006","hastalik":"Kolon ve rektum hastalıklarına bağlı kalıcı bozukluklar","alt_tur":"Sınıf 2 — Objektif bulgular veya anatomik kayıp/değişim; hafif ağrı eşliğinde hafif Gİ semptomlar; minimal diyet kısıtlaması veya hafif tedavi gerekebilir","oran":25,"sayfa":181},
+        {"id":"SS-007","hastalik":"Kolon ve rektum hastalıklarına bağlı kalıcı bozukluklar","alt_tur":"Sınıf 3 — Periyodik veya devamlı ağrı ile orta/ciddi barsak alışkanlığı bozukluğu; aktivite kısıtlaması ve ataklarda özel diyet/ilaç ihtiyacı","oran":50,"sayfa":181},
+        {"id":"SS-008","hastalik":"Kolon ve rektum hastalıklarına bağlı kalıcı bozukluklar","alt_tur":"Sınıf 4 — Dinlenmede devamlı ağrı, barsak fonksiyonlarında ciddi bozukluk, aktivitenin tam sınırlanması ve tedaviye rağmen kontrol edilememe","oran":75,"sayfa":181},
+        {"id":"SS-009","hastalik":"Anal hastalıklara bağlı kalıcı bozukluklar","alt_tur":"Sınıf 1 — Organik anal hastalık bulgusu veya anatomik kayıp/değişiklik; hafif, aralıklı ve tedaviyle kontrol edilebilir semptomlar","oran":10,"sayfa":182},
+        {"id":"SS-010","hastalik":"Anal hastalıklara bağlı kalıcı bozukluklar","alt_tur":"Sınıf 2 — Organik anal hastalık bulgusu veya anatomik kayıp/değişiklik; hafif ama devamlı tedavi gerektiren parsiyel fekal inkontinans veya kontrol edilemeyen sürekli semptomlar","oran":35,"sayfa":182},
+        {"id":"SS-011","hastalik":"Anal hastalıklara bağlı kalıcı bozukluklar","alt_tur":"Sınıf 3 — Tam fekal inkontinans veya tedaviye yanıt vermeyen ciddi anal semptomlar","oran":75,"sayfa":182},
+        {"id":"SS-012","hastalik":"Karaciğer hastalıklarına bağlı kalıcı bozukluklar","alt_tur":"Sınıf 1 — Devam eden hastalığa ait objektif bulgular; son üç yılda semptom/asit/sarılık/özefagus varis kanaması öyküsü yok; beslenme ve güç iyi","oran":15,"sayfa":183},
+        {"id":"SS-013","hastalik":"Karaciğer hastalıklarına bağlı kalıcı bozukluklar","alt_tur":"Sınıf 2 — Kronik karaciğer hastalığının objektif bulguları; beslenme ve güç iyi","oran":30,"sayfa":183},
+        {"id":"SS-014","hastalik":"Karaciğer hastalıklarına bağlı kalıcı bozukluklar","alt_tur":"Sınıf 3 — İlerleyici kronik karaciğer hastalığı veya son yıl içinde oluşan komplikasyonlar; beslenme/güç zayıflığı ölçütleri","oran":50,"sayfa":183},
+        {"id":"SS-015","hastalik":"Karaciğer hastalıklarına bağlı kalıcı bozukluklar","alt_tur":"Sınıf 4 — İlerleyici kronik karaciğer hastalığı, hepatik yetmezlik veya sürekli ensefalopati/kanama gibi ağır bulgular","oran":95,"sayfa":183},
+        {"id":"SS-016","hastalik":"Safra yolları hastalıklarına bağlı kalıcı bozukluklar","alt_tur":"Tekrarlamayan safra yolları bozukluğu","oran":10,"sayfa":184},
+        {"id":"SS-017","hastalik":"Safra yolları hastalıklarına bağlı kalıcı bozukluklar","alt_tur":"Tekrarlayan, tedaviye cevapsız safra yolu bozukluğu veya onarılamayan obstrüksiyon","oran":30,"sayfa":184},
+        {"id":"SS-018","hastalik":"Safra yolları hastalıklarına bağlı kalıcı bozukluklar","alt_tur":"Tekrarlayan kolanjit ve obstrüksiyona bağlı ilerleyici karaciğer hastalığı","oran":50,"sayfa":184},
+        {"id":"SS-019","hastalik":"Safra yolları hastalıklarına bağlı kalıcı bozukluklar","alt_tur":"Kalıcı sarılık; ortak safra kanalı obstrüksiyonuna bağlı ilerleyici karaciğer hastalığı","oran":95,"sayfa":184},
+        {"id":"SS-020","hastalik":"Herniler","alt_tur":"Sınıf 1 — Abdominal duvar defekti ve kolay redükte edilebilen hafif şişkinlik; günlük aktiviteye belirgin engel yok","oran":10,"sayfa":184},
+        {"id":"SS-021","hastalik":"Herniler","alt_tur":"Sınıf 2 — Defekt bölgesinde sık veya kalıcı şişkinlik; günlük yaşam aktivitelerinin bazılarına engel olmuyor","oran":20,"sayfa":184},
+        {"id":"SS-022","hastalik":"Herniler","alt_tur":"Sınıf 3 — Kalıcı, redükte edilemeyen veya tamir edilemeyen şişkinlik; günlük yaşamı kısıtlıyor","oran":30,"sayfa":184}
+      ]
     }
   ]
 }
