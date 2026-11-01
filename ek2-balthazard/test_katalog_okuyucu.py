@@ -94,6 +94,7 @@ class YuklemeTestleri(unittest.TestCase):
             self.assertEqual(adlar, beklenen[bolum.kisa])
             for grup in bolum.gruplar:
                 self.assertNotEqual(grup.ad, grup.kayitlar[0].grup)
+                self.assertNotEqual(grup.rozet, grup.kayitlar[0].grup)
 
     def test_tek_kayitli_gruplar(self):
         tekli = sorted(
