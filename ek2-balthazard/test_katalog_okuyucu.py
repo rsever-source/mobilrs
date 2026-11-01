@@ -54,19 +54,19 @@ class YuklemeTestleri(unittest.TestCase):
         # Kisa adlar: BOLUM_KISA_ADLARI'nya varsayılan full name ile döndürür
         self.assertEqual(
             [b.kisa for b in self.katalog.bolumler],
-            ["Ruh Sağlığı", "Deri", "Hematoloji", "KBB", "Kalp-Damar"],
+            ["Ruh Sağlığı", "Deri", "Hematoloji", "Kulak Burun Boğaz", "Kalp-Damar"],
         )
 
     def test_gezinme_duzeyleri(self):
         """DERİ 15 grup, Z 6 başlık, H 10 başlık, K 7 başlık, V 9 başlık, toplam 102 hastalık (§3.7)."""
         sayilar = {b.kisa: len(b.gruplar) for b in self.katalog.bolumler}
-        self.assertEqual(sayilar, {"Ruh Sağlığı": 6, "Deri": 15, "Hematoloji": 10, "KBB": 7, "Kalp-Damar": 9})
+        self.assertEqual(sayilar, {"Ruh Sağlığı": 6, "Deri": 15, "Hematoloji": 10, "Kulak Burun Boğaz": 7, "Kalp-Damar": 9})
         hastalik = sum(len(g.hastaliklar) for b in self.katalog.bolumler for g in b.gruplar)
         self.assertEqual(hastalik, 102)
 
     def test_kv_grup_adlari_kod_degil_insan_okur_etikettir(self):
         beklenen = {
-            "KBB": {
+            "Kulak Burun Boğaz": {
                 "K-ISI": "İşitme (Tablo 2 hesaplama)",
                 "K-KON": "Konuşma (Tablo 5 hesaplama)",
                 "K-DEN": "Denge (vestibüler)",
