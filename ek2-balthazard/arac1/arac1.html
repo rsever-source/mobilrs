@@ -1,0 +1,2076 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Engel Oranı Bulma (Kılavuza Göre) | Engelli.me</title>
+<style>
+  :root{
+    --ink:#182234; --muted:#697386; --line:#e4e8ef; --bg:#f4f6f9; --card:#fff;
+    --accent:#0f6f5c; --accent-soft:#e6f3ef; --warn:#8a5a00; --warn-soft:#fdf4e3;
+    --danger:#a12626; --danger-soft:#fdecec; --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:Inter,Aptos,"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.5}
+  .sayfa{max-width:960px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right)) 56px max(16px,env(safe-area-inset-left))}
+  h1{font-size:clamp(22px,4vw,30px);margin:18px 0 6px}
+  h2{font-size:16px;margin:0 0 10px}
+  h3{font-size:15px;margin:0}
+  p{margin:0 0 8px}
+
+  .sekmeler{display:flex;gap:6px;padding:18px 0 12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .sekme{border:1px solid var(--line);background:var(--card);color:var(--muted);
+    padding:9px 14px;border-radius:999px;font-size:14px;text-decoration:none;font-weight:500}
+  .sekme[aria-current="page"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  .giris{color:var(--muted);font-size:14px;margin-bottom:16px}
+  .arama{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+  .arama label{font-size:13px;font-weight:600;color:var(--muted)}
+  .arama input{width:100%;padding:13px 14px;font-size:16px;font-family:inherit;color:var(--ink);
+    background:var(--card);border:1px solid var(--line);border-radius:12px}
+  .arama input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  .ipucu{font-size:12.5px;color:var(--muted)}
+
+  .cipler{display:flex;flex-wrap:wrap;gap:8px;padding:2px 2px 12px}
+  .vucut-secici{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr);gap:18px;align-items:center}
+  .vucut-resim{width:100%;max-height:330px;background:#f1f3f6;border-radius:14px;padding:10px}
+  .vucut-bolge{cursor:pointer;outline:none}
+  .vucut-bolge:focus-visible path,.vucut-bolge:focus-visible circle{stroke:var(--accent);stroke-width:4}
+  .vucut-bolge.secili path,.vucut-bolge.secili circle{fill:#55b7a6;stroke:#167d70;stroke-width:2}
+  .vucut-dugmeler{display:flex;flex-wrap:wrap;gap:8px}
+  .vucut-dugmeler .cip{min-height:42px}
+  .vucut-aciklama{font-size:13px;color:var(--muted);margin:8px 0 0}
+  #gruplar.liste{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  #gruplar .satir{height:100%}
+  #hastaliklar .hastalik-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  #hastaliklar .hastalik-grid>li.acik{grid-column:1/-1}
+  #hastaliklar .hastalik-grid .seviyeler{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  @media (max-width:720px){
+    .vucut-secici{grid-template-columns:minmax(100px,34%) minmax(0,1fr);gap:10px}
+    .vucut-resim{padding:5px}
+    #gruplar.liste,#hastaliklar .hastalik-grid{grid-template-columns:minmax(0,1fr)}
+    #hastaliklar .hastalik-grid .seviyeler{grid-template-columns:minmax(0,1fr)}
+  }
+  .cip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);
+    padding:8px 14px;border-radius:999px;font-size:14px;font-family:inherit;cursor:pointer}
+  .cip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:600}
+  .cip[aria-pressed="true"]::before{content:"\2713\00a0"}
+  .cip.pasif{color:var(--muted);background:#f1f3f6;border-style:dashed;cursor:default}
+  .pasif-kutu{margin:0 0 14px;font-size:13.5px}
+  .pasif-kutu summary{cursor:pointer;color:var(--muted);font-weight:600;padding:6px 0}
+  .pasif-kutu summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+  .kart{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:16px}
+  .iki-sutun{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:14px}
+  @media (max-width:720px){ .iki-sutun{grid-template-columns:minmax(0,1fr)} }
+
+  ul.liste{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+  ul.liste li{margin:0}
+  .satir{display:flex;width:100%;gap:10px;align-items:flex-start;justify-content:space-between;
+    text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:10px 12px;font-family:inherit;font-size:14px;color:var(--ink);cursor:pointer}
+  .satir:hover{border-color:var(--accent)}
+  .satir[aria-current="true"]{border-color:var(--accent);background:var(--accent-soft)}
+  .satir .metin{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .satir .ad{font-weight:600}
+  .satir .ayrinti{font-size:12.5px;color:var(--muted)}
+  .oran-mini{flex:0 0 auto;font-weight:700;color:var(--accent);font-size:15px;white-space:nowrap}
+
+  .rozet{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.02em;
+    padding:2px 8px;border-radius:999px;background:#eef1f6;color:var(--muted);white-space:nowrap}
+  .rozet.bolum{background:var(--accent-soft);color:var(--accent)}
+  .rozet.belirsiz{background:#eef0f4;color:var(--muted)}
+
+  .sonuc-ust{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .oran-kutu{min-width:132px;text-align:center;border:1px solid var(--line);border-radius:14px;
+    padding:14px 18px;background:#fbfcfd}
+  .oran-kutu .sayi{display:block;font-size:44px;font-weight:800;line-height:1.05;color:var(--ink)}
+  .oran-kutu .sayi::before{content:"%";font-size:20px;font-weight:700;color:var(--muted);margin-right:2px}
+  .oran-kutu .kucuk{font-size:12px;color:var(--muted)}
+  .oran-kutu.sifir .sayi{color:var(--accent)}
+  .oran-etiket{flex:1 1 240px;min-width:200px;font-size:14px;color:var(--muted)}
+  .kaynak{font-size:13px;color:var(--muted);margin-top:12px}
+  .kaynak-not{font-size:13px;color:var(--muted);font-style:italic}
+
+  .baslik-satir{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+  .kisit{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:8px;
+    background:#fbfcfd;display:flex;gap:10px;align-items:flex-start}
+  .kisit .ikon{font-size:17px;line-height:1.3}
+  .kisit .govde{min-width:0}
+  .kisit .ust{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:2px}
+  .kisit .tur{font-size:11.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+  .kisit .onem{font-size:11.5px;font-weight:700;padding:1px 7px;border-radius:999px;border:1px solid currentColor}
+  .kisit .aciklama{font-size:13.5px}
+  .kisit.kirmizi{border-color:#eccaca;background:var(--danger-soft)}
+  .kisit.kirmizi .tur,.kisit.kirmizi .ikon{color:var(--danger)}
+  .kisit.amber{border-color:#eddfc0;background:var(--warn-soft)}
+  .kisit.amber .tur,.kisit.amber .ikon{color:var(--warn)}
+  .kisit.notr .tur,.kisit.notr .ikon{color:var(--muted)}
+
+  .notr-kutu{border:1px solid var(--line);background:#f7f8fa;border-radius:12px;padding:12px 14px;margin-top:14px}
+  .notr-kutu .tur{font-size:11.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .notr-kutu .baslik{font-weight:700;font-size:14px;margin:2px 0 4px}
+  .notr-kutu p{font-size:13.5px;margin:0 0 6px}
+  .notr-kutu .alt{font-size:12.5px;color:var(--muted);margin:0}
+
+  .dugme-satir{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+  .dugme{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;
+    padding:11px 16px;font-size:14.5px;font-family:inherit;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
+  .dugme.birincil{background:var(--accent);border-color:var(--accent);color:#fff}
+  .dugme:hover{border-color:var(--accent)}
+  .dugme:focus-visible,.cip:focus-visible,.satir:focus-visible,.sil:focus-visible,.sekme:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+  .uyari{border:1px solid #eddfc0;background:var(--warn-soft);border-radius:12px;padding:12px 14px;margin-bottom:12px}
+  .uyari.belirsiz{border-color:#d9dde6;background:#f7f8fa}
+  .uyari .baslik{font-weight:700;margin-bottom:4px}
+  .uyari p{font-size:13.5px}
+
+  .sepet-satir{display:flex;gap:10px;align-items:center;justify-content:space-between;
+    border:1px solid var(--line);border-radius:12px;padding:9px 12px;background:var(--card)}
+  .sepet-satir .metin{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .sepet-satir .ad{font-weight:700}
+  .sepet-satir .ayrinti{font-size:12.5px;color:var(--muted)}
+  .sepet-satir .sil{border:1px solid var(--line);background:var(--card);border-radius:9px;padding:4px 10px;
+    font-size:12.5px;font-family:inherit;color:var(--muted);cursor:pointer}
+  .sepet-satir .ad{font-size:14px;line-height:1.35}
+  .sepet-satir .ayrinti{overflow-wrap:anywhere}
+  .bildirim{font-size:13.5px;color:var(--accent);font-weight:600;min-height:20px;margin:8px 0 0}
+  @media (min-width:1000px){
+    body.sepet-acik .sayfa{max-width:1320px;margin-left:auto;margin-right:auto;padding-right:390px}
+    #sepet:not(.gizli){position:fixed;z-index:30;top:88px;right:max(18px,calc((100vw - 1320px)/2));width:350px;max-height:calc(100vh - 112px);overflow:auto;box-shadow:0 12px 36px rgba(24,34,52,.16);margin:0}
+  }
+  @media (max-width:999px){
+    body.sepet-acik .sayfa{padding-bottom:24px}
+    #sepet:not(.gizli){position:static;width:auto;max-height:none;overflow:visible;box-shadow:none}
+  }
+
+  .alt-bilgi{border-top:1px solid var(--line);margin-top:24px;padding-top:12px;color:var(--muted);font-size:12.5px}
+  .alt-bilgi p{margin:0 0 4px}
+  @media (pointer:coarse){
+    .cip,.satir{min-height:44px}
+    .sepet-satir .sil{min-height:44px;min-width:44px}
+  }
+  .gizli{display:none}
+  .bosluk{height:8px}
+</style>
+</head>
+<body>
+<div class="sayfa">
+  <nav class="sekmeler" aria-label="Araçlar">
+    <a class="sekme" href="/arac1" aria-current="page">Engel Oranı Bulma</a>
+    <a class="sekme" href="__ARAC2_ADRESI__">Balthazard Hesaplama</a>
+  </nav>
+
+  <h1>Engel Oranı Bulma (Kılavuza Göre)</h1>
+  <p class="giris">EK-2 kapsamındaki beş bölümde hastalık ve seviye seçerek kaynakta tanımlı
+    oranı bulun. Araç hesap yapmaz; oranlar EK-2 kılavuzundan okunur.</p>
+
+  <form class="arama" id="arama-form" role="search">
+    <label for="q">Hastalık ara</label>
+    <input id="q" type="search" autocomplete="off" spellcheck="false"
+           placeholder="ör. psoriasis, anemi, zekâ" aria-describedby="arama-ipucu">
+    <p class="ipucu" id="arama-ipucu">Arama 3 karakterden sonra çalışır; Türkçe yazım farkı önemli değildir.</p>
+  </form>
+
+  <section class="kart" aria-labelledby="vucut-baslik">
+    <div class="baslik-satir"><h2 id="vucut-baslik">Vücut üzerinden bölüm seç</h2></div>
+    <div class="vucut-secici">
+      <svg class="vucut-resim" viewBox="0 0 220 430" role="img" aria-label="Tıklanabilir vücut şeması">
+        <g fill="#dfe5ef" stroke="#bdc8dc" stroke-width="2" stroke-linejoin="round">
+          <path d="M91 49 C78 35 81 14 109 12 C137 14 140 35 127 49 L130 66 L89 66 Z"/>
+          <path d="M91 66 L82 74 Q55 78 43 103 L26 190 Q23 204 35 207 Q45 208 49 194 L67 124 L62 197 Q60 225 79 244 L82 315 L72 397 Q70 410 82 411 L97 411 Q105 407 101 396 L111 318 L121 396 Q117 408 127 411 L143 411 Q155 410 150 397 L139 315 L142 244 Q160 225 158 197 L153 124 L171 194 Q175 208 185 207 Q197 204 194 190 L177 103 Q165 78 138 74 L129 66 Z"/>
+          <path d="M88 68 L132 68 L139 99 Q111 113 81 99 Z"/>
+        </g>
+        <g class="vucut-bolge" data-bolum="DERİ" data-kisa="Deri" tabindex="0" role="button" aria-label="Deri">
+          <path d="M43 103 L26 190 Q23 204 35 207 Q45 208 49 194 L67 124 L62 197 Q60 225 79 244 L82 315 L72 397 Q70 410 82 411 L97 411 Q105 407 101 396 L111 318 L121 396 Q117 408 127 411 L143 411 Q155 410 150 397 L139 315 L142 244 Q160 225 158 197 L153 124 L171 194 Q175 208 185 207 Q197 204 194 190 L177 103 Q165 78 138 74 L129 66 L91 66 L82 74 Q55 78 43 103 Z" fill="transparent" stroke="#bdc8dc" stroke-width="2"/>
+        </g>
+        <g class="vucut-bolge" data-bolum="ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR" data-kisa="Ruh Sağlığı" tabindex="0" role="button" aria-label="Zihinsel ve ruhsal bölüm">
+          <circle cx="109" cy="33" r="22" fill="#cbd5e5" stroke="#9eabc1" stroke-width="2"/>
+        </g>
+        <g class="vucut-bolge" data-bolum="KULAK BURUN BOĞAZ" data-kisa="KBB" tabindex="0" role="button" aria-label="Kulak burun boğaz">
+          <path d="M96 54 L122 54 L126 79 L92 79 Z" fill="#f2b5b5" stroke="#d98282" stroke-width="2"/>
+        </g>
+        <g class="vucut-bolge" data-bolum="KARDİYOVASKÜLER SİSTEM" data-kisa="Kalp-Damar" tabindex="0" role="button" aria-label="Kalp ve damar sistemi">
+          <path d="M110 109 C89 90 75 111 91 129 L110 147 L129 129 C145 111 131 90 110 109 Z" fill="#e88f8f" stroke="#c95f5f" stroke-width="2"/>
+        </g>
+        <g class="vucut-bolge" data-bolum="HEMATOLOJİK HASTALIKLAR" data-kisa="Hematoloji" tabindex="0" role="button" aria-label="Kan ve hematoloji">
+          <path d="M110 156 C100 170 96 176 96 183 A14 14 0 0 0 124 183 C124 176 120 170 110 156 Z" fill="#d86d78" stroke="#b44855" stroke-width="2"/>
+        </g>
+      </svg>
+      <div>
+        <div class="vucut-dugmeler" id="vucut-dugmeler" role="group" aria-label="Vücut bölümleri">
+          <button class="cip" type="button" data-bolum="KULAK BURUN BOĞAZ" data-kisa="KBB">Boğaz ve boyun</button>
+          <button class="cip" type="button" data-bolum="KARDİYOVASKÜLER SİSTEM" data-kisa="Kalp-Damar">Kalp ve damar</button>
+          <button class="cip" type="button" data-bolum="HEMATOLOJİK HASTALIKLAR" data-kisa="Hematoloji">Kan</button>
+          <button class="cip" type="button" data-bolum="DERİ" data-kisa="Deri">Deri</button>
+          <button class="cip" type="button" data-bolum="ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR" data-kisa="Ruh Sağlığı">Zihinsel ve ruhsal</button>
+        </div>
+        <p class="vucut-aciklama">Bölgeye veya adına dokununca ilgili bölüm seçilir. Şema yönlendirme içindir; tıbbi değerlendirme yapmaz.</p>
+      </div>
+    </div>
+  </section>
+  <div class="cipler" id="cipler" role="group" aria-label="Bölüm seçimi"></div>
+
+  <details class="pasif-kutu" id="pasif-kutu">
+    <summary id="pasif-ozet">Henüz desteklenmeyen bölümler</summary>
+    <p class="ipucu">Bu bölümler henüz desteklenmiyor; bunlarda arama, seçim veya oran gösterimi yapılmaz.</p>
+    <div class="cipler" id="pasif-cipler" role="group" aria-label="Henüz desteklenmeyen bölümler"></div>
+    <p class="bildirim" id="pasif-not" role="status"></p>
+  </details>
+
+  <main>
+    <section id="liste" class="kart gizli" aria-live="polite" aria-labelledby="liste-baslik">
+      <h2 id="liste-baslik">Arama sonuçları</h2>
+      <div id="liste-icerik"></div>
+    </section>
+
+    <div id="gezinme" class="iki-sutun gizli">
+      <section class="kart" aria-labelledby="gruplar-baslik">
+        <h2 id="gruplar-baslik">Alt başlık</h2>
+        <ul class="liste" id="gruplar"></ul>
+      </section>
+      <section class="kart" aria-labelledby="hastalik-baslik">
+        <h2 id="hastalik-baslik">Hastalık</h2>
+        <div id="hastaliklar"></div>
+      </section>
+    </div>
+
+    <section id="sonuc" class="gizli" aria-live="polite"></section>
+
+    <section id="sepet" class="kart gizli" aria-labelledby="sepet-baslik">
+      <h2 id="sepet-baslik">Eklenen oranlar (0)</h2>
+      <ul class="liste" id="sepet-liste"></ul>
+      <p class="bildirim" id="sepet-bildirim" role="status"></p>
+      <div class="dugme-satir">
+        <a class="dugme birincil" href="__ARAC2_ADRESI__">Balthazard ile hesapla →</a>
+        <button class="dugme" type="button" id="listeyi-kopyala">Listeyi kopyala</button>
+        <button class="dugme" type="button" id="sepet-temizle">Listeyi temizle</button>
+      </div>
+      <p class="ipucu" style="margin-top:10px">Bu liste yalnız bu sayfada tutulur; Balthazard hesaplama sayfasına
+        otomatik aktarılmaz. Balthazard hesaplama yalnızca girdiğiniz oranları birleştirir; oranların
+        doğruluğu ve kullanım kuralları orada denetlenmez.</p>
+    </section>
+  </main>
+
+  <footer class="alt-bilgi">
+    <p>Bu araç bilgilendirme amaçlıdır. Resmî engelli sağlık kurulu raporu yerine geçmez.</p>
+    <p>Oranlar EK-2 kılavuzundan alınmıştır. Çalışma gücü kaybı değerlendirmesi ayrı bir
+      hukuki süreçtir ve bu oranlarla eşitlenemez.</p>
+  </footer>
+</div>
+
+<!--
+  Arayüz eşlemesi (yalnız görünüm). Resmî Ek-2 kataloğunun ve API'nin yerine geçmez:
+  - altBasliklar: bölümdeki alt başlık → madde → katalog kayıt kimlikleri (ids) ve
+    oranı belirlenmemiş satır kimlikleri (belirsiz). Oran/ad/sayfa bilgisi hep API'den okunur.
+  - esanlamlilar: halk dili terimi → katalogdaki arama terimi (ara) + doğrulanmış kayıt kimlikleri.
+  - pasifBolumler: Bu sayfada henüz desteklenmeyen bölüm adları (arama/seçim/oran yok).
+  Katalogla uyum test_arac1_arayuz.py ile denetlenir.
+-->
+<script type="application/json" id="arayuz-esleme">
+{
+  "surum": 1,
+  "pasifBolumler": [
+    
+    "Kalp Hastalıkları",
+    "Göz (Görme Sistemi)",
+    "Sindirim Sistemi",
+    "Kadın Hastalıkları",
+    "Böbrek ve İdrar Yolları",
+    "Endokrin ve Metabolizma",
+    "Göğüs Hastalıkları",
+    "Onkoloji (Kanserler)",
+    "Sinir Sistemi",
+    "Kas-İskelet Sistemi",
+    "Romatizmal Hastalıklar"
+  ],
+  "pasifKaynaklari": [
+    {
+      "ad": "Engelliler.Biz Engel Oranı Hesaplama",
+      "url": "https://www.engelliler.biz/engel-orani-hesaplama/",
+      "rol": "çapraz kontrol ve ek hastalık keşfi",
+      "durum": "resmî EK-2 yerine geçmez",
+      "not": "101 somut hastalık/alt madde ve Romatizmal Hastalıklar için oran üretmeyen yönlendirme karşılaştırıldı. Resmî satır doğrulaması olmayan oranlar oran hesabına alınmaz."
+    }
+  ],
+  "pasifDetaylari": [
+    {
+      "bolum": "Göz (Görme Sistemi)",
+      "altBasliklar": [
+        {"ad": "Görme", "maddeler": ["Görme kaybı (görme keskinliği ve görme alanı ile)"]},
+        {"ad": "Göz ve göz çevresi", "maddeler": ["Göz ve göz çevresinde tümör", "Göz ve çevresinin ekzantrasyonu (göz ve çevre dokuların alınması)", "Manifest şaşılık (tedavi sonrası kalan)"]}
+      ]
+    },
+    {
+      "bolum": "Sindirim Sistemi",
+      "altBasliklar": [
+        {"ad": "Sindirim Kanalı", "maddeler": ["Üst sindirim kanalı hastalıkları (yemek borusu, mide, onikiparmak bağırsağı, ince bağırsak, pankreas)", "Pankreas nakli", "Kalın bağırsak ve rektum hastalıkları", "Anüs hastalıkları ve gaita kaçırma", "Cerrahi stomalar", "Karın duvarı fıtığı (ameliyat edilemeyen)", "Dalak alınması (splenektomi)"]},
+        {"ad": "Karaciğer ve Safra Yolları", "maddeler": ["Karaciğer hastalıkları", "Karaciğer nakli", "Safra yolları hastalıkları"]}
+      ]
+    },
+    {
+      "bolum": "Kadın Hastalıkları",
+      "altBasliklar": [
+        {"ad": "Üreme Organları", "maddeler": ["Vulva ve vajina bozuklukları", "Rahim ve rahim ağzı bozuklukları", "Yumurtalık ve tüp bozuklukları"]}
+      ]
+    },
+    {
+      "bolum": "Böbrek ve İdrar Yolları",
+      "altBasliklar": [
+        {"ad": "Böbrek Hastalıkları (Nefroloji)", "maddeler": ["Proteinüri ile seyreden nefropatiler (GFR normal, 6 ay tedaviye yanıtsız)", "Kronik böbrek hastalığı", "Böbrek nakli", "Böbrek tübül hastalıkları (Fanconi sendromu vb.)"]},
+        {"ad": "Üriner Sistem", "maddeler": ["Üst üriner sistem hastalığı (böbrek, üreter)", "Böbrek alınması (nefrektomi) / tek böbrek", "Kalıcı üriner diversiyon", "Mesane hastalıkları", "Üretra hastalıkları", "İdrar kaçırma (üriner inkontinans)", "Üriner fistüller"]},
+        {"ad": "Erkek Genital Sistem", "maddeler": ["Penis hastalıkları ve ereksiyon bozukluğu", "Testis ve epididim hastalıkları", "Prostat ve vezikula seminalis hastalıkları", "Skrotum hastalıkları"]}
+      ]
+    },
+    {
+      "bolum": "Endokrin ve Metabolizma",
+      "altBasliklar": [
+        {"ad": "Hormon Bezleri", "maddeler": ["Diyabet insipidus (hipotalamik)", "Hipofiz hastalıkları (tedaviyle sonuç alınamamış)", "Tiroit hastalıkları", "Paratiroit hastalıkları", "Böbreküstü bezi hastalıkları", "Diğer iç salgı bezi bozuklukları", "Şeker hastalığı (diabetes mellitus)"]},
+        {"ad": "Metabolizma Hastalıkları", "maddeler": ["Kemik metabolizması hastalıkları", "Gut hastalığı", "Purin, porfirin ve diğer metabolizma bozuklukları (organ fonksiyon bozukluğu yapmış)", "Lipit (yağ) metabolizması bozuklukları", "Obezite", "Doğuştan metabolik hastalıklar (organ fonksiyon bozukluğu yapmış)", "İskelet displazileri", "Ailevi Akdeniz ateşi (FMF)"]}
+      ]
+    },
+    {
+      "bolum": "Göğüs Hastalıkları",
+      "altBasliklar": [
+        {"ad": "Akciğer ve Solunum", "maddeler": ["Solunum fonksiyon bozukluğu yapan akciğer, plevra ve göğüs kafesi hastalıkları", "Akciğer cerrahisi ve nakli"]},
+        {"ad": "Yanıklar", "maddeler": ["Deri yanık sekelleri"]}
+      ]
+    },
+    {
+      "bolum": "Onkoloji (Kanserler)",
+      "altBasliklar": [
+        {"ad": "Tümörler", "maddeler": ["Kanser (genel sınıflama)", "Yüksek dereceli opere beyin tümörleri (örn. G4 glioblastom)"]}
+      ]
+    },
+    {
+      "bolum": "Sinir Sistemi",
+      "altBasliklar": [
+        {"ad": "Yüksek Kortikal Fonksiyonlar ve Bilinç", "maddeler": ["Motor afazi (konuşma üretme bozukluğu)", "Duyusal afazi (anlama bozukluğu), agnozi ve diğer yüksek kortikal bozukluklar", "Demans (klinik demans skoru ile)", "Epilepsi (uygun ve yeterli tedavi altında)", "Uyku bozuklukları (genel derecelendirme)", "Uyku bozuklukları sınıflaması (tanıya göre)", "Nörojenik kaynaklı kronik ağrılar (baş ağrıları, nevraljiler, nöropatik ağrı)"]},
+        {"ad": "Kafa Çiftleri (Kraniyal Sinirler)", "maddeler": ["Trigeminal nevralji", "Periferik fasiyal paralizi (yüz felci)", "Dizartri ve disfaji (IX, X, XII. kafa çiftleri)"]},
+        {"ad": "Felç, Omurilik ve Hareket Bozuklukları", "maddeler": ["Ayakta durma ve yürüme bozukluğu (sinir sistemi kaynaklı)", "Tek kolda fonksiyon bozukluğu – baskın (dominant) kol", "Tek kolda fonksiyon bozukluğu – baskın olmayan kol", "İki kolda fonksiyon bozukluğu", "Bağırsak kontrolü bozukluğu (nörolojik)", "Mesane fonksiyon bozukluğu (nörojen mesane)", "Solunumda nörolojik bozukluk", "Cinsel fonksiyon bozukluğu (nörolojik)"]}
+      ]
+    },
+    {
+      "bolum": "Kas-İskelet Sistemi",
+      "not": "Eklem hareket açıklığı ve parmak/el/bilek/dirsek/omuz ölçümleri şekil ve gonyometrik ölçüm gerektirdiğinden bu araçta hesaplanmaz; fizik tedavi veya ortopedi hekimi değerlendirmesi gerekir.",
+      "altBasliklar": [
+        {"ad": "Omurga – Yaralanma Modeli", "maddeler": ["Bel (lomber) omurga – yaralanma modeli", "Boyun (servikal) omurga – yaralanma modeli", "Sırt (torakal) omurga – yaralanma modeli"]},
+        {"ad": "Omurga – Tanıya Bağlı Engellilik", "maddeler": ["Boyun omurgası – spesifik tanı", "Sırt omurgası – spesifik tanı", "Bel omurgası – spesifik tanı"]},
+        {"ad": "Sinir Kökü ve Periferik Sinir Hasarı", "maddeler": ["Sinir kökü, kol sinirleri ve brakiyal pleksus hasarı (duyu/motor kayıp)", "Bacakta periferik sinir hasarı"]},
+        {"ad": "Kol ve El", "maddeler": ["Kol ve el ampütasyonları", "Kol eklem protezi – implant artroplasti", "Kol eklemi – rezeksiyon artroplasti"]},
+        {"ad": "Bacak ve Ayak", "maddeler": ["Bacak ampütasyonları", "Bacak boyu farkı", "Yürüyüş bozukluğu (yardımcı cihaza bağımlı, sürekli)", "Kalça hareket kısıtlılığı", "Diz hareket kısıtlılığı", "Ayak bileği hareket kısıtlılığı", "Topuk (subtalar) hareket kısıtlılığı", "Ayak bileği veya topuk deformitesi", "Ayak başparmağı ve küçük parmak hareket bozuklukları", "Kalça ankilozu (eklem donması)", "Diz ankilozu", "Ayak bileği ve ayak ankilozu", "Kalça ve uyluk – tanıya dayalı", "Diz ve kaval kemiği – tanıya dayalı", "Ayak bileği ve topuk – tanıya dayalı", "Orta ve ön ayak deformiteleri", "Bacakta doku kaybı ve kronik osteomiyelit", "Bacakta kas atrofisi (tek taraflı)", "Bacakta kas gücü kaybı (manuel kas testi)", "Bacakta periferik damar hastalığı"]}
+      ]
+    },
+    {
+      "bolum": "Romatizmal Hastalıklar",
+      "not": "Sistemik romatizmal hastalıklarda oran aktif dönemde doğrudan belirlenmez; organ ve fonksiyon sekelleri ilgili bölümlerden değerlendirilir.",
+      "altBasliklar": [
+        {"ad": "Sistemik Romatizmal Hastalıklar", "maddeler": ["Romatoid artrit, ankilozan spondilit, lupus, skleroderma ve diğer sistemik romatizmal hastalıklar"]}
+      ]
+    }
+  ],
+  "bolumler": [
+    {
+      "bolum": "Ruh Sağlığı",
+      "altBasliklar": [
+        {
+          "ad": "Zekâ İşlev Bozuklukları",
+          "maddeler": [
+            {
+              "ad": "Zekâ işlev bozuklukları",
+              "ids": [
+                "Z-001",
+                "Z-002",
+                "Z-003",
+                "Z-004",
+                "Z-005"
+              ],
+              "belirsiz": []
+            }
+          ]
+        },
+        {
+          "ad": "Psikotik Bozukluklar",
+          "maddeler": [
+            {
+              "ad": "Şizofreni",
+              "ids": [
+                "Z-006",
+                "Z-007",
+                "Z-008"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Şizoaffektif bozukluk (manik, depresif ve karışık tip)",
+              "ids": [
+                "Z-009",
+                "Z-010",
+                "Z-011"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Sanrısal bozukluklar (paranoya, paranoid psikoz, parafreni tanılarını içerir)",
+              "ids": [
+                "Z-012",
+                "Z-013",
+                "Z-014"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Atipik veya başka türlü adlandırılamayan psikozlar",
+              "ids": [
+                "Z-015",
+                "Z-016",
+                "Z-017"
+              ],
+              "belirsiz": []
+            }
+          ]
+        },
+        {
+          "ad": "Yaygın Gelişimsel Bozukluklar",
+          "maddeler": [
+            {
+              "ad": "Yaygın gelişimsel bozukluklar",
+              "ids": [
+                "Z-018",
+                "Z-019",
+                "Z-020",
+                "Z-021",
+                "Z-055"
+              ],
+              "belirsiz": []
+            }
+          ]
+        },
+        {
+          "ad": "Geçici Fonksiyon Kaybına Neden Olan Ruhsal Hastalıklar",
+          "maddeler": [
+            {
+              "ad": "Organik hâllusinozis, organik katatonik bozukluk, organik delüzyonel [şizofreni-benzeri] bozukluklar",
+              "ids": [
+                "Z-022",
+                "Z-023",
+                "Z-024"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Organik duygu [affektivite] bozuklukları, organik anksiyete bozuklukları, organik disosiyatif bozukluk, organik duygusal labilite [astenik] bozukluk, hafif bilişsel bozukluk",
+              "ids": [
+                "Z-025",
+                "Z-026",
+                "Z-027"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Beyin hasarı, beyin işlev bozukluğuna bağlı davranış bozuklukları (organik kişilik bozukluğu, frontal lob sendromu, beyin sarsılması sonrası postkontüzyonel sendrom)",
+              "ids": [
+                "Z-028",
+                "Z-029",
+                "Z-030"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Manik nöbet, bipolar duygudurum bozukluğu",
+              "ids": [
+                "Z-031",
+                "Z-032",
+                "Z-033"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Yineleyen depresif bozukluk",
+              "ids": [
+                "Z-034",
+                "Z-035",
+                "Z-036"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Yineleyen depresif bozukluk, şimdiki nöbet psikotik belirtili olan, olmayan, ağır",
+              "ids": [
+                "Z-056"
+              ],
+              "belirsiz": [
+                "X-Z03",
+                "X-Z04"
+              ]
+            },
+            {
+              "ad": "Anksiyete bozukluları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi) ve somatoform bozukluklar",
+              "ids": [
+                "Z-037",
+                "Z-038",
+                "Z-039"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Obsesif-kompulsif bozukluk",
+              "ids": [
+                "Z-040",
+                "Z-041",
+                "Z-042"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Travma sonrası stres bozukluğu",
+              "ids": [
+                "Z-043",
+                "Z-044",
+                "Z-045"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Yeme bozuklukları (Anoreksia nervosa ve bulimia nervosa )",
+              "ids": [
+                "Z-046",
+                "Z-047",
+                "Z-048"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "alkol hâlusinozisi, alkol paranoyası)",
+              "ids": [
+                "Z-049",
+                "Z-050",
+                "Z-051"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Kişilik bozuklukları",
+              "ids": [
+                "Z-052",
+                "Z-053",
+                "Z-054"
+              ],
+              "belirsiz": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bolum": "Deri",
+      "altBasliklar": [
+        {
+          "ad": "Bez ve Kıl Folikülü Hastalıkları",
+          "maddeler": [
+            {
+              "ad": "Rozasea",
+              "ids": [
+                "D-001",
+                "D-002",
+                "D-003"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Hidradenitis supurativa, akne konglobata ve folliküler oklüzyon triadı",
+              "ids": [
+                "D-004",
+                "D-005",
+                "D-006",
+                "D-007"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Saçlı derinin diseke edici folliküliti",
+              "ids": [
+                "D-008",
+                "D-009"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Hiperhidrosis",
+              "ids": [
+                "D-010",
+                "D-011",
+                "D-012"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Alopesi totalis",
+              "ids": [
+                "D-013"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Alopesi universalis",
+              "ids": [
+                "D-014"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Hirsutizm",
+              "ids": [
+                "D-015",
+                "D-016"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Saç rengi ve saç gövdesi anormallikleri (moniletrix vb.)",
+              "ids": [
+                "D-017"
+              ],
+              "belirsiz": []
+            }
+          ]
+        },
+        {
+          "ad": "Ekzema ve İnflamatuvar Deri Hastalıkları",
+          "maddeler": [
+            {
+              "ad": "Atopik dermatit",
+              "ids": [
+                "D-018",
+                "D-019",
+                "D-020",
+                "D-021"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Dermatitler (kontakt dermatit, staz dermatit, dishidrotik ekzema)",
+              "ids": [
+                "D-022",
+                "D-023",
+                "D-024"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Psoriasis",
+              "ids": [
+                "D-025",
+                "D-026",
+                "D-027",
+                "D-028"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Pitriasis rubra pilaris, liken planus",
+              "ids": [
+                "D-029",
+                "D-030",
+                "D-031",
+                "D-032"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Perforan dermatozlar (Kryle hastalığı vb.)",
+              "ids": [
+                "D-033",
+                "D-034",
+                "D-035"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Psikiyatrik etyolojili deri hastalıkları (nörotik ekskoriasyon, faktisiyel dermatit vb.)",
+              "ids": [
+                "D-036",
+                "D-037",
+                "D-038"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Eritroderma",
+              "ids": [],
+              "belirsiz": [
+                "X-D06"
+              ]
+            }
+          ]
+        },
+        {
+          "ad": "Deri Tümörleri ve Skarlar",
+          "maddeler": [
+            {
+              "ad": "Kongenital melanositik nevus",
+              "ids": [
+                "D-039",
+                "D-040"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Kan damarlarının benign neoplazm ve hiperplazileri (kapiller anjiom, kavernöz anjiom, lenfanjiom, lenfohemanjiom, anjiokeratom, Klippel-Trenanuay-Weber vb.)",
+              "ids": [
+                "D-041",
+                "D-042",
+                "D-043",
+                "D-044"
+              ],
+              "belirsiz": [
+                "X-D01"
+              ]
+            },
+            {
+              "ad": "Hipertrofik skar ve keloid",
+              "ids": [
+                "D-045",
+                "D-046",
+                "D-047",
+                "D-048"
+              ],
+              "belirsiz": [
+                "X-D02"
+              ]
+            },
+            {
+              "ad": "Derinin premalign tümörleri",
+              "ids": [
+                "D-049"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Derinin malign tümörleri",
+              "ids": [
+                "D-050",
+                "D-139"
+              ],
+              "belirsiz": []
+            }
+          ]
+        },
+        {
+          "ad": "Işık, Pigment ve Bağışıklık Kaynaklı Deri Hastalıkları",
+          "maddeler": [
+            {
+              "ad": "Solar ürtiker, aktinik retikuloid, persistan ışık reaksiyonu, polimorf ışık erüpsiyonu",
+              "ids": [
+                "D-051",
+                "D-052",
+                "D-053"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Porfirialar",
+              "ids": [
+                "D-054",
+                "D-055",
+                "D-056",
+                "D-057"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Pigment bozuklukları (vitiligo, depigmentasyon ve melanoderma yapan hastalıklar)",
+              "ids": [],
+              "belirsiz": [
+                "X-D03",
+                "X-D04",
+                "X-D05"
+              ]
+            },
+            {
+              "ad": "Vaskulitler",
+              "ids": [
+                "D-058",
+                "D-059",
+                "D-060",
+                "D-061"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Kronik ve/veya tedaviye dirençli ürtiker ve anjioödem",
+              "ids": [
+                "D-062"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Pannikülitler (lezyon şiddetine göre değerlendirilir)",
+              "ids": [
+                "D-063",
+                "D-064",
+                "D-065"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Behçet hastalığı",
+              "ids": [
+                "D-066",
+                "D-140"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Otoimmün büllü hastalıklar (pemfigus vulgaris, büllöz pemfigoid, dermatitis herpetiformis ve diğer otoimmün büllü hastalıklar)",
+              "ids": [
+                "D-067",
+                "D-068",
+                "D-069",
+                "D-070"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Kronik bağ doku hastalıkları",
+              "ids": [
+                "D-071",
+                "D-072",
+                "D-073",
+                "D-074"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Reiter sendromu",
+              "ids": [
+                "D-075"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Pyoderma gangrenosum",
+              "ids": [
+                "D-076",
+                "D-077",
+                "D-078",
+                "D-079"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Sarkoidozis",
+              "ids": [
+                "D-080",
+                "D-081"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Kronik graft versus host hastalığı",
+              "ids": [
+                "D-082",
+                "D-083",
+                "D-084",
+                "D-085"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Metabolik, endokrin bozukluklar, depolanma hastalıkları ve sistemik malignitelerin deri bulguları",
+              "ids": [
+                "D-086"
+              ],
+              "belirsiz": []
+            }
+          ]
+        },
+        {
+          "ad": "Genetik Geçişli Deri Hastalıkları",
+          "maddeler": [
+            {
+              "ad": "İktiyozis grubu hastalıklar",
+              "ids": [
+                "D-087",
+                "D-088",
+                "D-089",
+                "D-090"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Herediter palmoplanter keratodermiler, Unna Thost, Mal de Melada vb.",
+              "ids": [
+                "D-091",
+                "D-092",
+                "D-093",
+                "D-094"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Nörokutanöz hastalıklar (nörofibromatosis, tuberoz skleroz, psödoksantoma elastikum, ataksi telenjiektazi vb.)",
+              "ids": [
+                "D-095",
+                "D-096"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Epidermolizis büllosa",
+              "ids": [
+                "D-097",
+                "D-098",
+                "D-099",
+                "D-100"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Hailey Hailey hastalığı",
+              "ids": [
+                "D-101",
+                "D-102",
+                "D-103"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Kseroderma pigmentozum, Rothmund-Thompson sendromu, diskeratozis konjenita, Werner sendromu vb.",
+              "ids": [
+                "D-104",
+                "D-105",
+                "D-106",
+                "D-107"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Anhidrotik/hipohidrotik ve hidrotik ektodermal displazi",
+              "ids": [
+                "D-108",
+                "D-109",
+                "D-110",
+                "D-111"
+              ],
+              "belirsiz": []
+            }
+          ]
+        },
+        {
+          "ad": "Deri Ülserleri, Lenfomalar ve Enfeksiyonlar",
+          "maddeler": [
+            {
+              "ad": "Kronik bacak ülserleri (lezyon şiddetine göre)",
+              "ids": [
+                "D-112",
+                "D-113",
+                "D-114",
+                "D-115"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Dekubitus ülseri (lezyon şiddetine göre)",
+              "ids": [
+                "D-116",
+                "D-117",
+                "D-118"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Kütanöz T hücreli lenfoma",
+              "ids": [
+                "D-119",
+                "D-120",
+                "D-121",
+                "D-122",
+                "D-123",
+                "D-141",
+                "D-142"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "MF dışı diğer kutanöz lenfomalar",
+              "ids": [
+                "D-124",
+                "D-125",
+                "D-126",
+                "D-127"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Kutanöz (Langerhans hücreli) histiyositozlar",
+              "ids": [
+                "D-128",
+                "D-129",
+                "D-130"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Kutanöz mastositozis",
+              "ids": [
+                "D-131",
+                "D-132",
+                "D-133"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Lepra, kutanöz tüberkülozlar, sistemik fungal infeksiyonlar, mukokütanöz layşmanyazis",
+              "ids": [
+                "D-134"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Diğer deri hastalıkları (Yukarıdaki listede yer almayan deri hastalıkları ve sekellerine bağlı fonksiyon kayıplarının değerlendirilmesinde hastalığın şiddetine göre değerlendirme yapılır.)",
+              "ids": [
+                "D-135",
+                "D-136",
+                "D-137",
+                "D-138"
+              ],
+              "belirsiz": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bolum": "Hematoloji",
+      "altBasliklar": [
+        {
+          "ad": "Anemiler",
+          "maddeler": [
+            {
+              "ad": "Aplastik anemi",
+              "ids": [
+                "H-001",
+                "H-002",
+                "H-074"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Fankoni aplastik anemisi ve diğer konjenital aplastik anemiler",
+              "ids": [],
+              "belirsiz": [
+                "X-H02",
+                "X-H03"
+              ]
+            },
+            {
+              "ad": "Diamond Blackfan anemisi (konjenital hipoplastik anemi)",
+              "ids": [
+                "H-003",
+                "H-004",
+                "H-005"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Eritrosit enzim defektleri, membran defektleri",
+              "ids": [
+                "H-006",
+                "H-007",
+                "H-008"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Paroksismal nokturnal hemoglobinüri",
+              "ids": [
+                "H-009",
+                "H-010"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Otoimmün hemolitik anemiler (idiyopatik ve sekonder otoimmün hemolitik anemiler)",
+              "ids": [
+                "H-011",
+                "H-012",
+                "H-013"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Orak hücreli anemi",
+              "ids": [
+                "H-014",
+                "H-075"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Thalassemi",
+              "ids": [
+                "H-015",
+                "H-016",
+                "H-017"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Diğerleri (anormal hemoglobinler)",
+              "ids": [
+                "H-018",
+                "H-019"
+              ],
+              "belirsiz": []
+            }
+          ]
+        },
+        {
+          "ad": "Kemik İliği ve Kan Hastalıkları",
+          "maddeler": [
+            {
+              "ad": "Miyelofibrozis",
+              "ids": [
+                "H-020",
+                "H-076"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Miyelodisplastik sendrom",
+              "ids": [
+                "H-021",
+                "H-022",
+                "H-023"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Akut lösemiler",
+              "ids": [
+                "H-024",
+                "H-025",
+                "H-026",
+                "H-027"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Kronik myelositik lösemi",
+              "ids": [
+                "H-028",
+                "H-029",
+                "H-030"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Kronik lenfositik lösemi",
+              "ids": [
+                "H-031",
+                "H-032",
+                "H-033"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Monoklonal gammapatiler",
+              "ids": [
+                "H-034",
+                "H-035",
+                "H-036",
+                "H-037"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Hemofagositik sendrom",
+              "ids": [
+                "H-038",
+                "H-039"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "KML ve myelofibrozis dışında kalan myeloproliferatif hastalıklar (esansiyel trombositemi, polisitemia vera vb.)",
+              "ids": [
+                "H-040",
+                "H-041",
+                "H-042",
+                "H-043"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Hodgkin lenfoma",
+              "ids": [
+                "H-057",
+                "H-058",
+                "H-059",
+                "H-060"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Non-Hodgkin lenfoma",
+              "ids": [
+                "H-061",
+                "H-062",
+                "H-063",
+                "H-064",
+                "H-078"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Kronik nötropeniler",
+              "ids": [
+                "H-065",
+                "H-066",
+                "H-067"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Allojenik kemik iliği/kök hücre nakli",
+              "ids": [
+                "H-068",
+                "H-069",
+                "H-070"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Otolog kemik iliği/kök hücre nakli",
+              "ids": [
+                "H-071",
+                "H-072",
+                "H-073"
+              ],
+              "belirsiz": []
+            }
+          ]
+        },
+        {
+          "ad": "Pıhtılaşma ve Kanama Bozuklukları",
+          "maddeler": [
+            {
+              "ad": "Primer hemostaz bozuklukları (İTP, trombosit fonksiyon bozuklukları, vasküler nedenler)",
+              "ids": [
+                "H-044",
+                "H-045",
+                "H-046"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Koagülopatiler (hemofili A, B, C ve diğer faktör eksiklikleri, Von Willebrand hastalığı tip III)",
+              "ids": [
+                "H-047",
+                "H-048",
+                "H-049"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Hipofibrinojenemi, afibrinojenemi ve disfibrinojenemi",
+              "ids": [
+                "H-050",
+                "H-051"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Akkiz ve herediter trombotik durumlar",
+              "ids": [
+                "H-052",
+                "H-053",
+                "H-077"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Trombotik trombositopenik purpura (TTP)",
+              "ids": [
+                "H-054",
+                "H-055"
+              ],
+              "belirsiz": []
+            },
+            {
+              "ad": "Dissemine intravasküler koagülopati (kronik)",
+              "ids": [
+                "H-056"
+              ],
+              "belirsiz": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "esanlamlilar": [
+    {
+      "terimler": [
+        "talasemi"
+      ],
+      "ara": "Thalassemi",
+      "ids": [
+        "H-015",
+        "H-016",
+        "H-017"
+      ]
+    },
+    {
+      "terimler": [
+        "sedef",
+        "sedef hastalığı"
+      ],
+      "ara": "Psoriasis",
+      "ids": [
+        "D-025",
+        "D-026",
+        "D-027",
+        "D-028"
+      ]
+    },
+    {
+      "terimler": [
+        "tssb",
+        "travma sonrası stres bozukluğu"
+      ],
+      "ara": "Travma sonrası stres",
+      "ids": [
+        "Z-043",
+        "Z-044",
+        "Z-045"
+      ]
+    },
+    {
+      "terimler": [
+        "zihinsel yetersizlik",
+        "zekâ geriliği"
+      ],
+      "ara": "Zekâ işlev",
+      "ids": [
+        "Z-001",
+        "Z-002",
+        "Z-003",
+        "Z-004",
+        "Z-005"
+      ]
+    },
+    {
+      "terimler": [
+        "anoreksiya"
+      ],
+      "ara": "Anoreksia nervosa",
+      "ids": [
+        "Z-046",
+        "Z-047",
+        "Z-048"
+      ]
+    },
+    {
+      "terimler": [
+        "kemik iliği nakli"
+      ],
+      "ara": "kök hücre nakli",
+      "ids": [
+        "H-068",
+        "H-069",
+        "H-070",
+        "H-071",
+        "H-072",
+        "H-073"
+      ]
+    },
+    {
+      "terimler": [
+        "smoldering miyelom"
+      ],
+      "ara": "myeloma",
+      "ids": [
+        "H-035"
+      ]
+    },
+    {
+      "terimler": [
+        "aşırı terleme"
+      ],
+      "ara": "Hiperhidrosis",
+      "ids": [
+        "D-010",
+        "D-011",
+        "D-012"
+      ]
+    },
+    {
+      "terimler": [
+        "eritrodermi"
+      ],
+      "ara": "Eritroderma",
+      "ids": [
+        "X-D06"
+      ]
+    }
+  ]
+}
+</script>
+<script>
+(function () {
+  "use strict";
+
+  var durum = { bolum: "", bolumKisa: "", gruplar: [], sepet: [] };
+  var esleme = { bolumler: [], pasifBolumler: [], esanlamlilar: [] };
+  try {
+    esleme = JSON.parse(document.getElementById("arayuz-esleme").textContent);
+  } catch (hata) {
+    // Yapılandırma okunamazsa ekran API'nin kendi grup düzeniyle çalışmaya devam eder.
+  }
+  var cipler = document.getElementById("cipler");
+  var giris = document.getElementById("q");
+  var listeKutu = document.getElementById("liste");
+  var listeIcerik = document.getElementById("liste-icerik");
+  var gezinme = document.getElementById("gezinme");
+  var gruplarKutu = document.getElementById("gruplar");
+  var hastalikKutu = document.getElementById("hastaliklar");
+  var sonucKutu = document.getElementById("sonuc");
+  var sepetKutu = document.getElementById("sepet");
+  var sepetListe = document.getElementById("sepet-liste");
+  var sepetBaslik = document.getElementById("sepet-baslik");
+  var sepetBildirim = document.getElementById("sepet-bildirim");
+
+  function el(kalem, sinif, metin) {
+    var d = document.createElement(kalem);
+    if (sinif) { d.className = sinif; }
+    if (metin != null) { d.textContent = metin; }
+    return d;
+  }
+  function goster(kutu, gorunur) {
+    kutu.classList.toggle("gizli", !gorunur);
+  }
+  function json(url) {
+    return fetch(url, { headers: { "Accept": "application/json" } }).then(function (y) {
+      if (!y.ok) { throw new Error("HTTP " + y.status); }
+      return y.json();
+    });
+  }
+
+  // --- bölüm çipleri -------------------------------------------------------
+  function cipleriKur(bolumler) {
+    cipler.innerHTML = "";
+    var tumu = el("button", "cip", "Tüm bölümler");
+    tumu.type = "button";
+    tumu.dataset.bolum = "";
+    tumu.setAttribute("aria-pressed", "true");
+    tumu.addEventListener("click", function () { bolumSec(""); });
+    cipler.appendChild(tumu);
+    bolumler.forEach(function (b) {
+      var dugme = el("button", "cip", b.kisa);
+      dugme.type = "button";
+      dugme.dataset.bolum = b.ad;
+      dugme.setAttribute("aria-pressed", "false");
+      dugme.title = b.kisa + " · " + b.kayit_sayisi + " kayıt";
+      dugme.addEventListener("click", function () { bolumSec(b.ad, b.kisa); });
+      cipler.appendChild(dugme);
+    });
+    pasifBolumleriKur();
+  }
+
+  // --- henüz desteklenmeyen bölümler: yalnız bilgi, hiçbir istek/seçim yok ---
+  function pasifBolumleriKur() {
+    var kap = document.getElementById("pasif-kutu");
+    var kutu = document.getElementById("pasif-cipler");
+    var not = document.getElementById("pasif-not");
+    var adlar = esleme.pasifBolumler || [];
+    kutu.innerHTML = "";
+    kap.classList.toggle("gizli", !adlar.length);
+    document.getElementById("pasif-ozet").textContent =
+      "Henüz desteklenmeyen bölümler (" + adlar.length + ")";
+    adlar.forEach(function (ad) {
+      var dugme = el("button", "cip pasif", ad);
+      dugme.type = "button";
+      dugme.setAttribute("aria-disabled", "true");
+      dugme.addEventListener("click", function () {
+        var detay = (esleme.pasifDetaylari || []).find(function (x) { return x.bolum === ad; });
+        if (!detay) { not.textContent = ad + ": Bu bölüm henüz desteklenmiyor."; return; }
+        var sayi = detay.altBasliklar.reduce(function (toplam, alt) { return toplam + alt.maddeler.length; }, 0);
+        var maddeler = detay.altBasliklar.map(function (alt) {
+          return alt.ad + ": " + alt.maddeler.join(", ");
+        }).join(" · ");
+        var metin = detay.bolum + ": Bu bölüm henüz desteklenmiyor. " + sayi + " hastalık/alt madde kapsamda. " + maddeler;
+        if (detay.not) { metin += " " + detay.not; }
+        var kaynak = (esleme.pasifKaynaklari || [])[0];
+        if (kaynak) { metin += " Kaynak: " + kaynak.ad + " (" + kaynak.rol + "; " + kaynak.durum + ")."; }
+        not.textContent = metin;
+      });
+      kutu.appendChild(dugme);
+    });
+  }
+  function cipIsaretle() {
+    Array.prototype.forEach.call(cipler.children, function (dugme) {
+      var secili = (dugme.dataset.bolum || "") === durum.bolum;
+      dugme.setAttribute("aria-pressed", secili ? "true" : "false");
+    });
+  }
+
+  document.querySelectorAll(".vucut-bolge, #vucut-dugmeler [data-bolum]").forEach(function (bolge) {
+    function sec() { bolumSec(bolge.getAttribute("data-bolum"), bolge.getAttribute("data-kisa")); }
+    bolge.addEventListener("click", sec);
+    bolge.addEventListener("keydown", function (olay) {
+      if (olay.key === "Enter" || olay.key === " ") { olay.preventDefault(); sec(); }
+    });
+  });
+
+  function bolumSec(ad, kisa) {
+    document.querySelectorAll("[data-bolum]").forEach(function (el) {
+      var secili = el.getAttribute("data-bolum") === ad;
+      if (el.classList.contains("vucut-bolge")) { el.classList.toggle("secili", secili); }
+      if (el.tagName === "BUTTON" && el.closest("#vucut-dugmeler")) { el.setAttribute("aria-pressed", secili ? "true" : "false"); }
+    });
+    durum.bolum = ad;
+    durum.bolumKisa = kisa || "";
+    durum.gruplar = [];
+    cipIsaretle();
+    sonucKutu.classList.add("gizli");
+    listeKutu.classList.add("gizli");
+    giris.value = "";
+    if (!ad) {
+      gezinme.classList.add("gizli");
+      return;
+    }
+    json("/api/gezinme?bolum=" + encodeURIComponent(ad)).then(function (yanit) {
+      durum.gruplar = altBasliklariKur(durum.bolumKisa, yanit.gruplar || []);
+      gezinme.classList.remove("gizli");
+      gruplariCiz();
+      if (durum.gruplar.length) { grupSec(0); }
+    }).catch(hataGoster);
+  }
+
+  // Alt başlık düzeni arayüz eşlemesinden gelir; kayıtların kendisi (ad, seviye, oran,
+  // sayfa) API'den okunur. Eşlemede olmayan hiçbir kayıt kaybolmaz: "Diğer kayıtlar".
+  function altBasliklariKur(kisa, apiGruplar) {
+    var seviyeBul = {};
+    var hastalikBul = {};
+    apiGruplar.forEach(function (g) {
+      g.hastaliklar.forEach(function (h) {
+        h.seviyeler.forEach(function (s) { seviyeBul[s.id] = s; hastalikBul[s.id] = h; });
+      });
+    });
+    var yapi = null;
+    (esleme.bolumler || []).forEach(function (b) { if (b.bolum === kisa) { yapi = b; } });
+    if (!yapi) { return apiGruplar; }
+
+    var kullanildi = {};
+    var sonuc = [];
+    yapi.altBasliklar.forEach(function (ab) {
+      var maddeler = [];
+      var kayit = 0;
+      var belirsiz = 0;
+      ab.maddeler.forEach(function (m) {
+        var seviyeler = [];
+        m.ids.forEach(function (id) {
+          if (seviyeBul[id] && !kullanildi[id]) { seviyeler.push(seviyeBul[id]); kullanildi[id] = true; }
+        });
+        var bel = m.belirsiz || [];
+        if (!seviyeler.length && !bel.length) { return; }
+        var tek = seviyeler.length === 1 && !bel.length && hastalikBul[seviyeler[0].id].tek_kayit === true;
+        maddeler.push({ ad: m.ad, seviyeler: seviyeler, belirsiz: bel, tek_kayit: tek });
+        kayit += seviyeler.length;
+        belirsiz += bel.length;
+      });
+      if (maddeler.length) {
+        sonuc.push({ ad: ab.ad, kayit_sayisi: kayit, belirsiz_sayisi: belirsiz, hastaliklar: maddeler });
+      }
+    });
+
+    var kalan = [];
+    var kalanSayi = 0;
+    apiGruplar.forEach(function (g) {
+      g.hastaliklar.forEach(function (h) {
+        var s = h.seviyeler.filter(function (x) { return !kullanildi[x.id]; });
+        if (s.length) {
+          kalan.push({ ad: h.ad, seviyeler: s, belirsiz: [],
+                       tek_kayit: h.tek_kayit === true && s.length === h.seviyeler.length });
+          kalanSayi += s.length;
+        }
+      });
+    });
+    if (kalan.length) {
+      sonuc.push({ ad: "Diğer kayıtlar", kayit_sayisi: kalanSayi, belirsiz_sayisi: 0, hastaliklar: kalan });
+    }
+    return sonuc;
+  }
+
+  function gruplariCiz(secilen) {
+    gruplarKutu.innerHTML = "";
+    durum.gruplar.forEach(function (grup, i) {
+      var li = el("li");
+      var dugme = el("button", "satir");
+      dugme.type = "button";
+      dugme.setAttribute("aria-current", i === secilen ? "true" : "false");
+      var metin = el("span", "metin");
+      var ad = el("span", "ad", grup.ad);
+      var ayrintiMetni = grup.kayit_sayisi + " kayıt · " + grup.hastaliklar.length + " madde";
+      if (grup.belirsiz_sayisi) { ayrintiMetni += " · " + grup.belirsiz_sayisi + " oranı belirsiz satır"; }
+      var ayrinti = el("span", "ayrinti", ayrintiMetni);
+      metin.appendChild(ad); metin.appendChild(ayrinti);
+      dugme.appendChild(metin);
+      if (grup.rozet) { dugme.appendChild(el("span", "rozet", grup.rozet)); }
+      dugme.addEventListener("click", function () { grupSec(i); });
+      li.appendChild(dugme);
+      gruplarKutu.appendChild(li);
+    });
+  }
+
+  function grupSec(i) {
+    gruplariCiz(i);
+    var grup = durum.gruplar[i];
+    if (!grup) { return; }
+    hastalikKutu.innerHTML = "";
+    var baslik = document.getElementById("hastalik-baslik");
+    baslik.textContent = grup.ad;
+    var liste = el("ul", "liste hastalik-grid");
+    grup.hastaliklar.forEach(function (hastalik) {
+      var li = el("li");
+      var dugme = el("button", "satir");
+      dugme.type = "button";
+      var metin = el("span", "metin");
+      metin.appendChild(el("span", "ad", hastalik.ad));
+      var nKesin = hastalik.seviyeler.length;
+      var nBelirsiz = (hastalik.belirsiz || []).length;
+      var ayrinti = hastalik.tek_kayit
+        ? "tek oran · şiddet basamağı yok"
+        : (nKesin ? nKesin + " seviye" : "") + (nKesin && nBelirsiz ? " · " : "") +
+          (nBelirsiz ? nBelirsiz + " oranı belirsiz satır" : "");
+      metin.appendChild(el("span", "ayrinti", ayrinti));
+      dugme.appendChild(metin);
+      if (!nKesin) { dugme.appendChild(el("span", "rozet belirsiz", "Oran belirsiz")); }
+      dugme.addEventListener("click", function () {
+        if (hastalik.tek_kayit) {
+          kayitAc(hastalik.seviyeler[0].id);
+        } else {
+          seviyeleriCiz(li, hastalik);
+        }
+      });
+      li.appendChild(dugme);
+      liste.appendChild(li);
+    });
+    hastalikKutu.appendChild(liste);
+  }
+
+  function seviyeleriCiz(li, hastalik) {
+    var eski = li.querySelector(".seviyeler");
+    if (eski) { eski.remove(); li.classList.remove("acik"); return; }
+    Array.prototype.forEach.call(hastalikKutu.querySelectorAll(".seviyeler"), function (acikListe) {
+      acikListe.remove();
+      var onceki = acikListe.closest("li");
+      if (onceki) { onceki.classList.remove("acik"); }
+    });
+    li.classList.add("acik");
+    var kutu = el("ul", "liste seviyeler");
+    kutu.style.marginTop = "6px";
+    hastalik.seviyeler.forEach(function (seviye) {
+      var satir = el("li");
+      var dugme = el("button", "satir");
+      dugme.type = "button";
+      var metin = el("span", "metin");
+      metin.appendChild(el("span", "ad", seviye.seviye));
+      metin.appendChild(el("span", "ayrinti", "kaynak s." + seviye.sayfa + " · " + seviye.id));
+      dugme.appendChild(metin);
+      dugme.appendChild(el("span", "oran-mini", "%" + seviye.oran_gosterim));
+      dugme.addEventListener("click", function () { kayitAc(seviye.id); });
+      satir.appendChild(dugme);
+      kutu.appendChild(satir);
+    });
+    // Oranı belirlenmemiş satırlar: oran gösterilmez; kayıt kartı mevcut belirsiz ekranını açar.
+    (hastalik.belirsiz || []).forEach(function (kimlik) {
+      var satir = el("li");
+      var dugme = el("button", "satir");
+      dugme.type = "button";
+      var metin = el("span", "metin");
+      var ad = el("span", "ad", "Oranı belirlenmemiş satır");
+      var ayrinti = el("span", "ayrinti", kimlik);
+      metin.appendChild(ad);
+      metin.appendChild(ayrinti);
+      dugme.appendChild(metin);
+      dugme.appendChild(el("span", "rozet belirsiz", "Oran belirsiz"));
+      dugme.addEventListener("click", function () { kayitAc(kimlik); });
+      json("/api/kayit/" + encodeURIComponent(kimlik)).then(function (y) {
+        if (y && y.ok) {
+          ad.textContent = y.seviye || y.ad;
+          ayrinti.textContent = "kaynak s." + y.sayfa + " · " + kimlik;
+        }
+      }).catch(function () { /* satır kimlikle görünmeye devam eder */ });
+      satir.appendChild(dugme);
+      kutu.appendChild(satir);
+    });
+    li.appendChild(kutu);
+  }
+
+  // --- arama ---------------------------------------------------------------
+  var aramaZaman = null;
+  giris.addEventListener("input", function () {
+    var metin = giris.value.trim();
+    if (aramaZaman) { clearTimeout(aramaZaman); }
+    if (metin.length < 3) {
+      listeKutu.classList.add("gizli");
+      return;
+    }
+    aramaZaman = setTimeout(function () { ara(metin); }, 220);
+  });
+  document.getElementById("arama-form").addEventListener("submit", function (olay) {
+    olay.preventDefault();
+    if (giris.value.trim().length >= 3) { ara(giris.value.trim()); }
+  });
+
+  // Türkçe yazım farkına duyarsız karşılaştırma (sunucudaki aramayla aynı anlayış).
+  var KATLA = { "ç": "c", "ğ": "g", "ı": "i", "ö": "o", "ş": "s", "ü": "u", "â": "a", "î": "i", "û": "u" };
+  function katla(metin) {
+    return String(metin).replace(/İ/g, "i").replace(/I/g, "ı").toLowerCase()
+      .replace(/[çğıöşüâîû]/g, function (h) { return KATLA[h]; })
+      .replace(/\s+/g, " ").trim();
+  }
+  function esanlamlilariBul(metin) {
+    var q = katla(metin);
+    return (esleme.esanlamlilar || []).filter(function (e) {
+      return e.terimler.some(function (t) {
+        var k = katla(t);
+        return q === k || (q.length >= 4 && k.indexOf(q) === 0);
+      });
+    });
+  }
+  function aramaIste(metin) {
+    var url = "/api/ara?metin=" + encodeURIComponent(metin);
+    if (durum.bolum) { url += "&bolum=" + encodeURIComponent(durum.bolum); }
+    return json(url);
+  }
+  // Eşanlamlı yalnız doğrulanmış kayıt kimliklerine bağlıdır; arama sonucundan yalnız onlar alınır.
+  function esanlamliSonuc(e) {
+    return aramaIste(e.ara).then(function (y) {
+      var izinli = {};
+      e.ids.forEach(function (id) { izinli[id] = true; });
+      return {
+        sonuclar: (y.sonuclar || []).filter(function (k) { return izinli[k.id]; }),
+        belirsizler: (y.belirsizler || []).filter(function (k) { return izinli[k.id]; }),
+        hedef: e.ara
+      };
+    }).catch(function () { return { sonuclar: [], belirsizler: [], hedef: e.ara }; });
+  }
+  function aramaBirlestir(temel, ekler) {
+    var yanit = temel;
+    var var_ = {};
+    (yanit.sonuclar || []).forEach(function (k) { var_[k.id] = true; });
+    (yanit.belirsizler || []).forEach(function (k) { var_[k.id] = true; });
+    yanit.sonuclar = (yanit.sonuclar || []).slice();
+    yanit.belirsizler = (yanit.belirsizler || []).slice();
+    var hedefler = [];
+    ekler.forEach(function (ek) {
+      var eklendi = false;
+      ek.sonuclar.forEach(function (k) { if (!var_[k.id]) { var_[k.id] = true; yanit.sonuclar.push(k); eklendi = true; } });
+      ek.belirsizler.forEach(function (k) { if (!var_[k.id]) { var_[k.id] = true; yanit.belirsizler.push(k); eklendi = true; } });
+      if (eklendi) { hedefler.push(ek.hedef); }
+    });
+    if (hedefler.length) { yanit.mesaj = null; yanit.ipucu = null; yanit.esanlamli = hedefler; }
+    return yanit;
+  }
+
+  function ara(metin) {
+    var ekler = esanlamlilariBul(metin).map(esanlamliSonuc);
+    Promise.all([aramaIste(metin), Promise.all(ekler)]).then(function (ikili) {
+      return aramaBirlestir(ikili[0], ikili[1]);
+    }).then(function (yanit) {
+      listeKutu.classList.remove("gizli");
+      listeIcerik.innerHTML = "";
+      var baslik = document.getElementById("liste-baslik");
+      var toplam = (yanit.sonuclar || []).length + (yanit.belirsizler || []).length;
+      baslik.textContent = "Arama sonuçları (" + toplam + ")";
+
+      if (yanit.mesaj && !toplam) {
+        var kutu = el("div", "uyari");
+        kutu.appendChild(el("p", "baslik", yanit.mesaj));
+        if (yanit.ipucu) {
+          kutu.appendChild(el("p", null, yanit.ipucu.yazim));
+          kutu.appendChild(el("p", null, yanit.ipucu.kapsam));
+        }
+        listeIcerik.appendChild(kutu);
+        return;
+      }
+      if (yanit.mesaj) { listeIcerik.appendChild(el("p", "ipucu", yanit.mesaj)); }
+      if (yanit.esanlamli && yanit.esanlamli.length) {
+        listeIcerik.appendChild(el("p", "ipucu", "“" + metin + "” için katalogdaki karşılık gösteriliyor: " +
+          yanit.esanlamli.join(", ") + "."));
+      }
+
+      if ((yanit.belirsizler || []).length) {
+        var not = el("div", "uyari belirsiz");
+        not.appendChild(el("p", "baslik", "Oranı belirlenmemiş kaynak satırı"));
+        yanit.belirsizler.forEach(function (satir) {
+          var p = el("p", null, satir.ad + " — " + satir.seviye);
+          not.appendChild(p);
+          var dugme = el("button", "dugme", "Belirsiz kaydı görüntüle");
+          dugme.type = "button";
+          dugme.addEventListener("click", function () { kayitAc(satir.id); });
+          not.appendChild(dugme);
+        });
+        listeIcerik.appendChild(not);
+      }
+
+      var liste = el("ul", "liste");
+      (yanit.sonuclar || []).forEach(function (k) {
+        var li = el("li");
+        var dugme = el("button", "satir");
+        dugme.type = "button";
+        var metin = el("span", "metin");
+        metin.appendChild(el("span", "ad", k.ad));
+        var ayrinti = k.seviye + " · " + k.bolum_kisa + (k.rozet ? " · " + k.rozet : "");
+        metin.appendChild(el("span", "ayrinti", ayrinti));
+        dugme.appendChild(metin);
+        dugme.appendChild(el("span", "oran-mini", "%" + k.oran_gosterim));
+        dugme.addEventListener("click", function () { kayitAc(k.id); });
+        li.appendChild(dugme);
+        liste.appendChild(li);
+      });
+      listeIcerik.appendChild(liste);
+    }).catch(hataGoster);
+  }
+
+  // --- sonuç ---------------------------------------------------------------
+  function kayitAc(id) {
+    json("/api/kayit/" + encodeURIComponent(id)).then(function (yanit) {
+      if (!yanit.ok) { hataGoster(new Error(yanit.mesaj || "Kayıt açılamadı.")); return; }
+      if (yanit.tur === "belirsiz") { belirsizCiz(yanit); } else { sonucCiz(yanit); }
+    }).catch(hataGoster);
+  }
+
+  function belirsizCiz(veri) {
+    sonucKutu.classList.remove("gizli");
+    sonucKutu.innerHTML = "";
+    var kart = el("div", "kart");
+    var baslikSatir = el("div", "baslik-satir");
+    baslikSatir.appendChild(el("h2", null, veri.ad));
+    baslikSatir.appendChild(el("span", "rozet bolum", veri.bolum_kisa));
+    kart.appendChild(baslikSatir);
+    if (veri.seviye) { kart.appendChild(el("p", "ipucu", veri.seviye)); }
+
+    var uyari = el("div", "uyari belirsiz");
+    uyari.appendChild(el("p", "baslik", "Bu kayıt için tek oran belirlenmemiş"));
+    uyari.appendChild(el("p", null, veri.mesaj));
+    uyari.appendChild(el("p", "ipucu", veri.sorun));
+    uyari.appendChild(el("p", "ipucu", veri.kaynak_notu));
+    kart.appendChild(uyari);
+
+    var dugmeSatir = el("div", "dugme-satir");
+    var yeni = el("button", "dugme", "Yeni arama");
+    yeni.type = "button";
+    yeni.addEventListener("click", function () { araKutusunaDon(); });
+    dugmeSatir.appendChild(yeni);
+    kart.appendChild(dugmeSatir);
+    sonucKutu.appendChild(kart);
+    sonucKutu.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function sonucCiz(veri) {
+    sonucKutu.classList.remove("gizli");
+    sonucKutu.innerHTML = "";
+    var kart = el("div", "kart");
+
+    var ust = el("div", "baslik-satir");
+    var sol = el("div");
+    sol.appendChild(el("h2", null, veri.ad));
+    sol.appendChild(el("p", "ipucu", veri.seviye));
+    ust.appendChild(sol);
+    var rozet = el("span", "rozet bolum", veri.bolum_kisa);
+    ust.appendChild(rozet);
+    kart.appendChild(ust);
+
+    var oranSatir = el("div", "sonuc-ust");
+    var kutu = el("div", "oran-kutu" + (veri.sifir ? " sifir" : ""));
+    var sayi = el("span", "sayi", veri.oran.gosterim);
+    kutu.appendChild(sayi);
+    oranSatir.appendChild(kutu);
+    var etiket = el("div", "oran-etiket");
+    etiket.appendChild(el("p", null, veri.oran.etiket));
+    if (veri.sifir_aciklama) { etiket.appendChild(el("p", "ipucu", veri.sifir_aciklama)); }
+    oranSatir.appendChild(etiket);
+    kart.appendChild(oranSatir);
+
+    kart.appendChild(el("p", "kaynak", veri.kaynak));
+    if (veri.kaynak_not) { kart.appendChild(el("p", "kaynak-not", veri.kaynak_not)); }
+
+    if (veri.kisitlar.length) {
+      var baslik = el("div", "baslik-satir");
+      baslik.style.marginTop = "16px";
+      baslik.appendChild(el("h3", null, veri.kisit_basligi));
+      kart.appendChild(baslik);
+      veri.kisitlar.forEach(function (kisit) {
+        var kutu2 = el("div", "kisit " + kisit.ton);
+        kutu2.appendChild(el("span", "ikon", kisit.ikon));
+        var govde = el("div", "govde");
+        var ustSatir = el("div", "ust");
+        ustSatir.appendChild(el("span", "tur", kisit.tur));
+        ustSatir.appendChild(el("span", "onem", kisit.onem));
+        govde.appendChild(ustSatir);
+        govde.appendChild(el("p", "aciklama", kisit.aciklama));
+        kutu2.appendChild(govde);
+        kart.appendChild(kutu2);
+      });
+    }
+
+    if (veri.tek_seviye_notu) {
+      var tekKutu = el("div", "notr-kutu");
+      tekKutu.appendChild(el("span", "tur", "Tek seviye"));
+      tekKutu.appendChild(el("p", null, veri.tek_seviye_notu));
+      kart.appendChild(tekKutu);
+    }
+
+    var yas = el("div", "notr-kutu");
+    yas.appendChild(el("span", "tur", "Bilgi"));
+    yas.appendChild(el("div", "baslik", veri.yas_bloku.baslik));
+    yas.appendChild(el("p", null, veri.yas_bloku.metin));
+    yas.appendChild(el("p", null, veri.yas_bloku.ornek));
+    yas.appendChild(el("p", "alt", veri.yas_bloku.kaynak));
+    yas.appendChild(el("p", "alt", veri.yas_bloku.not));
+    kart.appendChild(yas);
+
+    if (veri.bolum_notu) {
+      var bolumNotu = el("div", "notr-kutu");
+      bolumNotu.appendChild(el("span", "tur", "Bölüm notu"));
+      bolumNotu.appendChild(el("div", "baslik", veri.bolum_notu.baslik));
+      bolumNotu.appendChild(el("p", null, '"' + veri.bolum_notu.metin + '"'));
+      bolumNotu.appendChild(el("p", "alt", veri.bolum_notu.not));
+      kart.appendChild(bolumNotu);
+    }
+
+    var dugmeSatir = el("div", "dugme-satir");
+    var ekle = el("button", "dugme birincil", "Bu oranı hesaplamaya ekle");
+    ekle.type = "button";
+    ekle.addEventListener("click", function () { sepeteEkle(veri); });
+    dugmeSatir.appendChild(ekle);
+    var yeni = el("button", "dugme", "Yeni arama");
+    yeni.type = "button";
+    yeni.addEventListener("click", function () { araKutusunaDon(); });
+    dugmeSatir.appendChild(yeni);
+    kart.appendChild(dugmeSatir);
+
+    sonucKutu.appendChild(kart);
+    sonucKutu.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function araKutusunaDon() {
+    sonucKutu.classList.add("gizli");
+    sonucKutu.innerHTML = "";
+    giris.focus();
+    giris.select();
+  }
+
+  function hataGoster(hata) {
+    sonucKutu.classList.remove("gizli");
+    sonucKutu.innerHTML = "";
+    var kart = el("div", "kart");
+    kart.appendChild(el("h2", null, "İşlem tamamlanamadı"));
+    kart.appendChild(el("p", null, "Yerel sunucuya ulaşılamadı veya yanıt okunamadı."));
+    kart.appendChild(el("p", "ipucu", String(hata && hata.message ? hata.message : hata)));
+    sonucKutu.appendChild(kart);
+  }
+
+  // --- eklenen oranlar (yalnız bu sayfada) ---------------------------------
+  function sepeteEkle(veri) {
+    var zaten = durum.sepet.some(function (s) { return s.id === veri.id; });
+    if (zaten) {
+      sepetBildirim.textContent = "Bu kayıt zaten listede.";
+    } else {
+      durum.sepet.push({
+        id: veri.id,
+        ad: veri.ad || "Hastalık adı",
+        seviye: veri.seviye || "",
+        oran: veri.oran.ham,
+        gosterim: veri.oran.gosterim,
+        etiket: veri.kisa_etiket
+      });
+      sepetBildirim.textContent = "Hesaplamaya eklendi: %" + veri.oran.gosterim +
+        " — " + veri.kisa_etiket;
+    }
+    sepetiCiz();
+  }
+
+  function sepetiCiz() {
+    goster(sepetKutu, durum.sepet.length > 0);
+    document.body.classList.toggle("sepet-acik", durum.sepet.length > 0);
+    sepetBaslik.textContent = "Seçtikleriniz (" + durum.sepet.length + ")";
+    sepetListe.innerHTML = "";
+    durum.sepet.forEach(function (satir, i) {
+      var li = el("li");
+      var kutu = el("div", "sepet-satir");
+      var sol = el("span", "metin");
+      sol.appendChild(el("span", "ad", satir.ad));
+      var ayrinti = (satir.seviye ? satir.seviye + " · " : "") +
+        "%" + satir.gosterim + " · " + satir.etiket;
+      sol.appendChild(el("span", "ayrinti", ayrinti));
+      kutu.appendChild(sol);
+      var sil = el("button", "sil", "Kaldır");
+      sil.type = "button";
+      sil.addEventListener("click", function () {
+        durum.sepet.splice(i, 1);
+        sepetBildirim.textContent = "";
+        sepetiCiz();
+      });
+      kutu.appendChild(sil);
+      li.appendChild(kutu);
+      sepetListe.appendChild(li);
+    });
+  }
+
+  document.getElementById("sepet-temizle").addEventListener("click", function () {
+    durum.sepet = [];
+    sepetBildirim.textContent = "";
+    sepetiCiz();
+    araKutusunaDon();
+  });
+
+  function yedekKopyala(metin) {
+    var alan = el("textarea");
+    alan.value = metin;
+    alan.setAttribute("readonly", "");
+    alan.setAttribute("aria-hidden", "true");
+    alan.style.position = "fixed";
+    alan.style.opacity = "0";
+    alan.style.pointerEvents = "none";
+    document.body.appendChild(alan);
+    alan.select();
+    var basarili = false;
+    try { basarili = document.execCommand("copy"); } catch (_) { basarili = false; }
+    alan.remove();
+    return basarili;
+  }
+
+  document.getElementById("listeyi-kopyala").addEventListener("click", function () {
+    var metin = durum.sepet.map(function (s) { return "%" + s.gosterim + " — " + s.etiket; }).join("\n");
+    if (!metin) { sepetBildirim.textContent = "Liste boş."; return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(metin).then(function () {
+        sepetBildirim.textContent = "Liste kopyalandı; Balthazard hesaplama sayfasına elle girebilirsiniz.";
+      }).catch(function () {
+        sepetBildirim.textContent = yedekKopyala(metin)
+          ? "Liste kopyalandı; Balthazard hesaplama sayfasına elle girebilirsiniz."
+          : "Kopyalama başarısız oldu. Listeyi seçip elle kopyalayabilirsiniz.";
+      });
+    } else {
+      sepetBildirim.textContent = yedekKopyala(metin)
+        ? "Liste kopyalandı; Balthazard hesaplama sayfasına elle girebilirsiniz."
+        : "Kopyalama başarısız oldu. Listeyi seçip elle kopyalayabilirsiniz.";
+    }
+  });
+
+  // --- açılış --------------------------------------------------------------
+  json("/api/bolumler").then(function (yanit) {
+    if (!yanit.ok) { throw new Error("Bölümler okunamadı."); }
+    cipleriKur(yanit.bolumler || []);
+  }).catch(hataGoster);
+})();
+</script>
+</body>
+</html>

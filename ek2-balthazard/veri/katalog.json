@@ -1,0 +1,4761 @@
+{
+ "meta": {
+  "ad": "Engelli.me engel oranı katalog taslağı",
+  "surum": "0.1-taslak",
+  "tarih": "2026-10-26",
+  "kaynak": {
+   "belge": "EK-2 Engelli Sağlık Kurulu Raporu Alan Kılavuzu (3.1.2019 tarihli Yönetmelik eki, Mevzuat No 31275)",
+   "kullanilan": "resmî PDF sayfa metni s.9-12 ve 27-32 (ek2_pages.json) + ek2.docx gövde akışı",
+   "dogrulama": "her kayıt resmî sayfa metniyle satır satır karşılaştırıldı; sayfa numarası belgedeki basılı numaradır",
+   "kapsam_sayfalari": {
+    "Z": [
+     13,
+     15
+    ],
+    "D": [
+     16,
+     22
+    ],
+    "H": [
+     23,
+     26
+    ],
+    "K": [
+     9,
+     12
+    ],
+    "V": [
+     27,
+     32
+    ]
+   }
+  },
+  "kapsam": [
+   "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "DERİ",
+   "HEMATOLOJİK HASTALIKLAR",
+   "KULAK BURUN BOĞAZ",
+   "KARDİYOVASKÜLER SİSTEM"
+  ],
+  "kapsam_disi": [
+   "GÖRME SİSTEMİ (ayrı hesaplayıcı)",
+   "KAS-İSKELET SİSTEMİ (ayrı hesaplayıcı)",
+   "sindirim, ürogenital, nörolojik ve diğer bazı bölümler (henüz kapsam dışı)"
+  ],
+  "sayi": {
+   "toplam_sayisal_satir": 440,
+   "kesin_kayit": 424,
+   "belirsiz_kayit": 16,
+   "bolum_bazinda": {
+    "Z": {
+     "toplam_satir": 58,
+     "kesin": 56,
+     "belirsiz": 2
+    },
+    "D": {
+     "toplam_satir": 148,
+     "kesin": 142,
+     "belirsiz": 6
+    },
+    "H": {
+     "toplam_satir": 80,
+     "kesin": 78,
+     "belirsiz": 2
+    },
+    "K": {
+     "toplam_satir": 89,
+     "kesin": 87,
+     "belirsiz": 2
+    },
+    "V": {
+     "toplam_satir": 65,
+     "kesin": 61,
+     "belirsiz": 4
+    }
+   },
+   "sayim_yontemi": "iki bağımsız yöntem: (1) resmî sayfa metninden elle satır sayımı, (2) docx akışından otomatik çıkarım; toplamlar uyuştu. Otomatik çıkarımın sayfa etiketleri ZİHİNSEL bölümünde 12 satır kaydığı için sayfa alanı resmî metinden alındı."
+  },
+  "alanlar": {
+   "id": "kayıt kimliği: Z-### / D-### / H-### (bölüm içinde resmî sırayla)",
+   "bolum": "resmî bölüm adı (kısaltma değil)",
+   "grup": "GRUP sayfa modu (DERİ + yeni bölümler): resmî ana başlık; tam adı meta.grup_adlari içinde",
+   "hastalik": "resmî hastalık/başlık adı, belgedeki harf/numarasıyla",
+   "alt_tur": "alt tür, şiddet, evre veya ölçüt — resmî metindeki ifade",
+   "oran": "tek tam sayı yüzde değeri (bu üç bölümde satır başına tek oran vardır; aralık yoktur)",
+   "sayfa": "resmî Ek-2 sayfa numarası",
+   "kisit": "kullanım kısıtı kodları (bkz. kurallar); yoksa alan hiç yazılmaz",
+   "kaynak_not": "kaynak metne dair uyarı (yazım hatası, ölçüm notu); oranı değiştirmez"
+  },
+  "grup_adlari": {
+   "I": "SEBASE, EKRİN VE APOKRİN GLAND HASTALIKLARI",
+   "II": "KIL FOLLİKÜLÜ İLE İLGİLİ HASTALIKLAR",
+   "III": "EKZEMATÖZ DERMATİTLER",
+   "IV": "ÇEŞİTLİ İNFLAMATUVAR DERİ HASTALIKLARI",
+   "V": "PSİKİYATRİK ETYOLOJİLİ DERİ HASTALIKLARI",
+   "VI-A": "DERİ TÜMÖRLERİ — BENİGN NEOPLAZM VE HİPERPLAZİLER",
+   "VI-B": "DERİ TÜMÖRLERİ — DERİNİN PREMALİGN TÜMÖRLERİ",
+   "VI-C": "DERİ TÜMÖRLERİ — DERİNİN MALİGN TÜMÖRLERİ",
+   "VII": "FOTOSENSİTİVİTE VE GÜNEŞ IŞINLARI İLE TETİKLENEN HASTALIKLAR",
+   "VIII": "ERİTRODERMA",
+   "IX": "PİGMENT BOZUKLUKLARI",
+   "X": "İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI",
+   "XI": "GENETİK GEÇİŞLİ DERİ HASTALIKLARI",
+   "XII": "VASKULER HASTALIKLARIN DERİ BULGULARI",
+   "XIII": "KUTANÖZ LENFOMA, LÖSEMİ, HİSTİYOSİTOZLAR VE MASTOSİTOZLAR",
+   "XIV": "MİKROBİAL AJANLARA BAĞLI DERİ HASTALIKLARI",
+   "DIGER": "DİĞER DERİ HASTALIKLARI",
+   "K-ISI": "İşitme (Tablo 2 hesaplama)",
+   "K-KON": "Konuşma (Tablo 5 hesaplama)",
+   "K-DEN": "Denge (vestibüler)",
+   "K-YUZ": "Yüz arızaları",
+   "K-HAV": "Hava yolu defektleri",
+   "K-KOK": "Koku ve tat duyusu kaybı",
+   "K-YUT": "Çiğneme ve yutma",
+   "V-ARI": "Aritmiler",
+   "V-PUH": "Pulmoner hipertansiyon",
+   "V-HIP": "Hipertansiyon",
+   "V-PER": "Perikard hastalıkları",
+   "V-HKM": "Hipertrofik kardiyomiyopati",
+   "V-KY": "Kalp yetmezliği",
+   "V-DKH": "Doğuştan kalp hastalıkları (DKH)",
+   "V-KHK": "Edinsel kalp hastalıkları",
+   "V-DMR": "Damar hastalıkları"
+  },
+  "id_kurali": "Kesin kayıtlar her bölümde 1'den başlayarak kesintisiz numaralandırılır. İlk dağıtımda (Z-001…Z-054, D-001…D-138, H-001…H-073) numaralar resmî sayfa sırasını izler; sonradan eklenen kayıtlar mevcut kimlikler yeniden numaralandırılmadan ilgili bölümün sonuna eklenir, bu nedenle eklenen blokta sayfa sırası bölümün tamamı için geçerli değildir. Belirsiz satırlar bu dosyada yer almaz; ayrı dosyada X-Z##/X-D##/X-H## kimlikleriyle kendi ayrı numaralandırmasında tutulur. İki dizi birbirinden bağımsızdır; bu dosyada numara boşluğu yoktur.",
+  "dosyalar": {
+   "katalog": "katalog_taslak.json (bu dosya)",
+   "belirsiz": "belirsiz.json",
+   "aciklama": "OKUBENI.md"
+  }
+ },
+ "kurallar": {
+  "R-YILLIK": {
+   "kod": "R-YILLIK",
+   "metin": "Dermatolojik hastalıklar nedeniyle engelli raporu düzenlenen kişilerin talebi hâlinde engel oranları yıllık kontrollerle tekrar değerlendirilir.",
+   "sayfa": 16,
+   "kapsam": "tüm DERİ kayıtları",
+   "uygulama": "oranı değiştirmez; rapor geçerliliği/tekrar değerlendirme bilgisidir"
+  },
+  "R-GECICI": {
+   "kod": "R-GECICI",
+   "metin": "Bu gruptaki hastalıklar 1 yıl sonra kontrol gerektirir. Geçici fonksiyon kaybına neden olan ruhsal hastalıklar bir yıl sonra değerlendirilip kesin karara varılır.",
+   "sayfa": 14,
+   "kapsam": "s.14-15 geçici ruhsal hastalık kayıtları (s.15 NOT ile birlikte)",
+   "uygulama": "oran sabit kalır; bir yıl sonra yeniden değerlendirme zorunludur"
+  },
+  "R-VERGI": {
+   "kod": "R-VERGI",
+   "metin": "İş başvuruları ve vergi indiriminde bu derecelendirme dikkate alınmaz.",
+   "sayfa": 15,
+   "kapsam": "s.14-15 geçici ruhsal hastalık kayıtları",
+   "uygulama": "kullanım kısıtı; oran bu amaçlarla kullanılmaz"
+  },
+  "R-REMISYON": {
+   "kod": "R-REMISYON",
+   "metin": "Yineleyen depresif bozukluğu olup remisyonda olan kişilere engel oranı verilmemelidir.",
+   "sayfa": 14,
+   "kapsam": "Yineleyen depresif bozukluk (III-b) ve psikotik belirtili alt türü (III-c) kayıtları",
+   "uygulama": "remisyonda ise oran uygulanmaz (0 kabul edilir); tabloda yazan oran remisyonda olmayan dönem içindir"
+  },
+  "R-NAKIL": {
+   "kod": "R-NAKIL",
+   "metin": "İki yıldan daha kısa süre içinde hastalığın aktivasyonunda ilerleme veya gerileme ihtimali olan hastalarda raporun geçerlilik süresi belirtilmelidir.",
+   "sayfa": 26,
+   "kapsam": "hematolojik nakil kayıtları (IX allojenik, X otolog)",
+   "uygulama": "oranı değiştirmez; rapor süresi belirtilir"
+  },
+  "R-IKTIYOZ": {
+   "kod": "R-IKTIYOZ",
+   "metin": "Bu grup hastalıklarda hastalığın alt grupları (tipleri) göz önüne alınmaksızın, lezyonların şiddeti tüm hastalık grubu bir bütün olarak düşünülüp değerlendirilecektir.",
+   "sayfa": 20,
+   "kapsam": "İktiyozis grubu hastalıklar",
+   "uygulama": "alt tip ayrı ayrı puanlanmaz; şiddet grubun bütünü için belirlenir"
+  },
+  "R-EKTO": {
+   "kod": "R-EKTO",
+   "metin": "Bu grup hastalıklarda hastalığın alt grupları (tipleri) göz önüne alınmaksızın, lezyonların şiddeti tüm hastalık grubu bir bütün olarak düşünülüp değerlendirilecektir.",
+   "sayfa": 21,
+   "kapsam": "Anhidrotik/hipohidrotik ve hidrotik ektodermal displazi",
+   "uygulama": "alt tip ayrı ayrı puanlanmaz; şiddet grubun bütünü için belirlenir"
+  }
+ },
+ "kayitlar": [
+  {
+   "id": "Z-001",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "I- Zekâ işlev bozuklukları",
+   "alt_tur": "a) Sınırda mental kapasite (IQ: 70-80)",
+   "oran": 25,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-002",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "I- Zekâ işlev bozuklukları",
+   "alt_tur": "b) Hafif (IQ: 50-69)",
+   "oran": 50,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-003",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "I- Zekâ işlev bozuklukları",
+   "alt_tur": "c) Orta (IQ: 35-49)",
+   "oran": 70,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-004",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "I- Zekâ işlev bozuklukları",
+   "alt_tur": "d) Ağır (IQ: 20-34)",
+   "oran": 90,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-005",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "I- Zekâ işlev bozuklukları",
+   "alt_tur": "e) Çok ağır (IQ: 20'nin altında)",
+   "oran": 100,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-006",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "II- Şizofreni",
+   "alt_tur": "a) Tedaviyle işlevselliği düzelen",
+   "oran": 45,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-007",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "II- Şizofreni",
+   "alt_tur": "b) Tedaviyle işlevselliği kısmi düzelen",
+   "oran": 65,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-008",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "II- Şizofreni",
+   "alt_tur": "c) Tedaviyle işlevselliği düzelmeyen",
+   "oran": 80,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-009",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "III- Şizoaffektif bozukluk (manik, depresif ve karışık tip)",
+   "alt_tur": "a) Tedaviyle işlevselliği düzelen",
+   "oran": 45,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-010",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "III- Şizoaffektif bozukluk (manik, depresif ve karışık tip)",
+   "alt_tur": "b) Tedaviyle işlevselliği kısmi düzelen",
+   "oran": 65,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-011",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "III- Şizoaffektif bozukluk (manik, depresif ve karışık tip)",
+   "alt_tur": "c) Tedaviyle işlevselliği düzelmeyen",
+   "oran": 80,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-012",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "IV- Sanrısal bozukluklar (paranoya, paranoid psikoz, parafreni tanılarını içerir)",
+   "alt_tur": "a) Tedaviyle işlevselliği düzelen",
+   "oran": 0,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-013",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "IV- Sanrısal bozukluklar (paranoya, paranoid psikoz, parafreni tanılarını içerir)",
+   "alt_tur": "b) Tedaviyle işlevselliği kısmi düzelen",
+   "oran": 40,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-014",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "IV- Sanrısal bozukluklar (paranoya, paranoid psikoz, parafreni tanılarını içerir)",
+   "alt_tur": "c) Tedaviyle işlevselliği düzelmeyen",
+   "oran": 80,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-015",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "V- Atipik veya başka türlü adlandırılamayan psikozlar",
+   "alt_tur": "a) Tedaviyle işlevselliği düzelen",
+   "oran": 0,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-016",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "V- Atipik veya başka türlü adlandırılamayan psikozlar",
+   "alt_tur": "b) Tedaviyle işlevselliği kısmi düzelen",
+   "oran": 40,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-017",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "V- Atipik veya başka türlü adlandırılamayan psikozlar",
+   "alt_tur": "c) Tedaviyle işlevselliği düzelmeyen",
+   "oran": 80,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-018",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "VI- Yaygın gelişimsel bozukluklar",
+   "alt_tur": "a) Asperger Sendromu",
+   "oran": 40,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-019",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "VI- Yaygın gelişimsel bozukluklar",
+   "alt_tur": "b) Disintegratif psikoz",
+   "oran": 80,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-020",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "VI- Yaygın gelişimsel bozukluklar",
+   "alt_tur": "c) Rett Sendromu",
+   "oran": 80,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-021",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "VI- Yaygın gelişimsel bozukluklar",
+   "alt_tur": "d) Atipik otizm (başka türlü adlandırılamayan yaygın gelişimsel bozukluk)",
+   "oran": 40,
+   "sayfa": 13
+  },
+  {
+   "id": "Z-022",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "I- Beyin hasarı, beyin işlev bozukluğu ve bedensel hastalıklara bağlı ruhsal bozukluklar — a) Organik hâllusinozis, organik katatonik bozukluk, organik delüzyonel [şizofreni-benzeri] bozukluklar",
+   "alt_tur": "1. Tedavi ile işlevselliği tam düzelen",
+   "oran": 0,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-023",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "I- Beyin hasarı, beyin işlev bozukluğu ve bedensel hastalıklara bağlı ruhsal bozukluklar — a) Organik hâllusinozis, organik katatonik bozukluk, organik delüzyonel [şizofreni-benzeri] bozukluklar",
+   "alt_tur": "2. Tedavi ile işlevselliği kısmen düzelen",
+   "oran": 40,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-024",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "I- Beyin hasarı, beyin işlev bozukluğu ve bedensel hastalıklara bağlı ruhsal bozukluklar — a) Organik hâllusinozis, organik katatonik bozukluk, organik delüzyonel [şizofreni-benzeri] bozukluklar",
+   "alt_tur": "3. Tedavi ile işlevselliği düzelmeyen",
+   "oran": 70,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-025",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "I- Beyin hasarı, beyin işlev bozukluğu ve bedensel hastalıklara bağlı ruhsal bozukluklar — b) Organik duygu [affektivite] bozuklukları, organik anksiyete bozuklukları, organik disosiyatif bozukluk, organik duygusal labilite [astenik] bozukluk, hafif bilişsel bozukluk",
+   "alt_tur": "1. Tedavi ile işlevselliği tam düzelen",
+   "oran": 0,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-026",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "I- Beyin hasarı, beyin işlev bozukluğu ve bedensel hastalıklara bağlı ruhsal bozukluklar — b) Organik duygu [affektivite] bozuklukları, organik anksiyete bozuklukları, organik disosiyatif bozukluk, organik duygusal labilite [astenik] bozukluk, hafif bilişsel bozukluk",
+   "alt_tur": "2. Tedavi ile işlevselliği kısmen düzelen",
+   "oran": 25,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-027",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "I- Beyin hasarı, beyin işlev bozukluğu ve bedensel hastalıklara bağlı ruhsal bozukluklar — b) Organik duygu [affektivite] bozuklukları, organik anksiyete bozuklukları, organik disosiyatif bozukluk, organik duygusal labilite [astenik] bozukluk, hafif bilişsel bozukluk",
+   "alt_tur": "3. Tedavi ile işlevselliği düzelmeyen",
+   "oran": 40,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-028",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "II- Beyin hasarı, beyin işlev bozukluğuna bağlı davranış bozuklukları (organik kişilik bozukluğu, frontal lob sendromu, beyin sarsılması sonrası postkontüzyonel sendrom)",
+   "alt_tur": "1. Tedavi ile işlevselliği tam düzelen",
+   "oran": 0,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-029",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "II- Beyin hasarı, beyin işlev bozukluğuna bağlı davranış bozuklukları (organik kişilik bozukluğu, frontal lob sendromu, beyin sarsılması sonrası postkontüzyonel sendrom)",
+   "alt_tur": "2. Tedavi ile işlevselliği kısmen düzelen",
+   "oran": 25,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-030",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "II- Beyin hasarı, beyin işlev bozukluğuna bağlı davranış bozuklukları (organik kişilik bozukluğu, frontal lob sendromu, beyin sarsılması sonrası postkontüzyonel sendrom)",
+   "alt_tur": "3. Tedavi ile işlevselliği düzelmeyen",
+   "oran": 40,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-031",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "III- Duygudurum bozuklukları — a) Manik nöbet, bipolar duygudurum bozukluğu",
+   "alt_tur": "1. Tedavi ile işlevselliği tam düzelen",
+   "oran": 0,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-032",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "III- Duygudurum bozuklukları — a) Manik nöbet, bipolar duygudurum bozukluğu",
+   "alt_tur": "2. Tedavi ile işlevselliği kısmen düzelen",
+   "oran": 40,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-033",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "III- Duygudurum bozuklukları — a) Manik nöbet, bipolar duygudurum bozukluğu",
+   "alt_tur": "3. Tedavi ile işlevselliği düzelmeyen",
+   "oran": 70,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-034",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "III- Duygudurum bozuklukları — b) Yineleyen depresif bozukluk",
+   "alt_tur": "1. Tedavi ile işlevselliği tam düzelen",
+   "oran": 0,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI",
+    "R-REMISYON"
+   ]
+  },
+  {
+   "id": "Z-035",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "III- Duygudurum bozuklukları — b) Yineleyen depresif bozukluk",
+   "alt_tur": "2. Tedavi ile işlevselliği kısmen düzelen",
+   "oran": 20,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI",
+    "R-REMISYON"
+   ]
+  },
+  {
+   "id": "Z-036",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "III- Duygudurum bozuklukları — b) Yineleyen depresif bozukluk",
+   "alt_tur": "3. Tedavi ile işlevselliği düzelmeyen",
+   "oran": 40,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI",
+    "R-REMISYON"
+   ]
+  },
+  {
+   "id": "Z-037",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "IV- Anksiyete bozuklukları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi), obsesif-kompülsif bozukluklar, somatoform bozukluklar ve yeme bozuklukları — a) Anksiyete bozukluları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi) ve somatoform bozukluklar",
+   "alt_tur": "1. Tedavi ile işlevselliği tam düzelen",
+   "oran": 0,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-038",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "IV- Anksiyete bozuklukları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi), obsesif-kompülsif bozukluklar, somatoform bozukluklar ve yeme bozuklukları — a) Anksiyete bozukluları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi) ve somatoform bozukluklar",
+   "alt_tur": "2. Tedavi ile işlevselliği kısmen düzelen",
+   "oran": 20,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-039",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "IV- Anksiyete bozuklukları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi), obsesif-kompülsif bozukluklar, somatoform bozukluklar ve yeme bozuklukları — a) Anksiyete bozukluları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi) ve somatoform bozukluklar",
+   "alt_tur": "3. Tedavi ile işlevselliği düzelmeyen",
+   "oran": 40,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-040",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "IV- Anksiyete bozuklukları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi), obsesif-kompülsif bozukluklar, somatoform bozukluklar ve yeme bozuklukları — b) Obsesif-kompulsif bozukluk",
+   "alt_tur": "1. Tedavi ile işlevselliği tam düzelen",
+   "oran": 0,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-041",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "IV- Anksiyete bozuklukları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi), obsesif-kompülsif bozukluklar, somatoform bozukluklar ve yeme bozuklukları — b) Obsesif-kompulsif bozukluk",
+   "alt_tur": "2. Tedavi ile işlevselliği kısmen düzelen",
+   "oran": 40,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-042",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "IV- Anksiyete bozuklukları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi), obsesif-kompülsif bozukluklar, somatoform bozukluklar ve yeme bozuklukları — b) Obsesif-kompulsif bozukluk",
+   "alt_tur": "3. Tedavi ile işlevselliği düzelmeyen",
+   "oran": 60,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-043",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "IV- Anksiyete bozuklukları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi), obsesif-kompülsif bozukluklar, somatoform bozukluklar ve yeme bozuklukları — c) Travma sonrası stres bozukluğu",
+   "alt_tur": "1. Tedavi ile işlevselliği tam düzelen",
+   "oran": 0,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-044",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "IV- Anksiyete bozuklukları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi), obsesif-kompülsif bozukluklar, somatoform bozukluklar ve yeme bozuklukları — c) Travma sonrası stres bozukluğu",
+   "alt_tur": "2. Tedavi ile işlevselliği kısmen düzelen",
+   "oran": 40,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-045",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "IV- Anksiyete bozuklukları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi), obsesif-kompülsif bozukluklar, somatoform bozukluklar ve yeme bozuklukları — c) Travma sonrası stres bozukluğu",
+   "alt_tur": "3. Tedavi ile işlevselliği düzelmeyen",
+   "oran": 60,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-046",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "IV- Anksiyete bozuklukları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi), obsesif-kompülsif bozukluklar, somatoform bozukluklar ve yeme bozuklukları — d) Yeme bozuklukları (Anoreksia nervosa ve bulimia nervosa )",
+   "alt_tur": "1. Tedavi ile işlevselliği tam düzelen",
+   "oran": 0,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-047",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "IV- Anksiyete bozuklukları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi), obsesif-kompülsif bozukluklar, somatoform bozukluklar ve yeme bozuklukları — d) Yeme bozuklukları (Anoreksia nervosa ve bulimia nervosa )",
+   "alt_tur": "2. Tedavi ile işlevselliği kısmen düzelen",
+   "oran": 40,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-048",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "IV- Anksiyete bozuklukları( panik bozukluk, yaygın anksiyete bozukluğu, agorafobi), obsesif-kompülsif bozukluklar, somatoform bozukluklar ve yeme bozuklukları — d) Yeme bozuklukları (Anoreksia nervosa ve bulimia nervosa )",
+   "alt_tur": "3. Tedavi ile işlevselliği düzelmeyen",
+   "oran": 60,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-049",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "V- Psikoaktif madde kullanımına bağlı ruhsal ve davranışsal bozukluklar (duygulanım bozukluğu, alkol ve madde kullanımına bağlı psikotik bozukluk — alkol hâlusinozisi, alkol paranoyası)",
+   "alt_tur": "1- Tedavi ile işlevselliği tam düzelen",
+   "oran": 0,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-050",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "V- Psikoaktif madde kullanımına bağlı ruhsal ve davranışsal bozukluklar (duygulanım bozukluğu, alkol ve madde kullanımına bağlı psikotik bozukluk — alkol hâlusinozisi, alkol paranoyası)",
+   "alt_tur": "2- Tedavi ile işlevselliği kısmen düzelen",
+   "oran": 20,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-051",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "V- Psikoaktif madde kullanımına bağlı ruhsal ve davranışsal bozukluklar (duygulanım bozukluğu, alkol ve madde kullanımına bağlı psikotik bozukluk — alkol hâlusinozisi, alkol paranoyası)",
+   "alt_tur": "3- Tedavi ile işlevselliği düzelmeyen",
+   "oran": 40,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-052",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "VI- Kişilik bozuklukları",
+   "alt_tur": "1- Tedavi ile işlevselliği tam düzelen",
+   "oran": 0,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-053",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "VI- Kişilik bozuklukları",
+   "alt_tur": "2- Tedavi ile işlevselliği kısmen düzelen",
+   "oran": 15,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-054",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "VI- Kişilik bozuklukları",
+   "alt_tur": "3- Tedavi ile işlevselliği düzelmeyen",
+   "oran": 20,
+   "sayfa": 15,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI"
+   ]
+  },
+  {
+   "id": "Z-055",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "VI- Yaygın gelişimsel bozukluklar",
+   "alt_tur": "d) Otizm*",
+   "oran": 80,
+   "sayfa": 13,
+   "kaynak_not": "Kaynakta iki ayrı madde \"d)\" ile numaralanmış (atipik otizm ve otizm); harf tekrarı düzeltilmedi."
+  },
+  {
+   "id": "Z-056",
+   "bolum": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "hastalik": "III- Duygudurum bozuklukları — c) Yineleyen depresif bozukluk, şimdiki nöbet psikotik belirtili olan, olmayan, ağır",
+   "alt_tur": "1. Tedavi ile işlevselliği tam düzelen",
+   "oran": 0,
+   "sayfa": 14,
+   "kisit": [
+    "R-GECICI",
+    "R-VERGI",
+    "R-REMISYON"
+   ]
+  },
+  {
+   "id": "D-001",
+   "bolum": "DERİ",
+   "grup": "I",
+   "hastalik": "A- Rozasea",
+   "alt_tur": "1- Orta",
+   "oran": 5,
+   "sayfa": 16,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-002",
+   "bolum": "DERİ",
+   "grup": "I",
+   "hastalik": "A- Rozasea",
+   "alt_tur": "2- Şiddetli",
+   "oran": 10,
+   "sayfa": 16,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-003",
+   "bolum": "DERİ",
+   "grup": "I",
+   "hastalik": "A- Rozasea",
+   "alt_tur": "3- Çok şiddetli",
+   "oran": 15,
+   "sayfa": 16,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-004",
+   "bolum": "DERİ",
+   "grup": "I",
+   "hastalik": "B- Hidradenitis supurativa, akne konglobata ve folliküler oklüzyon triadı",
+   "alt_tur": "1- Hafif",
+   "oran": 5,
+   "sayfa": 16,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-005",
+   "bolum": "DERİ",
+   "grup": "I",
+   "hastalik": "B- Hidradenitis supurativa, akne konglobata ve folliküler oklüzyon triadı",
+   "alt_tur": "2- Orta",
+   "oran": 10,
+   "sayfa": 16,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-006",
+   "bolum": "DERİ",
+   "grup": "I",
+   "hastalik": "B- Hidradenitis supurativa, akne konglobata ve folliküler oklüzyon triadı",
+   "alt_tur": "3- Şiddetli",
+   "oran": 20,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-007",
+   "bolum": "DERİ",
+   "grup": "I",
+   "hastalik": "B- Hidradenitis supurativa, akne konglobata ve folliküler oklüzyon triadı",
+   "alt_tur": "4- Çok şiddetli",
+   "oran": 40,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-008",
+   "bolum": "DERİ",
+   "grup": "I",
+   "hastalik": "C- Saçlı derinin diseke edici folliküliti",
+   "alt_tur": "1- Orta",
+   "oran": 5,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-009",
+   "bolum": "DERİ",
+   "grup": "I",
+   "hastalik": "C- Saçlı derinin diseke edici folliküliti",
+   "alt_tur": "2- Şiddetli",
+   "oran": 15,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-010",
+   "bolum": "DERİ",
+   "grup": "I",
+   "hastalik": "D- Hiperhidrosis",
+   "alt_tur": "1- Orta",
+   "oran": 5,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-011",
+   "bolum": "DERİ",
+   "grup": "I",
+   "hastalik": "D- Hiperhidrosis",
+   "alt_tur": "2- Şiddetli",
+   "oran": 10,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-012",
+   "bolum": "DERİ",
+   "grup": "I",
+   "hastalik": "D- Hiperhidrosis",
+   "alt_tur": "3- Çok şiddetli",
+   "oran": 20,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-013",
+   "bolum": "DERİ",
+   "grup": "II",
+   "hastalik": "1- Alopesi totalis",
+   "alt_tur": "—",
+   "oran": 10,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-014",
+   "bolum": "DERİ",
+   "grup": "II",
+   "hastalik": "2- Alopesi universalis",
+   "alt_tur": "—",
+   "oran": 10,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-015",
+   "bolum": "DERİ",
+   "grup": "II",
+   "hastalik": "3- Hirsutizm",
+   "alt_tur": "a- Orta",
+   "oran": 5,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-016",
+   "bolum": "DERİ",
+   "grup": "II",
+   "hastalik": "3- Hirsutizm",
+   "alt_tur": "b- Şiddetli",
+   "oran": 10,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-017",
+   "bolum": "DERİ",
+   "grup": "II",
+   "hastalik": "4- Saç rengi ve saç gövdesi anormallikleri (moniletrix vb.)",
+   "alt_tur": "—",
+   "oran": 5,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-018",
+   "bolum": "DERİ",
+   "grup": "III",
+   "hastalik": "A- Atopik dermatit",
+   "alt_tur": "1- Hafif: vücudun %0-19'unu kaplayan",
+   "oran": 5,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-019",
+   "bolum": "DERİ",
+   "grup": "III",
+   "hastalik": "A- Atopik dermatit",
+   "alt_tur": "2- Orta: vücudun %20-49'unu kaplayan",
+   "oran": 10,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-020",
+   "bolum": "DERİ",
+   "grup": "III",
+   "hastalik": "A- Atopik dermatit",
+   "alt_tur": "3- Şiddetli: vücudun %50-79'unu kaplayan",
+   "oran": 20,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-021",
+   "bolum": "DERİ",
+   "grup": "III",
+   "hastalik": "A- Atopik dermatit",
+   "alt_tur": "4- Çok şiddetli: vücudun %80-100'ünü kaplayan",
+   "oran": 40,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-022",
+   "bolum": "DERİ",
+   "grup": "III",
+   "hastalik": "B- Dermatitler (kontakt dermatit, staz dermatit, dishidrotik ekzema)",
+   "alt_tur": "1- Orta",
+   "oran": 5,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-023",
+   "bolum": "DERİ",
+   "grup": "III",
+   "hastalik": "B- Dermatitler (kontakt dermatit, staz dermatit, dishidrotik ekzema)",
+   "alt_tur": "2- Şiddetli",
+   "oran": 10,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-024",
+   "bolum": "DERİ",
+   "grup": "III",
+   "hastalik": "B- Dermatitler (kontakt dermatit, staz dermatit, dishidrotik ekzema)",
+   "alt_tur": "3- Çok şiddetli",
+   "oran": 20,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-025",
+   "bolum": "DERİ",
+   "grup": "IV",
+   "hastalik": "A- Psoriasis",
+   "alt_tur": "1- Hafif: vücudun %0-19'unu kaplayan",
+   "oran": 5,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-026",
+   "bolum": "DERİ",
+   "grup": "IV",
+   "hastalik": "A- Psoriasis",
+   "alt_tur": "2- Orta: vücudun %20-49'unu kaplayan",
+   "oran": 15,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-027",
+   "bolum": "DERİ",
+   "grup": "IV",
+   "hastalik": "A- Psoriasis",
+   "alt_tur": "3- Şiddetli: vücudun %50-79'unu kaplayan",
+   "oran": 30,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-028",
+   "bolum": "DERİ",
+   "grup": "IV",
+   "hastalik": "A- Psoriasis",
+   "alt_tur": "4- Çok şiddetli: vücudun %80-100'ünü kaplayan psoriasis vulgaris ve generalize püstüler psoriasis",
+   "oran": 40,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-029",
+   "bolum": "DERİ",
+   "grup": "IV",
+   "hastalik": "B- Pitriasis rubra pilaris, liken planus",
+   "alt_tur": "1- Hafif",
+   "oran": 5,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-030",
+   "bolum": "DERİ",
+   "grup": "IV",
+   "hastalik": "B- Pitriasis rubra pilaris, liken planus",
+   "alt_tur": "2- Orta",
+   "oran": 10,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-031",
+   "bolum": "DERİ",
+   "grup": "IV",
+   "hastalik": "B- Pitriasis rubra pilaris, liken planus",
+   "alt_tur": "3- Şiddetli",
+   "oran": 20,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-032",
+   "bolum": "DERİ",
+   "grup": "IV",
+   "hastalik": "B- Pitriasis rubra pilaris, liken planus",
+   "alt_tur": "4- Çok şiddetli",
+   "oran": 30,
+   "sayfa": 17,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-033",
+   "bolum": "DERİ",
+   "grup": "IV",
+   "hastalik": "C- Perforan dermatozlar (Kryle hastalığı vb.)",
+   "alt_tur": "1- Orta",
+   "oran": 5,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-034",
+   "bolum": "DERİ",
+   "grup": "IV",
+   "hastalik": "C- Perforan dermatozlar (Kryle hastalığı vb.)",
+   "alt_tur": "2- Şiddetli",
+   "oran": 10,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-035",
+   "bolum": "DERİ",
+   "grup": "IV",
+   "hastalik": "C- Perforan dermatozlar (Kryle hastalığı vb.)",
+   "alt_tur": "3- Çok şiddetli",
+   "oran": 20,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-036",
+   "bolum": "DERİ",
+   "grup": "V",
+   "hastalik": "Psikiyatrik etyolojili deri hastalıkları (nörotik ekskoriasyon, faktisiyel dermatit vb.)",
+   "alt_tur": "1- Orta",
+   "oran": 5,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-037",
+   "bolum": "DERİ",
+   "grup": "V",
+   "hastalik": "Psikiyatrik etyolojili deri hastalıkları (nörotik ekskoriasyon, faktisiyel dermatit vb.)",
+   "alt_tur": "2- Şiddetli",
+   "oran": 10,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-038",
+   "bolum": "DERİ",
+   "grup": "V",
+   "hastalik": "Psikiyatrik etyolojili deri hastalıkları (nörotik ekskoriasyon, faktisiyel dermatit vb.)",
+   "alt_tur": "3- Çok şiddetli",
+   "oran": 20,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-039",
+   "bolum": "DERİ",
+   "grup": "VI-A",
+   "hastalik": "Kongenital melanositik nevus",
+   "alt_tur": "1- 1,5-20 cm arasında olanlar",
+   "oran": 5,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-040",
+   "bolum": "DERİ",
+   "grup": "VI-A",
+   "hastalik": "Kongenital melanositik nevus",
+   "alt_tur": "2- 20 cm'den büyük",
+   "oran": 20,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-041",
+   "bolum": "DERİ",
+   "grup": "VI-A",
+   "hastalik": "Kan damarlarının benign neoplazm ve hiperplazileri (kapiller anjiom, kavernöz anjiom, lenfanjiom, lenfohemanjiom, anjiokeratom, Klippel-Trenanuay-Weber vb.)",
+   "alt_tur": "1- Hafif: vücudun %10-19'unu kaplayan",
+   "oran": 5,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-042",
+   "bolum": "DERİ",
+   "grup": "VI-A",
+   "hastalik": "Kan damarlarının benign neoplazm ve hiperplazileri (kapiller anjiom, kavernöz anjiom, lenfanjiom, lenfohemanjiom, anjiokeratom, Klippel-Trenanuay-Weber vb.)",
+   "alt_tur": "2- Orta: vücudun %20-49'unu kaplayan",
+   "oran": 10,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-043",
+   "bolum": "DERİ",
+   "grup": "VI-A",
+   "hastalik": "Kan damarlarının benign neoplazm ve hiperplazileri (kapiller anjiom, kavernöz anjiom, lenfanjiom, lenfohemanjiom, anjiokeratom, Klippel-Trenanuay-Weber vb.)",
+   "alt_tur": "3- Şiddetli: vücudun %50-79'unu kaplayan",
+   "oran": 20,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-044",
+   "bolum": "DERİ",
+   "grup": "VI-A",
+   "hastalik": "Kan damarlarının benign neoplazm ve hiperplazileri (kapiller anjiom, kavernöz anjiom, lenfanjiom, lenfohemanjiom, anjiokeratom, Klippel-Trenanuay-Weber vb.)",
+   "alt_tur": "4- Çok şiddetli: vücudun %80-100'ünü kaplayan",
+   "oran": 30,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-045",
+   "bolum": "DERİ",
+   "grup": "VI-A",
+   "hastalik": "Hipertrofik skar ve keloid",
+   "alt_tur": "1- Hafif (vücut yüzeyinin %1-9'unu kaplayan)",
+   "oran": 5,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-046",
+   "bolum": "DERİ",
+   "grup": "VI-A",
+   "hastalik": "Hipertrofik skar ve keloid",
+   "alt_tur": "2- Orta (vücut yüzeyinin %10-19'unu kaplayan)",
+   "oran": 10,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-047",
+   "bolum": "DERİ",
+   "grup": "VI-A",
+   "hastalik": "Hipertrofik skar ve keloid",
+   "alt_tur": "3- Şiddetli (vücut yüzeyinin %20-49'unu kaplayan)",
+   "oran": 20,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-048",
+   "bolum": "DERİ",
+   "grup": "VI-A",
+   "hastalik": "Hipertrofik skar ve keloid",
+   "alt_tur": "4- Çok şiddetli: vücudun %50-100'ünü kaplayan",
+   "oran": 40,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-049",
+   "bolum": "DERİ",
+   "grup": "VI-B",
+   "hastalik": "Derinin premalign tümörleri",
+   "alt_tur": "Primer tümörün sebep olduğu veya bu tümöre yönelik tedavi sonrasında gelişen doku veya fonksiyon kayıpları",
+   "oran": 5,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-050",
+   "bolum": "DERİ",
+   "grup": "VI-C",
+   "hastalik": "Derinin malign tümörleri",
+   "alt_tur": "Çalışabilir durumda ve tedaviye cevap veren klinik evreli malign tümörü olan hastalar, primer tümörün sebep olduğu veya bu tümöre yönelik tedavi sonrasında gelişen doku veya fonksiyon kayıpları",
+   "oran": 10,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-051",
+   "bolum": "DERİ",
+   "grup": "VII",
+   "hastalik": "1- Solar ürtiker, aktinik retikuloid, persistan ışık reaksiyonu, polimorf ışık erüpsiyonu",
+   "alt_tur": "1- Orta",
+   "oran": 5,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-052",
+   "bolum": "DERİ",
+   "grup": "VII",
+   "hastalik": "1- Solar ürtiker, aktinik retikuloid, persistan ışık reaksiyonu, polimorf ışık erüpsiyonu",
+   "alt_tur": "2- Şiddetli",
+   "oran": 10,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-053",
+   "bolum": "DERİ",
+   "grup": "VII",
+   "hastalik": "1- Solar ürtiker, aktinik retikuloid, persistan ışık reaksiyonu, polimorf ışık erüpsiyonu",
+   "alt_tur": "3- Çok şiddetli",
+   "oran": 20,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-054",
+   "bolum": "DERİ",
+   "grup": "VII",
+   "hastalik": "2- Porfirialar",
+   "alt_tur": "1- Hafif",
+   "oran": 10,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-055",
+   "bolum": "DERİ",
+   "grup": "VII",
+   "hastalik": "2- Porfirialar",
+   "alt_tur": "2- Orta",
+   "oran": 20,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-056",
+   "bolum": "DERİ",
+   "grup": "VII",
+   "hastalik": "2- Porfirialar",
+   "alt_tur": "3- Şiddetli",
+   "oran": 40,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-057",
+   "bolum": "DERİ",
+   "grup": "VII",
+   "hastalik": "2- Porfirialar",
+   "alt_tur": "4- Çok şiddetli",
+   "oran": 60,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-058",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Vaskulitler",
+   "alt_tur": "1- Hafif",
+   "oran": 5,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-059",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Vaskulitler",
+   "alt_tur": "2- Orta",
+   "oran": 10,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-060",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Vaskulitler",
+   "alt_tur": "3- Şiddetli",
+   "oran": 20,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-061",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Vaskulitler",
+   "alt_tur": "4- Çok şiddetli",
+   "oran": 40,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-062",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Kronik ve/veya tedaviye dirençli ürtiker ve anjioödem",
+   "alt_tur": "—",
+   "oran": 10,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-063",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Pannikülitler (lezyon şiddetine göre değerlendirilir)",
+   "alt_tur": "1- Orta",
+   "oran": 5,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-064",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Pannikülitler (lezyon şiddetine göre değerlendirilir)",
+   "alt_tur": "2- Şiddetli",
+   "oran": 10,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-065",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Pannikülitler (lezyon şiddetine göre değerlendirilir)",
+   "alt_tur": "3- Çok şiddetli",
+   "oran": 20,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-066",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Behçet hastalığı",
+   "alt_tur": "2- Tedaviye dirençli şiddetli mukokutanöz Behçet hastalığı",
+   "oran": 20,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-067",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Otoimmün büllü hastalıklar (pemfigus vulgaris, büllöz pemfigoid, dermatitis herpetiformis ve diğer otoimmün büllü hastalıklar)",
+   "alt_tur": "1- Hafif",
+   "oran": 10,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-068",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Otoimmün büllü hastalıklar (pemfigus vulgaris, büllöz pemfigoid, dermatitis herpetiformis ve diğer otoimmün büllü hastalıklar)",
+   "alt_tur": "2- Orta",
+   "oran": 20,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-069",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Otoimmün büllü hastalıklar (pemfigus vulgaris, büllöz pemfigoid, dermatitis herpetiformis ve diğer otoimmün büllü hastalıklar)",
+   "alt_tur": "3- Şiddetli",
+   "oran": 40,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-070",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Otoimmün büllü hastalıklar (pemfigus vulgaris, büllöz pemfigoid, dermatitis herpetiformis ve diğer otoimmün büllü hastalıklar)",
+   "alt_tur": "4- Çok şiddetli",
+   "oran": 60,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-071",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Kronik bağ doku hastalıkları",
+   "alt_tur": "1- Hafif",
+   "oran": 5,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-072",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Kronik bağ doku hastalıkları",
+   "alt_tur": "2- Orta",
+   "oran": 10,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-073",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Kronik bağ doku hastalıkları",
+   "alt_tur": "3- Şiddetli",
+   "oran": 20,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-074",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Kronik bağ doku hastalıkları",
+   "alt_tur": "4- Çok şiddetli",
+   "oran": 30,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-075",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Reiter sendromu",
+   "alt_tur": "Sadece deri lezyonları için",
+   "oran": 5,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-076",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Pyoderma gangrenosum",
+   "alt_tur": "1- Hafif",
+   "oran": 5,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-077",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Pyoderma gangrenosum",
+   "alt_tur": "2- Orta",
+   "oran": 10,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-078",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Pyoderma gangrenosum",
+   "alt_tur": "3- Şiddetli",
+   "oran": 20,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-079",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Pyoderma gangrenosum",
+   "alt_tur": "4- Çok şiddetli",
+   "oran": 40,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-080",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Sarkoidozis",
+   "alt_tur": "1- Sadece deri lezyonları için lokalize",
+   "oran": 5,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-081",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Sarkoidozis",
+   "alt_tur": "2- Yaygın",
+   "oran": 10,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-082",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Kronik graft versus host hastalığı",
+   "alt_tur": "1- Hafif",
+   "oran": 5,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-083",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Kronik graft versus host hastalığı",
+   "alt_tur": "2- Orta",
+   "oran": 10,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-084",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Kronik graft versus host hastalığı",
+   "alt_tur": "3- Şiddetli",
+   "oran": 20,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-085",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Kronik graft versus host hastalığı",
+   "alt_tur": "4- Çok şiddetli",
+   "oran": 30,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-086",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Metabolik, endokrin bozukluklar, depolanma hastalıkları ve sistemik malignitelerin deri bulguları",
+   "alt_tur": "Sadece deri lezyonları için",
+   "oran": 5,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-087",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "İktiyozis grubu hastalıklar",
+   "alt_tur": "1- Hafif",
+   "oran": 5,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK",
+    "R-IKTIYOZ"
+   ]
+  },
+  {
+   "id": "D-088",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "İktiyozis grubu hastalıklar",
+   "alt_tur": "2- Orta",
+   "oran": 10,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK",
+    "R-IKTIYOZ"
+   ]
+  },
+  {
+   "id": "D-089",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "İktiyozis grubu hastalıklar",
+   "alt_tur": "3- Şiddetli",
+   "oran": 30,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK",
+    "R-IKTIYOZ"
+   ]
+  },
+  {
+   "id": "D-090",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "İktiyozis grubu hastalıklar",
+   "alt_tur": "4- Çok şiddetli",
+   "oran": 60,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK",
+    "R-IKTIYOZ"
+   ]
+  },
+  {
+   "id": "D-091",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Herediter palmoplanter keratodermiler, Unna Thost, Mal de Melada vb.",
+   "alt_tur": "1- Hafif",
+   "oran": 5,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-092",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Herediter palmoplanter keratodermiler, Unna Thost, Mal de Melada vb.",
+   "alt_tur": "2- Orta",
+   "oran": 10,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-093",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Herediter palmoplanter keratodermiler, Unna Thost, Mal de Melada vb.",
+   "alt_tur": "3- Şiddetli",
+   "oran": 20,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-094",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Herediter palmoplanter keratodermiler, Unna Thost, Mal de Melada vb.",
+   "alt_tur": "4- Çok şiddetli",
+   "oran": 40,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-095",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Nörokutanöz hastalıklar (nörofibromatosis, tuberoz skleroz, psödoksantoma elastikum, ataksi telenjiektazi vb.)",
+   "alt_tur": "1- Sistem bulgusu olmayan, az sayıda deri lezyonları olan olgular",
+   "oran": 5,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-096",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Nörokutanöz hastalıklar (nörofibromatosis, tuberoz skleroz, psödoksantoma elastikum, ataksi telenjiektazi vb.)",
+   "alt_tur": "2- Yaygın deri lezyonları olan olgular",
+   "oran": 10,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-097",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Epidermolizis büllosa",
+   "alt_tur": "1- Hafif",
+   "oran": 20,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-098",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Epidermolizis büllosa",
+   "alt_tur": "2- Orta",
+   "oran": 40,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-099",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Epidermolizis büllosa",
+   "alt_tur": "3- Şiddetli",
+   "oran": 60,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-100",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Epidermolizis büllosa",
+   "alt_tur": "4- Çok şiddetli",
+   "oran": 80,
+   "sayfa": 20,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-101",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Hailey Hailey hastalığı",
+   "alt_tur": "1- Orta",
+   "oran": 5,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-102",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Hailey Hailey hastalığı",
+   "alt_tur": "2- Şiddetli",
+   "oran": 10,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-103",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Hailey Hailey hastalığı",
+   "alt_tur": "3- Çok şiddetli",
+   "oran": 15,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-104",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Kseroderma pigmentozum, Rothmund-Thompson sendromu, diskeratozis konjenita, Werner sendromu vb.",
+   "alt_tur": "1- Hafif olgular",
+   "oran": 20,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-105",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Kseroderma pigmentozum, Rothmund-Thompson sendromu, diskeratozis konjenita, Werner sendromu vb.",
+   "alt_tur": "2- Orta derecede",
+   "oran": 40,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-106",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Kseroderma pigmentozum, Rothmund-Thompson sendromu, diskeratozis konjenita, Werner sendromu vb.",
+   "alt_tur": "3- Şiddetli olgular",
+   "oran": 60,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-107",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Kseroderma pigmentozum, Rothmund-Thompson sendromu, diskeratozis konjenita, Werner sendromu vb.",
+   "alt_tur": "4- Çok şiddetli",
+   "oran": 80,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-108",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Anhidrotik/hipohidrotik ve hidrotik ektodermal displazi",
+   "alt_tur": "1- Sadece deri lezyonları olan hafif olgular",
+   "oran": 5,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK",
+    "R-EKTO"
+   ]
+  },
+  {
+   "id": "D-109",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Anhidrotik/hipohidrotik ve hidrotik ektodermal displazi",
+   "alt_tur": "2- Orta derecede olgular",
+   "oran": 10,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK",
+    "R-EKTO"
+   ]
+  },
+  {
+   "id": "D-110",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Anhidrotik/hipohidrotik ve hidrotik ektodermal displazi",
+   "alt_tur": "3- Şiddetli olgular",
+   "oran": 20,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK",
+    "R-EKTO"
+   ]
+  },
+  {
+   "id": "D-111",
+   "bolum": "DERİ",
+   "grup": "XI",
+   "hastalik": "Anhidrotik/hipohidrotik ve hidrotik ektodermal displazi",
+   "alt_tur": "4- Yaygın ve çok şiddetli olgular",
+   "oran": 40,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK",
+    "R-EKTO"
+   ]
+  },
+  {
+   "id": "D-112",
+   "bolum": "DERİ",
+   "grup": "XII",
+   "hastalik": "Kronik bacak ülserleri (lezyon şiddetine göre)",
+   "alt_tur": "1- Hafif",
+   "oran": 5,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-113",
+   "bolum": "DERİ",
+   "grup": "XII",
+   "hastalik": "Kronik bacak ülserleri (lezyon şiddetine göre)",
+   "alt_tur": "2- Orta",
+   "oran": 10,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-114",
+   "bolum": "DERİ",
+   "grup": "XII",
+   "hastalik": "Kronik bacak ülserleri (lezyon şiddetine göre)",
+   "alt_tur": "3- Şiddetli",
+   "oran": 20,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-115",
+   "bolum": "DERİ",
+   "grup": "XII",
+   "hastalik": "Kronik bacak ülserleri (lezyon şiddetine göre)",
+   "alt_tur": "4- Çok şiddetli",
+   "oran": 30,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-116",
+   "bolum": "DERİ",
+   "grup": "XII",
+   "hastalik": "Dekubitus ülseri (lezyon şiddetine göre)",
+   "alt_tur": "1- Orta (Grade II)",
+   "oran": 5,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-117",
+   "bolum": "DERİ",
+   "grup": "XII",
+   "hastalik": "Dekubitus ülseri (lezyon şiddetine göre)",
+   "alt_tur": "2- Şiddetli (Grade III)",
+   "oran": 10,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-118",
+   "bolum": "DERİ",
+   "grup": "XII",
+   "hastalik": "Dekubitus ülseri (lezyon şiddetine göre)",
+   "alt_tur": "3- Çok şiddetli (Grade IV)",
+   "oran": 20,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-119",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "Kütanöz T hücreli lenfoma",
+   "alt_tur": "1- Vücutta plak, papül veya ekzematöz yama: Evre IA, IB",
+   "oran": 10,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-120",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "Kütanöz T hücreli lenfoma",
+   "alt_tur": "2- Yama, plak, papül + dermopatik LAP: Evre IIA",
+   "oran": 20,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-121",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "Kütanöz T hücreli lenfoma",
+   "alt_tur": "5- Parapsoriazis geniş plak",
+   "oran": 10,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-122",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "Kütanöz T hücreli lenfoma",
+   "alt_tur": "6- Küçük plak parapsoriasis / dijitat dermatoz, pitriazis likenoides kronika",
+   "oran": 10,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-123",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "Kütanöz T hücreli lenfoma",
+   "alt_tur": "7- Lenfomatoid papülosis",
+   "oran": 10,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-124",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "MF dışı diğer kutanöz lenfomalar",
+   "alt_tur": "1- Lokalize deri lezyonları ve iyi seyir gösteren deri lenfomaları",
+   "oran": 10,
+   "sayfa": 22,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-125",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "MF dışı diğer kutanöz lenfomalar",
+   "alt_tur": "2- Yaygın deri lezyonları veya lokalize ancak kötü seyir gösteren",
+   "oran": 20,
+   "sayfa": 22,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-126",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "MF dışı diğer kutanöz lenfomalar",
+   "alt_tur": "3- Deri dışı tutulumu olan, patolojik LAP(+), yaygın deri lezyonu, kötü prognoz",
+   "oran": 40,
+   "sayfa": 22,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-127",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "MF dışı diğer kutanöz lenfomalar",
+   "alt_tur": "4- Yaygın deri lezyonu olan, uzak metastazlı",
+   "oran": 60,
+   "sayfa": 22,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-128",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "Kutanöz (Langerhans hücreli) histiyositozlar",
+   "alt_tur": "1- Hafif",
+   "oran": 5,
+   "sayfa": 22,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-129",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "Kutanöz (Langerhans hücreli) histiyositozlar",
+   "alt_tur": "2- Orta",
+   "oran": 10,
+   "sayfa": 22,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-130",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "Kutanöz (Langerhans hücreli) histiyositozlar",
+   "alt_tur": "3- Şiddetli",
+   "oran": 20,
+   "sayfa": 22,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-131",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "Kutanöz mastositozis",
+   "alt_tur": "1- Mastositoma",
+   "oran": 5,
+   "sayfa": 22,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-132",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "Kutanöz mastositozis",
+   "alt_tur": "2- Ürtikerya pigmentoza, makulopapüler varyant ve telenjektazia makularis eruptiva perstans",
+   "oran": 10,
+   "sayfa": 22,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-133",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "Kutanöz mastositozis",
+   "alt_tur": "3- Diffüz kutanöz mastositoz",
+   "oran": 20,
+   "sayfa": 22,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-134",
+   "bolum": "DERİ",
+   "grup": "XIV",
+   "hastalik": "Lepra, kutanöz tüberkülozlar, sistemik fungal infeksiyonlar, mukokütanöz layşmanyazis",
+   "alt_tur": "Aktif dönemde, yeni tanı konmuş, tedavi altında",
+   "oran": 20,
+   "sayfa": 22,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-135",
+   "bolum": "DERİ",
+   "grup": "DIGER",
+   "hastalik": "Diğer deri hastalıkları (Yukarıdaki listede yer almayan deri hastalıkları ve sekellerine bağlı fonksiyon kayıplarının değerlendirilmesinde hastalığın şiddetine göre değerlendirme yapılır.)",
+   "alt_tur": "1- Hafif",
+   "oran": 5,
+   "sayfa": 22,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-136",
+   "bolum": "DERİ",
+   "grup": "DIGER",
+   "hastalik": "Diğer deri hastalıkları (Yukarıdaki listede yer almayan deri hastalıkları ve sekellerine bağlı fonksiyon kayıplarının değerlendirilmesinde hastalığın şiddetine göre değerlendirme yapılır.)",
+   "alt_tur": "2- Orta",
+   "oran": 15,
+   "sayfa": 22,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-137",
+   "bolum": "DERİ",
+   "grup": "DIGER",
+   "hastalik": "Diğer deri hastalıkları (Yukarıdaki listede yer almayan deri hastalıkları ve sekellerine bağlı fonksiyon kayıplarının değerlendirilmesinde hastalığın şiddetine göre değerlendirme yapılır.)",
+   "alt_tur": "3- Şiddetli",
+   "oran": 30,
+   "sayfa": 22,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-138",
+   "bolum": "DERİ",
+   "grup": "DIGER",
+   "hastalik": "Diğer deri hastalıkları (Yukarıdaki listede yer almayan deri hastalıkları ve sekellerine bağlı fonksiyon kayıplarının değerlendirilmesinde hastalığın şiddetine göre değerlendirme yapılır.)",
+   "alt_tur": "4- Çok şiddetli",
+   "oran": 40,
+   "sayfa": 22,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-139",
+   "bolum": "DERİ",
+   "grup": "VI-C",
+   "hastalik": "Derinin malign tümörleri",
+   "alt_tur": "İleri klinik evreli malign tümörü olan tedaviye cevap vermeyen çalışamayacak durumda olan hastalar",
+   "oran": 80,
+   "sayfa": 18,
+   "kisit": [
+    "R-YILLIK"
+   ],
+   "kaynak_not": "Kaynak metin yalnız iki kategori veriyor (10 ve 80); ara kombinasyonlar tanımsız."
+  },
+  {
+   "id": "D-140",
+   "bolum": "DERİ",
+   "grup": "X",
+   "hastalik": "Behçet hastalığı",
+   "alt_tur": "1- Tedavi altında hafif ve orta derecede mukokutanöz Behçet hastalığı",
+   "oran": 10,
+   "sayfa": 19,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-141",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "Kütanöz T hücreli lenfoma",
+   "alt_tur": "3- Tümoral dönem + lenf nodu yok veya dermopatik LAP veya Sezary sendromu: Evre IIB, III",
+   "oran": 40,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "D-142",
+   "bolum": "DERİ",
+   "grup": "XIII",
+   "hastalik": "Kütanöz T hücreli lenfoma",
+   "alt_tur": "4- Yama, plak, papül, tümör, Sezary sendromu, patoloji pozitif lenf nodu: Evre IVA, IVB",
+   "oran": 60,
+   "sayfa": 21,
+   "kisit": [
+    "R-YILLIK"
+   ]
+  },
+  {
+   "id": "H-001",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- A. Aplastik anemi (akkiz ve konjenital, Fanconi vb.)",
+   "alt_tur": "1- Ağır olmayan aplastik anemi",
+   "oran": 40,
+   "sayfa": 23
+  },
+  {
+   "id": "H-002",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- A. Aplastik anemi (akkiz ve konjenital, Fanconi vb.)",
+   "alt_tur": "3- Çok ağır (nötrofil 200'ün altı)",
+   "oran": 80,
+   "sayfa": 23
+  },
+  {
+   "id": "H-003",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- B. Diamond Blackfan anemisi (konjenital hipoplastik anemi)",
+   "alt_tur": "1- Steroid tedavisine yanıt verenler",
+   "oran": 30,
+   "sayfa": 23
+  },
+  {
+   "id": "H-004",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- B. Diamond Blackfan anemisi (konjenital hipoplastik anemi)",
+   "alt_tur": "2- Steroid tedavisine bağımlı olanlar",
+   "oran": 40,
+   "sayfa": 23
+  },
+  {
+   "id": "H-005",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- B. Diamond Blackfan anemisi (konjenital hipoplastik anemi)",
+   "alt_tur": "3- Steroid tedavisine yanıt vermeyenler",
+   "oran": 70,
+   "sayfa": 23
+  },
+  {
+   "id": "H-006",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- C. Hemolitik anemiler — a. Eritrosit enzim defektleri, membran defektleri",
+   "alt_tur": "1- Hafif anemi (Hb: 10-12 g/dl)",
+   "oran": 10,
+   "sayfa": 23
+  },
+  {
+   "id": "H-007",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- C. Hemolitik anemiler — a. Eritrosit enzim defektleri, membran defektleri",
+   "alt_tur": "2- Orta derecede anemi (Hb: 8-10 g/dl)",
+   "oran": 40,
+   "sayfa": 23
+  },
+  {
+   "id": "H-008",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- C. Hemolitik anemiler — a. Eritrosit enzim defektleri, membran defektleri",
+   "alt_tur": "3- Ağır anemi (Hb: <8 g/dl)",
+   "oran": 80,
+   "sayfa": 23
+  },
+  {
+   "id": "H-009",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- C. Hemolitik anemiler — b. Paroksismal nokturnal hemoglobinüri",
+   "alt_tur": "1- Hafif-orta",
+   "oran": 40,
+   "sayfa": 23
+  },
+  {
+   "id": "H-010",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- C. Hemolitik anemiler — b. Paroksismal nokturnal hemoglobinüri",
+   "alt_tur": "2- Ağır ve terminal vakalar",
+   "oran": 80,
+   "sayfa": 23
+  },
+  {
+   "id": "H-011",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- C. Hemolitik anemiler — c. Otoimmün hemolitik anemiler (idiyopatik ve sekonder otoimmün hemolitik anemiler)",
+   "alt_tur": "1- Hafif-orta (tedavi ile Hb 10-12 g/dl)",
+   "oran": 20,
+   "sayfa": 23
+  },
+  {
+   "id": "H-012",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- C. Hemolitik anemiler — c. Otoimmün hemolitik anemiler (idiyopatik ve sekonder otoimmün hemolitik anemiler)",
+   "alt_tur": "2- Tedavi ile Hb 8-10 g/dl",
+   "oran": 40,
+   "sayfa": 23
+  },
+  {
+   "id": "H-013",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- C. Hemolitik anemiler — c. Otoimmün hemolitik anemiler (idiyopatik ve sekonder otoimmün hemolitik anemiler)",
+   "alt_tur": "3- Tedaviye yanıt vermeyenler (Hb <8 g/dl)",
+   "oran": 80,
+   "sayfa": 23
+  },
+  {
+   "id": "H-014",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- D. Hemoglobinopatiler — a. Orak hücreli anemi",
+   "alt_tur": "1- Yılda bir veya daha az oraklaşma krizi geçiren hafif-orta vakalar",
+   "oran": 40,
+   "sayfa": 23
+  },
+  {
+   "id": "H-015",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- D. Hemoglobinopatiler — b. Thalassemi",
+   "alt_tur": "1- Intermedia",
+   "oran": 40,
+   "sayfa": 23
+  },
+  {
+   "id": "H-016",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- D. Hemoglobinopatiler — b. Thalassemi",
+   "alt_tur": "2- Major",
+   "oran": 70,
+   "sayfa": 23
+  },
+  {
+   "id": "H-017",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- D. Hemoglobinopatiler — b. Thalassemi",
+   "alt_tur": "3- Ağır veya terminal vakalar",
+   "oran": 80,
+   "sayfa": 23
+  },
+  {
+   "id": "H-018",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- D. Hemoglobinopatiler — c. Diğerleri (anormal hemoglobinler)",
+   "alt_tur": "1- Transfüzyon bağımlı olmayanlar",
+   "oran": 20,
+   "sayfa": 23
+  },
+  {
+   "id": "H-019",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- D. Hemoglobinopatiler — c. Diğerleri (anormal hemoglobinler)",
+   "alt_tur": "2- Transfüzyon bağımlı 0lanlar",
+   "oran": 70,
+   "sayfa": 23,
+   "kaynak_not": "Kaynakta böyle yazıyor: \"2-Transfüzyon bağımlı 0lanlar\". Kaynak metni değiştirilmemiştir."
+  },
+  {
+   "id": "H-020",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "II- Miyelofibrozis",
+   "alt_tur": "2- Bunun dışındakiler",
+   "oran": 40,
+   "sayfa": 24
+  },
+  {
+   "id": "H-021",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "III- Miyelodisplastik sendrom",
+   "alt_tur": "1- IPSS düşük ve orta 1 risk",
+   "oran": 40,
+   "sayfa": 24
+  },
+  {
+   "id": "H-022",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "III- Miyelodisplastik sendrom",
+   "alt_tur": "2- IPSS orta-2 ve yüksek risk",
+   "oran": 80,
+   "sayfa": 24
+  },
+  {
+   "id": "H-023",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "III- Miyelodisplastik sendrom",
+   "alt_tur": "3- Ağır ve terminal vakalar",
+   "oran": 90,
+   "sayfa": 24
+  },
+  {
+   "id": "H-024",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- A. Akut lösemiler",
+   "alt_tur": "1- Tam remisyonda (remisyon sonrası 5. yıla kadar)",
+   "oran": 60,
+   "sayfa": 24
+  },
+  {
+   "id": "H-025",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- A. Akut lösemiler",
+   "alt_tur": "2- Tam remisyonda (remisyon sonrası 5. yıldan sonra)",
+   "oran": 40,
+   "sayfa": 24
+  },
+  {
+   "id": "H-026",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- A. Akut lösemiler",
+   "alt_tur": "3- Tedavisi devam eden olgular",
+   "oran": 70,
+   "sayfa": 24
+  },
+  {
+   "id": "H-027",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- A. Akut lösemiler",
+   "alt_tur": "4- Remisyona girmeyen",
+   "oran": 90,
+   "sayfa": 24
+  },
+  {
+   "id": "H-028",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- B. Kronik lösemiler — a. Kronik myelositik lösemi",
+   "alt_tur": "1- Kronik faz (tam sitogenetik yanıt varsa)",
+   "oran": 30,
+   "sayfa": 24
+  },
+  {
+   "id": "H-029",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- B. Kronik lösemiler — a. Kronik myelositik lösemi",
+   "alt_tur": "2- Kronik faz (6. ayda major sitogenetik yanıt yoksa)",
+   "oran": 60,
+   "sayfa": 24
+  },
+  {
+   "id": "H-030",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- B. Kronik lösemiler — a. Kronik myelositik lösemi",
+   "alt_tur": "3- Akselere veya blastik faz",
+   "oran": 90,
+   "sayfa": 24
+  },
+  {
+   "id": "H-031",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- B. Kronik lösemiler — b. Kronik lenfositik lösemi",
+   "alt_tur": "1- Evre I-II (tedavi gereksinimi olmayan)",
+   "oran": 30,
+   "sayfa": 24
+  },
+  {
+   "id": "H-032",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- B. Kronik lösemiler — b. Kronik lenfositik lösemi",
+   "alt_tur": "2- Evre I-II (tedavi gereksinimi olan)",
+   "oran": 60,
+   "sayfa": 24
+  },
+  {
+   "id": "H-033",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- B. Kronik lösemiler — b. Kronik lenfositik lösemi",
+   "alt_tur": "3- Evre III-IV",
+   "oran": 90,
+   "sayfa": 24
+  },
+  {
+   "id": "H-034",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- B. Kronik lösemiler — c. Monoklonal gammapatiler",
+   "alt_tur": "1- Benign gammapatiler",
+   "oran": 10,
+   "sayfa": 24
+  },
+  {
+   "id": "H-035",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- B. Kronik lösemiler — c. Monoklonal gammapatiler",
+   "alt_tur": "2- Soliter plazmositom ve smoldering myeloma",
+   "oran": 30,
+   "sayfa": 24
+  },
+  {
+   "id": "H-036",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- B. Kronik lösemiler — c. Monoklonal gammapatiler",
+   "alt_tur": "3- Malign gammapatiler (remisyonda veya tedavi ile kontrolde)",
+   "oran": 50,
+   "sayfa": 24
+  },
+  {
+   "id": "H-037",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- B. Kronik lösemiler — c. Monoklonal gammapatiler",
+   "alt_tur": "4- Malign gammapatiler (ağır veya remisyona girmeyen)",
+   "oran": 90,
+   "sayfa": 24
+  },
+  {
+   "id": "H-038",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- C. Hemofagositik sendrom",
+   "alt_tur": "1- Primer",
+   "oran": 80,
+   "sayfa": 24
+  },
+  {
+   "id": "H-039",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IV- C. Hemofagositik sendrom",
+   "alt_tur": "2- Sekonder",
+   "oran": 30,
+   "sayfa": 24
+  },
+  {
+   "id": "H-040",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "V- KML ve myelofibrozis dışında kalan myeloproliferatif hastalıklar (esansiyel trombositemi, polisitemia vera vb.)",
+   "alt_tur": "1- Hemostatik bir sorun yaşamamış ve kontrol altında olanlar",
+   "oran": 30,
+   "sayfa": 24
+  },
+  {
+   "id": "H-041",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "V- KML ve myelofibrozis dışında kalan myeloproliferatif hastalıklar (esansiyel trombositemi, polisitemia vera vb.)",
+   "alt_tur": "2- Hastalıkları kontrol altında olmayanlar",
+   "oran": 40,
+   "sayfa": 24
+  },
+  {
+   "id": "H-042",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "V- KML ve myelofibrozis dışında kalan myeloproliferatif hastalıklar (esansiyel trombositemi, polisitemia vera vb.)",
+   "alt_tur": "3- Hayatı tehdit eden tromboz ve/veya kanaması olanlar",
+   "oran": 70,
+   "sayfa": 24
+  },
+  {
+   "id": "H-043",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "V- KML ve myelofibrozis dışında kalan myeloproliferatif hastalıklar (esansiyel trombositemi, polisitemia vera vb.)",
+   "alt_tur": "4- Lösemik dönüşüm gösterenler",
+   "oran": 80,
+   "sayfa": 24
+  },
+  {
+   "id": "H-044",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VI- A. Hemorajik diatezler — a. Primer hemostaz bozuklukları (İTP, trombosit fonksiyon bozuklukları, vasküler nedenler)",
+   "alt_tur": "1- Hafif kanamalar ile seyreden ve tedavi gerektirmeyen vakalar",
+   "oran": 20,
+   "sayfa": 24
+  },
+  {
+   "id": "H-045",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VI- A. Hemorajik diatezler — a. Primer hemostaz bozuklukları (İTP, trombosit fonksiyon bozuklukları, vasküler nedenler)",
+   "alt_tur": "2- Hafif kanamalarla seyreden ve tedavi gerektiren vakalar",
+   "oran": 40,
+   "sayfa": 25
+  },
+  {
+   "id": "H-046",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VI- A. Hemorajik diatezler — a. Primer hemostaz bozuklukları (İTP, trombosit fonksiyon bozuklukları, vasküler nedenler)",
+   "alt_tur": "3- Ağır ve hayati kanamalar ile seyreden vakalar",
+   "oran": 80,
+   "sayfa": 25
+  },
+  {
+   "id": "H-047",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VI- A. Hemorajik diatezler — b. Koagülopatiler (hemofili A, B, C ve diğer faktör eksiklikleri, Von Willebrand hastalığı tip III)",
+   "alt_tur": "1- Faktör aktivitesi %2'nin altında (en az iki kez, farklı zamanda ölçülmüş)",
+   "oran": 80,
+   "sayfa": 25
+  },
+  {
+   "id": "H-048",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VI- A. Hemorajik diatezler — b. Koagülopatiler (hemofili A, B, C ve diğer faktör eksiklikleri, Von Willebrand hastalığı tip III)",
+   "alt_tur": "2- Faktör aktivitesi %2-5 (en az iki kez, farklı zamanda ölçülmüş)",
+   "oran": 40,
+   "sayfa": 25
+  },
+  {
+   "id": "H-049",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VI- A. Hemorajik diatezler — b. Koagülopatiler (hemofili A, B, C ve diğer faktör eksiklikleri, Von Willebrand hastalığı tip III)",
+   "alt_tur": "3- Faktör aktivitesi %5'in üstünde (en az iki kez, farklı zamanda ölçülmüş)",
+   "oran": 20,
+   "sayfa": 25
+  },
+  {
+   "id": "H-050",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VI- A. Hemorajik diatezler — c. Hipofibrinojenemi, afibrinojenemi ve disfibrinojenemi",
+   "alt_tur": "1- Sık kanama ile seyreden ve tedavi gerektiren olgular",
+   "oran": 60,
+   "sayfa": 25
+  },
+  {
+   "id": "H-051",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VI- A. Hemorajik diatezler — c. Hipofibrinojenemi, afibrinojenemi ve disfibrinojenemi",
+   "alt_tur": "2- Nadir kanama ile seyreden olgular",
+   "oran": 20,
+   "sayfa": 25
+  },
+  {
+   "id": "H-052",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VI- B. Akkiz ve herediter trombotik durumlar",
+   "alt_tur": "1- Bir kez ekstremitede DVT ya da hemodinamik sekel bırakmayan PTE gelişenler",
+   "oran": 10,
+   "sayfa": 25
+  },
+  {
+   "id": "H-053",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VI- B. Akkiz ve herediter trombotik durumlar",
+   "alt_tur": "2- Birden fazla ekstremitede DVT gelişen vakalar",
+   "oran": 20,
+   "sayfa": 25
+  },
+  {
+   "id": "H-054",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VI- C. Trombotik trombositopenik purpura (TTP)",
+   "alt_tur": "1- Tek atak",
+   "oran": 20,
+   "sayfa": 25
+  },
+  {
+   "id": "H-055",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VI- C. Trombotik trombositopenik purpura (TTP)",
+   "alt_tur": "2- Tekrarlayan ataklar",
+   "oran": 60,
+   "sayfa": 25
+  },
+  {
+   "id": "H-056",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VI- D. Dissemine intravasküler koagülopati (kronik)",
+   "alt_tur": "—",
+   "oran": 20,
+   "sayfa": 25
+  },
+  {
+   "id": "H-057",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VII- a. Hodgkin lenfoma",
+   "alt_tur": "1- Evre I-II remisyonda (remisyon sonrası 5. yıla kadar)",
+   "oran": 60,
+   "sayfa": 25
+  },
+  {
+   "id": "H-058",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VII- a. Hodgkin lenfoma",
+   "alt_tur": "2- Evre I-II remisyonda (remisyon sonrası 5. yıldan sonra)",
+   "oran": 40,
+   "sayfa": 25
+  },
+  {
+   "id": "H-059",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VII- a. Hodgkin lenfoma",
+   "alt_tur": "3- Evre III-IV remisyonda",
+   "oran": 40,
+   "sayfa": 25
+  },
+  {
+   "id": "H-060",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VII- a. Hodgkin lenfoma",
+   "alt_tur": "4- Remisyona girmeyen veya tedavi sürecinde olan",
+   "oran": 80,
+   "sayfa": 25
+  },
+  {
+   "id": "H-061",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VII- b. Non-Hodgkin lenfoma",
+   "alt_tur": "1- Düşük dereceli remisyonda (remisyon sonrası 5. yıla kadar)",
+   "oran": 40,
+   "sayfa": 25
+  },
+  {
+   "id": "H-062",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VII- b. Non-Hodgkin lenfoma",
+   "alt_tur": "2- Düşük dereceli remisyonda (remisyon sonrası 5. yıldan sonra)",
+   "oran": 30,
+   "sayfa": 25
+  },
+  {
+   "id": "H-063",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VII- b. Non-Hodgkin lenfoma",
+   "alt_tur": "3- Düşük dereceli remisyona girmeyen veya tedavi sürecinde olan",
+   "oran": 70,
+   "sayfa": 25
+  },
+  {
+   "id": "H-064",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VII- b. Non-Hodgkin lenfoma",
+   "alt_tur": "4- Orta veya yüksek dereceli remisyonda",
+   "oran": 40,
+   "sayfa": 25
+  },
+  {
+   "id": "H-065",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VIII- Kronik nötropeniler — 1- Ağır (Kostmann sendromu)",
+   "alt_tur": "—",
+   "oran": 80,
+   "sayfa": 25
+  },
+  {
+   "id": "H-066",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VIII- Kronik nötropeniler — 2- Diğer kronik nötropeniler",
+   "alt_tur": "Sık ve ağır enfeksiyon geçirmesine neden olmayan vakalar",
+   "oran": 20,
+   "sayfa": 25
+  },
+  {
+   "id": "H-067",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VIII- Kronik nötropeniler — 2- Diğer kronik nötropeniler",
+   "alt_tur": "Sık ve ağır enfeksiyon geçirmesine neden olan vakalar",
+   "oran": 40,
+   "sayfa": 25
+  },
+  {
+   "id": "H-068",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IX- Allojenik kemik iliği/kök hücre nakli",
+   "alt_tur": "1- Hastalığı remisyonda, komplikasyonu olmayan ve immünosupresif tedavi almayanlar",
+   "oran": 30,
+   "sayfa": 25,
+   "kisit": [
+    "R-NAKIL"
+   ]
+  },
+  {
+   "id": "H-069",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IX- Allojenik kemik iliği/kök hücre nakli",
+   "alt_tur": "2- Hafif-orta derecede komplikasyonu olan ve/veya immünosupresif tedavisi devam eden olgular",
+   "oran": 60,
+   "sayfa": 25,
+   "kisit": [
+    "R-NAKIL"
+   ]
+  },
+  {
+   "id": "H-070",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "IX- Allojenik kemik iliği/kök hücre nakli",
+   "alt_tur": "3- İleri derecede komplikasyonu olan ve/veya ağır-terminal olgular",
+   "oran": 80,
+   "sayfa": 26,
+   "kisit": [
+    "R-NAKIL"
+   ]
+  },
+  {
+   "id": "H-071",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "X- Otolog kemik iliği/kök hücre nakli",
+   "alt_tur": "1- Hastalığı remisyonda, komplikasyonu olmayan",
+   "oran": 40,
+   "sayfa": 26,
+   "kisit": [
+    "R-NAKIL"
+   ]
+  },
+  {
+   "id": "H-072",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "X- Otolog kemik iliği/kök hücre nakli",
+   "alt_tur": "2- Hafif-orta derecede komplikasyonu olan",
+   "oran": 60,
+   "sayfa": 26,
+   "kisit": [
+    "R-NAKIL"
+   ]
+  },
+  {
+   "id": "H-073",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "X- Otolog kemik iliği/kök hücre nakli",
+   "alt_tur": "3- İleri derecede komplikasyonu olan ağır-terminal olgular",
+   "oran": 90,
+   "sayfa": 26,
+   "kisit": [
+    "R-NAKIL"
+   ]
+  },
+  {
+   "id": "H-074",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- A. Aplastik anemi (akkiz ve konjenital, Fanconi vb.)",
+   "alt_tur": "2- Ağır aplastik anemi (nötrofil 200-500, trombosit 20000'in altı)",
+   "oran": 70,
+   "sayfa": 23,
+   "kaynak_not": "İki ölçüt birlikte aranır; yalnız biri sağlanırsa 1. madde (ağır olmayan, 40) uygulanır."
+  },
+  {
+   "id": "H-075",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "I- D. Hemoglobinopatiler — a. Orak hücreli anemi",
+   "alt_tur": "2- Yılda birden fazla oraklaşma krizi veya hayatında bir kez bile stroke veya akut göğüs sendromu geçiren ağır ve terminal vakalar",
+   "oran": 80,
+   "sayfa": 23
+  },
+  {
+   "id": "H-076",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "II- Miyelofibrozis",
+   "alt_tur": "1- Hb <10 g/dl, plt <100000/mm3 (tedavi ile ilişkili olmayan)",
+   "oran": 80,
+   "sayfa": 24,
+   "kaynak_not": "İki ölçüt birlikte; sağlanmıyorsa 2. madde (40). Parantezdeki ifade sitopenileri niteler."
+  },
+  {
+   "id": "H-077",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VI- B. Akkiz ve herediter trombotik durumlar",
+   "alt_tur": "3- Mükerrer tromboz geçirenler ya da tedaviye bağlı kanama sekeli olanlar ya da hayatı tehdit eden diğer trombozlar",
+   "oran": 60,
+   "sayfa": 25,
+   "kaynak_not": "Kaynakta \"ya da veya\" ve \"__\" yazım artefaktı var; anlam değişmedi."
+  },
+  {
+   "id": "H-078",
+   "bolum": "HEMATOLOJİK HASTALIKLAR",
+   "hastalik": "VII- b. Non-Hodgkin lenfoma",
+   "alt_tur": "6- Orta veya yüksek dereceli remisyona girmeyen veya tedavi sürecinde olan",
+   "oran": 80,
+   "sayfa": 25,
+   "kaynak_not": "Kaynakta 5 numaralı madde yok; numaralandırma 4'ten 6'ya atlıyor, düzeltilmedi."
+  },
+  {
+   "id": "K-001",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %0-1,7",
+   "oran": 0,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-002",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %1,8-4,2",
+   "oran": 2,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-003",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %4,3-7,4",
+   "oran": 4,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-004",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %7,5-9,9",
+   "oran": 6,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-005",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %10,0-13,1",
+   "oran": 8,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-006",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %13,2-15,9",
+   "oran": 10,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-007",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %16,0-18,8",
+   "oran": 12,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-008",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %18,9-21,4",
+   "oran": 14,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-009",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %21,5-24,5",
+   "oran": 16,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-010",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %24,6-27,1",
+   "oran": 18,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-011",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %27,2-30,0",
+   "oran": 20,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-012",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %30,1-32,8",
+   "oran": 22,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-013",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %32,9-35,9",
+   "oran": 24,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-014",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %36,0-38,5",
+   "oran": 26,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-015",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %38,6-41,7",
+   "oran": 30,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-016",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %41,8-44,2",
+   "oran": 31,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-017",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %44,3-47,4",
+   "oran": 32,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-018",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %47,5-49,9",
+   "oran": 33,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-019",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %50,0-53,1",
+   "oran": 34,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-020",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %53,2-55,7",
+   "oran": 35,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-021",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %55,8-58,8",
+   "oran": 36,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-022",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %58,9-61,4",
+   "oran": 37,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-023",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %61,5-64,5",
+   "oran": 38,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-024",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %64,6-67,1",
+   "oran": 39,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-025",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %67,2-70,0",
+   "oran": 40,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-026",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %70,1-72,8",
+   "oran": 41,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-027",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %72,9-75,9",
+   "oran": 42,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-028",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %76,0-78,5",
+   "oran": 43,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-029",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %78,6-81,7",
+   "oran": 44,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-030",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %81,8-84,2",
+   "oran": 45,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-031",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %84,3-87,4",
+   "oran": 46,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-032",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %87,5-89,9",
+   "oran": 47,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-033",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %90,0-93,1",
+   "oran": 48,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-034",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %93,2-95,7",
+   "oran": 49,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-035",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %95,8-98,8",
+   "oran": 50,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-036",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-ISI",
+   "hastalik": "İşitme engeli yüzdesine göre engel oranı",
+   "alt_tur": "İşitme engeli yüzdesi %98,9-100,0",
+   "oran": 52,
+   "sayfa": 5,
+   "kisit": [],
+   "kaynak_not": "İşitme engeli yüzdesi Tablo 1a/1b binaural hesabından gelir; yüzde → engel oranı eşlemesi Tablo 2'dedir (s.4-5)."
+  },
+  {
+   "id": "K-037",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-KON",
+   "hastalik": "Konuşma engel puanına göre engel oranı",
+   "alt_tur": "Puan 0-3: konuşma engeli yüzdesi %0-7,6",
+   "oran": 0,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Konuşma engel puanı Tablo 4'e göre hesaplanır (s.8); puan → engel oranı eşlemesi Tablo 5'tedir (s.9)."
+  },
+  {
+   "id": "K-038",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-KON",
+   "hastalik": "Konuşma engel puanına göre engel oranı",
+   "alt_tur": "Puan 4-5: konuşma engeli yüzdesi %7,7-15,3",
+   "oran": 10,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Konuşma engel puanı Tablo 4'e göre hesaplanır (s.8); puan → engel oranı eşlemesi Tablo 5'tedir (s.9)."
+  },
+  {
+   "id": "K-039",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-KON",
+   "hastalik": "Konuşma engel puanına göre engel oranı",
+   "alt_tur": "Puan 6-8: konuşma engeli yüzdesi %15,4-23,0",
+   "oran": 20,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Konuşma engel puanı Tablo 4'e göre hesaplanır (s.8); puan → engel oranı eşlemesi Tablo 5'tedir (s.9)."
+  },
+  {
+   "id": "K-040",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-KON",
+   "hastalik": "Konuşma engel puanına göre engel oranı",
+   "alt_tur": "Puan 9-12: konuşma engeli yüzdesi %23,1-30,7",
+   "oran": 22,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Konuşma engel puanı Tablo 4'e göre hesaplanır (s.8); puan → engel oranı eşlemesi Tablo 5'tedir (s.9)."
+  },
+  {
+   "id": "K-041",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-KON",
+   "hastalik": "Konuşma engel puanına göre engel oranı",
+   "alt_tur": "Puan 13-15: konuşma engeli yüzdesi %30,8-38,4",
+   "oran": 24,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Konuşma engel puanı Tablo 4'e göre hesaplanır (s.8); puan → engel oranı eşlemesi Tablo 5'tedir (s.9)."
+  },
+  {
+   "id": "K-042",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-KON",
+   "hastalik": "Konuşma engel puanına göre engel oranı",
+   "alt_tur": "Puan 16-18: konuşma engeli yüzdesi %38,5-46,1",
+   "oran": 26,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Konuşma engel puanı Tablo 4'e göre hesaplanır (s.8); puan → engel oranı eşlemesi Tablo 5'tedir (s.9)."
+  },
+  {
+   "id": "K-043",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-KON",
+   "hastalik": "Konuşma engel puanına göre engel oranı",
+   "alt_tur": "Puan 19-21: konuşma engeli yüzdesi %46,2-53,8",
+   "oran": 28,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Konuşma engel puanı Tablo 4'e göre hesaplanır (s.8); puan → engel oranı eşlemesi Tablo 5'tedir (s.9)."
+  },
+  {
+   "id": "K-044",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-KON",
+   "hastalik": "Konuşma engel puanına göre engel oranı",
+   "alt_tur": "Puan 22-24: konuşma engeli yüzdesi %53,9-61,5",
+   "oran": 30,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Konuşma engel puanı Tablo 4'e göre hesaplanır (s.8); puan → engel oranı eşlemesi Tablo 5'tedir (s.9)."
+  },
+  {
+   "id": "K-045",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-KON",
+   "hastalik": "Konuşma engel puanına göre engel oranı",
+   "alt_tur": "Puan 25-27: konuşma engeli yüzdesi %61,6-69,2",
+   "oran": 32,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Konuşma engel puanı Tablo 4'e göre hesaplanır (s.8); puan → engel oranı eşlemesi Tablo 5'tedir (s.9)."
+  },
+  {
+   "id": "K-046",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-KON",
+   "hastalik": "Konuşma engel puanına göre engel oranı",
+   "alt_tur": "Puan 28-30: konuşma engeli yüzdesi %69,3-76,9",
+   "oran": 34,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Konuşma engel puanı Tablo 4'e göre hesaplanır (s.8); puan → engel oranı eşlemesi Tablo 5'tedir (s.9)."
+  },
+  {
+   "id": "K-047",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-KON",
+   "hastalik": "Konuşma engel puanına göre engel oranı",
+   "alt_tur": "Puan 31-33: konuşma engeli yüzdesi %77,0-84,6",
+   "oran": 36,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Konuşma engel puanı Tablo 4'e göre hesaplanır (s.8); puan → engel oranı eşlemesi Tablo 5'tedir (s.9)."
+  },
+  {
+   "id": "K-048",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-KON",
+   "hastalik": "Konuşma engel puanına göre engel oranı",
+   "alt_tur": "Puan 35-37: konuşma engeli yüzdesi %84,7-92,3",
+   "oran": 38,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Konuşma engel puanı Tablo 4'e göre hesaplanır (s.8); puan → engel oranı eşlemesi Tablo 5'tedir (s.9)."
+  },
+  {
+   "id": "K-049",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-KON",
+   "hastalik": "Konuşma engel puanına göre engel oranı",
+   "alt_tur": "Puan 38-40: konuşma engeli yüzdesi %92,4-100",
+   "oran": 40,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Konuşma engel puanı Tablo 4'e göre hesaplanır (s.8); puan → engel oranı eşlemesi Tablo 5'tedir (s.9)."
+  },
+  {
+   "id": "K-050",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-DEN",
+   "hastalik": "Vestibüler bozukluk",
+   "alt_tur": "Sınıf 1: Vestibüler bozukluk işaretlerine ait destekleyici objektif bulguların olması ve günlük aktivitelerin yardımsız gerçekleştirilmesi (bisiklete binmek, hastanın işinin gerektirdiği kirişte-iskelede yürümek gibi belli aktiviteler hariç)",
+   "oran": 5,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Vestibüler bozukluklarda değerlendirme, hasta stabil olduktan sonra en az 6 ay süreyle takip edilerek yapılır (s.9)."
+  },
+  {
+   "id": "K-051",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-DEN",
+   "hastalik": "Vestibüler bozukluk",
+   "alt_tur": "Sınıf 2: Vestibüler bozukluk işaretlerine ait destekleyici objektif bulguların olması ve günlük aktivitelerin yardımsız gerçekleştirilememesi (kişisel bakım ile ilgili basit aktiveteler, bazı ev işleri, yürümek, başkasının kullanıldığı araca binip gezebilmek hariç)",
+   "oran": 15,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Vestibüler bozukluklarda değerlendirme, hasta stabil olduktan sonra en az 6 ay süreyle takip edilerek yapılır (s.9)."
+  },
+  {
+   "id": "K-052",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-DEN",
+   "hastalik": "Vestibüler bozukluk",
+   "alt_tur": "Sınıf 3: Vestibüler bozukluk işaretlerine ait destekleyici objektif bulguların olması ve günlük aktivitelerin yardımsız gerçekleştirilememesi (kişisel bakım hariç)",
+   "oran": 25,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Vestibüler bozukluklarda değerlendirme, hasta stabil olduktan sonra en az 6 ay süreyle takip edilerek yapılır (s.9)."
+  },
+  {
+   "id": "K-053",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-DEN",
+   "hastalik": "Vestibüler bozukluk",
+   "alt_tur": "Sınıf 4: Vestibüler bozukluk işaretlerine ait destekleyici objektif bulguların olması ve günlük aktivitelerin yardımsız gerçekleştirilememesi (hareket gerektirmeyen kişisel bakım hariç) eve bağımlı kalması gereklidir.",
+   "oran": 35,
+   "sayfa": 9,
+   "kisit": [],
+   "kaynak_not": "Vestibüler bozukluklarda değerlendirme, hasta stabil olduktan sonra en az 6 ay süreyle takip edilerek yapılır (s.9)."
+  },
+  {
+   "id": "K-054",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Edinsel nedenlerle fiziksel görünümü bozan burun eğriliği",
+   "oran": 2,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-055",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Dış kulağın tek taraflı kaybı veya şekil bozukluğu",
+   "oran": 3,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-056",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Frontal kemikte çökme",
+   "oran": 5,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-057",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Yanakla beraber burun veya frontal kemikte çökme",
+   "oran": 6,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-058",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla’nın kısmi kaybı (medial duvar kaybı)",
+   "oran": 10,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-059",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Tükürük bezi kanallarının yaralanması veya hastalıkları sonucu sürekli fistül",
+   "oran": 7,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-060",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Orbital ve/veya intrakranial sekel bırakan komplikasyonlu sinüzitler (fonksiyon kaybı ilgili uzmanlık dalı tarafından ayrıca değerlendirilecektir?)",
+   "oran": 10,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-061",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Dış kulağın çift taraflı kaybı veya şekil bozukluğu",
+   "oran": 7,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-062",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Burunun kozmetik deformiteye yol açan kısmi kaybı",
+   "oran": 15,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-063",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Cerrahi veya travma sonucu mandibula segmenter rezeksiyonu",
+   "oran": 13,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-064",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Doğumsal anomali, travma, kanser ve/veya kanser ameliyatına bağlı olarak normal yüz anatomisinin aşırı bozukluğu",
+   "oran": 30,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-065",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla’nın kısmi kaybı (medial duvara ilaveten veya medial duvar dışında bir duvarının kaybı)",
+   "oran": 35,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-066",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Cerrahi veya travma sonucu hemimandibulektomi",
+   "oran": 33,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-067",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Doku kaybı, skarlı fiksasyon veya felce bağlı dilin fonksiyon kaybı (hafif)",
+   "oran": 25,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-068",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Primer atrofik rinit (ozena)",
+   "oran": 20,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-069",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Travma, tümör veya ameliyat sonrası en az bir alveoler arktaki bütün kalıcı dişlerin kaybı",
+   "oran": 17,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-070",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Tam fonksiyon bozukluğu yapan dudak arızaları",
+   "oran": 25,
+   "sayfa": 10,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-071",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla’nın tam kaybı (fonksiyon kaybı ile birlikte alveoler çıkıntıda %50’den fazla kayıp)",
+   "oran": 45,
+   "sayfa": 11,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-072",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Burnun tam kaybı",
+   "oran": 47,
+   "sayfa": 11,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-073",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Her iki göz küresinin kaybı (fonksiyon kaybı ilgili uzmanlık dalı tarafından ayrıca değerlendirilecektir)",
+   "oran": 47,
+   "sayfa": 11,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-074",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Cerrahi veya travma sonucu mandibüla ön segmentinde %50’den fazla kayıp",
+   "oran": 56,
+   "sayfa": 11,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-075",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Doku kaybı, skarlı fiksasyon veya felce bağlı dilin fonksion kaybı (Tam dil yokluğu veya konuşma ve yutmayı zorlaştıracak derecede dilin en az 2/3’sinin alındığı dil harabiyeti veya bilateral hipoglossal sinir paralizisi)",
+   "oran": 55,
+   "sayfa": 11,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-076",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUZ",
+   "hastalik": "Yüz arızaları",
+   "alt_tur": "Ameliyat edilemeyen burun, paranazal sinüsler, çene, ağız ve farinks tümörleri",
+   "oran": 65,
+   "sayfa": 11,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "K-077",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-HAV",
+   "hastalik": "Hava yolu defektleri",
+   "alt_tur": "Sınıf 1: Hava pasajı defekti mevcut; istirahat hâlinde dispne yok; yürüme, merdiven çıkma gibi günlük hayatın normal aktivitelerinde; stres, koşuşturma, yokuş çıkma gibi güç isteyen aktivitelerde dispne görülmez",
+   "oran": 5,
+   "sayfa": 11,
+   "kisit": [],
+   "kaynak_not": "Sınıf kriterleri s.11-12'deki tablonun sütunlarındadır."
+  },
+  {
+   "id": "K-078",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-HAV",
+   "hastalik": "Hava yolu defektleri",
+   "alt_tur": "Sınıf 2: Hava pasajı defekti mevcut; istirahat hâlinde dispne var ama hasta yatağa bağımlı değil; düz satıhta yürüme, bir kat merdiven çıkma gibi gündelik yaşam aktivitelerinde zorlanma ve stresli aktivitelerde dispne görülür",
+   "oran": 10,
+   "sayfa": 11,
+   "kisit": [],
+   "kaynak_not": "Sınıf kriterleri s.11-12'deki tablonun sütunlarındadır."
+  },
+  {
+   "id": "K-079",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-HAV",
+   "hastalik": "Hava yolu defektleri",
+   "alt_tur": "Sınıf 3: Hava pasajı defekti mevcut; arada dinlenme süreleri olsa bile düz satıhta uzun süreli yürüme, bir kat merdiven çıkma gibi gündelik yaşam aktivitesini yaparken dispne görülür",
+   "oran": 20,
+   "sayfa": 11,
+   "kisit": [],
+   "kaynak_not": "Sınıf kriterleri s.11-12'deki tablonun sütunlarındadır."
+  },
+  {
+   "id": "K-080",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-HAV",
+   "hastalik": "Hava yolu defektleri",
+   "alt_tur": "Sınıf 4: Hava pasajı defekti mevcut; kişisel temizlik, giyinme gibi aktivitelerin dışındaki herhangi bir günlük yaşam aktivitesini yaparken dispne görülür",
+   "oran": 40,
+   "sayfa": 11,
+   "kisit": [],
+   "kaynak_not": "Sınıf kriterleri s.11-12'deki tablonun sütunlarındadır."
+  },
+  {
+   "id": "K-081",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-HAV",
+   "hastalik": "Hava yolu defektleri",
+   "alt_tur": "Sınıf 5 (tam bağımlı engelli): Hava pasajı defekti mevcut; istirahat hâlinde ciddi dispne görülür, spontan solunum yetersizdir; respiratuar ventilasyon gerekmektedir",
+   "oran": 90,
+   "sayfa": 11,
+   "kisit": [],
+   "kaynak_not": "Sınıf kriterleri s.11-12'deki tablonun sütunlarındadır. Resmî tabloda oran '90+' yazılıdır (en az 90)."
+  },
+  {
+   "id": "K-082",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-HAV",
+   "hastalik": "Kalıcı trakeotomi",
+   "alt_tur": "Sürekli (kalıcı) trakeotomili ve stomalı hastalar",
+   "oran": 40,
+   "sayfa": 12,
+   "kisit": [],
+   "kaynak_not": "Bu orana konuşma engeline ait Engel Oranı Balthazard Formülü kullanarak ilave edilir (s.12)."
+  },
+  {
+   "id": "K-083",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-KOK",
+   "hastalik": "Koku ve tat duyusu kaybı",
+   "alt_tur": "Bilateral koku duyusu kaybı: kaybına yol açan hastalık veya arızanın varlığı objektif olarak ortaya konulmuş",
+   "oran": 3,
+   "sayfa": 12,
+   "kisit": [],
+   "kaynak_not": "Resmî metin: kaybına yol açan hastalık veya durum için gerekli tedavi uygulanmış olmalı; 'her biri için %3 Engel Oranı verilir' (s.12)."
+  },
+  {
+   "id": "K-084",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-KOK",
+   "hastalik": "Koku ve tat duyusu kaybı",
+   "alt_tur": "Bilateral tat duyusu kaybı: kaybına yol açan hastalık veya arızanın varlığı objektif olarak ortaya konulmuş",
+   "oran": 3,
+   "sayfa": 12,
+   "kisit": [],
+   "kaynak_not": "Resmî metin: kaybına yol açan hastalık veya durum için gerekli tedavi uygulanmış olmalı; 'her biri için %3 Engel Oranı verilir' (s.12)."
+  },
+  {
+   "id": "K-085",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUT",
+   "hastalik": "Diyetteki kısıtlama",
+   "alt_tur": "Hasta sıvı, yarı katı ve yumuşak diyetlerden bazılarını sınırlı alabiliyor",
+   "oran": 10,
+   "sayfa": 12,
+   "kisit": [],
+   "kaynak_not": "Çiğneme ve yutma bozuklukları gerekli rehabilitasyon uygulandıktan en az 6 ay sonra diyet alımındaki kısıtlamalara göre değerlendirilir (s.12)."
+  },
+  {
+   "id": "K-086",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUT",
+   "hastalik": "Diyetteki kısıtlama",
+   "alt_tur": "Hasta sadece sıvı ya da sadece yarı katı/yumuşak gıdaları alabiliyor",
+   "oran": 30,
+   "sayfa": 12,
+   "kisit": [],
+   "kaynak_not": "Çiğneme ve yutma bozuklukları gerekli rehabilitasyon uygulandıktan en az 6 ay sonra diyet alımındaki kısıtlamalara göre değerlendirilir (s.12)."
+  },
+  {
+   "id": "K-087",
+   "bolum": "KULAK BURUN BOĞAZ",
+   "grup": "K-YUT",
+   "hastalik": "Diyetteki kısıtlama",
+   "alt_tur": "Hasta ancak nazogastrik sonda veya gastrostomi ile beslenebiliyor",
+   "oran": 50,
+   "sayfa": 12,
+   "kisit": [],
+   "kaynak_not": "Çiğneme ve yutma bozuklukları gerekli rehabilitasyon uygulandıktan en az 6 ay sonra diyet alımındaki kısıtlamalara göre değerlendirilir (s.12)."
+  },
+  {
+   "id": "V-001",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-ARI",
+   "hastalik": "Aritmiler",
+   "alt_tur": "Klas 1: Kişi günlük aktiviteleri esnasında asemptomatiktir, EKG veya Holter’de aritmisi gösterilmiştir",
+   "oran": 10,
+   "sayfa": 27,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-002",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-ARI",
+   "hastalik": "Aritmiler",
+   "alt_tur": "Klas 1: Kişiye aritmi nedeniyle ablasyon veya cerrahi işlem yapılmıştır ve günlük aktivite sırasında asemptomatiktir",
+   "oran": 10,
+   "sayfa": 27,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-003",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-ARI",
+   "hastalik": "Aritmiler",
+   "alt_tur": "Klas 2 (a): ilaç tedavisi veya kalıcı kalp pili ile semptomları giderilmiştir",
+   "oran": 20,
+   "sayfa": 27,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-004",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-ARI",
+   "hastalik": "Aritmiler",
+   "alt_tur": "Klas 2 (b): aritmi devam etmektedir ve organik bir kalp hastalığı vardır",
+   "oran": 20,
+   "sayfa": 27,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-005",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-ARI",
+   "hastalik": "Aritmiler",
+   "alt_tur": "Klas 2 (c): aritmi nedeniyle İCD implante edilmiştir",
+   "oran": 30,
+   "sayfa": 27,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-006",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-ARI",
+   "hastalik": "Aritmiler",
+   "alt_tur": "Klas 3 (1-): Kişinin ilaç tedavisi veya kalıcı kalp piline rağmen semptomları sürmektedir ve EKG veya Holter’de aritmi gösterilmiştir (fonksiyonel kapasite 3)",
+   "oran": 40,
+   "sayfa": 27,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-007",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-ARI",
+   "hastalik": "Aritmiler",
+   "alt_tur": "Klas 3 (2-): Kişinin aritmisini düzeltmek amacıyla ablasyon veya cerrahi işlem veya İCD implantasyonu uygulanmıştır, fakat semptomları devam etmektedir (fonksiyonel kapasite 3)",
+   "oran": 50,
+   "sayfa": 27,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-008",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-ARI",
+   "hastalik": "Aritmiler",
+   "alt_tur": "Klas 4: Kişinin aritmisini düzeltmek amacıyla aşağıdakilerden birisi uygulanmıştır fakat aritmiye bağlı semptomları devamlıdır ve hastanın günlük aktivitelerini engellemektedir (fonksiyonel kapasite 3 veya 4)",
+   "oran": 100,
+   "sayfa": 27,
+   "kisit": [],
+   "kaynak_not": "Resmî metindeki işlem listesi: 1. İlaç tedavisi, 2. Kalıcı kalp pili, 3. Kateter ile ablasyon, 4. Cerrahi müdahale, 5. İCD implantasyonu (s.27)."
+  },
+  {
+   "id": "V-009",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-PUH",
+   "hastalik": "Pulmoner hipertansiyon",
+   "alt_tur": "Klas 1: Asemptomatik; Fizik muayene ve EKO veya sağ kateter ile Pulmoner arter sistolik basıncı (PASB) 30-40 mmHg saptanan ve Pulmoner Hipertansiyon tanısı konmuş hastalar",
+   "oran": 10,
+   "sayfa": 27,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-010",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-PUH",
+   "hastalik": "Pulmoner hipertansiyon",
+   "alt_tur": "Klas 2: Günlük fiziksel aktivitede hafif kısıtlaması olan ( NYHA 2), EKO veya sağ kateter’de PASB: 40-50 mmHg saptanan hastalar",
+   "oran": 25,
+   "sayfa": 27,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-011",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-PUH",
+   "hastalik": "Pulmoner hipertansiyon",
+   "alt_tur": "Klas 3: Günlük fiziksel aktivitede ağır kısıtlaması olan (NYHA 3), EKO veya sağ kateter’de PASB: 50-70 mmHg saptanan hastalar",
+   "oran": 50,
+   "sayfa": 27,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-012",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-PUH",
+   "hastalik": "Pulmoner hipertansiyon",
+   "alt_tur": "Klas 4: PASB: 70 mmHg üzeri hastalar",
+   "oran": 100,
+   "sayfa": 27,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-013",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-HIP",
+   "hastalik": "Hipertansiyon",
+   "alt_tur": "Klas 1: Antihipertansif tedavi kullanan ve komplikasyonu olamayan kişiler",
+   "oran": 10,
+   "sayfa": 28,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-014",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-HIP",
+   "hastalik": "Hipertansiyon",
+   "alt_tur": "Klas 2: Kişi antihipertansif tedavi alıyor ve aşağıdakilerden birisi varsa",
+   "oran": 20,
+   "sayfa": 28,
+   "kisit": [],
+   "kaynak_not": "Eşlik edebilecek bulgular (s.28): 1. Proteinüri; 2. Hipertansif serebrovasküler hastalık; 3. Hipertansif retinopati (Gunn belirtileri); 4. Sol ventrikül hipertrofisi."
+  },
+  {
+   "id": "V-015",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-HIP",
+   "hastalik": "Hipertansiyon",
+   "alt_tur": "Klas 3: Kişi antihipertansif tedavi alıyor ve aşağıdakilerden iki veya daha fazlası varsa",
+   "oran": 50,
+   "sayfa": 28,
+   "kisit": [],
+   "kaynak_not": "Eşlik edebilecek bulgular (s.28): 1. Diyastolik kan basıncı >120 mmHg (maksimal tedaviye rağmen); 2. Proteinüri ve böbrek fonksiyon bozukluğu; 3. Hipertansif serebrovasküler hastalık ve kalıcı nörolojik defisit; 4. Sol ventrikül hipertrofisi; 5. Hipertansif retinopati (evre 3-4)."
+  },
+  {
+   "id": "V-016",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-PER",
+   "hastalik": "Perikard hastalığı",
+   "alt_tur": "Evre I: Fizik muayene ve ekokardiyografi ile perikard hastalığı tanısı konulan, fonksiyonel kapasite NYHA sınıf-I ve konstriksiyon bulgusu olmayanlar",
+   "oran": 10,
+   "sayfa": 28,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-017",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-PER",
+   "hastalik": "Perikard hastalığı",
+   "alt_tur": "Evre II: Fizik muayene ve ekokardiyografi ile perikard hastalığı tanısı konulan, iki veya daha fazla perikardit atağı geçiren fonksiyonel kapasite NYHA sınıf-I ve konstriksiyon bulgusu olmayanlar",
+   "oran": 20,
+   "sayfa": 28,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-018",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-PER",
+   "hastalik": "Perikard hastalığı",
+   "alt_tur": "Evre III: Fizik muayene ve ekokardiyografi ile konstruktif perikardit tanısı konulan veya perikardiektomi yapılan, fonksiyonel kapasite NYHA sınıf-II olanlar",
+   "oran": 30,
+   "sayfa": 28,
+   "kisit": [],
+   "kaynak_not": "Konstruktif/konstriktif yazım farkı kaynaktaki hâliyle korunmuştur."
+  },
+  {
+   "id": "V-019",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-PER",
+   "hastalik": "Perikard hastalığı",
+   "alt_tur": "Evre IV: Konstriktif perikard hastalığı tanısı nedeniyle opere edilmesine rağmen bulguları devam eden, NYHA sınıf III-IV hastalar",
+   "oran": 80,
+   "sayfa": 28,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-020",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-HKM",
+   "hastalik": "Hipertrofik kardiyomiyopati",
+   "alt_tur": "Evre I: Fizik muayene ve laboratuar sonuçlarıyla hipertrofik kardiyomiyopati tanısı konulan ve asemptomatik olan hastalar",
+   "oran": 50,
+   "sayfa": 28,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-021",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-HKM",
+   "hastalik": "Hipertrofik kardiyomiyopati",
+   "alt_tur": "Evre II: Fizik muayene ve laboratuar sonuçlarıyla hipertrofik kardiyomiyopati tanısı konulan ve tedaviye rağmen semptomatik olan hastalar",
+   "oran": 100,
+   "sayfa": 28,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-022",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-KY",
+   "hastalik": "Kalp yetmezliği",
+   "alt_tur": "Evre I: Fizik muayene ve ekokardiyografi ile hafif kalp yetmezliği tanısı konulan ve NYHA sınıf–I hastalar",
+   "oran": 10,
+   "sayfa": 28,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-023",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-KY",
+   "hastalik": "Kalp yetmezliği",
+   "alt_tur": "Evre II: Fizik muayene ve ekokardiyografi ile kalp yetmezliği tanısı konulan, ejeksiyon fraksiyonu %50-60 olan ve tedaviye rağmen NYHA sınıf –II hastalar",
+   "oran": 30,
+   "sayfa": 28,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-024",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-KY",
+   "hastalik": "Kalp yetmezliği",
+   "alt_tur": "Evre III: Fizik muayene ve ekokardiyografi ile kalp yetmezliği tanısı konulan, ejeksiyon fraksiyonu %30-50 olan ve tedaviye rağmen NYHA sınıf –III hastalar",
+   "oran": 50,
+   "sayfa": 29,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-025",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-KY",
+   "hastalik": "Kalp yetmezliği",
+   "alt_tur": "Evre IV: Fizik muayene ve ekokardiyografi ile kalp yetmezliği tanısı konulan, ejeksiyon fraksiyonu %30’un altında olan veya NYHA sınıf –III-IV hastalar",
+   "oran": 100,
+   "sayfa": 29,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-026",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DKH",
+   "hastalik": "Doğuştan kalp hastalıkları (DKH)",
+   "alt_tur": "Klas 1 A-Grubu: Fizik inceleme veya laboratuvar sonuçları ile DKH saptanan, asemptomatik veya orta derecede aktivite ile semptomu olmayan NHYA evre 1 hastalar; bakteriyel endokardit profilaksisi alan, başka ilaca gereksinimi olmayan, konjestif kalp yetersizliği bulguları ve ağrısı olmayanlar ve kalp boşluklarında dilatasyon veya disfonksiyonu olmayan, hafif kapak yetersizliği veya darlığı olan, hafif sol-sağ şantı bulunan (Qp/Qs < 1.5) hastalar.",
+   "oran": 5,
+   "sayfa": 29,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-027",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DKH",
+   "hastalik": "Doğuştan kalp hastalıkları (DKH)",
+   "alt_tur": "Klas 1 B-Grubu: Düzeltici ameliyat yapıldıktan sonra yukarıdaki kriterlere uygun hastalar.",
+   "oran": 10,
+   "sayfa": 29,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-028",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DKH",
+   "hastalik": "Doğuştan kalp hastalıkları (DKH)",
+   "alt_tur": "Klas 2 A-Grubu: Fizik inceleme veya laboratuvar sonuçları ile DKH saptanan, günlük basit aktivite ile asemptomatik olan ancak orta düzeyde aktivite ile semptomatik olan NHYA evre 2 hastalar veya semptomları önlemek için diyet veya ilaç tedavisi gerektiren, konjestif kalp yetersizliği semptomları olan veya senkop, göğüs ağrısı, emboli veya siyanozu bulunan hastalar veya kalp boşluklarında dilatasyon veya disfonksiyonu olan, orta derecede kapak yetersizliği veya darlığı olan, orta düzeyde sol-sağ şantı bulunan (Qp/Qs 1.>2:1), sağ-sol şantı olmayanlar veya pulmoner vasküler rezistansı artan hastalar (pulmoner vasküler rezistans; sistemik vasküler rezistansın yarısından küçük olanlar).",
+   "oran": 25,
+   "sayfa": 29,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-029",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DKH",
+   "hastalik": "Doğuştan kalp hastalıkları (DKH)",
+   "alt_tur": "Klas 2 B-Grubu: Ameliyattan sonra yukarıdaki kriterlere uygun hastalar.",
+   "oran": 30,
+   "sayfa": 29,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-030",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DKH",
+   "hastalik": "Doğuştan kalp hastalıkları (DKH)",
+   "alt_tur": "Klas 3 A-Grubu: Fizik inceleme veya laboratuvar sonuçları ile DKH saptanan, günlük basit aktivite ile semptomatik olan NHYA evre 3 hastalar; diyet veya ilaç tedavisi ile konjestif kalp yetersizliği semptomları tamamen kontrol edilemeyen hastalar ve kalp boşluklarında dilatasyon veya disfonksiyonu olan, ciddi kapak yetersizliği veya darlığı olanlar, önemli sol-sağ şantı bulunan (Qp/Qs 1.>2:1), ve pulmoner vasküler rezistansı sistemik vasküler rezistansın yarısından büyük olanlar veya sağ-sol şantı bulunanlar.",
+   "oran": 45,
+   "sayfa": 29,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-031",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DKH",
+   "hastalik": "Doğuştan kalp hastalıkları (DKH)",
+   "alt_tur": "Klas 3 B-Grubu: Ameliyattan sonra tedaviye rağmen, konjestif kalp yetersizliği semptomları devam eden hastalar.",
+   "oran": 50,
+   "sayfa": 29,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-032",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DKH",
+   "hastalik": "Doğuştan kalp hastalıkları (DKH)",
+   "alt_tur": "Klas 4 A-Grubu: DKH semptomları olan veya günlük basit aktivite ile konjestif kalp yetersizliği semptomları gösteren NHYA evre 4 hastalar; diyet veya ilaç tedavisi ile konjestif kalp yetersizliği semptomları kontrol edilemeyen hastalar ve kalp boşluklarında dilatasyon veya disfonksiyonu olan, ciddi kapak yetersizliği veya darlığı olan hastalar, önemli sol-sağ şantı bulunan (Qp/Qs 1.>2:1) ve pulmoner vasküler rezistansı sistemik vasküler rezistansın yarısından büyük olanlar veya sağ-sol şantı bulunanlar.",
+   "oran": 75,
+   "sayfa": 30,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-033",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DKH",
+   "hastalik": "Doğuştan kalp hastalıkları (DKH)",
+   "alt_tur": "Klas 4 B-Grubu: Operasyon yapılmış fakat fonksiyonel klas 3 semptomları devam eden veya konjestif kalp yetersizliği veya siyanozu devam edenler veya kardiyomegali, ciddi kapak yetersizliği veya darlığı olanlar veya önemli sol-sağ şantı saptanan, sağ-sol şantı bulunan veya pulmoner vasküler rezistansı yüksek olan hastalar.",
+   "oran": 80,
+   "sayfa": 30,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-034",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-KHK",
+   "hastalik": "Kapak hastalığı",
+   "alt_tur": "Klas 1: Fizik muayene ve laboratuvar sonuçlarına göre hafif düzeyde kapak hastalığı tespit edilmiş veya kapak hastalığı nedeni ile girişimsel-cerrahi olarak tedavi edilmiş hastalarda aşağıdaki şartların varlığı; NYHA Sınıf 1 semptomlar ve sistolik kalp yetmezliğine neden olan ventriküler fonksiyon bozukluğunun (mitral yetersizliği hastalarında EF>%60, aort yetersizliğinde >%55, diğer durumlarda >%50) ve ventriküler dilatasyona ait bulguların olmaması.",
+   "oran": 10,
+   "sayfa": 30,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-035",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-KHK",
+   "hastalik": "Kapak hastalığı",
+   "alt_tur": "Klas 2: Fizik muayene ve laboratuvar sonuçlarına göre orta düzeyde kapak hastalığı tespit edilmiş veya girişimsel-cerrahi olarak tedavi edilmiş hastalarda aşağıdaki şartların varlığı; NYHA Sınıf 2 semptomlar ve kalpte laboratuar testleri ile (EKG, ekokardiyografi vb.) ortaya konmuş dilatasyon/hipertrofi varlığna rağmen sistolik fonksiyonların normal olması (mitral yetersizliği hastalarında EF>%60, aort yetersizliğinde >%55, diğer durumlarda >%50).",
+   "oran": 30,
+   "sayfa": 30,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-036",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-KHK",
+   "hastalik": "Kapak hastalığı",
+   "alt_tur": "Klas 3: Fizik muayene veya laboratuvar sonuçlarına göre orta-ileri düzeyde kapak hastalığı tespit edilmiş veya kapak hastalığı nedeni ile girişimsel-cerrahi olarak tedavi edilmiş hastalarda aşağıdaki şartların varlığı; NYHA Sınıf 3 semptomlar ve laboratuvar bulguları ile ortaya konmuş sol ventrikül sistolik fonksiyonlarında azalma (mitral yetersizliği hastalarında EF %30-%60, aort yetersizliğinde %30-%55, diğer durumlarda %30-%50).",
+   "oran": 50,
+   "sayfa": 30,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-037",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-KHK",
+   "hastalik": "Kapak hastalığı",
+   "alt_tur": "Klas 4: Fizik muayene veya laboratuvar sonuçlarına göre orta-ileri düzeyde kapak hastalığı tespit edilmiş veya kapak hastalığı nedeni ile opere edilmiş hastalarda aşağıdaki şartların varlığı; NYHA Sınıf 4 semptomlar ve laboratuvar bulguları ile ortaya konmuş ciddi ventrikül fonksiyon (EF<%30).",
+   "oran": 100,
+   "sayfa": 30,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-038",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-KHK",
+   "hastalik": "Koroner arter hastalığı",
+   "alt_tur": "Klas 1: Anjinası olsun veya olmasın fizik muayene bulguları ve laboratuar testleriyle tanısı desteklenen hastalarda koroner anjiografi ile bir koroner arterde %50'den daha az darlık saptanması.",
+   "oran": 10,
+   "sayfa": 31,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-039",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-KHK",
+   "hastalik": "Koroner arter hastalığı",
+   "alt_tur": "Klas 2: Miyokard infarktüsü geçiren veya daha önceden koroner arter hastalığı tanısı alan veya girişimsel-cerrahi koroner işlem yapılan anjinası bulunan hastalarda aşağıdaki şartların varlığı; NYHA Sınıf 1 semptomlar veya ilaç tedavisi veya diyetle anjinanın kontrol altında tutulabilmesi ve ayrıca konjestif kalp yetmezliğinin bulgu ve semptomlarının yokluğu (EF >%50).",
+   "oran": 30,
+   "sayfa": 31,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-040",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-KHK",
+   "hastalik": "Koroner arter hastalığı",
+   "alt_tur": "Klas 3: Miyokard infarktüsü geçiren veya daha önceden koroner arter hastalığı tanısı alan veya girişimsel-cerrahi koroner işlem yapılan anjinası bulunan hastalarda aşağıdaki şartların varlığı; laboratuar yöntemleri ile (EKG, eforlu EKG, perfüzyon sintigrafisi v.b) devam eden iskeminin saptanması veya bir koroner arterinde en az %50 oranında darlığın anjiyografik olarak gösterilmiş olması ve ilaç tedavisi veya diyetle anjinanın kontrol altında tutulabilmesi ve sol ventrikül fonksiyonlarının bozuk olmasına rağmen (EF %30-%50) hastada NYHA Sınıf 2 semptomların varlığı.",
+   "oran": 50,
+   "sayfa": 31,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-041",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-KHK",
+   "hastalik": "Koroner arter hastalığı",
+   "alt_tur": "Klas 4: Miyokard infarktüsü geçiren veya daha önceden koroner arter hastalığı tanısı alan veya girişimsel-cerrahi koroner işlem yapılan anjinası bulunan hastalarda aşağıdaki şartların varlığı; laboratuar yöntemleri ile (EKG, eforlu EKG, perfüzyon sintigrafisi vb) devam eden iskeminin saptanması veya bir veya daha fazla koroner arterinde en az %50 oranında darlığın anjiyografik olarak gösterilmiş olması ve ilaç tedavisi veya diyete rağmen hastada NYHA Sınıf 3-4 semptomların varlığı veya hastada ciddi sol ventrikül fonksiyon bozukluğunun olması (EF<%30).",
+   "oran": 100,
+   "sayfa": 31,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-042",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-KHK",
+   "hastalik": "Kalp transplantasyonu",
+   "alt_tur": "Kalp transplantasyonu olan kişiler",
+   "oran": 70,
+   "sayfa": 31,
+   "kisit": [],
+   "kaynak_not": "Transplante kalbin fonksiyonları ayrıca değerlendirilip oradan gelen engel oranları Balthazard formülü kullanılarak birleştirilecek ve hastanın Engel Oranı belirlenecektir (s.31)."
+  },
+  {
+   "id": "V-043",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Arteriosklerozis obliterans (ASO)",
+   "alt_tur": "Tıbbi tedaviden istifade ediyor ise",
+   "oran": 20,
+   "sayfa": 31,
+   "kisit": [],
+   "kaynak_not": "ASO 'a-' alt grubu: distal arter atımları palpe edilemiyor, 200 m üzerinde klaudikasyo intermittant, trofik bozukluk yok, kol-bacak indeksi 0.50-0.95 (s.31). Amputasyon uygulananlara amputasyon oranları Balthazard ile eklenir (s.32)."
+  },
+  {
+   "id": "V-044",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Arteriosklerozis obliterans (ASO)",
+   "alt_tur": "Tıbbi tedaviden istifade edemiyor ise",
+   "oran": 30,
+   "sayfa": 31,
+   "kisit": [],
+   "kaynak_not": "ASO 'a-' alt grubu: distal arter atımları palpe edilemiyor, 200 m üzerinde klaudikasyo intermittant, trofik bozukluk yok, kol-bacak indeksi 0.50-0.95 (s.31). Amputasyon uygulananlara amputasyon oranları Balthazard ile eklenir (s.32)."
+  },
+  {
+   "id": "V-045",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Arteriosklerozis obliterans (ASO)",
+   "alt_tur": "Cerrahi tedaviden istifade etmiş olanlar",
+   "oran": 30,
+   "sayfa": 31,
+   "kisit": [],
+   "kaynak_not": "ASO 'b-' alt grubu: distal arter atımları palpe edilemiyor, 200 m altında klaudikasyon, istirahat ağrısı (+), trofik bozukluk var, kol-bacak indeksi 0.50 ve altı (s.31). Amputasyon uygulananlara amputasyon oranları Balthazard ile eklenir (s.32)."
+  },
+  {
+   "id": "V-046",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Arteriosklerozis obliterans (ASO)",
+   "alt_tur": "Cerrahi tedaviden istifade edememiş olanlar",
+   "oran": 50,
+   "sayfa": 31,
+   "kisit": [],
+   "kaynak_not": "ASO 'b-' alt grubu: distal arter atımları palpe edilemiyor, 200 m altında klaudikasyon, istirahat ağrısı (+), trofik bozukluk var, kol-bacak indeksi 0.50 ve altı (s.31). Amputasyon uygulananlara amputasyon oranları Balthazard ile eklenir (s.32)."
+  },
+  {
+   "id": "V-047",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Arteriosklerozis obliterans (ASO)",
+   "alt_tur": "Birden fazla damar lezyonuna yönelik operasyon olup istirahat ağrısı devam eden",
+   "oran": 60,
+   "sayfa": 32,
+   "kisit": [],
+   "kaynak_not": "ASO 'b-' alt grubu: distal arter atımları palpe edilemiyor, 200 m altında klaudikasyon, istirahat ağrısı (+), trofik bozukluk var, kol-bacak indeksi 0.50 ve altı (s.31). Amputasyon uygulananlara amputasyon oranları Balthazard ile eklenir (s.32)."
+  },
+  {
+   "id": "V-048",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Tromboangitis obliterans (Buerger)",
+   "alt_tur": "Sempatektomi ameliyatı yapılmamış ve tıbbi tedaviden yararlanıyorsa",
+   "oran": 20,
+   "sayfa": 32,
+   "kisit": [],
+   "kaynak_not": "Amputasyon uygulananlara amputasyonla ilgili oranlar Balthazard ile eklenir (s.32)."
+  },
+  {
+   "id": "V-049",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Tromboangitis obliterans (Buerger)",
+   "alt_tur": "Sempatektomi yapılmış, trofik bozukluk yok ama 200 metrenin üzerinde klaudikasyo intermittant varsa",
+   "oran": 30,
+   "sayfa": 32,
+   "kisit": [],
+   "kaynak_not": "Amputasyon uygulananlara amputasyonla ilgili oranlar Balthazard ile eklenir (s.32)."
+  },
+  {
+   "id": "V-050",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Tromboangitis obliterans (Buerger)",
+   "alt_tur": "Sempatektomi yapılmış, trofik bozukluğu ve iskemiye bağlı istirahat ağrısı olanlar",
+   "oran": 50,
+   "sayfa": 32,
+   "kisit": [],
+   "kaynak_not": "Amputasyon uygulananlara amputasyonla ilgili oranlar Balthazard ile eklenir (s.32)."
+  },
+  {
+   "id": "V-051",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Fonksiyonel damar hastalığı (Reynaud Fenomeni, Akrosiyanozis vs.)",
+   "alt_tur": "Trofik bozukluğu olmayanlar",
+   "oran": 20,
+   "sayfa": 32,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-052",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Fonksiyonel damar hastalığı (Reynaud Fenomeni, Akrosiyanozis vs.)",
+   "alt_tur": "Trofik bozukluğu olanlar (doku nekrozu)",
+   "oran": 40,
+   "sayfa": 32,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-053",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Travmatik damar hastalığı",
+   "alt_tur": "Cerrahi müdahale görmüş, dolaşım bozukluğu olmayanlar",
+   "oran": 0,
+   "sayfa": 32,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-054",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Travmatik damar hastalığı",
+   "alt_tur": "Cerrahi müdahale görmüş, dolaşım bozukluğu ve iskemi bulguları olanlar",
+   "oran": 30,
+   "sayfa": 32,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-055",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Venöz sistem hastalıkları (derin ven trombozu)",
+   "alt_tur": "Staz ülseri bulunmayanlar",
+   "oran": 20,
+   "sayfa": 32,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-056",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Venöz sistem hastalıkları (derin ven trombozu)",
+   "alt_tur": "Tek ekstremite",
+   "oran": 40,
+   "sayfa": 32,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-057",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Venöz sistem hastalıkları (derin ven trombozu)",
+   "alt_tur": "İki ekstremite",
+   "oran": 70,
+   "sayfa": 32,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-058",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Lenf sistemi hastalıkları",
+   "alt_tur": "Hafif derecede lenfödemi olanlar",
+   "oran": 10,
+   "sayfa": 32,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-059",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Lenf sistemi hastalıkları",
+   "alt_tur": "Orta derecede lenfödemi olanlar: tek ekstremitede",
+   "oran": 20,
+   "sayfa": 32,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-060",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Lenf sistemi hastalıkları",
+   "alt_tur": "Orta derecede lenfödemi olanlar: iki ekstremitede",
+   "oran": 45,
+   "sayfa": 32,
+   "kisit": [],
+   "kaynak_not": ""
+  },
+  {
+   "id": "V-061",
+   "bolum": "KARDİYOVASKÜLER SİSTEM",
+   "grup": "V-DMR",
+   "hastalik": "Lenf sistemi hastalıkları",
+   "alt_tur": "İleri derecede lenfödemi olanlar (Yürüme ve hareketi engelleyecek ölçüde)",
+   "oran": 80,
+   "sayfa": 32,
+   "kisit": [],
+   "kaynak_not": ""
+  }
+ ]
+}

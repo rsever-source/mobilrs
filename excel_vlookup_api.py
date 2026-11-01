@@ -1,5 +1,6 @@
-import asyncio, base64, hashlib, html as html_lib, io, json, os, re, secrets, time, uuid, zipfile
+import asyncio, base64, hashlib, html as html_lib, io, json, os, re, secrets, sys, time, uuid, zipfile
 from datetime import date
+from pathlib import Path
 from urllib.parse import urlparse
 
 import pandas as pd, pdfplumber, uvicorn
@@ -11,6 +12,23 @@ from starlette.background import BackgroundTask
 from tufe_service import get_current_tufe, save_cache
 from otv_service import get_otv_data, refresh_otv_data, _load as load_otv_cache
 from admin_dashboard import router as admin_dashboard_router
+
+EK2_ROOT = Path(__file__).resolve().parent / "ek2-balthazard"
+sys.path.insert(0, str(EK2_ROOT))
+sys.path.insert(0, str(EK2_ROOT / "arac1"))
+sys.path.insert(0, str(EK2_ROOT / "arac2"))
+import arac1_sunucu as ek2_arac1  # noqa: E402
+import arac2_sunucu as ek2_arac2  # noqa: E402
+
+
+def _ek2_html(ad: str) -> str:
+    return (EK2_ROOT / ad / f"{ad}.html").read_text(encoding="utf-8")
+
+
+def _ek2_sayfa(ad: str, yer_tutucu: str, adres: str, nonce: str) -> str:
+    govde = _ek2_html(ad).replace(yer_tutucu, adres)
+    return (govde.replace("<style>", f'<style nonce="{nonce}">')
+                 .replace("<script", f'<script nonce="{nonce}"'))
 
 app = FastAPI(title="Rdv Asistan", docs_url=None, redoc_url=None, openapi_url=None)
 app.include_router(admin_dashboard_router)
@@ -52,7 +70,7 @@ async def add_security_headers(request: Request, call_next):
     def csp_hash(value):
         digest = hashlib.sha256(html_lib.unescape(value).encode("utf-8")).digest()
         return "'sha256-" + base64.b64encode(digest).decode("ascii") + "'"
-    csp_sources = "\n".join((HOME_HTML, CHAT_HTML, KVKK_HTML))
+    csp_sources = "\n".join((HOME_HTML, CHAT_HTML, KVKK_HTML, _ek2_html("arac1"), _ek2_html("arac2")))
     script_attr_hashes = sorted({csp_hash(value) for value in re.findall(r'\bon(?:click|submit|change|input|load)\s*=\s*"([^"]*)"', csp_sources, re.IGNORECASE)})
     style_attr_hashes = sorted({csp_hash(value) for value in re.findall(r'\bstyle\s*=\s*"([^"]*)"', csp_sources, re.IGNORECASE)})
     response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
@@ -358,6 +376,73 @@ async def api_news():
             "published_at": item.get("published_at"),
         })
     return JSONResponse({"updated_at": data.get("updated_at"), "items": items})
+
+
+@app.get("/arac1", response_class=HTMLResponse)
+@app.get("/arac1/", response_class=HTMLResponse)
+async def ek2_arac1_sayfa(request: Request):
+    return HTMLResponse(_ek2_sayfa("arac1", "__ARAC2_ADRESI__", "/arac2", request.state.csp_nonce))
+
+
+@app.get("/arac2", response_class=HTMLResponse)
+@app.get("/arac2/", response_class=HTMLResponse)
+async def ek2_arac2_sayfa(request: Request):
+    return HTMLResponse(_ek2_sayfa("arac2", "__ARAC1_ADRESI__", "/arac1", request.state.csp_nonce))
+
+
+@app.get("/api/bolumler")
+async def ek2_bolumler():
+    return JSONResponse(ek2_arac1.gezinme_yuku(None))
+
+
+@app.get("/api/gezinme")
+async def ek2_gezinme(bolum: str = Query(...)):
+    sonuc = ek2_arac1.gezinme_yuku(bolum)
+    if not sonuc.get("ok"):
+        raise HTTPException(404, sonuc.get("mesaj", "Bölüm bulunamadı."))
+    return JSONResponse(sonuc)
+
+
+@app.get("/api/ara")
+async def ek2_ara(metin: str = Query(""), bolum: str | None = Query(default=None)):
+    sonuc = ek2_arac1.arama_yuku(metin, bolum)
+    if not sonuc.get("ok"):
+        raise HTTPException(404, sonuc.get("mesaj", "Bölüm bulunamadı."))
+    return JSONResponse(sonuc)
+
+
+@app.get("/api/kayit/{kimlik}")
+async def ek2_kayit(kimlik: str):
+    kayit = ek2_arac1.katalog().kayit(kimlik)
+    if kayit is None:
+        raise HTTPException(404, "Kayıt bulunamadı.")
+    return JSONResponse(ek2_arac1.sonuc_yuku(kayit))
+
+
+@app.get("/api/belirsiz/{kimlik}")
+async def ek2_belirsiz(kimlik: str):
+    kayit = ek2_arac1.katalog().belirsiz_kayit(kimlik)
+    if kayit is None:
+        raise HTTPException(404, "Kayıt bulunamadı.")
+    return JSONResponse(ek2_arac1.belirsiz_yuku(kayit))
+
+
+@app.post("/api/hesapla")
+async def ek2_hesapla(request: Request):
+    try:
+        uzunluk = int(request.headers.get("content-length") or "0")
+    except ValueError:
+        uzunluk = -1
+    if uzunluk <= 0 or uzunluk > 64 * 1024:
+        raise HTTPException(400, "İstek okunamadı.")
+    try:
+        girdi = json.loads((await request.body()).decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        raise HTTPException(400, "İstek okunamadı.")
+    sonuc = ek2_arac2.balthazard(girdi)
+    if sonuc.get("ok"):
+        sonuc["gosterim"] = ek2_arac2.gosterim_ekle(sonuc)
+    return JSONResponse(sonuc)
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
@@ -679,7 +764,7 @@ body.high-contrast .footer{background:#fff;border-top:2px solid #000;color:#000}
 </section>
 <div class="hero"><h1>Güncel ÖTV muaf araçlar</h1><p>2026 ÖTV muafiyetli araç fiyatları ve ÖTV muafiyetiyle alınabilecek araçlar. Liste fiyatları ve hesaplanmış fiyatlar bir arada.</p><div class="hero-stats" role="link" tabindex="0" aria-label="Tüm araçları görüntüle" title="Tüm araçları görüntüle" onclick="openPage('otv')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPage('otv')}"><div class="stat"><small>Uygun paket</small><b><span id="heroCount">—</span> <span class="stat-unit">paket</span></b></div><div class="stat"><small>Marka</small><b><span id="heroBrands">—</span> <span class="stat-unit">marka</span></b></div></div></div>
 <div class="section" aria-labelledby="vehicles-heading"><div class="section-head"><div><h2 id="vehicles-heading">ÖTV muaf araçlar</h2></div><div id="heroTime" style="font-size:10px;color:var(--muted);text-align:right;white-space:nowrap">Son araştırma saati: —</div></div><div id="homeVehicles" class="vehicle-grid" aria-live="polite"></div><div class="more"><button type="button" class="primary" onclick="openPage(&quot;otv&quot;)">Tüm araçları görüntüle</button></div></div>
-<div class="section" style="margin-top:24px"><div class="tool" onclick="window.location.href='https://chat.engelli.me'" style="cursor:pointer"><div class="tool-icon">💬</div><div><b>Kullanıcılar Sohbet</b><small>Topluluk sohbetine katıl</small></div></div><div style="margin-top:7px;padding:0 4px;font-size:10px;line-height:1.45;color:var(--muted)">Bu sohbet Klaklak altyapısı kullanılarak sunulmaktadır. Kişisel bilgilerinizi paylaşmayınız. <a href="/kvkk" style="color:var(--blue);font-weight:700;text-decoration:none">KVKK Aydınlatma Metni →</a></div></div><div class="tools" id="helpers"><div class="section-head" onclick="toggleHelpers()" style="cursor:pointer"><div><h2>Yardımcılar</h2><p>Tek dokunuşla açabilirsiniz</p></div><div style="color:var(--blue);font-size:20px;font-weight:900">＋</div></div><div class="tool-grid"><div class="tool" onclick="openPage('kira')"><div class="tool-icon">₺</div><div><b>Kira Hesaplama</b><small>TÜFE ile kira artışını hesapla</small></div></div><div class="tool" onclick="openPage('excel')"><div class="tool-icon">X</div><div><b>Excel İşlemleri</b><small>Düşeyara, birleştirme ve pivot</small></div></div><div class="tool" onclick="openPage('pdfexcel')"><div class="tool-icon">PDF</div><div><b>PDF → Excel</b><small>PDF içeriğini Excel'e aktar</small></div></div></div></div>
+ <div class="section" style="margin-top:24px"><div class="tool" onclick="window.location.href='https://chat.engelli.me'" style="cursor:pointer"><div class="tool-icon">💬</div><div><b>Kullanıcılar Sohbet</b><small>Topluluk sohbetine katıl</small></div></div><div style="margin-top:7px;padding:0 4px;font-size:10px;line-height:1.45;color:var(--muted)">Bu sohbet Klaklak altyapısı kullanılarak sunulmaktadır. Kişisel bilgilerinizi paylaşmayınız. <a href="/kvkk" style="color:var(--blue);font-weight:700;text-decoration:none">KVKK Aydınlatma Metni →</a></div></div><div class="tools" id="helpers"><div class="section-head" onclick="toggleHelpers()" style="cursor:pointer"><div><h2>Araçlar</h2><p>Tek dokunuşla açabilirsiniz</p></div><div style="color:var(--blue);font-size:20px;font-weight:900">＋</div></div><div class="tool-grid"><div class="tool" onclick="openPage('kira')"><div class="tool-icon">₺</div><div><b>Kira Hesaplama</b><small>TÜFE ile kira artışını hesapla</small></div></div><div class="tool" onclick="openPage('excel')"><div class="tool-icon">X</div><div><b>Excel İşlemleri</b><small>Düşeyara, birleştirme ve pivot</small></div></div><div class="tool" onclick="openPage('pdfexcel')"><div class="tool-icon">PDF</div><div><b>PDF → Excel</b><small>PDF içeriğini Excel'e aktar</small></div></div><div class="tool" onclick="window.location.href='/arac1'"><div class="tool-icon">%</div><div><b>Engel Oranı Bulma (Kılavuza Göre)</b><small>Hastalık ve seviyeye göre oranı bul</small></div></div><div class="tool" onclick="window.location.href='/arac2'"><div class="tool-icon">＋</div><div><b>Balthazard Formülü ile Engel Oranı Hesaplama</b><small>Girdiğiniz oranları birleştir</small></div></div></div></div>
 </div></section>
 <section id="news" class="page"><div class="page-wrap"><div class="page-head"><button class="back" onclick="openPage('home')">‹</button><h2>Güncel engelli haberleri</h1></div>
 <div class="panel summary"><div class="news-archive-head"><b>Son 12 haber</b><span id="newsUpdated" class="news-refresh">Güncelleniyor…</span></div></div>

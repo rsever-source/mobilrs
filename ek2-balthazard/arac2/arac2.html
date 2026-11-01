@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Balthazard Hesaplama | Engelli.me</title>
+<style>
+  :root{
+    --ink:#182234; --muted:#697386; --line:#e4e8ef; --bg:#f4f6f9; --card:#fff;
+    --accent:#0f6f5c; --accent-soft:#e6f3ef; --warn:#8a5a00; --warn-soft:#fdf4e3;
+    --danger:#a12626; --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:Inter,Aptos,"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.5}
+  .sayfa{max-width:860px;margin:0 auto;padding:0 16px 56px}
+
+  .sekmeler{display:flex;gap:6px;padding:18px 0 12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .sekme{border:1px solid var(--line);background:var(--card);color:var(--muted);
+    padding:9px 14px;border-radius:999px;font-size:14px;cursor:pointer;font-family:inherit}
+  .sekme[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  .sekme:disabled{opacity:.62;cursor:not-allowed}
+
+  .uyari{display:flex;gap:10px;background:var(--accent-soft);border:1px solid #cfe6df;
+    border-radius:var(--radius);padding:14px 16px;margin:18px 0;font-size:14px}
+  .uyari p{margin:0}
+  .uyari p+p{margin-top:8px}
+  .uyari .ikon{font-size:16px;line-height:1.4}
+
+  .kart{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;margin:0 0 18px;box-shadow:0 10px 30px rgba(20,32,55,.05)}
+  .kart h1{font-size:20px;margin:0 0 16px}
+  .kart h2{font-size:16px;margin:0}
+  .kart h3{font-size:14px;margin:20px 0 8px;color:var(--muted);font-weight:600;
+    text-transform:uppercase;letter-spacing:.04em}
+
+  label{display:block;font-size:13px;color:var(--muted);font-weight:600}
+  input[type=text]{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);
+    border-radius:10px;background:#fff;color:var(--ink);margin-top:6px}
+  input[type=text]:focus-visible,button:focus-visible,summary:focus-visible,
+  input[type=radio]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  .giris{display:grid;grid-template-columns:130px 1fr auto;gap:12px;align-items:end}
+  .giris .etiket-alani{min-width:0}
+  .giris button{height:42px}
+
+  button{font:inherit;font-size:14px;padding:10px 14px;border-radius:10px;border:1px solid var(--line);
+    background:var(--card);color:var(--ink);cursor:pointer}
+  button:hover:not(:disabled){border-color:#c9d1de}
+  button:disabled{opacity:.55;cursor:not-allowed}
+  .birincil{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  .birincil:hover:not(:disabled){background:#0c5d4d;border-color:#0c5d4d}
+  .baglanti{background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;
+    font-size:13px;cursor:pointer}
+
+  .hata{margin:12px 0 0;color:var(--danger);font-size:13px;font-weight:600}
+  .ipucu{margin:12px 0 0;color:var(--muted);font-size:13px}
+
+  .liste-baslik{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  ol.liste{list-style:none;margin:14px 0 0;padding:0;border:1px solid var(--line);border-radius:12px}
+  ol.liste li{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;
+    padding:10px 12px;border-top:1px solid var(--line);font-size:14px}
+  ol.liste li:first-child{border-top:0}
+  ol.liste .sira{color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px}
+  ol.liste .sayi{font-weight:700;font-variant-numeric:tabular-nums;min-width:52px}
+  ol.liste .etiket{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  ol.liste .etiket.bos{color:var(--muted);font-style:italic}
+  ol.liste .satir-duzenle{grid-column:1 / -1;display:flex;gap:10px;align-items:end;flex-wrap:wrap}
+  .kucuk{font-size:12px;padding:6px 10px}
+
+  fieldset{border:0;padding:0;margin:18px 0 0}
+  legend{font-size:13px;color:var(--muted);font-weight:600;padding:0;margin-bottom:8px}
+  .yas-secim{display:flex;gap:18px;flex-wrap:wrap}
+  .yas-secim label{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink);
+    font-weight:400;cursor:pointer}
+  input[type=radio]{width:18px;height:18px;accent-color:var(--accent);margin:0}
+
+  .sonuc-sayi{display:flex;align-items:baseline;gap:12px;margin:18px 0}
+  .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
+    clip:rect(0 0 0 0);white-space:nowrap;border:0}
+  .sonuc-sayi strong{font-size:46px;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+  .sonuc-sayi span{color:var(--muted);font-size:13px}
+  ol.adimlar{margin:0;padding-left:22px;font-size:14px}
+  ol.adimlar li{margin:4px 0;font-variant-numeric:tabular-nums}
+  .meta{margin:14px 0 0;font-size:13px;color:var(--muted)}
+  .meta strong{color:var(--ink);font-weight:600}
+  .kisa-not{background:var(--bg);border-radius:12px;padding:12px 14px;margin:16px 0 0;font-size:13px}
+  .kaynak{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--line);
+    font-size:12px;color:var(--muted)}
+  .eylemler{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+
+  .eski-uyari{background:var(--warn-soft);border:1px solid #f0dcb4;color:var(--warn);
+    border-radius:12px;padding:10px 12px;font-size:13px;font-weight:600;margin:0 0 16px}
+
+  .geri-al{position:fixed;left:50%;transform:translateX(-50%);bottom:22px;
+    background:#182234;color:#fff;border-radius:999px;padding:10px 18px;font-size:13px;
+    display:flex;gap:14px;align-items:center;box-shadow:0 8px 24px rgba(20,32,55,.25)}
+  .geri-al button{background:none;border:0;color:#9fe3d2;font-weight:600;padding:0}
+  .geri-al[hidden]{display:none}
+
+  #bildirim{position:fixed;left:50%;transform:translateX(-50%);bottom:22px;max-width:92vw;
+    background:var(--accent-soft);border:1px solid #cfe6df;color:#134a3e;border-radius:12px;
+    padding:10px 16px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .18s}
+  #bildirim.gorunur{opacity:1}
+
+  details.nasil summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--accent)}
+  details.nasil ol{margin:12px 0 0;padding-left:20px;font-size:14px;color:var(--ink)}
+  details.nasil li{margin:6px 0}
+
+  footer{color:var(--muted);font-size:12px;text-align:center;margin-top:28px}
+
+  @media (max-width:640px){
+    .giris{grid-template-columns:1fr}
+    .giris button{width:100%}
+    .sonuc-sayi strong{font-size:38px}
+    .kart{padding:16px}
+  }
+  @media (prefers-reduced-motion:reduce){ #bildirim{transition:none} }
+</style>
+</head>
+<body>
+<div class="sayfa">
+
+  <nav class="sekmeler" aria-label="Araçlar">
+    <a class="sekme" href="__ARAC1_ADRESI__">Engel Oranı Bulma</a>
+    <button class="sekme" type="button" aria-selected="true">Balthazard Hesaplama</button>
+  </nav>
+
+  <aside class="uyari">
+    <span class="ikon" aria-hidden="true">ⓘ</span>
+    <div>
+      <p><strong>Bu araç yalnızca girdiğiniz oranları birleştirir.</strong>
+        Oranların doğruluğu ve kullanım kuralları burada denetlenmez.</p>
+      <p>Hastalığa ve mevzuata özgü kısıtlar (ör. yıllık yeniden değerlendirme, vergi
+        indiriminde kullanılamama, remisyonda oran verilmemesi) bu araçta doğrulanamaz.
+        Bunlar için “Engel Oranı Bulma” aracına bakın.</p>
+    </div>
+  </aside>
+
+  <main>
+    <section class="kart" aria-labelledby="giris-baslik">
+      <h1 id="giris-baslik">Bildiğiniz oranları girin</h1>
+      <form id="ekle-form" novalidate>
+        <div class="giris">
+          <div>
+            <label for="oran">Oran (%)</label>
+            <input type="text" id="oran" inputmode="numeric" autocomplete="off"
+                   maxlength="3" placeholder="40">
+          </div>
+          <div class="etiket-alani">
+            <label for="etiket">Etiket (isteğe bağlı)</label>
+            <input type="text" id="etiket" autocomplete="off" maxlength="60"
+                   placeholder="Sağ kulak">
+          </div>
+          <button type="submit" class="birincil">+ Ekle</button>
+        </div>
+        <p class="hata" id="ekle-hata" role="alert" hidden></p>
+      </form>
+      <p class="ipucu" id="bos-metin">Henüz oran eklenmedi.</p>
+    </section>
+
+    <section class="kart" id="liste-kart" aria-labelledby="liste-baslik" hidden>
+      <div class="liste-baslik">
+        <h2 id="liste-baslik">Girdiğiniz oranlar (<span id="adet">0</span>)</h2>
+        <button type="button" class="baglanti" id="tumunu-sil">Tümünü sil</button>
+      </div>
+      <ol class="liste" id="liste"></ol>
+      <p class="ipucu">Sıralama: büyükten küçüğe (kural gereği, değiştirilemez)</p>
+
+      <fieldset>
+        <legend>Yaş aralığı</legend>
+        <div class="yas-secim">
+          <label><input type="radio" name="yas" value="65_alti"> 65 yaş altı</label>
+          <label><input type="radio" name="yas" value="65_ve_uzeri"> 65 yaş ve üzeri</label>
+        </div>
+      </fieldset>
+
+      <div class="eylemler">
+        <button type="button" class="birincil" id="hesapla" disabled>Hesapla</button>
+      </div>
+      <p class="ipucu" id="hesapla-neden" role="status">En az bir oran girin.</p>
+    </section>
+
+    <details class="kart nasil">
+      <summary>Nasıl hesaplanır?</summary>
+      <ol>
+        <li>Oranlar büyükten küçüğe sıralanır (kural; kullanıcı seçmez).</li>
+        <li>İlk iki oran birleştirilir: <strong>A + (100 − A) × B / 100</strong></li>
+        <li>Çıkan sonuç, sonraki oranla aynı formülle birleştirilir.</li>
+        <li>65 yaş ve üzeri seçildiyse, bileşkeye %10 aynı formülle eklenir.</li>
+      </ol>
+      <p class="ipucu">Örnek: %40 ve 65 yaş üzeri → <strong>%46</strong>
+        (aritmetik +10 değil, Balthazard).</p>
+    </details>
+
+    <section class="kart" id="sonuc-kart" aria-labelledby="sonuc-baslik" hidden>
+      <p class="eski-uyari" id="eski-uyari" role="status" hidden>
+        ⚠ Bu sonuç önceki girdilere ait. Güncellemek için “Hesapla”ya basın.
+      </p>
+
+      <div class="sonuc-sayi" aria-live="polite">
+        <strong id="sonuc-deger">—</strong>
+        <span>Bileşke oran</span>
+      </div>
+      <h2 id="sonuc-baslik" class="sr-only">Sonuç</h2>
+
+      <h3>Hesaplama adımları (büyükten küçüğe)</h3>
+      <ol class="adimlar" id="adimlar"></ol>
+
+      <p class="meta" id="yuvarlama-satiri"></p>
+      <p class="meta" id="yas-eki-satiri" hidden></p>
+
+      <p class="kisa-not">ⓘ Bu sonuç yalnızca girdiğiniz oranların bileşkesidir.
+        Hastalık kısıtları denetlenmemiştir.</p>
+
+      <div id="kaynak" hidden>
+        <p class="kaynak">Kaynak: Erişkinler İçin Engellilik Değerlendirmesi Hakkında
+          Yönetmelik (Resmî Gazete 20.02.2019, sayı 30692), Ek-2 Erişkinler İçin Engelli
+          Sağlık Kurulu Raporları Engel Oranları Alan Kılavuzu ve Ek-3 Balthazard
+          formülü.</p>
+      </div>
+
+      <div class="eylemler">
+        <button type="button" id="yeni">Yeni hesaplama</button>
+        <button type="button" id="kopya-ham">Ham değeri kopyala</button>
+        <button type="button" id="kopya-girdi">Girdileri kopyala</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>Bu araç bilgilendirme amaçlıdır. Resmî engelli sağlık kurulu raporu yerine geçmez.</footer>
+</div>
+
+<div class="geri-al" id="geri-al" hidden>
+  <span>Oran silindi.</span>
+  <button type="button" id="geri-al-btn">Geri al</button>
+</div>
+<div id="bildirim" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+const D = (id) => document.getElementById(id);
+const durum = {
+  oranlar: [],          // {id, deger, etiket}
+  yas: null,            // "65_alti" | "65_ve_uzeri" | null
+  sonuc: null,          // sunucudan gelen son yanıt
+  sonGirdi: null,       // son hesaplamanın girdi özeti
+  silinen: null,        // geri alma için {oge, index, zaman}
+};
+
+let sayac = 0;
+let bildirimZaman = 0;
+let geriAlZaman = 0;
+let istekNo = 0;   // hızlı yaş değişiminde son istek kazanır (§12.1/7)
+
+function bildir(metin, ms = 3200) {
+  const kutu = D("bildirim");
+  kutu.textContent = metin;
+  kutu.classList.add("gorunur");
+  clearTimeout(bildirimZaman);
+  bildirimZaman = setTimeout(() => kutu.classList.remove("gorunur"), ms);
+}
+
+function etiketMetni(oge) {
+  return oge.etiket ? oge.etiket : "Etiketsiz oran";
+}
+
+function oranFiltresiKur(alan) {
+  let sonGecerli = alan.value;
+  alan.addEventListener("input", () => {
+    if (/^-?\d{0,3}$/.test(alan.value)) {
+      sonGecerli = alan.value;
+      return;
+    }
+    alan.value = sonGecerli;
+    bildir("Oran alanı yalnız tam sayı kabul eder.", 2200);
+  });
+}
+
+function girdiOzeti() {
+  return JSON.stringify({
+    oranlar: durum.oranlar.map((o) => o.deger),
+    yas: durum.yas,
+  });
+}
+
+function hesaplaDurumu() {
+  const dolu = durum.oranlar.length > 0;
+  const yasVar = durum.yas !== null;
+  const dugme = D("hesapla");
+  dugme.disabled = !(dolu && yasVar);
+  let neden = "";
+  if (!dolu) neden = "En az bir oran girin.";
+  else if (!yasVar) neden = "Yaş aralığını seçin.";
+  D("hesapla-neden").textContent = neden;
+  D("hesapla-neden").hidden = neden === "";
+  D("bos-metin").hidden = dolu;
+  D("liste-kart").hidden = !dolu;
+  if (!dolu) {
+    D("adet").textContent = "0";
+    D("liste").replaceChildren();
+  }
+}
+
+function eskiUyariyiGuncelle() {
+  const kart = D("sonuc-kart");
+  if (kart.hidden || !durum.sonuc) return;
+  D("eski-uyari").hidden = girdiOzeti() === durum.sonGirdi;
+}
+
+function satirKur(oge, sira) {
+  const li = document.createElement("li");
+
+  const s = document.createElement("span");
+  s.className = "sira";
+  s.textContent = sira + ".";
+
+  const sayi = document.createElement("span");
+  sayi.className = "sayi";
+  sayi.textContent = "%" + oge.deger;
+
+  const etiket = document.createElement("span");
+  etiket.className = "etiket" + (oge.etiket ? "" : " bos");
+  etiket.textContent = etiketMetni(oge);
+  if (oge.etiket) etiket.title = oge.etiket;
+
+  const eylem = document.createElement("span");
+  eylem.style.display = "flex";
+  eylem.style.gap = "6px";
+
+  const duzenle = document.createElement("button");
+  duzenle.type = "button";
+  duzenle.className = "kucuk";
+  duzenle.textContent = "düzenle";
+  duzenle.addEventListener("click", () => duzenlemeAc(li, oge));
+
+  const sil = document.createElement("button");
+  sil.type = "button";
+  sil.className = "kucuk";
+  sil.textContent = "×";
+  sil.setAttribute("aria-label", "%" + oge.deger + " oranını sil");
+  sil.addEventListener("click", () => satirSil(oge));
+
+  eylem.append(duzenle, sil);
+  li.append(s, sayi, etiket, eylem);
+  return li;
+}
+
+function listeyiCiz() {
+  const ol = D("liste");
+  ol.replaceChildren();
+  durum.oranlar.forEach((oge, i) => ol.append(satirKur(oge, i + 1)));
+  D("adet").textContent = String(durum.oranlar.length);
+  hesaplaDurumu();
+  eskiUyariyiGuncelle();
+}
+
+function duzenlemeAc(li, oge) {
+  const kutu = document.createElement("div");
+  kutu.className = "satir-duzenle";
+
+  const sayiAlan = document.createElement("div");
+  const sayiEtiket = document.createElement("label");
+  sayiEtiket.textContent = "Oran (%)";
+  const sayiGiris = document.createElement("input");
+  sayiGiris.type = "text";
+  sayiGiris.inputMode = "numeric";
+  sayiGiris.maxLength = 3;
+  sayiGiris.value = String(oge.deger);
+  oranFiltresiKur(sayiGiris);
+  sayiEtiket.append(sayiGiris);
+  sayiAlan.append(sayiEtiket);
+
+  const etiketAlan = document.createElement("div");
+  etiketAlan.style.flex = "1 1 160px";
+  const etiketEtiket = document.createElement("label");
+  etiketEtiket.textContent = "Etiket (isteğe bağlı)";
+  const etiketGiris = document.createElement("input");
+  etiketGiris.type = "text";
+  etiketGiris.maxLength = 60;
+  etiketGiris.value = oge.etiket;
+  etiketEtiket.append(etiketGiris);
+  etiketAlan.append(etiketEtiket);
+
+  const kaydet = document.createElement("button");
+  kaydet.type = "button";
+  kaydet.className = "birincil kucuk";
+  kaydet.textContent = "Kaydet";
+
+  const iptal = document.createElement("button");
+  iptal.type = "button";
+  iptal.className = "kucuk";
+  iptal.textContent = "İptal";
+  iptal.addEventListener("click", () => listeyiCiz());
+
+  kaydet.addEventListener("click", () => {
+    // 100'e çıkarma onayı, oran zaten 100 değilse istenir (yeni eklemeyle aynı kural).
+    const dogru = oranDogrula(sayiGiris.value, { sessiz: oge.deger === 100 });
+    if (!dogru.ok) {
+      if (dogru.mesaj) bildir(dogru.mesaj, 3600);
+      sayiGiris.focus();
+      return;
+    }
+    oge.deger = dogru.deger;
+    oge.etiket = etiketGiris.value.trim().slice(0, 60);
+    listeyiCiz();
+    bildir("Oran güncellendi.");
+  });
+
+  kutu.append(sayiAlan, etiketAlan, kaydet, iptal);
+  li.replaceChildren(kutu);
+  sayiGiris.focus();
+  sayiGiris.select();
+}
+
+function satirSil(oge) {
+  const index = durum.oranlar.findIndex((o) => o.id === oge.id);
+  if (index === -1) return;
+  durum.silinen = { oge, index };
+  durum.oranlar.splice(index, 1);
+  listeyiCiz();
+  D("geri-al").hidden = false;
+  clearTimeout(geriAlZaman);
+  geriAlZaman = setTimeout(() => {
+    durum.silinen = null;
+    D("geri-al").hidden = true;
+  }, 5000);
+  if (durum.oranlar.length === 0) sonucuTemizle();
+}
+
+function oranDogrula(ham, { sessiz = false } = {}) {
+  const metin = String(ham).trim();
+  if (metin === "") return { ok: false, mesaj: "Bir oran girin." };
+  if (!/^-?\d{1,3}$/.test(metin)) {
+    return { ok: false, mesaj: "Oran tam sayı olmalıdır." };
+  }
+  const deger = Number(metin);
+  if (deger < 0 || deger > 100) {
+    return { ok: false, mesaj: "Oran 0 ile 100 arasında olmalıdır." };
+  }
+  if (!sessiz && deger === 100) {
+    const devam = window.confirm(
+      "100 oranı eklendiğinde bileşke üst sınıra ulaşır. Devam edilsin mi?"
+    );
+    if (!devam) return { ok: false, mesaj: "" };
+  }
+  return { ok: true, deger };
+}
+
+function ekle(olay) {
+  olay.preventDefault();
+  const hata = D("ekle-hata");
+  hata.hidden = true;
+
+  const girilen = D("oran").value;
+  const dogru = oranDogrula(girilen);
+  if (!dogru.ok) {
+    if (dogru.mesaj) {
+      hata.textContent = dogru.mesaj;
+      hata.hidden = false;
+    }
+    D("oran").focus();
+    return;
+  }
+
+  const etiket = D("etiket").value.trim().slice(0, 60);
+  const tekrar = durum.oranlar.some((o) => o.deger === dogru.deger);
+
+  durum.oranlar.push({ id: ++sayac, deger: dogru.deger, etiket });
+  D("oran").value = "";
+  D("etiket").value = "";
+  listeyiCiz();
+  D("oran").focus();
+
+  if (tekrar) {
+    bildir("Bu oran listede zaten var. Her iki giriş de hesaplamaya dahil edilir.", 4200);
+  } else if (dogru.deger === 0) {
+    bildir("0 oranı listeye eklendi. Bileşkeyi değiştirmez.");
+  }
+}
+
+async function hesapla() {
+  if (D("hesapla").disabled && !durum.sonuc) return;
+  const girdi = {
+    oranlar: durum.oranlar.map((o) => o.deger),
+    yas: durum.yas,
+  };
+  const ozet = girdiOzeti();
+  const benim = ++istekNo;
+  const dugme = D("hesapla");
+  dugme.disabled = true;
+  const eskiMetin = dugme.textContent;
+  dugme.textContent = "Hesaplanıyor…";
+  try {
+    const yanit = await fetch("/api/hesapla", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(girdi),
+    });
+    const veri = await yanit.json();
+    if (benim !== istekNo) return;   // daha yeni bir istek var; bu yanıtı çizme
+    if (!veri.ok) {
+      const mesaj =
+        (veri.hata && veri.hata.mesaj) || veri.mesaj || "Hesaplama yapılamadı.";
+      bildir(mesaj, 4200);
+      return;
+    }
+    durum.sonuc = veri;
+    durum.sonGirdi = ozet;
+    sonucuCiz(veri);
+  } catch (hata) {
+    if (benim === istekNo) {
+      bildir("Sunucuya ulaşılamadı. Bağlantıyı denetleyip yeniden deneyin.", 4200);
+    }
+  } finally {
+    if (benim === istekNo) {
+      dugme.textContent = eskiMetin === "Hesaplanıyor…" ? "Hesapla" : eskiMetin;
+      hesaplaDurumu();
+    }
+  }
+}
+
+function sonucuCiz(veri) {
+  const kart = D("sonuc-kart");
+  kart.hidden = false;
+  D("eski-uyari").hidden = true;
+
+  D("sonuc-deger").textContent = "%" + veri.gosterim.sonuc;
+
+  const ol = D("adimlar");
+  ol.replaceChildren();
+  veri.adimlar.forEach((adim, i) => {
+    const li = document.createElement("li");
+    const g = veri.gosterim.adimlar[i];
+    if (adim.tur === "yas_eki") {
+      li.textContent = "%" + g.onceki + " bileşkesine %" + g.eklenen +
+        " yaş eki (Balthazard) → %" + g.sonuc;
+    } else {
+      // Formül ham değerlerin gösterimidir; yüzde işareti yalnız sonuçta.
+      li.textContent = g.onceki + " + (100 − " + g.onceki + ") × " +
+        g.eklenen + " / 100 = %" + g.sonuc;
+    }
+    ol.append(li);
+  });
+
+  D("yuvarlama-satiri").textContent =
+    "Yuvarlama: uygulanmadı (motor ham değer döndürür).";
+
+  const yasSatiri = D("yas-eki-satiri");
+  if (veri.yas_eklemesi.uygulandi) {
+    const guclu = document.createElement("strong");
+    guclu.textContent = "65 yaş eki:";
+    yasSatiri.replaceChildren(
+      guclu,
+      document.createTextNode(
+        " uygulandı — %" + veri.yas_eklemesi.oran +
+        ", Balthazard formülüyle eklendi. Dayanak: " +
+        veri.yas_eklemesi.dayanak + "."
+      )
+    );
+    yasSatiri.hidden = false;
+  } else {
+    yasSatiri.hidden = true;
+    yasSatiri.replaceChildren();
+  }
+
+  D("kaynak").hidden = durum.yas !== "65_ve_uzeri";
+  kart.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+function sonucuTemizle() {
+  durum.sonuc = null;
+  durum.sonGirdi = null;
+  D("sonuc-kart").hidden = true;
+  D("eski-uyari").hidden = true;
+}
+
+async function kopyala(metin, basariMetni) {
+  try {
+    await navigator.clipboard.writeText(metin);
+    bildir(basariMetni);
+  } catch (hata) {
+    const alan = document.createElement("textarea");
+    alan.value = metin;
+    alan.setAttribute("readonly", "");
+    alan.style.position = "fixed";
+    alan.style.opacity = "0";
+    document.body.append(alan);
+    alan.select();
+    try {
+      document.execCommand("copy");
+      bildir(basariMetni);
+    } catch (ikinci) {
+      bildir("Kopyalanamadı. Metni elle seçebilirsiniz.", 4200);
+    } finally {
+      alan.remove();
+    }
+  }
+}
+
+// --- Olaylar ---------------------------------------------------------------
+
+D("ekle-form").addEventListener("submit", ekle);
+oranFiltresiKur(D("oran"));
+
+D("tumunu-sil").addEventListener("click", () => {
+  if (!window.confirm("Tüm oranlar silinecek. Emin misiniz?")) return;
+  durum.oranlar = [];
+  durum.silinen = null;
+  D("geri-al").hidden = true;
+  listeyiCiz();
+  sonucuTemizle();
+});
+
+D("geri-al-btn").addEventListener("click", () => {
+  if (!durum.silinen) return;
+  durum.oranlar.splice(durum.silinen.index, 0, durum.silinen.oge);
+  durum.silinen = null;
+  D("geri-al").hidden = true;
+  listeyiCiz();
+});
+
+D("hesapla").addEventListener("click", hesapla);
+
+document.querySelectorAll('input[name="yas"]').forEach((radio) => {
+  radio.addEventListener("change", () => {
+    durum.yas = radio.value;
+    hesaplaDurumu();
+    // §12.1: yaş seçimi değişince sonuç ve kaynak metni aynı render'da yenilenir.
+    if (durum.sonuc) hesapla();
+  });
+});
+
+D("yeni").addEventListener("click", () => {
+  durum.oranlar = [];
+  durum.yas = null;
+  document.querySelectorAll('input[name="yas"]').forEach((r) => { r.checked = false; });
+  D("oran").value = "";
+  D("etiket").value = "";
+  D("ekle-hata").hidden = true;
+  D("geri-al").hidden = true;
+  listeyiCiz();
+  sonucuTemizle();
+  D("oran").focus();
+});
+
+D("kopya-ham").addEventListener("click", () => {
+  if (!durum.sonuc) return;
+  kopyala(String(durum.sonuc.sonuc.deger), "Ham değer kopyalandı: " + durum.sonuc.sonuc.deger);
+});
+
+D("kopya-girdi").addEventListener("click", () => {
+  const satirlar = durum.oranlar.map(
+    (o) => "%" + o.deger + "\t" + etiketMetni(o)
+  );
+  satirlar.push("Yaş: " + (durum.yas === "65_ve_uzeri" ? "65 yaş ve üzeri" : "65 yaş altı"));
+  if (durum.sonuc) {
+    satirlar.push("Bileşke (ham): " + durum.sonuc.sonuc.deger);
+  }
+  kopyala(satirlar.join("\n"), "Girdiler kopyalandı.");
+});
+
+// İlk durum
+hesaplaDurumu();
+</script>
+</body>
+</html>
