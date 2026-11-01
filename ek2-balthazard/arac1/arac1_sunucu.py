@@ -99,7 +99,7 @@ BOLUM_NOTU = {
 
 BOS_SONUC = {
     "yazim": "Yazımı kontrol edin veya bölüm seçerek ilerleyin.",
-    "kapsam": "Göz, işitme, konuşma ve kas-iskelet bölümleri bu araçta henüz yok.",
+    "kapsam": "Görme ve kas-iskelet sistemindeki bazı değerlendirmeler ölçüm, tablo dönüşümü veya birden fazla adım gerektirir; bunlar tek bir sabit oran olarak gösterilmez.",
 }
 
 ARAMA_IPUCU = "Arama 3 karakterden sonra çalışır."
@@ -569,8 +569,11 @@ class Isleyici(BaseHTTPRequestHandler):
             {
                 "ok": True,
                 "kayit": len(katalog_nesnesi.kayitlar),
+                "ek_kayit": sum(len(b.get("kayitlar", [])) for b in ek_katalog().get("bolumler", [])),
+                "ozel_hesaplama": len(ozel_hesaplamalar().get("ozel_hesaplamalar", [])),
                 "belirsiz": sum(1 for s in katalog_nesnesi.belirsiz if s.durum == "belirsiz"),
-                "bolumler": [b.kisa for b in katalog_nesnesi.bolumler],
+                "bolumler": [b.kisa for b in katalog_nesnesi.bolumler] +
+                            [b.get("kisa", b["ad"]) for b in ek_katalog().get("bolumler", [])],
             }
         )
 
