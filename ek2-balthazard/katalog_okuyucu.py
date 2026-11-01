@@ -386,7 +386,12 @@ def _bolum_2_anahtari(kayit: dict, rozet: str) -> tuple[str, str]:
             grup = kayit.get("grup")
             if not grup:
                 raise KatalogHatasi(f"{kayit['id']}: {kayit['bolum']} kaydında 'grup' yok.")
-            return f"baslik:{grup}", grup
+            ad = (kayit.get("_grup_adlari") or {}).get(grup)
+            if not ad:
+                raise KatalogHatasi(
+                    f"{kayit['id']}: {kayit['bolum']} için '{grup}' grup adı katalog meta.grup_adlari içinde yok."
+                )
+            return f"baslik:{grup}", ad
         raise KatalogHatasi(f"{kayit['id']}: Roma başlığı belirlenemedi.")
     temel = rozet.split("-", 1)[0]
     return f"baslik:{temel}", temel
