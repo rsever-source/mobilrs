@@ -200,6 +200,14 @@
   @media(max-width:1050px){.arac-duzeni{grid-template-columns:minmax(0,1fr)}.sag-panel{grid-row:1;position:sticky;top:0;z-index:3}.sol-panel{grid-row:2}.model-kart{padding:12px}.insan-svg{min-height:420px;max-height:540px;width:auto;max-width:100%}}
   @media(max-width:520px){.sayfa{padding:0 8px 30px}.sekmeler{padding:8px 0 12px}.sekme{font-size:13px;padding:8px 10px}.sol-panel{padding:9px}.model-kart{padding:8px}.model-baslik h2{font-size:16px}.model-rozet{font-size:10px;padding:3px 6px}.insan-svg{min-height:340px;max-height:400px;width:auto;max-width:100%}.cipler{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.cip{font-size:12px;padding:7px 5px}.arama{padding:9px}.kart{padding:10px}}
 
+  .hastalik-paneli{width:100%;max-width:none}
+  .model-yas-kontrol{margin:12px 2px 4px;padding:11px 12px;border:1px solid #cfe0f5;border-radius:13px;background:#f5f9ff}
+  .model-yas-sec{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:700;color:#17345b;cursor:pointer}
+  .model-yas-sec input{width:17px;height:17px;accent-color:#075bc7;flex:0 0 auto}
+  .model-yas-bilgi{padding:8px 0 0 26px;font-size:12.5px;color:#435975}
+  .model-yas-bilgi p{margin:0 0 5px}
+  .model-yas-bilgi .model-yas-kaynak{font-size:11.5px;color:#697d98;margin:0}
+  .model-yas-bilgi[hidden]{display:none}
 </style>
 </head>
 <body>
@@ -235,13 +243,9 @@
       <div id="liste-icerik"></div>
     </section>
 
-    <div id="gezinme" class="iki-sutun gizli">
-      <section class="kart" aria-labelledby="gruplar-baslik">
-        <h2 id="gruplar-baslik">Grup / başlık</h2>
-        <ul class="liste" id="gruplar"></ul>
-      </section>
-      <section class="kart" aria-labelledby="hastalik-baslik">
-        <h2 id="hastalik-baslik">Hastalık</h2>
+    <div id="gezinme" class="gizli">
+      <section class="kart hastalik-paneli" aria-labelledby="hastalik-baslik">
+        <h2 id="hastalik-baslik">Hastalıklar</h2>
         <div id="hastaliklar"></div>
       </section>
     </div>
@@ -335,7 +339,18 @@
             </g>
           </svg>
           </div>
-        <p class="model-aciklama">Vücut üzerindeki işaretleri seçerek ilgili hastalık bölümüne geçin. Hastalık listesi solda kalır.</p>
+        <div class="model-yas-kontrol">
+          <label class="model-yas-sec" for="yas-ek-goster">
+            <input id="yas-ek-goster" type="checkbox" checked>
+            <span>65 yaş ve üzeri için %10 ek oran</span>
+          </label>
+          <div class="model-yas-bilgi" id="yas-ek-bilgi">
+            <p>Yalnızca 65 yaş ve üzerindeki bireyler için geçerlidir. %10 ek, mevcut orana düz toplama ile eklenmez; Araç-2'de diğer oranlarla birlikte Balthazard yöntemiyle hesaplanır.</p>
+            <p><strong>Örnek:</strong> %40 → %46.</p>
+            <p class="model-yas-kaynak">Dayanak: 20.02.2019 tarihli ve 30692 sayılı Yönetmelik, madde 10/4. Bu işaret kutusu yalnızca bilgi alanını gösterir/gizler; oranı değiştirmez ve %10'u otomatik aktarmaz. Yaş seçimi Araç-2'de yapılır.</p>
+          </div>
+        </div>
+        <p class="model-aciklama">Vücut üzerindeki işaretleri seçerek ilgili hastalık bölümüne geçin.</p>
       </section>
     </aside>
   </div>
@@ -345,14 +360,15 @@
 (function () {
   "use strict";
 
-  var durum = { bolum: "", gruplar: [], sepet: [] };
+  var durum = { bolum: "", hastaliklar: [], sepet: [] };
   var cipler = document.getElementById("cipler");
   var giris = document.getElementById("q");
   var listeKutu = document.getElementById("liste");
   var listeIcerik = document.getElementById("liste-icerik");
   var gezinme = document.getElementById("gezinme");
-  var gruplarKutu = document.getElementById("gruplar");
   var hastalikKutu = document.getElementById("hastaliklar");
+  var yasEkGoster = document.getElementById("yas-ek-goster");
+  var yasEkBilgi = document.getElementById("yas-ek-bilgi");
   var sonucKutu = document.getElementById("sonuc");
   var sepetKutu = document.getElementById("sepet");
   var sepetListe = document.getElementById("sepet-liste");
@@ -368,6 +384,10 @@
   function goster(kutu, gorunur) {
     kutu.classList.toggle("gizli", !gorunur);
   }
+  yasEkGoster.addEventListener("change", function () {
+    goster(yasEkBilgi, yasEkGoster.checked);
+  });
+  goster(yasEkBilgi, yasEkGoster.checked);
   function json(url) {
     return fetch(url, { headers: { "Accept": "application/json" } }).then(function (y) {
       if (!y.ok) { throw new Error("HTTP " + y.status); }
@@ -422,52 +442,36 @@
 
   function bolumSec(ad) {
     durum.bolum = ad;
-    durum.gruplar = [];
+    durum.hastaliklar = [];
     cipIsaretle();
     sonucKutu.classList.add("gizli");
     listeKutu.classList.add("gizli");
     giris.value = "";
     if (!ad) {
       gezinme.classList.add("gizli");
+      hastalikKutu.innerHTML = "";
       return;
     }
     json("/api/gezinme?bolum=" + encodeURIComponent(ad)).then(function (yanit) {
-      durum.gruplar = yanit.gruplar || [];
+      // Grup/başlık (I, II, III veya "EK-2 ek kayıtlar") bir ara seçim değildir.
+      // Seçilen bölümün tüm hastalıklarını tek listede, kendi kayıtlarıyla göster.
+      durum.hastaliklar = (yanit.gruplar || []).reduce(function (tum, grup) {
+        (grup.hastaliklar || []).forEach(function (hastalik) {
+          tum.push(Object.assign({}, hastalik, { ek_kayit: grup.rozet === "EK-2" }));
+        });
+        return tum;
+      }, []);
       gezinme.classList.remove("gizli");
-      gruplariCiz();
-      if (durum.gruplar.length) { grupSec(0); }
+      hastaliklariCiz();
     }).catch(hataGoster);
   }
 
-  function gruplariCiz(secilen) {
-    gruplarKutu.innerHTML = "";
-    durum.gruplar.forEach(function (grup, i) {
-      var li = el("li");
-      var dugme = el("button", "satir");
-      dugme.type = "button";
-      dugme.setAttribute("aria-current", i === secilen ? "true" : "false");
-      var metin = el("span", "metin");
-      var ad = el("span", "ad", grup.ad);
-      var ayrinti = el("span", "ayrinti", grup.kayit_sayisi + " kayıt · " +
-        grup.hastaliklar.length + " hastalık");
-      metin.appendChild(ad); metin.appendChild(ayrinti);
-      dugme.appendChild(metin);
-      if (grup.rozet) { dugme.appendChild(el("span", "rozet", grup.rozet)); }
-      dugme.addEventListener("click", function () { grupSec(i); });
-      li.appendChild(dugme);
-      gruplarKutu.appendChild(li);
-    });
-  }
-
-  function grupSec(i) {
-    gruplariCiz(i);
-    var grup = durum.gruplar[i];
-    if (!grup) { return; }
+  function hastaliklariCiz() {
     hastalikKutu.innerHTML = "";
     var baslik = document.getElementById("hastalik-baslik");
-    baslik.textContent = grup.ad;
+    baslik.textContent = "Hastalıklar (" + durum.hastaliklar.length + ")";
     var liste = el("ul", "liste");
-    grup.hastaliklar.forEach(function (hastalik) {
+    durum.hastaliklar.forEach(function (hastalik) {
       var li = el("li");
       var dugme = el("button", "satir");
       dugme.type = "button";
@@ -478,6 +482,9 @@
         : hastalik.seviyeler.length + " seviye";
       metin.appendChild(el("span", "ayrinti", ayrinti));
       dugme.appendChild(metin);
+      if (hastalik.ek_kayit) {
+        dugme.appendChild(el("span", "rozet bolum", "EK-2"));
+      }
       dugme.addEventListener("click", function () {
         if (hastalik.tek_kayit) {
           kayitAc(hastalik.seviyeler[0].id);
@@ -671,15 +678,6 @@
       tekKutu.appendChild(el("p", null, veri.tek_seviye_notu));
       kart.appendChild(tekKutu);
     }
-
-    var yas = el("div", "notr-kutu");
-    yas.appendChild(el("span", "tur", "Bilgi"));
-    yas.appendChild(el("div", "baslik", veri.yas_bloku.baslik));
-    yas.appendChild(el("p", null, veri.yas_bloku.metin));
-    yas.appendChild(el("p", null, veri.yas_bloku.ornek));
-    yas.appendChild(el("p", "alt", veri.yas_bloku.kaynak));
-    yas.appendChild(el("p", "alt", veri.yas_bloku.not));
-    kart.appendChild(yas);
 
     if (veri.bolum_notu) {
       var bolumNotu = el("div", "notr-kutu");
