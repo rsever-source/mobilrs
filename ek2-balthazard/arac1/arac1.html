@@ -62,10 +62,12 @@
   .arama input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
   .ipucu{font-size:12.5px;color:var(--muted)}
 
-  .cipler{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 12px;scrollbar-width:thin}
-  .cip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);
-    padding:8px 14px;border-radius:999px;font-size:14px;font-family:inherit;cursor:pointer}
+  .cipler{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:2px 0 12px;overflow:visible}
+  .cip{min-width:0;width:100%;border:1px solid var(--line);background:var(--card);color:var(--ink);
+    padding:8px 9px;border-radius:999px;font-size:14px;line-height:1.25;font-family:inherit;cursor:pointer;
+    white-space:normal;overflow-wrap:anywhere}
   .cip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:600}
+  @media (max-width:520px){.cipler{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.cip{font-size:12px;padding:7px 5px}}
 
   .kart{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:16px}
   .iki-sutun{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:14px}
