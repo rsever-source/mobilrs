@@ -349,29 +349,23 @@
     .site-brand{font-size:20px}
     .site-mobile-home{padding:5px 8px;font-size:11px}
   }
-  .model-secili-isaretler{position:absolute;inset:0;z-index:5;pointer-events:none}
-  .model-kayit-isareti{position:absolute;display:grid;place-items:center;width:25px;height:25px;
     margin:-12px 0 0 -12px;border:2px solid #fff;border-radius:50%;background:#e24b5b;
     color:#fff;font-size:11px;font-weight:850;line-height:1;box-shadow:0 0 0 4px #e24b5b38,0 2px 7px #192b4933}
   .sag-panel #sepet{margin-top:10px}
   .sag-panel #sepet .sepet-satir{display:grid;grid-template-columns:27px minmax(0,1fr) auto;align-items:center;gap:9px}
-  .sepet-model-no{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;
     background:#e24b5b;color:#fff;font-size:11px;font-weight:850;line-height:1}
   .sag-panel #sepet .metin{min-width:0}
   .sag-panel #sepet .ayrinti{overflow-wrap:anywhere}
   .sag-panel #sepet .sil{align-self:center}
   @media(max-width:520px){
     .sag-panel #sepet{margin-top:8px;padding:10px}
-    .sag-panel #sepet .sepet-satir{grid-template-columns:25px minmax(0,1fr) auto;gap:7px}
-    .sag-panel #sepet .sepet-model-no{width:22px;height:22px}
+    .sag-panel #sepet .sepet-satir{grid-template-columns:minmax(0,1fr) auto;gap:7px}
     .sag-panel #sepet .ad{font-size:13px}
   }
   /* Live Balthazard preview in Araç-1: results come from the common API/motor. */
-  .model-kayit-vurgusu{position:absolute;z-index:4;display:block;transform:translate(-50%,-50%);
     border:2px solid rgba(225,55,76,.72);border-radius:48%;
     background:rgba(229,58,79,.22);box-shadow:0 0 0 5px rgba(229,58,79,.10);
     pointer-events:none}
-  .model-kayit-isareti{z-index:6}
   .balthazard-onizleme{margin-top:10px}
   .balthazard-ust{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px}
   .balthazard-kicker{margin:0 0 3px;color:#70839d;font-size:10px;font-weight:850;letter-spacing:.08em}
@@ -569,8 +563,6 @@
   var hastalikKutu = document.getElementById("hastaliklar");
   var yasEkGoster = document.getElementById("yas-ek-goster");
   var yasEkBilgi = document.getElementById("yas-ek-bilgi");
-  var modelCagri = document.getElementById("model-secim-cagri");
-  var modelCagriYazi = document.getElementById("model-secim-yazi");
   var sonucKutu = document.getElementById("sonuc");
   var sepetKutu = document.getElementById("sepet");
   var sepetListe = document.getElementById("sepet-liste");
@@ -592,95 +584,6 @@
   }
   function goster(kutu, gorunur) {
     kutu.classList.toggle("gizli", !gorunur);
-  }
-  var modelBolgeHaritasi = [
-    {anahtarlar:["zihinsel","ruhsal","davranış"], key:"ruh", ad:"Ruh Sağlığı", x:51, y:11, w:28, h:28},
-    {anahtarlar:["kulak burun boğaz","kbb","vestibüler","işitme","denge"], key:"kulak", ad:"Kulak ve Denge", x:58, y:17, w:26, h:27},
-    {anahtarlar:["tiroit","tiroid","paratiroit","paratiroid","iç salgı bezi","poliglandüler"], key:"endokrin", ad:"İç Salgı Bezleri", x:51, y:25, w:30, h:24},
-    {anahtarlar:["hematoloji"], key:"kan", ad:"Kan Sistemi", x:52, y:34, w:34, h:42},
-    {anahtarlar:["deri"], key:"deri", ad:"Deri", x:62, y:41, w:32, h:42},
-    {anahtarlar:["karaciğer","karaciger","safra"], key:"karaciger", ad:"Karaciğer", x:59, y:46, w:38, h:30},
-    {anahtarlar:["kardiyovasküler","kalp-damar","kalp"], key:"kalp", ad:"Kalp-Damar", x:53, y:37, w:30, h:32},
-    {anahtarlar:["göz","görme"], key:"goz", ad:"Göz", x:51, y:8, w:24, h:24},
-    {anahtarlar:["sinir"], key:"sinir", ad:"Sinir Sistemi", x:51, y:14, w:27, h:30},
-    {anahtarlar:["göğüs","gogus","akciğer","akciger"], key:"gogus", ad:"Göğüs Hastalıkları", x:51, y:34, w:54, h:58},
-    {anahtarlar:["sindirim","mide","bağırsak","bagirsak"], key:"sindirim", ad:"Sindirim", x:51, y:51, w:48, h:46},
-    {anahtarlar:["böbrek","üriner","idrar"], key:"bobrek", ad:"Böbrek ve İdrar", x:49, y:61, w:40, h:28},
-    {anahtarlar:["mesane","idrar kesesi"], key:"mesane", ad:"Mesane", x:51, y:70, w:30, h:25},
-    {anahtarlar:["kadın"], key:"kadin", ad:"Kadın Hastalıkları", x:51, y:73, w:34, h:24},
-    {anahtarlar:["bel omurgası","omurga","vertebra","disk"], key:"omurga", ad:"Omurga", x:49, y:64, w:20, h:66},
-    {anahtarlar:["kas-iskelet","ekstremite","kemik","eklem"], key:"kas", ad:"Kas-İskelet", x:45, y:82, w:50, h:35},
-    {anahtarlar:["onkoloji"], key:"onkoloji", ad:"Onkoloji", x:50, y:46, w:40, h:44},
-    {anahtarlar:["endokrin","metabolizma"], key:"endokrin", ad:"Endokrin ve Metabolizma", x:51, y:25, w:30, h:24}
-  ];
-
-  function modelBolgesiBul(kayit) {
-    var taniAnahtari = ((kayit.ad || "") + " " + (kayit.seviye || "")).toLocaleLowerCase("tr-TR");
-    var hastalikBolgesi = modelBolgeHaritasi.find(function (satir) {
-      return satir.anahtarlar.some(function (parca) { return taniAnahtari.indexOf(parca) !== -1; });
-    });
-    if (hastalikBolgesi) return hastalikBolgesi;
-
-    var bolumAnahtari = (kayit.bolum || "").toLocaleLowerCase("tr-TR");
-    return modelBolgeHaritasi.find(function (satir) {
-      return satir.anahtarlar.some(function (parca) { return bolumAnahtari.indexOf(parca) !== -1; });
-    }) || {key:"genel", ad:kayit.bolum || "Genel", x:51, y:48, w:34, h:34};
-  }
-
-  function modeliGuncelle(bolumAdi) {
-    if (!modelCagri || !modelCagriYazi) return;
-    if (!bolumAdi) {
-      modelCagri.hidden = true;
-      modelCagri.setAttribute("aria-hidden", "true");
-      modelCagriYazi.textContent = "";
-      return;
-    }
-    var secim = modelBolgesiBul({bolum:bolumAdi});
-    modelCagriYazi.textContent = secim.ad;
-    modelCagri.style.top = secim.y + "%";
-    modelCagri.style.setProperty("--nokta-x", secim.x + "%");
-    modelCagri.hidden = false;
-    modelCagri.setAttribute("aria-hidden", "false");
-  }
-
-  function seciliModelBolgeGruplari() {
-    var gruplar = [];
-    var indeks = Object.create(null);
-    durum.sepet.forEach(function (satir) {
-      var bolge = modelBolgesiBul(satir);
-      if (!indeks[bolge.key]) {
-        var grup = {key:bolge.key, ad:bolge.ad, x:bolge.x, y:bolge.y, w:bolge.w || 34, h:bolge.h || 34, kayitlar:[]};
-        gruplar.push(grup);
-        indeks[bolge.key] = grup;
-      }
-      indeks[bolge.key].kayitlar.push(satir);
-    });
-    var noByKey = Object.create(null);
-    gruplar.forEach(function (grup, i) { noByKey[grup.key] = i + 1; });
-    return {gruplar:gruplar, noByKey:noByKey};
-  }
-
-  function seciliModelIsaretleriniCiz() {
-    var katman = document.getElementById("model-secili-isaretler");
-    if (!katman) return;
-    katman.replaceChildren();
-    var secimler = seciliModelBolgeGruplari();
-    secimler.gruplar.forEach(function (grup, i) {
-      var basliklar = grup.kayitlar.map(function (kayit) { return kayit.ad; }).join(", ");
-      var vurgu = el("span", "model-kayit-vurgusu");
-      vurgu.style.left = grup.x + "%";
-      vurgu.style.top = grup.y + "%";
-      vurgu.style.width = grup.w + "px";
-      vurgu.style.height = grup.h + "px";
-      vurgu.title = grup.ad + " bölgesi seçili";
-      katman.appendChild(vurgu);
-      var isaret = el("span", "model-kayit-isareti", String(i + 1));
-      isaret.style.left = grup.x + "%";
-      isaret.style.top = grup.y + "%";
-      isaret.title = grup.ad + ": " + basliklar;
-      isaret.setAttribute("aria-label", grup.ad + " bölgesinde seçilen kayıtlar: " + basliklar);
-      katman.appendChild(isaret);
-    });
   }
   yasEkGoster.addEventListener("change", function () {
     goster(yasEkBilgi, yasEkGoster.checked);
@@ -723,7 +626,6 @@ var tumu = el("button", "cip", "Tümü");
     durum.bolum = ad;
     durum.hastaliklar = [];
     cipIsaretle();
-    modeliGuncelle(ad);
     sonucKutu.classList.add("gizli");
     listeKutu.classList.add("gizli");
     giris.value = "";
@@ -1097,19 +999,14 @@ var tumu = el("button", "cip", "Tümü");
     goster(sepetKutu, durum.sepet.length > 0);
     sepetBaslik.textContent = "Seçilen kayıtlar (" + durum.sepet.length + ")";
     sepetListe.innerHTML = "";
-    var secimler = seciliModelBolgeGruplari();
     durum.sepet.forEach(function (satir, i) {
       var li = el("li");
       var kutu = el("div", "sepet-satir");
-      var bolge = modelBolgesiBul(satir);
-      var no = secimler.noByKey[bolge.key] || 0;
-      var isaret = el("span", "sepet-model-no", String(no));
-      isaret.title = bolge.ad + " bölgesi";
       var sol = el("span", "metin");
       sol.appendChild(el("span", "ad", satir.ad + " · %" + satir.gosterim));
       sol.appendChild(el("span", "ayrinti", satir.seviye));
       sol.appendChild(el("span", "ayrinti", satir.bolum + " · " + satir.kaynak));
-      kutu.append(isaret, sol);
+      kutu.appendChild(sol);
       var sil = el("button", "sil", "Kaldır");
       sil.type = "button";
       sil.addEventListener("click", function () {
@@ -1121,7 +1018,6 @@ var tumu = el("button", "cip", "Tümü");
       li.appendChild(kutu);
       sepetListe.appendChild(li);
     });
-    seciliModelIsaretleriniCiz();
     balthazardOnizlemesiniGuncelle();
   }
 
