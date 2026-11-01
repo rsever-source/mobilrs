@@ -239,7 +239,7 @@ class Arac1ArayuzTestleri(unittest.TestCase):
                    "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR"):
             self.assertIn('data-bolum="' + ad + '"', self.html)
         self.assertIn('id="vucut-dugmeler"', self.html)
-        self.assertIn('role="button" aria-label="Tıklanabilir vücut şeması"', self.html)
+        self.assertIn('role="img" aria-label="Tıklanabilir vücut şeması"', self.html)
         self.assertIn('addEventListener("keydown"', self.html)
         self.assertIn('bolumSec(bolge.getAttribute("data-bolum"))', self.html)
 
