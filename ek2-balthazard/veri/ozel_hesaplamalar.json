@@ -1,0 +1,995 @@
+{
+  "meta": {
+    "ad": "EK-2 özel hesaplama ve tablo kataloğu",
+    "surum": "1.0",
+    "kaynak": "20.02.2019 tarihli ve 30692 sayılı Resmî Gazete, EK-2",
+    "kaynak_pdf": "20190220-2-1(1).pdf",
+    "ilke": "Tablo veya formül gerektiren sistemler tek bir sabit hastalık oranına indirgenmez. Bu dosya hesaplama girdilerini, formülleri ve kaynak tablo yönlendirmelerini tutar; kendi başına kişiye oran üretmez.",
+    "sayfa_eslemesi": "PDF görüntü sayfa numarası ile basılı Resmî Gazete sayfa numarası arasında 113 fark vardır."
+  },
+  "ozel_hesaplamalar": [
+    {
+      "id": "OZ-GOR-001",
+      "bolum": "GÖRME SİSTEMİ",
+      "tur": "formul",
+      "baslik": "Görme sistemi yetersizlik oranı (GSYO)",
+      "kaynak_sayfalar": [
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177
+      ],
+      "kaynak_pdf_sayfalar": [
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64
+      ],
+      "girdiler": [
+        "Sağ göz görme keskinliği puanı (GKP)",
+        "Sol göz görme keskinliği puanı (GKP)",
+        "Binoküler görme keskinliği puanı (GKP)",
+        "Sağ, sol ve binoküler görme alanı puanları (GAP)",
+        "Varsa diğer yapısal/fonksiyonel kayıplar"
+      ],
+      "adimlar": [
+        {
+          "adim": 1,
+          "aciklama": "Ondalık/Snellen veya uygun logaritmik eşel ölçümü, kaynak Tablo 1 ile görme keskinliği puanına çevrilir.",
+          "tablo": "Tablo 1"
+        },
+        {
+          "adim": 2,
+          "aciklama": "İşlevsel keskinlik puanı; binoküler puan 3 ağırlıkla, sağ ve sol göz puanları 1'er ağırlıkla birleştirilerek 5'e bölünür.",
+          "formul": "İKP = (3 × binoküler GKP + sağ GKP + sol GKP) / 5"
+        },
+        {
+          "adim": 3,
+          "aciklama": "Görme alanı muayenesi puanları kaynak görme alanı çizelgeleriyle değerlendirilir; merkezi ve parasantral kayıplar ile binoküler çakışma dikkate alınır.",
+          "tablo": "Görme alanı çizelgeleri ve örnek şekiller"
+        },
+        {
+          "adim": 4,
+          "aciklama": "İşlevsel alan puanı, binoküler alan puanına 3 ağırlık; sağ ve sol göz alan puanlarına 1'er ağırlık verilerek hesaplanır.",
+          "formul": "İAP = (3 × binoküler GAP + sağ GAP + sol GAP) / 5"
+        },
+        {
+          "adim": 5,
+          "aciklama": "İşlevsel keskinlik ve işlevsel alan puanları çarpılır, 100'e bölünür.",
+          "formul": "İGP = İKP × İAP / 100"
+        },
+        {
+          "adim": 6,
+          "aciklama": "Varsa diplopi, sürekli göz sulanması, kapak işlev bozukluğu gibi diğer kayıplar kaynakta belirtilen yöntemle düşülür; Balthazard ve doğrudan puan düşümü kuralları birbirinin yerine kullanılmaz."
+        },
+        {
+          "adim": 7,
+          "aciklama": "Görme sistemi yetersizlik oranı 100'den işlevsel görme puanı çıkarılarak bulunur.",
+          "formul": "GSYO = 100 − İGP"
+        },
+        {
+          "adim": 8,
+          "aciklama": "GSYO 50'yi aşarsa kişinin engel oranı kaynak Tablo 3 karşılığından belirlenir; 50 ve altındaki durumlarda metinde belirtilen eşitlik kuralı uygulanır.",
+          "tablo": "Tablo 3 (basılı s.163)",
+          "formul": "GSYO ≤ 50 ise engel oranı = GSYO; GSYO > 50 ise engel oranı = (GSYO − 50) × 0,8 + 50; küsurat üst tam sayıya yuvarlanır."
+        }
+      ],
+      "tablolar": [
+        {
+          "ad": "Tablo 1 — Görme keskinliği puanı eşdeğerlik tablosu",
+          "sayfa": 151,
+          "amac": "Ölçülen görme keskinliği değerini GKP'ye dönüştürür.",
+          "satirlar": [
+            [
+              "1.00",
+              "20/20",
+              "0.00",
+              100
+            ],
+            [
+              "0.90",
+              "20/22.2",
+              "0.05",
+              98
+            ],
+            [
+              "0.80",
+              "20/25",
+              "0.10",
+              95
+            ],
+            [
+              "0.70",
+              "20/28.5",
+              "0.15",
+              93
+            ],
+            [
+              "0.63",
+              "20/32",
+              "0.20",
+              90
+            ],
+            [
+              "0.60",
+              "20/33.3",
+              "0.22",
+              88
+            ],
+            [
+              "0.50",
+              "20/40",
+              "0.30",
+              85
+            ],
+            [
+              "0.40",
+              "20/50",
+              "0.40",
+              80
+            ],
+            [
+              "0.32",
+              "20/63",
+              "0.50",
+              75
+            ],
+            [
+              "0.30",
+              "20/66.6",
+              "0.52",
+              73
+            ],
+            [
+              "0.25",
+              "20/80",
+              "0.60",
+              70
+            ],
+            [
+              "0.20",
+              "20/100",
+              "0.70",
+              65
+            ],
+            [
+              "0.16",
+              "20/125",
+              "0.80",
+              60
+            ],
+            [
+              "0.13",
+              "20/160",
+              "0.90",
+              55
+            ],
+            [
+              "0.10",
+              "20/200",
+              "1.00",
+              50
+            ],
+            [
+              "0.08",
+              "20/250",
+              "1.10",
+              45
+            ],
+            [
+              "0.06",
+              "20/320",
+              "1.20",
+              40
+            ],
+            [
+              "0.05",
+              "20/400",
+              "1.30",
+              35
+            ],
+            [
+              "0.04",
+              "20/500",
+              "1.40",
+              30
+            ],
+            [
+              "0.03",
+              "20/640",
+              "1.51",
+              25
+            ],
+            [
+              "0.025",
+              "20/800",
+              "1.60",
+              20
+            ],
+            [
+              "0.020",
+              "20/1000",
+              "1.70",
+              15
+            ],
+            [
+              "0.016",
+              "20/1250",
+              "1.80",
+              0
+            ],
+            [
+              "0.013",
+              "20/1600",
+              "1.90",
+              0
+            ],
+            [
+              "0.010",
+              "20/2000",
+              "2.00",
+              0
+            ],
+            [
+              "0.008",
+              "20/2500",
+              "2.10",
+              0
+            ],
+            [
+              "0.001",
+              "20/25000",
+              "3.10",
+              0
+            ]
+          ],
+          "sutunlar": [
+            "Ondalık",
+            "Snellen",
+            "LogMAR",
+            "Görme keskinliği puanı"
+          ],
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü s.151 ile satır satır karşılaştırıldı."
+        },
+        {
+          "ad": "Tablo 2 — Görme keskinliğine bağlı bozukluk oranları",
+          "sayfa": 154,
+          "amac": "Görme alanı normalse ve düzeltme gerekmiyorsa ilgili değerlendirmeyi destekler."
+        },
+        {
+          "ad": "Tablo 3 — GSYO 50'den fazla olduğunda engel oranı",
+          "sayfa": 163,
+          "amac": "GSYO değerini engel oranına eşler.",
+          "formul": "GSYO 51–100 için engel oranı = (GSYO − 50) × 0,8 + 50; küsurat üst tam sayıya tamamlanır.",
+          "pdf_sayfa": 50,
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü s.50 / basılı Resmî Gazete s.163 ile karşılaştırıldı."
+        }
+      ],
+      "uyari": "Bu hesaplama otomatik oran bulucu olarak uygulanmamıştır: ölçüm diyagramları, puan eşleştirme tabloları ve ek kayıp kuralları klinik girdiler olmadan güvenilir biçimde hesaplanamaz."
+    },
+    {
+      "id": "OZ-KIS-001",
+      "bolum": "KAS-İSKELET SİSTEMİ",
+      "tur": "tablo_birlesimi",
+      "baslik": "Omurga — yaralanma, hareket açıklığı ve sinir kayıpları",
+      "kaynak_sayfalar": [
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217
+      ],
+      "kaynak_pdf_sayfalar": [
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104
+      ],
+      "tablolar": [
+        {
+          "ad": "Tablo 1.1 — Lomber omurganın engellilik oranları (yaralanma modeli)",
+          "sayfa": 207,
+          "pdf_sayfa": 94,
+          "sutunlar": [
+            "Kategori",
+            "Kaynak tablodaki kriter özeti",
+            "Engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "I",
+              "Klinik bulgu, nörolojik kayıp, yapısal bozukluk ve kırık yoktur",
+              0
+            ],
+            [
+              "II",
+              "Travma/hastalıkla ilişkili öykü ve muayene bulguları; belirgin adale spazmı veya hareket azalması; objektif bulgu yok ya da yapısal bütünlük bozulmamış",
+              8
+            ],
+            [
+              "III",
+              "Belirgin radikülopati bulguları (duyu/refleks/kuvvet kaybı vb.) veya görüntülemeyle doğrulanmış aynı seviyede radikülopati/disk hernisi; belirli kırıklar",
+              13
+            ],
+            [
+              "IV",
+              "Hareket segmenti bütünlüğünde bozulma veya belirgin hareket kaybı; kas spazmı/ağrı ile birlikte kaynakta tanımlanan ağır yapısal kriterler",
+              23
+            ],
+            [
+              "V",
+              "Kategori III ve IV ölçütlerinin birlikte bulunması veya kaynakta belirtilen ağır tek taraflı nörolojik bulgu ve vertebra kompresyonu",
+              25
+            ]
+          ],
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü ve basılı sayfa karşılaştırıldı; kriter metinleri arayüz için kısaltılmıştır."
+        },
+        {
+          "ad": "Tablo 1.2 — Servikal omurganın engellilik oranları (yaralanma modeli)",
+          "sayfa": 208,
+          "pdf_sayfa": 95,
+          "sutunlar": [
+            "Kategori",
+            "Kaynak tablodaki kriter özeti",
+            "Engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "I",
+              "Klinik bulgu, nörolojik kayıp, yapısal bozukluk ve kırık yoktur",
+              0
+            ],
+            [
+              "II",
+              "Travma/hastalık öyküsü; hareket genişliğinde asimetri veya radiküler ağrı, ancak objektif bulgu/yapısal bozulma yok ya da kaynakta tanımlı konservatif tedaviyle düzelmiş durum",
+              8
+            ],
+            [
+              "III",
+              "Belirgin radikülopati bulguları veya görüntüleme ile aynı seviyede doğrulanmış radikülopati/disk hernisi; kaynakta tanımlı kırıklar",
+              18
+            ],
+            [
+              "IV",
+              "Hareket segmenti bütünlüğünde bozulma veya bilateral/çok seviyeli radikülopati ve kaynakta belirtilen hareket/cerrahi kriterleri",
+              28
+            ],
+            [
+              "V",
+              "Üst ekstremitede yardımcı cihaz gerektiren ciddi fonksiyon kaybı, total nörolojik kayıp veya çok seviyeli ciddi nörolojik fonksiyon kaybı",
+              38
+            ]
+          ],
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü ve basılı sayfa karşılaştırıldı; kriter metinleri arayüz için kısaltılmıştır."
+        },
+        {
+          "ad": "Tablo 1.3 — Torakal omurganın engellilik oranları (yaralanma modeli)",
+          "sayfa": 209,
+          "pdf_sayfa": 96,
+          "sutunlar": [
+            "Kategori",
+            "Kaynak tablodaki kriter özeti",
+            "Engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "I",
+              "Klinik bulgu, nörolojik kayıp, yapısal bozukluk ve kırık yoktur",
+              0
+            ],
+            [
+              "II",
+              "Travma/hastalıkla ilişkili bulgular ve hareket kısıtlılığı/radiküler ağrı; objektif bulgu veya yapısal bütünlük bozulması yok ya da kaynakta tanımlı kırıklar",
+              8
+            ],
+            [
+              "III",
+              "Alt ekstremitede belirgin radikülopati bulguları veya görüntüleme ile doğrulanmış aynı seviyede radikülopati/disk hernisi; kaynakta tanımlı kırıklar",
+              18
+            ],
+            [
+              "IV",
+              "Hareket segmenti bütünlüğünde bozulma veya bilateral/çok seviyeli radikülopati; kaynakta belirtilen ağır hareket kaybı/yapısal kriterler",
+              23
+            ],
+            [
+              "V",
+              "Kategori III düzeyinde alt ekstremite bulguları ile kategori IV düzeyinde yapısal bütünlük bozukluğu veya kaynakta belirtilen ağır nörolojik motor bulgu",
+              28
+            ]
+          ],
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü ve basılı sayfa karşılaştırıldı; kriter metinleri arayüz için kısaltılmıştır."
+        },
+        {
+          "ad": "Tablo 1.4 — Servikal omurgada hareket kısıtlılığı",
+          "sayfa": 212,
+          "pdf_sayfa": 99,
+          "amac": "Eklem hareket açıklığı modelinde ölçülen açı aralığını kaynak oranına dönüştürür.",
+          "sutunlar": [
+            "Hareket/ölçüm",
+            "Açı aralığı",
+            "Engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "Fleksiyon",
+              "0°–14°",
+              5
+            ],
+            [
+              "Fleksiyon",
+              "15°–29°",
+              4
+            ],
+            [
+              "Fleksiyon",
+              "30°–49°",
+              2
+            ],
+            [
+              "Fleksiyon",
+              "≥50°",
+              0
+            ],
+            [
+              "Ekstansiyon",
+              "0°–19°",
+              6
+            ],
+            [
+              "Ekstansiyon",
+              "20°–39°",
+              4
+            ],
+            [
+              "Ekstansiyon",
+              "40°–59°",
+              2
+            ],
+            [
+              "Ekstansiyon",
+              ">60°",
+              0
+            ],
+            [
+              "Lateral fleksiyon-ekstansiyon",
+              "0°–24°",
+              4
+            ],
+            [
+              "Lateral fleksiyon-ekstansiyon",
+              "25°–44°",
+              2
+            ],
+            [
+              "Lateral fleksiyon-ekstansiyon",
+              ">45°",
+              0
+            ],
+            [
+              "Rotasyon",
+              "0°–39°",
+              6
+            ],
+            [
+              "Rotasyon",
+              "40°–79°",
+              3
+            ],
+            [
+              "Rotasyon",
+              ">80°",
+              0
+            ],
+            [
+              "Ankiloz — fleksiyon",
+              "0° (nötral)",
+              12
+            ],
+            [
+              "Ankiloz — fleksiyon",
+              "15°",
+              20
+            ],
+            [
+              "Ankiloz — fleksiyon",
+              "30°",
+              30
+            ],
+            [
+              "Ankiloz — fleksiyon",
+              "50°",
+              40
+            ],
+            [
+              "Ankiloz — ekstansiyon",
+              "0° (nötral)",
+              12
+            ],
+            [
+              "Ankiloz — ekstansiyon",
+              "20°",
+              20
+            ],
+            [
+              "Ankiloz — ekstansiyon",
+              "40°",
+              30
+            ],
+            [
+              "Ankiloz — ekstansiyon",
+              "60°",
+              40
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "0° (nötral)",
+              8
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "15°",
+              20
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "30°",
+              30
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "45°",
+              40
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "0° (nötral)",
+              12
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "20°",
+              20
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "40°",
+              30
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "60°",
+              40
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "80°",
+              50
+            ]
+          ],
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü s.99 / basılı s.212 ile karşılaştırıldı."
+        },
+        {
+          "ad": "Tablo 1.5 — Torakal omurgada hareket kısıtlılığı",
+          "sayfa": 213,
+          "pdf_sayfa": 100,
+          "amac": "Eklem hareket açıklığı modelinde ölçülen açı aralığını kaynak oranına dönüştürür.",
+          "sutunlar": [
+            "Hareket/ölçüm",
+            "Açı aralığı",
+            "Engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "Fleksiyon",
+              "0°–14°",
+              4
+            ],
+            [
+              "Fleksiyon",
+              "15°–29°",
+              2
+            ],
+            [
+              "Fleksiyon",
+              "30°–59°",
+              1
+            ],
+            [
+              "Fleksiyon",
+              ">60°",
+              0
+            ],
+            [
+              "Rotasyon",
+              "0°–14°",
+              3
+            ],
+            [
+              "Rotasyon",
+              "15°–29°",
+              2
+            ],
+            [
+              "Rotasyon",
+              ">30°",
+              0
+            ],
+            [
+              "Ankiloz — fleksiyon-ekstansiyon",
+              "−30° (torasik lordoz)",
+              20
+            ],
+            [
+              "Ankiloz — fleksiyon-ekstansiyon",
+              "0° (nötral)",
+              0
+            ],
+            [
+              "Ankiloz — fleksiyon-ekstansiyon",
+              "60°",
+              5
+            ],
+            [
+              "Ankiloz — fleksiyon-ekstansiyon",
+              "80°",
+              20
+            ],
+            [
+              "Ankiloz — fleksiyon-ekstansiyon",
+              "100°",
+              40
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "0° (nötral)",
+              6
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "5°",
+              10
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "25°",
+              20
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "35°",
+              30
+            ]
+          ],
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü s.100 / basılı s.213 ile karşılaştırıldı."
+        },
+        {
+          "ad": "Tablo 1.6 — Lomber omurgada hareket kısıtlılığı",
+          "sayfa": 214,
+          "pdf_sayfa": 101,
+          "amac": "Eklem hareket açıklığı modelinde ölçülen açı aralığını kaynak oranına dönüştürür.",
+          "sutunlar": [
+            "Hareket/ölçüm",
+            "Açı aralığı",
+            "Engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "Fleksiyon",
+              "0°–29°",
+              10
+            ],
+            [
+              "Fleksiyon",
+              "30°–59°",
+              4
+            ],
+            [
+              "Fleksiyon",
+              ">60°",
+              0
+            ],
+            [
+              "Ekstansiyon",
+              "0°–14°",
+              7
+            ],
+            [
+              "Ekstansiyon",
+              "15°–24°",
+              3
+            ],
+            [
+              "Ekstansiyon",
+              ">25°",
+              0
+            ],
+            [
+              "Lateral fleksiyon",
+              "0°–9°",
+              5
+            ],
+            [
+              "Lateral fleksiyon",
+              "10°–14°",
+              3
+            ],
+            [
+              "Lateral fleksiyon",
+              "15°–19°",
+              2
+            ],
+            [
+              "Lateral fleksiyon",
+              "20°–24°",
+              1
+            ],
+            [
+              "Lateral fleksiyon",
+              ">25°",
+              0
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "0° (nötral)",
+              10
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "1°–29°",
+              15
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "30°–44°",
+              20
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "45°–59°",
+              30
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "60°–74°",
+              40
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "≥75° (lateral tam fleksiyon)",
+              50
+            ]
+          ],
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü s.101 / basılı s.214 ile karşılaştırıldı."
+        },
+        {
+          "ad": "Tablo 1.7 — Spesifik omurga hastalıklarına bağlı engellilik",
+          "sayfa": 217,
+          "pdf_sayfa": 102
+        },
+        {
+          "ad": "Tablo 1.8 — Duyusal kayba bağlı yetersizlik yüzdesi",
+          "sayfa": 219,
+          "pdf_sayfa": 104
+        },
+        {
+          "ad": "Tablo 1.9 — Motor kayba bağlı yetersizlik yüzdesi",
+          "sayfa": 220,
+          "pdf_sayfa": 105
+        },
+        {
+          "ad": "Tablo 1.10 — İlişkili sinir kökünün maksimum değeri",
+          "sayfa": 220,
+          "pdf_sayfa": 105
+        }
+      ],
+      "hesaplama_kurali": "Omurga yaralanma modeli, hareket açıklığı modeli, spesifik omurga tanısı ve spinal sinir kaybı tabloları birbirine alternatif/ilişkili yöntemlerdir. Kaynağın aynı bölge için öngördüğü seçim ve birleştirme kuralları uygulanmadan tek oran seçilmez.",
+      "uyari": "Tablo hücrelerinin tamamı sayfa görüntülerinden doğrulanıp makine tarafından uygulanabilir hale getirilmeden bu başlık için sabit oran üretilmez."
+    },
+    {
+      "id": "OZ-KIS-002",
+      "bolum": "KAS-İSKELET SİSTEMİ",
+      "tur": "tablo_birlesimi",
+      "baslik": "Üst ekstremite — parmak, el, bilek, dirsek ve omuz",
+      "kaynak_sayfalar": [
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235
+      ],
+      "kaynak_pdf_sayfalar": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122
+      ],
+      "tablolar": [
+        {
+          "ad": "Tablo 2.1 — Parmak engellilik yüzdelerinin el engelliliğine dönüştürülmesi",
+          "sayfa": 222,
+          "pdf_sayfa": 109
+        },
+        {
+          "ad": "Tablo 2.2 — El engellilik yüzdelerinin üst ekstremite engelliliğine dönüştürülmesi",
+          "sayfa": 224,
+          "pdf_sayfa": 111
+        },
+        {
+          "ad": "Tablo 2.3 — Üst ekstremite engelliliğinin kişinin engellilik oranına dönüştürülmesi",
+          "sayfa": 225,
+          "pdf_sayfa": 112
+        },
+        {
+          "ad": "Tablo 2.4 — Başparmak adduksiyon kaybı/ankilozu",
+          "sayfa": 229,
+          "pdf_sayfa": 116
+        },
+        {
+          "ad": "Tablo 2.5 — Başparmak radial abduksiyon kaybı/ankilozu",
+          "sayfa": 230,
+          "pdf_sayfa": 117
+        },
+        {
+          "ad": "Tablo 2.6 — Başparmak opozisyon kaybı/ankilozu",
+          "sayfa": 230,
+          "pdf_sayfa": 117
+        },
+        {
+          "ad": "Tablo 2.7 — Amputasyon",
+          "sayfa": 231,
+          "pdf_sayfa": 118
+        }
+      ],
+      "hesaplama_kurali": "Parmak düzeyindeki kayıp önce el düzeyine, sonra üst ekstremiteye, ardından kişi engel oranına çevrilebilir. Bu dönüşüm tabloları tek bir yüzdeye indirgenemez.",
+      "uyari": "Tablo 2.1–2.3 dönüşümleri ile eklem hareket açıklığı/duyu/amputasyon girdileri birlikte modellenmeden oran sunulmaz."
+    },
+    {
+      "id": "OZ-KIS-003",
+      "bolum": "KAS-İSKELET SİSTEMİ",
+      "tur": "tablo_birlesimi",
+      "baslik": "Alt ekstremite ve eklem hareket açıklığı",
+      "kaynak_sayfalar": [
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245
+      ],
+      "kaynak_pdf_sayfalar": [
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "tablolar": [
+        {
+          "ad": "Alt ekstremite değerlendirme tabloları",
+          "sayfa_araligi": [
+            236,
+            245
+          ],
+          "pdf_sayfa_araligi": [
+            123,
+            132
+          ]
+        }
+      ],
+      "hesaplama_kurali": "Eklem hareket açıklığı, ankiloz, amputasyon ve fonksiyon kayıpları kaynağın ilgili dönüşüm tablosuyla ele alınmalıdır.",
+      "uyari": "Bu sayfa aralığındaki tüm tablo hücreleri henüz tam sayısal olarak çıkarılıp ikinci kez görüntüden doğrulanmadığından otomatik oran üretimi kapalıdır."
+    },
+    {
+      "id": "OZ-ROM-001",
+      "bolum": "ROMATOLOJİK HASTALIKLAR",
+      "tur": "kaynak_hiyerarsisi",
+      "baslik": "Romatolojik hastalıkların EK-2 içindeki sınıflandırılması",
+      "kaynak_sayfalar": [
+        206,
+        245
+      ],
+      "kaynak_pdf_sayfalar": [
+        93,
+        132
+      ],
+      "hesaplama_kurali": "2019 EK-2'de 'romatolojik hastalıklar' için bu envanterde bağımsız ve tek başına ayrı bir üst bölüm başlığı doğrulanmadı. Her tanı, kaynakta yer aldığı özgün bölüm ve tablo başlığı altında tutulmalıdır; ayrı bir bölüm varsayımıyla oran üretilmez.",
+      "uyari": "Hastalık adının romatolojik olması, kaynak tablosundaki anatomik/işlevsel sınıflandırmayı değiştirmez."
+    }
+  ]
+}
