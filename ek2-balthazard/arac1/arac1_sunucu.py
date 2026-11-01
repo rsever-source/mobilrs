@@ -327,63 +327,69 @@ def bolum_kisa(ad: str) -> str:
 
 def gezinme_yuku(bolum_adi: str | None) -> dict:
     katalog_nesnesi = katalog()
+    ek_bolumler = ek_katalog().get("bolumler", [])
+
+    def ek_grubu(ek):
+        harita = {}
+        for satir in ek.get("kayitlar", []):
+            harita.setdefault(satir["hastalik"], []).append(satir)
+        hastaliklar = [{
+            "anahtar": ad, "ad": ad, "tek_kayit": len(satirlar) == 1,
+            "seviyeler": [{
+                "id": s["id"], "seviye": s["alt_tur"], "oran": s["oran"],
+                "oran_gosterim": oran_gosterim(s["oran"])["gosterim"], "sayfa": s["sayfa"],
+            } for s in satirlar],
+        } for ad, satirlar in harita.items()]
+        return {
+            "anahtar": ek["ad"], "ad": "EK-2 ek kayıtlar", "rozet": "EK-2",
+            "kayit_sayisi": len(ek.get("kayitlar", [])), "hastaliklar": hastaliklar,
+        }
+
     if bolum_adi:
         bolum = katalog_nesnesi.bolum(bolum_adi)
-        if bolum is None:
-            ek = next((b for b in ek_katalog().get("bolumler", [])
-                       if bolum_adi in (b.get("ad"), b.get("kisa"))), None)
-            if ek is None:
-                return {"ok": False, "mesaj": "Bilinmeyen bölüm."}
-            hastalik_haritasi = {}
-            for satir in ek.get("kayitlar", []):
-                hastalik_haritasi.setdefault(satir["hastalik"], []).append(satir)
-            hastaliklar = []
-            for ad, satirlar in hastalik_haritasi.items():
-                hastaliklar.append({
-                    "anahtar": ad, "ad": ad, "tek_kayit": len(satirlar) == 1,
-                    "seviyeler": [{
-                        "id": s["id"], "seviye": s["alt_tur"],
-                        "oran": s["oran"], "oran_gosterim": oran_gosterim(s["oran"])["gosterim"],
-                        "sayfa": s["sayfa"],
-                    } for s in satirlar],
-                })
+        ek = next((b for b in ek_bolumler if bolum_adi in (b.get("ad"), b.get("kisa"))), None)
+        if bolum is None and ek is None:
+            return {"ok": False, "mesaj": "Bilinmeyen bölüm."}
+        if bolum is not None:
+            gruplar = [{
+                "anahtar": grup.anahtar, "ad": grup.ad, "rozet": grup.rozet,
+                "kayit_sayisi": len(grup.kayitlar),
+                "hastaliklar": [hastalik_sozluk(h) for h in grup.hastaliklar],
+            } for grup in bolum.gruplar]
+            ek_ayni = next((b for b in ek_bolumler if b.get("ad") == bolum.ad), None)
+            ek_sayi = len(ek_ayni.get("kayitlar", [])) if ek_ayni else 0
+            if ek_ayni:
+                gruplar.append(ek_grubu(ek_ayni))
             return {
                 "ok": True,
-                "bolum": {"ad": ek["ad"], "kisa": ek.get("kisa", ek["ad"]),
-                          "kayit_sayisi": len(ek.get("kayitlar", []))},
-                "gruplar": [{
-                    "anahtar": ek["ad"], "ad": "EK-2 ek kayıtlar", "rozet": "EK-2",
-                    "kayit_sayisi": len(ek.get("kayitlar", [])), "hastaliklar": hastaliklar,
-                }],
+                "bolum": {"ad": bolum.ad, "kisa": bolum.kisa,
+                          "kayit_sayisi": len(bolum.kayitlar) + ek_sayi},
+                "gruplar": gruplar,
             }
         return {
             "ok": True,
-            "bolum": {"ad": bolum.ad, "kisa": bolum.kisa, "kayit_sayisi": len(bolum.kayitlar)},
-            "gruplar": [
-                {
-                    "anahtar": grup.anahtar,
-                    "ad": grup.ad,
-                    "rozet": grup.rozet,
-                    "kayit_sayisi": len(grup.kayitlar),
-                    "hastaliklar": [hastalik_sozluk(h) for h in grup.hastaliklar],
-                }
-                for grup in bolum.gruplar
-            ],
+            "bolum": {"ad": ek["ad"], "kisa": ek.get("kisa", ek["ad"]),
+                      "kayit_sayisi": len(ek.get("kayitlar", []))},
+            "gruplar": [ek_grubu(ek)],
         }
-    bolum_listesi = [
-        {
+
+    bolum_listesi = []
+    for bolum in katalog_nesnesi.bolumler:
+        ek_ayni = next((b for b in ek_bolumler if b.get("ad") == bolum.ad), None)
+        bolum_listesi.append({
             "ad": bolum.ad, "kisa": bolum.kisa,
-            "kayit_sayisi": len(bolum.kayitlar), "grup_sayisi": len(bolum.gruplar),
-        } for bolum in katalog_nesnesi.bolumler
-    ]
-    for ek in ek_katalog().get("bolumler", []):
+            "kayit_sayisi": len(bolum.kayitlar) + (len(ek_ayni.get("kayitlar", [])) if ek_ayni else 0),
+            "grup_sayisi": len(bolum.gruplar) + (1 if ek_ayni else 0),
+        })
+    for ek in ek_bolumler:
+        if any(b.get("ad") == ek["ad"] for b in bolum_listesi):
+            continue
         bolum_listesi.append({
             "ad": ek["ad"], "kisa": ek.get("kisa", ek["ad"]),
             "kayit_sayisi": len(ek.get("kayitlar", [])), "grup_sayisi": 1,
         })
     return {
-        "ok": True,
-        "bolumler": bolum_listesi,
+        "ok": True, "bolumler": bolum_listesi,
         "kapsam_disi": list(katalog_nesnesi.meta.get("kapsam_disi") or []),
     }
 
