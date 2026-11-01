@@ -64,13 +64,36 @@ class YuklemeTestleri(unittest.TestCase):
         hastalik = sum(len(g.hastaliklar) for b in self.katalog.bolumler for g in b.gruplar)
         self.assertEqual(hastalik, 102)
 
-    def test_kv_grup_rozetleri(self):
+    def test_kv_grup_adlari_kod_degil_insan_okur_etikettir(self):
+        beklenen = {
+            "KBB": {
+                "K-ISI": "İşitme (Tablo 2 hesaplama)",
+                "K-KON": "Konuşma (Tablo 5 hesaplama)",
+                "K-DEN": "Denge (vestibüler)",
+                "K-YUZ": "Yüz arızaları",
+                "K-HAV": "Hava yolu defektleri",
+                "K-KOK": "Koku ve tat duyusu kaybı",
+                "K-YUT": "Çiğneme ve yutma",
+            },
+            "Kalp-Damar": {
+                "V-ARI": "Aritmiler",
+                "V-PUH": "Pulmoner hipertansiyon",
+                "V-HIP": "Hipertansiyon",
+                "V-PER": "Perikard hastalıkları",
+                "V-HKM": "Hipertrofik kardiyomiyopati",
+                "V-KY": "Kalp yetmezliği",
+                "V-DKH": "Doğuştan kalp hastalıkları (DKH)",
+                "V-KHK": "Edinsel kalp hastalıkları",
+                "V-DMR": "Damar hastalıkları",
+            },
+        }
         for bolum in self.katalog.bolumler:
-            if bolum.ad not in ("KULAK BURUN BOĞAZ", "KARDİYOVASKÜLER SİSTEM"):
+            if bolum.kisa not in beklenen:
                 continue
+            adlar = {grup.anahtar.removeprefix("baslik:"): grup.ad for grup in bolum.gruplar}
+            self.assertEqual(adlar, beklenen[bolum.kisa])
             for grup in bolum.gruplar:
-                self.assertEqual(grup.rozet, grup.kayitlar[0].grup)
-                self.assertTrue(grup.rozet, f"{bolum.kisa}: {grup.anahtar}")
+                self.assertNotEqual(grup.ad, grup.kayitlar[0].grup)
 
     def test_tek_kayitli_gruplar(self):
         tekli = sorted(
