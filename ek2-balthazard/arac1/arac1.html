@@ -182,29 +182,29 @@
           <path d="M91 66 L82 74 Q55 78 43 103 L26 190 Q23 204 35 207 Q45 208 49 194 L67 124 L62 197 Q60 225 79 244 L82 315 L72 397 Q70 410 82 411 L97 411 Q105 407 101 396 L111 318 L121 396 Q117 408 127 411 L143 411 Q155 410 150 397 L139 315 L142 244 Q160 225 158 197 L153 124 L171 194 Q175 208 185 207 Q197 204 194 190 L177 103 Q165 78 138 74 L129 66 Z"/>
           <path d="M88 68 L132 68 L139 99 Q111 113 81 99 Z"/>
         </g>
-        <g class="vucut-bolge" data-bolum="DERİ" tabindex="0" role="button" aria-label="Deri">
+        <g class="vucut-bolge" data-bolum="DERİ" data-kisa="Deri" tabindex="0" role="button" aria-label="Deri">
           <path d="M43 103 L26 190 Q23 204 35 207 Q45 208 49 194 L67 124 L62 197 Q60 225 79 244 L82 315 L72 397 Q70 410 82 411 L97 411 Q105 407 101 396 L111 318 L121 396 Q117 408 127 411 L143 411 Q155 410 150 397 L139 315 L142 244 Q160 225 158 197 L153 124 L171 194 Q175 208 185 207 Q197 204 194 190 L177 103 Q165 78 138 74 L129 66 L91 66 L82 74 Q55 78 43 103 Z" fill="transparent" stroke="#bdc8dc" stroke-width="2"/>
         </g>
-        <g class="vucut-bolge" data-bolum="ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR" tabindex="0" role="button" aria-label="Zihinsel ve ruhsal bölüm">
+        <g class="vucut-bolge" data-bolum="ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR" data-kisa="Ruh Sağlığı" tabindex="0" role="button" aria-label="Zihinsel ve ruhsal bölüm">
           <circle cx="109" cy="33" r="22" fill="#cbd5e5" stroke="#9eabc1" stroke-width="2"/>
         </g>
-        <g class="vucut-bolge" data-bolum="KULAK BURUN BOĞAZ" tabindex="0" role="button" aria-label="Kulak burun boğaz">
+        <g class="vucut-bolge" data-bolum="KULAK BURUN BOĞAZ" data-kisa="KBB" tabindex="0" role="button" aria-label="Kulak burun boğaz">
           <path d="M96 54 L122 54 L126 79 L92 79 Z" fill="#f2b5b5" stroke="#d98282" stroke-width="2"/>
         </g>
-        <g class="vucut-bolge" data-bolum="KARDİYOVASKÜLER SİSTEM" tabindex="0" role="button" aria-label="Kalp ve damar sistemi">
+        <g class="vucut-bolge" data-bolum="KARDİYOVASKÜLER SİSTEM" data-kisa="Kalp-Damar" tabindex="0" role="button" aria-label="Kalp ve damar sistemi">
           <path d="M110 109 C89 90 75 111 91 129 L110 147 L129 129 C145 111 131 90 110 109 Z" fill="#e88f8f" stroke="#c95f5f" stroke-width="2"/>
         </g>
-        <g class="vucut-bolge" data-bolum="HEMATOLOJİK HASTALIKLAR" tabindex="0" role="button" aria-label="Kan ve hematoloji">
+        <g class="vucut-bolge" data-bolum="HEMATOLOJİK HASTALIKLAR" data-kisa="Hematoloji" tabindex="0" role="button" aria-label="Kan ve hematoloji">
           <path d="M110 156 C100 170 96 176 96 183 A14 14 0 0 0 124 183 C124 176 120 170 110 156 Z" fill="#d86d78" stroke="#b44855" stroke-width="2"/>
         </g>
       </svg>
       <div>
         <div class="vucut-dugmeler" id="vucut-dugmeler" role="group" aria-label="Vücut bölümleri">
-          <button class="cip" type="button" data-bolum="KULAK BURUN BOĞAZ">Boğaz ve boyun</button>
-          <button class="cip" type="button" data-bolum="KARDİYOVASKÜLER SİSTEM">Kalp ve damar</button>
-          <button class="cip" type="button" data-bolum="HEMATOLOJİK HASTALIKLAR">Kan</button>
-          <button class="cip" type="button" data-bolum="DERİ">Deri</button>
-          <button class="cip" type="button" data-bolum="ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR">Zihinsel ve ruhsal</button>
+          <button class="cip" type="button" data-bolum="KULAK BURUN BOĞAZ" data-kisa="KBB">Boğaz ve boyun</button>
+          <button class="cip" type="button" data-bolum="KARDİYOVASKÜLER SİSTEM" data-kisa="Kalp-Damar">Kalp ve damar</button>
+          <button class="cip" type="button" data-bolum="HEMATOLOJİK HASTALIKLAR" data-kisa="Hematoloji">Kan</button>
+          <button class="cip" type="button" data-bolum="DERİ" data-kisa="Deri">Deri</button>
+          <button class="cip" type="button" data-bolum="ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR" data-kisa="Ruh Sağlığı">Zihinsel ve ruhsal</button>
         </div>
         <p class="vucut-aciklama">Bölgeye veya adına dokununca ilgili bölüm seçilir. Şema yönlendirme içindir; tıbbi değerlendirme yapmaz.</p>
       </div>
@@ -1423,7 +1423,7 @@
   }
 
   document.querySelectorAll(".vucut-bolge, #vucut-dugmeler [data-bolum]").forEach(function (bolge) {
-    function sec() { bolumSec(bolge.getAttribute("data-bolum")); }
+    function sec() { bolumSec(bolge.getAttribute("data-bolum"), bolge.getAttribute("data-kisa")); }
     bolge.addEventListener("click", sec);
     bolge.addEventListener("keydown", function (olay) {
       if (olay.key === "Enter" || olay.key === " ") { olay.preventDefault(); sec(); }
