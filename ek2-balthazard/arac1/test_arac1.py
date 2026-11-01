@@ -187,7 +187,16 @@ class Arac1Testleri(unittest.TestCase):
         self.assertIn("navigator.clipboard", self.html)
         self.assertIn("Kopyalama başarısız oldu.", self.html)
         self.assertIn(":focus-visible", self.html)
-        self.assertIn('id="sepet-temizle">Alışverişe devam</button>', self.html)
+        self.assertIn('"Listeye ekle"', self.html)
+        self.assertIn('id="sepet-temizle">Seçimleri temizle</button>', self.html)
+        self.assertIn('id="listeyi-kopyala">Oranları kopyala</button>', self.html)
+        self.assertIn("satir.ad", self.html)
+        self.assertIn("satir.seviye", self.html)
+        self.assertIn("satir.kaynak", self.html)
+        self.assertIn('return "%" + s.gosterim', self.html)
+        self.assertNotIn("Alışverişe devam", self.html)
+        self.assertNotIn("Balthazard ile hesapla →", self.html)
+        self.assertIn("Araç-2'ye otomatik aktarım yapılmaz", self.html)
 
     # --- sağlık / bölüm / gezinme ------------------------------------------
 

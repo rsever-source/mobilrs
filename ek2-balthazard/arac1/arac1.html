@@ -321,17 +321,15 @@
     <section id="sonuc" class="gizli" aria-live="polite"></section>
 
     <section id="sepet" class="kart gizli" aria-labelledby="sepet-baslik">
-      <h2 id="sepet-baslik">Eklenen oranlar (0)</h2>
+      <h2 id="sepet-baslik">Seçilen kayıtlar (0)</h2>
       <ul class="liste" id="sepet-liste"></ul>
       <p class="bildirim" id="sepet-bildirim" role="status"></p>
       <div class="dugme-satir">
-        <a class="dugme birincil" href="__ARAC2_ADRESI__">Balthazard ile hesapla →</a>
-        <button class="dugme" type="button" id="listeyi-kopyala">Listeyi kopyala</button>
-        <button class="dugme" type="button" id="sepet-temizle">Alışverişe devam</button>
+        <a class="dugme birincil" href="__ARAC2_ADRESI__">Araç-2'ye geç →</a>
+        <button class="dugme" type="button" id="listeyi-kopyala">Oranları kopyala</button>
+        <button class="dugme" type="button" id="sepet-temizle">Seçimleri temizle</button>
       </div>
-      <p class="ipucu" style="margin-top:10px">Bu liste yalnız bu sayfada tutulur; Araç-2'ye
-        otomatik aktarılmaz. Araç-2 yalnızca girdiğiniz oranları birleştirir; oranların
-        doğruluğu ve kullanım kuralları orada denetlenmez.</p>
+      <p class="ipucu" style="margin-top:10px">Seçtiğiniz hastalık ve seviyeler bu sayfada görünür. Araç-2'ye otomatik aktarım yapılmaz; orada birleştirmek istediğiniz oranları elle girin. “Oranları kopyala” yalnızca yüzde değerlerini kopyalar.</p>
     </section>
   </main>
 
@@ -723,7 +721,7 @@ var tumu = el("button", "cip", "Tümü");
     }
 
     var dugmeSatir = el("div", "dugme-satir");
-    var ekle = el("button", "dugme birincil", "Bu oranı hesaplamaya ekle");
+    var ekle = el("button", "dugme birincil", "Listeye ekle");
     ekle.type = "button";
     ekle.addEventListener("click", function () { sepeteEkle(veri); });
     dugmeSatir.appendChild(ekle);
@@ -758,30 +756,34 @@ var tumu = el("button", "cip", "Tümü");
   function sepeteEkle(veri) {
     var zaten = durum.sepet.some(function (s) { return s.id === veri.id; });
     if (zaten) {
-      sepetBildirim.textContent = "Bu kayıt zaten listede.";
+      sepetBildirim.textContent = "Bu kayıt zaten seçilenler listesinde.";
     } else {
       durum.sepet.push({
         id: veri.id,
         oran: veri.oran.ham,
         gosterim: veri.oran.gosterim,
+        ad: veri.ad,
+        seviye: veri.seviye,
+        bolum: veri.bolum_kisa,
+        kaynak: veri.kaynak,
         etiket: veri.kisa_etiket
       });
-      sepetBildirim.textContent = "Hesaplamaya eklendi: %" + veri.oran.gosterim +
-        " — " + veri.kisa_etiket;
+      sepetBildirim.textContent = "Listeye eklendi: " + veri.ad + " · %" + veri.oran.gosterim;
     }
     sepetiCiz();
   }
 
   function sepetiCiz() {
     goster(sepetKutu, durum.sepet.length > 0);
-    sepetBaslik.textContent = "Eklenen oranlar (" + durum.sepet.length + ")";
+    sepetBaslik.textContent = "Seçilen kayıtlar (" + durum.sepet.length + ")";
     sepetListe.innerHTML = "";
     durum.sepet.forEach(function (satir, i) {
       var li = el("li");
       var kutu = el("div", "sepet-satir");
       var sol = el("span", "metin");
-      sol.appendChild(el("span", "ad", "%" + satir.gosterim));
-      sol.appendChild(el("span", "ayrinti", satir.etiket));
+      sol.appendChild(el("span", "ad", satir.ad + " · %" + satir.gosterim));
+      sol.appendChild(el("span", "ayrinti", satir.seviye));
+      sol.appendChild(el("span", "ayrinti", satir.bolum + " · " + satir.kaynak));
       kutu.appendChild(sol);
       var sil = el("button", "sil", "Kaldır");
       sil.type = "button";
@@ -804,11 +806,11 @@ var tumu = el("button", "cip", "Tümü");
   });
 
   document.getElementById("listeyi-kopyala").addEventListener("click", function () {
-    var metin = durum.sepet.map(function (s) { return "%" + s.gosterim + " — " + s.etiket; }).join("\n");
+    var metin = durum.sepet.map(function (s) { return "%" + s.gosterim; }).join("\n");
     if (!metin) { sepetBildirim.textContent = "Liste boş."; return; }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(metin).then(function () {
-        sepetBildirim.textContent = "Liste kopyalandı; Araç-2'ye elle girebilirsiniz.";
+        sepetBildirim.textContent = "Yalnızca oranlar kopyalandı.";
       }, function () { sepetBildirim.textContent = "Kopyalama başarısız oldu."; });
     } else {
       sepetBildirim.textContent = "Tarayıcı kopyalamayı desteklemiyor.";
