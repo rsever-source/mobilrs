@@ -100,25 +100,29 @@ class Sunucu(unittest.TestCase):
         _, veri = self._post(json.dumps({"oranlar": [40]}).encode("utf-8"))
         self.assertEqual(veri["hata"]["kod"], "E_YAS_SECILMEDI")
 
-    def test_json_objesi_olmayan_girdi_400(self):
-        for govde in ([], 40, None):
+    def test_json_turu_ve_null_girdi(self):
+        for govde in ([], 40):
             with self.subTest(govde=govde):
-                istek = urllib.request.Request(
-                    self.adres + "/api/hesapla",
-                    data=json.dumps(govde).encode("utf-8"),
-                    headers={"Content-Type": "application/json"},
-                    method="POST",
-                )
-                with self.assertRaises(urllib.error.HTTPError) as baglam:
-                    urllib.request.urlopen(istek, timeout=5)
-                hata = baglam.exception
-                try:
-                    self.assertEqual(hata.code, 400)
-                    veri = json.loads(hata.read().decode("utf-8"))
-                finally:
-                    hata.close()
+                _, veri = self._post(json.dumps(govde).encode("utf-8"))
                 self.assertFalse(veri["ok"])
-                self.assertIn("mesaj", veri)
+                self.assertEqual(veri["hata"]["kod"], "E_ORAN_TIP")
+                self.assertEqual(veri["hata"]["alan"], "girdi")
+        istek = urllib.request.Request(
+            self.adres + "/api/hesapla",
+            data=b"null",
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        with self.assertRaises(urllib.error.HTTPError) as baglam:
+            urllib.request.urlopen(istek, timeout=5)
+        hata = baglam.exception
+        try:
+            self.assertEqual(hata.code, 400)
+            veri = json.loads(hata.read().decode("utf-8"))
+        finally:
+            hata.close()
+        self.assertFalse(veri["ok"])
+        self.assertIn("mesaj", veri)
 
     def test_html_baglantilar_ve_girdi_filtresi(self):
         with urllib.request.urlopen(self.adres + "/", timeout=5) as yanit:
