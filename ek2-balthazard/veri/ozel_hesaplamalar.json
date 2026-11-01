@@ -467,18 +467,365 @@
         },
         {
           "ad": "Tablo 1.4 — Servikal omurgada hareket kısıtlılığı",
-          "sayfa": 214,
-          "pdf_sayfa": 99
+          "sayfa": 212,
+          "pdf_sayfa": 99,
+          "amac": "Eklem hareket açıklığı modelinde ölçülen açı aralığını kaynak oranına dönüştürür.",
+          "sutunlar": [
+            "Hareket/ölçüm",
+            "Açı aralığı",
+            "Engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "Fleksiyon",
+              "0°–14°",
+              5
+            ],
+            [
+              "Fleksiyon",
+              "15°–29°",
+              4
+            ],
+            [
+              "Fleksiyon",
+              "30°–49°",
+              2
+            ],
+            [
+              "Fleksiyon",
+              "≥50°",
+              0
+            ],
+            [
+              "Ekstansiyon",
+              "0°–19°",
+              6
+            ],
+            [
+              "Ekstansiyon",
+              "20°–39°",
+              4
+            ],
+            [
+              "Ekstansiyon",
+              "40°–59°",
+              2
+            ],
+            [
+              "Ekstansiyon",
+              ">60°",
+              0
+            ],
+            [
+              "Lateral fleksiyon-ekstansiyon",
+              "0°–24°",
+              4
+            ],
+            [
+              "Lateral fleksiyon-ekstansiyon",
+              "25°–44°",
+              2
+            ],
+            [
+              "Lateral fleksiyon-ekstansiyon",
+              ">45°",
+              0
+            ],
+            [
+              "Rotasyon",
+              "0°–39°",
+              6
+            ],
+            [
+              "Rotasyon",
+              "40°–79°",
+              3
+            ],
+            [
+              "Rotasyon",
+              ">80°",
+              0
+            ],
+            [
+              "Ankiloz — fleksiyon",
+              "0° (nötral)",
+              12
+            ],
+            [
+              "Ankiloz — fleksiyon",
+              "15°",
+              20
+            ],
+            [
+              "Ankiloz — fleksiyon",
+              "30°",
+              30
+            ],
+            [
+              "Ankiloz — fleksiyon",
+              "50°",
+              40
+            ],
+            [
+              "Ankiloz — ekstansiyon",
+              "0° (nötral)",
+              12
+            ],
+            [
+              "Ankiloz — ekstansiyon",
+              "20°",
+              20
+            ],
+            [
+              "Ankiloz — ekstansiyon",
+              "40°",
+              30
+            ],
+            [
+              "Ankiloz — ekstansiyon",
+              "60°",
+              40
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "0° (nötral)",
+              8
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "15°",
+              20
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "30°",
+              30
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "45°",
+              40
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "0° (nötral)",
+              12
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "20°",
+              20
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "40°",
+              30
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "60°",
+              40
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "80°",
+              50
+            ]
+          ],
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü s.99 / basılı s.212 ile karşılaştırıldı."
         },
         {
           "ad": "Tablo 1.5 — Torakal omurgada hareket kısıtlılığı",
-          "sayfa": 214,
-          "pdf_sayfa": 99
+          "sayfa": 213,
+          "pdf_sayfa": 100,
+          "amac": "Eklem hareket açıklığı modelinde ölçülen açı aralığını kaynak oranına dönüştürür.",
+          "sutunlar": [
+            "Hareket/ölçüm",
+            "Açı aralığı",
+            "Engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "Fleksiyon",
+              "0°–14°",
+              4
+            ],
+            [
+              "Fleksiyon",
+              "15°–29°",
+              2
+            ],
+            [
+              "Fleksiyon",
+              "30°–59°",
+              1
+            ],
+            [
+              "Fleksiyon",
+              ">60°",
+              0
+            ],
+            [
+              "Rotasyon",
+              "0°–14°",
+              3
+            ],
+            [
+              "Rotasyon",
+              "15°–29°",
+              2
+            ],
+            [
+              "Rotasyon",
+              ">30°",
+              0
+            ],
+            [
+              "Ankiloz — fleksiyon-ekstansiyon",
+              "−30° (torasik lordoz)",
+              20
+            ],
+            [
+              "Ankiloz — fleksiyon-ekstansiyon",
+              "0° (nötral)",
+              0
+            ],
+            [
+              "Ankiloz — fleksiyon-ekstansiyon",
+              "60°",
+              5
+            ],
+            [
+              "Ankiloz — fleksiyon-ekstansiyon",
+              "80°",
+              20
+            ],
+            [
+              "Ankiloz — fleksiyon-ekstansiyon",
+              "100°",
+              40
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "0° (nötral)",
+              6
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "5°",
+              10
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "25°",
+              20
+            ],
+            [
+              "Ankiloz — rotasyon",
+              "35°",
+              30
+            ]
+          ],
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü s.100 / basılı s.213 ile karşılaştırıldı."
         },
         {
           "ad": "Tablo 1.6 — Lomber omurgada hareket kısıtlılığı",
-          "sayfa": 216,
-          "pdf_sayfa": 101
+          "sayfa": 214,
+          "pdf_sayfa": 101,
+          "amac": "Eklem hareket açıklığı modelinde ölçülen açı aralığını kaynak oranına dönüştürür.",
+          "sutunlar": [
+            "Hareket/ölçüm",
+            "Açı aralığı",
+            "Engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "Fleksiyon",
+              "0°–29°",
+              10
+            ],
+            [
+              "Fleksiyon",
+              "30°–59°",
+              4
+            ],
+            [
+              "Fleksiyon",
+              ">60°",
+              0
+            ],
+            [
+              "Ekstansiyon",
+              "0°–14°",
+              7
+            ],
+            [
+              "Ekstansiyon",
+              "15°–24°",
+              3
+            ],
+            [
+              "Ekstansiyon",
+              ">25°",
+              0
+            ],
+            [
+              "Lateral fleksiyon",
+              "0°–9°",
+              5
+            ],
+            [
+              "Lateral fleksiyon",
+              "10°–14°",
+              3
+            ],
+            [
+              "Lateral fleksiyon",
+              "15°–19°",
+              2
+            ],
+            [
+              "Lateral fleksiyon",
+              "20°–24°",
+              1
+            ],
+            [
+              "Lateral fleksiyon",
+              ">25°",
+              0
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "0° (nötral)",
+              10
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "1°–29°",
+              15
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "30°–44°",
+              20
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "45°–59°",
+              30
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "60°–74°",
+              40
+            ],
+            [
+              "Ankiloz — lateral fleksiyon",
+              "≥75° (lateral tam fleksiyon)",
+              50
+            ]
+          ],
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü s.101 / basılı s.214 ile karşılaştırıldı."
         },
         {
           "ad": "Tablo 1.7 — Spesifik omurga hastalıklarına bağlı engellilik",
