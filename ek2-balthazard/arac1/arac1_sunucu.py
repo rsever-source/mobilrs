@@ -45,6 +45,7 @@ from urllib.parse import parse_qs, unquote, urlsplit
 BURASI = Path(__file__).resolve().parent
 KOK = BURASI.parent
 sys.path.insert(0, str(KOK))
+sys.path.insert(0, str(KOK / "arac2"))
 
 from balthazard_motoru import YAS_ALTI, balthazard, bicimle_gosterim  # noqa: E402
 from arac2_sunucu import gosterim_ekle  # noqa: E402
