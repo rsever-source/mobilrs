@@ -197,7 +197,7 @@ class Arac1Testleri(unittest.TestCase):
         self.assertIn("satir.kaynak", self.html)
         self.assertNotIn("Alışverişe devam", self.html)
         self.assertNotIn("Balthazard ile hesapla →", self.html)
-        self.assertIn("hastalık bilgileri ve yaş eki otomatik aktarılmaz", self.html)
+        self.assertIn("hastalık bilgileri ve yaş eki Araç-2’ye otomatik aktarılmaz", self.html)
         self.assertNotIn('id="listeyi-kopyala"', self.html)
         self.assertIn('id="model-secili-isaretler"', self.html)
         self.assertIn("function seciliModelIsaretleriniCiz()", self.html)
