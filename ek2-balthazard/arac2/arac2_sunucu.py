@@ -109,6 +109,12 @@ class Isleyici(BaseHTTPRequestHandler):
         girdi = self._govde_oku()
         if girdi is _GOVDE_HATASI:
             return
+        if girdi is None:
+            self._json(
+                {"ok": False, "mesaj": "İstek okunamadı."},
+                HTTPStatus.BAD_REQUEST,
+            )
+            return
 
         sonuc = balthazard(girdi)  # tüm doğrulama ve hesap motorda
         if sonuc.get("ok"):
