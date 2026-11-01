@@ -158,8 +158,8 @@ steps:
         if b"EK-2 Hastal" not in home or b"Balthazard Oran" not in home:
             raise SystemExit("HATA: ana sayfada EK-2 arac kartlari bulunamadi")
         arac1 = urllib.request.urlopen(base + "/arac1", timeout=30).read()
-        if b"model-bolum-listesi" not in arac1 or b"v2.0" in arac1 or b"Hakk" in arac1:
-            raise SystemExit("HATA: AraÃ§-1 arayuzu beklenen duzende degil")
+        if b'data-bolum-eslesme="Kalp-Damar"' not in arac1 or b'id="ozel-hesaplama-kutusu"' not in arac1 or b"v2.0" in arac1 or b"Hakk" in arac1:
+            raise SystemExit("HATA: Araç-1 arayüzü beklenen yeni düzende değil")
         import json
         bolumler = json.loads(urllib.request.urlopen(base + "/api/bolumler", timeout=30).read())
         ozel = json.loads(urllib.request.urlopen(base + "/api/ozel-hesaplamalar", timeout=30).read())
