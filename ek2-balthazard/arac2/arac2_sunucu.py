@@ -137,12 +137,8 @@ class Isleyici(BaseHTTPRequestHandler):
             )
             return None
 
-        if not isinstance(veri, dict):
-            # Motor sözleşmesi sözlük bekler; en yakın hata kodunu motor üretir.
-            self._json(
-                {"ok": False, "mesaj": "İstek okunamadı."}, HTTPStatus.BAD_REQUEST
-            )
-            return None
+        # JSON sözdizimi geçerliyse tür doğrulamasını ortak motor yapar;
+        # böylece E_ORAN_TIP sözleşmesi ve hata gövdesi korunur.
         return veri
 
     # Gürültülü varsayılan günlük yerine tek satır.
