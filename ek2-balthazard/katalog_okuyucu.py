@@ -569,13 +569,14 @@ def yukle(katalog_yolu: Path | str | None = None,
                 )
                 for hastalik_adi in hastalik_sirasi
             )
-            # DERİ'de grup kodu resmî Roma başlığıdır; KBB/Kalp-Damar
-            # kodları (K-ISI, V-ARI vb.) iç sistem kimliğidir ve arayüzde gösterilmez.
-            rozet = (
-                uyeler[0].grup
-                if bolum_adi == "DERİ"
-                else uyeler[0].rozet.split("-", 1)[0]
-            )
+            # DERİ'de grup kodu resmî Roma başlığıdır. KBB/Kalp-Damar
+            # grup kodları (K-ISI, V-ARI vb.) iç kimliktir; ekranda rozet gösterilmez.
+            if bolum_adi == "DERİ":
+                rozet = uyeler[0].grup
+            elif bolum_adi in ("KULAK BURUN BOĞAZ", "KARDİYOVASKÜLER SİSTEM"):
+                rozet = ""
+            else:
+                rozet = uyeler[0].rozet.split("-", 1)[0]
             gruplar.append(
                 Grup(anahtar=anahtar, ad=ad, rozet=rozet, kayitlar=uyeler,
                      hastaliklar=hastaliklar)
