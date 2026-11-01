@@ -46,7 +46,7 @@ KOK = BURASI.parent
 sys.path.insert(0, str(KOK))
 
 from balthazard_motoru import YAS_ALTI, balthazard, bicimle_gosterim  # noqa: E402
-from katalog_okuyucu import Katalog, KatalogHatasi, yukle  # noqa: E402
+from katalog_okuyucu import Katalog, KatalogHatasi, katla, yukle  # noqa: E402
 
 SAYFA = BURASI / "arac1.html"
 VARSAYILAN_PORT = 8766
@@ -412,9 +412,15 @@ def arama_yuku(metin: str, bolum_adi: str | None) -> dict:
         }
     if bolum_adi:
         bolum = katalog_nesnesi.bolum(bolum_adi)
-        if bolum is None:
+        ek_bolum = next(
+            (b for b in ek_katalog().get("bolumler", [])
+             if bolum_adi in (b.get("ad"), b.get("kisa"))),
+            None,
+        )
+        if bolum is None and ek_bolum is None:
             return {"ok": False, "mesaj": "Bilinmeyen bölüm."}
-        bolum_adi = bolum.ad
+        if bolum is not None:
+            bolum_adi = bolum.ad
 
     kayitlar = list(katalog_nesnesi.ara(temiz, bolum_adi))
     belirsizler = list(katalog_nesnesi.belirsiz_ara(temiz, bolum_adi))
@@ -441,7 +447,7 @@ def arama_yuku(metin: str, bolum_adi: str | None) -> dict:
     yanit = {
         "ok": True,
         "metin": temiz,
-        "sonuclar": [kayit_ozeti(k) for k in kayitlar],
+        "sonuclar": [k if isinstance(k, dict) else kayit_ozeti(k) for k in kayitlar],
         "belirsizler": [
             {
                 "id": s.id,
