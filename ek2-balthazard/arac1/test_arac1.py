@@ -198,6 +198,26 @@ class Arac1Testleri(unittest.TestCase):
             "Endokrin ve Metabolizma", "Göğüs Hastalıkları", "Onkoloji", "Sinir Sistemi"
         ])
 
+    def test_ozel_hesaplamalar_ucu(self):
+        durum, _, veri = self._json("/api/ozel-hesaplamalar")
+        self.assertEqual(durum, 200)
+        self.assertTrue(veri["ok"])
+        self.assertEqual(len(veri["ozel_hesaplamalar"]), 5)
+        self.assertTrue(any(x["id"] == "OZ-GOR-001" for x in veri["ozel_hesaplamalar"]))
+
+    def test_ek_katalog_kaydi_ucu(self):
+        durum, _, veri = self._json("/api/kayit/KV-001")
+        self.assertEqual(durum, 200)
+        self.assertTrue(veri["ok"])
+        self.assertEqual(veri["id"], "KV-001")
+        self.assertEqual(veri["rozet"], "EK-2 ek kayıt")
+
+    def test_yeni_bolum_gezinmesi(self):
+        durum, _, veri = self._json("/api/gezinme?bolum=" + urllib.parse.quote("Sinir Sistemi"))
+        self.assertEqual(durum, 200)
+        self.assertTrue(veri["ok"])
+        self.assertEqual(veri["bolum"]["kayit_sayisi"], 21)
+
     def test_bolumler_ucu(self):
         veri = self.bolumler
         self.assertTrue(veri["ok"])
