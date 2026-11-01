@@ -232,6 +232,24 @@ class Arac1ArayuzTestleri(unittest.TestCase):
                 self.assertNotIn(i, kesin)
 
     # --- ekran ------------------------------------------------------------
+    def test_etkilesimli_vucut_sema_bolumleri(self):
+        # Her tıklanabilir bölge desteklenen bir katalog bölümüne yönlenmeli.
+        for ad in ("KULAK BURUN BOĞAZ", "KARDİYOVASKÜLER SİSTEM",
+                   "HEMATOLOJİK HASTALIKLAR", "DERİ",
+                   "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR"):
+            self.assertIn('data-bolum="' + ad + '"', self.html)
+        self.assertIn('id="vucut-dugmeler"', self.html)
+        self.assertIn('role="button" aria-label="Tıklanabilir vücut şeması"', self.html)
+        self.assertIn('addEventListener("keydown"', self.html)
+        self.assertIn('bolumSec(bolge.getAttribute("data-bolum"))', self.html)
+
+    def test_hastalik_seviye_listeleri_kompakt_ve_tek_acik(self):
+        self.assertIn('class="liste hastalik-grid"', self.html)
+        self.assertIn('grid-template-columns:repeat(2,minmax(0,1fr))', self.html)
+        self.assertIn('querySelectorAll(".seviyeler")', self.html)
+        self.assertIn('acikListe.remove()', self.html)
+        self.assertIn('li.classList.remove("acik")', self.html)
+
     def test_ekran_yedegi_ve_kapsam_siniri(self):
         self.assertIn("Diğer kayıtlar", self.html)          # eşlenmemiş kayıt kaybolmaz
         self.assertIn("Tüm bölümler", self.html)
