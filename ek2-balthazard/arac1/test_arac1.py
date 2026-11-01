@@ -184,13 +184,10 @@ class Arac1Testleri(unittest.TestCase):
         self.assertIn("Bu kayıt zaten seçilenler listesinde.", self.html)
 
     def test_html_kopyalama_yedegi_ve_klavye_erisimi(self):
-        self.assertIn("navigator.clipboard", self.html)
-        self.assertIn("Kopyalama başarısız oldu.", self.html)
         self.assertIn(":focus-visible", self.html)
         self.assertIn('"Listeye ekle"', self.html)
         self.assertNotIn('id="sepet-temizle"', self.html)
         self.assertNotIn("Seçimleri temizle", self.html)
-        self.assertIn('id="listeyi-kopyala">Oranları kopyala</button>', self.html)
         self.assertNotIn("Araç-2'ye geç →", self.html)
         self.assertIn('href="__ARAC2_ADRESI__"', self.html)
         self.assertNotIn("İnsan Modeli</h2>", self.html)
@@ -203,6 +200,13 @@ class Arac1Testleri(unittest.TestCase):
         self.assertNotIn("Alışverişe devam", self.html)
         self.assertNotIn("Balthazard ile hesapla →", self.html)
         self.assertIn("hastalık bilgileri ve yaş eki başka araca otomatik aktarılmaz", self.html)
+        self.assertNotIn('id="listeyi-kopyala"', self.html)
+        self.assertIn('id="model-secili-isaretler"', self.html)
+        self.assertIn("function seciliModelIsaretleriniCiz()", self.html)
+        self.assertIn("function modelBolgesiBul(kayit)", self.html)
+        self.assertIn("Erişkinler İçin Engellilik Değerlendirmesi Hakkında Yönetmelik", self.html)
+        self.assertIn("30692 sayılı Resmî Gazete", self.html)
+
 
     # --- sağlık / bölüm / gezinme ------------------------------------------
 

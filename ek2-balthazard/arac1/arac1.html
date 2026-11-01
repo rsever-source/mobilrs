@@ -340,6 +340,23 @@
     .site-brand{font-size:20px}
     .site-mobile-home{padding:5px 8px;font-size:11px}
   }
+  .model-secili-isaretler{position:absolute;inset:0;z-index:5;pointer-events:none}
+  .model-kayit-isareti{position:absolute;display:grid;place-items:center;width:25px;height:25px;
+    margin:-12px 0 0 -12px;border:2px solid #fff;border-radius:50%;background:#e24b5b;
+    color:#fff;font-size:11px;font-weight:850;line-height:1;box-shadow:0 0 0 4px #e24b5b38,0 2px 7px #192b4933}
+  .sag-panel #sepet{margin-top:10px}
+  .sag-panel #sepet .sepet-satir{display:grid;grid-template-columns:27px minmax(0,1fr) auto;align-items:center;gap:9px}
+  .sepet-model-no{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;
+    background:#e24b5b;color:#fff;font-size:11px;font-weight:850;line-height:1}
+  .sag-panel #sepet .metin{min-width:0}
+  .sag-panel #sepet .ayrinti{overflow-wrap:anywhere}
+  .sag-panel #sepet .sil{align-self:center}
+  @media(max-width:520px){
+    .sag-panel #sepet{margin-top:8px;padding:10px}
+    .sag-panel #sepet .sepet-satir{grid-template-columns:25px minmax(0,1fr) auto;gap:7px}
+    .sag-panel #sepet .sepet-model-no{width:22px;height:22px}
+    .sag-panel #sepet .ad{font-size:13px}
+  }
 </style>
 </head>
 <body>
@@ -410,21 +427,17 @@
 
     <section id="sonuc" class="gizli" aria-live="polite"></section>
 
-    <section id="sepet" class="kart gizli" aria-labelledby="sepet-baslik">
-      <h2 id="sepet-baslik">Seçilen kayıtlar (0)</h2>
-      <ul class="liste" id="sepet-liste"></ul>
-      <p class="bildirim" id="sepet-bildirim" role="status"></p>
-      <div class="dugme-satir">
-        <button class="dugme" type="button" id="listeyi-kopyala">Oranları kopyala</button>
-      </div>
-      <p class="ipucu" style="margin-top:10px">Seçtiğiniz hastalık ve seviyeler bu sayfada görünür. Kopyalama yalnızca yüzde değerlerini alır; hastalık bilgileri ve yaş eki başka araca otomatik aktarılmaz.</p>
-    </section>
+
   </main>
 
   <footer class="alt-bilgi">
     <p>Bu araç bilgilendirme amaçlıdır. Resmî engelli sağlık kurulu raporu yerine geçmez.</p>
-    <p>Oranlar EK-2 kılavuzundan alınmıştır. Çalışma gücü kaybı değerlendirmesi ayrı bir
-      hukuki süreçtir ve bu oranlarla eşitlenemez.</p>
+    <p>Mevzuat dayanağı: 20.02.2019 tarihli ve 30692 sayılı Resmî Gazete’de yayımlanan
+      <em>Erişkinler İçin Engellilik Değerlendirmesi Hakkında Yönetmelik</em>, Ek-2 Engel Alanları
+      Kılavuzu (madde 10/3). Bu sayfa, kılavuzdaki hastalık ve fonksiyon kaybı karşılıklarını
+      listeler. Kişiye ait nihai engellilik durumu ve oranı yetkili sağlık kurulu tarafından belirlenir.
+      <a href="https://www.aile.gov.tr/eyhgm/mevzuat/ulusal-mevzuat/yonetmelikler/eriskinler-icin-engellilik-degerlendirmesi-hakkinda-yonetmelik/"
+         target="_blank" rel="noopener noreferrer">Yönetmeliği görüntüle</a>.</p>
   </footer>
     </div>
     <aside class="sag-panel" aria-label="Anatomik insan modeli">
@@ -437,6 +450,7 @@
               <span class="model-secim-cizgi"></span>
               <span class="model-secim-nokta"></span>
             </div>
+            <div class="model-secili-isaretler" id="model-secili-isaretler" aria-hidden="true"></div>
           </div>
         </div>
         <div class="model-yas-kontrol">
@@ -450,6 +464,11 @@
             <p class="model-yas-kaynak">Dayanak: 20.02.2019 tarihli ve 30692 sayılı Yönetmelik, madde 10/4. Bu işaret kutusu yalnızca bilgi alanını gösterir/gizler; oranı değiştirmez ve %10'u otomatik aktarmaz. Yaş seçimi Araç-2'de yapılır.</p>
           </div>
         </div>
+      </section>
+      <section id="sepet" class="kart gizli" aria-labelledby="sepet-baslik">
+        <h2 id="sepet-baslik">Seçilen kayıtlar (0)</h2>
+        <ul class="liste" id="sepet-liste"></ul>
+        <p class="bildirim" id="sepet-bildirim" role="status"></p>
       </section>
     </aside>
   </div>
@@ -485,6 +504,34 @@
   function goster(kutu, gorunur) {
     kutu.classList.toggle("gizli", !gorunur);
   }
+  var modelBolgeHaritasi = [
+    {anahtarlar:["zihinsel","ruhsal","davranış"], key:"ruh", ad:"Ruh Sağlığı", x:51, y:11},
+    {anahtarlar:["kulak burun boğaz","kbb","vestibüler","işitme","denge"], key:"kulak", ad:"Kulak ve Denge", x:58, y:17},
+    {anahtarlar:["hematoloji"], key:"kan", ad:"Kan Sistemi", x:52, y:31},
+    {anahtarlar:["deri"], key:"deri", ad:"Deri", x:62, y:39},
+    {anahtarlar:["karaciğer","karaciger","safra"], key:"karaciger", ad:"Karaciğer", x:59, y:44},
+    {anahtarlar:["kardiyovasküler","kalp-damar","kalp"], key:"kalp", ad:"Kalp-Damar", x:53, y:33},
+    {anahtarlar:["göz","görme"], key:"goz", ad:"Göz", x:51, y:8},
+    {anahtarlar:["sinir"], key:"sinir", ad:"Sinir Sistemi", x:51, y:14},
+    {anahtarlar:["göğüs","gogus","akciğer","akciger"], key:"gogus", ad:"Göğüs Hastalıkları", x:51, y:28},
+    {anahtarlar:["sindirim","mide","bağırsak","bagirsak"], key:"sindirim", ad:"Sindirim", x:51, y:48},
+    {anahtarlar:["böbrek","üriner","idrar"], key:"bobrek", ad:"Böbrek ve İdrar", x:49, y:60},
+    {anahtarlar:["mesane","idrar kesesi"], key:"mesane", ad:"Mesane", x:51, y:70},
+    {anahtarlar:["kadın"], key:"kadin", ad:"Kadın Hastalıkları", x:51, y:70},
+    {anahtarlar:["bel omurgası","omurga","vertebra","disk"], key:"omurga", ad:"Omurga", x:49, y:66},
+    {anahtarlar:["kas-iskelet","ekstremite","kemik","eklem"], key:"kas", ad:"Kas-İskelet", x:45, y:82},
+    {anahtarlar:["onkoloji"], key:"onkoloji", ad:"Onkoloji", x:50, y:44},
+    {anahtarlar:["endokrin","metabolizma"], key:"endokrin", ad:"Endokrin ve Metabolizma", x:53, y:43}
+  ];
+
+  function modelBolgesiBul(kayit) {
+    var anahtar = ((kayit.bolum || "") + " " + (kayit.ad || "") + " " + (kayit.seviye || ""))
+      .toLocaleLowerCase("tr-TR");
+    return modelBolgeHaritasi.find(function (satir) {
+      return satir.anahtarlar.some(function (parca) { return anahtar.indexOf(parca) !== -1; });
+    }) || {key:"genel", ad:kayit.bolum || "Genel", x:51, y:48};
+  }
+
   function modeliGuncelle(bolumAdi) {
     if (!bolumAdi) {
       modelCagri.hidden = true;
@@ -492,34 +539,45 @@
       modelCagriYazi.textContent = "";
       return;
     }
-    var anahtar = bolumAdi.toLocaleLowerCase("tr-TR");
-    var harita = [
-      {anahtarlar:["zihinsel","ruhsal","davranış"], ad:"Ruh Sağlığı", x:51, y:11},
-      {anahtarlar:["kulak burun boğaz","kbb"], ad:"Kulak Burun Boğaz", x:51, y:17},
-      {anahtarlar:["hematoloji"], ad:"Hematoloji", x:52, y:31},
-      {anahtarlar:["deri"], ad:"Deri", x:62, y:39},
-      {anahtarlar:["kardiyovasküler","kalp-damar"], ad:"Kalp-Damar", x:53, y:33},
-      {anahtarlar:["göz","görme"], ad:"Göz", x:51, y:8},
-      {anahtarlar:["sinir"], ad:"Sinir Sistemi", x:51, y:14},
-      {anahtarlar:["göğüs","gogus"], ad:"Göğüs Hastalıkları", x:51, y:28},
-      {anahtarlar:["sindirim"], ad:"Sindirim", x:51, y:48},
-      {anahtarlar:["böbrek","üriner","idrar"], ad:"Böbrek ve İdrar", x:49, y:60},
-      {anahtarlar:["kadın"], ad:"Kadın Hastalıkları", x:51, y:70},
-      {anahtarlar:["kas-iskelet","omurga","ekstremite"], ad:"Kas-İskelet", x:45, y:82},
-      {anahtarlar:["onkoloji"], ad:"Onkoloji", x:50, y:44},
-      {anahtarlar:["endokrin","metabolizma"], ad:"Endokrin ve Metabolizma", x:53, y:43}
-    ];
-    var secim = harita.find(function (satir) {
-      return satir.anahtarlar.some(function (parca) { return anahtar.indexOf(parca) !== -1; });
-    });
-    if (!secim) {
-      secim = {ad: bolumAdi, x:51, y:48};
-    }
+    var secim = modelBolgesiBul({bolum:bolumAdi});
     modelCagriYazi.textContent = secim.ad;
     modelCagri.style.top = secim.y + "%";
     modelCagri.style.setProperty("--nokta-x", secim.x + "%");
     modelCagri.hidden = false;
     modelCagri.setAttribute("aria-hidden", "false");
+  }
+
+  function seciliModelBolgeGruplari() {
+    var gruplar = [];
+    var indeks = Object.create(null);
+    durum.sepet.forEach(function (satir) {
+      var bolge = modelBolgesiBul(satir);
+      if (!indeks[bolge.key]) {
+        var grup = {key:bolge.key, ad:bolge.ad, x:bolge.x, y:bolge.y, kayitlar:[]};
+        gruplar.push(grup);
+        indeks[bolge.key] = grup;
+      }
+      indeks[bolge.key].kayitlar.push(satir);
+    });
+    var noByKey = Object.create(null);
+    gruplar.forEach(function (grup, i) { noByKey[grup.key] = i + 1; });
+    return {gruplar:gruplar, noByKey:noByKey};
+  }
+
+  function seciliModelIsaretleriniCiz() {
+    var katman = document.getElementById("model-secili-isaretler");
+    if (!katman) return;
+    katman.replaceChildren();
+    var secimler = seciliModelBolgeGruplari();
+    secimler.gruplar.forEach(function (grup, i) {
+      var basliklar = grup.kayitlar.map(function (kayit) { return kayit.ad; }).join(", ");
+      var isaret = el("span", "model-kayit-isareti", String(i + 1));
+      isaret.style.left = grup.x + "%";
+      isaret.style.top = grup.y + "%";
+      isaret.title = grup.ad + ": " + basliklar;
+      isaret.setAttribute("aria-label", grup.ad + " bölgesinde seçilen kayıtlar: " + basliklar);
+      katman.appendChild(isaret);
+    });
   }
   yasEkGoster.addEventListener("change", function () {
     goster(yasEkBilgi, yasEkGoster.checked);
@@ -864,14 +922,19 @@ var tumu = el("button", "cip", "Tümü");
     goster(sepetKutu, durum.sepet.length > 0);
     sepetBaslik.textContent = "Seçilen kayıtlar (" + durum.sepet.length + ")";
     sepetListe.innerHTML = "";
+    var secimler = seciliModelBolgeGruplari();
     durum.sepet.forEach(function (satir, i) {
       var li = el("li");
       var kutu = el("div", "sepet-satir");
+      var bolge = modelBolgesiBul(satir);
+      var no = secimler.noByKey[bolge.key] || 0;
+      var isaret = el("span", "sepet-model-no", String(no));
+      isaret.title = bolge.ad + " bölgesi";
       var sol = el("span", "metin");
       sol.appendChild(el("span", "ad", satir.ad + " · %" + satir.gosterim));
       sol.appendChild(el("span", "ayrinti", satir.seviye));
       sol.appendChild(el("span", "ayrinti", satir.bolum + " · " + satir.kaynak));
-      kutu.appendChild(sol);
+      kutu.append(isaret, sol);
       var sil = el("button", "sil", "Kaldır");
       sil.type = "button";
       sil.addEventListener("click", function () {
@@ -883,19 +946,8 @@ var tumu = el("button", "cip", "Tümü");
       li.appendChild(kutu);
       sepetListe.appendChild(li);
     });
+    seciliModelIsaretleriniCiz();
   }
-
-  document.getElementById("listeyi-kopyala").addEventListener("click", function () {
-    var metin = durum.sepet.map(function (s) { return "%" + s.gosterim; }).join("\n");
-    if (!metin) { sepetBildirim.textContent = "Liste boş."; return; }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(metin).then(function () {
-        sepetBildirim.textContent = "Yalnızca oranlar kopyalandı.";
-      }, function () { sepetBildirim.textContent = "Kopyalama başarısız oldu."; });
-    } else {
-      sepetBildirim.textContent = "Tarayıcı kopyalamayı desteklemiyor.";
-    }
-  });
 
   // --- tablo/formül gerektiren EK-2 yöntemleri ------------------------------
   function ozelHesaplamalariCiz(veri) {

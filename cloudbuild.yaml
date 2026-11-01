@@ -170,6 +170,12 @@ steps:
                     b'class="site-mobile-home" href="/">Anasayfa</a>' not in sayfa or
                     b'id="siteAccessibilityPanel"' not in sayfa):
                 raise SystemExit(arac_adi + " ortak Engelli.me üst başlığı eksik.")
+        aside_start = arac1.find(b'<aside class="sag-panel"')
+        aside_end = arac1.find(b"</aside>", aside_start)
+        sepet_pos = arac1.find(b'id="sepet"')
+        if (aside_start < 0 or aside_end < 0 or not (aside_start < sepet_pos < aside_end) or
+                b'id="model-secili-isaretler"' not in arac1 or b'id="listeyi-kopyala"' in arac1):
+            raise SystemExit("HATA: Secilen kayitlar model altinda degil veya kopyalama dugmesi duruyor")
         if b'class="insan-model-gorsel"' not in arac1 or b'id="model-secim-cagri"' not in arac1 or b'function modeliGuncelle(bolumAdi)' not in arac1 or b'id="yas-ek-goster" type="checkbox" aria-controls="yas-ek-bilgi"' not in arac1 or b'checked' in arac1.split(b'id="yas-ek-goster"', 1)[1].split(b'>', 1)[0] or b'id="ozel-hesaplama-kutusu"' not in arac1 or b"V\xc3\xbccut \xc3\xbczerindeki i\xc5\x9faretleri se\xc3\xa7erek ilgili hastal\xc4\xb1k b\xc3\xb6l\xc3\xbcm\xc3\xbcne ge\xc3\xa7in." in arac1 or b"v2.0" in arac1 or b"Hakk" in arac1:
             raise SystemExit("HATA: Araç-1 arayüzü beklenen yeni düzende değil")
         import json
