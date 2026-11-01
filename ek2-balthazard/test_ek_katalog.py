@@ -5,6 +5,8 @@ import json
 import unittest
 from pathlib import Path
 
+import katalog_okuyucu as ko
+
 VERI = Path(__file__).resolve().parent / "veri"
 
 
@@ -13,6 +15,12 @@ class EkKatalogTestleri(unittest.TestCase):
     def setUpClass(cls):
         cls.ek = json.loads((VERI / "katalog_ek2_ek.json").read_text(encoding="utf-8"))
         cls.ozel = json.loads((VERI / "ozel_hesaplamalar.json").read_text(encoding="utf-8"))
+
+    def test_okuyucu_ek_dosyalarini_yukler(self):
+        ek = ko.yukle_ek_katalog()
+        ozel = ko.yukle_ozel_hesaplamalar()
+        self.assertEqual(sum(len(b["kayitlar"]) for b in ek["bolumler"]), 136)
+        self.assertEqual(len(ozel["ozel_hesaplamalar"]), 5)
 
     def test_ek_katalog_bolumleri_ve_kayitlar(self):
         bolumler = self.ek["bolumler"]
