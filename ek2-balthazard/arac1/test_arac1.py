@@ -473,10 +473,29 @@ class Arac1Testleri(unittest.TestCase):
             self.assertEqual(durum, 404, yol)
             self.assertFalse(veri["ok"], yol)
 
-    def test_post_reddedilir(self):
-        durum, _, govde = self._istek("/api/hesapla", veri=b'{"oranlar":[40]}')
-        self.assertEqual(durum, 405)
-        self.assertFalse(json.loads(govde.decode("utf-8"))["ok"])
+    def test_post_balthazard_onizlemesi_ortak_motoru_kullanir(self):
+        girdi = json.dumps(
+            {"oranlar": [70, 60], "yas": "65_alti", "yas_ekle": False}
+        ).encode("utf-8")
+        durum, _, govde = self._istek("/api/hesapla", veri=girdi)
+        veri = json.loads(govde.decode("utf-8"))
+        self.assertEqual(durum, 200)
+        self.assertTrue(veri["ok"])
+        self.assertEqual(veri["sonuc"]["deger"], 88)
+        self.assertEqual(veri["siralama"]["uygulanan"], [70, 60])
+        self.assertEqual(veri["gosterim"]["sonuc"], "88")
+        self.assertEqual(veri["gosterim"]["adimlar"][1], {
+            "onceki": "70", "eklenen": "60", "sonuc": "88"
+        })
+        self.assertFalse(veri["yas_eklemesi"]["uygulandi"])
+
+    def test_post_balthazard_hata_girdisini_motor_doner(self):
+        girdi = b'{"oranlar":[120],"yas":"65_alti","yas_ekle":false}'
+        durum, _, govde = self._istek("/api/hesapla", veri=girdi)
+        veri = json.loads(govde.decode("utf-8"))
+        self.assertEqual(durum, 400)
+        self.assertFalse(veri["ok"])
+        self.assertEqual(veri["hata"]["kod"], "E_ORAN_ARALIK")
 
     # --- ortak sınırlar -----------------------------------------------------
 

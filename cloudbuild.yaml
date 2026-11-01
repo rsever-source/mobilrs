@@ -176,6 +176,22 @@ steps:
         if (aside_start < 0 or aside_end < 0 or not (aside_start < sepet_pos < aside_end) or
                 b'id="model-secili-isaretler"' not in arac1 or b'id="listeyi-kopyala"' in arac1):
             raise SystemExit("HATA: Secilen kayitlar model altinda degil veya kopyalama dugmesi duruyor")
+        if (b'id="balthazard-onizleme"' not in arac1 or b'fetch("/api/hesapla"' not in arac1 or
+                b'model-kayit-vurgusu' not in arac1):
+            raise SystemExit("HATA: Araç-1 canlı Balthazard ön izlemesi veya beden vurgusu eksik")
+
+        import json
+        hesap_istegi = urllib.request.Request(
+            base + "/api/hesapla",
+            data=json.dumps({"oranlar":[70,60],"yas":"65_alti","yas_ekle":False}).encode("utf-8"),
+            headers={"Content-Type":"application/json","Accept":"application/json"},
+            method="POST",
+        )
+        hesap = json.loads(urllib.request.urlopen(hesap_istegi, timeout=30).read())
+        if (not hesap.get("ok") or hesap.get("sonuc", {}).get("deger") != 88 or
+                hesap.get("gosterim", {}).get("sonuc") != "88" or
+                hesap.get("yas_eklemesi", {}).get("uygulandi") is not False):
+            raise SystemExit("HATA: Ortak Balthazard motoru 70 + 60 -> 88 örneğini doğrulamadı")
         nav_start = arac1.find(b'<nav class="sekmeler"')
         nav_end = arac1.find(b"</nav>", nav_start)
         nav = arac1[nav_start:nav_end] if nav_start >= 0 and nav_end >= 0 else b""

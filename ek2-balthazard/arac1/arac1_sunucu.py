@@ -25,6 +25,7 @@ Uçlar:
     GET /api/ara?metin=&bolum=  arama (3 karakterden sonra)
     GET /api/kayit/<id>         sonuç; belirsiz kayıtta belirsiz ekranı
     GET /api/belirsiz/<id>      yalnız belirsiz ekranı
+    POST /api/hesapla           seçilen oranların ortak Balthazard ön izlemesi (65+ eki kapalı)
 
 Çalıştırma:
 
@@ -46,6 +47,7 @@ KOK = BURASI.parent
 sys.path.insert(0, str(KOK))
 
 from balthazard_motoru import YAS_ALTI, balthazard, bicimle_gosterim  # noqa: E402
+from arac2_sunucu import gosterim_ekle  # noqa: E402
 from katalog_okuyucu import (Katalog, KatalogHatasi, katla, yukle, yukle_ek_katalog, yukle_ozel_hesaplamalar)  # noqa: E402
 
 SAYFA = BURASI / "arac1.html"
@@ -544,11 +546,26 @@ class Isleyici(BaseHTTPRequestHandler):
             self._json({"ok": False, "mesaj": "Bulunamadı."}, HTTPStatus.NOT_FOUND)
 
     def do_POST(self) -> None:  # noqa: N802
-        # Araç-1 hesap yapmaz; yazma ucu bilinçli olarak yoktur.
-        self._json(
-            {"ok": False, "mesaj": "Bu ekran yalnız okuma yapar."},
-            HTTPStatus.METHOD_NOT_ALLOWED,
-        )
+        parca = urlsplit(self.path)
+        if unquote(parca.path) != "/api/hesapla":
+            self._json({"ok": False, "mesaj": "Bulunamadı."}, HTTPStatus.NOT_FOUND)
+            return
+        try:
+            uzunluk = int(self.headers.get("Content-Length") or "0")
+        except ValueError:
+            uzunluk = -1
+        if uzunluk <= 0 or uzunluk > 64 * 1024:
+            self._json({"ok": False, "mesaj": "İstek okunamadı."}, HTTPStatus.BAD_REQUEST)
+            return
+        try:
+            girdi = json.loads(self.rfile.read(uzunluk).decode("utf-8"))
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            self._json({"ok": False, "mesaj": "İstek okunamadı."}, HTTPStatus.BAD_REQUEST)
+            return
+        sonuc = balthazard(girdi)
+        if sonuc.get("ok"):
+            sonuc["gosterim"] = gosterim_ekle(sonuc)
+        self._json(sonuc, HTTPStatus.OK if sonuc.get("ok") else HTTPStatus.BAD_REQUEST)
 
     # --- uçlar --------------------------------------------------------------
 

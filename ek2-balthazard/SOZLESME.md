@@ -1,6 +1,6 @@
 # EK-2 Balthazard — Bağlayıcı Sözleşme
 
-Sürüm: 1.3 · Tarih: 29.10.2026 · Durum: **Araç-1/Araç-2 yerel prototipleri çalışıyor**
+Sürüm: 1.4 · Tarih: 01.11.2026 · Durum: **Araç-1/Araç-2 yerel prototipleri çalışıyor**
 Kapsam: ortak hesaplama motoru, Araç-1 (Engel Oranı Bul) veri/ekran kuralları,
 Araç-2 (Balthazard Hesapla) davranışı, resmî kaynak karşılaştırması ve karar durumu.
 
@@ -21,11 +21,11 @@ Araç-2 (Balthazard Hesapla) davranışı, resmî kaynak karşılaştırması ve
 | Soru | "Bu hastalık ve seviye için mevzuatta hangi oran var?" | "Bildiğim oranların bileşkesi ne eder?" |
 | Kullanıcı girdisi | hastalık + seviye seçimi | **elle girilen oranlar** |
 | Veri kaynağı | katalog (286 satırın 276 kesin kaydı) | yok |
-| Ne üretir | mevzuattaki tek oran (bileşen) | oranların bileşkesi |
-| Kısıt denetimi | **evet** | **hayır** — yapılamaz, uyarı zorunlu |
-| Hastalık bilgisi | var | **yok** (yalnız sayı + isteğe bağlı etiket) |
-| 65 yaş eki | **uygulanmaz**; bilgi olarak açıklanır (§3.14) | **uygulanır** (tek nokta: motor) |
-| Hesap modeli | canlı — seçim/ekleme anında sonuç yenilenir | **"Hesapla" butonu** — sonuç yalnız butonla üretilir |
+| Ne üretir | mevzuattaki tek oran (bileşen) + seçilen bileşenlerin **bilgi amaçlı canlı bileşkesi** | oranların bileşkesi |
+| Kısıt denetimi | **evet**; canlı bileşke yalnız seçilen sayıları birleştirir | **hayır** — yapılamaz, uyarı zorunlu |
+| Hastalık bilgisi | var; bileşke bunun resmî nihai oranı olduğu anlamına gelmez | **yok** (yalnız sayı + isteğe bağlı etiket) |
+| 65 yaş eki | canlı ön izlemede **uygulanmaz**; bilgi olarak açıklanır (§3.14) | **uygulanır** (tek nokta: motor) |
+| Hesap modeli | canlı — seçme/ekleme/kaldırma anında ortak motorla sonuç yenilenir | **"Hesapla" butonu** — sonuç yalnız butonla üretilir |
 
 **Değişmez kurallar:**
 
@@ -33,15 +33,18 @@ Araç-2 (Balthazard Hesapla) davranışı, resmî kaynak karşılaştırması ve
    birleştirir.
 2. Araç-1'in ürettiği oran **çalışma gücü kaybı oranı değildir**; EK-2'de hastalık ve
    şiddet seviyesi karşılığı tanımlanmış orandır. İki kavram hiçbir ekranda eşitlenmez.
-3. Araç-1'in çıktısı (bileşen) ile Araç-2'nin çıktısı (bileşke) **aynı hukuki sonuç**
-   gibi sunulmaz.
+3. Araç-1, seçilmiş EK-2 bileşenlerinin Balthazard bileşkesini **bilgi amaçlı ön izleme**
+   olarak gösterebilir. Bu değer resmî engellilik oranı veya sağlık kurulu kararı değildir.
+   Araç-1'in tek hastalık oranı (bileşen), canlı ön izlemesi (bileşke) ve Araç-2'nin
+   kullanıcının elle girdiği oranlardan ürettiği bileşke birbirine karıştırılmaz.
 4. İki araç **aynı hesaplama motorunu** kullanır: `balthazard()` + yaş eki. 65 yaş eki
    **tek uygulama noktasında** uygulanır; hiçbir ekran kendi ekini hesaplamaz.
 
-Araç-1 motoru tek bileşenle çağırır: `oranlar = [x]`, `yas` yine zorunlu,
-**`yas_ekle = false`**. Motor `yas_eklemesi.uygulandi = false` döner ve Araç-1 yaş eki
-satırını **çizmez**. Yaş eklemesinin tek uygulama yeri yine motordur; Araç-1 onu
-**istemez**, kendi eklemez.
+Araç-1 tek kayıt ayrıntısında oranı tek bileşenle (`oranlar = [x]`) gösterir.
+Seçim listesinde ise listedeki bütün sayısal bileşenleri ortak `balthazard()` motoruna
+(`/api/hesapla`) göndererek anlık bilgi amaçlı bileşke ve motorun `adimlar` çıktısını
+gösterir. Çağrı `yas = "65_alti"` ve `yas_ekle = false` kullanır; bu, 65 yaş ekinin
+ön izlemeye karışmasını önler. Tarayıcıda formül/hesap kopyası yoktur.
 
 ---
 

@@ -357,6 +357,47 @@
     .sag-panel #sepet .sepet-model-no{width:22px;height:22px}
     .sag-panel #sepet .ad{font-size:13px}
   }
+  /* Live Balthazard preview in Araç-1: results come from the common API/motor. */
+  .model-kayit-vurgusu{position:absolute;z-index:4;display:block;transform:translate(-50%,-50%);
+    border:2px solid rgba(225,55,76,.72);border-radius:48%;
+    background:rgba(229,58,79,.22);box-shadow:0 0 0 5px rgba(229,58,79,.10);
+    pointer-events:none}
+  .model-kayit-isareti{z-index:6}
+  .balthazard-onizleme{margin-top:10px}
+  .balthazard-ust{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px}
+  .balthazard-kicker{margin:0 0 3px;color:#70839d;font-size:10px;font-weight:850;letter-spacing:.08em}
+  .balthazard-ust h2{font-size:17px;margin:0;color:#172642}
+  .balthazard-rozet{padding:5px 8px;border-radius:999px;background:#e8f6f4;color:#087f73;font-size:10px;font-weight:800;white-space:nowrap}
+  .balthazard-sonuc-duzeni{display:grid;grid-template-columns:minmax(130px,.8fr) minmax(0,1.2fr);gap:12px;align-items:center;padding:5px 2px 10px}
+  .balthazard-halka-alani{position:relative;display:grid;place-items:center;min-width:0}
+  .balthazard-halka-svg{display:block;width:min(100%,168px);height:auto;overflow:visible}
+  .balthazard-halka-zemin,.balthazard-halka-dolgu{fill:none;stroke-width:12}
+  .balthazard-halka-zemin{stroke:#edf0f4}
+  .balthazard-halka-dolgu{stroke:#16b6a5;stroke-linecap:round;stroke-dasharray:427.26;stroke-dashoffset:427.26;transform:rotate(-90deg);transform-origin:84px 84px;transition:stroke-dashoffset .25s ease}
+  .balthazard-halka-merkez{position:absolute;display:flex;align-items:center;flex-direction:column;justify-content:center;text-align:center;gap:3px}
+  .balthazard-halka-merkez strong{font-size:36px;line-height:1;color:#172033;letter-spacing:-1.2px;font-variant-numeric:tabular-nums}
+  .balthazard-halka-merkez span{font-size:10px;color:#72819a;font-weight:650}
+  .balthazard-sonuc-aciklama{min-width:0;color:#62738e;font-size:12px;line-height:1.5}
+  .balthazard-sonuc-aciklama strong{display:block;color:#243650;font-size:12px;margin-bottom:5px}
+  .balthazard-sonuc-aciklama p{margin:0}
+  .balthazard-adim-baslik{font-size:13px;margin:8px 0 5px;color:#26364d}
+  .balthazard-adimlar{margin:0;padding-left:22px}
+  .balthazard-adimlar li{padding:5px 0;color:#34445b;font-size:12.5px;line-height:1.5;overflow-wrap:anywhere;border-top:1px solid #edf1f6}
+  .balthazard-hata:empty{display:none}
+  .balthazard-yasal-not{margin:8px 0 0;padding-top:8px;border-top:1px solid #edf1f6;color:#6a7b93;font-size:11px;line-height:1.45}
+  @media(max-width:520px){
+    .balthazard-onizleme{padding:10px}
+    .balthazard-sonuc-duzeni{grid-template-columns:minmax(112px,.78fr) minmax(0,1.22fr);gap:8px}
+    .balthazard-halka-svg{width:min(100%,148px)}
+    .balthazard-halka-merkez strong{font-size:31px}
+    .balthazard-sonuc-aciklama{font-size:11px}
+    .balthazard-adimlar li{font-size:12px}
+  }
+  @media(max-width:360px){
+    .balthazard-sonuc-duzeni{grid-template-columns:1fr}
+    .balthazard-halka-svg{width:158px}
+    .balthazard-sonuc-aciklama{text-align:center}
+  }
 </style>
 </head>
 <body>
@@ -461,7 +502,7 @@
           <div class="model-yas-bilgi gizli" id="yas-ek-bilgi">
             <p>Yalnızca 65 yaş ve üzerindeki bireyler için geçerlidir. %10 ek, mevcut orana düz toplama ile eklenmez; Araç-2'de diğer oranlarla birlikte Balthazard yöntemiyle hesaplanır.</p>
             <p><strong>Örnek:</strong> %40 → %46.</p>
-            <p class="model-yas-kaynak">Dayanak: 20.02.2019 tarihli ve 30692 sayılı Yönetmelik, madde 10/4. Bu işaret kutusu yalnızca bilgi alanını gösterir/gizler; oranı değiştirmez ve %10'u otomatik aktarmaz. Yaş seçimi Araç-2'de yapılır.</p>
+            <p class="model-yas-kaynak">Dayanak: 20.02.2019 tarihli ve 30692 sayılı Yönetmelik, madde 10/4. Bu kutu yalnızca bilgi alanını gösterir/gizler. %10 yaş eki Araç-1'deki canlı ön izlemeye uygulanmaz; yaş ekini hesaplamak için Araç-2'de yaş seçilir.</p>
           </div>
         </div>
       </section>
@@ -469,7 +510,36 @@
         <h2 id="sepet-baslik">Seçilen kayıtlar (0)</h2>
         <ul class="liste" id="sepet-liste"></ul>
         <p class="bildirim" id="sepet-bildirim" role="status"></p>
-        <p class="ipucu">Bu seçimler bu sayfada tutulur. Araç-2’de birleştirmek istediğiniz oranları ayrıca girin; hastalık bilgileri ve yaş eki otomatik aktarılmaz.</p>
+        <p class="ipucu">Bu seçimler bu sayfada tutulur. Aşağıdaki Balthazard ön izlemesi yalnızca seçilen EK-2 oranlarını birleştirir; Araç-2’ye otomatik aktarım yapılmaz.</p>
+      </section>
+      <section id="balthazard-onizleme" class="kart balthazard-onizleme gizli" aria-labelledby="balthazard-baslik" aria-live="polite">
+        <div class="balthazard-ust">
+          <div>
+            <p class="balthazard-kicker">BİLGİ AMAÇLI ÖN İZLEME</p>
+            <h2 id="balthazard-baslik">Olası Balthazard bileşkesi</h2>
+          </div>
+          <span class="balthazard-rozet">Canlı hesap</span>
+        </div>
+        <div class="balthazard-sonuc-duzeni">
+          <div class="balthazard-halka-alani" role="img" aria-label="Seçilen oranların Balthazard bileşkesi">
+            <svg class="balthazard-halka-svg" viewBox="0 0 168 168" aria-hidden="true">
+              <circle class="balthazard-halka-zemin" cx="84" cy="84" r="68"></circle>
+              <circle class="balthazard-halka-dolgu" id="balthazard-halka" cx="84" cy="84" r="68"></circle>
+            </svg>
+            <div class="balthazard-halka-merkez">
+              <strong id="balthazard-yuzde">%0</strong>
+              <span id="balthazard-tam-deger">Tam değer: %0</span>
+            </div>
+          </div>
+          <div class="balthazard-sonuc-aciklama">
+            <strong>Seçilen oranların bileşkesi</strong>
+            <p id="balthazard-yas-notu">65 yaş ek oranı bu ön izlemeye dahil değildir.</p>
+          </div>
+        </div>
+        <h3 class="balthazard-adim-baslik">Balthazard hesaplama adımları</h3>
+        <ol id="balthazard-adimlar" class="balthazard-adimlar"></ol>
+        <p id="balthazard-hata" class="bildirim" role="status"></p>
+        <p class="balthazard-yasal-not">Bu değer, seçilen EK-2 oranlarının bilgi amaçlı bileşkesidir; resmî engellilik oranı veya sağlık kurulu kararı değildir. Nihai değerlendirme yetkili sağlık kurulu tarafından yapılır.</p>
       </section>
     </aside>
   </div>
@@ -495,6 +565,13 @@
   var sepetListe = document.getElementById("sepet-liste");
   var sepetBaslik = document.getElementById("sepet-baslik");
   var sepetBildirim = document.getElementById("sepet-bildirim");
+  var balthazardOzet = document.getElementById("balthazard-onizleme");
+  var balthazardHalka = document.getElementById("balthazard-halka");
+  var balthazardYuzde = document.getElementById("balthazard-yuzde");
+  var balthazardTamDeger = document.getElementById("balthazard-tam-deger");
+  var balthazardAdimlar = document.getElementById("balthazard-adimlar");
+  var balthazardHata = document.getElementById("balthazard-hata");
+  var balthazardIstekNo = 0;
 
   function el(kalem, sinif, metin) {
     var d = document.createElement(kalem);
@@ -506,23 +583,24 @@
     kutu.classList.toggle("gizli", !gorunur);
   }
   var modelBolgeHaritasi = [
-    {anahtarlar:["zihinsel","ruhsal","davranış"], key:"ruh", ad:"Ruh Sağlığı", x:51, y:11},
-    {anahtarlar:["kulak burun boğaz","kbb","vestibüler","işitme","denge"], key:"kulak", ad:"Kulak ve Denge", x:58, y:17},
-    {anahtarlar:["hematoloji"], key:"kan", ad:"Kan Sistemi", x:52, y:31},
-    {anahtarlar:["deri"], key:"deri", ad:"Deri", x:62, y:39},
-    {anahtarlar:["karaciğer","karaciger","safra"], key:"karaciger", ad:"Karaciğer", x:59, y:44},
-    {anahtarlar:["kardiyovasküler","kalp-damar","kalp"], key:"kalp", ad:"Kalp-Damar", x:53, y:33},
-    {anahtarlar:["göz","görme"], key:"goz", ad:"Göz", x:51, y:8},
-    {anahtarlar:["sinir"], key:"sinir", ad:"Sinir Sistemi", x:51, y:14},
-    {anahtarlar:["göğüs","gogus","akciğer","akciger"], key:"gogus", ad:"Göğüs Hastalıkları", x:51, y:28},
-    {anahtarlar:["sindirim","mide","bağırsak","bagirsak"], key:"sindirim", ad:"Sindirim", x:51, y:48},
-    {anahtarlar:["böbrek","üriner","idrar"], key:"bobrek", ad:"Böbrek ve İdrar", x:49, y:60},
-    {anahtarlar:["mesane","idrar kesesi"], key:"mesane", ad:"Mesane", x:51, y:70},
-    {anahtarlar:["kadın"], key:"kadin", ad:"Kadın Hastalıkları", x:51, y:70},
-    {anahtarlar:["bel omurgası","omurga","vertebra","disk"], key:"omurga", ad:"Omurga", x:49, y:66},
-    {anahtarlar:["kas-iskelet","ekstremite","kemik","eklem"], key:"kas", ad:"Kas-İskelet", x:45, y:82},
-    {anahtarlar:["onkoloji"], key:"onkoloji", ad:"Onkoloji", x:50, y:44},
-    {anahtarlar:["endokrin","metabolizma"], key:"endokrin", ad:"Endokrin ve Metabolizma", x:53, y:43}
+    {anahtarlar:["zihinsel","ruhsal","davranış"], key:"ruh", ad:"Ruh Sağlığı", x:51, y:11, w:28, h:28},
+    {anahtarlar:["kulak burun boğaz","kbb","vestibüler","işitme","denge"], key:"kulak", ad:"Kulak ve Denge", x:58, y:17, w:26, h:27},
+    {anahtarlar:["tiroit","tiroid","paratiroit","paratiroid","iç salgı bezi","poliglandüler"], key:"endokrin", ad:"İç Salgı Bezleri", x:51, y:25, w:30, h:24},
+    {anahtarlar:["hematoloji"], key:"kan", ad:"Kan Sistemi", x:52, y:34, w:34, h:42},
+    {anahtarlar:["deri"], key:"deri", ad:"Deri", x:62, y:41, w:32, h:42},
+    {anahtarlar:["karaciğer","karaciger","safra"], key:"karaciger", ad:"Karaciğer", x:59, y:46, w:38, h:30},
+    {anahtarlar:["kardiyovasküler","kalp-damar","kalp"], key:"kalp", ad:"Kalp-Damar", x:53, y:37, w:30, h:32},
+    {anahtarlar:["göz","görme"], key:"goz", ad:"Göz", x:51, y:8, w:24, h:24},
+    {anahtarlar:["sinir"], key:"sinir", ad:"Sinir Sistemi", x:51, y:14, w:27, h:30},
+    {anahtarlar:["göğüs","gogus","akciğer","akciger"], key:"gogus", ad:"Göğüs Hastalıkları", x:51, y:34, w:54, h:58},
+    {anahtarlar:["sindirim","mide","bağırsak","bagirsak"], key:"sindirim", ad:"Sindirim", x:51, y:51, w:48, h:46},
+    {anahtarlar:["böbrek","üriner","idrar"], key:"bobrek", ad:"Böbrek ve İdrar", x:49, y:61, w:40, h:28},
+    {anahtarlar:["mesane","idrar kesesi"], key:"mesane", ad:"Mesane", x:51, y:70, w:30, h:25},
+    {anahtarlar:["kadın"], key:"kadin", ad:"Kadın Hastalıkları", x:51, y:73, w:34, h:24},
+    {anahtarlar:["bel omurgası","omurga","vertebra","disk"], key:"omurga", ad:"Omurga", x:49, y:64, w:20, h:66},
+    {anahtarlar:["kas-iskelet","ekstremite","kemik","eklem"], key:"kas", ad:"Kas-İskelet", x:45, y:82, w:50, h:35},
+    {anahtarlar:["onkoloji"], key:"onkoloji", ad:"Onkoloji", x:50, y:46, w:40, h:44},
+    {anahtarlar:["endokrin","metabolizma"], key:"endokrin", ad:"Endokrin ve Metabolizma", x:51, y:25, w:30, h:24}
   ];
 
   function modelBolgesiBul(kayit) {
@@ -535,7 +613,7 @@
     var bolumAnahtari = (kayit.bolum || "").toLocaleLowerCase("tr-TR");
     return modelBolgeHaritasi.find(function (satir) {
       return satir.anahtarlar.some(function (parca) { return bolumAnahtari.indexOf(parca) !== -1; });
-    }) || {key:"genel", ad:kayit.bolum || "Genel", x:51, y:48};
+    }) || {key:"genel", ad:kayit.bolum || "Genel", x:51, y:48, w:34, h:34};
   }
 
   function modeliGuncelle(bolumAdi) {
@@ -559,7 +637,7 @@
     durum.sepet.forEach(function (satir) {
       var bolge = modelBolgesiBul(satir);
       if (!indeks[bolge.key]) {
-        var grup = {key:bolge.key, ad:bolge.ad, x:bolge.x, y:bolge.y, kayitlar:[]};
+        var grup = {key:bolge.key, ad:bolge.ad, x:bolge.x, y:bolge.y, w:bolge.w || 34, h:bolge.h || 34, kayitlar:[]};
         gruplar.push(grup);
         indeks[bolge.key] = grup;
       }
@@ -577,6 +655,13 @@
     var secimler = seciliModelBolgeGruplari();
     secimler.gruplar.forEach(function (grup, i) {
       var basliklar = grup.kayitlar.map(function (kayit) { return kayit.ad; }).join(", ");
+      var vurgu = el("span", "model-kayit-vurgusu");
+      vurgu.style.left = grup.x + "%";
+      vurgu.style.top = grup.y + "%";
+      vurgu.style.width = grup.w + "px";
+      vurgu.style.height = grup.h + "px";
+      vurgu.title = grup.ad + " bölgesi seçili";
+      katman.appendChild(vurgu);
       var isaret = el("span", "model-kayit-isareti", String(i + 1));
       isaret.style.left = grup.x + "%";
       isaret.style.top = grup.y + "%";
@@ -924,6 +1009,78 @@ var tumu = el("button", "cip", "Tümü");
     sepetiCiz();
   }
 
+  function balthazardSonucunuCiz(veri) {
+    var ham = Number(veri.sonuc.deger);
+    var gosterim = veri.gosterim || {};
+    var tam = String(gosterim.sonuc != null ? gosterim.sonuc : veri.sonuc.deger);
+    var cevre = 2 * Math.PI * 68;
+    var ilerleme = Math.max(0, Math.min(100, Number.isFinite(ham) ? ham : 0));
+    balthazardHalka.style.strokeDasharray = cevre.toFixed(2);
+    balthazardHalka.style.strokeDashoffset = (cevre * (1 - ilerleme / 100)).toFixed(2);
+    balthazardYuzde.textContent = "%" + tam;
+    balthazardTamDeger.textContent = "Motor değeri: %" + tam;
+
+    balthazardAdimlar.replaceChildren();
+    var adimGosterimleri = Array.isArray(gosterim.adimlar) ? gosterim.adimlar : [];
+    adimGosterimleri.forEach(function (adim, indeks) {
+      var satir = el("li");
+      if (indeks === 0) {
+        satir.textContent = "Başlangıç oranı: %" + adim.eklenen;
+      } else {
+        satir.textContent = "%" + adim.onceki + " + (100 − " + adim.onceki + ") × " +
+          adim.eklenen + " ÷ 100 = %" + adim.sonuc;
+      }
+      balthazardAdimlar.appendChild(satir);
+    });
+    balthazardHata.textContent = "";
+  }
+
+  function balthazardOnizlemesiniGuncelle() {
+    var istekNo = ++balthazardIstekNo;
+    var oranlar = durum.sepet.map(function (satir) { return satir.oran; });
+    if (!oranlar.length) {
+      goster(balthazardOzet, false);
+      balthazardAdimlar.replaceChildren();
+      balthazardHata.textContent = "";
+      return;
+    }
+
+    goster(balthazardOzet, true);
+    balthazardYuzde.textContent = "…";
+    balthazardTamDeger.textContent = "Hesaplanıyor";
+    balthazardAdimlar.replaceChildren();
+    balthazardHata.textContent = "";
+
+    fetch("/api/hesapla", {
+      method: "POST",
+      headers: {"Accept":"application/json", "Content-Type":"application/json"},
+      body: JSON.stringify({
+        oranlar: oranlar,
+        yas: "65_alti",
+        yas_ekle: false
+      })
+    }).then(function (yanit) {
+      return yanit.json().then(function (veri) {
+        if (!yanit.ok) {
+          throw new Error((veri.hata && veri.hata.mesaj) || veri.mesaj || "Hesaplama yanıtı alınamadı.");
+        }
+        return veri;
+      });
+    }).then(function (veri) {
+      if (istekNo !== balthazardIstekNo) return;
+      if (!veri.ok) {
+        throw new Error((veri.hata && veri.hata.mesaj) || "Balthazard hesabı yapılamadı.");
+      }
+      balthazardSonucunuCiz(veri);
+    }).catch(function (hata) {
+      if (istekNo !== balthazardIstekNo) return;
+      balthazardYuzde.textContent = "—";
+      balthazardTamDeger.textContent = "Sonuç alınamadı";
+      balthazardHata.textContent = "Balthazard ön izlemesi oluşturulamadı: " +
+        String(hata && hata.message ? hata.message : hata);
+    });
+  }
+
   function sepetiCiz() {
     goster(sepetKutu, durum.sepet.length > 0);
     sepetBaslik.textContent = "Seçilen kayıtlar (" + durum.sepet.length + ")";
@@ -953,6 +1110,7 @@ var tumu = el("button", "cip", "Tümü");
       sepetListe.appendChild(li);
     });
     seciliModelIsaretleriniCiz();
+    balthazardOnizlemesiniGuncelle();
   }
 
   // --- tablo/formül gerektiren EK-2 yöntemleri ------------------------------
