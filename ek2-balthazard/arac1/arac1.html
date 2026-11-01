@@ -33,6 +33,25 @@
   .ipucu{font-size:12.5px;color:var(--muted)}
 
   .cipler{display:flex;flex-wrap:wrap;gap:8px;padding:2px 2px 12px}
+  .vucut-secici{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr);gap:18px;align-items:center}
+  .vucut-resim{width:100%;max-height:330px;background:#f1f3f6;border-radius:14px;padding:10px}
+  .vucut-bolge{cursor:pointer;outline:none}
+  .vucut-bolge:focus-visible path,.vucut-bolge:focus-visible circle{stroke:var(--accent);stroke-width:4}
+  .vucut-bolge.secili path,.vucut-bolge.secili circle{fill:#55b7a6;stroke:#167d70;stroke-width:2}
+  .vucut-dugmeler{display:flex;flex-wrap:wrap;gap:8px}
+  .vucut-dugmeler .cip{min-height:42px}
+  .vucut-aciklama{font-size:13px;color:var(--muted);margin:8px 0 0}
+  #gruplar.liste{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  #gruplar .satir{height:100%}
+  #hastaliklar .hastalik-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  #hastaliklar .hastalik-grid>li.acik{grid-column:1/-1}
+  #hastaliklar .hastalik-grid .seviyeler{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  @media (max-width:720px){
+    .vucut-secici{grid-template-columns:minmax(100px,34%) minmax(0,1fr);gap:10px}
+    .vucut-resim{padding:5px}
+    #gruplar.liste,#hastaliklar .hastalik-grid{grid-template-columns:minmax(0,1fr)}
+    #hastaliklar .hastalik-grid .seviyeler{grid-template-columns:minmax(0,1fr)}
+  }
   .cip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);
     padding:8px 14px;border-radius:999px;font-size:14px;font-family:inherit;cursor:pointer}
   .cip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:600}
@@ -154,6 +173,43 @@
     <p class="ipucu" id="arama-ipucu">Arama 3 karakterden sonra çalışır; Türkçe yazım farkı önemli değildir.</p>
   </form>
 
+  <section class="kart" aria-labelledby="vucut-baslik">
+    <div class="baslik-satir"><h2 id="vucut-baslik">Vücut üzerinden bölüm seç</h2></div>
+    <div class="vucut-secici">
+      <svg class="vucut-resim" viewBox="0 0 220 430" role="img" aria-label="Tıklanabilir vücut şeması">
+        <g fill="#dfe5ef" stroke="#bdc8dc" stroke-width="2" stroke-linejoin="round">
+          <path d="M91 49 C78 35 81 14 109 12 C137 14 140 35 127 49 L130 66 L89 66 Z"/>
+          <path d="M91 66 L82 74 Q55 78 43 103 L26 190 Q23 204 35 207 Q45 208 49 194 L67 124 L62 197 Q60 225 79 244 L82 315 L72 397 Q70 410 82 411 L97 411 Q105 407 101 396 L111 318 L121 396 Q117 408 127 411 L143 411 Q155 410 150 397 L139 315 L142 244 Q160 225 158 197 L153 124 L171 194 Q175 208 185 207 Q197 204 194 190 L177 103 Q165 78 138 74 L129 66 Z"/>
+          <path d="M88 68 L132 68 L139 99 Q111 113 81 99 Z"/>
+        </g>
+        <g class="vucut-bolge" data-bolum="ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR" tabindex="0" role="button" aria-label="Zihinsel ve ruhsal bölüm">
+          <circle cx="109" cy="33" r="22" fill="#cbd5e5" stroke="#9eabc1" stroke-width="2"/>
+        </g>
+        <g class="vucut-bolge" data-bolum="KULAK BURUN BOĞAZ" tabindex="0" role="button" aria-label="Kulak burun boğaz">
+          <path d="M96 54 L122 54 L126 79 L92 79 Z" fill="#f2b5b5" stroke="#d98282" stroke-width="2"/>
+        </g>
+        <g class="vucut-bolge" data-bolum="KARDİYOVASKÜLER SİSTEM" tabindex="0" role="button" aria-label="Kalp ve damar sistemi">
+          <path d="M110 109 C89 90 75 111 91 129 L110 147 L129 129 C145 111 131 90 110 109 Z" fill="#e88f8f" stroke="#c95f5f" stroke-width="2"/>
+        </g>
+        <g class="vucut-bolge" data-bolum="HEMATOLOJİK HASTALIKLAR" tabindex="0" role="button" aria-label="Kan ve hematoloji">
+          <path d="M110 156 C100 170 96 176 96 183 A14 14 0 0 0 124 183 C124 176 120 170 110 156 Z" fill="#d86d78" stroke="#b44855" stroke-width="2"/>
+        </g>
+        <g class="vucut-bolge" data-bolum="DERİ" tabindex="0" role="button" aria-label="Deri">
+          <path d="M43 103 L26 190 Q23 204 35 207 Q45 208 49 194 L67 124 L62 197 Q60 225 79 244 L82 315 L72 397 Q70 410 82 411 L97 411 Q105 407 101 396 L111 318 L121 396 Q117 408 127 411 L143 411 Q155 410 150 397 L139 315 L142 244 Q160 225 158 197 L153 124 L171 194 Q175 208 185 207 Q197 204 194 190 L177 103 Q165 78 138 74 L129 66 L91 66 L82 74 Q55 78 43 103 Z" fill="transparent" stroke="#bdc8dc" stroke-width="2"/>
+        </g>
+      </svg>
+      <div>
+        <div class="vucut-dugmeler" id="vucut-dugmeler" role="group" aria-label="Vücut bölümleri">
+          <button class="cip" type="button" data-bolum="KULAK BURUN BOĞAZ">Boğaz ve boyun</button>
+          <button class="cip" type="button" data-bolum="KARDİYOVASKÜLER SİSTEM">Kalp ve damar</button>
+          <button class="cip" type="button" data-bolum="HEMATOLOJİK HASTALIKLAR">Kan</button>
+          <button class="cip" type="button" data-bolum="DERİ">Deri</button>
+          <button class="cip" type="button" data-bolum="ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR">Zihinsel ve ruhsal</button>
+        </div>
+        <p class="vucut-aciklama">Bölgeye veya adına dokununca ilgili bölüm seçilir. Şema yönlendirme içindir; tıbbi değerlendirme yapmaz.</p>
+      </div>
+    </div>
+  </section>
   <div class="cipler" id="cipler" role="group" aria-label="Bölüm seçimi"></div>
 
   <details class="pasif-kutu" id="pasif-kutu">
@@ -1366,7 +1422,20 @@
     });
   }
 
+  document.querySelectorAll(".vucut-bolge, #vucut-dugmeler [data-bolum]").forEach(function (bolge) {
+    function sec() { bolumSec(bolge.getAttribute("data-bolum")); }
+    bolge.addEventListener("click", sec);
+    bolge.addEventListener("keydown", function (olay) {
+      if (olay.key === "Enter" || olay.key === " ") { olay.preventDefault(); sec(); }
+    });
+  });
+
   function bolumSec(ad, kisa) {
+    document.querySelectorAll("[data-bolum]").forEach(function (el) {
+      var secili = el.getAttribute("data-bolum") === ad;
+      if (el.classList.contains("vucut-bolge")) { el.classList.toggle("secili", secili); }
+      if (el.tagName === "BUTTON" && el.closest("#vucut-dugmeler")) { el.setAttribute("aria-pressed", secili ? "true" : "false"); }
+    });
     durum.bolum = ad;
     durum.bolumKisa = kisa || "";
     durum.gruplar = [];
@@ -1469,7 +1538,7 @@
     hastalikKutu.innerHTML = "";
     var baslik = document.getElementById("hastalik-baslik");
     baslik.textContent = grup.ad;
-    var liste = el("ul", "liste");
+    var liste = el("ul", "liste hastalik-grid");
     grup.hastaliklar.forEach(function (hastalik) {
       var li = el("li");
       var dugme = el("button", "satir");
@@ -1500,7 +1569,13 @@
 
   function seviyeleriCiz(li, hastalik) {
     var eski = li.querySelector(".seviyeler");
-    if (eski) { eski.remove(); return; }
+    if (eski) { eski.remove(); li.classList.remove("acik"); return; }
+    Array.prototype.forEach.call(hastalikKutu.querySelectorAll(".seviyeler"), function (acikListe) {
+      acikListe.remove();
+      var onceki = acikListe.closest("li");
+      if (onceki) { onceki.classList.remove("acik"); }
+    });
+    li.classList.add("acik");
     var kutu = el("ul", "liste seviyeler");
     kutu.style.marginTop = "6px";
     hastalik.seviyeler.forEach(function (seviye) {
