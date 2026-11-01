@@ -37,11 +37,13 @@
         {"id":"KV-023","hastalik":"Kalp yetmezliği","alt_tur":"Evre III — EF %30–50 ve tedaviye rağmen NYHA sınıf III","oran":50,"sayfa":144},
         {"id":"KV-024","hastalik":"Kalp yetmezliği","alt_tur":"Evre IV — EF %30'un altında veya NYHA sınıf IV","oran":100,"sayfa":144},
         {"id":"KV-025","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 1 — A grubu","oran":5,"sayfa":144},
-        {"id":"KV-026","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 2 — B grubu","oran":30,"sayfa":144},
-        {"id":"KV-027","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 3 — A grubu","oran":45,"sayfa":144},
-        {"id":"KV-028","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 3 — B grubu; ameliyat sonrası tedaviye rağmen kalp yetmezliği semptomları devam ediyor","oran":50,"sayfa":144},
-        {"id":"KV-029","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 4 — A grubu","oran":15,"sayfa":145},
-        {"id":"KV-030","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 4 — B grubu","oran":80,"sayfa":145}
+        {"id":"KV-026","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 1 — B grubu; düzeltici ameliyat sonrası Klas 1 ölçütlerini karşılayanlar","oran":10,"sayfa":144},
+        {"id":"KV-027","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 2 — A grubu","oran":25,"sayfa":144},
+        {"id":"KV-028","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 2 — B grubu; ameliyat sonrası Klas 2 ölçütlerini karşılayanlar","oran":30,"sayfa":144},
+        {"id":"KV-029","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 3 — A grubu","oran":45,"sayfa":144},
+        {"id":"KV-030","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 3 — B grubu; ameliyat sonrası tedaviye rağmen kalp yetmezliği semptomları devam ediyor","oran":50,"sayfa":144},
+        {"id":"KV-031","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 4 — A grubu","oran":75,"sayfa":145},
+        {"id":"KV-032","hastalik":"Doğuştan kalp hastalıkları","alt_tur":"Klas 4 — B grubu","oran":80,"sayfa":145}
       ]
     }
   ]
