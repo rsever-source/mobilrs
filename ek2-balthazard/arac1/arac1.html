@@ -217,7 +217,7 @@
             <path d="M76 101 Q83 92 88 103 L88 127 Q81 135 76 125 Z M92 103 Q98 92 104 101 L103 125 Q98 135 92 127 Z" fill="#ed9898" stroke="#c96b78"/>
             <path d="M85 144 Q90 133 97 144 Q102 154 91 163 Q82 157 85 144 Z" fill="#df737d" stroke="#b64b5b"/>
             <path d="M80 171 Q90 163 100 171 Q106 178 98 186 L84 186 Q77 181 80 171 Z" fill="#edb18c" stroke="#d18a65"/>
-            <circle cx="90" cy="38" r="7" fill="#63a9e9" stroke="#fff" stroke-width="2"/><circle cx="91" cy="150" r="6" fill="#e65f69" stroke="#fff" stroke-width="2"/><circle cx="90" cy="178" r="5" fill="#e6a16d" stroke="#fff" stroke-width="2"/><circle cx="90" cy="200" r="5" fill="#c17da0" stroke="#fff" stroke-width="2"/><circle cx="72" cy="264" r="6" fill="#4f91d2" stroke="#fff" stroke-width="2"/><circle cx="108" cy="264" r="6" fill="#4f91d2" stroke="#fff" stroke-width="2"/>
+            <circle cx="90" cy="38" r="7" fill="#63a9e9" stroke="#fff" stroke-width="2" data-bolum-eslesme="KBB" tabindex="0" role="button" aria-label="Kulak burun boğaz bölümünü seç"/><circle cx="91" cy="150" r="6" fill="#e65f69" stroke="#fff" stroke-width="2" data-bolum-eslesme="Kalp-Damar" tabindex="0" role="button" aria-label="Kalp damar bölümünü seç"/><circle cx="90" cy="178" r="5" fill="#e6a16d" stroke="#fff" stroke-width="2" data-bolum-eslesme="Sindirim" tabindex="0" role="button" aria-label="Sindirim bölümünü seç"/><circle cx="90" cy="200" r="5" fill="#c17da0" stroke="#fff" stroke-width="2" data-bolum-eslesme="Böbrek ve İdrar" tabindex="0" role="button" aria-label="Böbrek ve idrar bölümünü seç"/><circle cx="72" cy="264" r="6" fill="#4f91d2" stroke="#fff" stroke-width="2" data-bolum-eslesme="Kadın Hastalıkları" tabindex="0" role="button" aria-label="Kadın hastalıkları bölümünü seç"/><circle cx="108" cy="264" r="6" fill="#4f91d2" stroke="#fff" stroke-width="2" data-bolum-eslesme="Endokrin" tabindex="0" role="button" aria-label="Endokrin bölümünü seç"/>
           </svg>
           </div>
         <p class="model-aciklama">Vücut üzerindeki işaretleri seçerek ilgili hastalık bölümüne geçin. Hastalık listesi solda kalır.</p>
@@ -266,6 +266,25 @@
     cipler.innerHTML = "";
     modelBolumListesi.innerHTML = "";
     modelBolumListesi.innerHTML = "";
+    Array.prototype.forEach.call(document.querySelectorAll(".insan-svg [data-bolum-eslesme]"), function (nokta) {
+      function eslesenBolum() {
+        var anahtar = nokta.getAttribute("data-bolum-eslesme").toLocaleLowerCase("tr-TR");
+        return bolumler.find(function (b) {
+          return (b.ad + " " + b.kisa).toLocaleLowerCase("tr-TR").includes(anahtar);
+        });
+      }
+      function sec() {
+        var b = eslesenBolum();
+        if (b) { bolumSec(b.ad); }
+      }
+      nokta.addEventListener("click", sec);
+      nokta.addEventListener("keydown", function (olay) {
+        if (olay.key === "Enter" || olay.key === " ") {
+          olay.preventDefault();
+          sec();
+        }
+      });
+    });
     var tumu = el("button", "cip", "Tümü");
     tumu.type = "button";
     tumu.dataset.bolum = "";
