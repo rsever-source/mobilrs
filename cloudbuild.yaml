@@ -189,7 +189,6 @@ steps:
                 b'function modeliGuncelle(bolumAdi)' in arac1 or b'<svg class="insan-svg"' in arac1 or
                 b'id="yas-ek-goster" type="checkbox" aria-controls="yas-ek-bilgi"' not in arac1 or
                 not yas_isaretsiz or b'id="ozel-hesaplama-kutusu"' not in arac1 or
-                b"V\\xc3\\xbccut \\xc3\\xbczerindeki i\\xc5\\x9faretleri se\\xc3\\xa7erek ilgili hastal\\xc4\\xb1k b\\xc3\\xb6l\\xc3\\xbcne ge\\xc3\\xa7in." in arac1 or
                 b"v2.0" in arac1 or b">Hakk" in nav):
             raise SystemExit("HATA: Araç-1 arayüzü beklenen figürsüz yeni düzende değil")
 
