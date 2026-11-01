@@ -386,7 +386,12 @@ def _bolum_2_anahtari(kayit: dict, rozet: str) -> tuple[str, str]:
             grup = kayit.get("grup")
             if not grup:
                 raise KatalogHatasi(f"{kayit['id']}: {kayit['bolum']} kaydında 'grup' yok.")
-            return f"baslik:{grup}", grup
+            ad = (kayit.get("_grup_adlari") or {}).get(grup)
+            if not ad:
+                raise KatalogHatasi(
+                    f"{kayit['id']}: {kayit['bolum']} için '{grup}' grup adı katalog meta.grup_adlari içinde yok."
+                )
+            return f"baslik:{grup}", ad
         raise KatalogHatasi(f"{kayit['id']}: Roma başlığı belirlenemedi.")
     temel = rozet.split("-", 1)[0]
     return f"baslik:{temel}", temel
@@ -564,9 +569,14 @@ def yukle(katalog_yolu: Path | str | None = None,
                 )
                 for hastalik_adi in hastalik_sirasi
             )
-            rozet = uyeler[0].grup if bolum_adi == "DERİ" else (
-                uyeler[0].rozet.split("-", 1)[0]
-            )
+            # DERİ'de grup kodu resmî Roma başlığıdır. KBB/Kalp-Damar
+            # grup kodları (K-ISI, V-ARI vb.) iç kimliktir; ekranda rozet gösterilmez.
+            if bolum_adi == "DERİ":
+                rozet = uyeler[0].grup
+            elif bolum_adi in ("KULAK BURUN BOĞAZ", "KARDİYOVASKÜLER SİSTEM"):
+                rozet = ""
+            else:
+                rozet = uyeler[0].rozet.split("-", 1)[0]
             gruplar.append(
                 Grup(anahtar=anahtar, ad=ad, rozet=rozet, kayitlar=uyeler,
                      hastaliklar=hastaliklar)
@@ -578,6 +588,10 @@ def yukle(katalog_yolu: Path | str | None = None,
             raise KatalogHatasi(f"Z başlık sayısı {len(gruplar)}; beklenen 6.")
         if bolum_adi == "HEMATOLOJİK HASTALIKLAR" and len(gruplar) != 10:
             raise KatalogHatasi(f"H başlık sayısı {len(gruplar)}; beklenen 10.")
+        if bolum_adi == "KULAK BURUN BOĞAZ" and len(gruplar) != 7:
+            raise KatalogHatasi(f"KBB grup sayısı {len(gruplar)}; beklenen 7.")
+        if bolum_adi == "KARDİYOVASKÜLER SİSTEM" and len(gruplar) != 9:
+            raise KatalogHatasi(f"Kalp-Damar grup sayısı {len(gruplar)}; beklenen 9.")
 
         bolumler.append(
             Bolum(
@@ -680,7 +694,7 @@ def yukle(katalog_yolu: Path | str | None = None,
     if sayi.get("toplam_sayisal_satir") != BEKLENEN_TOPLAM:
         raise KatalogHatasi("meta.sayi toplam satır sayısı beklenenle uyuşmuyor.")
     if len(kayitlar) + len(acik) != BEKLENEN_TOPLAM:
-        raise KatalogHatasi("Kesin + belirsiz toplamı 286 değil.")
+        raise KatalogHatasi(f"Kesin + belirsiz toplamı {BEKLENEN_TOPLAM} değil.")
 
     dosya_ozeti = MappingProxyType(
         {

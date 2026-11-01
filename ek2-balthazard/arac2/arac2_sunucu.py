@@ -39,6 +39,8 @@ from balthazard_motoru import balthazard, bicimle_gosterim  # noqa: E402
 SAYFA = BURASI / "arac2.html"
 AZAMI_GOVDE = 64 * 1024
 VARSAYILAN_PORT = 8765
+ARAC1_ADRESI = "http://127.0.0.1:8766/arac1"
+GOVDE_HATASI = object()
 
 
 def gosterim_ekle(sonuc: dict) -> dict:
@@ -79,7 +81,9 @@ class Isleyici(BaseHTTPRequestHandler):
 
     def _html(self) -> None:
         try:
-            govde = SAYFA.read_bytes()
+            govde = SAYFA.read_bytes().replace(
+                b"__ARAC1_ADRESI__", ARAC1_ADRESI.encode("ascii")
+            )
         except OSError:
             self._json(
                 {"ok": False, "mesaj": "Ekran dosyası bulunamadı."},
@@ -106,7 +110,7 @@ class Isleyici(BaseHTTPRequestHandler):
             return
 
         girdi = self._govde_oku()
-        if girdi is None:
+        if girdi is GOVDE_HATASI:
             return
 
         sonuc = balthazard(girdi)  # tüm doğrulama ve hesap motorda
@@ -117,7 +121,11 @@ class Isleyici(BaseHTTPRequestHandler):
     # --- gövde --------------------------------------------------------------
 
     def _govde_oku(self):
-        """JSON gövdeyi okur. Bozuk istekte yanıtı yazıp ``None`` döner."""
+        """JSON gövdeyi okur; biçim bozuksa transport hatası döner.
+
+        Geçerli JSON'ın sözlük olmaması motorun sözleşme hatasıdır; bu katman
+        onu değiştirmeden motora iletir.
+        """
         try:
             uzunluk = int(self.headers.get("Content-Length") or "0")
         except ValueError:
@@ -126,7 +134,7 @@ class Isleyici(BaseHTTPRequestHandler):
             self._json(
                 {"ok": False, "mesaj": "İstek okunamadı."}, HTTPStatus.BAD_REQUEST
             )
-            return None
+            return GOVDE_HATASI
 
         ham = self.rfile.read(uzunluk)
         try:
@@ -135,14 +143,7 @@ class Isleyici(BaseHTTPRequestHandler):
             self._json(
                 {"ok": False, "mesaj": "İstek okunamadı."}, HTTPStatus.BAD_REQUEST
             )
-            return None
-
-        if not isinstance(veri, dict):
-            # Motor sözleşmesi sözlük bekler; en yakın hata kodunu motor üretir.
-            self._json(
-                {"ok": False, "mesaj": "İstek okunamadı."}, HTTPStatus.BAD_REQUEST
-            )
-            return None
+            return GOVDE_HATASI
         return veri
 
     # Gürültülü varsayılan günlük yerine tek satır.

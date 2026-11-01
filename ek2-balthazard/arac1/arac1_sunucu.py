@@ -423,7 +423,9 @@ class Isleyici(BaseHTTPRequestHandler):
 
     def _html(self) -> None:
         try:
-            govde = SAYFA.read_bytes()
+            govde = SAYFA.read_bytes().replace(
+                b"__ARAC2_ADRESI__", ARAC2_ADRESI.encode("ascii")
+            )
         except OSError:
             self._json(
                 {"ok": False, "mesaj": "Ekran dosyası bulunamadı."},
