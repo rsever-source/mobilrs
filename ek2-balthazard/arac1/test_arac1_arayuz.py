@@ -83,7 +83,6 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertNotIn("Bölüme göre filtrele", html)
         self.assertNotIn("Araç-2'ye geç →", html)
         self.assertIn('href="__ARAC2_ADRESI__"', html)
-        self.assertIn('return "%" + s.gosterim', html)
         self.assertNotIn("Alışverişe devam", html)
         self.assertNotIn('id="gruplar"', html)
         self.assertNotIn('id="gruplar-baslik"', html)

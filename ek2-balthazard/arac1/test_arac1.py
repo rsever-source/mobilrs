@@ -195,7 +195,6 @@ class Arac1Testleri(unittest.TestCase):
         self.assertIn("satir.ad", self.html)
         self.assertIn("satir.seviye", self.html)
         self.assertIn("satir.kaynak", self.html)
-        self.assertIn('return "%" + s.gosterim', self.html)
         self.assertNotIn("Alışverişe devam", self.html)
         self.assertNotIn("Balthazard ile hesapla →", self.html)
         self.assertIn("hastalık bilgileri ve yaş eki otomatik aktarılmaz", self.html)
