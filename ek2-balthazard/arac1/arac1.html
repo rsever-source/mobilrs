@@ -114,7 +114,17 @@
   .sepet-satir .ayrinti{font-size:12.5px;color:var(--muted)}
   .sepet-satir .sil{border:1px solid var(--line);background:var(--card);border-radius:9px;padding:4px 10px;
     font-size:12.5px;font-family:inherit;color:var(--muted);cursor:pointer}
+  .sepet-satir .ad{font-size:14px;line-height:1.35}
+  .sepet-satir .ayrinti{overflow-wrap:anywhere}
   .bildirim{font-size:13.5px;color:var(--accent);font-weight:600;min-height:20px;margin:8px 0 0}
+  @media (min-width:1000px){
+    body.sepet-acik .sayfa{max-width:1320px;margin-left:auto;margin-right:auto;padding-right:390px}
+    #sepet:not(.gizli){position:fixed;z-index:30;top:88px;right:max(18px,calc((100vw - 1320px)/2));width:350px;max-height:calc(100vh - 112px);overflow:auto;box-shadow:0 12px 36px rgba(24,34,52,.16);margin:0}
+  }
+  @media (max-width:999px){
+    body.sepet-acik .sayfa{padding-bottom:24px}
+    #sepet:not(.gizli){position:static;width:auto;max-height:none;overflow:visible;box-shadow:none}
+  }
 
   .alt-bilgi{border-top:1px solid var(--line);margin-top:24px;padding-top:12px;color:var(--muted);font-size:12.5px}
   .alt-bilgi p{margin:0 0 4px}
@@ -1805,6 +1815,8 @@
     } else {
       durum.sepet.push({
         id: veri.id,
+        ad: veri.ad || "Hastalık adı",
+        seviye: veri.seviye || "",
         oran: veri.oran.ham,
         gosterim: veri.oran.gosterim,
         etiket: veri.kisa_etiket
@@ -1817,14 +1829,17 @@
 
   function sepetiCiz() {
     goster(sepetKutu, durum.sepet.length > 0);
-    sepetBaslik.textContent = "Eklenen oranlar (" + durum.sepet.length + ")";
+    document.body.classList.toggle("sepet-acik", durum.sepet.length > 0);
+    sepetBaslik.textContent = "Seçtikleriniz (" + durum.sepet.length + ")";
     sepetListe.innerHTML = "";
     durum.sepet.forEach(function (satir, i) {
       var li = el("li");
       var kutu = el("div", "sepet-satir");
       var sol = el("span", "metin");
-      sol.appendChild(el("span", "ad", "%" + satir.gosterim));
-      sol.appendChild(el("span", "ayrinti", satir.etiket));
+      sol.appendChild(el("span", "ad", satir.ad));
+      var ayrinti = (satir.seviye ? satir.seviye + " · " : "") +
+        "%" + satir.gosterim + " · " + satir.etiket;
+      sol.appendChild(el("span", "ayrinti", ayrinti));
       kutu.appendChild(sol);
       var sil = el("button", "sil", "Kaldır");
       sil.type = "button";
