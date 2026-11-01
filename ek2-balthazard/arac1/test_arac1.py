@@ -155,7 +155,7 @@ class Arac1Testleri(unittest.TestCase):
         self.assertIn("__ARAC2_ADRESI__", govde)
         self.assertNotIn('id="model-bolum-listesi"', govde)
         self.assertIn('id="ozel-hesaplama-kutusu"', govde)
-        self.assertIn('data-bolum-eslesme="Kalp-Damar"', govde)
+        self.assertIn('data-bolum-eslesme="Göz"', govde)
         self.assertIn("position:sticky", govde)
         self.assertNotIn("Hakkında", govde)
         self.assertNotIn("v2.0", govde)
