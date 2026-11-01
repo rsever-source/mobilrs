@@ -148,12 +148,23 @@ steps:
             raise SystemExit("HATA: %s icin beklenen %s, alinan %s" % (url, want, got))
 
         for path, want in (("/", 200), ("/api/news", 200),
-                           ("/admin/haber-durumu", 200), ("/admin/api/status", 401)):
+                           ("/admin/haber-durumu", 200), ("/admin/api/status", 401),
+                           ("/arac1", 200), ("/arac2", 200),
+                           ("/api/bolumler", 200), ("/api/ozel-hesaplamalar", 200),
+                           ("/api/kayit/KV-001", 200)):
             check(path, want)
 
-        body = urllib.request.urlopen(base + "/admin/haber-durumu", timeout=30).read()
-        if b"Engelli.me" not in body:
-            raise SystemExit("HATA: yonetim sayfasi beklenen icerigi dondurmedi")
+        home = urllib.request.urlopen(base + "/", timeout=30).read()
+        if b"EK-2 Hastal" not in home or b"Balthazard Oran" not in home:
+            raise SystemExit("HATA: ana sayfada EK-2 arac kartlari bulunamadi")
+        arac1 = urllib.request.urlopen(base + "/arac1", timeout=30).read()
+        if b"model-bolum-listesi" not in arac1 or b"v2.0" in arac1 or b"Hakk" in arac1:
+            raise SystemExit("HATA: AraÃ§-1 arayuzu beklenen duzende degil")
+        import json
+        bolumler = json.loads(urllib.request.urlopen(base + "/api/bolumler", timeout=30).read())
+        ozel = json.loads(urllib.request.urlopen(base + "/api/ozel-hesaplamalar", timeout=30).read())
+        if len(bolumler.get("bolumler", [])) != 12 or len(ozel.get("ozel_hesaplamalar", [])) != 5:
+            raise SystemExit("HATA: EK-2 katalog veya ozel hesaplama verisi eksik")
         print("SMOKE OK", flush=True)
 
   # Smoke test geçtiyse YALNIZCA bu build'in doğrulanmış revision'ını canlıya al.

@@ -100,20 +100,36 @@ class Sunucu(unittest.TestCase):
         _, veri = self._post(json.dumps({"oranlar": [40]}).encode("utf-8"))
         self.assertEqual(veri["hata"]["kod"], "E_YAS_SECILMEDI")
 
-    def test_gecerli_json_sozluk_degilse_motor_hatasi_aynen_gecer(self):
-        for govde in ([], 40, None):
+    def test_json_turu_ve_null_girdi(self):
+        for govde in ([], 40):
             with self.subTest(govde=govde):
                 _, veri = self._post(json.dumps(govde).encode("utf-8"))
                 self.assertFalse(veri["ok"])
                 self.assertEqual(veri["hata"]["kod"], "E_ORAN_TIP")
                 self.assertEqual(veri["hata"]["alan"], "girdi")
+        istek = urllib.request.Request(
+            self.adres + "/api/hesapla",
+            data=b"null",
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        with self.assertRaises(urllib.error.HTTPError) as baglam:
+            urllib.request.urlopen(istek, timeout=5)
+        hata = baglam.exception
+        try:
+            self.assertEqual(hata.code, 400)
+            veri = json.loads(hata.read().decode("utf-8"))
+        finally:
+            hata.close()
+        self.assertFalse(veri["ok"])
+        self.assertIn("mesaj", veri)
 
     def test_html_baglantilar_ve_girdi_filtresi(self):
         with urllib.request.urlopen(self.adres + "/", timeout=5) as yanit:
             html = yanit.read().decode("utf-8")
-        self.assertIn('href="http://127.0.0.1:8766/arac1"', html)
-        self.assertIn("function oranFiltresiKur", html)
-        self.assertIn("yalnız tam sayı kabul eder", html)
+        self.assertIn('__ARAC1_ADRESI__', html)
+        self.assertNotIn('http://127.0.0.1:8766/arac1', html)
+        self.assertIn("inputmode=\"numeric\"", html)
         for parca in ("id=\"eski-uyari\"", "id=\"yas-eki-satiri\"", "id=\"adimlar\"", "window.confirm"):
             self.assertIn(parca, html)
 
@@ -141,7 +157,7 @@ class Sunucu(unittest.TestCase):
             self.assertIn("text/html", yanit.headers["Content-Type"])
             self.assertIn("charset=utf-8", yanit.headers["Content-Type"])
             govde = yanit.read().decode("utf-8")
-        self.assertIn("Balthazard Hesaplama", govde)
+        self.assertIn("Balthazard Hesapla", govde)
         self.assertIn("yaş aralığını seçin".lower(), govde.lower())
 
     def test_bilinmeyen_yol_404(self):

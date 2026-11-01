@@ -1,0 +1,1040 @@
+{
+  "meta": {
+    "ad": "EK-2 ek bölümler — doğrulanmış kayıt partisi",
+    "surum": "0.1",
+    "kaynak": "20.02.2019 tarihli ve 30692 sayılı Resmî Gazete, EK-2",
+    "durum": "Araç-1 okuyucusuna ve arayüzüne bağlı; kısmi kaynak partisi",
+    "not": "136 sabit oranlı kayıt doğrulanmıştır ancak 8 bölümün tamamını kapsamaz. Tablo/formül gerektiren görme ve kas-iskelet satırları katalog_ozel_hesaplamalar dosyasında ayrı tutulur; eksik tablo hücrelerinden oran türetilmez."
+  },
+  "bolumler": [
+    {
+      "ad": "KARDİYOVASKÜLER SİSTEM",
+      "kisa": "Kalp ve Damar",
+      "kaynak_sayfalar": [
+        142,
+        143
+      ],
+      "kayitlar": [
+        {
+          "id": "KV-001",
+          "hastalik": "Aritmiler",
+          "alt_tur": "Klas 1 — Günlük aktivitelerde asemptomatik; EKG veya Holter'de aritmi gösterilmiş",
+          "oran": 10,
+          "sayfa": 142
+        },
+        {
+          "id": "KV-002",
+          "hastalik": "Aritmiler",
+          "alt_tur": "Klas 1 — Ablasyon veya cerrahi işlem yapılmış ve günlük aktivitede asemptomatik",
+          "oran": 10,
+          "sayfa": 142
+        },
+        {
+          "id": "KV-003",
+          "hastalik": "Aritmiler",
+          "alt_tur": "Klas 2 — İlaç tedavisi veya kalıcı kalp pili ile semptomları giderilmiş",
+          "oran": 20,
+          "sayfa": 142
+        },
+        {
+          "id": "KV-004",
+          "hastalik": "Aritmiler",
+          "alt_tur": "Klas 2 — Aritmi devam ediyor ve organik kalp hastalığı var",
+          "oran": 20,
+          "sayfa": 142
+        },
+        {
+          "id": "KV-005",
+          "hastalik": "Aritmiler",
+          "alt_tur": "Klas 2 — Aritmi nedeniyle ICD implante edilmiş",
+          "oran": 30,
+          "sayfa": 142
+        },
+        {
+          "id": "KV-006",
+          "hastalik": "Aritmiler",
+          "alt_tur": "Klas 3 — İlaç tedavisi veya kalıcı kalp piline rağmen semptomlar sürüyor; EKG/Holter'de aritmi gösterilmiş (fonksiyonel kapasite 3)",
+          "oran": 40,
+          "sayfa": 142
+        },
+        {
+          "id": "KV-007",
+          "hastalik": "Aritmiler",
+          "alt_tur": "Klas 3 — Ablasyon, cerrahi işlem veya ICD implantasyonuna rağmen semptomlar sürüyor (fonksiyonel kapasite 3)",
+          "oran": 50,
+          "sayfa": 142
+        },
+        {
+          "id": "KV-008",
+          "hastalik": "Aritmiler",
+          "alt_tur": "Klas 4 — Tedavi/işlem uygulanmasına rağmen aritmi semptomları devamlı ve günlük aktiviteleri engelliyor (fonksiyonel kapasite 3 veya 4)",
+          "oran": 100,
+          "sayfa": 142
+        },
+        {
+          "id": "KV-009",
+          "hastalik": "Pulmoner hipertansiyon",
+          "alt_tur": "Klas 1 — Asemptomatik; PASB 30–40 mmHg",
+          "oran": 10,
+          "sayfa": 142
+        },
+        {
+          "id": "KV-010",
+          "hastalik": "Pulmoner hipertansiyon",
+          "alt_tur": "Klas 2 — Hafif aktivite kısıtlılığı (NYHA 2); PASB 40–50 mmHg",
+          "oran": 25,
+          "sayfa": 142
+        },
+        {
+          "id": "KV-011",
+          "hastalik": "Pulmoner hipertansiyon",
+          "alt_tur": "Klas 3 — Ağır aktivite kısıtlılığı (NYHA 3); PASB 50–70 mmHg",
+          "oran": 50,
+          "sayfa": 142
+        },
+        {
+          "id": "KV-012",
+          "hastalik": "Pulmoner hipertansiyon",
+          "alt_tur": "Klas 4 — İstirahatte dispne/göğüs ağrısı/presenkop veya sağ ventrikül yetmezliği bulguları; PASB 70 mmHg üzeri",
+          "oran": 100,
+          "sayfa": 142
+        },
+        {
+          "id": "KV-013",
+          "hastalik": "Hipertansiyon",
+          "alt_tur": "Klas 1 — Antihipertansif tedavi kullanıyor, komplikasyon yok",
+          "oran": 10,
+          "sayfa": 143
+        },
+        {
+          "id": "KV-014",
+          "hastalik": "Hipertansiyon",
+          "alt_tur": "Klas 2 — Antihipertansif tedavi ve listelenen komplikasyonlardan biri",
+          "oran": 20,
+          "sayfa": 143
+        },
+        {
+          "id": "KV-015",
+          "hastalik": "Hipertansiyon",
+          "alt_tur": "Klas 3 — Antihipertansif tedavi ve listelenen komplikasyonlardan en az ikisi",
+          "oran": 50,
+          "sayfa": 143
+        },
+        {
+          "id": "KV-016",
+          "hastalik": "Perikard hastalıkları",
+          "alt_tur": "Evre I — Tanı konmuş; NYHA sınıf I ve konstriksiyon bulgusu yok",
+          "oran": 10,
+          "sayfa": 143
+        },
+        {
+          "id": "KV-017",
+          "hastalik": "Perikard hastalıkları",
+          "alt_tur": "Evre II — İki veya daha fazla perikardit atağı; NYHA sınıf I ve konstriksiyon bulgusu yok",
+          "oran": 20,
+          "sayfa": 143
+        },
+        {
+          "id": "KV-018",
+          "hastalik": "Perikard hastalıkları",
+          "alt_tur": "Evre III — Konstriktif perikardit tanısı veya perikardiektomi; NYHA sınıf II",
+          "oran": 30,
+          "sayfa": 143
+        },
+        {
+          "id": "KV-019",
+          "hastalik": "Hipertrofik kardiyomiyopati",
+          "alt_tur": "Evre I — Tanı konmuş ve asemptomatik",
+          "oran": 50,
+          "sayfa": 143
+        },
+        {
+          "id": "KV-020",
+          "hastalik": "Hipertrofik kardiyomiyopati",
+          "alt_tur": "Evre II — Tanı konmuş ve tedaviye rağmen semptomatik",
+          "oran": 100,
+          "sayfa": 143
+        },
+        {
+          "id": "KV-021",
+          "hastalik": "Kalp yetmezliği",
+          "alt_tur": "Evre I — Hafif kalp yetmezliği; NYHA sınıf I",
+          "oran": 10,
+          "sayfa": 143
+        },
+        {
+          "id": "KV-022",
+          "hastalik": "Kalp yetmezliği",
+          "alt_tur": "Evre II — EF %50–60 ve tedaviye rağmen NYHA sınıf II",
+          "oran": 30,
+          "sayfa": 143
+        },
+        {
+          "id": "KV-023",
+          "hastalik": "Kalp yetmezliği",
+          "alt_tur": "Evre III — EF %30–50 ve tedaviye rağmen NYHA sınıf III",
+          "oran": 50,
+          "sayfa": 144
+        },
+        {
+          "id": "KV-024",
+          "hastalik": "Kalp yetmezliği",
+          "alt_tur": "Evre IV — EF %30'un altında veya NYHA sınıf IV",
+          "oran": 100,
+          "sayfa": 144
+        },
+        {
+          "id": "KV-025",
+          "hastalik": "Doğuştan kalp hastalıkları",
+          "alt_tur": "Klas 1 — A grubu",
+          "oran": 5,
+          "sayfa": 144
+        },
+        {
+          "id": "KV-026",
+          "hastalik": "Doğuştan kalp hastalıkları",
+          "alt_tur": "Klas 1 — B grubu; düzeltici ameliyat sonrası Klas 1 ölçütlerini karşılayanlar",
+          "oran": 10,
+          "sayfa": 144
+        },
+        {
+          "id": "KV-027",
+          "hastalik": "Doğuştan kalp hastalıkları",
+          "alt_tur": "Klas 2 — A grubu",
+          "oran": 25,
+          "sayfa": 144
+        },
+        {
+          "id": "KV-028",
+          "hastalik": "Doğuştan kalp hastalıkları",
+          "alt_tur": "Klas 2 — B grubu; ameliyat sonrası Klas 2 ölçütlerini karşılayanlar",
+          "oran": 30,
+          "sayfa": 144
+        },
+        {
+          "id": "KV-029",
+          "hastalik": "Doğuştan kalp hastalıkları",
+          "alt_tur": "Klas 3 — A grubu",
+          "oran": 45,
+          "sayfa": 144
+        },
+        {
+          "id": "KV-030",
+          "hastalik": "Doğuştan kalp hastalıkları",
+          "alt_tur": "Klas 3 — B grubu; ameliyat sonrası tedaviye rağmen kalp yetmezliği semptomları devam ediyor",
+          "oran": 50,
+          "sayfa": 144
+        },
+        {
+          "id": "KV-031",
+          "hastalik": "Doğuştan kalp hastalıkları",
+          "alt_tur": "Klas 4 — A grubu",
+          "oran": 75,
+          "sayfa": 145
+        },
+        {
+          "id": "KV-032",
+          "hastalik": "Doğuştan kalp hastalıkları",
+          "alt_tur": "Klas 4 — B grubu",
+          "oran": 80,
+          "sayfa": 145
+        }
+      ]
+    },
+    {
+      "ad": "KADIN HASTALIKLARI VE DOĞUM",
+      "kisa": "Kadın Hastalıkları",
+      "kaynak_sayfalar": [
+        185
+      ],
+      "kayitlar": [
+        {
+          "id": "KH-001",
+          "hastalik": "Serviks ve uterus kalıcı bozuklukları",
+          "alt_tur": "1. derece fonksiyonel/yapısal kayıp; süregen tedavi gerektirmeyen durumlar veya postmenopozal anatomik kayıp",
+          "oran": 2,
+          "sayfa": 185
+        },
+        {
+          "id": "KH-002",
+          "hastalik": "Serviks ve uterus kalıcı bozuklukları",
+          "alt_tur": "2. derece fonksiyonel/yapısal kayıp; süregen tedavi gerektiren durumlar veya periyodik tedavi gerektiren servikal darlık",
+          "oran": 5,
+          "sayfa": 185
+        },
+        {
+          "id": "KH-003",
+          "hastalik": "Serviks ve uterus kalıcı bozuklukları",
+          "alt_tur": "3. derece fonksiyonel/yapısal kayıp; tedaviyle kontrol edilemeyen durum, tam servikal darlık veya premenopozal anatomik kayıp",
+          "oran": 15,
+          "sayfa": 185
+        }
+      ]
+    },
+    {
+      "ad": "ÜROGENİTAL SİSTEM",
+      "kisa": "Böbrek ve İdrar",
+      "kaynak_sayfalar": [
+        187,
+        189
+      ],
+      "kayitlar": [
+        {
+          "id": "UG-001",
+          "hastalik": "Üst üriner sistem hastalığı",
+          "alt_tur": "İntermitan semptom veren ve devamlı tedavi gerektirmeyen; iki böbrekte",
+          "oran": 10,
+          "sayfa": 188
+        },
+        {
+          "id": "UG-002",
+          "hastalik": "Üst üriner sistem hastalığı",
+          "alt_tur": "Devamlı takip ve sık tedavi gerektiren; tek böbrekte",
+          "oran": 10,
+          "sayfa": 188
+        },
+        {
+          "id": "UG-003",
+          "hastalik": "Üst üriner sistem hastalığı",
+          "alt_tur": "Devamlı takip ve sık tedavi gerektiren; iki böbrekte",
+          "oran": 20,
+          "sayfa": 188
+        },
+        {
+          "id": "UG-004",
+          "hastalik": "Nefrektomi — soliter böbrek",
+          "alt_tur": "Diğer böbreğin renal fonksiyonları tamamen normal",
+          "oran": 10,
+          "sayfa": 188
+        },
+        {
+          "id": "UG-005",
+          "hastalik": "Nefrektomi — soliter böbrek",
+          "alt_tur": "Diğer böbrek tamamen normal, potansiyel hastalık mevcut (ör. taş hastalığı)",
+          "oran": 15,
+          "sayfa": 188
+        },
+        {
+          "id": "UG-006",
+          "hastalik": "Nefrektomi — soliter böbrek",
+          "alt_tur": "Diğer böbrekte intermitan semptom veren, devamlı tedavi gerektirmeyen üst üriner sistem hastalığı",
+          "oran": 20,
+          "sayfa": 188
+        },
+        {
+          "id": "UG-007",
+          "hastalik": "Nefrektomi — soliter böbrek",
+          "alt_tur": "Diğer böbrekte devamlı takip ve sık tedavi gerektiren üst üriner sistem hastalığı",
+          "oran": 25,
+          "sayfa": 188
+        },
+        {
+          "id": "UG-008",
+          "hastalik": "Nefrektomi (bilateral)",
+          "alt_tur": "İki taraflı nefrektomi",
+          "oran": 90,
+          "sayfa": 188
+        },
+        {
+          "id": "UG-009",
+          "hastalik": "Üriner diversiyon — kalıcı",
+          "alt_tur": "Üreterokütanostomi / ileal loop",
+          "oran": 30,
+          "sayfa": 189
+        },
+        {
+          "id": "UG-010",
+          "hastalik": "Üriner diversiyon — kalıcı",
+          "alt_tur": "Ortotopik mesane",
+          "oran": 20,
+          "sayfa": 189
+        },
+        {
+          "id": "UG-011",
+          "hastalik": "Mesane hastalıkları",
+          "alt_tur": "Devamlı tedavi gerektiren sistitizm semptomları veya aşırı aktif mesane",
+          "oran": 15,
+          "sayfa": 189
+        },
+        {
+          "id": "UG-012",
+          "hastalik": "Mesane hastalıkları",
+          "alt_tur": "Tedavi ile tam kontrol altına alınamayan mesane hastalığı",
+          "oran": 20,
+          "sayfa": 189
+        },
+        {
+          "id": "UG-013",
+          "hastalik": "Mesane hastalıkları",
+          "alt_tur": "Sistektomi",
+          "oran": 30,
+          "sayfa": 189
+        },
+        {
+          "id": "UG-014",
+          "hastalik": "Üretra hastalıkları",
+          "alt_tur": "Tedaviyle düzeltilebilen tekrarlayan üretra hastalığı",
+          "oran": 10,
+          "sayfa": 189
+        },
+        {
+          "id": "UG-015",
+          "hastalik": "Üretra hastalıkları",
+          "alt_tur": "Sık tekrarlayan ve tedaviyle kısmi kür sağlanabilen üretra hastalığı",
+          "oran": 15,
+          "sayfa": 189
+        },
+        {
+          "id": "UG-016",
+          "hastalik": "Üretra hastalıkları",
+          "alt_tur": "Sık tekrarlayan ve tedaviyle kür sağlanabilen üretra darlığı",
+          "oran": 20,
+          "sayfa": 189
+        },
+        {
+          "id": "UG-017",
+          "hastalik": "Üretra hastalıkları",
+          "alt_tur": "Sık tekrarlayan ve yeterli kür sağlanamayan komplike üretra darlığı",
+          "oran": 40,
+          "sayfa": 189
+        },
+        {
+          "id": "UG-018",
+          "hastalik": "Üretra hastalıkları",
+          "alt_tur": "Üretrektomi",
+          "oran": 5,
+          "sayfa": 189
+        }
+      ]
+    },
+    {
+      "ad": "SİNDİRİM SİSTEMİ",
+      "kisa": "Sindirim",
+      "kaynak_sayfalar": [
+        180,
+        184
+      ],
+      "kayitlar": [
+        {
+          "id": "SS-001",
+          "hastalik": "Üst sindirim kanalı kalıcı bozuklukları",
+          "alt_tur": "Sınıf 1 — Sürekli tedavi gerekmiyor; istenen kiloyu sürdürebilme veya operasyon sonrası sekel olmaması",
+          "oran": 10,
+          "sayfa": 180
+        },
+        {
+          "id": "SS-002",
+          "hastalik": "Üst sindirim kanalı kalıcı bozuklukları",
+          "alt_tur": "Sınıf 2 — Semptom ve işaretler kontrol altında; uygun diyet ve ilaç tedavisi gerekiyor veya nütrisyonel yetmezlik var; ideal kilonun en fazla %10 altında",
+          "oran": 25,
+          "sayfa": 180
+        },
+        {
+          "id": "SS-003",
+          "hastalik": "Üst sindirim kanalı kalıcı bozuklukları",
+          "alt_tur": "Sınıf 3 — Uygun diyet kısıtlaması ve ilaç tedavisiyle tamamen düzelmeyen semptomlar; ideal kilonun %10–20 altında olma durumu da ölçütler arasındadır",
+          "oran": 50,
+          "sayfa": 180
+        },
+        {
+          "id": "SS-004",
+          "hastalik": "Üst sindirim kanalı kalıcı bozuklukları",
+          "alt_tur": "Sınıf 4 — Tedaviyle kontrol altına alınamayan semptomlar veya rahatsızlık nedeniyle ideal kilonun %20'den fazla altında olma",
+          "oran": 75,
+          "sayfa": 180
+        },
+        {
+          "id": "SS-005",
+          "hastalik": "Kolon ve rektum hastalıklarına bağlı kalıcı bozukluklar",
+          "alt_tur": "Sınıf 1 — Nadir ve kısa süreli belirtiler; aktivite kısıtlaması, özel diyet veya tedavi gerekmiyor; sistemik bozukluk yok",
+          "oran": 10,
+          "sayfa": 181
+        },
+        {
+          "id": "SS-006",
+          "hastalik": "Kolon ve rektum hastalıklarına bağlı kalıcı bozukluklar",
+          "alt_tur": "Sınıf 2 — Objektif bulgular veya anatomik kayıp/değişim; hafif ağrı eşliğinde hafif Gİ semptomlar; minimal diyet kısıtlaması veya hafif tedavi gerekebilir",
+          "oran": 25,
+          "sayfa": 181
+        },
+        {
+          "id": "SS-007",
+          "hastalik": "Kolon ve rektum hastalıklarına bağlı kalıcı bozukluklar",
+          "alt_tur": "Sınıf 3 — Periyodik veya devamlı ağrı ile orta/ciddi barsak alışkanlığı bozukluğu; aktivite kısıtlaması ve ataklarda özel diyet/ilaç ihtiyacı",
+          "oran": 50,
+          "sayfa": 181
+        },
+        {
+          "id": "SS-008",
+          "hastalik": "Kolon ve rektum hastalıklarına bağlı kalıcı bozukluklar",
+          "alt_tur": "Sınıf 4 — Dinlenmede devamlı ağrı, barsak fonksiyonlarında ciddi bozukluk, aktivitenin tam sınırlanması ve tedaviye rağmen kontrol edilememe",
+          "oran": 75,
+          "sayfa": 181
+        },
+        {
+          "id": "SS-009",
+          "hastalik": "Anal hastalıklara bağlı kalıcı bozukluklar",
+          "alt_tur": "Sınıf 1 — Organik anal hastalık bulgusu veya anatomik kayıp/değişiklik; hafif, aralıklı ve tedaviyle kontrol edilebilir semptomlar",
+          "oran": 10,
+          "sayfa": 182
+        },
+        {
+          "id": "SS-010",
+          "hastalik": "Anal hastalıklara bağlı kalıcı bozukluklar",
+          "alt_tur": "Sınıf 2 — Organik anal hastalık bulgusu veya anatomik kayıp/değişiklik; hafif ama devamlı tedavi gerektiren parsiyel fekal inkontinans veya kontrol edilemeyen sürekli semptomlar",
+          "oran": 35,
+          "sayfa": 182
+        },
+        {
+          "id": "SS-011",
+          "hastalik": "Anal hastalıklara bağlı kalıcı bozukluklar",
+          "alt_tur": "Sınıf 3 — Tam fekal inkontinans veya tedaviye yanıt vermeyen ciddi anal semptomlar",
+          "oran": 75,
+          "sayfa": 182
+        },
+        {
+          "id": "SS-012",
+          "hastalik": "Karaciğer hastalıklarına bağlı kalıcı bozukluklar",
+          "alt_tur": "Sınıf 1 — Devam eden hastalığa ait objektif bulgular; son üç yılda semptom/asit/sarılık/özefagus varis kanaması öyküsü yok; beslenme ve güç iyi",
+          "oran": 15,
+          "sayfa": 183
+        },
+        {
+          "id": "SS-013",
+          "hastalik": "Karaciğer hastalıklarına bağlı kalıcı bozukluklar",
+          "alt_tur": "Sınıf 2 — Kronik karaciğer hastalığının objektif bulguları; beslenme ve güç iyi",
+          "oran": 30,
+          "sayfa": 183
+        },
+        {
+          "id": "SS-014",
+          "hastalik": "Karaciğer hastalıklarına bağlı kalıcı bozukluklar",
+          "alt_tur": "Sınıf 3 — İlerleyici kronik karaciğer hastalığı veya son yıl içinde oluşan komplikasyonlar; beslenme/güç zayıflığı ölçütleri",
+          "oran": 50,
+          "sayfa": 183
+        },
+        {
+          "id": "SS-015",
+          "hastalik": "Karaciğer hastalıklarına bağlı kalıcı bozukluklar",
+          "alt_tur": "Sınıf 4 — İlerleyici kronik karaciğer hastalığı, hepatik yetmezlik veya sürekli ensefalopati/kanama gibi ağır bulgular",
+          "oran": 95,
+          "sayfa": 183
+        },
+        {
+          "id": "SS-016",
+          "hastalik": "Safra yolları hastalıklarına bağlı kalıcı bozukluklar",
+          "alt_tur": "Tekrarlamayan safra yolları bozukluğu",
+          "oran": 10,
+          "sayfa": 184
+        },
+        {
+          "id": "SS-017",
+          "hastalik": "Safra yolları hastalıklarına bağlı kalıcı bozukluklar",
+          "alt_tur": "Tekrarlayan, tedaviye cevapsız safra yolu bozukluğu veya onarılamayan obstrüksiyon",
+          "oran": 30,
+          "sayfa": 184
+        },
+        {
+          "id": "SS-018",
+          "hastalik": "Safra yolları hastalıklarına bağlı kalıcı bozukluklar",
+          "alt_tur": "Tekrarlayan kolanjit ve obstrüksiyona bağlı ilerleyici karaciğer hastalığı",
+          "oran": 50,
+          "sayfa": 184
+        },
+        {
+          "id": "SS-019",
+          "hastalik": "Safra yolları hastalıklarına bağlı kalıcı bozukluklar",
+          "alt_tur": "Kalıcı sarılık; ortak safra kanalı obstrüksiyonuna bağlı ilerleyici karaciğer hastalığı",
+          "oran": 95,
+          "sayfa": 184
+        },
+        {
+          "id": "SS-020",
+          "hastalik": "Herniler",
+          "alt_tur": "Sınıf 1 — Abdominal duvar defekti ve kolay redükte edilebilen hafif şişkinlik; günlük aktiviteye belirgin engel yok",
+          "oran": 10,
+          "sayfa": 184
+        },
+        {
+          "id": "SS-021",
+          "hastalik": "Herniler",
+          "alt_tur": "Sınıf 2 — Defekt bölgesinde sık veya kalıcı şişkinlik; günlük yaşam aktivitelerinin bazılarına engel olmuyor",
+          "oran": 20,
+          "sayfa": 184
+        },
+        {
+          "id": "SS-022",
+          "hastalik": "Herniler",
+          "alt_tur": "Sınıf 3 — Kalıcı, redükte edilemeyen veya tamir edilemeyen şişkinlik; günlük yaşamı kısıtlıyor",
+          "oran": 30,
+          "sayfa": 184
+        }
+      ]
+    },
+    {
+      "ad": "ENDOKRİN VE METABOLİZMA HASTALIKLARI",
+      "kisa": "Endokrin ve Metabolizma",
+      "kaynak_sayfalar": [
+        192,
+        195
+      ],
+      "kayitlar": [
+        {
+          "id": "EM-001",
+          "hastalik": "Hipotalamik hastalıklar",
+          "alt_tur": "Devamlı replasman tedavisi gerektiren primer veya sekonder diabetes insipidus",
+          "oran": 30,
+          "sayfa": 192
+        },
+        {
+          "id": "EM-002",
+          "hastalik": "Hipofiz hiperfonksiyonu",
+          "alt_tur": "Gigantizm ve akromegali; tıbbi/cerrahi tedaviyle sonuç alınmamış",
+          "oran": 30,
+          "sayfa": 192
+        },
+        {
+          "id": "EM-003",
+          "hastalik": "Hipofiz hiperfonksiyonu",
+          "alt_tur": "Prolaktin hormonu fazlalığı; tıbbi/cerrahi tedaviyle sonuç alınmamış",
+          "oran": 30,
+          "sayfa": 192
+        },
+        {
+          "id": "EM-004",
+          "hastalik": "Hipofiz hiperfonksiyonu",
+          "alt_tur": "ACTH fazlalığı; tıbbi/cerrahi tedaviyle sonuç alınmamış",
+          "oran": 30,
+          "sayfa": 192
+        },
+        {
+          "id": "EM-005",
+          "hastalik": "Hipofiz hipofonksiyonu",
+          "alt_tur": "Hipofizer nanismus",
+          "oran": 30,
+          "sayfa": 192
+        },
+        {
+          "id": "EM-006",
+          "hastalik": "Hipofiz hipofonksiyonu",
+          "alt_tur": "Panhipopituitarizm",
+          "oran": 60,
+          "sayfa": 192
+        },
+        {
+          "id": "EM-007",
+          "hastalik": "Guatrlar ve tiroiditler",
+          "alt_tur": "Fonksiyon bozukluğuna neden olmamış veya iyileşmiş",
+          "oran": 0,
+          "sayfa": 192
+        },
+        {
+          "id": "EM-008",
+          "hastalik": "Guatrlar ve tiroiditler",
+          "alt_tur": "Kalıcı hipotiroidi; tedaviye cevap veren",
+          "oran": 10,
+          "sayfa": 192
+        },
+        {
+          "id": "EM-009",
+          "hastalik": "Guatrlar ve tiroiditler",
+          "alt_tur": "Kalıcı hipotiroidi; tedaviye cevap vermeyen veya günlük 400 mikrogram ve üzeri tiroksin gerektiren",
+          "oran": 40,
+          "sayfa": 192
+        },
+        {
+          "id": "EM-010",
+          "hastalik": "Kretinizm",
+          "alt_tur": "Kretinizm",
+          "oran": 20,
+          "sayfa": 192
+        },
+        {
+          "id": "EM-011",
+          "hastalik": "Doğuştan iyot eksikliği sendromu",
+          "alt_tur": "Doğuştan iyot eksikliği sendromu",
+          "oran": 20,
+          "sayfa": 192
+        },
+        {
+          "id": "EM-012",
+          "hastalik": "İdiopatik primer hipoparatiroidi",
+          "alt_tur": "Replasmanla kompanse",
+          "oran": 20,
+          "sayfa": 193
+        },
+        {
+          "id": "EM-013",
+          "hastalik": "İdiopatik primer hipoparatiroidi",
+          "alt_tur": "Replasmana dirençli",
+          "oran": 40,
+          "sayfa": 193
+        },
+        {
+          "id": "EM-014",
+          "hastalik": "Sekonder hipoparatiroidi",
+          "alt_tur": "Replasmana dirençli",
+          "oran": 50,
+          "sayfa": 193
+        },
+        {
+          "id": "EM-015",
+          "hastalik": "Adrenal korteks yetersizliği",
+          "alt_tur": "Addison hastalığı",
+          "oran": 40,
+          "sayfa": 193
+        },
+        {
+          "id": "EM-016",
+          "hastalik": "Feokromasitomalar",
+          "alt_tur": "Postoperatif kontrol altında",
+          "oran": 30,
+          "sayfa": 193
+        },
+        {
+          "id": "EM-017",
+          "hastalik": "Feokromasitomalar",
+          "alt_tur": "Cerrahi tedaviden yararlanamayan veya inoperabl",
+          "oran": 30,
+          "sayfa": 193
+        },
+        {
+          "id": "EM-018",
+          "hastalik": "Diabetes mellitus",
+          "alt_tur": "Diyet ve oral antidiyabetiklerle kontrol altında; komplikasyonsuz Tip 2",
+          "oran": 20,
+          "sayfa": 193
+        },
+        {
+          "id": "EM-019",
+          "hastalik": "Diabetes mellitus",
+          "alt_tur": "Komplikasyonsuz Tip 1; açlık kan şekeri 200 mg/dL altında, ketoz ve hipoglisemi yok",
+          "oran": 30,
+          "sayfa": 193
+        },
+        {
+          "id": "EM-020",
+          "hastalik": "Diabetes mellitus",
+          "alt_tur": "Açlık kan şekeri sürekli 200 mg/dL altında tutulamayan, komplikasyon ve ketoz bulunan Tip 1",
+          "oran": 40,
+          "sayfa": 193
+        },
+        {
+          "id": "EM-021",
+          "hastalik": "Diffüz primer osteoporoz",
+          "alt_tur": "Radyolojik dekalsifikasyonla birlikte spontan kırık ve şekil bozukluğu yapan",
+          "oran": 50,
+          "sayfa": 194
+        },
+        {
+          "id": "EM-022",
+          "hastalik": "Purin ve primidin metabolizması bozuklukları",
+          "alt_tur": "Organ disfonksiyonu yapmış",
+          "oran": 40,
+          "sayfa": 194
+        },
+        {
+          "id": "EM-023",
+          "hastalik": "Kronik gut artriti",
+          "alt_tur": "Kronik gut artriti",
+          "oran": 20,
+          "sayfa": 194
+        },
+        {
+          "id": "EM-024",
+          "hastalik": "Osteogenezis imperfekta",
+          "alt_tur": "Osteoporoz ve multipl kemik kırıklarına neden olmuş",
+          "oran": 50,
+          "sayfa": 194
+        },
+        {
+          "id": "EM-025",
+          "hastalik": "Obezite",
+          "alt_tur": "Ciddi obezite; VKİ 40–50 kg/m²",
+          "oran": 20,
+          "sayfa": 194
+        },
+        {
+          "id": "EM-026",
+          "hastalik": "Obezite",
+          "alt_tur": "Morbid obezite; VKİ 50 kg/m² üzerinde",
+          "oran": 30,
+          "sayfa": 194
+        },
+        {
+          "id": "EM-027",
+          "hastalik": "Kistik fibrozis",
+          "alt_tur": "Organ disfonksiyonu yapmış",
+          "oran": 40,
+          "sayfa": 195
+        },
+        {
+          "id": "EM-028",
+          "hastalik": "Ailevi Akdeniz ateşi",
+          "alt_tur": "Komplikasyon yok; komplikasyon varsa ilgili sistem fonksiyon kaybı ayrıca değerlendirilir",
+          "oran": 20,
+          "sayfa": 195
+        }
+      ]
+    },
+    {
+      "ad": "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
+      "kisa": "Göğüs Hastalıkları",
+      "kaynak_sayfalar": [
+        196
+      ],
+      "kayitlar": [
+        {
+          "id": "GH-001",
+          "hastalik": "Akciğer, plevra ve göğüs kafesi hastalıkları",
+          "alt_tur": "Solunum/dolaşım fonksiyonunda az etkilenme; akut dönem sonrası optimal tedaviyle değerlendirme",
+          "oran": 20,
+          "sayfa": 196
+        },
+        {
+          "id": "GH-002",
+          "hastalik": "Akciğer, plevra ve göğüs kafesi hastalıkları",
+          "alt_tur": "Solunum/dolaşım fonksiyonunda orta derecede etkilenme",
+          "oran": 40,
+          "sayfa": 196
+        },
+        {
+          "id": "GH-003",
+          "hastalik": "Akciğer, plevra ve göğüs kafesi hastalıkları",
+          "alt_tur": "Solunum/dolaşım fonksiyonunda ağır etkilenme veya kronik kor pulmonale",
+          "oran": 80,
+          "sayfa": 196
+        },
+        {
+          "id": "GH-004",
+          "hastalik": "Pnömonektomi",
+          "alt_tur": "Tek taraflı pnömonektomi",
+          "oran": 10,
+          "sayfa": 196
+        },
+        {
+          "id": "GH-005",
+          "hastalik": "Akciğer transplantasyonu",
+          "alt_tur": "Transplantasyon; sonrasındaki durum ayrıca değerlendirilip Balthazard ile eklenir",
+          "oran": 70,
+          "sayfa": 196
+        }
+      ]
+    },
+    {
+      "ad": "ONKOLOJİ",
+      "kisa": "Onkoloji",
+      "kaynak_sayfalar": [
+        199
+      ],
+      "kayitlar": [
+        {
+          "id": "ON-001",
+          "hastalik": "Malign tümörler",
+          "alt_tur": "Klinik evre I–II; remisyon sonrası 5. yıla kadar",
+          "oran": 60,
+          "sayfa": 199
+        },
+        {
+          "id": "ON-002",
+          "hastalik": "Malign tümörler",
+          "alt_tur": "Evre I–II; remisyon sonrası 5. yıldan sonra",
+          "oran": 40,
+          "sayfa": 199
+        },
+        {
+          "id": "ON-003",
+          "hastalik": "Malign tümörler",
+          "alt_tur": "Evre III–IV; remisyonda",
+          "oran": 40,
+          "sayfa": 199
+        },
+        {
+          "id": "ON-004",
+          "hastalik": "Malign tümörler",
+          "alt_tur": "İleri klinik evre (III–IV); remisyona girmeyen veya tedavi sürecinde olan",
+          "oran": 80,
+          "sayfa": 199
+        },
+        {
+          "id": "ON-005",
+          "hastalik": "Malign tümörler",
+          "alt_tur": "İleri klinik evre (III–IV); remisyon sonrası 5. yıldan sonra",
+          "oran": 40,
+          "sayfa": 199
+        },
+        {
+          "id": "ON-006",
+          "hastalik": "Yüksek dereceli opere beyin tümörleri",
+          "alt_tur": "Operasyon sonrasında 2 yıl süreyle",
+          "oran": 80,
+          "sayfa": 199
+        },
+        {
+          "id": "ON-007",
+          "hastalik": "Yüksek dereceli opere beyin tümörleri",
+          "alt_tur": "Remisyonda 2 yıldan sonra",
+          "oran": 40,
+          "sayfa": 199
+        }
+      ]
+    },
+    {
+      "ad": "SİNİR SİSTEMİ",
+      "kisa": "Sinir Sistemi",
+      "kaynak_sayfalar": [
+        201,
+        205
+      ],
+      "kayitlar": [
+        {
+          "id": "SN-001",
+          "hastalik": "Epilepsi",
+          "alt_tur": "Uygun ve yeterli tedavi altında; nöbet yok ancak nöbet riski var",
+          "oran": 5,
+          "sayfa": 201
+        },
+        {
+          "id": "SN-002",
+          "hastalik": "Epilepsi",
+          "alt_tur": "Günlük aktiviteleri engellemeyen ancak gerçekleştirilmesini güçleştiren nöbetler",
+          "oran": 15,
+          "sayfa": 201
+        },
+        {
+          "id": "SN-003",
+          "hastalik": "Epilepsi",
+          "alt_tur": "Bazı günlük aktiviteleri engelleyen seyrek nöbetler",
+          "oran": 20,
+          "sayfa": 201
+        },
+        {
+          "id": "SN-004",
+          "hastalik": "Epilepsi",
+          "alt_tur": "Bazı günlük aktiviteleri engelleyen sık nöbetler",
+          "oran": 40,
+          "sayfa": 201
+        },
+        {
+          "id": "SN-005",
+          "hastalik": "Epilepsi",
+          "alt_tur": "Günlük aktiviteleri tamamen engelleyen, kontrol edilemeyen nöbetler",
+          "oran": 90,
+          "sayfa": 201
+        },
+        {
+          "id": "SN-006",
+          "hastalik": "Uyku bozuklukları",
+          "alt_tur": "İnsomniler",
+          "oran": 10,
+          "sayfa": 201
+        },
+        {
+          "id": "SN-007",
+          "hastalik": "Uyku bozuklukları",
+          "alt_tur": "Uykuda solunum bozuklukları; tanı için polisomnografi gerekir",
+          "oran": 35,
+          "sayfa": 201
+        },
+        {
+          "id": "SN-008",
+          "hastalik": "Uyku bozuklukları",
+          "alt_tur": "Hipersomniler; tanı için polisomnografi gerekir",
+          "oran": 35,
+          "sayfa": 201
+        },
+        {
+          "id": "SN-009",
+          "hastalik": "Nörojenik kaynaklı ağrılar",
+          "alt_tur": "Günlük aktiviteyi kısmen etkileyen ağrı; kronik ve tedavi altındayken değerlendirilir",
+          "oran": 5,
+          "sayfa": 202
+        },
+        {
+          "id": "SN-010",
+          "hastalik": "Nörojenik kaynaklı ağrılar",
+          "alt_tur": "Günlük aktiviteyi orta derecede etkileyen ağrı",
+          "oran": 10,
+          "sayfa": 202
+        },
+        {
+          "id": "SN-011",
+          "hastalik": "Nörojenik kaynaklı ağrılar",
+          "alt_tur": "Günlük aktiviteyi önemli oranda etkileyen ağrı",
+          "oran": 15,
+          "sayfa": 202
+        },
+        {
+          "id": "SN-012",
+          "hastalik": "Demans",
+          "alt_tur": "Hafif; KDS 4–7",
+          "oran": 25,
+          "sayfa": 204
+        },
+        {
+          "id": "SN-013",
+          "hastalik": "Demans",
+          "alt_tur": "Hafif-orta; KDS 8–11",
+          "oran": 30,
+          "sayfa": 204
+        },
+        {
+          "id": "SN-014",
+          "hastalik": "Demans",
+          "alt_tur": "Orta; KDS 12–15",
+          "oran": 70,
+          "sayfa": 204
+        },
+        {
+          "id": "SN-015",
+          "hastalik": "Demans",
+          "alt_tur": "Ağır; KDS 16–18",
+          "oran": 90,
+          "sayfa": 204
+        },
+        {
+          "id": "SN-016",
+          "hastalik": "Periferik fasiyal paralizi",
+          "alt_tur": "Hafif; minimum fonksiyon bozukluğu veya estetik kayıp",
+          "oran": 3,
+          "sayfa": 204
+        },
+        {
+          "id": "SN-017",
+          "hastalik": "Periferik fasiyal paralizi",
+          "alt_tur": "Orta; göz hafif kapanıyor veya peroral/periorbital kontrol bozukluğu",
+          "oran": 5,
+          "sayfa": 204
+        },
+        {
+          "id": "SN-018",
+          "hastalik": "Periferik fasiyal paralizi",
+          "alt_tur": "Ağır; oral ve göz kasları plejik",
+          "oran": 30,
+          "sayfa": 204
+        },
+        {
+          "id": "SN-019",
+          "hastalik": "Dizartri ve disfaji",
+          "alt_tur": "Hafif; hafif dizartri/distoni/disfoni ile sıvı ve yarı katı gıdaları yutma zorluğu",
+          "oran": 2,
+          "sayfa": 205
+        },
+        {
+          "id": "SN-020",
+          "hastalik": "Dizartri ve disfaji",
+          "alt_tur": "Orta; dizartri/disfaji, boğuk ses, nazal regürjitasyon veya aspirasyon",
+          "oran": 35,
+          "sayfa": 205
+        },
+        {
+          "id": "SN-021",
+          "hastalik": "Dizartri ve disfaji",
+          "alt_tur": "Ağır; oral sekresyonları bile yutamama",
+          "oran": 55,
+          "sayfa": 205
+        }
+      ]
+    }
+  ]
+}

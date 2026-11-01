@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Balthazard Hesaplama | Engelli.me</title>
+<title>Araç-2 — Balthazard Hesapla | Engelli.me</title>
 <style>
   :root{
     --ink:#182234; --muted:#697386; --line:#e4e8ef; --bg:#f4f6f9; --card:#fff;
@@ -122,8 +122,8 @@
 <div class="sayfa">
 
   <nav class="sekmeler" aria-label="Araçlar">
-    <a class="sekme" href="__ARAC1_ADRESI__">Engel Oranı Bulma</a>
-    <button class="sekme" type="button" aria-selected="true">Balthazard Hesaplama</button>
+    <a class="sekme" href="__ARAC1_ADRESI__">Araç-1 · Engel Oranı Bul</a>
+    <button class="sekme" type="button" aria-selected="true">Araç-2 · Balthazard Hesapla</button>
   </nav>
 
   <aside class="uyari">
@@ -133,7 +133,7 @@
         Oranların doğruluğu ve kullanım kuralları burada denetlenmez.</p>
       <p>Hastalığa ve mevzuata özgü kısıtlar (ör. yıllık yeniden değerlendirme, vergi
         indiriminde kullanılamama, remisyonda oran verilmemesi) bu araçta doğrulanamaz.
-        Bunlar için “Engel Oranı Bulma” aracına bakın.</p>
+        Bunlar için “Engel Oranı Bul” aracına bakın.</p>
     </div>
   </aside>
 
@@ -266,18 +266,6 @@ function etiketMetni(oge) {
   return oge.etiket ? oge.etiket : "Etiketsiz oran";
 }
 
-function oranFiltresiKur(alan) {
-  let sonGecerli = alan.value;
-  alan.addEventListener("input", () => {
-    if (/^-?\d{0,3}$/.test(alan.value)) {
-      sonGecerli = alan.value;
-      return;
-    }
-    alan.value = sonGecerli;
-    bildir("Oran alanı yalnız tam sayı kabul eder.", 2200);
-  });
-}
-
 function girdiOzeti() {
   return JSON.stringify({
     oranlar: durum.oranlar.map((o) => o.deger),
@@ -368,7 +356,6 @@ function duzenlemeAc(li, oge) {
   sayiGiris.inputMode = "numeric";
   sayiGiris.maxLength = 3;
   sayiGiris.value = String(oge.deger);
-  oranFiltresiKur(sayiGiris);
   sayiEtiket.append(sayiGiris);
   sayiAlan.append(sayiEtiket);
 
@@ -602,7 +589,6 @@ async function kopyala(metin, basariMetni) {
 // --- Olaylar ---------------------------------------------------------------
 
 D("ekle-form").addEventListener("submit", ekle);
-oranFiltresiKur(D("oran"));
 
 D("tumunu-sil").addEventListener("click", () => {
   if (!window.confirm("Tüm oranlar silinecek. Emin misiniz?")) return;

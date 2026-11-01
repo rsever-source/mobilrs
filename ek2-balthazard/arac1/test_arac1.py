@@ -39,7 +39,7 @@ BOLUM_NOTU_METIN = (
     "raporun geçerlilik süresi belirtilmelidir."
 )
 BOS_YAZIM = "Yazımı kontrol edin veya bölüm seçerek ilerleyin."
-BOS_KAPSAM = "Göz, işitme, konuşma ve kas-iskelet bölümleri bu araçta henüz yok."
+BOS_KAPSAM = "Görme ve kas-iskelet sistemindeki bazı değerlendirmeler ölçüm, tablo dönüşümü veya birden fazla adım gerektirir; bunlar tek bir sabit oran olarak gösterilmez."
 ALT_BILGI = "Bu araç bilgilendirme amaçlıdır. Resmî engelli sağlık kurulu raporu yerine geçmez."
 SIFIR_ACIKLAMA = "Bu basamakta kaynak 0 oran veriyor"
 TEK_SEVIYE_NOTU = "Bu hastalıkta kaynak tek oran veriyor, şiddet basamağı yok."
@@ -139,7 +139,7 @@ class Arac1Testleri(unittest.TestCase):
     def _dosya_durumu() -> dict:
         return {
             yol.name: (yol.stat().st_mtime_ns, yol.stat().st_size)
-            for yol in (ko.VERI_KLASORU / ko.KATALOG_ADI, ko.VERI_KLASORU / ko.BELIRSIZ_ADI)
+            for yol in (ko.VERI_KLASORU / ko.KATALOG_ADI, ko.VERI_KLASORU / ko.BELIRSIZ_ADI, ko.VERI_KLASORU / "katalog_ek2_ek.json", ko.VERI_KLASORU / "ozel_hesaplamalar.json")
         }
 
     # --- ekran --------------------------------------------------------------
@@ -149,11 +149,14 @@ class Arac1Testleri(unittest.TestCase):
         self.assertEqual(durum, 200)
         self.assertIn("text/html; charset=utf-8", tur)
         govde = html.decode("utf-8")
-        self.assertIn("<title>Engel Oranı Bulma (Kılavuza Göre)", govde)
-        self.assertIn("Engel Oranı Bulma", govde)
-        self.assertIn("Balthazard Hesaplama", govde)
-        self.assertIn('href="http://127.0.0.1:8765/arac2"', govde)
-        self.assertNotIn('href="/arac2"', govde)
+        self.assertIn("<title>Araç-1 — Engel Oranı Bul | Engelli.me", govde)
+        self.assertIn("Engel Oranı Bul", govde)
+        self.assertIn("Balthazard Hesapla", govde)
+        self.assertIn("__ARAC2_ADRESI__", govde)
+        self.assertIn('id="model-bolum-listesi"', govde)
+        self.assertIn("position:sticky", govde)
+        self.assertNotIn("Hakkında", govde)
+        self.assertNotIn("v2.0", govde)
         self.assertIn("Arama 3 karakterden sonra çalışır", govde)
         self.assertIn(ALT_BILGI, govde)
         self.assertIn("Resmî engelli sağlık kurulu raporu yerine geçmez", govde)
@@ -172,11 +175,10 @@ class Arac1Testleri(unittest.TestCase):
         self.assertIn("Bu kayıt zaten listede.", self.html)
 
     def test_html_kopyalama_yedegi_ve_klavye_erisimi(self):
-        self.assertIn("function yedekKopyala(metin)", self.html)
-        self.assertIn('document.execCommand("copy")', self.html)
-        self.assertIn("Kopyalama başarısız oldu. Listeyi seçip elle kopyalayabilirsiniz.", self.html)
+        self.assertIn("navigator.clipboard", self.html)
+        self.assertIn("Kopyalama başarısız oldu.", self.html)
         self.assertIn(":focus-visible", self.html)
-        self.assertIn('id="sepet-temizle">Listeyi temizle</button>', self.html)
+        self.assertIn('id="sepet-temizle">Alışverişe devam</button>', self.html)
 
     # --- sağlık / bölüm / gezinme ------------------------------------------
 
@@ -186,14 +188,46 @@ class Arac1Testleri(unittest.TestCase):
         self.assertTrue(veri["ok"])
         self.assertEqual(veri["kayit"], 424)
         self.assertEqual(veri["belirsiz"], 16)
-        self.assertEqual(veri["bolumler"], ["Ruh Sağlığı", "Deri", "Hematoloji", "KBB", "Kalp-Damar"])
+        self.assertEqual(veri["kayit"], 424)
+        self.assertEqual(veri["ek_kayit"], 136)
+        self.assertEqual(veri["ozel_hesaplama"], 5)
+        self.assertEqual(veri["bolumler"], [
+            "Ruh Sağlığı", "Deri", "Hematoloji", "KBB", "Kalp-Damar",
+            "Kadın Hastalıkları", "Böbrek ve İdrar", "Sindirim",
+            "Endokrin ve Metabolizma", "Göğüs Hastalıkları", "Onkoloji", "Sinir Sistemi"
+        ])
+
+    def test_ozel_hesaplamalar_ucu(self):
+        durum, _, veri = self._json("/api/ozel-hesaplamalar")
+        self.assertEqual(durum, 200)
+        self.assertTrue(veri["ok"])
+        self.assertEqual(len(veri["ozel_hesaplamalar"]), 5)
+        self.assertTrue(any(x["id"] == "OZ-GOR-001" for x in veri["ozel_hesaplamalar"]))
+
+    def test_ek_katalog_kaydi_ucu(self):
+        durum, _, veri = self._json("/api/kayit/KV-001")
+        self.assertEqual(durum, 200)
+        self.assertTrue(veri["ok"])
+        self.assertEqual(veri["id"], "KV-001")
+        self.assertEqual(veri["rozet"], "EK-2 ek kayıt")
+
+    def test_yeni_bolum_gezinmesi(self):
+        durum, _, veri = self._json("/api/gezinme?bolum=" + urllib.parse.quote("Sinir Sistemi"))
+        self.assertEqual(durum, 200)
+        self.assertTrue(veri["ok"])
+        self.assertEqual(veri["bolum"]["kayit_sayisi"], 21)
 
     def test_bolumler_ucu(self):
         veri = self.bolumler
         self.assertTrue(veri["ok"])
-        self.assertEqual(len(veri["bolumler"]), 5)
+        self.assertEqual(len(veri["bolumler"]), 12)
         sayilar = {b["kisa"]: b["kayit_sayisi"] for b in veri["bolumler"]}
-        self.assertEqual(sayilar, {"Ruh Sağlığı": 56, "Deri": 142, "Hematoloji": 78, "KBB": 87, "Kalp-Damar": 61})
+        self.assertEqual(sayilar, {
+            "Ruh Sağlığı": 56, "Deri": 142, "Hematoloji": 78, "KBB": 87,
+            "Kalp-Damar": 93, "Kadın Hastalıkları": 3, "Böbrek ve İdrar": 18,
+            "Sindirim": 22, "Endokrin ve Metabolizma": 28,
+            "Göğüs Hastalıkları": 5, "Onkoloji": 7, "Sinir Sistemi": 21
+        })
         self.assertTrue(any("GÖRME" in k for k in veri["kapsam_disi"]))
 
     def test_gezinme_duzeyleri(self):
@@ -201,10 +235,10 @@ class Arac1Testleri(unittest.TestCase):
         self.assertEqual(
             sayilar,
             {"ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR": 6, "DERİ": 15,
-             "HEMATOLOJİK HASTALIKLAR": 10, "KULAK BURUN BOĞAZ": 7, "KARDİYOVASKÜLER SİSTEM": 9},
+             "HEMATOLOJİK HASTALIKLAR": 10, "KULAK BURUN BOĞAZ": 7, "KARDİYOVASKÜLER SİSTEM": 10},
         )
         toplam = sum(len(g["hastaliklar"]) for v in self.gezinme.values() for g in v["gruplar"])
-        self.assertEqual(toplam, 102)
+        self.assertEqual(toplam, 109)
 
     def test_gezinme_tek_kayitli_gruplar(self):
         tekli = sorted(
