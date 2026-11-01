@@ -122,14 +122,186 @@
         {
           "adim": 8,
           "aciklama": "GSYO 50'yi aşarsa kişinin engel oranı kaynak Tablo 3 karşılığından belirlenir; 50 ve altındaki durumlarda metinde belirtilen eşitlik kuralı uygulanır.",
-          "tablo": "Tablo 3"
+          "tablo": "Tablo 3 (basılı s.163)",
+          "formul": "GSYO ≤ 50 ise engel oranı = GSYO; GSYO > 50 ise engel oranı = (GSYO − 50) × 0,8 + 50; küsurat üst tam sayıya yuvarlanır."
         }
       ],
       "tablolar": [
         {
           "ad": "Tablo 1 — Görme keskinliği puanı eşdeğerlik tablosu",
           "sayfa": 151,
-          "amac": "Ölçülen görme keskinliği değerini GKP'ye dönüştürür."
+          "amac": "Ölçülen görme keskinliği değerini GKP'ye dönüştürür.",
+          "satirlar": [
+            [
+              "1.00",
+              "20/20",
+              "0.00",
+              100
+            ],
+            [
+              "0.90",
+              "20/22.2",
+              "0.05",
+              98
+            ],
+            [
+              "0.80",
+              "20/25",
+              "0.10",
+              95
+            ],
+            [
+              "0.70",
+              "20/28.5",
+              "0.15",
+              93
+            ],
+            [
+              "0.63",
+              "20/32",
+              "0.20",
+              90
+            ],
+            [
+              "0.60",
+              "20/33.3",
+              "0.22",
+              88
+            ],
+            [
+              "0.50",
+              "20/40",
+              "0.30",
+              85
+            ],
+            [
+              "0.40",
+              "20/50",
+              "0.40",
+              80
+            ],
+            [
+              "0.32",
+              "20/63",
+              "0.50",
+              75
+            ],
+            [
+              "0.30",
+              "20/66.6",
+              "0.52",
+              73
+            ],
+            [
+              "0.25",
+              "20/80",
+              "0.60",
+              70
+            ],
+            [
+              "0.20",
+              "20/100",
+              "0.70",
+              65
+            ],
+            [
+              "0.16",
+              "20/125",
+              "0.80",
+              60
+            ],
+            [
+              "0.13",
+              "20/160",
+              "0.90",
+              55
+            ],
+            [
+              "0.10",
+              "20/200",
+              "1.00",
+              50
+            ],
+            [
+              "0.08",
+              "20/250",
+              "1.10",
+              45
+            ],
+            [
+              "0.06",
+              "20/320",
+              "1.20",
+              40
+            ],
+            [
+              "0.05",
+              "20/400",
+              "1.30",
+              35
+            ],
+            [
+              "0.04",
+              "20/500",
+              "1.40",
+              30
+            ],
+            [
+              "0.03",
+              "20/640",
+              "1.51",
+              25
+            ],
+            [
+              "0.025",
+              "20/800",
+              "1.60",
+              20
+            ],
+            [
+              "0.020",
+              "20/1000",
+              "1.70",
+              15
+            ],
+            [
+              "0.016",
+              "20/1250",
+              "1.80",
+              0
+            ],
+            [
+              "0.013",
+              "20/1600",
+              "1.90",
+              0
+            ],
+            [
+              "0.010",
+              "20/2000",
+              "2.00",
+              0
+            ],
+            [
+              "0.008",
+              "20/2500",
+              "2.10",
+              0
+            ],
+            [
+              "0.001",
+              "20/25000",
+              "3.10",
+              0
+            ]
+          ],
+          "sutunlar": [
+            "Ondalık",
+            "Snellen",
+            "LogMAR",
+            "Görme keskinliği puanı"
+          ],
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü s.151 ile satır satır karşılaştırıldı."
         },
         {
           "ad": "Tablo 2 — Görme keskinliğine bağlı bozukluk oranları",
@@ -139,7 +311,8 @@
         {
           "ad": "Tablo 3 — GSYO 50'den fazla olduğunda engel oranı",
           "sayfa": 177,
-          "amac": "GSYO değerini engel oranına eşler."
+          "amac": "GSYO değerini engel oranına eşler.",
+          "formul": "GSYO 51–100 için engel oranı = (GSYO − 50) × 0,8 + 50; küsurat üst tam sayıya tamamlanır."
         }
       ],
       "uyari": "Bu hesaplama otomatik oran bulucu olarak uygulanmamıştır: ölçüm diyagramları, puan eşleştirme tabloları ve ek kayıp kuralları klinik girdiler olmadan güvenilir biçimde hesaplanamaz."
