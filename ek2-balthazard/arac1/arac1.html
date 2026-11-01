@@ -30,7 +30,18 @@
   .model-bolum-metni{min-width:0;flex:1}
   .model-bolum-ad{display:block;font-size:13px;font-weight:650;line-height:1.3}
   .model-bolum-sayi{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
-  .model-aciklama{font-size:12px;color:var(--muted);margin-top:8px;text-align:center}\n  .insan-svg [data-bolum]{cursor:pointer;outline:none}\n  .insan-svg [data-bolum]:focus-visible{stroke:#0f6f5c;stroke-width:3}\n  .insan-svg [data-bolum]:hover{filter:brightness(.94)}\n  .ozel-baslik{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;list-style:none;font-weight:700}\n  .ozel-baslik::-webkit-details-marker{display:none}\n  .ozel-baslik:after{content:"+";font-size:22px;color:var(--muted);line-height:1}\n  details[open]>.ozel-baslik:after{content:"−"}\n  #ozel-hesaplama-kutusu:not([open])>#ozel-hesaplama-liste{display:none}\n  .ozel-kayit{border-top:1px solid var(--line);padding:10px 0}\n  .ozel-kayit>summary{cursor:pointer;font-weight:650}\n  .ozel-kayit[open]>summary{color:var(--accent)}
+  .model-aciklama{font-size:12px;color:var(--muted);margin-top:8px;text-align:center}
+  .insan-svg [data-bolum-eslesme]{cursor:pointer;outline:none}
+  .insan-svg [data-bolum-eslesme]:focus-visible{stroke:#0f6f5c;stroke-width:3}
+  .insan-svg [data-bolum-eslesme]:hover{filter:brightness(.94)}
+  .ozel-baslik{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;list-style:none;font-weight:700}
+  .ozel-baslik::-webkit-details-marker{display:none}
+  .ozel-baslik:after{content:"+";font-size:22px;color:var(--muted);line-height:1}
+  details[open]>.ozel-baslik:after{content:"−"}
+  #ozel-hesaplama-kutusu:not([open])>#ozel-hesaplama-liste{display:none}
+  .ozel-kayit{border-top:1px solid var(--line);padding:10px 0}
+  .ozel-kayit>summary{cursor:pointer;font-weight:650}
+  .ozel-kayit[open]>summary{color:var(--accent)}
   @media (max-width:900px){.arac-duzeni{grid-template-columns:minmax(0,1fr)}.sol-panel{grid-row:2}.sag-panel{grid-row:1;position:sticky;top:0;z-index:3}.model-kart{padding:12px}.model-govde{display:flex}.insan-svg{min-height:220px;max-height:280px;width:auto;max-width:100%}.bolum-model-listesi{display:none}}
   @media (max-width:520px){.model-govde{display:flex;justify-content:center;gap:0}.model-kart{padding:8px}.model-baslik{padding-bottom:7px}.model-baslik h2{font-size:16px}.model-rozet{font-size:10px;padding:3px 6px}.insan-svg{min-height:170px;max-height:210px;width:auto;max-width:100%}.bolum-model-listesi{display:none}.model-aciklama{font-size:11px;margin-top:5px}}
   h1{font-size:clamp(22px,4vw,30px);margin:18px 0 6px}
@@ -232,7 +243,6 @@
 
   var durum = { bolum: "", gruplar: [], sepet: [] };
   var cipler = document.getElementById("cipler");
-  var modelBolumListesi = document.getElementById("model-bolum-listesi");
   var giris = document.getElementById("q");
   var listeKutu = document.getElementById("liste");
   var listeIcerik = document.getElementById("liste-icerik");
@@ -264,8 +274,6 @@
   // --- bölüm çipleri -------------------------------------------------------
   function cipleriKur(bolumler) {
     cipler.innerHTML = "";
-    modelBolumListesi.innerHTML = "";
-    modelBolumListesi.innerHTML = "";
     Array.prototype.forEach.call(document.querySelectorAll(".insan-svg [data-bolum-eslesme]"), function (nokta) {
       function eslesenBolum() {
         var anahtar = nokta.getAttribute("data-bolum-eslesme").toLocaleLowerCase("tr-TR");
@@ -302,10 +310,6 @@
     });
   }
   function cipIsaretle() {
-    Array.prototype.forEach.call(modelBolumListesi.children, function (dugme) {
-      var ad = dugme.querySelector(".model-bolum-ad");
-      dugme.setAttribute("aria-pressed", ad && ad.textContent === durum.bolum ? "true" : "false");
-    });
     Array.prototype.forEach.call(cipler.children, function (dugme) {
       var secili = (dugme.dataset.bolum || "") === durum.bolum;
       dugme.setAttribute("aria-pressed", secili ? "true" : "false");
