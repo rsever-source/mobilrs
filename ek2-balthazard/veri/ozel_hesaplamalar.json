@@ -354,17 +354,116 @@
         {
           "ad": "Tablo 1.1 — Lomber omurganın engellilik oranları (yaralanma modeli)",
           "sayfa": 207,
-          "pdf_sayfa": 94
+          "pdf_sayfa": 94,
+          "sutunlar": [
+            "Kategori",
+            "Kaynak tablodaki kriter özeti",
+            "Engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "I",
+              "Klinik bulgu, nörolojik kayıp, yapısal bozukluk ve kırık yoktur",
+              0
+            ],
+            [
+              "II",
+              "Travma/hastalıkla ilişkili öykü ve muayene bulguları; belirgin adale spazmı veya hareket azalması; objektif bulgu yok ya da yapısal bütünlük bozulmamış",
+              8
+            ],
+            [
+              "III",
+              "Belirgin radikülopati bulguları (duyu/refleks/kuvvet kaybı vb.) veya görüntülemeyle doğrulanmış aynı seviyede radikülopati/disk hernisi; belirli kırıklar",
+              13
+            ],
+            [
+              "IV",
+              "Hareket segmenti bütünlüğünde bozulma veya belirgin hareket kaybı; kas spazmı/ağrı ile birlikte kaynakta tanımlanan ağır yapısal kriterler",
+              23
+            ],
+            [
+              "V",
+              "Kategori III ve IV ölçütlerinin birlikte bulunması veya kaynakta belirtilen ağır tek taraflı nörolojik bulgu ve vertebra kompresyonu",
+              25
+            ]
+          ],
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü ve basılı sayfa karşılaştırıldı; kriter metinleri arayüz için kısaltılmıştır."
         },
         {
           "ad": "Tablo 1.2 — Servikal omurganın engellilik oranları (yaralanma modeli)",
           "sayfa": 208,
-          "pdf_sayfa": 95
+          "pdf_sayfa": 95,
+          "sutunlar": [
+            "Kategori",
+            "Kaynak tablodaki kriter özeti",
+            "Engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "I",
+              "Klinik bulgu, nörolojik kayıp, yapısal bozukluk ve kırık yoktur",
+              0
+            ],
+            [
+              "II",
+              "Travma/hastalık öyküsü; hareket genişliğinde asimetri veya radiküler ağrı, ancak objektif bulgu/yapısal bozulma yok ya da kaynakta tanımlı konservatif tedaviyle düzelmiş durum",
+              8
+            ],
+            [
+              "III",
+              "Belirgin radikülopati bulguları veya görüntüleme ile aynı seviyede doğrulanmış radikülopati/disk hernisi; kaynakta tanımlı kırıklar",
+              18
+            ],
+            [
+              "IV",
+              "Hareket segmenti bütünlüğünde bozulma veya bilateral/çok seviyeli radikülopati ve kaynakta belirtilen hareket/cerrahi kriterleri",
+              28
+            ],
+            [
+              "V",
+              "Üst ekstremitede yardımcı cihaz gerektiren ciddi fonksiyon kaybı, total nörolojik kayıp veya çok seviyeli ciddi nörolojik fonksiyon kaybı",
+              38
+            ]
+          ],
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü ve basılı sayfa karşılaştırıldı; kriter metinleri arayüz için kısaltılmıştır."
         },
         {
           "ad": "Tablo 1.3 — Torakal omurganın engellilik oranları (yaralanma modeli)",
           "sayfa": 209,
-          "pdf_sayfa": 96
+          "pdf_sayfa": 96,
+          "sutunlar": [
+            "Kategori",
+            "Kaynak tablodaki kriter özeti",
+            "Engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "I",
+              "Klinik bulgu, nörolojik kayıp, yapısal bozukluk ve kırık yoktur",
+              0
+            ],
+            [
+              "II",
+              "Travma/hastalıkla ilişkili bulgular ve hareket kısıtlılığı/radiküler ağrı; objektif bulgu veya yapısal bütünlük bozulması yok ya da kaynakta tanımlı kırıklar",
+              8
+            ],
+            [
+              "III",
+              "Alt ekstremitede belirgin radikülopati bulguları veya görüntüleme ile doğrulanmış aynı seviyede radikülopati/disk hernisi; kaynakta tanımlı kırıklar",
+              18
+            ],
+            [
+              "IV",
+              "Hareket segmenti bütünlüğünde bozulma veya bilateral/çok seviyeli radikülopati; kaynakta belirtilen ağır hareket kaybı/yapısal kriterler",
+              23
+            ],
+            [
+              "V",
+              "Kategori III düzeyinde alt ekstremite bulguları ile kategori IV düzeyinde yapısal bütünlük bozukluğu veya kaynakta belirtilen ağır nörolojik motor bulgu",
+              28
+            ]
+          ],
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü ve basılı sayfa karşılaştırıldı; kriter metinleri arayüz için kısaltılmıştır."
         },
         {
           "ad": "Tablo 1.4 — Servikal omurgada hareket kısıtlılığı",
