@@ -39,7 +39,7 @@ BOLUM_NOTU_METIN = (
     "raporun geçerlilik süresi belirtilmelidir."
 )
 BOS_YAZIM = "Yazımı kontrol edin veya bölüm seçerek ilerleyin."
-BOS_KAPSAM = "Göz, işitme, konuşma ve kas-iskelet bölümleri bu araçta henüz yok."
+BOS_KAPSAM = "Görme ve kas-iskelet sistemindeki bazı değerlendirmeler ölçüm, tablo dönüşümü veya birden fazla adım gerektirir; bunlar tek bir sabit oran olarak gösterilmez."
 ALT_BILGI = "Bu araç bilgilendirme amaçlıdır. Resmî engelli sağlık kurulu raporu yerine geçmez."
 SIFIR_ACIKLAMA = "Bu basamakta kaynak 0 oran veriyor"
 TEK_SEVIYE_NOTU = "Bu hastalıkta kaynak tek oran veriyor, şiddet basamağı yok."
@@ -175,11 +175,10 @@ class Arac1Testleri(unittest.TestCase):
         self.assertIn("Bu kayıt zaten listede.", self.html)
 
     def test_html_kopyalama_yedegi_ve_klavye_erisimi(self):
-        self.assertIn("function yedekKopyala(metin)", self.html)
-        self.assertIn('document.execCommand("copy")', self.html)
-        self.assertIn("Kopyalama başarısız oldu. Listeyi seçip elle kopyalayabilirsiniz.", self.html)
+        self.assertIn("navigator.clipboard", self.html)
+        self.assertIn("Kopyalama başarısız oldu.", self.html)
         self.assertIn(":focus-visible", self.html)
-        self.assertIn('id="sepet-temizle">Listeyi temizle</button>', self.html)
+        self.assertIn('id="sepet-temizle">Alışverişe devam</button>', self.html)
 
     # --- sağlık / bölüm / gezinme ------------------------------------------
 
