@@ -21,18 +21,18 @@
   .model-baslik{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
   .model-baslik h2{font-size:19px;margin:0}
   .model-rozet{font-size:12px;color:var(--muted);background:#f2f5f9;border-radius:999px;padding:5px 9px}
-  .model-govde{display:grid;grid-template-columns:minmax(125px,.8fr) minmax(0,1.2fr);gap:12px;align-items:center;padding-top:12px}
-  .insan-svg{width:100%;height:auto;max-height:calc(100vh - 150px);min-height:330px;display:block}
-  .bolum-model-listesi{display:flex;flex-direction:column;gap:7px;max-height:calc(100vh - 160px);overflow:auto;padding-right:3px}
-  .model-bolum{display:flex;align-items:center;gap:9px;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:11px;padding:9px 10px;font:inherit;cursor:pointer;min-width:0}
+  .model-govde{display:flex;justify-content:center;align-items:center;padding-top:12px}
+  .insan-svg{width:min(100%,300px);height:auto;max-height:calc(100vh - 190px);min-height:330px;display:block;overflow:visible}
+  .bolum-model-listesi{display:none}
+  .model-bolum{display:none}
   .model-bolum:hover,.model-bolum[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
   .model-nokta{width:10px;height:10px;flex:0 0 10px;border-radius:50%;background:#3d8bd9;box-shadow:0 0 0 4px #e8f2ff}
   .model-bolum-metni{min-width:0;flex:1}
   .model-bolum-ad{display:block;font-size:13px;font-weight:650;line-height:1.3}
   .model-bolum-sayi{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
-  .model-aciklama{font-size:12px;color:var(--muted);margin-top:12px}
-  @media (max-width:900px){.arac-duzeni{grid-template-columns:minmax(0,1fr)}.sol-panel{grid-row:2}.sag-panel{grid-row:1;position:sticky;top:0;z-index:3}.model-kart{padding:12px}.model-govde{grid-template-columns:110px minmax(0,1fr)}.insan-svg{min-height:250px;max-height:360px}.bolum-model-listesi{max-height:320px}}
-  @media (max-width:520px){.model-govde{grid-template-columns:58px minmax(0,1fr);gap:8px}.model-kart{padding:8px}.model-baslik{padding-bottom:7px}.model-baslik h2{font-size:16px}.model-rozet{font-size:10px;padding:3px 6px}.insan-svg{min-height:110px;max-height:120px}.bolum-model-listesi{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(125px,42%);gap:6px;max-height:none;overflow-x:auto;overflow-y:hidden;padding:2px 2px 7px}.model-bolum{padding:6px 8px;min-height:48px}.model-bolum-ad{font-size:11.5px}.model-bolum-sayi{font-size:10.5px}.model-aciklama{font-size:11px;margin-top:5px}}
+  .model-aciklama{font-size:12px;color:var(--muted);margin-top:8px;text-align:center}\n  .insan-svg [data-bolum]{cursor:pointer;outline:none}\n  .insan-svg [data-bolum]:focus-visible{stroke:#0f6f5c;stroke-width:3}\n  .insan-svg [data-bolum]:hover{filter:brightness(.94)}\n  .ozel-baslik{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;list-style:none;font-weight:700}\n  .ozel-baslik::-webkit-details-marker{display:none}\n  .ozel-baslik:after{content:"+";font-size:22px;color:var(--muted);line-height:1}\n  details[open]>.ozel-baslik:after{content:"−"}\n  #ozel-hesaplama-kutusu:not([open])>#ozel-hesaplama-liste{display:none}\n  .ozel-kayit{border-top:1px solid var(--line);padding:10px 0}\n  .ozel-kayit>summary{cursor:pointer;font-weight:650}\n  .ozel-kayit[open]>summary{color:var(--accent)}
+  @media (max-width:900px){.arac-duzeni{grid-template-columns:minmax(0,1fr)}.sol-panel{grid-row:2}.sag-panel{grid-row:1;position:sticky;top:0;z-index:3}.model-kart{padding:12px}.model-govde{display:flex}.insan-svg{min-height:220px;max-height:280px;width:auto;max-width:100%}.bolum-model-listesi{display:none}}
+  @media (max-width:520px){.model-govde{display:flex;justify-content:center;gap:0}.model-kart{padding:8px}.model-baslik{padding-bottom:7px}.model-baslik h2{font-size:16px}.model-rozet{font-size:10px;padding:3px 6px}.insan-svg{min-height:170px;max-height:210px;width:auto;max-width:100%}.bolum-model-listesi{display:none}.model-aciklama{font-size:11px;margin-top:5px}}
   h1{font-size:clamp(22px,4vw,30px);margin:18px 0 6px}
   h2{font-size:16px;margin:0 0 10px}
   h3{font-size:15px;margin:0}
@@ -158,11 +158,11 @@
 
   <div class="cipler" id="cipler" role="group" aria-label="Bölüm seçimi"></div>
 
-  <section class="kart" id="ozel-hesaplama-kutusu" aria-labelledby="ozel-hesaplama-baslik">
-    <h2 id="ozel-hesaplama-baslik">Tablo ve formül gerektiren değerlendirmeler</h2>
-    <p class="ipucu">Bu başlıklar tek oranlı hastalık kaydı değildir. Kaynak tablosu ve gerekli ölçümler olmadan oran hesaplanmaz.</p>
+  <details class="kart" id="ozel-hesaplama-kutusu" aria-labelledby="ozel-hesaplama-baslik">
+    <summary class="ozel-baslik" id="ozel-hesaplama-baslik">Tablo ve formül gerektiren değerlendirmeler</summary>
+    <p class="ipucu" style="margin-top:8px">Bu başlıklar tek oranlı hastalık kaydı değildir. İlgili değerlendirmeyi açarak kaynak yöntemini inceleyin; gerekli ölçümler olmadan sabit oran hesaplanmaz.</p>
     <div id="ozel-hesaplama-liste"><p class="ipucu">Kaynak yöntemleri yükleniyor…</p></div>
-  </section>
+  </details>
 
   <main>
     <section id="liste" class="kart gizli" aria-live="polite" aria-labelledby="liste-baslik">
@@ -219,9 +219,8 @@
             <path d="M80 171 Q90 163 100 171 Q106 178 98 186 L84 186 Q77 181 80 171 Z" fill="#edb18c" stroke="#d18a65"/>
             <circle cx="90" cy="38" r="7" fill="#63a9e9" stroke="#fff" stroke-width="2"/><circle cx="91" cy="150" r="6" fill="#e65f69" stroke="#fff" stroke-width="2"/><circle cx="90" cy="178" r="5" fill="#e6a16d" stroke="#fff" stroke-width="2"/><circle cx="90" cy="200" r="5" fill="#c17da0" stroke="#fff" stroke-width="2"/><circle cx="72" cy="264" r="6" fill="#4f91d2" stroke="#fff" stroke-width="2"/><circle cx="108" cy="264" r="6" fill="#4f91d2" stroke="#fff" stroke-width="2"/>
           </svg>
-          <div class="bolum-model-listesi" id="model-bolum-listesi" aria-label="Hastalık bölümleri"><p class="ipucu">Bölümler yükleniyor…</p></div>
-        </div>
-        <p class="model-aciklama">Soldaki hastalık listesi aşağı kayarken bu panel üstte kalır. Bölüm seçimi soldaki listeyi filtreler.</p>
+          </div>
+        <p class="model-aciklama">Vücut üzerindeki işaretleri seçerek ilgili hastalık bölümüne geçin. Hastalık listesi solda kalır.</p>
       </section>
     </aside>
   </div>
@@ -266,18 +265,7 @@
   function cipleriKur(bolumler) {
     cipler.innerHTML = "";
     modelBolumListesi.innerHTML = "";
-    bolumler.forEach(function (b) {
-      var dugmeModel = el("button", "model-bolum");
-      dugmeModel.type = "button";
-      dugmeModel.setAttribute("aria-pressed", "false");
-      dugmeModel.appendChild(el("span", "model-nokta"));
-      var metinModel = el("span", "model-bolum-metni");
-      metinModel.appendChild(el("span", "model-bolum-ad", b.ad));
-      metinModel.appendChild(el("span", "model-bolum-sayi", b.kayit_sayisi + " kayıt"));
-      dugmeModel.appendChild(metinModel);
-      dugmeModel.addEventListener("click", function () { bolumSec(b.ad); });
-      modelBolumListesi.appendChild(dugmeModel);
-    });
+    modelBolumListesi.innerHTML = "";
     var tumu = el("button", "cip", "Tümü");
     tumu.type = "button";
     tumu.dataset.bolum = "";
@@ -673,12 +661,15 @@
     var hedef = document.getElementById("ozel-hesaplama-liste");
     hedef.innerHTML = "";
     (veri.ozel_hesaplamalar || []).forEach(function (kayit) {
-      var kutu = el("div", "notr-kutu");
-      kutu.appendChild(el("div", "baslik", kayit.baslik));
-      kutu.appendChild(el("p", "ipucu", kayit.bolum + " · EK-2 basılı sayfa " +
+      var kutu = el("details", "ozel-kayit");
+      var baslik = el("summary", null, kayit.baslik);
+      kutu.appendChild(baslik);
+      var icerik = el("div", "ozel-kayit-icerik");
+      kutu.appendChild(icerik);
+      icerik.appendChild(el("p", "ipucu", kayit.bolum + " · EK-2 basılı sayfa " +
         (kayit.kaynak_sayfalar || []).join(", ")));
       if (kayit.girdiler && kayit.girdiler.length) {
-        kutu.appendChild(el("p", null, "Gerekli girdiler: " + kayit.girdiler.join("; ")));
+        icerik.appendChild(el("p", null, "Gerekli girdiler: " + kayit.girdiler.join("; ")));
       }
       if (kayit.adimlar && kayit.adimlar.length) {
         var adimlar = el("ol");
@@ -688,11 +679,11 @@
             (adim.tablo ? " Kaynak: " + adim.tablo : "");
           adimlar.appendChild(satir);
         });
-        kutu.appendChild(adimlar);
+        icerik.appendChild(adimlar);
       }
       if (kayit.tablolar && kayit.tablolar.length) {
         var tabloBaslik = el("p", "ipucu", "Kaynak tablolar:");
-        kutu.appendChild(tabloBaslik);
+        icerik.appendChild(tabloBaslik);
         var tablolar = el("ul");
         kayit.tablolar.forEach(function (tablo) {
           var li = el("li");
@@ -700,7 +691,7 @@
             (tablo.amac ? " — " + tablo.amac : "");
           tablolar.appendChild(li);
         });
-        kutu.appendChild(tablolar);
+        icerik.appendChild(tablolar);
         kayit.tablolar.forEach(function (tablo) {
           if (!tablo.satirlar || !tablo.satirlar.length) { return; }
           var tabloEl = el("table", "kaynak-tablosu");
@@ -718,17 +709,17 @@
             tbody.appendChild(tr);
           });
           tabloEl.appendChild(tbody);
-          kutu.appendChild(tabloEl);
+          icerik.appendChild(tabloEl);
           if (tablo.kaynak_goruntu_dogrulamasi) {
-            kutu.appendChild(el("p", "ipucu", tablo.kaynak_goruntu_dogrulamasi));
+            icerik.appendChild(el("p", "ipucu", tablo.kaynak_goruntu_dogrulamasi));
           }
         });
       }
-      if (kayit.hesaplama_kurali) { kutu.appendChild(el("p", null, kayit.hesaplama_kurali)); }
+      if (kayit.hesaplama_kurali) { icerik.appendChild(el("p", null, kayit.hesaplama_kurali)); }
       if (kayit.uyari) {
         var uyari = el("p", "ipucu", kayit.uyari);
         uyari.style.marginTop = "8px";
-        kutu.appendChild(uyari);
+        icerik.appendChild(uyari);
       }
       hedef.appendChild(kutu);
     });
