@@ -157,6 +157,49 @@
   .alt-bilgi p{margin:0 0 4px}
   .gizli{display:none}
   .bosluk{height:8px}
+
+  /* Final visual overrides: keep the reference layout above legacy component defaults. */
+  :root{--ink:#101d34;--muted:#62738e;--line:#d5e1f0;--bg:#f4f8fd;--card:#fff;--accent:#075bc7;--accent-soft:#e5f1ff;--radius:17px}
+  body{background:linear-gradient(180deg,#f9fbff 0%,#eef5fd 100%);font-family:Inter,"Segoe UI",system-ui,sans-serif;color:var(--ink)}
+  .sayfa{max-width:1600px;margin:0 auto;padding:0 12px 44px}
+  .sekmeler{display:flex;gap:8px;padding:12px 0 16px;border-bottom:1px solid #dce7f5;flex-wrap:wrap}
+  .sekme{border:1px solid #d5e2f2;background:#fff;color:#172642;padding:10px 17px;border-radius:12px;font-size:15px;text-decoration:none;font-weight:650;box-shadow:0 2px 8px #193c6610}
+  .sekme[aria-current="page"]{background:#075bc7;border-color:#075bc7;color:#fff}
+  h1{font-size:clamp(24px,3vw,34px);letter-spacing:-.035em;margin:18px 0 6px}
+  .giris{max-width:900px;color:#536782;font-size:14px;margin-bottom:18px}
+  .arac-duzeni{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(380px,.92fr);gap:12px;align-items:start}
+  .sol-panel{min-width:0;background:#fff;border:1px solid #d8e5f4;border-radius:18px;padding:14px;box-shadow:0 10px 30px #183f6b0b}
+  .sag-panel{position:sticky;top:10px;align-self:start;min-width:0}
+  .model-kart{background:linear-gradient(160deg,#fff 0%,#fafdff 100%);border:1px solid #d2e1f3;border-radius:20px;padding:14px;box-shadow:0 12px 30px #1e4d7c13;overflow:hidden}
+  .model-baslik{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 2px 12px;border-bottom:1px solid #e0eaf7}
+  .model-baslik h2{font-size:19px;margin:0;color:#122746}
+  .model-rozet{font-size:12px;color:#075bc7;background:#eaf3ff;border:1px solid #d5e7ff;border-radius:999px;padding:5px 9px}
+  .model-govde{display:flex;justify-content:center;align-items:center;padding:8px 0 0;min-height:0}
+  .insan-svg{width:min(100%,490px);height:auto;max-height:calc(100vh - 130px);min-height:480px;display:block;overflow:visible}
+  .bolum-model-listesi,.model-bolum{display:none}
+  .model-aciklama{font-size:12px;color:#62738e;margin:2px 0 0;text-align:center}
+  .insan-svg [data-bolum-eslesme]{cursor:pointer;outline:none;transition:filter .15s}
+  .insan-svg [data-bolum-eslesme]:focus-visible{stroke:#075bc7;stroke-width:4}
+  .insan-svg [data-bolum-eslesme]:hover{filter:brightness(.86)}
+  .insan-svg .etiket{font:600 12px Inter,"Segoe UI",sans-serif;fill:#142b4b}
+  .insan-svg .lider{fill:none;stroke:#075bc7;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .cipler{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:4px 0 14px;overflow:visible}
+  .cip{min-width:0;width:100%;border:1px solid #d5e2f2;background:#fff;color:#172642;padding:8px 8px;border-radius:999px;font-size:13px;line-height:1.25;font-family:inherit;cursor:pointer;white-space:normal;overflow-wrap:anywhere}
+  .cip[aria-pressed="true"]{background:#dceeff;border-color:#78baff;color:#064eb5;font-weight:700}
+  .arama{background:#f9fbff;border:1px solid #e0eafa;border-radius:14px;padding:12px;margin-bottom:12px}
+  .arama input{border:1px solid #c7d8ee;border-radius:10px;padding:12px 13px;width:100%;font:inherit;background:#fff}
+  .kart{border:1px solid #d8e5f4;border-radius:15px;background:#fff;padding:14px;margin:0 0 12px;box-shadow:0 3px 12px #1e4d7c08}
+  .ozel-baslik{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;list-style:none;font-weight:700}
+  .ozel-baslik::-webkit-details-marker{display:none}
+  .ozel-baslik:after{content:"+";font-size:22px;color:var(--muted);line-height:1}
+  details[open]>.ozel-baslik:after{content:"−"}
+  #ozel-hesaplama-kutusu:not([open])>#ozel-hesaplama-liste{display:none}
+  .ozel-kayit{border-top:1px solid var(--line);padding:10px 0}
+  .ozel-kayit>summary{cursor:pointer;font-weight:650}
+  .ozel-kayit[open]>summary{color:var(--accent)}
+  @media(max-width:1050px){.arac-duzeni{grid-template-columns:minmax(0,1fr)}.sag-panel{grid-row:1;position:sticky;top:0;z-index:3}.sol-panel{grid-row:2}.model-kart{padding:12px}.insan-svg{min-height:420px;max-height:540px;width:auto;max-width:100%}}
+  @media(max-width:520px){.sayfa{padding:0 8px 30px}.sekmeler{padding:8px 0 12px}.sekme{font-size:13px;padding:8px 10px}.sol-panel{padding:9px}.model-kart{padding:8px}.model-baslik h2{font-size:16px}.model-rozet{font-size:10px;padding:3px 6px}.insan-svg{min-height:340px;max-height:400px;width:auto;max-width:100%}.cipler{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.cip{font-size:12px;padding:7px 5px}.arama{padding:9px}.kart{padding:10px}}
+
 </style>
 </head>
 <body>
