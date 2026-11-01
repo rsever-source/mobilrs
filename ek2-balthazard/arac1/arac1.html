@@ -123,8 +123,7 @@
   </nav>
 
   <h1>Engel Oranı Bul</h1>
-  <p class="giris">EK-2 kapsamındaki üç bölümde hastalık ve seviye seçerek kaynakta tanımlı
-    oranı bulun. Araç hesap yapmaz; oranlar EK-2 kılavuzundan okunur.</p>
+  <p class="giris">Kaynakta açıkça sabit oran verilen katalog kayıtlarını arayın. Tablo veya formül gerektiren görme ve kas-iskelet değerlendirmeleri ayrı gösterilir; eksik girdilerden sabit oran üretilmez.</p>
 
   <form class="arama" id="arama-form" role="search">
     <label for="q">Hastalık ara</label>
@@ -134,6 +133,12 @@
   </form>
 
   <div class="cipler" id="cipler" role="group" aria-label="Bölüm seçimi"></div>
+
+  <section class="kart" id="ozel-hesaplama-kutusu" aria-labelledby="ozel-hesaplama-baslik">
+    <h2 id="ozel-hesaplama-baslik">Tablo ve formül gerektiren değerlendirmeler</h2>
+    <p class="ipucu">Bu başlıklar tek oranlı hastalık kaydı değildir. Kaynak tablosu ve gerekli ölçümler olmadan oran hesaplanmaz.</p>
+    <div id="ozel-hesaplama-liste"><p class="ipucu">Kaynak yöntemleri yükleniyor…</p></div>
+  </section>
 
   <main>
     <section id="liste" class="kart gizli" aria-live="polite" aria-labelledby="liste-baslik">
@@ -597,6 +602,58 @@
     } else {
       sepetBildirim.textContent = "Tarayıcı kopyalamayı desteklemiyor.";
     }
+  });
+
+  // --- tablo/formül gerektiren EK-2 yöntemleri ------------------------------
+  function ozelHesaplamalariCiz(veri) {
+    var hedef = document.getElementById("ozel-hesaplama-liste");
+    hedef.innerHTML = "";
+    (veri.ozel_hesaplamalar || []).forEach(function (kayit) {
+      var kutu = el("div", "notr-kutu");
+      kutu.appendChild(el("div", "baslik", kayit.baslik));
+      kutu.appendChild(el("p", "ipucu", kayit.bolum + " · EK-2 basılı sayfa " +
+        (kayit.kaynak_sayfalar || []).join(", ")));
+      if (kayit.girdiler && kayit.girdiler.length) {
+        kutu.appendChild(el("p", null, "Gerekli girdiler: " + kayit.girdiler.join("; ")));
+      }
+      if (kayit.adimlar && kayit.adimlar.length) {
+        var adimlar = el("ol");
+        kayit.adimlar.forEach(function (adim) {
+          var satir = el("li");
+          satir.textContent = adim.aciklama + (adim.formul ? " Formül: " + adim.formul : "") +
+            (adim.tablo ? " Kaynak: " + adim.tablo : "");
+          adimlar.appendChild(satir);
+        });
+        kutu.appendChild(adimlar);
+      }
+      if (kayit.tablolar && kayit.tablolar.length) {
+        var tabloBaslik = el("p", "ipucu", "Kaynak tablolar:");
+        kutu.appendChild(tabloBaslik);
+        var tablolar = el("ul");
+        kayit.tablolar.forEach(function (tablo) {
+          var li = el("li");
+          li.textContent = tablo.ad + (tablo.sayfa ? " · s." + tablo.sayfa : "") +
+            (tablo.amac ? " — " + tablo.amac : "");
+          tablolar.appendChild(li);
+        });
+        kutu.appendChild(tablolar);
+      }
+      if (kayit.hesaplama_kurali) { kutu.appendChild(el("p", null, kayit.hesaplama_kurali)); }
+      if (kayit.uyari) {
+        var uyari = el("p", "ipucu", kayit.uyari);
+        uyari.style.marginTop = "8px";
+        kutu.appendChild(uyari);
+      }
+      hedef.appendChild(kutu);
+    });
+  }
+
+  json("/api/ozel-hesaplamalar").then(function (yanit) {
+    if (!yanit.ok) { throw new Error("Özel hesaplama kataloğu okunamadı."); }
+    ozelHesaplamalariCiz(yanit);
+  }).catch(function () {
+    document.getElementById("ozel-hesaplama-liste").textContent =
+      "Kaynak yöntemleri yüklenemedi. Bu bölümde oran hesaplanmadı.";
   });
 
   // --- açılış --------------------------------------------------------------
