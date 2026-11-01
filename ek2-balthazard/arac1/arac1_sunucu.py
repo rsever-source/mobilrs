@@ -418,20 +418,22 @@ def arama_yuku(metin: str, bolum_adi: str | None) -> dict:
             "mesaj": ARAMA_IPUCU,
             "ipucu": None,
         }
+    ek_bolum_secili = None
+    ana_bolum_adi = None
     if bolum_adi:
         bolum = katalog_nesnesi.bolum(bolum_adi)
-        ek_bolum = next(
+        ek_bolum_secili = next(
             (b for b in ek_katalog().get("bolumler", [])
              if bolum_adi in (b.get("ad"), b.get("kisa"))),
             None,
         )
-        if bolum is None and ek_bolum is None:
+        if bolum is None and ek_bolum_secili is None:
             return {"ok": False, "mesaj": "Bilinmeyen bölüm."}
         if bolum is not None:
-            bolum_adi = bolum.ad
+            ana_bolum_adi = bolum.ad
 
-    kayitlar = list(katalog_nesnesi.ara(temiz, bolum_adi))
-    belirsizler = list(katalog_nesnesi.belirsiz_ara(temiz, bolum_adi))
+    kayitlar = list(katalog_nesnesi.ara(temiz, ana_bolum_adi)) if not ek_bolum_secili else []
+    belirsizler = list(katalog_nesnesi.belirsiz_ara(temiz, ana_bolum_adi)) if not ek_bolum_secili else []
     # EK-2 ek kayıtları ayrı dosyada doğrulanır; ana kataloğun sayım değişmezleri korunur.
     for bolum in ek_katalog().get("bolumler", []):
         if bolum_adi and bolum_adi not in (bolum.get("ad"), bolum.get("kisa")):
