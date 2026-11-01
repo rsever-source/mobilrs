@@ -157,6 +157,7 @@ class Arac1Testleri(unittest.TestCase):
         self.assertIn("class=\"sag-panel\"", govde)
         self.assertIn("position:sticky", govde)
         self.assertIn(".sol-panel{grid-row:2}.sag-panel{grid-row:1", govde)
+        self.assertIn("grid-auto-flow:column;grid-auto-columns:minmax(125px,42%)", govde)
         self.assertIn("id=\"model-bolum-listesi\"", govde)
         self.assertIn("/api/ozel-hesaplamalar", govde)
         self.assertIn(ALT_BILGI, govde)
