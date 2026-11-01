@@ -51,6 +51,10 @@ class EkKatalogTestleri(unittest.TestCase):
         self.assertTrue(goz["tablolar"])
         kas = [x for x in ozel if x["bolum"] == "KAS-İSKELET SİSTEMİ"]
         self.assertGreaterEqual(len(kas), 3)
+        omurga = next(x for x in kas if x["id"] == "OZ-KIS-001")
+        for tablo_index, beklenen in ((0, 5), (1, 5), (2, 5), (3, 31), (4, 16), (5, 17)):
+            self.assertEqual(len(omurga["tablolar"][tablo_index]["satirlar"]), beklenen)
+        self.assertEqual(len(goz["tablolar"][0]["satirlar"]), 27)
         self.assertTrue(all("uyari" in x for x in ozel))
 
     def test_romatoloji_ayri_resmi_ust_bolum_varsayilmaz(self):
