@@ -310,9 +310,11 @@
         },
         {
           "ad": "Tablo 3 — GSYO 50'den fazla olduğunda engel oranı",
-          "sayfa": 177,
+          "sayfa": 163,
           "amac": "GSYO değerini engel oranına eşler.",
-          "formul": "GSYO 51–100 için engel oranı = (GSYO − 50) × 0,8 + 50; küsurat üst tam sayıya tamamlanır."
+          "formul": "GSYO 51–100 için engel oranı = (GSYO − 50) × 0,8 + 50; küsurat üst tam sayıya tamamlanır.",
+          "pdf_sayfa": 50,
+          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü s.50 / basılı Resmî Gazete s.163 ile karşılaştırıldı."
         }
       ],
       "uyari": "Bu hesaplama otomatik oran bulucu olarak uygulanmamıştır: ölçüm diyagramları, puan eşleştirme tabloları ve ek kayıp kuralları klinik girdiler olmadan güvenilir biçimde hesaplanamaz."
