@@ -141,7 +141,7 @@ class Sunucu(unittest.TestCase):
             self.assertIn("text/html", yanit.headers["Content-Type"])
             self.assertIn("charset=utf-8", yanit.headers["Content-Type"])
             govde = yanit.read().decode("utf-8")
-        self.assertIn("Balthazard Hesaplama", govde)
+        self.assertIn("Balthazard Hesapla", govde)
         self.assertIn("yaş aralığını seçin".lower(), govde.lower())
 
     def test_bilinmeyen_yol_404(self):
