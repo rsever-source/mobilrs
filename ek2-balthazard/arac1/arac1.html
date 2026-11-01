@@ -13,27 +13,36 @@
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
     font-family:Inter,Aptos,"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.5}
-  .sayfa{max-width:1440px;margin:0 auto;padding:0 16px 56px}
-  .arac-duzeni{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);gap:18px;align-items:start}
-  .sol-panel{min-width:0}
-  .sag-panel{position:sticky;top:12px;align-self:start;min-width:0}
-  .model-kart{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:0 8px 28px rgba(24,34,52,.05)}
-  .model-baslik{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
-  .model-baslik h2{font-size:19px;margin:0}
-  .model-rozet{font-size:12px;color:var(--muted);background:#f2f5f9;border-radius:999px;padding:5px 9px}
-  .model-govde{display:flex;justify-content:center;align-items:center;padding-top:12px}
-  .insan-svg{width:min(100%,300px);height:auto;max-height:calc(100vh - 190px);min-height:330px;display:block;overflow:visible}
-  .bolum-model-listesi{display:none}
-  .model-bolum{display:none}
-  .model-bolum:hover,.model-bolum[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
-  .model-nokta{width:10px;height:10px;flex:0 0 10px;border-radius:50%;background:#3d8bd9;box-shadow:0 0 0 4px #e8f2ff}
-  .model-bolum-metni{min-width:0;flex:1}
-  .model-bolum-ad{display:block;font-size:13px;font-weight:650;line-height:1.3}
-  .model-bolum-sayi{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
-  .model-aciklama{font-size:12px;color:var(--muted);margin-top:8px;text-align:center}
-  .insan-svg [data-bolum-eslesme]{cursor:pointer;outline:none}
-  .insan-svg [data-bolum-eslesme]:focus-visible{stroke:#0f6f5c;stroke-width:3}
-  .insan-svg [data-bolum-eslesme]:hover{filter:brightness(.94)}
+  :root{--ink:#101d34;--muted:#62738e;--line:#d5e1f0;--bg:#f4f8fd;--card:#fff;--accent:#075bc7;--accent-soft:#e5f1ff;--radius:17px}
+  body{background:linear-gradient(180deg,#f9fbff 0%,#eef5fd 100%);font-family:Inter,"Segoe UI",system-ui,sans-serif;color:var(--ink)}
+  .sayfa{max-width:1600px;margin:0 auto;padding:0 12px 44px}
+  .sekmeler{display:flex;gap:8px;padding:12px 0 16px;border-bottom:1px solid #dce7f5;flex-wrap:wrap}
+  .sekme{border:1px solid #d5e2f2;background:#fff;color:#172642;padding:10px 17px;border-radius:12px;font-size:15px;text-decoration:none;font-weight:650;box-shadow:0 2px 8px #193c6610}
+  .sekme[aria-current="page"]{background:#075bc7;border-color:#075bc7;color:#fff}
+  h1{font-size:clamp(24px,3vw,34px);letter-spacing:-.035em;margin:18px 0 6px}
+  .giris{max-width:900px;color:#536782;font-size:14px;margin-bottom:18px}
+  .arac-duzeni{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(380px,.92fr);gap:12px;align-items:start}
+  .sol-panel{min-width:0;background:#fff;border:1px solid #d8e5f4;border-radius:18px;padding:14px;box-shadow:0 10px 30px #183f6b0b}
+  .sag-panel{position:sticky;top:10px;align-self:start;min-width:0}
+  .model-kart{background:linear-gradient(160deg,#fff 0%,#fafdff 100%);border:1px solid #d2e1f3;border-radius:20px;padding:14px;box-shadow:0 12px 30px #1e4d7c13;overflow:hidden}
+  .model-baslik{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 2px 12px;border-bottom:1px solid #e0eaf7}
+  .model-baslik h2{font-size:19px;margin:0;color:#122746}
+  .model-rozet{font-size:12px;color:#075bc7;background:#eaf3ff;border:1px solid #d5e7ff;border-radius:999px;padding:5px 9px}
+  .model-govde{display:flex;justify-content:center;align-items:center;padding:8px 0 0;min-height:0}
+  .insan-svg{width:min(100%,490px);height:auto;max-height:calc(100vh - 130px);min-height:480px;display:block;overflow:visible}
+  .bolum-model-listesi,.model-bolum{display:none}
+  .model-aciklama{font-size:12px;color:#62738e;margin:2px 0 0;text-align:center}
+  .insan-svg [data-bolum-eslesme]{cursor:pointer;outline:none;transition:filter .15s}
+  .insan-svg [data-bolum-eslesme]:focus-visible{stroke:#075bc7;stroke-width:4}
+  .insan-svg [data-bolum-eslesme]:hover{filter:brightness(.86)}
+  .insan-svg .etiket{font:600 12px Inter,"Segoe UI",sans-serif;fill:#142b4b}
+  .insan-svg .lider{fill:none;stroke:#075bc7;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .cipler{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:4px 0 14px;overflow:visible}
+  .cip{min-width:0;width:100%;border:1px solid #d5e2f2;background:#fff;color:#172642;padding:8px 8px;border-radius:999px;font-size:13px;line-height:1.25;font-family:inherit;cursor:pointer;white-space:normal;overflow-wrap:anywhere}
+  .cip[aria-pressed="true"]{background:#dceeff;border-color:#78baff;color:#064eb5;font-weight:700}
+  .arama{background:#f9fbff;border:1px solid #e0eafa;border-radius:14px;padding:12px;margin-bottom:12px}
+  .arama input{border:1px solid #c7d8ee;border-radius:10px;padding:12px 13px;width:100%;font:inherit;background:#fff}
+  .kart{border:1px solid #d8e5f4;border-radius:15px;background:#fff;padding:14px;margin:0 0 12px;box-shadow:0 3px 12px #1e4d7c08}
   .ozel-baslik{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;list-style:none;font-weight:700}
   .ozel-baslik::-webkit-details-marker{display:none}
   .ozel-baslik:after{content:"+";font-size:22px;color:var(--muted);line-height:1}
@@ -42,8 +51,8 @@
   .ozel-kayit{border-top:1px solid var(--line);padding:10px 0}
   .ozel-kayit>summary{cursor:pointer;font-weight:650}
   .ozel-kayit[open]>summary{color:var(--accent)}
-  @media (max-width:900px){.arac-duzeni{grid-template-columns:minmax(0,1fr)}.sol-panel{grid-row:2}.sag-panel{grid-row:1;position:sticky;top:0;z-index:3}.model-kart{padding:12px}.model-govde{display:flex}.insan-svg{min-height:220px;max-height:280px;width:auto;max-width:100%}.bolum-model-listesi{display:none}}
-  @media (max-width:520px){.model-govde{display:flex;justify-content:center;gap:0}.model-kart{padding:8px}.model-baslik{padding-bottom:7px}.model-baslik h2{font-size:16px}.model-rozet{font-size:10px;padding:3px 6px}.insan-svg{min-height:170px;max-height:210px;width:auto;max-width:100%}.bolum-model-listesi{display:none}.model-aciklama{font-size:11px;margin-top:5px}}
+  @media(max-width:1050px){.arac-duzeni{grid-template-columns:minmax(0,1fr)}.sag-panel{grid-row:1;position:sticky;top:0;z-index:3}.sol-panel{grid-row:2}.model-kart{padding:12px}.insan-svg{min-height:420px;max-height:540px;width:auto;max-width:100%}}
+  @media(max-width:520px){.sayfa{padding:0 8px 30px}.sekmeler{padding:8px 0 12px}.sekme{font-size:13px;padding:8px 10px}.sol-panel{padding:9px}.model-kart{padding:8px}.model-baslik h2{font-size:16px}.model-rozet{font-size:10px;padding:3px 6px}.insan-svg{min-height:340px;max-height:400px;width:auto;max-width:100%}.cipler{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.cip{font-size:12px;padding:7px 5px}.arama{padding:9px}.kart{padding:10px}}
   h1{font-size:clamp(22px,4vw,30px);margin:18px 0 6px}
   h2{font-size:16px;margin:0 0 10px}
   h3{font-size:15px;margin:0}
@@ -221,16 +230,66 @@
       <section class="model-kart">
         <div class="model-baslik"><h2>İnsan Modeli</h2><span class="model-rozet">Bölüme göre filtrele</span></div>
         <div class="model-govde">
-          <svg class="insan-svg" viewBox="0 0 180 440" role="img" aria-label="İnsan vücudunun temsilî bölge haritası">
-            <defs><linearGradient id="govdeTon" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dceaf7"/><stop offset=".5" stop-color="#9bbbd7"/><stop offset="1" stop-color="#d5e5f3"/></linearGradient></defs>
-            <circle cx="90" cy="38" r="25" fill="url(#govdeTon)" stroke="#7198bd" stroke-width="1.5"/>
-            <path d="M72 65 Q59 73 55 94 L41 151 Q37 165 47 168 Q56 170 61 155 L77 111 L71 190 L61 255 Q59 268 69 270 Q79 271 82 257 L89 201 L96 257 Q99 271 109 270 Q119 268 116 255 L107 190 L103 111 L119 155 Q124 170 133 168 Q143 165 139 151 L125 94 Q121 73 108 65 Z" fill="url(#govdeTon)" stroke="#7198bd" stroke-width="1.5"/>
-            <path d="M73 76 Q90 86 107 76 L103 120 L107 190 L73 190 L77 120 Z" fill="#c1d9ec" stroke="#7198bd"/>
-            <path d="M73 190 L107 190 L112 276 L103 371 Q102 384 94 384 Q86 384 87 371 L89 276 L82 371 Q81 384 73 384 Q65 384 67 371 L68 276 Z" fill="url(#govdeTon)" stroke="#7198bd" stroke-width="1.5"/>
-            <path d="M76 101 Q83 92 88 103 L88 127 Q81 135 76 125 Z M92 103 Q98 92 104 101 L103 125 Q98 135 92 127 Z" fill="#ed9898" stroke="#c96b78"/>
-            <path d="M85 144 Q90 133 97 144 Q102 154 91 163 Q82 157 85 144 Z" fill="#df737d" stroke="#b64b5b"/>
-            <path d="M80 171 Q90 163 100 171 Q106 178 98 186 L84 186 Q77 181 80 171 Z" fill="#edb18c" stroke="#d18a65"/>
-            <circle cx="90" cy="38" r="7" fill="#63a9e9" stroke="#fff" stroke-width="2" data-bolum-eslesme="KBB" tabindex="0" role="button" aria-label="Kulak burun boğaz bölümünü seç"/><circle cx="91" cy="150" r="6" fill="#e65f69" stroke="#fff" stroke-width="2" data-bolum-eslesme="Kalp-Damar" tabindex="0" role="button" aria-label="Kalp damar bölümünü seç"/><circle cx="90" cy="178" r="5" fill="#e6a16d" stroke="#fff" stroke-width="2" data-bolum-eslesme="Sindirim" tabindex="0" role="button" aria-label="Sindirim bölümünü seç"/><circle cx="90" cy="200" r="5" fill="#c17da0" stroke="#fff" stroke-width="2" data-bolum-eslesme="Böbrek ve İdrar" tabindex="0" role="button" aria-label="Böbrek ve idrar bölümünü seç"/><circle cx="72" cy="264" r="6" fill="#4f91d2" stroke="#fff" stroke-width="2" data-bolum-eslesme="Kadın Hastalıkları" tabindex="0" role="button" aria-label="Kadın hastalıkları bölümünü seç"/><circle cx="108" cy="264" r="6" fill="#4f91d2" stroke="#fff" stroke-width="2" data-bolum-eslesme="Endokrin" tabindex="0" role="button" aria-label="Endokrin bölümünü seç"/>
+          <svg class="insan-svg" viewBox="0 0 420 610" role="img" aria-label="İnsan vücudu ve başlıca organ sistemleri; işaretler bölüm seçmek için kullanılabilir">
+            <defs>
+              <linearGradient id="skinBlue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e6f5ff"/><stop offset=".42" stop-color="#74b7ef"/><stop offset=".72" stop-color="#2d8bd7"/><stop offset="1" stop-color="#cceaff"/></linearGradient>
+              <linearGradient id="skinShade" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#287fcb"/><stop offset=".5" stop-color="#e2f4ff"/><stop offset="1" stop-color="#4b9fdf"/></linearGradient>
+              <radialGradient id="organGlow"><stop stop-color="#ffb1b6"/><stop offset="1" stop-color="#e34e69"/></radialGradient>
+              <linearGradient id="lungTone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffb5bc"/><stop offset="1" stop-color="#ef687d"/></linearGradient>
+              <linearGradient id="boneTone" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff7dc"/><stop offset="1" stop-color="#d4e4f4"/></linearGradient>
+              <filter id="bodyShadow" x="-30%" y="-10%" width="160%" height="130%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#4d9bdb" flood-opacity=".22"/></filter>
+            </defs>
+            <g filter="url(#bodyShadow)">
+              <path d="M186 85 Q169 91 151 104 Q132 111 119 139 L89 228 Q82 245 94 251 Q107 256 115 237 L145 169 L154 237 L146 326 L139 440 Q137 459 151 462 Q165 464 168 444 L184 337 L190 457 L188 573 Q188 590 203 590 Q218 589 217 571 L222 459 L229 571 Q229 589 244 590 Q259 589 257 571 L260 457 L277 444 Q280 462 294 461 Q308 459 305 440 L297 326 L289 237 L299 169 L329 237 Q337 256 350 251 Q362 245 355 228 L325 139 Q312 111 293 104 Q275 91 258 85 Z" fill="url(#skinBlue)" stroke="#428ecb" stroke-width="2"/>
+              <path d="M185 76 Q166 91 157 110 L175 186 L169 258 L251 258 L245 186 L263 110 Q254 91 235 76 Z" fill="url(#skinShade)" opacity=".48"/>
+              <path d="M186 83 Q210 97 234 83 L242 140 L235 204 L185 204 L178 140 Z" fill="#d5edff" opacity=".5"/>
+              <path d="M188 59 L188 87 Q210 102 232 87 L232 59 Z" fill="url(#skinBlue)" stroke="#428ecb" stroke-width="1.5"/>
+              <ellipse cx="210" cy="43" rx="29" ry="36" fill="url(#skinBlue)" stroke="#428ecb" stroke-width="2"/>
+              <path d="M190 34 Q194 19 208 24 Q219 15 230 29 L230 42 Q219 38 211 44 Q199 39 190 47 Z" fill="#7fcaef" stroke="#4b99d4" stroke-width="1.5"/>
+              <path d="M202 47 Q210 54 218 47 M207 62 Q210 66 213 62" fill="none" stroke="#4a8fbd" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M196 88 L210 106 L224 88" fill="none" stroke="#c9e8fc" stroke-width="5" stroke-linecap="round"/>
+              <path d="M209 106 L209 164" stroke="#e9f5ff" stroke-width="10" stroke-linecap="round"/>
+              <path d="M209 106 L209 164" stroke="#4c9cdb" stroke-width="3" stroke-linecap="round"/>
+              <path d="M209 120 C192 117 176 129 174 153 C171 174 181 195 198 196 C207 188 209 171 209 151 Z" fill="url(#lungTone)" stroke="#d95370" stroke-width="1.5"/>
+              <path d="M213 120 C230 117 246 129 248 153 C251 174 241 195 224 196 C215 188 213 171 213 151 Z" fill="url(#lungTone)" stroke="#d95370" stroke-width="1.5"/>
+              <path d="M210 127 L194 146 M210 127 L227 146 M194 146 L187 166 M194 146 L201 164 M227 146 L235 166 M227 146 L220 164" fill="none" stroke="#ffe0e2" stroke-width="3" stroke-linecap="round"/>
+              <path d="M213 151 C200 140 191 153 200 166 L213 180 L226 165 C235 151 221 141 213 151 Z" fill="url(#organGlow)" stroke="#bd344e" stroke-width="1.5"/>
+              <path d="M178 204 Q192 194 206 204 Q218 215 207 231 Q190 241 177 229 Q168 218 178 204 Z" fill="#a5c6e4" stroke="#598dbb" stroke-width="1.5"/>
+              <path d="M218 207 Q244 190 259 211 Q268 226 249 237 L226 235 Q216 226 218 207 Z" fill="#d88964" stroke="#b96c4b" stroke-width="1.5"/>
+              <path d="M226 241 Q246 234 252 249 Q256 261 241 272 Q224 280 216 266 Q212 254 226 241 Z" fill="#f2b17f" stroke="#d78b5a" stroke-width="1.5"/>
+              <path d="M181 244 C168 247 170 265 183 267 C172 280 183 290 195 282 C201 297 216 290 211 278 C226 289 236 275 225 265 C235 252 219 243 209 253 C198 239 188 239 181 244 Z" fill="#f7c29a" stroke="#df956d" stroke-width="2"/>
+              <path d="M183 254 Q203 248 221 258 M182 265 Q203 258 224 269 M188 278 Q204 270 219 280" fill="none" stroke="#d97f67" stroke-width="3" stroke-linecap="round"/>
+              <path d="M184 294 Q196 285 202 295 L202 305 Q195 314 184 307 Z M219 295 Q228 285 236 294 L236 307 Q226 314 219 305 Z" fill="#e85d70" stroke="#b93d58" stroke-width="1.5"/>
+              <path d="M210 300 L210 320 Q210 333 222 337 L222 346" fill="none" stroke="#d8f1ff" stroke-width="4" stroke-linecap="round"/>
+              <path d="M190 340 Q210 329 230 340 L230 356 Q210 366 190 356 Z" fill="#f3b7a1" stroke="#d9907e" stroke-width="1.5"/>
+              <path d="M195 351 Q205 346 215 351 Q225 356 215 361 Q205 365 195 360 Z" fill="#f9d5b9" stroke="#d9907e" stroke-width="1.2"/>
+              <path d="M174 114 Q159 135 163 158 L170 188 M246 114 Q261 135 257 158 L250 188" fill="none" stroke="#c8e9ff" stroke-width="7" stroke-linecap="round"/>
+              <path d="M177 116 L181 181 M243 116 L239 181 M180 204 L183 251 M240 204 L237 251 M187 309 L190 438 M232 309 L229 438" fill="none" stroke="url(#boneTone)" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+              <path d="M191 371 L191 438 M229 371 L229 438 M190 438 L180 485 M230 438 L240 485" fill="none" stroke="#e9f4ff" stroke-width="5" stroke-linecap="round"/>
+              <path d="M181 484 Q190 478 198 486 L196 497 L183 498 Z M222 486 Q230 478 239 484 L238 498 L224 497 Z" fill="#d8eafa" stroke="#669ecb" stroke-width="1.3"/>
+              <path d="M189 501 L186 568 M232 501 L235 568" fill="none" stroke="#b9dffb" stroke-width="7" stroke-linecap="round"/>
+            </g>
+            <g class="lider"><path d="M182 40 H112 L92 40"/><path d="M174 144 H113 L91 144"/><path d="M199 163 H113 L91 163"/><path d="M178 218 H112 L91 218"/><path d="M182 264 H112 L91 264"/><path d="M190 300 H112 L91 300"/><path d="M186 345 H112 L91 345"/><path d="M184 488 H112 L91 488"/></g>
+            <g class="etiket">
+              <text x="12" y="44">Göz / Sinir</text>
+              <text x="12" y="148">Göğüs</text>
+              <text x="12" y="167">Kalp</text>
+              <text x="12" y="222">Karaciğer</text>
+              <text x="12" y="268">Sindirim</text>
+              <text x="12" y="304">Böbrek</text>
+              <text x="12" y="349">Mesane</text>
+              <text x="12" y="492">Kas-İskelet</text>
+            </g>
+            <g fill="#fff" stroke="#075bc7" stroke-width="2.5">
+              <circle cx="182" cy="40" r="6" data-bolum-eslesme="Göz" tabindex="0" role="button" aria-label="Göz bölümünü seç"/>
+              <circle cx="174" cy="144" r="6" data-bolum-eslesme="Göğüs" tabindex="0" role="button" aria-label="Göğüs bölümünü seç"/>
+              <circle cx="199" cy="163" r="6" data-bolum-eslesme="Kalp" tabindex="0" role="button" aria-label="Kalp bölümünü seç"/>
+              <circle cx="178" cy="218" r="6" data-bolum-eslesme="Karaciğer" tabindex="0" role="button" aria-label="Karaciğer bölümünü seç"/>
+              <circle cx="182" cy="264" r="6" data-bolum-eslesme="Sindirim" tabindex="0" role="button" aria-label="Sindirim bölümünü seç"/>
+              <circle cx="190" cy="300" r="6" data-bolum-eslesme="Böbrek" tabindex="0" role="button" aria-label="Böbrek bölümünü seç"/>
+              <circle cx="186" cy="345" r="6" data-bolum-eslesme="Mesane" tabindex="0" role="button" aria-label="Mesane bölümünü seç"/>
+              <circle cx="184" cy="488" r="6" data-bolum-eslesme="Kas-İskelet" tabindex="0" role="button" aria-label="Kas iskelet bölümünü seç"/>
+            </g>
           </svg>
           </div>
         <p class="model-aciklama">Vücut üzerindeki işaretleri seçerek ilgili hastalık bölümüne geçin. Hastalık listesi solda kalır.</p>
