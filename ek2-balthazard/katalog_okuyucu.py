@@ -685,3 +685,61 @@ def yukle(katalog_yolu: Path | str | None = None,
         belirsiz_meta=MappingProxyType(belirsiz_ham.get("meta") or {}),
         dosya_ozeti=dosya_ozeti,
     )
+
+
+# --- EK-2 ek veri kümeleri --------------------------------------------------
+# Ana katalogdaki 286 kayıtlık sözleşme değişmezlerini değiştirmeden ek veri
+# kümelerini ayrı sözleşmeyle yükler. Tablo/formül kayıtları sabit oran değildir.
+
+def yukle_ek_katalog(yol: Path | None = None) -> dict:
+    """Sabit oranlı ek katalog dosyasını salt okunur yükler ve doğrular."""
+    dosya = yol or (VERI_KLASORU / "katalog_ek2_ek.json")
+    try:
+        veri = json.loads(dosya.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as hata:
+        raise KatalogHatasi("EK-2 ek kataloğu okunamadı: %s" % hata) from hata
+    bolumler = veri.get("bolumler")
+    if not isinstance(bolumler, list) or not bolumler:
+        raise KatalogHatasi("EK-2 ek kataloğunda bölüm listesi boş/geçersiz.")
+    kimlikler = set()
+    for bolum in bolumler:
+        if not bolum.get("ad") or not bolum.get("kisa"):
+            raise KatalogHatasi("EK-2 ek kataloğunda bölüm adı eksik.")
+        kayitlar = bolum.get("kayitlar")
+        if not isinstance(kayitlar, list) or not kayitlar:
+            raise KatalogHatasi("EK-2 ek kataloğunda boş/geçersiz bölüm.")
+        for kayit in kayitlar:
+            kimlik = kayit.get("id")
+            if not kimlik or kimlik in kimlikler:
+                raise KatalogHatasi("EK-2 ek kataloğunda boş/tekrarlı kimlik.")
+            if not kayit.get("hastalik") or not kayit.get("alt_tur"):
+                raise KatalogHatasi("EK-2 ek kataloğunda hastalık/seviye eksik: %s" % kimlik)
+            if not isinstance(kayit.get("oran"), int) or not 0 <= kayit["oran"] <= 100:
+                raise KatalogHatasi("EK-2 ek kataloğunda geçersiz oran: %s" % kimlik)
+            if not isinstance(kayit.get("sayfa"), int) or kayit["sayfa"] < 1:
+                raise KatalogHatasi("EK-2 ek kataloğunda geçersiz kaynak sayfası: %s" % kimlik)
+            kimlikler.add(kimlik)
+    return veri
+
+
+def yukle_ozel_hesaplamalar(yol: Path | None = None) -> dict:
+    """Ölçüm/formül/tablo gerektiren EK-2 yöntemlerini ayrı veri kümesi olarak yükler."""
+    dosya = yol or (VERI_KLASORU / "ozel_hesaplamalar.json")
+    try:
+        veri = json.loads(dosya.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as hata:
+        raise KatalogHatasi("EK-2 özel hesaplama kataloğu okunamadı: %s" % hata) from hata
+    satirlar = veri.get("ozel_hesaplamalar")
+    if not isinstance(satirlar, list) or not satirlar:
+        raise KatalogHatasi("EK-2 özel hesaplama listesi boş/geçersiz.")
+    kimlikler = set()
+    for satir in satirlar:
+        kimlik = satir.get("id")
+        if not kimlik or kimlik in kimlikler:
+            raise KatalogHatasi("EK-2 özel hesaplamalarında boş/tekrarlı kimlik.")
+        if not satir.get("bolum") or not satir.get("baslik") or not satir.get("tur"):
+            raise KatalogHatasi("EK-2 özel hesaplamasında zorunlu alan eksik: %s" % kimlik)
+        if not satir.get("uyari"):
+            raise KatalogHatasi("EK-2 özel hesaplamasında uyarı eksik: %s" % kimlik)
+        kimlikler.add(kimlik)
+    return veri
