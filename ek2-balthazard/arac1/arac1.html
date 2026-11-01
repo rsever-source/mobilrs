@@ -462,6 +462,18 @@
     <p class="ipucu" id="arama-ipucu">Arama 3 karakterden sonra çalışır; Türkçe yazım farkı önemli değildir.</p>
   </form>
 
+    <div class="model-yas-kontrol">
+      <label class="model-yas-sec" for="yas-ek-goster">
+        <input id="yas-ek-goster" type="checkbox" aria-controls="yas-ek-bilgi">
+        <span>65 yaş ve üzeri için %10 ek oran</span>
+      </label>
+      <div class="model-yas-bilgi gizli" id="yas-ek-bilgi">
+        <p>Yalnızca 65 yaş ve üzerindeki bireyler için geçerlidir. %10 ek, mevcut orana düz toplama ile eklenmez; Araç-2'de diğer oranlarla birlikte Balthazard yöntemiyle hesaplanır.</p>
+        <p><strong>Örnek:</strong> %40 → %46.</p>
+        <p class="model-yas-kaynak">Dayanak: 20.02.2019 tarihli ve 30692 sayılı Yönetmelik, madde 10/4. Bu kutu yalnızca bilgi alanını gösterir/gizler. %10 yaş eki Araç-1'deki canlı ön izlemeye uygulanmaz; yaş ekini hesaplamak için Araç-2'de yaş seçilir.</p>
+      </div>
+    </div>
+
   <div class="cipler" id="cipler" role="group" aria-label="Bölüm seçimi"></div>
 
   <details class="kart" id="ozel-hesaplama-kutusu" aria-labelledby="ozel-hesaplama-baslik">
@@ -487,18 +499,6 @@
 
 
   </main>
-
-    <div class="model-yas-kontrol">
-      <label class="model-yas-sec" for="yas-ek-goster">
-        <input id="yas-ek-goster" type="checkbox" aria-controls="yas-ek-bilgi">
-        <span>65 yaş ve üzeri için %10 ek oran</span>
-      </label>
-      <div class="model-yas-bilgi gizli" id="yas-ek-bilgi">
-        <p>Yalnızca 65 yaş ve üzerindeki bireyler için geçerlidir. %10 ek, mevcut orana düz toplama ile eklenmez; Araç-2'de diğer oranlarla birlikte Balthazard yöntemiyle hesaplanır.</p>
-        <p><strong>Örnek:</strong> %40 → %46.</p>
-        <p class="model-yas-kaynak">Dayanak: 20.02.2019 tarihli ve 30692 sayılı Yönetmelik, madde 10/4. Bu kutu yalnızca bilgi alanını gösterir/gizler. %10 yaş eki Araç-1'deki canlı ön izlemeye uygulanmaz; yaş ekini hesaplamak için Araç-2'de yaş seçilir.</p>
-      </div>
-    </div>
 
   <footer class="alt-bilgi">
     <p>Bu araç bilgilendirme amaçlıdır. Resmî engelli sağlık kurulu raporu yerine geçmez.</p>
