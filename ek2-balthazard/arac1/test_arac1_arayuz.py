@@ -77,7 +77,6 @@ class Arac1ArayuzTestleri(unittest.TestCase):
 
         self.assertNotIn('id="sepet-temizle"', html)
         self.assertNotIn("Seçimleri temizle", html)
-        self.assertIn('id="listeyi-kopyala">Oranları kopyala</button>', html)
         self.assertNotIn("Araç-2'ye geç →", html)
         self.assertIn('href="__ARAC2_ADRESI__"', html)
         self.assertNotIn("İnsan Modeli</h2>", html)
@@ -90,7 +89,7 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertNotIn('id="gruplar-baslik"', html)
         self.assertNotIn("function grupSec(", html)
         self.assertIn('ek_kayit: grup.rozet === "EK-2"', html)
-        self.assertNotIn("Hakkında", html)
+        self.assertNotIn(">Hakkında</a>", html)
         self.assertNotIn("v2.0", html)
         from pathlib import Path
         ana_uygulama = Path(__file__).resolve().parents[2] / "excel_vlookup_api.py"

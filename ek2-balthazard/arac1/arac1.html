@@ -469,6 +469,7 @@
         <h2 id="sepet-baslik">Seçilen kayıtlar (0)</h2>
         <ul class="liste" id="sepet-liste"></ul>
         <p class="bildirim" id="sepet-bildirim" role="status"></p>
+        <p class="ipucu">Bu seçimler bu sayfada tutulur. Araç-2’de birleştirmek istediğiniz oranları ayrıca girin; hastalık bilgileri ve yaş eki otomatik aktarılmaz.</p>
       </section>
     </aside>
   </div>
@@ -525,10 +526,15 @@
   ];
 
   function modelBolgesiBul(kayit) {
-    var anahtar = ((kayit.bolum || "") + " " + (kayit.ad || "") + " " + (kayit.seviye || ""))
-      .toLocaleLowerCase("tr-TR");
+    var taniAnahtari = ((kayit.ad || "") + " " + (kayit.seviye || "")).toLocaleLowerCase("tr-TR");
+    var hastalikBolgesi = modelBolgeHaritasi.find(function (satir) {
+      return satir.anahtarlar.some(function (parca) { return taniAnahtari.indexOf(parca) !== -1; });
+    });
+    if (hastalikBolgesi) return hastalikBolgesi;
+
+    var bolumAnahtari = (kayit.bolum || "").toLocaleLowerCase("tr-TR");
     return modelBolgeHaritasi.find(function (satir) {
-      return satir.anahtarlar.some(function (parca) { return anahtar.indexOf(parca) !== -1; });
+      return satir.anahtarlar.some(function (parca) { return bolumAnahtari.indexOf(parca) !== -1; });
     }) || {key:"genel", ad:kayit.bolum || "Genel", x:51, y:48};
   }
 
