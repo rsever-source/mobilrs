@@ -164,7 +164,9 @@ class Sunucu(unittest.TestCase):
         self.assertIn('id="siteAccessibilityToggle"', govde)
         self.assertIn('id="siteAccessibilityPanel"', govde)
         self.assertIn('aria-current="page">Balthazard Hesapla</a>', govde)
-        self.assertNotIn('aria-selected="true"', govde)
+        nav = govde.split('<nav class="sekmeler"', 1)[1].split("</nav>", 1)[0]
+        self.assertNotIn('aria-selected="true"', nav)
+        self.assertIn('aria-current="page">Balthazard Hesapla</a>', nav)
         self.assertIn("yaş aralığını seçin".lower(), govde.lower())
 
     def test_bilinmeyen_yol_404(self):
