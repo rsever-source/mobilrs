@@ -428,11 +428,12 @@ def arama_yuku(metin: str, bolum_adi: str | None) -> dict:
     ana_bolum_adi = None
     if bolum_adi:
         bolum = katalog_nesnesi.bolum(bolum_adi)
-        ek_bolum_secili = next(
+        ek_eslesen = next(
             (b for b in ek_katalog().get("bolumler", [])
              if bolum_adi in (b.get("ad"), b.get("kisa"))),
             None,
         )
+        ek_bolum_secili = ek_eslesen if bolum is None else None
         if bolum is None and ek_bolum_secili is None:
             return {"ok": False, "mesaj": "Bilinmeyen bölüm."}
         if bolum is not None:
