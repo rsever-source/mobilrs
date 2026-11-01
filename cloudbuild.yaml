@@ -158,6 +158,13 @@ steps:
         if b"EK-2 Hastal" not in home or b"Balthazard Oran" not in home:
             raise SystemExit("HATA: ana sayfada EK-2 arac kartlari bulunamadi")
         arac1 = urllib.request.urlopen(base + "/arac1", timeout=30).read()
+        arac2 = urllib.request.urlopen(base + "/arac2", timeout=30).read()
+        for arac_adi, sayfa in (("Araç-1", arac1), ("Araç-2", arac2)):
+            if (b'<header class="site-header" role="banner">' not in sayfa or
+                    b'class="site-brand" href="/" aria-label="Engelli.me ana sayfa"' not in sayfa or
+                    b'class="site-mobile-home" href="/">Anasayfa</a>' not in sayfa or
+                    b'id="siteAccessibilityPanel"' not in sayfa):
+                raise SystemExit(arac_adi + " ortak Engelli.me üst başlığı eksik.")
         if b'class="insan-model-gorsel"' not in arac1 or b'id="model-secim-cagri"' not in arac1 or b'function modeliGuncelle(bolumAdi)' not in arac1 or b'id="yas-ek-goster" type="checkbox" aria-controls="yas-ek-bilgi"' not in arac1 or b'checked' in arac1.split(b'id="yas-ek-goster"', 1)[1].split(b'>', 1)[0] or b'id="ozel-hesaplama-kutusu"' not in arac1 or b"V\xc3\xbccut \xc3\xbczerindeki i\xc5\x9faretleri se\xc3\xa7erek ilgili hastal\xc4\xb1k b\xc3\xb6l\xc3\xbcm\xc3\xbcne ge\xc3\xa7in." in arac1 or b"v2.0" in arac1 or b"Hakk" in arac1:
             raise SystemExit("HATA: Araç-1 arayüzü beklenen yeni düzende değil")
         import json

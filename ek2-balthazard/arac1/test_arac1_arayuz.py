@@ -50,6 +50,14 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertNotIn("Vücut üzerindeki işaretleri seçerek ilgili hastalık bölümüne geçin.", html)
         self.assertIn("@media(max-width:520px)", html)
         self.assertIn("position:static", html)
+        self.assertIn('<header class="site-header" role="banner">', html)
+        self.assertIn('class="site-brand" href="/" aria-label="Engelli.me ana sayfa"', html)
+        self.assertIn('id="siteAccessibilityToggle"', html)
+        self.assertIn('id="siteAccessibilityPanel"', html)
+        self.assertIn('class="site-mobile-home" href="/">Anasayfa</a>', html)
+        self.assertIn('data-site-font="1.12"', html)
+        self.assertIn('id="siteContrastToggle"', html)
+        self.assertIn('id="siteDarkToggle"', html)
         self.assertIn('id="yas-ek-bilgi"', html)
         self.assertIn("ozelHesaplamalariCiz", html)
         self.assertIn("function hastaliklariCiz()", html)
@@ -72,6 +80,11 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertIn('ek_kayit: grup.rozet === "EK-2"', html)
         self.assertNotIn("Hakkında", html)
         self.assertNotIn("v2.0", html)
+        from pathlib import Path
+        ana_uygulama = Path(__file__).resolve().parents[2] / "excel_vlookup_api.py"
+        ana_html = ana_uygulama.read_text(encoding="utf-8")
+        self.assertIn("<b>Hastalık Oranı Bulma</b>", ana_html)
+        self.assertNotIn("<b>EK-2 Hastalık Oranı Bulma</b>", ana_html)
 
     def test_bolumler_ve_sayilar(self):
         data = self._json("/api/bolumler")

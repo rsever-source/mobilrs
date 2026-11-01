@@ -276,10 +276,100 @@
     .cipler{grid-template-columns:repeat(2,minmax(0,1fr))}
     .sekme{font-size:11px;padding:7px 6px}
   }
+  /* Engelli.me ortak sabit üst başlığı */
+  body{padding-top:82px!important}
+  .skip-link{position:fixed;left:-9999px;top:8px;z-index:1100;padding:10px 14px;background:#101d34;color:#fff;border-radius:8px}
+  .skip-link:focus{left:8px}
+  .site-header{position:fixed;inset:0 0 auto 0;z-index:1000;min-height:82px;background:#0b1f38;color:#fff;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 18px 40px -30px rgba(3,13,28,.95);backdrop-filter:saturate(140%) blur(12px)}
+  .site-header-inner{width:min(1400px,calc(100% - 48px));min-height:82px;margin:0 auto;padding:12px 0;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .site-brand{display:flex;align-items:center;gap:14px;min-width:0;color:#fff;text-decoration:none;font-size:28px;font-weight:850;letter-spacing:-1.2px;white-space:nowrap}
+  .site-brand:hover{text-decoration:none}
+  .site-brand-accent{color:#6ea8ff}
+  .site-brand-logo{display:block;width:48px;height:48px;flex:0 0 48px;object-fit:contain;margin:0;border-radius:14px;background:#fff;padding:5px;box-shadow:0 6px 16px rgba(0,0,0,.28)}
+  .site-accessibility-tools{display:flex;align-items:center;justify-content:flex-end;min-width:0}
+  .site-accessibility-toggle{display:none;border:1px solid #b8cbed;border-radius:8px;padding:7px 11px;background:#edf4ff;color:#0b57e3;font-size:12px;font-weight:800;cursor:pointer}
+  .site-accessibility-panel{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .site-accessibility-panel-head{display:flex;align-items:center;gap:7px}
+  .site-accessibility-options{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .site-accessibility-panel button{border:1px solid rgba(255,255,255,.22);border-radius:9px;padding:8px 12px;background:rgba(255,255,255,.07);color:#dbe8ff;font-size:12px;font-weight:800;cursor:pointer}
+  .site-accessibility-panel button[aria-pressed="true"]{background:#2f7bff;border-color:#2f7bff;color:#fff}
+  .site-accessibility-panel .site-tool-label{font-size:11px;font-weight:800;color:#94aac7;white-space:nowrap}
+  .site-accessibility-panel .site-accessibility-reset{font-size:11px;padding:5px 8px;background:transparent;border-color:transparent;color:#94aac7}
+  .site-accessibility-panel .site-accessibility-reset:hover{text-decoration:underline}
+  .site-mobile-home{display:none}
+  body.high-contrast .site-header{background:#fff;color:#000;border-bottom:2px solid #000;box-shadow:none;backdrop-filter:none}
+  body.high-contrast .site-brand,body.high-contrast .site-brand-accent{color:#000}
+  body.high-contrast .site-brand-logo{border:2px solid #000;box-shadow:none}
+  body.high-contrast .site-accessibility-panel button{background:#fff;border-color:#000;color:#000}
+  body.high-contrast .site-accessibility-panel button[aria-pressed="true"]{background:#000;color:#fff}
+  body.high-contrast .site-accessibility-panel .site-tool-label,body.high-contrast .site-accessibility-panel .site-accessibility-reset{color:#000}
+  body.dark-mode{background:#111a27!important;color:#edf2f8}
+  body.dark-mode .sayfa,body.dark-mode .sol-panel,body.dark-mode .sag-panel,body.dark-mode .model-kart,
+  body.dark-mode .kart,body.dark-mode .arama,body.dark-mode .model-yas-kontrol{background:#1a2636;color:#edf2f8;border-color:#45566d}
+  body.dark-mode input,body.dark-mode textarea,body.dark-mode select{background:#111a27;color:#edf2f8;border-color:#45566d}
+  body.dark-mode .satir,body.dark-mode .sepet-satir{background:#1a2636;color:#edf2f8;border-color:#45566d}
+  body.font-large .sayfa{zoom:1.12}
+  body.font-xlarge .sayfa{zoom:1.25}
+  body.font-large .site-accessibility-tools,body.font-xlarge .site-accessibility-tools{zoom:.9}
+  @media(max-width:760px){
+    body{padding-top:104px!important}
+    .site-header{min-height:104px}
+    .site-header-inner{width:100%;min-height:104px;padding:9px 12px;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand home" "tools tools";gap:8px 10px;align-content:center}
+    .site-brand{grid-area:brand;gap:8px;font-size:22px;letter-spacing:-.7px}
+    .site-brand-logo{width:38px;height:38px;flex-basis:38px;padding:4px;border-radius:11px}
+    .site-mobile-home{grid-area:home;display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:6px 11px;border:1px solid rgba(255,255,255,.35);border-radius:9px;color:#fff;background:rgba(255,255,255,.08);font-size:12px;font-weight:800;text-decoration:none;white-space:nowrap}
+    body.high-contrast .site-mobile-home{color:#000;border-color:#000;background:#fff}
+    .site-accessibility-tools{grid-area:tools;justify-self:end;position:relative}
+    .site-accessibility-toggle{display:block;min-height:30px;padding:5px 10px;background:rgba(255,255,255,.08);color:#dbe8ff;border-color:rgba(255,255,255,.25)}
+    body.high-contrast .site-accessibility-toggle{background:#fff;color:#000;border-color:#000}
+    .site-accessibility-panel{display:none;position:absolute;right:0;top:calc(100% + 7px);width:min(340px,calc(100vw - 24px));padding:10px;border:1px solid #cbd7e7;border-radius:12px;background:#fff;color:#182234;box-shadow:0 12px 32px rgba(0,0,0,.2);align-items:stretch;gap:8px}
+    .site-accessibility-panel.open{display:flex;flex-direction:column}
+    .site-accessibility-panel .site-accessibility-panel-head{justify-content:space-between}
+    .site-accessibility-panel .site-tool-label{color:#596579}
+    .site-accessibility-panel .site-accessibility-reset{color:#596579}
+    .site-accessibility-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+    .site-accessibility-panel button{min-height:36px;padding:6px 7px;background:#edf4ff;border-color:#b8cbed;color:#0b57e3}
+    .site-accessibility-panel button[aria-pressed="true"]{background:#0b57e3;color:#fff;border-color:#0b57e3}
+    body.high-contrast .site-accessibility-panel{background:#fff;border:2px solid #000}
+    body.dark-mode .site-accessibility-panel{background:#1a2636;color:#edf2f8;border-color:#45566d}
+    body.dark-mode .site-accessibility-panel .site-tool-label,body.dark-mode .site-accessibility-panel .site-accessibility-reset{color:#edf2f8}
+    body.dark-mode .site-accessibility-panel button{background:#111a27;color:#edf2f8;border-color:#62738e}
+    body.dark-mode .site-accessibility-panel button[aria-pressed="true"]{background:#2f7bff;color:#fff}
+  }
+  @media(max-width:360px){
+    .site-brand{font-size:20px}
+    .site-mobile-home{padding:5px 8px;font-size:11px}
+  }
 </style>
 </head>
 <body>
-<div class="sayfa">
+<a class="skip-link" href="#main-content">İçeriğe geç</a>
+<header class="site-header" role="banner">
+  <div class="site-header-inner">
+    <a class="site-brand" href="/" aria-label="Engelli.me ana sayfa">
+      <span>Engelli<span class="site-brand-accent">.me</span></span>
+      <img class="site-brand-logo" src="/logo.png?v=1" alt="" width="48" height="48" decoding="async">
+    </a>
+    <div class="site-accessibility-tools">
+      <button type="button" id="siteAccessibilityToggle" class="site-accessibility-toggle" aria-expanded="false" aria-controls="siteAccessibilityPanel">Erişilebilirlik</button>
+      <div id="siteAccessibilityPanel" class="site-accessibility-panel" role="group" aria-label="Erişilebilirlik seçenekleri" tabindex="-1">
+        <div class="site-accessibility-panel-head">
+          <span class="site-tool-label">Erişilebilirlik seçenekleri</span>
+          <button type="button" id="siteAccessibilityReset" class="site-accessibility-reset">Sıfırla</button>
+        </div>
+        <div class="site-accessibility-options">
+          <button type="button" data-site-font="1" aria-label="Standart yazı boyutu">A</button>
+          <button type="button" data-site-font="1.12" aria-label="Büyük yazı boyutu">A+</button>
+          <button type="button" data-site-font="1.25" aria-label="Daha büyük yazı boyutu">A++</button>
+          <button type="button" id="siteContrastToggle" aria-pressed="false">Yüksek kontrast</button>
+          <button type="button" id="siteDarkToggle" aria-pressed="false">Koyu mod</button>
+        </div>
+      </div>
+    </div>
+    <a class="site-mobile-home" href="/">Anasayfa</a>
+  </div>
+</header>
+<div class="sayfa" id="main-content" tabindex="-1">
   <nav class="sekmeler" aria-label="Araçlar">
     <a class="sekme" href="/arac1" aria-current="page">Engel Oranı Bul</a>
     <a class="sekme" href="__ARAC2_ADRESI__">Balthazard Hesapla</a>
@@ -891,6 +981,66 @@ var tumu = el("button", "cip", "Tümü");
     if (!yanit.ok) { throw new Error("Bölümler okunamadı."); }
     cipleriKur(yanit.bolumler || []);
   }).catch(hataGoster);
+})();
+</script>
+<script>
+(function(){
+  "use strict";
+  var toggle=document.getElementById("siteAccessibilityToggle");
+  var panel=document.getElementById("siteAccessibilityPanel");
+  var reset=document.getElementById("siteAccessibilityReset");
+  var contrastButton=document.getElementById("siteContrastToggle");
+  var darkButton=document.getElementById("siteDarkToggle");
+  if(!toggle||!panel||!reset||!contrastButton||!darkButton)return;
+  function oku(){
+    var font="1",contrast=false,dark=false;
+    try{
+      font=localStorage.getItem("engellime-font-size")||"1";
+      contrast=localStorage.getItem("engellime-high-contrast")==="1";
+      dark=localStorage.getItem("engellime-dark-mode")==="1";
+    }catch(e){}
+    document.documentElement.style.setProperty("--base-scale",font);
+    document.body.classList.toggle("font-large",font==="1.12");
+    document.body.classList.toggle("font-xlarge",font==="1.25");
+    document.body.classList.toggle("high-contrast",contrast);
+    document.body.classList.toggle("dark-mode",dark);
+    document.querySelectorAll("[data-site-font]").forEach(function(button){
+      button.setAttribute("aria-pressed",button.getAttribute("data-site-font")===font?"true":"false");
+    });
+    contrastButton.setAttribute("aria-pressed",contrast?"true":"false");
+    darkButton.setAttribute("aria-pressed",dark?"true":"false");
+  }
+  function panelAc(open,focus){
+    panel.classList.toggle("open",open);
+    toggle.setAttribute("aria-expanded",open?"true":"false");
+    if(focus){(open?panel:toggle).focus();}
+  }
+  toggle.addEventListener("click",function(){panelAc(!panel.classList.contains("open"),true);});
+  panel.addEventListener("keydown",function(e){if(e.key==="Escape"){e.preventDefault();panelAc(false,true);}});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&panel.classList.contains("open")){e.preventDefault();panelAc(false,true);}});
+  document.querySelectorAll("[data-site-font]").forEach(function(button){
+    button.addEventListener("click",function(){
+      try{localStorage.setItem("engellime-font-size",button.getAttribute("data-site-font"));}catch(e){}
+      oku();
+    });
+  });
+  contrastButton.addEventListener("click",function(){
+    try{localStorage.setItem("engellime-high-contrast",document.body.classList.contains("high-contrast")?"0":"1");}catch(e){}
+    oku();
+  });
+  darkButton.addEventListener("click",function(){
+    try{localStorage.setItem("engellime-dark-mode",document.body.classList.contains("dark-mode")?"0":"1");}catch(e){}
+    oku();
+  });
+  reset.addEventListener("click",function(){
+    try{
+      localStorage.removeItem("engellime-font-size");
+      localStorage.removeItem("engellime-high-contrast");
+      localStorage.removeItem("engellime-dark-mode");
+    }catch(e){}
+    oku();
+  });
+  oku();
 })();
 </script>
 </body>

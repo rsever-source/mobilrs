@@ -158,6 +158,13 @@ class Sunucu(unittest.TestCase):
             self.assertIn("charset=utf-8", yanit.headers["Content-Type"])
             govde = yanit.read().decode("utf-8")
         self.assertIn("Balthazard Hesapla", govde)
+        self.assertIn('<header class="site-header" role="banner">', govde)
+        self.assertIn('class="site-brand" href="/" aria-label="Engelli.me ana sayfa"', govde)
+        self.assertIn('class="site-mobile-home" href="/">Anasayfa</a>', govde)
+        self.assertIn('id="siteAccessibilityToggle"', govde)
+        self.assertIn('id="siteAccessibilityPanel"', govde)
+        self.assertIn('aria-current="page">Balthazard Hesapla</a>', govde)
+        self.assertNotIn('aria-selected="true"', govde)
         self.assertIn("yaş aralığını seçin".lower(), govde.lower())
 
     def test_bilinmeyen_yol_404(self):
