@@ -101,28 +101,13 @@ class Sunucu(unittest.TestCase):
         self.assertEqual(veri["hata"]["kod"], "E_YAS_SECILMEDI")
 
     def test_json_turu_ve_null_girdi(self):
-        for govde in ([], 40):
+        for govde in ([], 40, None):
             with self.subTest(govde=govde):
-                _, veri = self._post(json.dumps(govde).encode("utf-8"))
+                durum, veri = self._post(json.dumps(govde).encode("utf-8"))
+                self.assertEqual(durum, 200)
                 self.assertFalse(veri["ok"])
                 self.assertEqual(veri["hata"]["kod"], "E_ORAN_TIP")
                 self.assertEqual(veri["hata"]["alan"], "girdi")
-        istek = urllib.request.Request(
-            self.adres + "/api/hesapla",
-            data=b"null",
-            headers={"Content-Type": "application/json"},
-            method="POST",
-        )
-        with self.assertRaises(urllib.error.HTTPError) as baglam:
-            urllib.request.urlopen(istek, timeout=5)
-        hata = baglam.exception
-        try:
-            self.assertEqual(hata.code, 400)
-            veri = json.loads(hata.read().decode("utf-8"))
-        finally:
-            hata.close()
-        self.assertFalse(veri["ok"])
-        self.assertIn("mesaj", veri)
 
     def test_html_baglantilar_ve_girdi_filtresi(self):
         with urllib.request.urlopen(self.adres + "/", timeout=5) as yanit:
