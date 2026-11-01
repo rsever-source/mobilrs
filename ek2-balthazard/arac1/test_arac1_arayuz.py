@@ -36,10 +36,13 @@ class Arac1ArayuzTestleri(unittest.TestCase):
 
     def test_insan_modeli_ve_masaustu_mobil_duzeni(self):
         html = self._al("/arac1").decode("utf-8")
-        self.assertIn('id="model-bolum-listesi"', html)
+        self.assertNotIn('id="model-bolum-listesi"', html)
+        self.assertNotIn("modelBolumListesi", html)
         self.assertIn("position:sticky", html)
         self.assertIn("grid-row:2", html)
-        self.assertIn("grid-auto-flow:column", html)
+        self.assertIn('id="ozel-hesaplama-kutusu"', html)
+        self.assertIn('<details class="kart" id="ozel-hesaplama-kutusu"', html)
+        self.assertIn('data-bolum-eslesme="Kalp-Damar"', html)
         self.assertIn("ozelHesaplamalariCiz", html)
         self.assertNotIn("Hakkında", html)
         self.assertNotIn("v2.0", html)
