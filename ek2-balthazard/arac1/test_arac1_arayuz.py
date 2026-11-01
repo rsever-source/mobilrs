@@ -241,10 +241,10 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertIn('id="vucut-dugmeler"', self.html)
         self.assertIn('role="img" aria-label="Tıklanabilir vücut şeması"', self.html)
         self.assertIn('addEventListener("keydown"', self.html)
-        self.assertIn('bolumSec(bolge.getAttribute("data-bolum"))', self.html)
+        self.assertIn('bolumSec(bolge.getAttribute("data-bolum"), bolge.getAttribute("data-kisa"))', self.html)
 
     def test_hastalik_seviye_listeleri_kompakt_ve_tek_acik(self):
-        self.assertIn('class="liste hastalik-grid"', self.html)
+        self.assertIn('el("ul", "liste hastalik-grid")', self.html)
         self.assertIn('grid-template-columns:repeat(2,minmax(0,1fr))', self.html)
         self.assertIn('querySelectorAll(".seviyeler")', self.html)
         self.assertIn('acikListe.remove()', self.html)
