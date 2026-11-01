@@ -202,7 +202,7 @@ class Arac1Testleri(unittest.TestCase):
         self.assertIn('return "%" + s.gosterim', self.html)
         self.assertNotIn("Alışverişe devam", self.html)
         self.assertNotIn("Balthazard ile hesapla →", self.html)
-        self.assertIn("Araç-2'ye otomatik aktarılmaz", self.html)
+        self.assertIn("hastalık bilgileri ve yaş eki başka araca otomatik aktarılmaz", self.html)
 
     # --- sağlık / bölüm / gezinme ------------------------------------------
 
