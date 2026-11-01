@@ -230,6 +230,7 @@
 
   var durum = { bolum: "", gruplar: [], sepet: [] };
   var cipler = document.getElementById("cipler");
+  var modelBolumListesi = document.getElementById("model-bolum-listesi");
   var giris = document.getElementById("q");
   var listeKutu = document.getElementById("liste");
   var listeIcerik = document.getElementById("liste-icerik");
@@ -261,6 +262,19 @@
   // --- bölüm çipleri -------------------------------------------------------
   function cipleriKur(bolumler) {
     cipler.innerHTML = "";
+    modelBolumListesi.innerHTML = "";
+    bolumler.forEach(function (b) {
+      var dugmeModel = el("button", "model-bolum");
+      dugmeModel.type = "button";
+      dugmeModel.setAttribute("aria-pressed", "false");
+      dugmeModel.appendChild(el("span", "model-nokta"));
+      var metinModel = el("span", "model-bolum-metni");
+      metinModel.appendChild(el("span", "model-bolum-ad", b.ad));
+      metinModel.appendChild(el("span", "model-bolum-sayi", b.kayit_sayisi + " kayıt"));
+      dugmeModel.appendChild(metinModel);
+      dugmeModel.addEventListener("click", function () { bolumSec(b.ad); });
+      modelBolumListesi.appendChild(dugmeModel);
+    });
     var tumu = el("button", "cip", "Tümü");
     tumu.type = "button";
     tumu.dataset.bolum = "";
@@ -278,6 +292,10 @@
     });
   }
   function cipIsaretle() {
+    Array.prototype.forEach.call(modelBolumListesi.children, function (dugme) {
+      var ad = dugme.querySelector(".model-bolum-ad");
+      dugme.setAttribute("aria-pressed", ad && ad.textContent === durum.bolum ? "true" : "false");
+    });
     Array.prototype.forEach.call(cipler.children, function (dugme) {
       var secili = (dugme.dataset.bolum || "") === durum.bolum;
       dugme.setAttribute("aria-pressed", secili ? "true" : "false");
