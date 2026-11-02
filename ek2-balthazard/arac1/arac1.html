@@ -51,6 +51,9 @@
   .ozel-kayit{border-top:1px solid var(--line);padding:10px 0}
   .ozel-kayit>summary{cursor:pointer;font-weight:650}
   .ozel-kayit[open]>summary{color:var(--accent)}
+  .ozel-kaynak-tablo{border-top:1px solid var(--line);padding:9px 0}
+  .ozel-kaynak-tablo>summary{cursor:pointer;font-weight:650;line-height:1.4}
+  .ozel-kaynak-tablo[open]>summary{color:var(--accent);margin-bottom:8px}
   @media(max-width:1050px){.arac-duzeni{grid-template-columns:minmax(0,1fr)}.sag-panel{grid-row:1;position:sticky;top:0;z-index:3}.sol-panel{grid-row:2}.model-kart{padding:12px}.insan-svg{min-height:420px;max-height:540px;width:auto;max-width:100%}}
   @media(max-width:520px){.sayfa{padding:0 8px 30px}.sekmeler{padding:8px 0 12px}.sekme{font-size:13px;padding:8px 10px}.sol-panel{padding:9px}.model-kart{padding:8px}.model-baslik h2{font-size:16px}.model-rozet{font-size:10px;padding:3px 6px}.insan-svg{min-height:340px;max-height:400px;width:auto;max-width:100%}.cipler{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.cip{font-size:12px;padding:7px 5px}.arama{padding:9px}.kart{padding:10px}}
   h1{font-size:clamp(22px,4vw,30px);margin:18px 0 6px}
@@ -1048,37 +1051,38 @@ var tumu = el("button", "cip", "Tümü");
         icerik.appendChild(adimlar);
       }
       if (kayit.tablolar && kayit.tablolar.length) {
-        var tabloBaslik = el("p", "ipucu", "Kaynak tablolar:");
-        icerik.appendChild(tabloBaslik);
-        var tablolar = el("ul");
+        icerik.appendChild(el("p", "ipucu", "Kaynak tablolar:"));
         kayit.tablolar.forEach(function (tablo) {
-          var li = el("li");
-          li.textContent = tablo.ad + (tablo.sayfa ? " · s." + tablo.sayfa : "") +
-            (tablo.amac ? " — " + tablo.amac : "");
-          tablolar.appendChild(li);
-        });
-        icerik.appendChild(tablolar);
-        kayit.tablolar.forEach(function (tablo) {
-          if (!tablo.satirlar || !tablo.satirlar.length) { return; }
-          var tabloEl = el("table", "kaynak-tablosu");
-          var thead = el("thead");
-          var baslikSatiri = el("tr");
-          (tablo.sutunlar || ["Değer"]).forEach(function (sutun) {
-            baslikSatiri.appendChild(el("th", null, sutun));
-          });
-          thead.appendChild(baslikSatiri);
-          tabloEl.appendChild(thead);
-          var tbody = el("tbody");
-          tablo.satirlar.forEach(function (hucreler) {
-            var tr = el("tr");
-            hucreler.forEach(function (hucre) { tr.appendChild(el("td", null, String(hucre))); });
-            tbody.appendChild(tr);
-          });
-          tabloEl.appendChild(tbody);
-          icerik.appendChild(tabloEl);
-          if (tablo.kaynak_goruntu_dogrulamasi) {
-            icerik.appendChild(el("p", "ipucu", tablo.kaynak_goruntu_dogrulamasi));
+          var tabloKutu = el("details", "ozel-kaynak-tablo");
+          var tabloBaslik = el("summary", null, tablo.ad +
+            (tablo.sayfa ? " · s." + tablo.sayfa : ""));
+          tabloKutu.appendChild(tabloBaslik);
+
+          if (tablo.amac) {
+            tabloKutu.appendChild(el("p", "ipucu", tablo.amac));
           }
+          if (tablo.satirlar && tablo.satirlar.length) {
+            var tabloEl = el("table", "kaynak-tablosu");
+            var thead = el("thead");
+            var baslikSatiri = el("tr");
+            (tablo.sutunlar || ["Değer"]).forEach(function (sutun) {
+              baslikSatiri.appendChild(el("th", null, sutun));
+            });
+            thead.appendChild(baslikSatiri);
+            tabloEl.appendChild(thead);
+            var tbody = el("tbody");
+            tablo.satirlar.forEach(function (hucreler) {
+              var tr = el("tr");
+              hucreler.forEach(function (hucre) { tr.appendChild(el("td", null, String(hucre))); });
+              tbody.appendChild(tr);
+            });
+            tabloEl.appendChild(tbody);
+            tabloKutu.appendChild(tabloEl);
+          }
+          if (tablo.kaynak_goruntu_dogrulamasi) {
+            tabloKutu.appendChild(el("p", "ipucu", tablo.kaynak_goruntu_dogrulamasi));
+          }
+          icerik.appendChild(tabloKutu);
         });
       }
       if (kayit.hesaplama_kurali) { icerik.appendChild(el("p", null, kayit.hesaplama_kurali)); }
