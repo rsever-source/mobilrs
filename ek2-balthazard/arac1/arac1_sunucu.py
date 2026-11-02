@@ -101,11 +101,14 @@ BOLUM_NOTU = {
 }
 
 BOS_SONUC = {
-    "yazim": "Yazımı kontrol edin veya bölüm seçerek ilerleyin.",
+    "yazim": "Farklı bir yazım deneyin. Bölüm seçimi sonuçları daraltır.",
     "kapsam": "Görme ve kas-iskelet sistemindeki bazı değerlendirmeler ölçüm, tablo dönüşümü veya birden fazla adım gerektirir; bunlar tek bir sabit oran olarak gösterilmez.",
 }
 
-ARAMA_IPUCU = "Arama 3 karakterden sonra çalışır."
+ARAMA_IPUCU = (
+    "Arama 3 karakterden sonra çalışır. Türkçe karakterlerin temel yazım farklılıkları "
+    "desteklenir; eş anlamlı ve ses benzerliği eşleştirmesi yapılmaz."
+)
 
 ALT_BILGI = {
     "kisa": "Bu araç bilgilendirme amaçlıdır. Resmî engelli sağlık kurulu raporu yerine geçmez.",
@@ -322,9 +325,13 @@ def belirsiz_yuku(satir) -> dict:
 
 
 def bolum_kisa(ad: str) -> str:
+    """Bölüm kısa adını ana ve ek kataloglarda tek biçimde döndürür."""
     for bolum in katalog().bolumler:
         if bolum.ad == ad:
             return bolum.kisa
+    for bolum in ek_katalog().get("bolumler", []):
+        if bolum.get("ad") == ad:
+            return bolum.get("kisa", ad)
     return ad
 
 
@@ -394,6 +401,7 @@ def gezinme_yuku(bolum_adi: str | None) -> dict:
     return {
         "ok": True, "bolumler": bolum_listesi,
         "kapsam_disi": list(katalog_nesnesi.meta.get("kapsam_disi") or []),
+        "kapsam_kismi": list(katalog_nesnesi.meta.get("kapsam_kismi") or []),
     }
 
 
@@ -459,7 +467,7 @@ def arama_yuku(metin: str, bolum_adi: str | None) -> dict:
                 "seviye": satir["alt_tur"],
                 "rozet": "EK-2 ek kayıt",
                 "bolum": bolum["ad"],
-                "bolum_kisa": bolum.get("kisa", bolum["ad"]),
+                "bolum_kisa": bolum_kisa(bolum["ad"]),
                 "grup": None,
                 "oran": satir["oran"],
                 "oran_gosterim": oran["gosterim"],
@@ -599,7 +607,7 @@ class Isleyici(BaseHTTPRequestHandler):
                         "ok": True, "tur": "sonuc", "id": satir["id"],
                         "ad": satir["hastalik"], "seviye": satir["alt_tur"],
                         "rozet": "EK-2 ek kayıt", "bolum": bolum["ad"],
-                        "bolum_kisa": bolum.get("kisa", bolum["ad"]),
+                        "bolum_kisa": bolum_kisa(bolum["ad"]),
                         "grup": None, "grup_rozet": None,
                         "oran": {"ham": gosterim["ham"], "gosterim": gosterim["gosterim"],
                                  "etiket": "EK-2 kaynak satırında açıkça belirtilen sabit oran"},

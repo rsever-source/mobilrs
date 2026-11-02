@@ -39,8 +39,17 @@
   ],
   "kapsam_disi": [
    "GÖRME SİSTEMİ (ayrı hesaplayıcı)",
-   "KAS-İSKELET SİSTEMİ (ayrı hesaplayıcı)",
-   "sindirim, ürogenital, nörolojik ve diğer bazı bölümler (henüz kapsam dışı)"
+   "KAS-İSKELET SİSTEMİ (ayrı hesaplayıcı)"
+  ],
+  "kapsam_kismi": [
+   "KARDİYOVASKÜLER SİSTEM (EK-2 ek sayfalarındaki doğrulanmış kayıtlar)",
+   "KADIN HASTALIKLARI VE DOĞUM",
+   "ÜROGENİTAL SİSTEM",
+   "SİNDİRİM SİSTEMİ",
+   "ENDOKRİN VE METABOLİZMA HASTALIKLARI",
+   "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
+   "ONKOLOJİ",
+   "SİNİR SİSTEMİ"
   ],
   "sayi": {
    "toplam_sayisal_satir": 440,

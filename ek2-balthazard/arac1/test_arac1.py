@@ -38,7 +38,7 @@ BOLUM_NOTU_METIN = (
     "Hastalığın aktivasyonunda ilerleme veya gerileme ihtimali olan hastalarda "
     "raporun geçerlilik süresi belirtilmelidir."
 )
-BOS_YAZIM = "Yazımı kontrol edin veya bölüm seçerek ilerleyin."
+BOS_YAZIM = "Farklı bir yazım deneyin. Bölüm seçimi sonuçları daraltır."
 BOS_KAPSAM = "Görme ve kas-iskelet sistemindeki bazı değerlendirmeler ölçüm, tablo dönüşümü veya birden fazla adım gerektirir; bunlar tek bir sabit oran olarak gösterilmez."
 ALT_BILGI = "Bu araç bilgilendirme amaçlıdır. Resmî engelli sağlık kurulu raporu yerine geçmez."
 SIFIR_ACIKLAMA = "Bu basamakta kaynak 0 oran veriyor"
@@ -149,7 +149,7 @@ class Arac1Testleri(unittest.TestCase):
         self.assertEqual(durum, 200)
         self.assertIn("text/html; charset=utf-8", tur)
         govde = html.decode("utf-8")
-        self.assertIn("<title>Araç-1 — Engel Oranı Bul | Engelli.me", govde)
+        self.assertIn("<title>EK-2 Engel Oranı Bulma | Engelli.me", govde)
         self.assertIn("Engel Oranı Bul", govde)
         self.assertIn("Balthazard Hesapla", govde)
         self.assertIn("__ARAC2_ADRESI__", govde)
@@ -158,8 +158,9 @@ class Arac1Testleri(unittest.TestCase):
         self.assertNotIn('class="insan-model-gorsel"', govde)
         self.assertNotIn('id="model-secim-cagri"', govde)
         self.assertNotIn("function modeliGuncelle(bolumAdi)", govde)
-        self.assertIn('id="yas-ek-goster" type="checkbox" aria-controls="yas-ek-bilgi"', govde)
-        self.assertNotIn('id="yas-ek-goster" type="checkbox" checked', govde)
+        self.assertIn('<details class="model-yas-kontrol">', govde)
+        self.assertIn('id="yas-ek-bilgi"', govde)
+        self.assertNotIn('id="yas-ek-goster"', govde)
         self.assertNotIn("Vücut üzerindeki işaretleri seçerek ilgili hastalık bölümüne geçin.", govde)
         self.assertIn("@media(max-width:520px)", govde)
         self.assertIn("position:static", govde)
@@ -167,6 +168,11 @@ class Arac1Testleri(unittest.TestCase):
         self.assertNotIn(">Hakkında</a>", govde)
         self.assertNotIn("v2.0", govde)
         self.assertIn("Arama 3 karakterden sonra çalışır", govde)
+        self.assertIn("eş anlamlı ve ses benzerliği eşleştirmesi yapılmaz", govde)
+        self.assertIn("site-header{display:block!important;min-height:104px}", govde)
+        self.assertIn("body{padding-top:104px!important}", govde)
+        self.assertIn("body.dark-mode .balthazard-halka-merkez strong", govde)
+        self.assertIn('rel="canonical" href="https://engelli.me/arac1"', govde)
         self.assertIn(ALT_BILGI, govde)
         self.assertIn("Resmî engelli sağlık kurulu raporu yerine geçmez", govde)
 
@@ -186,8 +192,9 @@ class Arac1Testleri(unittest.TestCase):
     def test_html_kopyalama_yedegi_ve_klavye_erisimi(self):
         self.assertIn(":focus-visible", self.html)
         self.assertIn('"Listeye ekle"', self.html)
-        self.assertNotIn('id="sepet-temizle"', self.html)
-        self.assertNotIn("Seçimleri temizle", self.html)
+        self.assertIn('id="sepet-temizle"', self.html)
+        self.assertIn("Seçimleri temizle", self.html)
+        self.assertIn("sepetTemizle.addEventListener", self.html)
         self.assertNotIn("Araç-2'ye geç →", self.html)
         self.assertIn('href="__ARAC2_ADRESI__"', self.html)
         self.assertNotIn("İnsan Modeli</h2>", self.html)
@@ -236,6 +243,7 @@ class Arac1Testleri(unittest.TestCase):
         self.assertTrue(veri["ok"])
         self.assertEqual(veri["id"], "KV-001")
         self.assertEqual(veri["rozet"], "EK-2 ek kayıt")
+        self.assertEqual(veri["bolum_kisa"], "Kalp-Damar")
 
     def test_yeni_bolum_gezinmesi(self):
         durum, _, veri = self._json("/api/gezinme?bolum=" + urllib.parse.quote("Sinir Sistemi"))
@@ -255,6 +263,8 @@ class Arac1Testleri(unittest.TestCase):
             "Göğüs Hastalıkları": 5, "Onkoloji": 7, "Sinir Sistemi": 21
         })
         self.assertTrue(any("GÖRME" in k for k in veri["kapsam_disi"]))
+        self.assertEqual(len(veri["kapsam_kismi"]), 8)
+        self.assertTrue(any("SİNİR SİSTEMİ" in k for k in veri["kapsam_kismi"]))
 
     def test_gezinme_duzeyleri(self):
         sayilar = {ad: len(veri["gruplar"]) for ad, veri in self.gezinme.items()}
@@ -310,6 +320,9 @@ class Arac1Testleri(unittest.TestCase):
             [s["id"] for s in kucuk["sonuclar"]],
             [s["id"] for s in buyuk["sonuclar"]],
         )
+        _, _, turkce = self._json("/api/ara?metin=" + urllib.parse.quote("işitme"))
+        _, _, sade = self._json("/api/ara?metin=isitme")
+        self.assertEqual([s["id"] for s in turkce["sonuclar"]], [s["id"] for s in sade["sonuclar"]])
 
     def test_arama_bolum_on_filtresi(self):
         _, _, tumu = self._json("/api/ara?metin=anemi")
