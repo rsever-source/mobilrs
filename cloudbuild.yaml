@@ -192,19 +192,25 @@ steps:
         nav_start = arac1.find(b'<nav class="sekmeler"')
         nav_end = arac1.find(b"</nav>", nav_start)
         nav = arac1[nav_start:nav_end] if nav_start >= 0 and nav_end >= 0 else b""
-        # Yaş bilgisi eski checkbox yerine details/summary olarak gösterilir.
-        # Türkçe metinler bytes literal olarak değil UTF-8 kodlanarak karşılaştırılır.
-        yas_bilgisi_aciklamasi = (
-            b'<details class="model-yas-kontrol">' in arac1 and
-            "<summary class=\"model-yas-sec\" aria-controls=\"yas-ek-bilgi\">65 yaş ve üzeri yaş eki hakkında bilgi</summary>".encode("utf-8") in arac1 and
-            b'<div class="model-yas-bilgi" id="yas-ek-bilgi">' in arac1 and
-            "Bu sayfadaki Balthazard ön izlemeye yaş eki uygulanmaz.".encode("utf-8") in arac1
+        # 65+ kutusu hem HTML'de hem de istek gövdesinde işlevsel olmalı.
+        yas_checkbox = (
+            b'<section class="model-yas-kontrol"' in arac1 and
+            b'<input id="yas-ek-goster" type="checkbox" aria-describedby="yas-ek-bilgi">' in arac1 and
+            "65 yaş ve üzeri için %10 yaş ekini uygula".encode("utf-8") in arac1 and
+            b'var yasEkGoster = document.getElementById("yas-ek-goster");' in arac1 and
+            b'yas: yasEkGoster.checked ? "65_ve_uzeri" : "65_alti"' in arac1 and
+            b'yas_ekle: yasEkGoster.checked' in arac1
+        )
+        yas_kutusu = arac1.split(b'id="yas-ek-goster"', 1)
+        yas_varsayilan_kapali = (
+            len(yas_kutusu) > 1 and
+            b'checked' not in yas_kutusu[1].split(b'>', 1)[0]
         )
         if (b'class="insan-model-gorsel"' in arac1 or b'id="model-secim-cagri"' in arac1 or
                 b'function modeliGuncelle(bolumAdi)' in arac1 or b'<svg class="insan-svg"' in arac1 or
-                not yas_bilgisi_aciklamasi or b'id="ozel-hesaplama-kutusu"' not in arac1 or
+                not yas_checkbox or not yas_varsayilan_kapali or b'id="ozel-hesaplama-kutusu"' not in arac1 or
                 b"v2.0" in arac1 or b">Hakk" in nav):
-            raise SystemExit("HATA: Araç-1 arayüzü beklenen yeni düzende değil veya yaş bilgisi eksik")
+            raise SystemExit("HATA: Araç-1 arayüzü beklenen yeni düzende değil veya 65+ kutusu eksik/varsayılan işaretli")
 
         import json
         bolumler = json.loads(urllib.request.urlopen(base + "/api/bolumler", timeout=30).read())
