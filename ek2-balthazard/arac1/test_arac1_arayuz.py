@@ -74,6 +74,7 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertIn("function balthazardOnizlemesiniGuncelle()", html)
         self.assertNotIn("modelBolgeHaritasi", html)
         self.assertIn('<aside class="sag-panel" aria-label="Seçilen hastalıklar">', html)
+        self.assertIn(".sag-panel #sepet .sepet-satir{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:9px}", html)
         self.assertIn("max-height:35vh", html)
         self.assertNotIn("listeyi-kopyala", html)
         self.assertNotIn("function modelBolgesiBul(kayit)", html)
