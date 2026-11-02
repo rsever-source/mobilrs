@@ -153,6 +153,12 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertEqual(len(upper["tablolar"]), 7)
         lower = next(x for x in data["ozel_hesaplamalar"] if x["id"] == "OZ-KIS-003")
         self.assertEqual(len(lower["tablolar"]), 31)
+        table32 = lower["tablolar"][1]
+        self.assertEqual(len(table32["satirlar"]), 34)
+        self.assertEqual(table32["satirlar"][32], [32, 16, 66, 30, 100, 50])
+        table37 = lower["tablolar"][6]
+        self.assertEqual(len(table37["satirlar"]), 11)
+        self.assertEqual(table37["satirlar"][-1][-1], "3 (5) [7]")
         all_tables = [t for item in data["ozel_hesaplamalar"] for t in item.get("tablolar", [])]
         self.assertEqual(len(all_tables), 51)
         self.assertTrue(all(
