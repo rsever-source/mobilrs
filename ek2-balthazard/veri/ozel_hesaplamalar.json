@@ -2997,10 +2997,288 @@
           "pdf_sayfa": 142,
           "sutunlar": [
             "Alt ekstremite engellilik (%)",
+            "Kişinin engel oranı (%)",
+            "Alt ekstremite engellilik (%)",
+            "Kişinin engel oranı (%)",
+            "Alt ekstremite engellilik (%)",
             "Kişinin engel oranı (%)"
           ],
-          "amac": "Alt ekstremite engellilik yüzdesini kişinin engel oranına çeviren kaynak dönüşüm tablosudur. Kaynakta 0–100 aralığı tek tek listelenir; dönüşüm, alt ekstremite yüzdesi üzerinden bu tabloya bakılarak yapılır.",
-          "not": "Kaynağın 0–100 satırlı eşleştirme tablosu esas alınmalıdır; burada satır aralıkları formülle yeniden üretilmedi."
+          "amac": "Alt ekstremite engellilik yüzdesini, kaynak tablodaki 0–100 aralıklı eşleştirmeyle kişinin engel oranına dönüştürür.",
+          "not": "Kaynak tablo 0–100 aralığını üç yan yana eşleştirme çifti halinde verir. Satırlar, kaynak sayfa düzeni korunarak üç çiftli biçimde aktarılmıştır.",
+          "satirlar": [
+            [
+              0,
+              0,
+              34,
+              17,
+              68,
+              34
+            ],
+            [
+              1,
+              1,
+              35,
+              18,
+              69,
+              35
+            ],
+            [
+              2,
+              1,
+              36,
+              18,
+              70,
+              35
+            ],
+            [
+              3,
+              2,
+              37,
+              19,
+              71,
+              36
+            ],
+            [
+              4,
+              2,
+              38,
+              19,
+              72,
+              36
+            ],
+            [
+              5,
+              3,
+              39,
+              20,
+              73,
+              37
+            ],
+            [
+              6,
+              3,
+              40,
+              20,
+              74,
+              37
+            ],
+            [
+              7,
+              4,
+              41,
+              21,
+              75,
+              38
+            ],
+            [
+              8,
+              4,
+              42,
+              21,
+              76,
+              38
+            ],
+            [
+              9,
+              5,
+              43,
+              22,
+              77,
+              39
+            ],
+            [
+              10,
+              5,
+              44,
+              22,
+              78,
+              39
+            ],
+            [
+              11,
+              6,
+              45,
+              23,
+              79,
+              40
+            ],
+            [
+              12,
+              6,
+              46,
+              23,
+              80,
+              40
+            ],
+            [
+              13,
+              7,
+              47,
+              24,
+              81,
+              41
+            ],
+            [
+              14,
+              7,
+              48,
+              24,
+              82,
+              41
+            ],
+            [
+              15,
+              8,
+              49,
+              25,
+              83,
+              42
+            ],
+            [
+              16,
+              8,
+              50,
+              25,
+              84,
+              42
+            ],
+            [
+              17,
+              9,
+              51,
+              26,
+              85,
+              43
+            ],
+            [
+              18,
+              9,
+              52,
+              26,
+              86,
+              43
+            ],
+            [
+              19,
+              10,
+              53,
+              27,
+              87,
+              44
+            ],
+            [
+              20,
+              10,
+              54,
+              27,
+              88,
+              44
+            ],
+            [
+              21,
+              11,
+              55,
+              28,
+              89,
+              45
+            ],
+            [
+              22,
+              11,
+              56,
+              28,
+              90,
+              45
+            ],
+            [
+              23,
+              12,
+              57,
+              29,
+              91,
+              46
+            ],
+            [
+              24,
+              12,
+              58,
+              29,
+              92,
+              46
+            ],
+            [
+              25,
+              13,
+              59,
+              30,
+              93,
+              47
+            ],
+            [
+              26,
+              13,
+              60,
+              30,
+              94,
+              47
+            ],
+            [
+              27,
+              14,
+              61,
+              31,
+              95,
+              48
+            ],
+            [
+              28,
+              14,
+              62,
+              31,
+              96,
+              48
+            ],
+            [
+              29,
+              15,
+              63,
+              32,
+              97,
+              49
+            ],
+            [
+              30,
+              15,
+              64,
+              32,
+              98,
+              49
+            ],
+            [
+              31,
+              16,
+              65,
+              33,
+              99,
+              50
+            ],
+            [
+              32,
+              16,
+              66,
+              30,
+              100,
+              50
+            ],
+            [
+              33,
+              17,
+              67,
+              34,
+              "",
+              ""
+            ]
+          ]
         },
         {
           "ad": "Tablo 3.3 — Alt ekstremitenin uzunluk farklılıklarından kaynaklanan engellilik",
@@ -3236,11 +3514,117 @@
           "sayfa": 259,
           "pdf_sayfa": 146,
           "sutunlar": [
-            "Kas grubu ve hareket",
-            "Kaynak tablodaki derece aralığı"
+            "Kas grubu",
+            "Hareket",
+            "Derece 0",
+            "Derece 1",
+            "Derece 2",
+            "Derece 3",
+            "Derece 4"
           ],
-          "amac": "Kalça fleksiyon/ekstansiyon/abdüksiyon; diz fleksiyon/ekstansiyon; ayak bileği fleksiyon/ekstansiyon/inversiyon/eversiyon ve ayak başparmağı ekstansiyon/fleksiyon hareketlerini derece 0–4 sütunlarında ayrı ayrı değerlendirir. Aynı bölgedeki farklı bozuklukların ekstremite oranı önce Balthazard yöntemiyle birleştirilir.",
-          "not": "Bu tablo satır-sütun kas grubu matrisidir; kaynak matrisindeki her hücre ayrı kas grubu ve dereceye karşılık gelir. Derece açıklamaları Tablo 3.6'dadır."
+          "amac": "Kalça, diz, ayak bileği ve ayak başparmağının farklı kas gruplarında derece 0–4 kas kuvveti kaybına karşılık gelen engellilik oranlarını verir.",
+          "not": "Parantez ve köşeli parantez içindeki değerler kaynak sütun başlığındaki alt ekstremite ve ayak oranlarıyla birlikte aynen korunmuştur. Aynı bölgedeki birden fazla motor kayıp önce Balthazard ile birleştirilir.",
+          "satirlar": [
+            [
+              "Kalça",
+              "Fleksiyon",
+              "8 (15)",
+              "8 (15)",
+              "8 (15)",
+              "5 (10)",
+              "3 (5)"
+            ],
+            [
+              "Kalça",
+              "Ekstansiyon",
+              "19 (37)",
+              "19 (37)",
+              "19 (37)",
+              "14 (27)",
+              "9 (17)"
+            ],
+            [
+              "Kalça",
+              "Abdüksiyon",
+              "31 (62)",
+              "31 (62)",
+              "31 (62)",
+              "19 (37)",
+              "13 (25)"
+            ],
+            [
+              "Diz",
+              "Fleksiyon",
+              "13 (25)",
+              "13 (25)",
+              "13 (25)",
+              "9 (17)",
+              "6 (12)"
+            ],
+            [
+              "Diz",
+              "Ekstansiyon",
+              "13 (25)",
+              "13 (25)",
+              "13 (25)",
+              "9 (17)",
+              "6 (12)"
+            ],
+            [
+              "Ayak bileği",
+              "Fleksiyon",
+              "19 (37) [53]",
+              "19 (37) [53]",
+              "19 (37) [53]",
+              "13 (25) [35]",
+              "9 (17) [24]"
+            ],
+            [
+              "Ayak bileği",
+              "Ekstansiyon",
+              "13 (25) [35]",
+              "13 (25) [35]",
+              "13 (25) [35]",
+              "13 (25) [35]",
+              "6 (12) [17]"
+            ],
+            [
+              "Ayak bileği",
+              "İnversiyon",
+              "6 (12) [17]",
+              "6 (12) [17]",
+              "6 (12) [17]",
+              "6 (12) [17]",
+              "3 (5) [7]"
+            ],
+            [
+              "Ayak bileği",
+              "Eversiyon",
+              "6 (12) [17]",
+              "6 (12) [17]",
+              "6 (12) [17]",
+              "6 (12) [17]",
+              "3 (5) [7]"
+            ],
+            [
+              "Ayak başparmağı",
+              "Ekstansiyon",
+              "4 (7) [10]",
+              "4 (7) [10]",
+              "4 (7) [10]",
+              "4 (7) [10]",
+              "1 (2) [3]"
+            ],
+            [
+              "Ayak başparmağı",
+              "Fleksiyon",
+              "6 (12) [17]",
+              "6 (12) [17]",
+              "6 (12) [17]",
+              "6 (12) [17]",
+              "3 (5) [7]"
+            ]
+          ]
         },
         {
           "ad": "Tablo 3.8a — Kalça eklemi hareket kısıtlılığının şiddetinin belirlenmesi",
