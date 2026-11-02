@@ -149,7 +149,7 @@ class Arac1Testleri(unittest.TestCase):
         self.assertEqual(durum, 200)
         self.assertIn("text/html; charset=utf-8", tur)
         govde = html.decode("utf-8")
-        self.assertIn("<title>Araç-1 — Engel Oranı Bul | Engelli.me", govde)
+        self.assertIn("<title>EK-2 Engel Oranı Bulma | Engelli.me", govde)
         self.assertIn("Engel Oranı Bul", govde)
         self.assertIn("Balthazard Hesapla", govde)
         self.assertIn("__ARAC2_ADRESI__", govde)
