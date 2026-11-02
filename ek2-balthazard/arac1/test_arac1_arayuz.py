@@ -62,6 +62,12 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertIn("ozelHesaplamalariCiz", html)
         self.assertIn('el("details", "ozel-kaynak-tablo")', html)
         self.assertIn('el("summary", null, tablo.ad +', html)
+        self.assertIn(".ozel-kayit>summary::before", html)
+        self.assertIn(".ozel-kaynak-tablo>summary::before", html)
+        self.assertIn("var tabloAciklanabilir = satirVar || amacVar || formulVar || dogrulamaVar;", html)
+        self.assertIn('el("div", "ozel-kaynak-tablo-bos")', html)
+        self.assertIn('el("div", "ozel-yontem-notu")', html)
+        self.assertIn("kayit.hesaplama_kurali || kayit.uyari", html)
         self.assertIn("function hastaliklariCiz()", html)
         self.assertIn("satir.ad", html)
         self.assertIn("satir.seviye", html)
@@ -141,6 +147,12 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertEqual(len(eye["tablolar"][0]["satirlar"]), 27)
         spine = next(x for x in data["ozel_hesaplamalar"] if x["id"] == "OZ-KIS-001")
         self.assertGreater(sum(len(t.get("satirlar", [])) for t in spine["tablolar"]), 70)
+        self.assertTrue(all(t.get("satirlar") for t in spine["tablolar"][:6]))
+        self.assertTrue(all(not t.get("satirlar") and not t.get("amac") and not t.get("formul") and
+                            not t.get("kaynak_goruntu_dogrulamasi") for t in spine["tablolar"][6:]))
+        upper = next(x for x in data["ozel_hesaplamalar"] if x["id"] == "OZ-KIS-002")
+        self.assertTrue(all(not t.get("satirlar") and not t.get("amac") and not t.get("formul") and
+                            not t.get("kaynak_goruntu_dogrulamasi") for t in upper["tablolar"]))
 
 
 if __name__ == "__main__":
