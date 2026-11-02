@@ -9,8 +9,9 @@ Tasarım kararları (sözleşmeye bağlı):
   ``—``/belirsiz kayıt yorumlanmaz (§3.1, §3.4, §3.9, §3.10).
 * Ekran **hesap yapmaz**: her oran motordan ``balthazard()`` +
   ``bicimle_gosterim()`` ile alınır; kopya formül yoktur (§3.14, §2.7).
-* Yaş eki **uygulanmaz**: çağrı ``yas_ekle=False`` ile yapılır (O-1). Motor
-  ``yas`` alanını zorunlu tuttuğu için ``65_alti`` gönderilir; ek uygulanmaz.
+* Tek tek katalog oranlarının gösteriminde yaş eki **uygulanmaz**. Balthazard
+  ön izlemesi ise kullanıcının 65+ kutusuna göre ``yas`` ve ``yas_ekle``
+  değerlerini motora iletir; gerçek hesaplama ortak motorda yapılır.
 * **POST ucu yoktur**; Araç-1 yalnız okur. Aktarım listesi istemcide (tarayıcı
   oturumunda) tutulur; Araç-2'ye otomatik aktarım yapılmaz (S-1a).
 * Yalnız ``127.0.0.1:8766`` üzerinde dinler; Araç-2 kendi portunda (8765)
@@ -25,7 +26,7 @@ Uçlar:
     GET /api/ara?metin=&bolum=  arama (3 karakterden sonra)
     GET /api/kayit/<id>         sonuç; belirsiz kayıtta belirsiz ekranı
     GET /api/belirsiz/<id>      yalnız belirsiz ekranı
-    POST /api/hesapla           seçilen oranların ortak Balthazard ön izlemesi (65+ eki kapalı)
+    POST /api/hesapla           seçilen oranların ortak Balthazard ön izlemesi (65+ seçimi desteklenir)
 
 Çalıştırma:
 
