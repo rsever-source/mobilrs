@@ -461,7 +461,6 @@
     padding:8px 2px 8px 18px;border-top:1px solid #edf1f7;font-size:13.5px
   }
   .ozel-kaynak-tablo-adi{font-weight:600;color:var(--ink)}
-  .ozel-kaynak-tablo-durum{font-size:11.5px;color:var(--muted)}
   .ozel-yontem-notu{
     margin-top:14px;padding:12px 14px;border:1px solid #d7e3f2;
     border-left:3px solid #7da8dc;border-radius:10px;background:#f7faff
@@ -1124,7 +1123,6 @@ var tumu = el("button", "cip", "Tümü");
           if (!tabloAciklanabilir) {
             var bosTablo = el("div", "ozel-kaynak-tablo-bos");
             bosTablo.appendChild(el("span", "ozel-kaynak-tablo-adi", tablo.ad + sayfaEtiketi));
-            bosTablo.appendChild(el("span", "ozel-kaynak-tablo-durum", "Tablo içeriği bu ekranda gösterilmiyor."));
             icerik.appendChild(bosTablo);
             return;
           }
