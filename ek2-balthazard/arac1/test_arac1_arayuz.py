@@ -140,19 +140,39 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertTrue(any(x["id"].startswith("SN-") for x in search["sonuclar"]))
 
     def test_ozel_hesaplama_tablolari_ayri_verilir(self):
+        html = self._al("/arac1").decode("utf-8")
         data = self._json("/api/ozel-hesaplamalar")
         self.assertTrue(data["ok"])
         self.assertEqual(len(data["ozel_hesaplamalar"]), 5)
         eye = next(x for x in data["ozel_hesaplamalar"] if x["id"] == "OZ-GOR-001")
         self.assertEqual(len(eye["tablolar"][0]["satirlar"]), 27)
         spine = next(x for x in data["ozel_hesaplamalar"] if x["id"] == "OZ-KIS-001")
-        self.assertGreater(sum(len(t.get("satirlar", [])) for t in spine["tablolar"]), 70)
-        self.assertTrue(all(t.get("satirlar") for t in spine["tablolar"][:6]))
-        self.assertTrue(all(not t.get("satirlar") and not t.get("amac") and not t.get("formul") and
-                            not t.get("kaynak_goruntu_dogrulamasi") for t in spine["tablolar"][6:]))
+        self.assertEqual(len(spine["tablolar"]), 10)
+        self.assertGreater(sum(len(t.get("satirlar", [])) for t in spine["tablolar"]), 90)
         upper = next(x for x in data["ozel_hesaplamalar"] if x["id"] == "OZ-KIS-002")
-        self.assertTrue(all(not t.get("satirlar") and not t.get("amac") and not t.get("formul") and
-                            not t.get("kaynak_goruntu_dogrulamasi") for t in upper["tablolar"]))
+        self.assertEqual(len(upper["tablolar"]), 7)
+        lower = next(x for x in data["ozel_hesaplamalar"] if x["id"] == "OZ-KIS-003")
+        self.assertEqual(len(lower["tablolar"]), 31)
+        all_tables = [t for item in data["ozel_hesaplamalar"] for t in item.get("tablolar", [])]
+        self.assertEqual(len(all_tables), 51)
+        self.assertTrue(all(
+            (t.get("satirlar") and len(t["satirlar"]) > 0) or
+            (isinstance(t.get("amac"), str) and t["amac"].strip()) or
+            (isinstance(t.get("formul"), str) and t["formul"].strip()) or
+            (isinstance(t.get("kaynak_goruntu_dogrulamasi"), str) and t["kaynak_goruntu_dogrulamasi"].strip())
+            for t in all_tables
+        ))
+        self.assertNotIn("Tablo içeriği bu ekranda gösterilmiyor.", html)
+        eye2 = eye["tablolar"][1]
+        self.assertEqual(eye2["sayfa"], 162)
+        self.assertEqual(len(eye2["satirlar"]), 6)
+        self.assertEqual(len(eye["tablolar"][2]["satirlar"]), 50)
+        self.assertEqual(len(upper["tablolar"][0]["satirlar"]), 41)
+        self.assertEqual(len(upper["tablolar"][1]["satirlar"]), 101)
+        self.assertEqual(len(upper["tablolar"][2]["satirlar"]), 101)
+        self.assertEqual(upper["tablolar"][6]["sayfa"], 248)
+        self.assertEqual(lower["tablolar"][0]["sayfa"], 255)
+        self.assertEqual(lower["tablolar"][-1]["sayfa"], 272)
 
 
 if __name__ == "__main__":

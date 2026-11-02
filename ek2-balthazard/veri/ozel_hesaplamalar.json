@@ -305,16 +305,266 @@
         },
         {
           "ad": "Tablo 2 — Görme keskinliğine bağlı bozukluk oranları",
-          "sayfa": 154,
-          "amac": "Görme alanı normalse ve düzeltme gerekmiyorsa ilgili değerlendirmeyi destekler."
+          "sayfa": 162,
+          "pdf_sayfa": 49,
+          "sutunlar": [
+            "Görme sistemi yetersizlik sınıfı",
+            "GSYO aralığı",
+            "İşlevsel Görme Puanı (İGP)",
+            "Kaynak sınıf açıklaması"
+          ],
+          "satirlar": [
+            [
+              "Sınıf 1",
+              "%0–9",
+              "İGP ≥91",
+              "Normal görme"
+            ],
+            [
+              "Sınıf 2",
+              "%10–29",
+              "İGP 90–71",
+              "Normale yakın görme (hafif görme kaybı)"
+            ],
+            [
+              "Sınıf 3",
+              "%30–49",
+              "İGP 70–51",
+              "Orta derecede görme kaybı"
+            ],
+            [
+              "Sınıf 4",
+              "%50–69",
+              "İGP 50–31",
+              "Ağır görme kaybı"
+            ],
+            [
+              "Sınıf 5",
+              "%70–89",
+              "İGP 30–11",
+              "Çok ağır görme kaybı"
+            ],
+            [
+              "Sınıf 6",
+              "%90–100",
+              "İGP ≤10",
+              "Tüme yakın görme kaybı"
+            ]
+          ],
+          "amac": "İşlevsel Görme Puanı (İGP) ve Görme Sistemi Yetersizlik Oranı (GSYO) üzerinden altı görme keskinliği yetersizliği sınıfını belirler.",
+          "not": "Sınıf, yalnızca tanı adına bakılarak seçilmez; kaynakta açıklanan görme keskinliği ölçümleri ve İGP hesabı gerekir."
         },
         {
           "ad": "Tablo 3 — GSYO 50'den fazla olduğunda engel oranı",
           "sayfa": 163,
-          "amac": "GSYO değerini engel oranına eşler.",
-          "formul": "GSYO 51–100 için engel oranı = (GSYO − 50) × 0,8 + 50; küsurat üst tam sayıya tamamlanır.",
           "pdf_sayfa": 50,
-          "kaynak_goruntu_dogrulamasi": "Kaynak PDF görüntüsü s.50 / basılı Resmî Gazete s.163 ile karşılaştırıldı."
+          "sutunlar": [
+            "Görme sistemi yetersizlik oranı (GSYO)",
+            "Engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              51,
+              50.8
+            ],
+            [
+              52,
+              51.6
+            ],
+            [
+              53,
+              52.4
+            ],
+            [
+              54,
+              53.2
+            ],
+            [
+              55,
+              54
+            ],
+            [
+              56,
+              54.8
+            ],
+            [
+              57,
+              55.6
+            ],
+            [
+              58,
+              56.4
+            ],
+            [
+              59,
+              57.2
+            ],
+            [
+              60,
+              58
+            ],
+            [
+              61,
+              58.8
+            ],
+            [
+              62,
+              59.6
+            ],
+            [
+              63,
+              60.4
+            ],
+            [
+              64,
+              61.2
+            ],
+            [
+              65,
+              62
+            ],
+            [
+              66,
+              62.8
+            ],
+            [
+              67,
+              63.6
+            ],
+            [
+              68,
+              64.4
+            ],
+            [
+              69,
+              65.2
+            ],
+            [
+              70,
+              66
+            ],
+            [
+              71,
+              66.8
+            ],
+            [
+              72,
+              67.6
+            ],
+            [
+              73,
+              68.4
+            ],
+            [
+              74,
+              69.2
+            ],
+            [
+              75,
+              70
+            ],
+            [
+              76,
+              70.8
+            ],
+            [
+              77,
+              71.6
+            ],
+            [
+              78,
+              72.4
+            ],
+            [
+              79,
+              73.2
+            ],
+            [
+              80,
+              74
+            ],
+            [
+              81,
+              74.8
+            ],
+            [
+              82,
+              75.6
+            ],
+            [
+              83,
+              76.4
+            ],
+            [
+              84,
+              77.2
+            ],
+            [
+              85,
+              78
+            ],
+            [
+              86,
+              78.8
+            ],
+            [
+              87,
+              79.6
+            ],
+            [
+              88,
+              80.4
+            ],
+            [
+              89,
+              81.2
+            ],
+            [
+              90,
+              82
+            ],
+            [
+              91,
+              82.8
+            ],
+            [
+              92,
+              83.6
+            ],
+            [
+              93,
+              84.4
+            ],
+            [
+              94,
+              85.2
+            ],
+            [
+              95,
+              86
+            ],
+            [
+              96,
+              86.8
+            ],
+            [
+              97,
+              87.6
+            ],
+            [
+              98,
+              88.4
+            ],
+            [
+              99,
+              89.2
+            ],
+            [
+              100,
+              90
+            ]
+          ],
+          "amac": "GSYO değeri 50'yi aştığında kaynakta belirtilen dönüşümü yapar. Kaynak notuna göre küsuratlı sonuç üst tam sayıya tamamlanır."
         }
       ],
       "uyari": "Bu hesaplama otomatik oran bulucu olarak uygulanmamıştır: ölçüm diyagramları, puan eşleştirme tabloları ve ek kayıp kuralları klinik girdiler olmadan güvenilir biçimde hesaplanamaz."
@@ -336,7 +586,8 @@
         214,
         215,
         216,
-        217
+        217,
+        218
       ],
       "kaynak_pdf_sayfalar": [
         93,
@@ -350,7 +601,8 @@
         101,
         102,
         103,
-        104
+        104,
+        105
       ],
       "tablolar": [
         {
@@ -831,23 +1083,266 @@
         },
         {
           "ad": "Tablo 1.7 — Spesifik omurga hastalıklarına bağlı engellilik",
-          "sayfa": 217,
-          "pdf_sayfa": 102
+          "sutunlar": [
+            "Hastalık / bulgu",
+            "Servikal (%)",
+            "Torakal (%)",
+            "Lomber (%)"
+          ],
+          "satirlar": [
+            [
+              "Bir vertebra cisminin kompresyonu %0–25",
+              4,
+              2,
+              5
+            ],
+            [
+              "Bir vertebra cisminin kompresyonu %26–50",
+              6,
+              3,
+              7
+            ],
+            [
+              "Bir vertebra cisminin kompresyonu >%50",
+              10,
+              5,
+              12
+            ],
+            [
+              "Posterior eleman kırığı (pedikül, lamina, artiküler veya transvers proçes)",
+              4,
+              2,
+              5
+            ],
+            [
+              "Bir vertebranın redükte dislokasyonu",
+              5,
+              3,
+              6
+            ],
+            [
+              "İntervertebral disk/yumuşak doku lezyonu: ameliyat edilmemiş, kalıcı semptom yok",
+              0,
+              0,
+              0
+            ],
+            [
+              "Ameliyat edilmemiş, stabil; tıbben doğrulanmış yaralanma/ağrı/rijidite; görüntülemede hiç veya minimal dejenerasyon",
+              4,
+              2,
+              5
+            ],
+            [
+              "Ameliyat edilmemiş, stabil; orta-ciddi dejenerasyon / herniye nukleus pulpozus",
+              6,
+              3,
+              7
+            ],
+            [
+              "Ameliyatlı disk lezyonu; kalıcı bulgu ve semptom yok",
+              7,
+              4,
+              8
+            ],
+            [
+              "Ameliyatlı disk lezyonu; kalıcı ağrı ve rijidite var",
+              9,
+              5,
+              10
+            ],
+            [
+              "Spondilolizis veya Grade I–II spondilolistezis; tıbben doğrulanmış yaralanma/ağrı/rijidite",
+              6,
+              3,
+              7
+            ],
+            [
+              "Grade III–IV spondilolistezis; tıbben doğrulanmış yaralanma/ağrı/rijidite",
+              8,
+              4,
+              9
+            ],
+            [
+              "Spinal füzyon olmaksızın tek seviyeli dekompresyon; kalıcı bulgu/semptom yok",
+              7,
+              4,
+              8
+            ],
+            [
+              "Tek seviyeli dekompresyon; kalıcı bulgu/semptom var",
+              9,
+              5,
+              10
+            ],
+            [
+              "Tek seviyeli spinal füzyon; kalıcı bulgu/semptom yok",
+              8,
+              4,
+              9
+            ],
+            [
+              "Tek seviyeli spinal füzyon; kalıcı bulgu/semptom var",
+              10,
+              5,
+              12
+            ]
+          ],
+          "amac": "Kırıklar, dislokasyon, disk/yumuşak doku lezyonları, spondilolizis/spondilolistezis ve ameliyatlı spinal stenoz/instabilite için bölgeye göre kaynak oranlarını verir.",
+          "sayfa_araligi": [
+            215,
+            216
+          ],
+          "pdf_sayfa_araligi": [
+            102,
+            103
+          ],
+          "not": "Birden fazla vertebra veya birden fazla lezyon için kaynakta belirtilen Balthazard birleştirmesi uygulanır. Çok seviyeli operasyon için her seviye +%1; ikinci operasyon +%2; üçüncü ve sonraki operasyonların her biri +%1 olarak belirtilmiştir. Redüksiyon mümkün değilse hekim eklem hareket açıklığı ve nörolojik bulguları değerlendirir."
         },
         {
           "ad": "Tablo 1.8 — Duyusal kayba bağlı yetersizlik yüzdesi",
-          "sayfa": 219,
-          "pdf_sayfa": 104
+          "sayfa": 217,
+          "pdf_sayfa": 104,
+          "sutunlar": [
+            "Derece",
+            "Duyu kaybı veya ağrının tanımı",
+            "Duyu kaybı (%)"
+          ],
+          "satirlar": [
+            [
+              5,
+              "Duyu kaybı, anormal duyu veya ağrı yok",
+              0
+            ],
+            [
+              4,
+              "Aktivite sırasında fark edilmeyen bozulmuş yüzeyel duyu (azalmış hafif dokunma); ağrı olsun veya olmasın hafif duyu kaybı",
+              25
+            ],
+            [
+              3,
+              "Bazı aktiviteleri etkileyen disestezi veya hafif ağrı eşliğinde bozulmuş yüzeyel duyu; hafif dokunma ve iki nokta ayırımı azalmış",
+              60
+            ],
+            [
+              2,
+              "Bazı aktiviteleri engelleyen disestezi veya orta derecede ağrı eşliğinde azalmış yüzeyel ve taktil duyu",
+              80
+            ],
+            [
+              1,
+              "Birçok aktiviteyi engelleyen disestezi veya ciddi ağrı eşliğinde yüzeyel ve taktil duyu kaybı; derin duyu korunmuş",
+              90
+            ],
+            [
+              0,
+              "Aktiviteyi tamamen engelleyen anormal duyu, ciddi ağrı ve tam duyu kaybı",
+              100
+            ]
+          ],
+          "amac": "Duyu kaybı veya ağrının derecesini, günlük aktivite üzerindeki etkisine göre yüzdeye dönüştürür.",
+          "not": "Her kutanöz innervasyon alanı veya dermatom ayrı değerlendirilir; sonuçlar kaynakta belirtildiği gibi Balthazard yöntemiyle birleştirilir."
         },
         {
           "ad": "Tablo 1.9 — Motor kayba bağlı yetersizlik yüzdesi",
-          "sayfa": 220,
-          "pdf_sayfa": 105
+          "sayfa": 218,
+          "pdf_sayfa": 105,
+          "sutunlar": [
+            "Derece",
+            "Kas kuvvetinin değerlendirilmesi",
+            "Motor kayıp (%)"
+          ],
+          "satirlar": [
+            [
+              5,
+              "Maksimum dirence karşı aktif hareket var",
+              0
+            ],
+            [
+              4,
+              "Kısmi dirence karşı aktif hareket var",
+              25
+            ],
+            [
+              3,
+              "Yerçekimine karşı aktif hareket var",
+              50
+            ],
+            [
+              2,
+              "Yerçekimi ortadan kaldırıldığında aktif hareket var",
+              75
+            ],
+            [
+              1,
+              "Hafif kontraksiyon, hareket yok",
+              90
+            ],
+            [
+              0,
+              "Kontraksiyon ve hareket yok",
+              100
+            ]
+          ],
+          "amac": "Kas gücü muayenesindeki dereceyi motor kayıp yüzdesine dönüştürür."
         },
         {
           "ad": "Tablo 1.10 — İlişkili sinir kökünün maksimum değeri",
-          "sayfa": 220,
-          "pdf_sayfa": 105
+          "sayfa": 218,
+          "pdf_sayfa": 105,
+          "sutunlar": [
+            "Spinal sinir",
+            "Duyu kaybı veya ağrıya bağlı (%)",
+            "Motor kayba bağlı (%)"
+          ],
+          "satirlar": [
+            [
+              "C5",
+              5,
+              30
+            ],
+            [
+              "C6",
+              8,
+              35
+            ],
+            [
+              "C7",
+              5,
+              35
+            ],
+            [
+              "C8",
+              5,
+              45
+            ],
+            [
+              "T1",
+              5,
+              20
+            ],
+            [
+              "L3",
+              5,
+              20
+            ],
+            [
+              "L4",
+              8,
+              34
+            ],
+            [
+              "L5",
+              5,
+              37
+            ],
+            [
+              "S1",
+              5,
+              20
+            ]
+          ],
+          "amac": "İlgili spinal sinir kökü için duyu/ağrı ve motor kayıp yüzdelerinin kaynakta verilen üst sınırlarını gösterir.",
+          "not": "Spinal sinir kaybı değerlendirmesinde kaynak, eklem hareket açıklığı modelinin üçüncü basamağının okunmasını ve Tablo 1.8, 1.9 ve 1.10'un birlikte kullanılmasını ister."
         }
       ],
       "hesaplama_kurali": "Omurga yaralanma modeli, hareket açıklığı modeli, spesifik omurga tanısı ve spinal sinir kaybı tabloları birbirine alternatif/ilişkili yöntemlerdir. Kaynağın aynı bölge için öngördüğü seçim ve birleştirme kuralları uygulanmadan tek oran seçilmez.",
@@ -872,7 +1367,26 @@
         232,
         233,
         234,
-        235
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254
       ],
       "kaynak_pdf_sayfalar": [
         109,
@@ -888,43 +1402,1503 @@
         119,
         120,
         121,
-        122
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141
       ],
       "tablolar": [
         {
           "ad": "Tablo 2.1 — Parmak engellilik yüzdelerinin el engelliliğine dönüştürülmesi",
-          "sayfa": 222,
-          "pdf_sayfa": 109
+          "sutunlar": [
+            "Başparmak engelliliği aralığı (%)",
+            "El engelliliği (%)",
+            "İşaret/orta parmak aralığı (%)",
+            "El engelliliği (%)",
+            "Yüzük/küçük parmak aralığı (%)",
+            "El engelliliği (%)"
+          ],
+          "satirlar": [
+            [
+              "0–1",
+              0,
+              "0–2",
+              0,
+              "0–4",
+              0
+            ],
+            [
+              "2–3",
+              1,
+              "3–7",
+              1,
+              "5–14",
+              1
+            ],
+            [
+              "4–6",
+              2,
+              "8–12",
+              2,
+              "15–24",
+              2
+            ],
+            [
+              "7–8",
+              3,
+              "13–17",
+              3,
+              "25–34",
+              3
+            ],
+            [
+              "9–11",
+              4,
+              "18–22",
+              4,
+              "35–44",
+              4
+            ],
+            [
+              "12–13",
+              5,
+              "23–27",
+              5,
+              "45–54",
+              5
+            ],
+            [
+              "14–16",
+              6,
+              "28–32",
+              6,
+              "55–64",
+              6
+            ],
+            [
+              "17–18",
+              7,
+              "33–37",
+              7,
+              "65–74",
+              7
+            ],
+            [
+              "19–21",
+              8,
+              "38–42",
+              8,
+              "75–84",
+              8
+            ],
+            [
+              "22–23",
+              9,
+              "43–47",
+              9,
+              "85–94",
+              9
+            ],
+            [
+              "24–26",
+              10,
+              "48–52",
+              10,
+              "95–100",
+              10
+            ],
+            [
+              "27–28",
+              11,
+              "53–57",
+              11,
+              "",
+              ""
+            ],
+            [
+              "29–31",
+              12,
+              "58–62",
+              12,
+              "",
+              ""
+            ],
+            [
+              "32–33",
+              13,
+              "63–67",
+              13,
+              "",
+              ""
+            ],
+            [
+              "34–36",
+              14,
+              "68–72",
+              14,
+              "",
+              ""
+            ],
+            [
+              "37–38",
+              15,
+              "73–77",
+              15,
+              "",
+              ""
+            ],
+            [
+              "39–41",
+              16,
+              "78–82",
+              16,
+              "",
+              ""
+            ],
+            [
+              "42–43",
+              17,
+              "83–87",
+              17,
+              "",
+              ""
+            ],
+            [
+              "44–46",
+              18,
+              "88–92",
+              18,
+              "",
+              ""
+            ],
+            [
+              "47–48",
+              19,
+              "93–97",
+              19,
+              "",
+              ""
+            ],
+            [
+              "49–51",
+              20,
+              "98–100",
+              20,
+              "",
+              ""
+            ],
+            [
+              "52–53",
+              21,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "54–56",
+              22,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "57–58",
+              23,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "59–61",
+              24,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "62–63",
+              25,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "64–66",
+              26,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "67–68",
+              27,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "69–71",
+              28,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "72–73",
+              29,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "74–76",
+              30,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "77–78",
+              31,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "79–81",
+              32,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "82–83",
+              33,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "84–86",
+              34,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "87–88",
+              35,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "89–91",
+              36,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "92–93",
+              37,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "94–96",
+              38,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "97–98",
+              39,
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "99–100",
+              40,
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "amac": "Parmak düzeyinde hesaplanan engellilik yüzdesini parmağın türüne göre el engelliliği yüzdesine dönüştürür.",
+          "sayfa_araligi": [
+            222,
+            223
+          ],
+          "pdf_sayfa_araligi": [
+            109,
+            110
+          ]
         },
         {
           "ad": "Tablo 2.2 — El engellilik yüzdelerinin üst ekstremite engelliliğine dönüştürülmesi",
           "sayfa": 224,
-          "pdf_sayfa": 111
+          "pdf_sayfa": 111,
+          "sutunlar": [
+            "El engellilik yüzdesi (%)",
+            "Üst ekstremite engellilik yüzdesi (%)"
+          ],
+          "satirlar": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              6,
+              5
+            ],
+            [
+              7,
+              6
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              9,
+              8
+            ],
+            [
+              10,
+              9
+            ],
+            [
+              11,
+              10
+            ],
+            [
+              12,
+              11
+            ],
+            [
+              13,
+              12
+            ],
+            [
+              14,
+              13
+            ],
+            [
+              15,
+              14
+            ],
+            [
+              16,
+              14
+            ],
+            [
+              17,
+              15
+            ],
+            [
+              18,
+              16
+            ],
+            [
+              19,
+              17
+            ],
+            [
+              20,
+              18
+            ],
+            [
+              21,
+              19
+            ],
+            [
+              22,
+              20
+            ],
+            [
+              23,
+              21
+            ],
+            [
+              24,
+              22
+            ],
+            [
+              25,
+              23
+            ],
+            [
+              26,
+              23
+            ],
+            [
+              27,
+              24
+            ],
+            [
+              28,
+              25
+            ],
+            [
+              29,
+              26
+            ],
+            [
+              30,
+              27
+            ],
+            [
+              31,
+              28
+            ],
+            [
+              32,
+              29
+            ],
+            [
+              33,
+              30
+            ],
+            [
+              34,
+              31
+            ],
+            [
+              35,
+              32
+            ],
+            [
+              36,
+              32
+            ],
+            [
+              37,
+              33
+            ],
+            [
+              38,
+              34
+            ],
+            [
+              39,
+              35
+            ],
+            [
+              40,
+              36
+            ],
+            [
+              41,
+              37
+            ],
+            [
+              42,
+              38
+            ],
+            [
+              43,
+              39
+            ],
+            [
+              44,
+              40
+            ],
+            [
+              45,
+              41
+            ],
+            [
+              46,
+              41
+            ],
+            [
+              47,
+              42
+            ],
+            [
+              48,
+              43
+            ],
+            [
+              49,
+              44
+            ],
+            [
+              50,
+              45
+            ],
+            [
+              51,
+              46
+            ],
+            [
+              52,
+              47
+            ],
+            [
+              53,
+              48
+            ],
+            [
+              54,
+              49
+            ],
+            [
+              55,
+              50
+            ],
+            [
+              56,
+              50
+            ],
+            [
+              57,
+              51
+            ],
+            [
+              58,
+              52
+            ],
+            [
+              59,
+              53
+            ],
+            [
+              60,
+              54
+            ],
+            [
+              61,
+              55
+            ],
+            [
+              62,
+              56
+            ],
+            [
+              63,
+              57
+            ],
+            [
+              64,
+              58
+            ],
+            [
+              65,
+              59
+            ],
+            [
+              66,
+              59
+            ],
+            [
+              67,
+              60
+            ],
+            [
+              68,
+              61
+            ],
+            [
+              69,
+              62
+            ],
+            [
+              70,
+              63
+            ],
+            [
+              71,
+              64
+            ],
+            [
+              72,
+              65
+            ],
+            [
+              73,
+              66
+            ],
+            [
+              74,
+              67
+            ],
+            [
+              75,
+              68
+            ],
+            [
+              76,
+              68
+            ],
+            [
+              77,
+              69
+            ],
+            [
+              78,
+              70
+            ],
+            [
+              79,
+              71
+            ],
+            [
+              80,
+              72
+            ],
+            [
+              81,
+              73
+            ],
+            [
+              82,
+              74
+            ],
+            [
+              83,
+              75
+            ],
+            [
+              84,
+              76
+            ],
+            [
+              85,
+              77
+            ],
+            [
+              86,
+              77
+            ],
+            [
+              87,
+              78
+            ],
+            [
+              88,
+              79
+            ],
+            [
+              89,
+              80
+            ],
+            [
+              90,
+              81
+            ],
+            [
+              91,
+              82
+            ],
+            [
+              92,
+              83
+            ],
+            [
+              93,
+              84
+            ],
+            [
+              94,
+              85
+            ],
+            [
+              95,
+              86
+            ],
+            [
+              96,
+              86
+            ],
+            [
+              97,
+              87
+            ],
+            [
+              98,
+              88
+            ],
+            [
+              99,
+              89
+            ],
+            [
+              100,
+              90
+            ]
+          ],
+          "amac": "El engellilik yüzdesini üst ekstremite engellilik yüzdesine dönüştürür."
         },
         {
           "ad": "Tablo 2.3 — Üst ekstremite engelliliğinin kişinin engellilik oranına dönüştürülmesi",
           "sayfa": 225,
-          "pdf_sayfa": 112
+          "pdf_sayfa": 112,
+          "sutunlar": [
+            "Üst ekstremite engellilik yüzdesi (%)",
+            "Kişinin engellilik oranı (%)"
+          ],
+          "satirlar": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              5,
+              3
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              7,
+              4
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              9,
+              5
+            ],
+            [
+              10,
+              6
+            ],
+            [
+              11,
+              7
+            ],
+            [
+              12,
+              7
+            ],
+            [
+              13,
+              8
+            ],
+            [
+              14,
+              8
+            ],
+            [
+              15,
+              9
+            ],
+            [
+              16,
+              10
+            ],
+            [
+              17,
+              10
+            ],
+            [
+              18,
+              11
+            ],
+            [
+              19,
+              11
+            ],
+            [
+              20,
+              12
+            ],
+            [
+              21,
+              13
+            ],
+            [
+              22,
+              13
+            ],
+            [
+              23,
+              14
+            ],
+            [
+              24,
+              14
+            ],
+            [
+              25,
+              15
+            ],
+            [
+              26,
+              16
+            ],
+            [
+              27,
+              16
+            ],
+            [
+              28,
+              17
+            ],
+            [
+              29,
+              17
+            ],
+            [
+              30,
+              18
+            ],
+            [
+              31,
+              19
+            ],
+            [
+              32,
+              19
+            ],
+            [
+              33,
+              20
+            ],
+            [
+              34,
+              20
+            ],
+            [
+              35,
+              21
+            ],
+            [
+              36,
+              22
+            ],
+            [
+              37,
+              22
+            ],
+            [
+              38,
+              23
+            ],
+            [
+              39,
+              23
+            ],
+            [
+              40,
+              24
+            ],
+            [
+              41,
+              25
+            ],
+            [
+              42,
+              25
+            ],
+            [
+              43,
+              26
+            ],
+            [
+              44,
+              26
+            ],
+            [
+              45,
+              27
+            ],
+            [
+              46,
+              28
+            ],
+            [
+              47,
+              28
+            ],
+            [
+              48,
+              29
+            ],
+            [
+              49,
+              29
+            ],
+            [
+              50,
+              30
+            ],
+            [
+              51,
+              31
+            ],
+            [
+              52,
+              31
+            ],
+            [
+              53,
+              32
+            ],
+            [
+              54,
+              32
+            ],
+            [
+              55,
+              33
+            ],
+            [
+              56,
+              34
+            ],
+            [
+              57,
+              34
+            ],
+            [
+              58,
+              35
+            ],
+            [
+              59,
+              35
+            ],
+            [
+              60,
+              36
+            ],
+            [
+              61,
+              37
+            ],
+            [
+              62,
+              37
+            ],
+            [
+              63,
+              38
+            ],
+            [
+              64,
+              38
+            ],
+            [
+              65,
+              39
+            ],
+            [
+              66,
+              40
+            ],
+            [
+              67,
+              40
+            ],
+            [
+              68,
+              41
+            ],
+            [
+              69,
+              41
+            ],
+            [
+              70,
+              42
+            ],
+            [
+              71,
+              43
+            ],
+            [
+              72,
+              43
+            ],
+            [
+              73,
+              44
+            ],
+            [
+              74,
+              44
+            ],
+            [
+              75,
+              45
+            ],
+            [
+              76,
+              46
+            ],
+            [
+              77,
+              46
+            ],
+            [
+              78,
+              47
+            ],
+            [
+              79,
+              47
+            ],
+            [
+              80,
+              48
+            ],
+            [
+              81,
+              49
+            ],
+            [
+              82,
+              49
+            ],
+            [
+              83,
+              50
+            ],
+            [
+              84,
+              50
+            ],
+            [
+              85,
+              51
+            ],
+            [
+              86,
+              52
+            ],
+            [
+              87,
+              52
+            ],
+            [
+              88,
+              53
+            ],
+            [
+              89,
+              53
+            ],
+            [
+              90,
+              54
+            ],
+            [
+              91,
+              55
+            ],
+            [
+              92,
+              55
+            ],
+            [
+              93,
+              56
+            ],
+            [
+              94,
+              56
+            ],
+            [
+              95,
+              57
+            ],
+            [
+              96,
+              58
+            ],
+            [
+              97,
+              58
+            ],
+            [
+              98,
+              59
+            ],
+            [
+              99,
+              59
+            ],
+            [
+              100,
+              60
+            ]
+          ],
+          "amac": "Üst ekstremite engellilik yüzdesini kişinin engellilik oranına dönüştürür."
         },
         {
           "ad": "Tablo 2.4 — Başparmak adduksiyon kaybı/ankilozu",
           "sayfa": 229,
-          "pdf_sayfa": 116
+          "pdf_sayfa": 116,
+          "sutunlar": [
+            "Ölçülen adduksiyon kaybı (cm)",
+            "Hareket kısıtlılığı (%)",
+            "Ankiloz (%)"
+          ],
+          "satirlar": [
+            [
+              8,
+              20,
+              20
+            ],
+            [
+              7,
+              13,
+              19
+            ],
+            [
+              6,
+              8,
+              17
+            ],
+            [
+              5,
+              6,
+              15
+            ],
+            [
+              4,
+              4,
+              10
+            ],
+            [
+              3,
+              3,
+              15
+            ],
+            [
+              2,
+              1,
+              17
+            ],
+            [
+              1,
+              0,
+              19
+            ],
+            [
+              0,
+              0,
+              20
+            ]
+          ],
+          "amac": "Ölçülen başparmak adduksiyon kaybı veya ankilozunu başparmak engellilik yüzdesine dönüştürür."
         },
         {
           "ad": "Tablo 2.5 — Başparmak radial abduksiyon kaybı/ankilozu",
           "sayfa": 230,
-          "pdf_sayfa": 117
+          "pdf_sayfa": 117,
+          "sutunlar": [
+            "Ölçülen radial abduksiyon (°)",
+            "Hareket kısıtlılığı (%)",
+            "Ankiloz (%)"
+          ],
+          "satirlar": [
+            [
+              0,
+              10,
+              10
+            ],
+            [
+              10,
+              9,
+              10
+            ],
+            [
+              20,
+              7,
+              10
+            ],
+            [
+              30,
+              3,
+              10
+            ],
+            [
+              40,
+              1,
+              10
+            ],
+            [
+              50,
+              0,
+              10
+            ]
+          ],
+          "amac": "Ölçülen başparmak radial abduksiyon kaybı veya ankilozunu başparmak engellilik yüzdesine dönüştürür."
         },
         {
           "ad": "Tablo 2.6 — Başparmak opozisyon kaybı/ankilozu",
           "sayfa": 230,
-          "pdf_sayfa": 117
+          "pdf_sayfa": 117,
+          "sutunlar": [
+            "Ölçülen opozisyon (cm)",
+            "Hareket kısıtlılığı (%)",
+            "Ankiloz (%)"
+          ],
+          "satirlar": [
+            [
+              0,
+              45,
+              45
+            ],
+            [
+              1,
+              31,
+              40
+            ],
+            [
+              2,
+              22,
+              36
+            ],
+            [
+              3,
+              13,
+              31
+            ],
+            [
+              4,
+              9,
+              27
+            ],
+            [
+              5,
+              5,
+              22
+            ],
+            [
+              6,
+              3,
+              24
+            ],
+            [
+              7,
+              1,
+              27
+            ],
+            [
+              8,
+              0,
+              29
+            ]
+          ],
+          "amac": "Ölçülen başparmak opozisyon kaybı veya ankilozunu başparmak engellilik yüzdesine dönüştürür."
         },
         {
-          "ad": "Tablo 2.7 — Amputasyon",
-          "sayfa": 231,
-          "pdf_sayfa": 118
+          "ad": "Tablo 2.7 — Üst ekstremite amputasyonlarının neden olduğu engellilik oranları",
+          "sayfa": 248,
+          "pdf_sayfa": 135,
+          "sutunlar": [
+            "Amputasyon düzeyi",
+            "Parmak (%)",
+            "El (%)",
+            "Üst ekstremite (%)",
+            "Engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "Skapulotorasik",
+              "—",
+              "—",
+              100,
+              70
+            ],
+            [
+              "Omuz dezartikülasyonu",
+              "—",
+              "—",
+              100,
+              60
+            ],
+            [
+              "Kol: deltoid insersiyosu ve proksimali",
+              "—",
+              "—",
+              100,
+              60
+            ],
+            [
+              "Kol/ön kol: deltoid-bisipital insersiyo arası",
+              "—",
+              "—",
+              95,
+              57
+            ],
+            [
+              "Ön kol/el: bisipital insersiyo distali–transmetakarpofalangiyal eklem",
+              "—",
+              "—",
+              94,
+              56
+            ],
+            [
+              "El: MF eklemden tüm parmakların kaybı",
+              "—",
+              100,
+              90,
+              54
+            ],
+            [
+              "El: başparmak hariç tüm parmakların MF eklemden kaybı",
+              "—",
+              60,
+              54,
+              32
+            ],
+            [
+              "Başparmak: KMK",
+              "—",
+              "—",
+              38,
+              23
+            ],
+            [
+              "Başparmak: birinci metakarpın 1/3 distali",
+              "—",
+              "—",
+              37,
+              22
+            ],
+            [
+              "Başparmak: MF eklem",
+              100,
+              40,
+              36,
+              22
+            ],
+            [
+              "Başparmak: İF eklem",
+              50,
+              20,
+              18,
+              11
+            ],
+            [
+              "İşaret veya orta parmak: MF eklem",
+              100,
+              20,
+              18,
+              11
+            ],
+            [
+              "İşaret veya orta parmak: PİF eklem",
+              80,
+              16,
+              14,
+              8
+            ],
+            [
+              "İşaret veya orta parmak: DİF eklem",
+              45,
+              9,
+              8,
+              5
+            ],
+            [
+              "Yüzük veya küçük parmak: MF eklem",
+              100,
+              10,
+              9,
+              5
+            ],
+            [
+              "Yüzük veya küçük parmak: PİF eklem",
+              80,
+              8,
+              7,
+              4
+            ],
+            [
+              "Yüzük veya küçük parmak: DİF eklem",
+              45,
+              5,
+              5,
+              3
+            ]
+          ],
+          "amac": "Amputasyon düzeyine göre parmak, el, üst ekstremite ve kişinin engel oranı yüzdelerini ayrı ayrı verir.",
+          "not": "MF: metakarpofalangiyal; PİF: proksimal interfalangiyal; DİF: distal interfalangiyal; KMK: karpometakarpal; İF: interfalangiyal."
         }
       ],
       "hesaplama_kurali": "Parmak düzeyindeki kayıp önce el düzeyine, sonra üst ekstremiteye, ardından kişi engel oranına çevrilebilir. Bu dönüşüm tabloları tek bir yüzdeye indirgenemez.",
@@ -936,40 +2910,1288 @@
       "tur": "tablo_birlesimi",
       "baslik": "Alt ekstremite ve eklem hareket açıklığı",
       "kaynak_sayfalar": [
-        236,
-        237,
-        238,
-        239,
-        240,
-        241,
-        242,
-        243,
-        244,
-        245
+        255,
+        256,
+        257,
+        258,
+        259,
+        260,
+        261,
+        262,
+        263,
+        264,
+        265,
+        266,
+        267,
+        268,
+        269,
+        270,
+        271,
+        272
       ],
       "kaynak_pdf_sayfalar": [
-        123,
-        124,
-        125,
-        126,
-        127,
-        128,
-        129,
-        130,
-        131,
-        132
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159
       ],
       "tablolar": [
         {
-          "ad": "Alt ekstremite değerlendirme tabloları",
-          "sayfa_araligi": [
-            236,
-            245
+          "ad": "Tablo 3.1 — Değerlendirme yöntemlerinin kombinasyonu kılavuzu",
+          "sayfa": 255,
+          "pdf_sayfa": 142,
+          "sutunlar": [
+            "Değerlendirme yöntemi",
+            "Kaynakta birlikte değerlendirme kuralı"
           ],
-          "pdf_sayfa_araligi": [
-            123,
-            132
-          ]
+          "satirlar": [
+            [
+              "Kısalık (Tablo 3.3)",
+              "Tablo 3.1 matrisinde + işareti bulunan yöntemlerle birleştirilebilir."
+            ],
+            [
+              "Yürüyüş bozukluğu (Tablo 3.4)",
+              "Kaynak, Tablo 3.4'ün tek başına kullanılmasını ve diğer tablolarla birleştirilmemesini belirtir."
+            ],
+            [
+              "Kas atrofisi (Tablo 3.5)",
+              "Yalnızca tabloda + işaretiyle izin verilen yöntemlerle birleştirilir."
+            ],
+            [
+              "Kas gücü (Tablo 3.6 ve 3.7)",
+              "Kas gücü değerlendirmesi ilgili kas grubu ve derece tablosuyla yapılır."
+            ],
+            [
+              "EHA / ankiloz (Tablo 3.8–3.29)",
+              "Aynı eklem/bölgede farklı bozukluklar varsa kaynak kombinasyon matrisindeki + işaretleri izlenir."
+            ],
+            [
+              "Amputasyon (Tablo 3.30)",
+              "Amputasyonla ilişkili hareket kaybı ölçümünü etkiliyorsa yalnız amputasyona ait oran dikkate alınır."
+            ],
+            [
+              "Tanı, deri kaybı, periferik sinir, vasküler (Tablo 3.31–3.36)",
+              "Birlikte kullanım, kaynak matrisindeki kesişim işaretlerine bağlıdır."
+            ]
+          ],
+          "amac": "Kaynağın alt ekstremite yöntemleri için kombinasyon matrisidir. Kesişimde + olan yöntemler birleştirilebilir; boş kesişim aynı kişinin değerlendirmesinde birlikte kullanılamaz.",
+          "not": "Bu tablo bir oran tablosu değildir; hangi değerlendirme yöntemlerinin birlikte kullanılabileceğini belirler."
+        },
+        {
+          "ad": "Tablo 3.2 — Alt ekstremite engelliliğinden kişinin engellilik oranının hesaplanması",
+          "sayfa": 255,
+          "pdf_sayfa": 142,
+          "sutunlar": [
+            "Alt ekstremite engellilik (%)",
+            "Kişinin engel oranı (%)"
+          ],
+          "amac": "Alt ekstremite engellilik yüzdesini kişinin engel oranına çeviren kaynak dönüşüm tablosudur. Kaynakta 0–100 aralığı tek tek listelenir; dönüşüm, alt ekstremite yüzdesi üzerinden bu tabloya bakılarak yapılır.",
+          "not": "Kaynağın 0–100 satırlı eşleştirme tablosu esas alınmalıdır; burada satır aralıkları formülle yeniden üretilmedi."
+        },
+        {
+          "ad": "Tablo 3.3 — Alt ekstremitenin uzunluk farklılıklarından kaynaklanan engellilik",
+          "sayfa": 256,
+          "pdf_sayfa": 143,
+          "sutunlar": [
+            "Uzunluk farkı (cm)",
+            "Alt ekstremite engelliliği (%)",
+            "Kişinin engel oranı (%) – birinci taraf",
+            "Kişinin engel oranı (%) – karşı taraf",
+            "Alt ekstremite engelliliği (%) – karşı taraf"
+          ],
+          "satirlar": [
+            [
+              "0–1,9",
+              5,
+              3,
+              3,
+              5
+            ],
+            [
+              "2–2,9",
+              10,
+              5,
+              5,
+              10
+            ],
+            [
+              "3–3,9",
+              15,
+              8,
+              8,
+              15
+            ],
+            [
+              "4–4,9",
+              20,
+              10,
+              10,
+              20
+            ],
+            [
+              "≥5",
+              25,
+              13,
+              13,
+              25
+            ]
+          ],
+          "amac": "Spina iliaka anterior superior ile ayak bileği medial malleol arasındaki mesafe ölçülerek bulunan uzunluk farkını kaynak oranlarına dönüştürür."
+        },
+        {
+          "ad": "Tablo 3.4 — Yürüyüş bozukluğuna göre engellilik oranları",
+          "sayfa": 257,
+          "pdf_sayfa": 144,
+          "sutunlar": [
+            "Derece",
+            "Hastanın bulguları",
+            "Engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "Hafif",
+              "Antaljik yürüyüş ve ayak bileği/diz/kalçada orta-ileri artritik değişiklik",
+              8
+            ],
+            [
+              "Hafif",
+              "Pozitif Trendelenburg testi ve kalçada orta-ileri osteoartrit",
+              12
+            ],
+            [
+              "Hafif",
+              "İlk iki bulgu birlikte; uzun yürüyüşte koltuk değneği/baston gereksinimi",
+              18
+            ],
+            [
+              "Hafif",
+              "Kısa bacak breysinin (AFO) rutin kullanımı",
+              18
+            ],
+            [
+              "Orta",
+              "Tek baston veya tek koltuk değneğinin sürekli kullanımı",
+              24
+            ],
+            [
+              "Orta",
+              "Tek baston/koltuk değneği yanında kısa bacak breysi (AFO)",
+              36
+            ],
+            [
+              "Orta",
+              "Tek baston/koltuk değneği yanında uzun bacak breysi (KAFO)",
+              42
+            ],
+            [
+              "Orta",
+              "İki baston veya iki koltuk değneğinin rutin kullanımı",
+              48
+            ],
+            [
+              "Ciddi",
+              "AFO yanında iki baston veya iki koltuk değneği",
+              60
+            ],
+            [
+              "Ciddi",
+              "KAFO yanında iki baston veya iki koltuk değneği",
+              72
+            ],
+            [
+              "Ciddi",
+              "Çift taraflı AFO/KAFO yanında iki baston veya iki koltuk değneği",
+              84
+            ],
+            [
+              "Ciddi",
+              "Tekerlekli sandalyeye bağımlılık",
+              96
+            ]
+          ],
+          "amac": "Sürekli yürüyüş bozukluğu ve yardımcı cihaza bağımlılığı değerlendirir. Kaynak, mekanik bel ağrısı nedeniyle baston kullanımının bu tabloya tek başına dayanak olmayacağını söyler.",
+          "not": "Bu tablo tek başına kullanılır; kaynak diğer tablolarla birleştirilmemesini belirtir."
+        },
+        {
+          "ad": "Tablo 3.5 — Bacak kas atrofisine bağlı engellilik yüzdeleri",
+          "sayfa": 258,
+          "pdf_sayfa": 145,
+          "sutunlar": [
+            "Ölçüm farkı (cm)",
+            "Derece",
+            "Kişinin engel oranı (%)",
+            "Alt ekstremite engelliliği (%)"
+          ],
+          "satirlar": [
+            [
+              "Uyluk 0–0,9",
+              "Yok",
+              0,
+              0
+            ],
+            [
+              "Uyluk 1–1,9",
+              "Hafif",
+              "2–4",
+              "3–8"
+            ],
+            [
+              "Uyluk 2–2,9",
+              "Orta",
+              "4–7",
+              "8–13"
+            ],
+            [
+              "Uyluk 3+",
+              "Ciddi",
+              7,
+              13
+            ],
+            [
+              "Baldır 0–0,9",
+              "Yok",
+              0,
+              0
+            ],
+            [
+              "Baldır 1–1,9",
+              "Hafif",
+              "2–4",
+              "3–8"
+            ],
+            [
+              "Baldır 2–2,9",
+              "Orta",
+              "4–7",
+              "8–13"
+            ],
+            [
+              "Baldır 3+",
+              "Ciddi",
+              7,
+              13
+            ]
+          ],
+          "amac": "Uyluk çevresi patellanın 10 cm üzerinden; baldır çevresi ise karşı tarafın aynı seviyesindeki maksimum çevreyle karşılaştırılarak ölçülür."
+        },
+        {
+          "ad": "Tablo 3.6 — Alt ekstremitenin kas kuvvetinin değerlendirilmesi",
+          "sayfa": 259,
+          "pdf_sayfa": 146,
+          "sutunlar": [
+            "Derece",
+            "Kas kuvvetinin değerlendirilmesi",
+            "Motor kayıp (%)"
+          ],
+          "satirlar": [
+            [
+              5,
+              "Yerçekimine karşı maksimum dirence rağmen engellenemeyen aktif hareket",
+              0
+            ],
+            [
+              4,
+              "Kısmi dirence ve yerçekimine karşı aktif hareket",
+              "1–25"
+            ],
+            [
+              3,
+              "Yalnızca yerçekimine karşı aktif hareket",
+              "26–50"
+            ],
+            [
+              2,
+              "Yerçekimi ortadan kaldırıldığında aktif hareket",
+              "51–75"
+            ],
+            [
+              1,
+              "Hafif kontraksiyon, hareket yok",
+              "76–99"
+            ],
+            [
+              0,
+              "Kontraksiyon ve hareket yok",
+              100
+            ]
+          ],
+          "amac": "Manuel kas testi derecesini motor kayıp yüzdesine dönüştürür."
+        },
+        {
+          "ad": "Tablo 3.7 — Alt ekstremite kas kuvvetinde kayba bağlı engellilik yüzdeleri",
+          "sayfa": 259,
+          "pdf_sayfa": 146,
+          "sutunlar": [
+            "Kas grubu ve hareket",
+            "Kaynak tablodaki derece aralığı"
+          ],
+          "amac": "Kalça fleksiyon/ekstansiyon/abdüksiyon; diz fleksiyon/ekstansiyon; ayak bileği fleksiyon/ekstansiyon/inversiyon/eversiyon ve ayak başparmağı ekstansiyon/fleksiyon hareketlerini derece 0–4 sütunlarında ayrı ayrı değerlendirir. Aynı bölgedeki farklı bozuklukların ekstremite oranı önce Balthazard yöntemiyle birleştirilir.",
+          "not": "Bu tablo satır-sütun kas grubu matrisidir; kaynak matrisindeki her hücre ayrı kas grubu ve dereceye karşılık gelir. Derece açıklamaları Tablo 3.6'dadır."
+        },
+        {
+          "ad": "Tablo 3.8a — Kalça eklemi hareket kısıtlılığının şiddetinin belirlenmesi",
+          "sayfa": 260,
+          "pdf_sayfa": 147,
+          "sutunlar": [
+            "Hareket yönü",
+            "Hafif",
+            "Orta",
+            "Ciddi"
+          ],
+          "satirlar": [
+            [
+              "Fleksiyon",
+              "<100°",
+              "<80°",
+              "<50°"
+            ],
+            [
+              "Ekstansiyon",
+              "10–19° fleksiyon kontraktürü",
+              "20–29° fleksiyon kontraktürü",
+              "30° fleksiyon kontraktürü"
+            ],
+            [
+              "İç rotasyon",
+              "10–20°",
+              "0–9°",
+              "—"
+            ],
+            [
+              "Dış rotasyon",
+              "20–30°",
+              "0–19°",
+              "—"
+            ],
+            [
+              "Abdüksiyon",
+              "15–25°",
+              "5–14°",
+              "<5°"
+            ],
+            [
+              "Addüksiyon",
+              "0–15°",
+              "—",
+              "—"
+            ],
+            [
+              "Abdüksiyon kontraktürü",
+              "0–5°",
+              "6–10°",
+              "11–20°"
+            ]
+          ],
+          "amac": "Kalça eklemi hareket kısıtlılığını hafif, orta ve ciddi şiddet gruplarına ayırır."
+        },
+        {
+          "ad": "Tablo 3.8b — Kalça eklemi hareket kısıtlılığı şiddetine bağlı engellilik",
+          "sayfa": 260,
+          "pdf_sayfa": 147,
+          "sutunlar": [
+            "Hareket kısıtlılığı şiddeti",
+            "Alt ekstremite engellilik yüzdesi (%)",
+            "Kişinin engel oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "Hafif",
+              5,
+              3
+            ],
+            [
+              "Orta",
+              10,
+              5
+            ],
+            [
+              "Ciddi",
+              20,
+              10
+            ]
+          ],
+          "amac": "Tablo 3.8a'daki kalça hareket kısıtlılığı şiddetini alt ekstremite ve kişi oranına dönüştürür.",
+          "not": "20° üzerindeki abdüksiyon kontraktürlerinin kişide %15 engel oranına neden olduğu kaynakta ayrıca belirtilir."
+        },
+        {
+          "ad": "Tablo 3.9 — Diz eklemi hareket kısıtlılığına bağlı engellilik",
+          "sayfa": 261,
+          "pdf_sayfa": 148,
+          "sutunlar": [
+            "Hareket",
+            "Hafif",
+            "Orta",
+            "Ciddi"
+          ],
+          "satirlar": [
+            [
+              "Genel hareket kısıtlılığı",
+              "5 (10)",
+              "10 (20)",
+              "18 (35)"
+            ],
+            [
+              "Fleksiyon",
+              "<110°",
+              "<80°",
+              "<60°; her 10° için %1 (%2) eklenir"
+            ],
+            [
+              "Fleksiyon kontraktürü",
+              "5–9°",
+              "10–19°",
+              "20°; 12° üzerindeki her 2° için %1 (%2) eklenir"
+            ],
+            [
+              "Varus",
+              "2° valgus–0° (nötral)",
+              "1–7° varus",
+              "8–12° varus+"
+            ],
+            [
+              "Valgus",
+              "10–12°",
+              "13–15°",
+              "16–20°; 20° üzerindeki her 2° için %1 (%2) eklenir"
+            ]
+          ],
+          "amac": "Diz hareket kısıtlılığı ve deformite ölçümlerini kaynak şiddet ve oran sınıflarına eşler.",
+          "not": "Parantez içindeki değerler kaynak tabloda ayrıca gösterilen oranlardır; deformite femoral-tibial açıdan ölçülür."
+        },
+        {
+          "ad": "Tablo 3.10 — Ayak bileği eklemi hareket kısıtlılığına bağlı engellilik",
+          "sayfa": 261,
+          "pdf_sayfa": 148,
+          "sutunlar": [
+            "Hareket",
+            "Hafif – kişi (alt ekstremite) [ayak]",
+            "Orta – kişi (alt ekstremite) [ayak]",
+            "Ciddi – kişi (alt ekstremite) [ayak]"
+          ],
+          "satirlar": [
+            [
+              "Genel şiddet oranı",
+              "4 (7) [10]",
+              "8 (15) [21]",
+              "15 (30) [43]"
+            ],
+            [
+              "Plantar fleksiyon",
+              "11–20°",
+              "1–10°",
+              "—"
+            ],
+            [
+              "Fleksiyon kontraktürü",
+              "—",
+              "10°",
+              "20°"
+            ],
+            [
+              "Ekstansiyon",
+              "10–0° (nötral)",
+              "—",
+              "—"
+            ]
+          ],
+          "amac": "Ayak bileğinin plantar fleksiyon, fleksiyon kontraktürü ve ekstansiyon durumlarını şiddet sınıflarına göre değerlendirir."
+        },
+        {
+          "ad": "Tablo 3.11 — Topuk hareket kısıtlılığına bağlı engellilik",
+          "sayfa": 261,
+          "pdf_sayfa": 148,
+          "sutunlar": [
+            "Hareket",
+            "Hafif",
+            "Orta ve ciddi"
+          ],
+          "satirlar": [
+            [
+              "Kişinin (alt ekstremite) [ayak] engellilik oranı",
+              "1 (2) [3]",
+              "2 (5) [7]"
+            ],
+            [
+              "İnversiyon",
+              "10–20°",
+              "0–9°"
+            ],
+            [
+              "Eversiyon",
+              "0–10°",
+              "—"
+            ]
+          ],
+          "amac": "Topuk inversiyon ve eversiyon hareket kısıtlılığını kaynak oranlarına eşler."
+        },
+        {
+          "ad": "Tablo 3.12 — Ayak bileği veya topuk deformite bozuklukları",
+          "sayfa": 261,
+          "pdf_sayfa": 148,
+          "sutunlar": [
+            "Pozisyon",
+            "Hafif",
+            "Orta",
+            "Ciddi"
+          ],
+          "satirlar": [
+            [
+              "Kişinin (alt ekstremite) [ayak] engellilik oranı",
+              "6 (12) [17]",
+              "13 (25) [35]",
+              "20 (50) [72]"
+            ],
+            [
+              "Varus",
+              "10–20°",
+              "15–24°",
+              "25°+"
+            ],
+            [
+              "Valgus",
+              "10–20°",
+              "—",
+              "—"
+            ]
+          ],
+          "amac": "Ayak bileği/topuk varus ve valgus deformitelerini şiddet derecesine göre değerlendirir."
+        },
+        {
+          "ad": "Tablo 3.13 — Ayak başparmak bozuklukları",
+          "sayfa": 262,
+          "pdf_sayfa": 149,
+          "sutunlar": [
+            "Bozukluk tipi",
+            "Hafif",
+            "Orta ve ciddi"
+          ],
+          "satirlar": [
+            [
+              "Kişinin (alt ekstremite) [ayak] engellilik oranı",
+              "1 (2) [3]",
+              "3 (5) [7]"
+            ],
+            [
+              "Başparmak MTF ekstansiyon",
+              "15–30°",
+              "—"
+            ],
+            [
+              "Başparmak İF fleksiyon",
+              "<20°",
+              "—"
+            ],
+            [
+              "Küçük parmaklar MTF ekstansiyon",
+              "<10°",
+              "<15°"
+            ]
+          ],
+          "amac": "Başparmak ve küçük parmaklardaki MTF/İF hareket bozukluklarını değerlendirir.",
+          "not": "Bir ayakta iki veya daha fazla küçük parmak için kişinin engel oranı azami %3'tür."
+        },
+        {
+          "ad": "Tablo 3.14 — Kalçanın fleksiyon pozisyonunda ankilozuna bağlı engellilik",
+          "sayfa": 263,
+          "pdf_sayfa": 150,
+          "sutunlar": [
+            "Fleksiyonda ankiloz (°)",
+            "Kişinin engel oranı (%)",
+            "Kaynak parantez içi alt ekstremite oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "0–9",
+              19,
+              37
+            ],
+            [
+              "10–19",
+              13,
+              25
+            ],
+            [
+              "20–24",
+              6,
+              12
+            ],
+            [
+              "25–39",
+              0,
+              0
+            ],
+            [
+              "40–49",
+              6,
+              12
+            ],
+            [
+              "50–59",
+              13,
+              25
+            ],
+            [
+              "60–69",
+              19,
+              37
+            ],
+            [
+              "70+",
+              25,
+              50
+            ]
+          ],
+          "amac": "Kalça fleksiyon pozisyonunda ankilozun nötral pozisyona eklenen oranını gösterir.",
+          "not": "Kaynak notu: oranlar nötral pozisyon oranına eklenir."
+        },
+        {
+          "ad": "Tablo 3.15 — Kalçanın iç rotasyon pozisyonunda ankilozuna bağlı engellilik",
+          "sayfa": 263,
+          "pdf_sayfa": 150,
+          "sutunlar": [
+            "İç rotasyonda ankiloz (°)",
+            "Kişinin engel oranı (%)",
+            "Kaynak parantez içi alt ekstremite oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "5–9",
+              6,
+              12
+            ],
+            [
+              "10–19",
+              13,
+              25
+            ],
+            [
+              "20–29",
+              19,
+              37
+            ],
+            [
+              "30+",
+              25,
+              50
+            ]
+          ],
+          "amac": "Kalçanın iç rotasyon pozisyonundaki ankiloz oranını nötral pozisyona eklemek için kullanılır."
+        },
+        {
+          "ad": "Tablo 3.16 — Kalçanın dış rotasyon pozisyonunda ankilozuna bağlı engellilik",
+          "sayfa": 263,
+          "pdf_sayfa": 150,
+          "sutunlar": [
+            "Dış rotasyonda ankiloz (°)",
+            "Kişinin engel oranı (%)",
+            "Kaynak parantez içi alt ekstremite oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "10–19",
+              6,
+              12
+            ],
+            [
+              "20–29",
+              13,
+              25
+            ],
+            [
+              "30–39",
+              19,
+              37
+            ],
+            [
+              "40+",
+              25,
+              50
+            ]
+          ],
+          "amac": "Kalçanın dış rotasyon pozisyonundaki ankiloz oranını nötral pozisyona eklemek için kullanılır."
+        },
+        {
+          "ad": "Tablo 3.17 — Kalçanın abdüksiyon pozisyonunda ankilozuna bağlı engellilik",
+          "sayfa": 263,
+          "pdf_sayfa": 150,
+          "sutunlar": [
+            "Abdüksiyonda ankiloz (°)",
+            "Kişinin engel oranı (%)",
+            "Kaynak parantez içi alt ekstremite oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "5–14",
+              13,
+              25
+            ],
+            [
+              "15–24",
+              19,
+              37
+            ],
+            [
+              "25+",
+              25,
+              50
+            ]
+          ],
+          "amac": "Kalçanın abdüksiyon pozisyonundaki ankiloz oranını nötral pozisyona eklemek için kullanılır."
+        },
+        {
+          "ad": "Tablo 3.18 — Kalçanın addüksiyon pozisyonunda ankilozuna bağlı engellilik",
+          "sayfa": 263,
+          "pdf_sayfa": 150,
+          "sutunlar": [
+            "Addüksiyonda ankiloz (°)",
+            "Kişinin engel oranı (%)",
+            "Kaynak parantez içi alt ekstremite oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "5–9",
+              13,
+              25
+            ],
+            [
+              "10–14",
+              19,
+              37
+            ],
+            [
+              "15+",
+              25,
+              50
+            ]
+          ],
+          "amac": "Kalçanın addüksiyon pozisyonundaki ankiloz oranını nötral pozisyona eklemek için kullanılır."
+        },
+        {
+          "ad": "Tablo 3.19 — Dizin varus pozisyonunda ankilozuna bağlı engellilik",
+          "sayfa": 264,
+          "pdf_sayfa": 151,
+          "sutunlar": [
+            "Varusta ankiloz (°)",
+            "Kişinin engel oranı (%)",
+            "Kaynak parantez içi alt ekstremite oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "0–9",
+              6,
+              12
+            ],
+            [
+              "10–19",
+              13,
+              25
+            ],
+            [
+              "20+",
+              17,
+              33
+            ]
+          ],
+          "amac": "Diz varus ankilozunda nötral pozisyona eklenen oranı gösterir."
+        },
+        {
+          "ad": "Tablo 3.20 — Dizin valgus pozisyonunda ankilozuna bağlı engellilik",
+          "sayfa": 264,
+          "pdf_sayfa": 151,
+          "sutunlar": [
+            "Valgusta ankiloz (°)",
+            "Kişinin engel oranı (%)",
+            "Kaynak parantez içi alt ekstremite oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "10–19",
+              6,
+              12
+            ],
+            [
+              "20–29",
+              13,
+              25
+            ],
+            [
+              "30+",
+              17,
+              33
+            ]
+          ],
+          "amac": "Diz valgus ankilozunda nötral pozisyona eklenen oranı gösterir."
+        },
+        {
+          "ad": "Tablo 3.21 — Dizin fleksiyon pozisyonunda ankilozuna bağlı engellilik",
+          "sayfa": 265,
+          "pdf_sayfa": 152,
+          "sutunlar": [
+            "Fleksiyonda ankiloz (°)",
+            "Kişinin engel oranı (%)",
+            "Kaynak parantez içi alt ekstremite oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "20–29",
+              6,
+              12
+            ],
+            [
+              "30–39",
+              13,
+              25
+            ],
+            [
+              "40+",
+              17,
+              33
+            ]
+          ],
+          "amac": "Diz fleksiyon ankilozunda nötral pozisyona eklenen oranı gösterir."
+        },
+        {
+          "ad": "Tablo 3.22 — Dizin iç veya dış malrotasyonda ankilozuna bağlı engellilik",
+          "sayfa": 265,
+          "pdf_sayfa": 152,
+          "sutunlar": [
+            "İç/dış malrotasyonda ankiloz (°)",
+            "Kişinin engel oranı (%)",
+            "Kaynak parantez içi alt ekstremite oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "10–19",
+              6,
+              12
+            ],
+            [
+              "20–29",
+              13,
+              25
+            ],
+            [
+              "30+",
+              17,
+              33
+            ]
+          ],
+          "amac": "Diz iç veya dış malrotasyon ankilozunda nötral pozisyona eklenen oranı gösterir."
+        },
+        {
+          "ad": "Tablo 3.23 — Ayak bileğinin plantar fleksiyon–dorsifleksiyonda ankilozuna bağlı engellilik",
+          "sayfa": 266,
+          "pdf_sayfa": 153,
+          "sutunlar": [
+            "Pozisyon",
+            "Kişinin engel oranı (%)",
+            "Alt ekstremite oranı (%)",
+            "Ayak oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "20° ve üzeri dorsifleksiyon",
+              19,
+              37,
+              53
+            ],
+            [
+              "10–19° dorsifleksiyon",
+              9,
+              17,
+              24
+            ],
+            [
+              "10–19° plantar fleksiyon",
+              9,
+              17,
+              24
+            ],
+            [
+              "20–29° plantar fleksiyon",
+              19,
+              37,
+              53
+            ],
+            [
+              "30° ve üzeri plantar fleksiyon",
+              26,
+              52,
+              74
+            ]
+          ],
+          "amac": "Ayak bileği plantar/dorsifleksiyon ankiloz pozisyonunu kişi, alt ekstremite ve ayak oranlarına eşler."
+        },
+        {
+          "ad": "Tablo 3.24 — Ayak bileğinin varus pozisyonunda ankilozuna bağlı engellilik",
+          "sayfa": 266,
+          "pdf_sayfa": 153,
+          "sutunlar": [
+            "Varus pozisyonu (°)",
+            "Kişinin engel oranı (%)",
+            "Alt ekstremite oranı (%)",
+            "Ayak oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "5–9",
+              13,
+              25,
+              35
+            ],
+            [
+              "10–19",
+              19,
+              37,
+              53
+            ],
+            [
+              "20–29",
+              22,
+              43,
+              61
+            ],
+            [
+              "30+",
+              26,
+              52,
+              74
+            ]
+          ],
+          "amac": "Ayak bileği varus ankilozunda kişi, alt ekstremite ve ayak oranlarını gösterir."
+        },
+        {
+          "ad": "Tablo 3.25 — Ayak bileğinin valgus pozisyonunda ankilozuna bağlı engellilik",
+          "sayfa": 266,
+          "pdf_sayfa": 153,
+          "sutunlar": [
+            "Valgus pozisyonu (°)",
+            "Kişinin engel oranı (%)",
+            "Alt ekstremite oranı (%)",
+            "Ayak oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "10–19",
+              13,
+              25,
+              35
+            ],
+            [
+              "20–29",
+              19,
+              37,
+              53
+            ],
+            [
+              "30+",
+              26,
+              52,
+              74
+            ]
+          ],
+          "amac": "Ayak bileği valgus ankilozunda kişi, alt ekstremite ve ayak oranlarını gösterir."
+        },
+        {
+          "ad": "Tablo 3.26 — Ayak bileğinin internal malrotasyonda ankilozuna bağlı engellilik",
+          "sayfa": 267,
+          "pdf_sayfa": 154,
+          "sutunlar": [
+            "İnternal malrotasyon (°)",
+            "Kişinin engel oranı (%)",
+            "Alt ekstremite oranı (%)",
+            "Ayak oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "0–9",
+              6,
+              12,
+              17
+            ],
+            [
+              "10–19",
+              13,
+              25,
+              35
+            ],
+            [
+              "20–29",
+              19,
+              37,
+              53
+            ],
+            [
+              "30+",
+              26,
+              52,
+              74
+            ]
+          ],
+          "amac": "Ayak bileği internal malrotasyon ankilozunda kişi, alt ekstremite ve ayak oranlarını gösterir."
+        },
+        {
+          "ad": "Tablo 3.27 — Ayak bileğinin eksternal malrotasyonda ankilozuna bağlı engellilik",
+          "sayfa": 267,
+          "pdf_sayfa": 154,
+          "sutunlar": [
+            "Eksternal malrotasyon (°)",
+            "Kişinin engel oranı (%)",
+            "Alt ekstremite oranı (%)",
+            "Ayak oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "0–14",
+              6,
+              12,
+              17
+            ],
+            [
+              "15–19",
+              13,
+              25,
+              35
+            ],
+            [
+              "20–29",
+              19,
+              37,
+              53
+            ],
+            [
+              "30+",
+              26,
+              52,
+              74
+            ]
+          ],
+          "amac": "Ayak bileği eksternal malrotasyon ankilozunda kişi, alt ekstremite ve ayak oranlarını gösterir."
+        },
+        {
+          "ad": "Tablo 3.28 — Tibia–os calcis açısının azalmasına bağlı engellilik",
+          "sayfa": 268,
+          "pdf_sayfa": 155,
+          "sutunlar": [
+            "Açı (°)",
+            "Kişinin engel oranı (%)",
+            "Alt ekstremite oranı (%)",
+            "Ayak oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "110–100",
+              13,
+              25,
+              35
+            ],
+            [
+              "99–90",
+              19,
+              37,
+              53
+            ],
+            [
+              "<90",
+              26,
+              52,
+              74
+            ]
+          ],
+          "amac": "Tibia–os calcis açısındaki azalmaya karşılık gelen kişi, alt ekstremite ve ayak oranlarını gösterir."
+        },
+        {
+          "ad": "Tablo 3.29 — Ayak parmaklarının ankilozuna bağlı engellilik",
+          "sayfa": 268,
+          "pdf_sayfa": 155,
+          "sutunlar": [
+            "Parmak kombinasyonu",
+            "Tam ekstansiyon",
+            "Fonksiyonel pozisyon",
+            "Tam fleksiyon"
+          ],
+          "satirlar": [
+            [
+              "Başparmak",
+              "5 (10) [14]",
+              "6 (12) [17]",
+              "5 (9) [13]"
+            ],
+            [
+              "Başparmak + 2. parmak",
+              "6 (11) [15]",
+              "7 (13) [18]",
+              "8 (15) [21]"
+            ],
+            [
+              "Başparmak + 2. ve 3. parmak",
+              "7 (14) [20]",
+              "6 (12) [17]",
+              "9 (17) [24]"
+            ],
+            [
+              "Başparmak + 2. ve 4. parmak",
+              "7 (14) [20]",
+              "6 (12) [17]",
+              "9 (17) [24]"
+            ],
+            [
+              "Başparmak + 2. ve 5. parmak",
+              "7 (14) [20]",
+              "6 (12) [17]",
+              "9 (17) [24]"
+            ],
+            [
+              "Başparmak + 2., 3. ve 4. parmak",
+              "8 (16) [23]",
+              "7 (13) [19]",
+              "10 (19) [27]"
+            ],
+            [
+              "Başparmak + 2., 3. ve 5. parmak",
+              "8 (16) [23]",
+              "7 (13) [19]",
+              "10 (19) [27]"
+            ],
+            [
+              "Başparmak + 2., 4. ve 5. parmak",
+              "8 (16) [23]",
+              "7 (13) [19]",
+              "10 (19) [27]"
+            ],
+            [
+              "Başparmak + 2., 3., 4. ve 5. parmak",
+              "9 (18) [26]",
+              "8 (15) [21]",
+              "11 (21) [30]"
+            ]
+          ],
+          "amac": "Ayak parmağı kombinasyonları ve ankiloz pozisyonuna göre kaynakta verilen engellilik oranlarını listeler.",
+          "not": "Parantezli ve köşeli değerler kaynak tablosundaki alt ekstremite ve ayak oranlarıdır; sütun sırası kaynak sayfadaki başlıklara göredir."
+        },
+        {
+          "ad": "Tablo 3.30 — Ampütasyona bağlı bozuklukların değerlendirilmesi",
+          "sayfa": 272,
+          "pdf_sayfa": 159,
+          "sutunlar": [
+            "Ampütasyon düzeyi",
+            "Kişinin engel oranı (%)",
+            "Kaynak parantez içi alt ekstremite oranı (%)",
+            "Kaynak köşeli parantez içi ayak oranı (%)"
+          ],
+          "satirlar": [
+            [
+              "Hemipelvektomi",
+              65,
+              "—",
+              "—"
+            ],
+            [
+              "Kalça dezartikülasyonu",
+              50,
+              100,
+              "—"
+            ],
+            [
+              "Diz üstü – proksimal",
+              50,
+              100,
+              "—"
+            ],
+            [
+              "Diz üstü – orta ve distal",
+              48,
+              95,
+              "—"
+            ],
+            [
+              "Diz dezartikülasyonu",
+              45,
+              90,
+              "—"
+            ],
+            [
+              "Diz altı – proksimal",
+              43,
+              85,
+              "—"
+            ],
+            [
+              "Diz altı – orta ve distal",
+              40,
+              80,
+              "—"
+            ],
+            [
+              "Syme (ayak)",
+              38,
+              75,
+              "—"
+            ],
+            [
+              "Chopart (orta ayak)",
+              31,
+              62,
+              100
+            ],
+            [
+              "Transmetatarsal",
+              25,
+              50,
+              71
+            ],
+            [
+              "Birinci metatarsal",
+              10,
+              20,
+              28
+            ],
+            [
+              "Diğer metatarsallar",
+              3,
+              5,
+              7
+            ],
+            [
+              "MTF eklemden itibaren tüm parmaklar",
+              11,
+              22,
+              31
+            ],
+            [
+              "MTF eklemden başparmak",
+              6,
+              12,
+              17
+            ],
+            [
+              "İnterfalangial eklemden başparmak",
+              3,
+              5,
+              7
+            ],
+            [
+              "MTF eklemden diğer küçük parmaklar",
+              1,
+              2,
+              3
+            ]
+          ],
+          "amac": "Alt ekstremite ve ayak ampütasyon seviyesine göre kişinin, alt ekstremitenin ve ayak düzeyinin engellilik oranlarını gösterir."
         }
       ],
       "hesaplama_kurali": "Eklem hareket açıklığı, ankiloz, amputasyon ve fonksiyon kayıpları kaynağın ilgili dönüşüm tablosuyla ele alınmalıdır.",
