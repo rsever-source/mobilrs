@@ -140,6 +140,7 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertTrue(any(x["id"].startswith("SN-") for x in search["sonuclar"]))
 
     def test_ozel_hesaplama_tablolari_ayri_verilir(self):
+        html = self._al("/arac1").decode("utf-8")
         data = self._json("/api/ozel-hesaplamalar")
         self.assertTrue(data["ok"])
         self.assertEqual(len(data["ozel_hesaplamalar"]), 5)
