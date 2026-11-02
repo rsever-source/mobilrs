@@ -170,7 +170,7 @@ class Arac1Testleri(unittest.TestCase):
         self.assertNotIn("v2.0", govde)
         self.assertIn("Arama 3 karakterden sonra çalışır", govde)
         self.assertIn("eş anlamlı ve ses benzerliği eşleştirmesi yapılmaz", govde)
-        self.assertIn("site-header{display:block!important;min-height:104px}", govde)
+        self.assertIn("site-header{display:none!important;min-height:0}", govde)
         self.assertIn("body{padding-top:104px!important}", govde)
         self.assertIn("body.dark-mode .balthazard-halka-merkez strong", govde)
         self.assertIn('rel="canonical" href="https://engelli.me/arac1"', govde)
