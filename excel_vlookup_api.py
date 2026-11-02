@@ -808,6 +808,7 @@ body.high-contrast .footer{background:#fff;border-top:2px solid #000;color:#000}
 <script>
 let otvData=/*INITIAL_OTV_DATA*/{},activeBrand=null;if(!otvData.vehicles)otvData={vehicles:[],limit:2873900};
 let newsData=/*INITIAL_NEWS_DATA*/{items:[],updated_at:null},pageStack=['home'],forwardStack=[];
+if(!history.state||!Object.prototype.hasOwnProperty.call(history.state,'engellimePage'))history.replaceState({...history.state,engellimePage:'home'},'',location.href);
 function applyAccessibility(){let font='1',contrast=false,dark=false;try{font=localStorage.getItem('engellime-font-size')||'1';contrast=localStorage.getItem('engellime-high-contrast')==='1';dark=localStorage.getItem('engellime-dark-mode')==='1'}catch(e){}document.documentElement.style.setProperty('--base-scale',font);document.body.classList.toggle('font-large',font==='1.12');document.body.classList.toggle('font-xlarge',font==='1.25');document.body.classList.toggle('high-contrast',contrast);document.body.classList.toggle('dark-mode',dark);document.querySelectorAll('[data-font]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.font===font?'true':'false'));document.getElementById('contrastToggle').setAttribute('aria-pressed',contrast?'true':'false');document.getElementById('darkToggle').setAttribute('aria-pressed',dark?'true':'false')}
 const accessibilityToggle=document.getElementById('accessibilityToggle'),accessibilityPanel=document.getElementById('accessibilityPanel');
 function setAccessibilityPanel(open,moveFocus=false){if(!accessibilityToggle||!accessibilityPanel)return;accessibilityPanel.classList.toggle('open',open);accessibilityToggle.setAttribute('aria-expanded',open?'true':'false');if(open&&moveFocus)accessibilityPanel.focus();else if(!open&&moveFocus)accessibilityToggle.focus()}
@@ -824,11 +825,27 @@ async function shareNews(index){let item=newsData.items[index];if(!item)return;l
 function bindNewsCards(){document.querySelectorAll('.news-card[data-news-index]').forEach(card=>{let index=Number(card.dataset.newsIndex),open=()=>openNewsDetail(index);card.addEventListener('click',e=>{if(e.target.closest('.news-summary-link,.news-link'))return;open()});card.addEventListener('keydown',e=>{if(e.target.closest('.news-summary-link,.news-link'))return;if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}});card.querySelector('.news-summary-link')?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();open()});card.querySelector('.news-link')?.addEventListener('click',e=>{e.stopPropagation()})})}
 function desktopNewsDetail(item){let detail=String(item.detail_summary||item.summary||'').trim();let isTbb=/\bTBB\b|Türkiye Barolar Birliği/i.test(String(item.source||''))||/barobirlik\.org\.tr/i.test(String(item.url||''));if(isTbb||!detail||detail.includes('\n'))return detail;return detail.replace(/([.!?])\s+(?=[A-ZÇĞİÖŞÜ])/g,'$1\n\n')}function openNewsDetail(index){let item=newsData.items[index];if(!item)return;document.getElementById('newsDetailTitle').textContent=item.title||'';let detail=window.innerWidth>900?desktopNewsDetail(item):(item.summary||'');document.getElementById('newsDetailSummary').textContent=detail;let u=safeUrl(item.url),source=esc((item.source||'Kaynak belirtilmemiş').replace(/\s*\(yedek\)\s*/gi,'')),share=document.getElementById('newsDetailShare');share.onclick=()=>shareNews(index);share.style.display='block';document.getElementById('newsDetailSource').innerHTML=u?('Kaynak: <a href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">'+source+' ↗</a>'):('Kaynak: '+source);openPage('newsDetail')}
 function renderNews(){let items=newsData.items||[],home=document.getElementById('homeNews');if(home){let homeItems=items.slice(0,window.innerWidth>900?6:4);home.innerHTML=homeItems.length?homeItems.map(newsCard).join(''):'<div class="news-empty">Şu anda yayınlanacak güncel engelli haberi bulunamadı.</div>'}let list=document.getElementById('newsList');if(list){list.innerHTML=items.slice(0,12).map(newsCard).join('')||'<div class="news-empty">Şu anda yayınlanacak güncel engelli haberi bulunamadı.</div>'}bindNewsCards();let updated=document.getElementById('newsUpdated');if(updated)updated.textContent=newsData.updated_at?'Son güncelleme: '+newsDate(newsData.updated_at):'Henüz güncelleme yok'}
-async function loadNews(){try{let r=await fetch('/api/news?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('news');newsData=await r.json();renderNews();let params=new URLSearchParams(location.search),sharedTitle=params.get('haber');if(sharedTitle){let sharedIndex=newsData.items.findIndex(x=>String(x.title||'')===sharedTitle);if(sharedIndex>=0)openNewsDetail(sharedIndex)}else if(params.get('sayfa')==='kira'){openPage('kira')}}catch(e){let home=document.getElementById('homeNews'),list=document.getElementById('newsList');if(home)home.innerHTML='<div class="news-empty">Haberler şu anda alınamadı.</div>';if(list)list.innerHTML='<div class="news-empty">Haberler şu anda alınamadı.</div>'}}
+async function loadNews(){try{let r=await fetch('/api/news?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('news');newsData=await r.json();renderNews();let params=new URLSearchParams(location.search),sharedTitle=params.get('haber');if(sharedTitle){let sharedIndex=newsData.items.findIndex(x=>String(x.title||'')===sharedTitle);if(sharedIndex>=0){openPage('news');openNewsDetail(sharedIndex)}}else if(params.get('sayfa')==='kira'){openPage('kira')}}catch(e){let home=document.getElementById('homeNews'),list=document.getElementById('newsList');if(home)home.innerHTML='<div class="news-empty">Haberler şu anda alınamadı.</div>';if(list)list.innerHTML='<div class="news-empty">Haberler şu anda alınamadı.</div>'}}
 function syncBottomHome(id=document.querySelector('.page.on')?.id||'home'){let bh=document.getElementById('bottomHome');if(bh)bh.style.setProperty('display',id!=='home'&&window.innerWidth<901?'block':'none','important')}
-function openPage(id,push=true){document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));let target=document.getElementById(id);if(!target)return;target.classList.add('on');syncBottomHome(id);if(push&&pageStack[pageStack.length-1]!==id){pageStack.push(id);forwardStack=[]}scrollTo(0,0);if(id==='otv')renderOTV()}
-function goPreviousPage(){if(pageStack.length>1){forwardStack.push(pageStack.pop());openPage(pageStack[pageStack.length-1],false)}else{openPage('home',false)}}
-function goNextPage(){if(forwardStack.length){let id=forwardStack.pop();pageStack.push(id);openPage(id,false)}}
+function openPage(id,push=true){
+  let target=document.getElementById(id);if(!target)return;
+  if(push&&pageStack[pageStack.length-1]!==id){
+    if(pageStack.length>1&&pageStack[pageStack.length-2]===id){history.back();return}
+    history.pushState({...history.state,engellimePage:id},'',location.pathname+location.search+(id==='home'?'':'#'+id));
+    pageStack.push(id);forwardStack=[];
+  }
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
+  target.classList.add('on');syncBottomHome(id);scrollTo(0,0);if(id==='otv')renderOTV()
+}
+window.addEventListener('popstate',e=>{
+  let id=e.state&&typeof e.state.engellimePage==='string'&&document.getElementById(e.state.engellimePage)?e.state.engellimePage:'home';
+  let prior=pageStack.lastIndexOf(id);
+  if(prior>=0)pageStack=pageStack.slice(0,prior+1);else pageStack.push(id);
+  forwardStack=[];
+  openPage(id,false);
+});
+function goPreviousPage(){if(pageStack.length>1)history.back();else openPage('home',false)}
+function goNextPage(){history.forward()}
 
 function tl(v){return Number(v||0).toLocaleString('tr-TR')+' ₺'}
 function otvRateFor(v){let p=Number(v.price||0),b=(v.brand||'').toUpperCase(),m=(v.model||'').toUpperCase();if(!p)return null;let solve=(rules)=>{for(let [r,min,max] of rules){let base=p/1.20/(1+r);if(base>min&&(max==null||base<=max))return r}return null};if(b==='TOGG')return solve([[.25,0,1650000],[.55,1650000,null]]);if(b==='TOYOTA'&&m.includes('C-HR'))return solve([[.70,0,1250000],[.80,1250000,null]]);if(b==='TOYOTA'&&m.includes('COROLLA'))return solve([[.75,0,850000],[.80,850000,1100000],[.90,1100000,1650000],[1.00,1650000,null]]);if(b==='FIAT'&&m.includes('ULYSSE'))return solve([[1.50,0,1650000],[1.70,1650000,null]]);if(b==='FIAT'&&m.includes('EGEA'))return solve([[.75,0,850000],[.80,850000,1100000],[.90,1100000,1650000],[1.00,1650000,null]])||solve([[.70,0,650000],[.75,650000,900000],[.80,900000,1100000],[.90,1100000,null]]);return solve([[.70,0,650000],[.75,650000,900000],[.80,900000,1100000],[.90,1100000,null]])}
@@ -862,6 +879,8 @@ document.addEventListener('touchend',e=>{
   if(!e.changedTouches.length)return;
   let dx=e.changedTouches[0].clientX-touchStartX;
   let dy=e.changedTouches[0].clientY-touchStartY;
+  // Safari's left-edge gesture belongs to browser history, not the in-page swipe handler.
+  if(touchStartX<=24||touchStartX>=window.innerWidth-24)return;
   if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.1){
     if(dx<0)goNextPage();else goPreviousPage();
   }
