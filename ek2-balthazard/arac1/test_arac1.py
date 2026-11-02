@@ -158,9 +158,10 @@ class Arac1Testleri(unittest.TestCase):
         self.assertNotIn('class="insan-model-gorsel"', govde)
         self.assertNotIn('id="model-secim-cagri"', govde)
         self.assertNotIn("function modeliGuncelle(bolumAdi)", govde)
-        self.assertIn('<details class="model-yas-kontrol">', govde)
+        self.assertIn('<section class="model-yas-kontrol"', govde)
         self.assertIn('id="yas-ek-bilgi"', govde)
-        self.assertNotIn('id="yas-ek-goster"', govde)
+        self.assertIn('id="yas-ek-goster" type="checkbox"', govde)
+        self.assertIn('yas_ekle: yasEkGoster.checked', govde)
         self.assertNotIn("Vücut üzerindeki işaretleri seçerek ilgili hastalık bölümüne geçin.", govde)
         self.assertIn("@media(max-width:520px)", govde)
         self.assertIn("position:static", govde)
@@ -501,6 +502,18 @@ class Arac1Testleri(unittest.TestCase):
             "onceki": "70", "eklenen": "60", "sonuc": "88"
         })
         self.assertFalse(veri["yas_eklemesi"]["uygulandi"])
+
+    def test_post_balthazard_onizlemesi_65_yas_ekini_uygular(self):
+        girdi = json.dumps(
+            {"oranlar": [40], "yas": "65_ve_uzeri", "yas_ekle": True}
+        ).encode("utf-8")
+        durum, _, govde = self._istek("/api/hesapla", veri=girdi)
+        veri = json.loads(govde.decode("utf-8"))
+        self.assertEqual(durum, 200)
+        self.assertTrue(veri["ok"])
+        self.assertEqual(veri["sonuc"]["deger"], 46)
+        self.assertTrue(veri["yas_eklemesi"]["uygulandi"])
+        self.assertEqual(veri["gosterim"]["sonuc"], "46")
 
     def test_post_balthazard_hata_girdisini_motor_doner(self):
         girdi = b'{"oranlar":[120],"yas":"65_alti","yas_ekle":false}'

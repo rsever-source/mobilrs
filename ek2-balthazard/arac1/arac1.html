@@ -555,14 +555,17 @@
     <p class="ipucu" id="arama-ipucu">Arama 3 karakterden sonra çalışır. Türkçe karakterlerin temel yazım farklılıkları desteklenir; eş anlamlı ve ses benzerliği eşleştirmesi yapılmaz.</p>
   </form>
 
-    <details class="model-yas-kontrol">
-      <summary class="model-yas-sec" aria-controls="yas-ek-bilgi">65 yaş ve üzeri yaş eki hakkında bilgi</summary>
+    <section class="model-yas-kontrol" aria-labelledby="yas-ek-etiket">
+      <label class="model-yas-sec" id="yas-ek-etiket" for="yas-ek-goster">
+        <input id="yas-ek-goster" type="checkbox" aria-describedby="yas-ek-bilgi">
+        65 yaş ve üzeri için %10 yaş ekini uygula
+      </label>
       <div class="model-yas-bilgi" id="yas-ek-bilgi">
-        <p>Yalnızca 65 yaş ve üzerindeki bireyler için geçerlidir. %10 ek, mevcut orana düz toplama ile eklenmez; Araç-2'de diğer oranlarla birlikte Balthazard yöntemiyle hesaplanır.</p>
+        <p>Yalnızca 65 yaş ve üzerindeki bireyler için işaretleyin. %10 ek düz toplama ile değil, seçilen oranların bileşkesine Balthazard yöntemiyle uygulanır.</p>
         <p><strong>Örnek:</strong> %40 → %46.</p>
-        <p class="model-yas-kaynak">Dayanak: 20.02.2019 tarihli ve 30692 sayılı Yönetmelik, madde 10/4. Bu sayfadaki Balthazard ön izlemeye yaş eki uygulanmaz. Yaş seçimi ve yaş ekinin hesabı Araç-2'de yapılır.</p>
+        <p class="model-yas-kaynak">Dayanak: 20.02.2019 tarihli ve 30692 sayılı Yönetmelik, madde 10/4. Bu işaretleme yalnızca bilgi amaçlı Araç-1 ön izlemesini etkiler; resmî oranı sağlık kurulu belirler.</p>
       </div>
-    </details>
+    </section>
 
   <div class="cipler" id="cipler" role="group" aria-label="Bölüm seçimi"></div>
   <details class="kapsam-notu">
@@ -671,6 +674,8 @@
   var balthazardTamDeger = document.getElementById("balthazard-tam-deger");
   var balthazardAdimlar = document.getElementById("balthazard-adimlar");
   var balthazardHata = document.getElementById("balthazard-hata");
+  var balthazardYasNotu = document.getElementById("balthazard-yas-notu");
+  var yasEkGoster = document.getElementById("yas-ek-goster");
   var balthazardIstekNo = 0;
 
   function el(kalem, sinif, metin) {
@@ -1039,6 +1044,9 @@ var tumu = el("button", "cip", "Tümü");
       }
       balthazardAdimlar.appendChild(satir);
     });
+    balthazardYasNotu.textContent = yasEkGoster.checked
+      ? "65 yaş ve üzeri seçildi; %10 yaş eki bu ön izlemeye dahil edildi."
+      : "65 yaş eki uygulanmıyor. Uygulamak için yukarıdaki kutuyu işaretleyin.";
     balthazardHata.textContent = "";
   }
 
@@ -1056,6 +1064,9 @@ var tumu = el("button", "cip", "Tümü");
     balthazardYuzde.textContent = "…";
     balthazardTamDeger.textContent = "Hesaplanıyor";
     balthazardAdimlar.replaceChildren();
+    balthazardYasNotu.textContent = yasEkGoster.checked
+      ? "65 yaş ve üzeri seçildi; yaş eki hesaplanıyor."
+      : "65 yaş eki uygulanmıyor. Uygulamak için yukarıdaki kutuyu işaretleyin.";
     balthazardHata.textContent = "";
 
     fetch("/api/hesapla", {
@@ -1063,8 +1074,8 @@ var tumu = el("button", "cip", "Tümü");
       headers: {"Accept":"application/json", "Content-Type":"application/json"},
       body: JSON.stringify({
         oranlar: oranlar,
-        yas: "65_alti",
-        yas_ekle: false
+        yas: yasEkGoster.checked ? "65_ve_uzeri" : "65_alti",
+        yas_ekle: yasEkGoster.checked
       })
     }).then(function (yanit) {
       return yanit.json().then(function (veri) {
@@ -1120,6 +1131,8 @@ var tumu = el("button", "cip", "Tümü");
     sepetBildirim.textContent = "";
     sepetiCiz();
   });
+
+  yasEkGoster.addEventListener("change", balthazardOnizlemesiniGuncelle);
 
   // --- tablo/formül gerektiren EK-2 yöntemleri ------------------------------
   function ozelHesaplamalariCiz(veri) {
