@@ -60,6 +60,8 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertIn('id="siteDarkToggle"', html)
         self.assertIn('id="yas-ek-bilgi"', html)
         self.assertIn("ozelHesaplamalariCiz", html)
+        self.assertIn('el("details", "ozel-kaynak-tablo")', html)
+        self.assertIn('el("summary", null, tablo.ad +', html)
         self.assertIn("function hastaliklariCiz()", html)
         self.assertIn("satir.ad", html)
         self.assertIn("satir.seviye", html)
