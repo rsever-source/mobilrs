@@ -63,6 +63,7 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertIn("site-header{display:block!important;min-height:104px}", html)
         self.assertIn("body.dark-mode .balthazard-adimlar li", html)
         self.assertIn('rel="canonical" href="https://engelli.me/arac1"', html)
+        self.assertIn('name="twitter:description" content="EK-2 kılavuzundaki hastalık ve değerlendirme basamaklarını kaynaklarıyla inceleyin.">', html)
         self.assertIn('id="kapsam-aciklama"', html)
         self.assertIn("eş anlamlı ve ses benzerliği eşleştirmesi yapılmaz", html)
         self.assertIn('id="yas-ek-bilgi"', html)
