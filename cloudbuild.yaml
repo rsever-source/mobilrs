@@ -193,11 +193,12 @@ steps:
         nav_end = arac1.find(b"</nav>", nav_start)
         nav = arac1[nav_start:nav_end] if nav_start >= 0 and nav_end >= 0 else b""
         # Yaş bilgisi eski checkbox yerine details/summary olarak gösterilir.
+        # Türkçe metinler bytes literal olarak değil UTF-8 kodlanarak karşılaştırılır.
         yas_bilgisi_aciklamasi = (
             b'<details class="model-yas-kontrol">' in arac1 and
-            b'<summary class="model-yas-sec" aria-controls="yas-ek-bilgi">65 yaş ve üzeri yaş eki hakkında bilgi</summary>' in arac1 and
+            "<summary class=\"model-yas-sec\" aria-controls=\"yas-ek-bilgi\">65 yaş ve üzeri yaş eki hakkında bilgi</summary>".encode("utf-8") in arac1 and
             b'<div class="model-yas-bilgi" id="yas-ek-bilgi">' in arac1 and
-            b'Bu sayfadaki Balthazard ön izlemeye yaş eki uygulanmaz.' in arac1
+            "Bu sayfadaki Balthazard ön izlemeye yaş eki uygulanmaz.".encode("utf-8") in arac1
         )
         if (b'class="insan-model-gorsel"' in arac1 or b'id="model-secim-cagri"' in arac1 or
                 b'function modeliGuncelle(bolumAdi)' in arac1 or b'<svg class="insan-svg"' in arac1 or
