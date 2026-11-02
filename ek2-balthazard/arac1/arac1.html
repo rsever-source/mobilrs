@@ -417,6 +417,64 @@
     .sag-panel{grid-row:1;position:sticky;top:8px;max-height:35vh;overflow-y:auto;padding:4px;background:rgba(244,248,253,.94);backdrop-filter:blur(10px);border-radius:14px}
     .sol-panel{grid-row:2}
   }
+
+  /* EK-2 disclosure hierarchy: section chevrons differ from table chevrons. */
+  .ozel-kayit{border-top:1px solid var(--line);padding:10px 0}
+  .ozel-kayit>summary{
+    display:flex;align-items:center;gap:11px;padding:10px 12px;
+    border:1px solid #d6e5f8;border-radius:11px;background:#f5f9ff;
+    cursor:pointer;list-style:none;font-weight:750
+  }
+  .ozel-kayit>summary::-webkit-details-marker{display:none}
+  .ozel-kayit>summary::marker{content:""}
+  .ozel-kayit>summary::before{
+    content:"";width:10px;height:10px;flex:0 0 10px;
+    border-right:2.5px solid #075bc7;border-bottom:2.5px solid #075bc7;
+    transform:rotate(-45deg);transition:transform .16s ease
+  }
+  .ozel-kayit[open]>summary{background:#eaf3ff;border-color:#bfd7f4;color:#064eb5}
+  .ozel-kayit[open]>summary::before{transform:rotate(45deg)}
+  .ozel-kaynak-tablo{
+    border-top:1px solid var(--line);padding:7px 0 8px;margin-left:10px
+  }
+  .ozel-kaynak-tablo>summary{
+    display:flex;align-items:flex-start;gap:8px;padding:5px 2px;
+    cursor:pointer;list-style:none;font-size:13.5px;font-weight:650;line-height:1.45
+  }
+  .ozel-kaynak-tablo>summary::-webkit-details-marker{display:none}
+  .ozel-kaynak-tablo>summary::marker{content:""}
+  .ozel-kaynak-tablo>summary::before{
+    content:"";width:7px;height:7px;flex:0 0 7px;margin:4px 1px 0 1px;
+    border-right:1.7px solid #7286a3;border-bottom:1.7px solid #7286a3;
+    transform:rotate(-45deg);transition:transform .16s ease
+  }
+  .ozel-kaynak-tablo[open]>summary{color:#075bc7}
+  .ozel-kaynak-tablo[open]>summary::before{
+    border-color:#075bc7;transform:rotate(45deg)
+  }
+  .ozel-kaynak-tablo-aciklama,.ozel-kaynak-tablo-formul{
+    margin:3px 0 8px 18px;font-size:13px;color:var(--muted)
+  }
+  .ozel-kaynak-tablo-formul{color:var(--ink);font-weight:600}
+  .ozel-kaynak-tablo-bos{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;
+    padding:8px 2px 8px 18px;border-top:1px solid #edf1f7;font-size:13.5px
+  }
+  .ozel-kaynak-tablo-adi{font-weight:600;color:var(--ink)}
+  .ozel-kaynak-tablo-durum{font-size:11.5px;color:var(--muted)}
+  .ozel-yontem-notu{
+    margin-top:14px;padding:12px 14px;border:1px solid #d7e3f2;
+    border-left:3px solid #7da8dc;border-radius:10px;background:#f7faff
+  }
+  .ozel-yontem-notu p{margin:0 0 7px}
+  .ozel-yontem-notu p:last-child{margin-bottom:0}
+  .ozel-yontem-notu-baslik{
+    color:#385a83;font-size:11px;font-weight:800;letter-spacing:.045em;
+    text-transform:uppercase
+  }
+  .ozel-yontem-kurali{font-size:13.5px;color:var(--ink)}
+  .ozel-yontem-uyari{font-size:12.5px;color:var(--muted)}
+
 </style>
 </head>
 <body>
@@ -1053,15 +1111,36 @@ var tumu = el("button", "cip", "Tümü");
       if (kayit.tablolar && kayit.tablolar.length) {
         icerik.appendChild(el("p", "ipucu", "Kaynak tablolar:"));
         kayit.tablolar.forEach(function (tablo) {
+          var satirVar = Array.isArray(tablo.satirlar) && tablo.satirlar.length > 0;
+          var amacVar = typeof tablo.amac === "string" && tablo.amac.trim().length > 0;
+          var formulVar = typeof tablo.formul === "string" && tablo.formul.trim().length > 0;
+          var dogrulamaVar = typeof tablo.kaynak_goruntu_dogrulamasi === "string" &&
+            tablo.kaynak_goruntu_dogrulamasi.trim().length > 0;
+          var tabloAciklanabilir = satirVar || amacVar || formulVar || dogrulamaVar;
+          var sayfaEtiketi = tablo.sayfa ? " · s." + tablo.sayfa :
+            (tablo.sayfa_araligi && tablo.sayfa_araligi.length === 2
+              ? " · s." + tablo.sayfa_araligi[0] + "–" + tablo.sayfa_araligi[1] : "");
+
+          if (!tabloAciklanabilir) {
+            var bosTablo = el("div", "ozel-kaynak-tablo-bos");
+            bosTablo.appendChild(el("span", "ozel-kaynak-tablo-adi", tablo.ad + sayfaEtiketi));
+            bosTablo.appendChild(el("span", "ozel-kaynak-tablo-durum", "Tablo içeriği bu ekranda gösterilmiyor."));
+            icerik.appendChild(bosTablo);
+            return;
+          }
+
           var tabloKutu = el("details", "ozel-kaynak-tablo");
-          var tabloBaslik = el("summary", null, tablo.ad +
-            (tablo.sayfa ? " · s." + tablo.sayfa : ""));
+          tabloKutu.open = false;
+          var tabloBaslik = el("summary", null, tablo.ad + sayfaEtiketi);
           tabloKutu.appendChild(tabloBaslik);
 
           if (tablo.amac) {
-            tabloKutu.appendChild(el("p", "ipucu", tablo.amac));
+            tabloKutu.appendChild(el("p", "ozel-kaynak-tablo-aciklama", tablo.amac));
           }
-          if (tablo.satirlar && tablo.satirlar.length) {
+          if (tablo.formul) {
+            tabloKutu.appendChild(el("p", "ozel-kaynak-tablo-formul", "Formül: " + tablo.formul));
+          }
+          if (satirVar) {
             var tabloEl = el("table", "kaynak-tablosu");
             var thead = el("thead");
             var baslikSatiri = el("tr");
@@ -1085,11 +1164,16 @@ var tumu = el("button", "cip", "Tümü");
           icerik.appendChild(tabloKutu);
         });
       }
-      if (kayit.hesaplama_kurali) { icerik.appendChild(el("p", null, kayit.hesaplama_kurali)); }
-      if (kayit.uyari) {
-        var uyari = el("p", "ipucu", kayit.uyari);
-        uyari.style.marginTop = "8px";
-        icerik.appendChild(uyari);
+      if (kayit.hesaplama_kurali || kayit.uyari) {
+        var yontemNotu = el("div", "ozel-yontem-notu");
+        yontemNotu.appendChild(el("p", "ozel-yontem-notu-baslik", "Yöntem ve değerlendirme notu"));
+        if (kayit.hesaplama_kurali) {
+          yontemNotu.appendChild(el("p", "ozel-yontem-kurali", kayit.hesaplama_kurali));
+        }
+        if (kayit.uyari) {
+          yontemNotu.appendChild(el("p", "ozel-yontem-uyari", kayit.uyari));
+        }
+        icerik.appendChild(yontemNotu);
       }
       hedef.appendChild(kutu);
     });
