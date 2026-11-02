@@ -352,7 +352,6 @@
             ]
           ],
           "amac": "İşlevsel Görme Puanı (İGP) ve Görme Sistemi Yetersizlik Oranı (GSYO) üzerinden altı görme keskinliği yetersizliği sınıfını belirler.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı.",
           "not": "Sınıf, yalnızca tanı adına bakılarak seçilmez; kaynakta açıklanan görme keskinliği ölçümleri ve İGP hesabı gerekir."
         },
         {
@@ -565,8 +564,7 @@
               90
             ]
           ],
-          "amac": "GSYO değeri 50'yi aştığında kaynakta belirtilen dönüşümü yapar. Kaynak notuna göre küsuratlı sonuç üst tam sayıya tamamlanır.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "GSYO değeri 50'yi aştığında kaynakta belirtilen dönüşümü yapar. Kaynak notuna göre küsuratlı sonuç üst tam sayıya tamamlanır."
         }
       ],
       "uyari": "Bu hesaplama otomatik oran bulucu olarak uygulanmamıştır: ölçüm diyagramları, puan eşleştirme tabloları ve ek kayıp kuralları klinik girdiler olmadan güvenilir biçimde hesaplanamaz."
@@ -1085,8 +1083,6 @@
         },
         {
           "ad": "Tablo 1.7 — Spesifik omurga hastalıklarına bağlı engellilik",
-          "sayfa": 215,
-          "pdf_sayfa": null,
           "sutunlar": [
             "Hastalık / bulgu",
             "Servikal (%)",
@@ -1192,7 +1188,6 @@
             ]
           ],
           "amac": "Kırıklar, dislokasyon, disk/yumuşak doku lezyonları, spondilolizis/spondilolistezis ve ameliyatlı spinal stenoz/instabilite için bölgeye göre kaynak oranlarını verir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı.",
           "sayfa_araligi": [
             215,
             216
@@ -1245,7 +1240,6 @@
             ]
           ],
           "amac": "Duyu kaybı veya ağrının derecesini, günlük aktivite üzerindeki etkisine göre yüzdeye dönüştürür.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı.",
           "not": "Her kutanöz innervasyon alanı veya dermatom ayrı değerlendirilir; sonuçlar kaynakta belirtildiği gibi Balthazard yöntemiyle birleştirilir."
         },
         {
@@ -1289,8 +1283,7 @@
               100
             ]
           ],
-          "amac": "Kas gücü muayenesindeki dereceyi motor kayıp yüzdesine dönüştürür.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Kas gücü muayenesindeki dereceyi motor kayıp yüzdesine dönüştürür."
         },
         {
           "ad": "Tablo 1.10 — İlişkili sinir kökünün maksimum değeri",
@@ -1349,7 +1342,6 @@
             ]
           ],
           "amac": "İlgili spinal sinir kökü için duyu/ağrı ve motor kayıp yüzdelerinin kaynakta verilen üst sınırlarını gösterir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı.",
           "not": "Spinal sinir kaybı değerlendirmesinde kaynak, eklem hareket açıklığı modelinin üçüncü basamağının okunmasını ve Tablo 1.8, 1.9 ve 1.10'un birlikte kullanılmasını ister."
         }
       ],
@@ -1434,8 +1426,6 @@
       "tablolar": [
         {
           "ad": "Tablo 2.1 — Parmak engellilik yüzdelerinin el engelliliğine dönüştürülmesi",
-          "sayfa": 222,
-          "pdf_sayfa": 109,
           "sutunlar": [
             "Başparmak engelliliği aralığı (%)",
             "El engelliliği (%)",
@@ -1775,7 +1765,6 @@
             ]
           ],
           "amac": "Parmak düzeyinde hesaplanan engellilik yüzdesini parmağın türüne göre el engelliliği yüzdesine dönüştürür.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı.",
           "sayfa_araligi": [
             222,
             223
@@ -2199,8 +2188,7 @@
               90
             ]
           ],
-          "amac": "El engellilik yüzdesini üst ekstremite engellilik yüzdesine dönüştürür.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "El engellilik yüzdesini üst ekstremite engellilik yüzdesine dönüştürür."
         },
         {
           "ad": "Tablo 2.3 — Üst ekstremite engelliliğinin kişinin engellilik oranına dönüştürülmesi",
@@ -2616,8 +2604,7 @@
               60
             ]
           ],
-          "amac": "Üst ekstremite engellilik yüzdesini kişinin engellilik oranına dönüştürür.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Üst ekstremite engellilik yüzdesini kişinin engellilik oranına dönüştürür."
         },
         {
           "ad": "Tablo 2.4 — Başparmak adduksiyon kaybı/ankilozu",
@@ -2675,8 +2662,7 @@
               20
             ]
           ],
-          "amac": "Ölçülen başparmak adduksiyon kaybı veya ankilozunu başparmak engellilik yüzdesine dönüştürür.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Ölçülen başparmak adduksiyon kaybı veya ankilozunu başparmak engellilik yüzdesine dönüştürür."
         },
         {
           "ad": "Tablo 2.5 — Başparmak radial abduksiyon kaybı/ankilozu",
@@ -2719,8 +2705,7 @@
               10
             ]
           ],
-          "amac": "Ölçülen başparmak radial abduksiyon kaybı veya ankilozunu başparmak engellilik yüzdesine dönüştürür.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Ölçülen başparmak radial abduksiyon kaybı veya ankilozunu başparmak engellilik yüzdesine dönüştürür."
         },
         {
           "ad": "Tablo 2.6 — Başparmak opozisyon kaybı/ankilozu",
@@ -2778,8 +2763,7 @@
               29
             ]
           ],
-          "amac": "Ölçülen başparmak opozisyon kaybı veya ankilozunu başparmak engellilik yüzdesine dönüştürür.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Ölçülen başparmak opozisyon kaybı veya ankilozunu başparmak engellilik yüzdesine dönüştürür."
         },
         {
           "ad": "Tablo 2.7 — Üst ekstremite amputasyonlarının neden olduğu engellilik oranları",
@@ -2914,7 +2898,6 @@
             ]
           ],
           "amac": "Amputasyon düzeyine göre parmak, el, üst ekstremite ve kişinin engel oranı yüzdelerini ayrı ayrı verir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı.",
           "not": "MF: metakarpofalangiyal; PİF: proksimal interfalangiyal; DİF: distal interfalangiyal; KMK: karpometakarpal; İF: interfalangiyal."
         }
       ],
@@ -3006,7 +2989,6 @@
             ]
           ],
           "amac": "Kaynağın alt ekstremite yöntemleri için kombinasyon matrisidir. Kesişimde + olan yöntemler birleştirilebilir; boş kesişim aynı kişinin değerlendirmesinde birlikte kullanılamaz.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı.",
           "not": "Bu tablo bir oran tablosu değildir; hangi değerlendirme yöntemlerinin birlikte kullanılabileceğini belirler."
         },
         {
@@ -3018,7 +3000,6 @@
             "Kişinin engel oranı (%)"
           ],
           "amac": "Alt ekstremite engellilik yüzdesini kişinin engel oranına çeviren kaynak dönüşüm tablosudur. Kaynakta 0–100 aralığı tek tek listelenir; dönüşüm, alt ekstremite yüzdesi üzerinden bu tabloya bakılarak yapılır.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı.",
           "not": "Kaynağın 0–100 satırlı eşleştirme tablosu esas alınmalıdır; burada satır aralıkları formülle yeniden üretilmedi."
         },
         {
@@ -3069,8 +3050,7 @@
               25
             ]
           ],
-          "amac": "Spina iliaka anterior superior ile ayak bileği medial malleol arasındaki mesafe ölçülerek bulunan uzunluk farkını kaynak oranlarına dönüştürür.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Spina iliaka anterior superior ile ayak bileği medial malleol arasındaki mesafe ölçülerek bulunan uzunluk farkını kaynak oranlarına dönüştürür."
         },
         {
           "ad": "Tablo 3.4 — Yürüyüş bozukluğuna göre engellilik oranları",
@@ -3144,7 +3124,6 @@
             ]
           ],
           "amac": "Sürekli yürüyüş bozukluğu ve yardımcı cihaza bağımlılığı değerlendirir. Kaynak, mekanik bel ağrısı nedeniyle baston kullanımının bu tabloya tek başına dayanak olmayacağını söyler.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı.",
           "not": "Bu tablo tek başına kullanılır; kaynak diğer tablolarla birleştirilmemesini belirtir."
         },
         {
@@ -3207,8 +3186,7 @@
               13
             ]
           ],
-          "amac": "Uyluk çevresi patellanın 10 cm üzerinden; baldır çevresi ise karşı tarafın aynı seviyesindeki maksimum çevreyle karşılaştırılarak ölçülür.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Uyluk çevresi patellanın 10 cm üzerinden; baldır çevresi ise karşı tarafın aynı seviyesindeki maksimum çevreyle karşılaştırılarak ölçülür."
         },
         {
           "ad": "Tablo 3.6 — Alt ekstremitenin kas kuvvetinin değerlendirilmesi",
@@ -3251,8 +3229,7 @@
               100
             ]
           ],
-          "amac": "Manuel kas testi derecesini motor kayıp yüzdesine dönüştürür.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Manuel kas testi derecesini motor kayıp yüzdesine dönüştürür."
         },
         {
           "ad": "Tablo 3.7 — Alt ekstremite kas kuvvetinde kayba bağlı engellilik yüzdeleri",
@@ -3263,7 +3240,6 @@
             "Kaynak tablodaki derece aralığı"
           ],
           "amac": "Kalça fleksiyon/ekstansiyon/abdüksiyon; diz fleksiyon/ekstansiyon; ayak bileği fleksiyon/ekstansiyon/inversiyon/eversiyon ve ayak başparmağı ekstansiyon/fleksiyon hareketlerini derece 0–4 sütunlarında ayrı ayrı değerlendirir. Aynı bölgedeki farklı bozuklukların ekstremite oranı önce Balthazard yöntemiyle birleştirilir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı.",
           "not": "Bu tablo satır-sütun kas grubu matrisidir; kaynak matrisindeki her hücre ayrı kas grubu ve dereceye karşılık gelir. Derece açıklamaları Tablo 3.6'dadır."
         },
         {
@@ -3320,8 +3296,7 @@
               "11–20°"
             ]
           ],
-          "amac": "Kalça eklemi hareket kısıtlılığını hafif, orta ve ciddi şiddet gruplarına ayırır.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Kalça eklemi hareket kısıtlılığını hafif, orta ve ciddi şiddet gruplarına ayırır."
         },
         {
           "ad": "Tablo 3.8b — Kalça eklemi hareket kısıtlılığı şiddetine bağlı engellilik",
@@ -3350,7 +3325,6 @@
             ]
           ],
           "amac": "Tablo 3.8a'daki kalça hareket kısıtlılığı şiddetini alt ekstremite ve kişi oranına dönüştürür.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı.",
           "not": "20° üzerindeki abdüksiyon kontraktürlerinin kişide %15 engel oranına neden olduğu kaynakta ayrıca belirtilir."
         },
         {
@@ -3396,7 +3370,6 @@
             ]
           ],
           "amac": "Diz hareket kısıtlılığı ve deformite ölçümlerini kaynak şiddet ve oran sınıflarına eşler.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı.",
           "not": "Parantez içindeki değerler kaynak tabloda ayrıca gösterilen oranlardır; deformite femoral-tibial açıdan ölçülür."
         },
         {
@@ -3435,8 +3408,7 @@
               "—"
             ]
           ],
-          "amac": "Ayak bileğinin plantar fleksiyon, fleksiyon kontraktürü ve ekstansiyon durumlarını şiddet sınıflarına göre değerlendirir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Ayak bileğinin plantar fleksiyon, fleksiyon kontraktürü ve ekstansiyon durumlarını şiddet sınıflarına göre değerlendirir."
         },
         {
           "ad": "Tablo 3.11 — Topuk hareket kısıtlılığına bağlı engellilik",
@@ -3464,8 +3436,7 @@
               "—"
             ]
           ],
-          "amac": "Topuk inversiyon ve eversiyon hareket kısıtlılığını kaynak oranlarına eşler.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Topuk inversiyon ve eversiyon hareket kısıtlılığını kaynak oranlarına eşler."
         },
         {
           "ad": "Tablo 3.12 — Ayak bileği veya topuk deformite bozuklukları",
@@ -3497,8 +3468,7 @@
               "—"
             ]
           ],
-          "amac": "Ayak bileği/topuk varus ve valgus deformitelerini şiddet derecesine göre değerlendirir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Ayak bileği/topuk varus ve valgus deformitelerini şiddet derecesine göre değerlendirir."
         },
         {
           "ad": "Tablo 3.13 — Ayak başparmak bozuklukları",
@@ -3532,7 +3502,6 @@
             ]
           ],
           "amac": "Başparmak ve küçük parmaklardaki MTF/İF hareket bozukluklarını değerlendirir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı.",
           "not": "Bir ayakta iki veya daha fazla küçük parmak için kişinin engel oranı azami %3'tür."
         },
         {
@@ -3587,7 +3556,6 @@
             ]
           ],
           "amac": "Kalça fleksiyon pozisyonunda ankilozun nötral pozisyona eklenen oranını gösterir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı.",
           "not": "Kaynak notu: oranlar nötral pozisyon oranına eklenir."
         },
         {
@@ -3621,8 +3589,7 @@
               50
             ]
           ],
-          "amac": "Kalçanın iç rotasyon pozisyonundaki ankiloz oranını nötral pozisyona eklemek için kullanılır.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Kalçanın iç rotasyon pozisyonundaki ankiloz oranını nötral pozisyona eklemek için kullanılır."
         },
         {
           "ad": "Tablo 3.16 — Kalçanın dış rotasyon pozisyonunda ankilozuna bağlı engellilik",
@@ -3655,8 +3622,7 @@
               50
             ]
           ],
-          "amac": "Kalçanın dış rotasyon pozisyonundaki ankiloz oranını nötral pozisyona eklemek için kullanılır.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Kalçanın dış rotasyon pozisyonundaki ankiloz oranını nötral pozisyona eklemek için kullanılır."
         },
         {
           "ad": "Tablo 3.17 — Kalçanın abdüksiyon pozisyonunda ankilozuna bağlı engellilik",
@@ -3684,8 +3650,7 @@
               50
             ]
           ],
-          "amac": "Kalçanın abdüksiyon pozisyonundaki ankiloz oranını nötral pozisyona eklemek için kullanılır.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Kalçanın abdüksiyon pozisyonundaki ankiloz oranını nötral pozisyona eklemek için kullanılır."
         },
         {
           "ad": "Tablo 3.18 — Kalçanın addüksiyon pozisyonunda ankilozuna bağlı engellilik",
@@ -3713,8 +3678,7 @@
               50
             ]
           ],
-          "amac": "Kalçanın addüksiyon pozisyonundaki ankiloz oranını nötral pozisyona eklemek için kullanılır.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Kalçanın addüksiyon pozisyonundaki ankiloz oranını nötral pozisyona eklemek için kullanılır."
         },
         {
           "ad": "Tablo 3.19 — Dizin varus pozisyonunda ankilozuna bağlı engellilik",
@@ -3742,8 +3706,7 @@
               33
             ]
           ],
-          "amac": "Diz varus ankilozunda nötral pozisyona eklenen oranı gösterir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Diz varus ankilozunda nötral pozisyona eklenen oranı gösterir."
         },
         {
           "ad": "Tablo 3.20 — Dizin valgus pozisyonunda ankilozuna bağlı engellilik",
@@ -3771,8 +3734,7 @@
               33
             ]
           ],
-          "amac": "Diz valgus ankilozunda nötral pozisyona eklenen oranı gösterir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Diz valgus ankilozunda nötral pozisyona eklenen oranı gösterir."
         },
         {
           "ad": "Tablo 3.21 — Dizin fleksiyon pozisyonunda ankilozuna bağlı engellilik",
@@ -3800,8 +3762,7 @@
               33
             ]
           ],
-          "amac": "Diz fleksiyon ankilozunda nötral pozisyona eklenen oranı gösterir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Diz fleksiyon ankilozunda nötral pozisyona eklenen oranı gösterir."
         },
         {
           "ad": "Tablo 3.22 — Dizin iç veya dış malrotasyonda ankilozuna bağlı engellilik",
@@ -3829,8 +3790,7 @@
               33
             ]
           ],
-          "amac": "Diz iç veya dış malrotasyon ankilozunda nötral pozisyona eklenen oranı gösterir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Diz iç veya dış malrotasyon ankilozunda nötral pozisyona eklenen oranı gösterir."
         },
         {
           "ad": "Tablo 3.23 — Ayak bileğinin plantar fleksiyon–dorsifleksiyonda ankilozuna bağlı engellilik",
@@ -3874,8 +3834,7 @@
               74
             ]
           ],
-          "amac": "Ayak bileği plantar/dorsifleksiyon ankiloz pozisyonunu kişi, alt ekstremite ve ayak oranlarına eşler.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Ayak bileği plantar/dorsifleksiyon ankiloz pozisyonunu kişi, alt ekstremite ve ayak oranlarına eşler."
         },
         {
           "ad": "Tablo 3.24 — Ayak bileğinin varus pozisyonunda ankilozuna bağlı engellilik",
@@ -3913,8 +3872,7 @@
               74
             ]
           ],
-          "amac": "Ayak bileği varus ankilozunda kişi, alt ekstremite ve ayak oranlarını gösterir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Ayak bileği varus ankilozunda kişi, alt ekstremite ve ayak oranlarını gösterir."
         },
         {
           "ad": "Tablo 3.25 — Ayak bileğinin valgus pozisyonunda ankilozuna bağlı engellilik",
@@ -3946,8 +3904,7 @@
               74
             ]
           ],
-          "amac": "Ayak bileği valgus ankilozunda kişi, alt ekstremite ve ayak oranlarını gösterir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Ayak bileği valgus ankilozunda kişi, alt ekstremite ve ayak oranlarını gösterir."
         },
         {
           "ad": "Tablo 3.26 — Ayak bileğinin internal malrotasyonda ankilozuna bağlı engellilik",
@@ -3985,8 +3942,7 @@
               74
             ]
           ],
-          "amac": "Ayak bileği internal malrotasyon ankilozunda kişi, alt ekstremite ve ayak oranlarını gösterir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Ayak bileği internal malrotasyon ankilozunda kişi, alt ekstremite ve ayak oranlarını gösterir."
         },
         {
           "ad": "Tablo 3.27 — Ayak bileğinin eksternal malrotasyonda ankilozuna bağlı engellilik",
@@ -4024,8 +3980,7 @@
               74
             ]
           ],
-          "amac": "Ayak bileği eksternal malrotasyon ankilozunda kişi, alt ekstremite ve ayak oranlarını gösterir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Ayak bileği eksternal malrotasyon ankilozunda kişi, alt ekstremite ve ayak oranlarını gösterir."
         },
         {
           "ad": "Tablo 3.28 — Tibia–os calcis açısının azalmasına bağlı engellilik",
@@ -4057,8 +4012,7 @@
               74
             ]
           ],
-          "amac": "Tibia–os calcis açısındaki azalmaya karşılık gelen kişi, alt ekstremite ve ayak oranlarını gösterir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Tibia–os calcis açısındaki azalmaya karşılık gelen kişi, alt ekstremite ve ayak oranlarını gösterir."
         },
         {
           "ad": "Tablo 3.29 — Ayak parmaklarının ankilozuna bağlı engellilik",
@@ -4127,7 +4081,6 @@
             ]
           ],
           "amac": "Ayak parmağı kombinasyonları ve ankiloz pozisyonuna göre kaynakta verilen engellilik oranlarını listeler.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı.",
           "not": "Parantezli ve köşeli değerler kaynak tablosundaki alt ekstremite ve ayak oranlarıdır; sütun sırası kaynak sayfadaki başlıklara göredir."
         },
         {
@@ -4238,8 +4191,7 @@
               3
             ]
           ],
-          "amac": "Alt ekstremite ve ayak ampütasyon seviyesine göre kişinin, alt ekstremitenin ve ayak düzeyinin engellilik oranlarını gösterir.",
-          "kaynak_goruntu_dogrulamasi": "20.02.2019 tarihli 30692 sayılı Resmî Gazete EK-2 kaynak sayfasıyla karşılaştırıldı."
+          "amac": "Alt ekstremite ve ayak ampütasyon seviyesine göre kişinin, alt ekstremitenin ve ayak düzeyinin engellilik oranlarını gösterir."
         }
       ],
       "hesaplama_kurali": "Eklem hareket açıklığı, ankiloz, amputasyon ve fonksiyon kayıpları kaynağın ilgili dönüşüm tablosuyla ele alınmalıdır.",
