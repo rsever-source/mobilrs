@@ -343,7 +343,11 @@ steps:
         # Onceki surum ikisinde de "id" aradigi icin bolum sayisi 0 cikiyordu.
         BOLUM_SAYISI="$$(grep -o '"ad"' "$$BOLUMLER_JSON" | wc -l | tr -d ' ' || true)"
         OZEL_SAYISI="$$(grep -o '"id"' "$$OZEL_JSON" | wc -l | tr -d ' ' || true)"
-        if [ "$$BOLUM_SAYISI" != "12" ] || [ "$$OZEL_SAYISI" != "5" ]; then
+        # Beklenen sayilar veriyle birlikte guncellenir:
+        # 16 kategori = 12 sabit oranli bolum + 4 tablo/formul kategorisi
+        #              (Goz, Kas-Iskelet, Romatoloji, Yaniklar)
+        # 6 ozel hesaplama = OZ-GOR-001, OZ-KIS-001/002/003, OZ-ROM-001, OZ-YAN-001
+        if [ "$$BOLUM_SAYISI" != "16" ] || [ "$$OZEL_SAYISI" != "6" ]; then
           echo "HATA: EK-2 katalog veya ozel hesaplama verisi eksik (bolum=$$BOLUM_SAYISI, ozel=$$OZEL_SAYISI)" >&2
           exit 1
         fi
