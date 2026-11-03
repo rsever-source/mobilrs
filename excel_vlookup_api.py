@@ -416,6 +416,11 @@ async def ek2_ozel_hesaplamalar():
     return JSONResponse({"ok": True, **ek2_arac1.ozel_hesaplamalar()})
 
 
+@app.get("/api/kurallar")
+async def ek2_kurallar():
+    return JSONResponse({"ok": True, **ek2_arac1.kurallar()})
+
+
 @app.get("/api/kayit/{kimlik}")
 async def ek2_kayit(kimlik: str):
     if kimlik.startswith(("KV-", "KH-", "UG-", "SS-", "EM-", "GH-", "ON-", "SN-")):
@@ -524,7 +529,10 @@ async def robots_txt():
 
 @app.get("/sitemap.xml", response_class=HTMLResponse)
 async def sitemap_xml():
-    return HTMLResponse("<?xml version=\"1.0\" encoding=\"UTF-8\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://engelli.me/</loc></url></urlset>", media_type="application/xml")
+    urls = ("https://engelli.me/", "https://engelli.me/arac1", "https://engelli.me/arac2")
+    entries = "".join("<url><loc>" + url + "</loc></url>" for url in urls)
+    xml = '<?xml version="1.0" encoding="UTF-8"?>' + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + entries + "</urlset>"
+    return HTMLResponse(xml, media_type="application/xml")
 
 
 @app.get("/.well-known/security.txt", response_class=Response)
