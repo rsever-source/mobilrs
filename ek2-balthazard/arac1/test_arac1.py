@@ -239,6 +239,39 @@ class Arac1Testleri(unittest.TestCase):
         self.assertEqual(len(veri["ozel_hesaplamalar"]), 6)
         self.assertTrue(any(x["id"] == "OZ-GOR-001" for x in veri["ozel_hesaplamalar"]))
 
+    def test_ozel_hesaplama_yanik_tablosu_api_semasi(self):
+        durum, _, veri = self._json("/api/ozel-hesaplamalar")
+        self.assertEqual(durum, 200)
+        yanik = next(x for x in veri["ozel_hesaplamalar"] if x["id"] == "OZ-YAN-001")
+        tablo = yanik["tablolar"][0]
+        self.assertEqual(tablo["ad"], "YANIKLAR — I- DERİ İLE İLGİLİ YANIK ARIZALARI")
+        self.assertEqual(
+            tablo["satirlar"],
+            [
+                {"madde": "a", "aciklama": "Vücut yüzeyinin %10'unu kaplayan ve ameliyatla giderilemeyen keloid hipertrofi", "oran": 20},
+                {"madde": "b", "aciklama": "Vücut yüzeyinin %50'sini kaplayanlar", "oran": 30},
+                {"madde": "c", "aciklama": "Vücut yüzeyinin %50'sinden fazlasını kaplayanlar", "oran": 40},
+                {"madde": "d", "aciklama": "Saçlı derinin yarıdan çok alanını kaplayan yanıklar ve yaralar", "oran": 25},
+            ],
+        )
+
+    def test_tablo_kategorileri_kaynak_yontemlerine_baglidir(self):
+        beklenen = {
+            "GÖRME SİSTEMİ": ["OZ-GOR-001"],
+            "KAS-İSKELET SİSTEMİ": ["OZ-KIS-001", "OZ-KIS-002", "OZ-KIS-003"],
+            "ROMATOLOJİ": ["OZ-ROM-001"],
+            "YANIKLAR": ["OZ-YAN-001"],
+        }
+        for bolum, kimlikler in beklenen.items():
+            with self.subTest(bolum=bolum):
+                durum, _, veri = self._json(
+                    "/api/gezinme?bolum=" + urllib.parse.quote(bolum)
+                )
+                self.assertEqual(durum, 200)
+                self.assertEqual(
+                    veri["tablo_kategorisi"]["ozel_hesaplama_idler"], kimlikler
+                )
+
     def test_ek_katalog_kaydi_ucu(self):
         durum, _, veri = self._json("/api/kayit/SS-023")
         self.assertEqual(durum, 200)
