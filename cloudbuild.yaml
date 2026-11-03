@@ -86,14 +86,18 @@ steps:
         # Cloud Run traffic hedefini tag alanindan dogrudan filtrele.
         # revisionName ve URL ayri sorgulanir; value() ciktisini paste ile
         # eslestirmek gcloud satir bicimine bagli oldugu icin guvenilir degil.
-        REVISION="$$(gcloud run services describe "$$SERVICE" \
-          --region="$$REGION" \
-          --project="$$PROJECT" \
-          --format="value(status.traffic.filter(tag=$$TAG).revisionName)")"
-        BASE="$$(gcloud run services describe "$$SERVICE" \
-          --region="$$REGION" \
-          --project="$$PROJECT" \
-          --format="value(status.traffic.filter(tag=$$TAG).url)")"
+        REVISION="$(gcloud run services describe "$SERVICE" \
+          --region="$REGION" \
+          --project="$PROJECT" \
+          --flatten="status.traffic" \
+          --filter="status.traffic.tag=$TAG" \
+          --format="value(status.traffic.revisionName)")"
+        BASE="$(gcloud run services describe "$SERVICE" \
+          --region="$REGION" \
+          --project="$PROJECT" \
+          --flatten="status.traffic" \
+          --filter="status.traffic.tag=$TAG" \
+          --format="value(status.traffic.url)")"
         if [ -z "$$REVISION" ]; then
           echo "HATA: $$TAG tag'i icin revision adi bulunamadi" >&2
           exit 1
@@ -358,10 +362,12 @@ steps:
         REV="$$(cat /workspace/revision.txt)"
 
         # %100 trafigi alan revision'i Cloud Run traffic alanindan filtrele.
-        CANLI="$$(gcloud run services describe mobilrs-test \
+        CANLI="$(gcloud run services describe mobilrs-test \
           --region=europe-west1 \
           --project=project-f671a84c-0cde-40b8-921 \
-          --format="value(status.traffic.filter(percent=100).revisionName)")"
+          --flatten="status.traffic" \
+          --filter="status.traffic.percent=100" \
+          --format="value(status.traffic.revisionName)")"
 
         SATIR_SAYISI="$$(printf '%s\n' "$$CANLI" | grep -c . || true)"
         if [ "$$SATIR_SAYISI" != "1" ] || [ "$$CANLI" != "$$REV" ]; then
