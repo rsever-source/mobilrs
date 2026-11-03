@@ -112,15 +112,29 @@
         },
         {
           "adim": 6,
-          "aciklama": "Varsa diplopi, sürekli göz sulanması, kapak işlev bozukluğu gibi diğer kayıplar kaynakta belirtilen yöntemle düşülür; Balthazard ve doğrudan puan düşümü kuralları birbirinin yerine kullanılmaz."
+          "aciklama": "Klinik olarak anlamlı kontrast duyarlık — kamaşma (glare) kusuru varsa işlevsel görme puanı azaltılır: normal oda aydınlatması ile karanlık oda ölçümü arasında görme keskinliği puanı 15 puan veya daha fazla (ondalık/Snellen düzeyinde iki kat) değişiyorsa tek gözde %10, iki gözde %20 azaltma uygulanır. Bu bir Balthazard eklemesi değildir; İGP çarpımsal olarak düzeltilir.",
+          "formul": "Kamaşma varsa: İGP′ = İGP × 0,90 (tek göz) veya İGP′ = İGP × 0,80 (iki göz); yoksa İGP′ = İGP",
+          "kural": {
+            "esik_puan": 15,
+            "esik_snellen_kat": 2,
+            "tek_goz_katsayi": 0.9,
+            "iki_goz_katsayi": 0.8,
+            "uygulama_sirasi": "5. adımdan (İGP) sonra, GSYO hesabından önce",
+            "balthazard_eklemesi": false,
+            "kaynak_sayfa": 152
+          }
         },
         {
           "adim": 7,
-          "aciklama": "Görme sistemi yetersizlik oranı 100'den işlevsel görme puanı çıkarılarak bulunur.",
-          "formul": "GSYO = 100 − İGP"
+          "aciklama": "Varsa diplopi, sürekli göz sulanması, kapak işlev bozukluğu gibi diğer kayıplar kaynakta belirtilen yöntemle düşülür; Balthazard ve doğrudan puan düşümü kuralları birbirinin yerine kullanılmaz."
         },
         {
           "adim": 8,
+          "aciklama": "Görme sistemi yetersizlik oranı 100'den düzeltilmiş işlevsel görme puanı çıkarılarak bulunur.",
+          "formul": "GSYO = 100 − İGP′"
+        },
+        {
+          "adim": 9,
           "aciklama": "GSYO 50'yi aşarsa kişinin engel oranı kaynak Tablo 3 karşılığından belirlenir; 50 ve altındaki durumlarda metinde belirtilen eşitlik kuralı uygulanır.",
           "tablo": "Tablo 3 (basılı s.163)",
           "formul": "GSYO ≤ 50 ise engel oranı = GSYO; GSYO > 50 ise engel oranı = (GSYO − 50) × 0,8 + 50; küsurat üst tam sayıya yuvarlanır."
@@ -567,6 +581,17 @@
           "amac": "GSYO değeri 50'yi aştığında kaynakta belirtilen dönüşümü yapar. Kaynak notuna göre küsuratlı sonuç üst tam sayıya tamamlanır."
         }
       ],
+      "hesaplama_kurali": "İKP = (3 × binoküler GKP + sağ GKP + sol GKP) / 5; İAP = (3 × binoküler GAP + sağ GAP + sol GAP) / 5; İGP = İKP × İAP / 100. Klinik anlamlı kamaşma varsa İGP tek gözde 0,90, iki gözde 0,80 ile çarpılır; bu düzeltme Balthazard ile eklenmez. GSYO = 100 − düzeltilmiş İGP.",
+      "resmi_ornek": {
+        "aciklama": "Kaynak örnek: her iki gözde anlamlı kamaşma; İGP 71,4 üzerinden %20 azaltma.",
+        "igp": 71.4,
+        "kamasma": "iki göz",
+        "katsayi": 0.8,
+        "duzeltilmis_igp": 57.12,
+        "gsyo": 43,
+        "kaynak_sayfa": 154,
+        "dogrulama": "71,4 − (71,4 × 0,20) = 57,12; 100 − 57 = 43."
+      },
       "uyari": "Bu hesaplama otomatik oran bulucu olarak uygulanmamıştır: ölçüm diyagramları, puan eşleştirme tabloları ve ek kayıp kuralları klinik girdiler olmadan güvenilir biçimde hesaplanamaz."
     },
     {

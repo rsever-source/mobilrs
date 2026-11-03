@@ -416,6 +416,11 @@ async def ek2_ozel_hesaplamalar():
     return JSONResponse({"ok": True, **ek2_arac1.ozel_hesaplamalar()})
 
 
+@app.get("/api/kurallar")
+async def ek2_kurallar():
+    return JSONResponse({"ok": True, **ek2_arac1.kurallar()})
+
+
 @app.get("/api/kayit/{kimlik}")
 async def ek2_kayit(kimlik: str):
     if kimlik.startswith(("KV-", "KH-", "UG-", "SS-", "EM-", "GH-", "ON-", "SN-")):
@@ -423,25 +428,7 @@ async def ek2_kayit(kimlik: str):
             for satir in bolum.get("kayitlar", []):
                 if satir.get("id") != kimlik:
                     continue
-                gosterim = ek2_arac1.oran_gosterim(satir["oran"])
-                return JSONResponse({
-                    "ok": True, "tur": "sonuc", "id": satir["id"],
-                    "ad": satir["hastalik"], "seviye": satir["alt_tur"],
-                    "rozet": "EK-2 ek kayıt", "bolum": bolum["ad"],
-                    "bolum_kisa": bolum.get("kisa", bolum["ad"]),
-                    "grup": None, "grup_rozet": None,
-                    "oran": {"ham": gosterim["ham"], "gosterim": gosterim["gosterim"],
-                             "etiket": "EK-2 kaynak satırında açıkça belirtilen sabit oran"},
-                    "sifir": satir["oran"] == 0, "sifir_aciklama": None,
-                    "kaynak": "Kaynak: EK-2, sayfa %s · kayıt %s" % (satir["sayfa"], satir["id"]),
-                    "kaynak_not": satir.get("kaynak_not", "Ek katalog kaydı."),
-                    "kisitlar": [], "kisit_basligi": "Bu oran için geçerli kurallar (0)",
-                    "tek_kayit": True, "seviye_adimi": False,
-                    "tek_seviye_notu": "Bu kaynak satırı ayrı kayıt olarak aktarılmıştır; bölümün tamamı henüz eksiksiz değildir.",
-                    "yas_bloku": dict(ek2_arac1.YAS_BLOGU), "bolum_notu": None,
-                    "kisa_etiket": ek2_arac1.kisa_etiket(satir["id"], satir["sayfa"]),
-                    "alt_bilgi": dict(ek2_arac1.ALT_BILGI),
-                })
+                return JSONResponse(ek2_arac1.ek_kayit_sonuc_yuku(bolum, satir))
         raise HTTPException(404, "Ek katalog kaydı bulunamadı.")
     kayit = ek2_arac1.katalog().kayit(kimlik)
     if kayit is None:
@@ -524,7 +511,10 @@ async def robots_txt():
 
 @app.get("/sitemap.xml", response_class=HTMLResponse)
 async def sitemap_xml():
-    return HTMLResponse("<?xml version=\"1.0\" encoding=\"UTF-8\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://engelli.me/</loc></url></urlset>", media_type="application/xml")
+    urls = ("https://engelli.me/", "https://engelli.me/arac1", "https://engelli.me/arac2")
+    entries = "".join("<url><loc>" + url + "</loc></url>" for url in urls)
+    xml = '<?xml version="1.0" encoding="UTF-8"?>' + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + entries + "</urlset>"
+    return HTMLResponse(xml, media_type="application/xml")
 
 
 @app.get("/.well-known/security.txt", response_class=Response)

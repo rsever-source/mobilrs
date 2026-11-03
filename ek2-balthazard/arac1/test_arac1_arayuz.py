@@ -134,21 +134,21 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertTrue(data["ok"])
         self.assertEqual(len(data["bolumler"]), 12)
         short = {x["kisa"]: x["kayit_sayisi"] for x in data["bolumler"]}
-        self.assertEqual(short["Kalp-Damar"], 93)
-        self.assertEqual(short["Sinir Sistemi"], 21)
-        self.assertEqual(short["Sindirim"], 22)
+        self.assertEqual(short["Kalp-Damar"], 61)
+        self.assertEqual(short["Sinir Sistemi"], 36)
+        self.assertEqual(short["Sindirim"], 31)
 
     def test_ek_katalog_kaydi_acilir(self):
-        data = self._json("/api/kayit/KV-001")
+        data = self._json("/api/kayit/SN-036")
         self.assertTrue(data["ok"])
-        self.assertEqual(data["id"], "KV-001")
+        self.assertEqual(data["id"], "SN-036")
         self.assertEqual(data["rozet"], "EK-2 ek kayıt")
         self.assertIn("kaynak", data)
 
     def test_yeni_bolum_gezinmesi_ve_arama(self):
         data = self._json("/api/gezinme?bolum=" + urllib.parse.quote("Sinir Sistemi"))
         self.assertTrue(data["ok"])
-        self.assertEqual(data["bolum"]["kayit_sayisi"], 21)
+        self.assertEqual(data["bolum"]["kayit_sayisi"], 36)
         search = self._json("/api/ara?metin=" + urllib.parse.quote("epilepsi") +
                             "&bolum=" + urllib.parse.quote("Sinir Sistemi"))
         self.assertTrue(search["ok"])
@@ -161,6 +161,17 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertEqual(len(data["ozel_hesaplamalar"]), 5)
         eye = next(x for x in data["ozel_hesaplamalar"] if x["id"] == "OZ-GOR-001")
         self.assertEqual(len(eye["tablolar"][0]["satirlar"]), 27)
+        self.assertEqual([a["adim"] for a in eye["adimlar"]], list(range(1, 10)))
+        kamasma = eye["adimlar"][5]
+        self.assertIn("kamaşma", kamasma["aciklama"].lower())
+        self.assertEqual(kamasma["kural"]["esik_puan"], 15)
+        self.assertEqual(kamasma["kural"]["tek_goz_katsayi"], 0.9)
+        self.assertEqual(kamasma["kural"]["iki_goz_katsayi"], 0.8)
+        self.assertFalse(kamasma["kural"]["balthazard_eklemesi"])
+        self.assertIn("GSYO = 100 − İGP′", eye["adimlar"][7]["formul"])
+        self.assertEqual(eye["resmi_ornek"]["igp"], 71.4)
+        self.assertEqual(eye["resmi_ornek"]["duzeltilmis_igp"], 57.12)
+        self.assertEqual(eye["resmi_ornek"]["gsyo"], 43)
         spine = next(x for x in data["ozel_hesaplamalar"] if x["id"] == "OZ-KIS-001")
         self.assertEqual(len(spine["tablolar"]), 10)
         self.assertGreater(sum(len(t.get("satirlar", [])) for t in spine["tablolar"]), 90)

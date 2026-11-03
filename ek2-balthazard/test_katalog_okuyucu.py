@@ -273,6 +273,70 @@ class KisitTestleri(unittest.TestCase):
         self.assertEqual(sum(1 for k in self.katalog.kayitlar if not k.kisit), 242)
 
 
+class EkKatalogTestleri(unittest.TestCase):
+    """Ek katalogdaki mükerrer KV kayıtları ana katalogla eşleşmeli (Faz 1b)."""
+
+    def setUp(self):
+        self.katalog = ko.yukle()
+        self.ek = ko.yukle_ek_katalog()
+
+    def test_mukerrer_kv_bloku_kaldirildi(self):
+        """Faz 4: KV bloğunun tamamı (32 mükerrer + V-034…V-061 kopyaları) çıkarıldı."""
+        kv = [b for b in self.ek["bolumler"] if b.get("kisa") == "Kalp ve Damar"]
+        self.assertEqual(kv, [])
+        esdeger = [s for b in self.ek["bolumler"] for s in b["kayitlar"] if s.get("esdeger")]
+        self.assertEqual(esdeger, [])
+
+    def test_mukerrer_olmayan_ek_kayitlar_isaretsiz(self):
+        isaretsiz = [s for b in self.ek["bolumler"] for s in b["kayitlar"]
+                     if not s.get("esdeger")]
+        toplam = sum(len(b["kayitlar"]) for b in self.ek["bolumler"])
+        self.assertEqual(len(isaretsiz), toplam)
+
+    def test_ek_katalog_206_kayit_kesintisiz(self):
+        """Faz 4: 136 − 32 mükerrer − 27 ana katalog kopyası + 102 net yeni = 206."""
+        self.assertEqual(len({s["id"] for b in self.ek["bolumler"] for s in b["kayitlar"]}), 206)
+        for bolum in self.ek["bolumler"]:
+            numaralar = [int(s["id"].split("-")[1]) for s in bolum["kayitlar"]]
+            self.assertEqual(numaralar, list(range(1, len(numaralar) + 1)), bolum["ad"])
+
+    def test_kural_katmani_tutarli(self):
+        kurallar = ko.yukle_kurallar()
+        ko.kural_kapsamini_dogrula(self.ek, kurallar)  # tanımsız kod yükseltir
+        kodlar = {k["kod"] for k in kurallar["kurallar"]}
+        self.assertEqual(len(kodlar), 19)
+        kayitlar = {s["id"]: s for b in self.ek["bolumler"] for s in b["kayitlar"]}
+        self.assertEqual(sum(1 for s in kayitlar.values() if s.get("kural")), 46)
+        self.assertEqual(kayitlar["SS-020"]["kural"], ["K-HERNI-KOSUL"])
+        # Faz 4: K-STOMA-ORGAN yalnız 6 stoma kaydında (Tablo 6, s.183)
+        stoma = [k for k, s in kayitlar.items() if s.get("kural") == ["K-STOMA-ORGAN"]]
+        self.assertEqual(stoma, ["SS-023", "SS-024", "SS-025", "SS-026", "SS-027", "SS-028"])
+        self.assertNotIn("kural", kayitlar["SS-001"])
+        self.assertNotIn("kural", kayitlar["SS-016"])
+        self.assertEqual(kayitlar["EM-018"]["kural"], ["K-DM-KOMPLIKASYON"])
+        # Faz 4: nörojen mesane UG-011…013'e bağlanmaz (s.189 yönlendirmesi)
+        self.assertNotIn("kural", kayitlar["UG-011"])
+        self.assertNotIn("kural", kayitlar["UG-012"])
+        self.assertNotIn("kural", kayitlar["UG-013"])
+        self.assertEqual(kayitlar["SN-001"]["kural"], ["K-EPILEPSI-TEK-SECIM"])
+        self.assertEqual(kayitlar["SN-006"]["kural"], ["K-UYKU-TEK-PUAN"])
+        self.assertEqual(kayitlar["SN-009"]["kural"], ["K-TRIGEMINAL-NOROJENIK"])
+        self.assertEqual(kayitlar["SN-030"]["kural"], ["K-AFAZI-BALTHAZARD"])
+        self.assertEqual(kayitlar["SN-036"]["kural"], ["K-TRIGEMINAL-NOROJENIK"])
+        self.assertEqual(kayitlar["GH-001"]["kural"], ["K-GOGUS-SFT", "K-GOGUS-AKUT"])
+        self.assertEqual(kayitlar["GH-005"]["kural"], ["K-NAKIL-BALTHAZARD"])
+        self.assertEqual(kayitlar["SS-029"]["kural"], ["K-NAKIL-BALTHAZARD"])
+        self.assertEqual(kayitlar["UG-039"]["kural"], ["K-NAKIL-BALTHAZARD"])
+        # Faz 4: İnfertilite kaynakta %10 (s.190)
+        infertilite = [s for s in kayitlar.values() if s["hastalik"] == "İnfertilite"]
+        self.assertEqual([(s["oran"], s["sayfa"]) for s in infertilite], [(10, 190)])
+        # Faz 4: epilepsi %70 basamağı (s.201)
+        self.assertEqual(kayitlar["SN-022"]["oran"], 70)
+        self.assertEqual(kayitlar["SN-022"]["kural"], ["K-EPILEPSI-TEK-SECIM"])
+        # Faz 4: uyku genel şiddet basamakları (s.201)
+        self.assertEqual([kayitlar["SN-%03d" % n]["oran"] for n in (23, 24, 25)], [5, 10, 35])
+
+
 class SaltOkunurlukTestleri(unittest.TestCase):
     """§3.17/8 — dosyalar okuma sırasında değişmez; bozulma sessiz geçilmez."""
 
