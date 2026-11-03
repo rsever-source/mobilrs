@@ -187,6 +187,12 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertEqual(table37["satirlar"][-1][-1], "3 (5) [7]")
         all_tables = [t for item in data["ozel_hesaplamalar"] for t in item.get("tablolar", [])]
         self.assertEqual(len(all_tables), 52)
+        self.assertIn("Object.keys(ilkSatir)", html)
+        self.assertIn("Array.isArray(hucreler)", html)
+        self.assertIn("function ozelHesaplamalariYukle()", html)
+        self.assertIn("Tekrar dene", html)
+        self.assertIn("ilgiliKaynakYontemleriniAc", html)
+        self.assertNotIn("Bu kategoride tek oranlı hastalık kaydı yoktur", html)
         self.assertTrue(all(
             (t.get("satirlar") and len(t["satirlar"]) > 0) or
             (isinstance(t.get("amac"), str) and t["amac"].strip()) or

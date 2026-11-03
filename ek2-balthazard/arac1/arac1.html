@@ -682,6 +682,7 @@
   var balthazardYasNotu = document.getElementById("balthazard-yas-notu");
   var yasEkGoster = document.getElementById("yas-ek-goster");
   var balthazardIstekNo = 0;
+  var ozelYontemYukleme = null;
 
   function el(kalem, sinif, metin) {
     var d = document.createElement(kalem);
@@ -782,19 +783,50 @@ var tumu = el("button", "cip", "Tümü");
     var baslik = document.getElementById("hastalik-baslik");
     baslik.textContent = bilgi.kisa + " (tablo ile değerlendirilir)";
     var kutu = el("div", "kart");
-    var p1 = el("p", "ipucu");
-    p1.textContent = bilgi.aciklama;
-    var p2 = el("p", "ipucu");
-    p2.textContent = "Bu kategoride tek oranlı hastalık kaydı yoktur; değerlendirme " +
-      "resmî EK-2 tabloları ve ölçümlerle yapılır.";
-    var p3 = el("p", "ipucu");
-    p3.textContent = "Kaynak yöntemini aşağıdaki \"Tablo ve formül gerektiren " +
-      "değerlendirmeler\" bölümünden açabilirsiniz.";
-    kutu.appendChild(p1);
-    kutu.appendChild(p2);
-    kutu.appendChild(p3);
+    kutu.appendChild(el("p", "ipucu", bilgi.aciklama));
+
+    var durumYazi = el("p", "ipucu");
+    durumYazi.setAttribute("role", "status");
+    var ac = el("button", "satir", "İlgili kaynak yöntemini aç");
+    ac.type = "button";
+    ac.addEventListener("click", function () {
+      ilgiliKaynakYontemleriniAc(bilgi, durumYazi);
+    });
+    kutu.appendChild(ac);
+    kutu.appendChild(durumYazi);
     hastalikKutu.appendChild(kutu);
     gezinme.classList.remove("gizli");
+  }
+
+  function ilgiliKaynakYontemleriniAc(bilgi, durumYazi) {
+    var kimlikler = Array.isArray(bilgi.ozel_hesaplama_idler)
+      ? bilgi.ozel_hesaplama_idler : [];
+    if (!kimlikler.length) {
+      durumYazi.textContent = "Bu kategori için tanımlı kaynak yöntemi bağlantısı bulunamadı.";
+      return;
+    }
+    function ac() {
+      var anaKutu = document.getElementById("ozel-hesaplama-kutusu");
+      var bulunanlar = kimlikler.map(function (kimlik) {
+        return document.getElementById("ozel-kayit-" + kimlik);
+      }).filter(Boolean);
+      if (bulunanlar.length !== kimlikler.length) {
+        throw new Error("Kategoriye bağlı kaynak yöntemlerinden biri sunucu yanıtında bulunamadı.");
+      }
+      anaKutu.open = true;
+      bulunanlar.forEach(function (kayit) { kayit.open = true; });
+      durumYazi.textContent = "İlgili kaynak yöntemi aşağıda açıldı.";
+      bulunanlar[0].scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    var ilkKayit = document.getElementById("ozel-kayit-" + kimlikler[0]);
+    if (ilkKayit) {
+      try { ac(); } catch (hata) { durumYazi.textContent = hata.message; }
+      return;
+    }
+    ozelHesaplamalariYukle().then(ac).catch(function (hata) {
+      durumYazi.textContent = "Kaynak yöntemi açılamadı: " +
+        String(hata && hata.message ? hata.message : hata);
+    });
   }
 
   function hastaliklariCiz() {
@@ -1244,17 +1276,42 @@ var tumu = el("button", "cip", "Tümü");
           }
           if (satirVar) {
             var tabloEl = el("table", "kaynak-tablosu");
+            var ilkSatir = tablo.satirlar[0];
+            var nesneSatir = ilkSatir && typeof ilkSatir === "object" && !Array.isArray(ilkSatir);
+            var alanlar = nesneSatir ? Object.keys(ilkSatir) : [];
+            var alanBasliklari = {
+              madde: "Madde",
+              aciklama: "Açıklama",
+              oran: "Oran (%)"
+            };
+            var sutunlar = Array.isArray(tablo.sutunlar) && tablo.sutunlar.length
+              ? tablo.sutunlar
+              : (nesneSatir ? alanlar.map(function (alan) {
+                  return alanBasliklari[alan] || alan;
+                }) : ["Değer"]);
             var thead = el("thead");
             var baslikSatiri = el("tr");
-            (tablo.sutunlar || ["Değer"]).forEach(function (sutun) {
+            sutunlar.forEach(function (sutun) {
               baslikSatiri.appendChild(el("th", null, sutun));
             });
             thead.appendChild(baslikSatiri);
             tabloEl.appendChild(thead);
             var tbody = el("tbody");
             tablo.satirlar.forEach(function (hucreler) {
+              var degerler;
+              if (Array.isArray(hucreler)) {
+                degerler = hucreler;
+              } else if (hucreler && typeof hucreler === "object") {
+                degerler = alanlar.length
+                  ? alanlar.map(function (alan) { return hucreler[alan]; })
+                  : Object.keys(hucreler).map(function (alan) { return hucreler[alan]; });
+              } else {
+                degerler = [hucreler];
+              }
               var tr = el("tr");
-              hucreler.forEach(function (hucre) { tr.appendChild(el("td", null, String(hucre))); });
+              degerler.forEach(function (hucre) {
+                tr.appendChild(el("td", null, hucre == null ? "" : String(hucre)));
+              });
               tbody.appendChild(tr);
             });
             tabloEl.appendChild(tbody);
@@ -1281,12 +1338,38 @@ var tumu = el("button", "cip", "Tümü");
     });
   }
 
-  json("/api/ozel-hesaplamalar").then(function (yanit) {
-    if (!yanit.ok) { throw new Error("Özel hesaplama kataloğu okunamadı."); }
-    ozelHesaplamalariCiz(yanit);
-  }).catch(function () {
-    document.getElementById("ozel-hesaplama-liste").textContent =
-      "Kaynak yöntemleri yüklenemedi. Bu bölümde oran hesaplanmadı.";
+  function ozelHesaplamalariYukle() {
+    if (ozelYontemYukleme) { return ozelYontemYukleme; }
+    var hedef = document.getElementById("ozel-hesaplama-liste");
+    hedef.textContent = "Kaynak yöntemleri yükleniyor…";
+    ozelYontemYukleme = json("/api/ozel-hesaplamalar").then(function (yanit) {
+      if (!yanit || !yanit.ok) {
+        throw new Error((yanit && yanit.mesaj) || "Özel hesaplama kataloğu okunamadı.");
+      }
+      if (!Array.isArray(yanit.ozel_hesaplamalar) || !yanit.ozel_hesaplamalar.length) {
+        throw new Error("API yanıtında özel hesaplama listesi bulunamadı veya liste boş.");
+      }
+      ozelHesaplamalariCiz(yanit);
+      return yanit;
+    }).catch(function (hata) {
+      ozelYontemYukleme = null;
+      hedef.innerHTML = "";
+      hedef.appendChild(el("p", "bildirim",
+        "Kaynak yöntemleri yüklenemedi: " +
+        String(hata && hata.message ? hata.message : hata)));
+      var tekrar = el("button", "satir", "Tekrar dene");
+      tekrar.type = "button";
+      tekrar.addEventListener("click", function () {
+        ozelHesaplamalariYukle().catch(function () {});
+      });
+      hedef.appendChild(tekrar);
+      throw hata;
+    });
+    return ozelYontemYukleme;
+  }
+
+  ozelHesaplamalariYukle().catch(function () {
+    // Hata ayrıntısı ve tekrar deneme düğmesi yükleme alanında gösterilir.
   });
 
   // --- açılış --------------------------------------------------------------

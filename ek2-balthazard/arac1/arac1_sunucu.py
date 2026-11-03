@@ -106,12 +106,14 @@ TABLO_KATEGORILERI = (
         "kisa": "Göz Hastalıkları",
         "aciklama": ("Görme kaybı görme keskinliği ve görme alanı tablolarıyla "
                      "hesaplanır (OZ-GOR-001). Sabit oranlı hastalık kaydı yoktur."),
+        "ozel_hesaplama_idler": ["OZ-GOR-001"],
     },
     {
         "ad": "KAS-İSKELET SİSTEMİ",
         "kisa": "Kas-İskelet Sistemi",
         "aciklama": ("Omurga, üst ve alt ekstremite tablolarıyla hesaplanır "
                      "(OZ-KIS-001/002/003). Sabit oranlı hastalık kaydı yoktur."),
+        "ozel_hesaplama_idler": ["OZ-KIS-001", "OZ-KIS-002", "OZ-KIS-003"],
     },
     {
         "ad": "ROMATOLOJİ",
@@ -119,12 +121,14 @@ TABLO_KATEGORILERI = (
         "aciklama": ("Romatolojik tanılar kaynakta ayrı bölüm değildir; kas-iskelet, deri, "
                      "böbrek, akciğer ve sinir sistemi bölümlerinde değerlendirilir "
                      "(OZ-ROM-001). Bu kategori ayrı oran üretmez."),
+        "ozel_hesaplama_idler": ["OZ-ROM-001"],
     },
     {
         "ad": "YANIKLAR",
         "kisa": "Yanıklar",
         "aciklama": ("Yanık sekelleri yanan vücut yüzeyi alanına göre tabloyla belirlenir "
                      "(OZ-YAN-001). II–VI alt başlıkları ilgili branşa yönlendirir."),
+        "ozel_hesaplama_idler": ["OZ-YAN-001"],
     },
 )
 
@@ -464,6 +468,7 @@ def gezinme_yuku(bolum_adi: str | None) -> dict:
             "tablo_kategorisi": {
                 "kisa": tablo_kat["kisa"],
                 "aciklama": tablo_kat["aciklama"],
+                "ozel_hesaplama_idler": list(tablo_kat.get("ozel_hesaplama_idler", [])),
             },
         }
 
