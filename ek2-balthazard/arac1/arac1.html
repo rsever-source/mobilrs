@@ -247,11 +247,30 @@
   .model-yas-bilgi{padding:8px 0 0 26px;font-size:12.5px;color:#435975}
   .model-yas-bilgi p{margin:0 0 5px}
   .model-yas-bilgi .model-yas-kaynak{font-size:11.5px;color:#52657d;margin:0}
-  .model-yas-sec{list-style:none}
-  .model-yas-sec::-webkit-details-marker{display:none}
-  .model-yas-sec::after{content:"+";margin-left:auto;font-size:18px;line-height:1}
-  .model-yas-kontrol[open] .model-yas-sec::after{content:"−"}
-  .model-yas-bilgi{padding-top:9px}
+  .model-yas-kontrol{margin:12px 2px 4px;padding:11px 12px;border:1px solid #cfe0f5;border-radius:13px;background:#f5f9ff}
+  .model-yas-baslik-satiri{display:flex;align-items:center;gap:10px;min-width:0}
+  .model-yas-sec{flex:1;min-width:0}
+  .model-yas-aciklama-dugmesi{
+    display:inline-flex;align-items:center;justify-content:center;flex:0 0 34px;
+    width:34px;height:34px;padding:0;border:1px solid #c5d8ef;border-radius:50%;
+    background:#fff;color:#174b83;cursor:pointer;transition:background .16s,border-color .16s,transform .16s;
+  }
+  .model-yas-aciklama-dugmesi:hover{background:#e8f2ff;border-color:#7daee5}
+  .model-yas-aciklama-dugmesi:focus-visible{outline:3px solid #075bc7;outline-offset:2px}
+  .model-yas-aciklama-dugmesi::before,.model-yas-aciklama-dugmesi::after{
+    content:"";position:absolute;width:13px;height:2px;border-radius:2px;background:currentColor
+  }
+  .model-yas-aciklama-dugmesi{position:relative}
+  .model-yas-aciklama-dugmesi::after{transform:rotate(90deg);transition:transform .16s,opacity .16s}
+  .model-yas-aciklama-dugmesi[aria-expanded="true"]::after{opacity:0;transform:rotate(0)}
+  .model-yas-bilgi{padding:9px 0 0 26px}
+  .model-yas-bilgi[hidden]{display:none}
+  @media(max-width:520px){
+    .model-yas-kontrol{margin:8px 0 2px;padding:9px}
+    .model-yas-baslik-satiri{gap:7px}
+    .model-yas-aciklama-dugmesi{flex-basis:32px;width:32px;height:32px}
+    .model-yas-bilgi{padding-left:25px;font-size:12px}
+  }
   @media(max-width:1050px){
     .arac-duzeni{grid-template-columns:minmax(0,1fr);gap:10px}
     .sag-panel{grid-row:1;position:static;top:auto;z-index:auto}
@@ -557,11 +576,16 @@
   </form>
 
     <section class="model-yas-kontrol" aria-labelledby="yas-ek-etiket">
-      <label class="model-yas-sec" id="yas-ek-etiket" for="yas-ek-goster">
-        <input id="yas-ek-goster" type="checkbox" aria-describedby="yas-ek-bilgi">
-        65 yaş ve üzeri için %10 yaş ekini uygula
-      </label>
-      <div class="model-yas-bilgi" id="yas-ek-bilgi">
+      <div class="model-yas-baslik-satiri">
+        <label class="model-yas-sec" id="yas-ek-etiket" for="yas-ek-goster">
+          <input id="yas-ek-goster" type="checkbox">
+          65 yaş ve üzeri için %10 yaş ekini uygula
+        </label>
+        <button class="model-yas-aciklama-dugmesi" id="yas-ek-aciklama-dugmesi"
+          type="button" aria-label="Yaş eki açıklamasını göster"
+          aria-controls="yas-ek-bilgi" aria-expanded="false"></button>
+      </div>
+      <div class="model-yas-bilgi" id="yas-ek-bilgi" hidden>
         <p>Yalnızca 65 yaş ve üzerindeki bireyler için işaretleyin. %10 ek düz toplama ile değil, seçilen oranların bileşkesine Balthazard yöntemiyle uygulanır.</p>
         <p><strong>Örnek:</strong> %40 → %46.</p>
         <p class="model-yas-kaynak">Dayanak: 20.02.2019 tarihli ve 30692 sayılı Yönetmelik, madde 10/4. Bu işaretleme yalnızca bilgi amaçlı Araç-1 ön izlemesini etkiler; resmî oranı sağlık kurulu belirler.</p>
@@ -1216,6 +1240,17 @@ var tumu = el("button", "cip", "Tümü");
   });
 
   yasEkGoster.addEventListener("change", balthazardOnizlemesiniGuncelle);
+  var yasEkAciklamaDugmesi = document.getElementById("yas-ek-aciklama-dugmesi");
+  var yasEkBilgi = document.getElementById("yas-ek-bilgi");
+  yasEkAciklamaDugmesi.addEventListener("click", function () {
+    var acik = yasEkAciklamaDugmesi.getAttribute("aria-expanded") !== "true";
+    yasEkBilgi.hidden = !acik;
+    yasEkAciklamaDugmesi.setAttribute("aria-expanded", acik ? "true" : "false");
+    yasEkAciklamaDugmesi.setAttribute(
+      "aria-label",
+      acik ? "Yaş eki açıklamasını gizle" : "Yaş eki açıklamasını göster"
+    );
+  });
 
   // --- tablo/formül gerektiren EK-2 yöntemleri ------------------------------
   function ozelHesaplamalariCiz(veri) {
