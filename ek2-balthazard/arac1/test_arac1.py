@@ -255,6 +255,24 @@ class Arac1Testleri(unittest.TestCase):
             ],
         )
 
+    def test_kas_iskelet_kaynak_tablolari_satir_sutun_uyumu(self):
+        _, _, veri = self._json("/api/ozel-hesaplamalar")
+        kas = [
+            x for x in veri["ozel_hesaplamalar"]
+            if x["id"] in {"OZ-KIS-001", "OZ-KIS-002", "OZ-KIS-003"}
+        ]
+        self.assertEqual(len(kas), 3)
+        self.assertEqual(sum(len(x.get("tablolar", [])) for x in kas), 48)
+        for kayit in kas:
+            for tablo in kayit["tablolar"]:
+                with self.subTest(kayit=kayit["id"], tablo=tablo["ad"]):
+                    self.assertTrue(tablo.get("sutunlar"))
+                    self.assertTrue(tablo.get("satirlar"))
+                    self.assertTrue(all(isinstance(r, list) for r in tablo["satirlar"]))
+                    self.assertTrue(all(
+                        len(r) == len(tablo["sutunlar"]) for r in tablo["satirlar"]
+                    ))
+
     def test_tablo_kategorileri_kaynak_yontemlerine_baglidir(self):
         beklenen = {
             "GÖRME SİSTEMİ": ["OZ-GOR-001"],
