@@ -224,18 +224,19 @@ class Arac1Testleri(unittest.TestCase):
         self.assertEqual(veri["belirsiz"], 16)
         self.assertEqual(veri["kayit"], 424)
         self.assertEqual(veri["ek_kayit"], 206)
-        self.assertEqual(veri["ozel_hesaplama"], 5)
+        self.assertEqual(veri["ozel_hesaplama"], 6)
         self.assertEqual(veri["bolumler"], [
             "Ruh Sağlığı", "Deri", "Hematoloji", "Kulak Burun Boğaz", "Kalp-Damar",
             "Kadın Hastalıkları", "Böbrek ve İdrar", "Sindirim",
-            "Endokrin ve Metabolizma", "Göğüs Hastalıkları", "Onkoloji", "Sinir Sistemi"
+            "Endokrin ve Metabolizma", "Göğüs Hastalıkları", "Onkoloji", "Sinir Sistemi",
+            "Göz Hastalıkları", "Kas-İskelet Sistemi", "Romatoloji", "Yanıklar"
         ])
 
     def test_ozel_hesaplamalar_ucu(self):
         durum, _, veri = self._json("/api/ozel-hesaplamalar")
         self.assertEqual(durum, 200)
         self.assertTrue(veri["ok"])
-        self.assertEqual(len(veri["ozel_hesaplamalar"]), 5)
+        self.assertEqual(len(veri["ozel_hesaplamalar"]), 6)
         self.assertTrue(any(x["id"] == "OZ-GOR-001" for x in veri["ozel_hesaplamalar"]))
 
     def test_ek_katalog_kaydi_ucu(self):
@@ -327,7 +328,7 @@ class Arac1Testleri(unittest.TestCase):
     def test_bolumler_ucu(self):
         veri = self.bolumler
         self.assertTrue(veri["ok"])
-        self.assertEqual(len(veri["bolumler"]), 12)
+        self.assertEqual(len(veri["bolumler"]), 16)
         self.assertEqual(
             [(b["kisa"], b["kayit_sayisi"]) for b in veri["bolumler"]],
             [
@@ -336,6 +337,8 @@ class Arac1Testleri(unittest.TestCase):
                 ("Kadın Hastalıkları", 6), ("Böbrek ve İdrar", 66),
                 ("Sindirim", 31), ("Endokrin ve Metabolizma", 55),
                 ("Göğüs Hastalıkları", 5), ("Onkoloji", 7), ("Sinir Sistemi", 36),
+                ("Göz Hastalıkları", 0), ("Kas-İskelet Sistemi", 0),
+                ("Romatoloji", 0), ("Yanıklar", 0),
             ],
         )
         sayilar = {b["kisa"]: b["kayit_sayisi"] for b in veri["bolumler"]}
@@ -343,7 +346,9 @@ class Arac1Testleri(unittest.TestCase):
             "Ruh Sağlığı": 56, "Deri": 142, "Hematoloji": 78, "Kulak Burun Boğaz": 87,
             "Kalp-Damar": 61, "Kadın Hastalıkları": 6, "Böbrek ve İdrar": 66,
             "Sindirim": 31, "Endokrin ve Metabolizma": 55,
-            "Göğüs Hastalıkları": 5, "Onkoloji": 7, "Sinir Sistemi": 36
+            "Göğüs Hastalıkları": 5, "Onkoloji": 7, "Sinir Sistemi": 36,
+            "Göz Hastalıkları": 0, "Kas-İskelet Sistemi": 0,
+            "Romatoloji": 0, "Yanıklar": 0
         })
         self.assertTrue(any("GÖRME" in k for k in veri["kapsam_disi"]))
         self.assertEqual(len(veri["kapsam_kismi"]), 8)
