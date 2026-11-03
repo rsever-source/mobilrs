@@ -264,13 +264,59 @@ class Arac1Testleri(unittest.TestCase):
         self.assertEqual(saglik["ek_mukerrer"], 0)
 
     def test_ek_katalog_kural_bilgisi(self):
-        satir = next(
-            s for b in a.ek_katalog()["bolumler"] for s in b["kayitlar"]
-            if s["id"] == "UG-039"
+        bolum = next(
+            b for b in a.ek_katalog()["bolumler"]
+            if any(s["id"] == "UG-039" for s in b["kayitlar"])
         )
-        kurallar = a.kural_listesi(satir)
-        self.assertEqual([k["kod"] for k in kurallar], ["K-NAKIL-BALTHAZARD"])
-        self.assertEqual(kurallar[0]["kaynak"], "EK-2, s.183")
+        satir = next(s for s in bolum["kayitlar"] if s["id"] == "UG-039")
+        veri = a.ek_kayit_sonuc_yuku(bolum, satir)
+        self.assertEqual([k["kod"] for k in veri["kisitlar"]], ["K-NAKIL-BALTHAZARD"])
+        self.assertEqual(veri["kisitlar"][0]["kaynak"], "EK-2, s.183")
+        self.assertEqual(veri["kisit_basligi"], "Bu oran için geçerli kurallar (1)")
+        self.assertEqual(veri["rozet"], "EK-2 ek kayıt")
+
+    def test_yedi_yeni_bolum_ayri_liste_olarak_acilir(self):
+        beklenen = {
+            "KADIN HASTALIKLARI VE DOĞUM": ("Kadın Hastalıkları", 6, "KH-"),
+            "ÜROGENİTAL SİSTEM": ("Böbrek ve İdrar", 66, "UG-"),
+            "SİNDİRİM SİSTEMİ": ("Sindirim", 31, "SS-"),
+            "ENDOKRİN VE METABOLİZMA HASTALIKLARI": ("Endokrin ve Metabolizma", 55, "EM-"),
+            "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ": ("Göğüs Hastalıkları", 5, "GH-"),
+            "ONKOLOJİ": ("Onkoloji", 7, "ON-"),
+            "SİNİR SİSTEMİ": ("Sinir Sistemi", 36, "SN-"),
+        }
+        for ad, (kisa, sayi, on_ek) in beklenen.items():
+            with self.subTest(bolum=ad):
+                durum, _, veri = self._json(
+                    "/api/gezinme?bolum=" + urllib.parse.quote(ad)
+                )
+                self.assertEqual(durum, 200)
+                self.assertEqual(veri["bolum"]["kisa"], kisa)
+                self.assertEqual(veri["bolum"]["kayit_sayisi"], sayi)
+                self.assertEqual(len(veri["gruplar"]), 1)
+                grup = veri["gruplar"][0]
+                self.assertEqual(grup["rozet"], "EK-2")
+                kimlikler = [
+                    seviye["id"]
+                    for hastalik in grup["hastaliklar"]
+                    for seviye in hastalik["seviyeler"]
+                ]
+                self.assertEqual(len(kimlikler), sayi)
+                self.assertTrue(all(k.startswith(on_ek) for k in kimlikler))
+                self.assertEqual(len(kimlikler), len(set(kimlikler)))
+
+    def test_yeni_bolum_arama_filtreleri_bolumde_kalir(self):
+        durum, _, veri = self._json(
+            "/api/ara?metin=akromegali&bolum="
+            + urllib.parse.quote("ENDOKRİN VE METABOLİZMA HASTALIKLARI")
+        )
+        self.assertEqual(durum, 200)
+        self.assertTrue(veri["sonuclar"])
+        self.assertTrue(all(
+            s["bolum"] == "ENDOKRİN VE METABOLİZMA HASTALIKLARI"
+            for s in veri["sonuclar"]
+        ))
+        self.assertTrue(all(s["id"].startswith("EM-") for s in veri["sonuclar"]))
 
     def test_yeni_bolum_gezinmesi(self):
         durum, _, veri = self._json("/api/gezinme?bolum=" + urllib.parse.quote("Sinir Sistemi"))
@@ -282,6 +328,16 @@ class Arac1Testleri(unittest.TestCase):
         veri = self.bolumler
         self.assertTrue(veri["ok"])
         self.assertEqual(len(veri["bolumler"]), 12)
+        self.assertEqual(
+            [(b["kisa"], b["kayit_sayisi"]) for b in veri["bolumler"]],
+            [
+                ("Ruh Sağlığı", 56), ("Deri", 142), ("Hematoloji", 78),
+                ("Kulak Burun Boğaz", 87), ("Kalp-Damar", 61),
+                ("Kadın Hastalıkları", 6), ("Böbrek ve İdrar", 66),
+                ("Sindirim", 31), ("Endokrin ve Metabolizma", 55),
+                ("Göğüs Hastalıkları", 5), ("Onkoloji", 7), ("Sinir Sistemi", 36),
+            ],
+        )
         sayilar = {b["kisa"]: b["kayit_sayisi"] for b in veri["bolumler"]}
         self.assertEqual(sayilar, {
             "Ruh Sağlığı": 56, "Deri": 142, "Hematoloji": 78, "Kulak Burun Boğaz": 87,
