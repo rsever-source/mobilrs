@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "ad": "Engelli.me Araç-1 EK-2 ek katalog toplu denetim özeti",
+    "kaynak": "20.02.2019 tarihli ve 30692 sayılı Resmî Gazete, EK-2",
+    "hazirlanma_tarihi": "2026-11-03",
+    "kapsam": "Yalnızca Araç-1",
+    "durum": "Örnek/toplu denetim özeti; üretim kataloğu değildir.",
+    "sinir": "Bu dosya 136 ham kayıtlık tam aday listesinin yerine geçmez; doğrulama bulgularının özetidir.",
+    "hedef_dal": "cloud-run-migration"
+  },
+  "katalog_karsilastirmasi": {
+    "ek_katalog_kayit_sayisi": 136,
+    "mevcut_ana_katalog_kayit_sayisi": 424,
+    "mukerrer_kayit_sayisi": 32,
+    "yeni_sabit_oran_adayi": 122,
+    "not": "32 kardiyovasküler ek kayıt ana katalogdaki V kayıtlarıyla eşleştiğinden tekrar eklenmemelidir."
+  },
+  "oran_duzeltmeleri": [
+    {
+      "id": "UG-018",
+      "mevcut_oran": 5,
+      "kaynak_oran": 15,
+      "birim": "%",
+      "konu": "Üretim katalog kaydında oran düzeltmesi adayı"
+    },
+    {
+      "id": "EM-017",
+      "mevcut_oran": 30,
+      "kaynak_oran": 80,
+      "birim": "%",
+      "konu": "İnoperabl feokromositoma"
+    },
+    {
+      "id": "SN-013",
+      "mevcut_oran": 30,
+      "kaynak_oran": 50,
+      "birim": "%",
+      "konu": "KDS 8–11"
+    },
+    {
+      "id": "SN-016",
+      "mevcut_oran": 3,
+      "kaynak_oran": 5,
+      "birim": "%",
+      "konu": "Hafif periferik fasiyal paralizi"
+    },
+    {
+      "id": "SN-017",
+      "mevcut_oran": 5,
+      "kaynak_oran": 15,
+      "birim": "%",
+      "konu": "Orta periferik fasiyal paralizi"
+    },
+    {
+      "id": "SN-019",
+      "mevcut_oran": 2,
+      "kaynak_oran": 15,
+      "birim": "%",
+      "konu": "Hafif dizartri/disfaji"
+    }
+  ],
+  "ozel_kural_notlari": [
+    {
+      "id": "G-V09",
+      "konu": "Kamaşma/kontrast duyarlılığı",
+      "durum": "Taslak; uygulama formülü kesinleştirilmedi.",
+      "kaynak_notu": "Tek göz için %10, iki göz için %20 azaltım ifadesinin yüzde puan mı yoksa göreli yüzde mi olduğu kaynak metinden kesinleşmiyor. Tahmini formül uygulanmamalıdır."
+    },
+    {
+      "id": "UG-R05",
+      "konu": "Mesane hastalıkları",
+      "durum": "Denetim kuralı",
+      "kaynak_notu": "Mesane hastalıkları üriner inkontinans ve üst üriner sistem değerlendirmeleriyle birlikte ele alınmalı; aynı fonksiyon kaybı iki kez puanlanmamalıdır."
+    }
+  ],
+  "uygulama_guvenligi": {
+    "uretim_katalog_jsonu_degistirildi": false,
+    "arac_2_degistirildi": false,
+    "deploy_yapildi": false,
+    "not": "Bu dosya yalnızca denetim örneğidir. Oran düzeltmeleri ve aday kayıtlar ana kataloğa otomatik uygulanmış değildir."
+  }
+}
