@@ -194,6 +194,7 @@ steps:
         BOLUMLER_JSON="/workspace/smoke_bolumler.json"
         OZEL_JSON="/workspace/smoke_ozel.json"
 
+        echo "ADIM: home"
         govde "$$BASE/" > "$$HOME_HTML"
         if ! icerir "$$HOME_HTML" "Hastalık Oranı Bulma" ||
            ! icerir "$$HOME_HTML" "Balthazard Oranı Hesaplama"; then
@@ -201,9 +202,11 @@ steps:
           exit 1
         fi
 
+        echo "ADIM: arac1"
         govde "$$BASE/arac1" > "$$ARAC1_HTML"
         govde "$$BASE/arac2" > "$$ARAC2_HTML"
 
+        echo "ADIM: arac2-gecis"
         if icerir "$$ARAC1_HTML" "Araç-2'ye geç"; then
           echo "HATA: Araç-1 alt eylem alanında gereksiz Araç-2 geçiş düğmesi var" >&2
           exit 1
@@ -215,6 +218,7 @@ steps:
           exit 1
         fi
 
+        echo "ADIM: ust-baslik"
         for cift in "Araç-1:$$ARAC1_HTML" "Araç-2:$$ARAC2_HTML"; do
           AD="$${cift%%:*}"
           SAYFA="$${cift##*:}"
@@ -240,6 +244,7 @@ steps:
           exit 1
         fi
 
+        echo "ADIM: aside-sinirlari"
         # id="sepet", <aside class="sag-panel"> ile </aside> arasinda olmali.
         ASIDE_BAS="$$(grep -boF '<aside class="sag-panel"' "$$ARAC1_HTML" | head -n1 | cut -d: -f1)"
         SEPET_BAS="$$(grep -boF 'id="sepet"' "$$ARAC1_HTML" | head -n1 | cut -d: -f1)"
@@ -268,6 +273,7 @@ steps:
           exit 1
         fi
 
+        echo "ADIM: yas-kutusu"
         # 65+ kutusu hem HTML'de hem de istek gövdesinde işlevsel olmalı.
         YAS_TAMAM=1
         icerir "$$ARAC1_HTML" '<section class="model-yas-kontrol"' || YAS_TAMAM=0
@@ -288,6 +294,7 @@ steps:
           esac
         fi
 
+        echo "ADIM: nav"
         # <nav class="sekmeler"> içinde ">Hakk" olmamalı.
         NAV_HAKK=0
         NAV_IC="$$(sed -n 's/.*<nav class="sekmeler"\(.*\)<\/nav>.*/\1/p' "$$ARAC1_HTML" | head -n1)"
@@ -306,6 +313,7 @@ steps:
           exit 1
         fi
 
+        echo "ADIM: json-sayilari"
         govde "$$BASE/api/bolumler" > "$$BOLUMLER_JSON"
         govde "$$BASE/api/ozel-hesaplamalar" > "$$OZEL_JSON"
         BOLUM_SAYISI="$$(grep -o '"id"' "$$BOLUMLER_JSON" | wc -l | tr -d ' ')"
@@ -315,6 +323,7 @@ steps:
           exit 1
         fi
 
+        echo "ADIM: bitti"
         echo "SMOKE OK"
 
   # Smoke test geçtiyse YALNIZCA bu build'in doğrulanmış revision'ını canlıya al.
