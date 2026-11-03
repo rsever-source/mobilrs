@@ -55,7 +55,7 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertIn('yasEkAciklamaDugmesi.textContent = acik ? "−" : "+"', html)
         self.assertIn('yasEkAciklamaDugmesi.setAttribute("aria-expanded"', html)
         self.assertIn('font-size:36px;font-weight:700;line-height:1', html)
-        self.assertNotIn('border-radius:50%', html[t.index('.model-yas-aciklama-dugmesi'):t.index('.model-yas-bilgi{')])
+        self.assertNotIn('width:34px;height:34px;padding:0;border:1px solid #c5d8ef;border-radius:50%', html)
         self.assertNotIn('.model-yas-aciklama-dugmesi::before', html)
         self.assertIn('id="yas-ek-goster" type="checkbox"', html)
         self.assertIn('yas: yasEkGoster.checked ? "65_ve_uzeri" : "65_alti"', html)
