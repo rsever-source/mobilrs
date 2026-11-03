@@ -171,10 +171,12 @@ steps:
         }
 
         # "Yol BeklenenKod" ciftleri.
+        # KV-001 artik katalogda yok (mukerrer KV blogu Faz 4'te kaldirildi);
+        # yerine ana katalogdan V-001 ve EK-2 ek katalogdan SS-023 kontrol edilir.
         for ikili in "/ 200" "/api/news 200" "/admin/haber-durumu 200" \
                       "/admin/api/status 401" "/arac1 200" "/arac2 200" \
                       "/api/bolumler 200" "/api/ozel-hesaplamalar 200" \
-                      "/api/kayit/KV-001 200"; do
+                      "/api/kayit/V-001 200" "/api/kayit/SS-023 200"; do
           kontrol "$${ikili%% *}" "$${ikili##* }"
         done
 
