@@ -83,17 +83,30 @@ steps:
         REGION="europe-west1"
         PROJECT="project-f671a84c-0cde-40b8-921"
 
-        # Cloud Run traffic hedefini tag alanindan dogrudan filtrele.
-        # revisionName ve URL ayri sorgulanir; value() ciktisini paste ile
-        # eslestirmek gcloud satir bicimine bagli oldugu icin guvenilir degil.
-        REVISION="$$(gcloud run services describe "$$SERVICE" \
+        # Cloud Run traffic hedefini tag alanindan bul.
+        # Not: "gcloud run services describe" --flatten/--filter DESTEKLEMEZ
+        # ("unrecognized arguments"), --format icindeki filter() de calismaz
+        # ("Transform function expected"). Bu yuzden tam JSON alinir ve her
+        # traffic girdisi tek satira indirilir; tag eslesmesi tirnakli desenle
+        # yapilir ('test' etiketi 'test-abc...' ile karismaz).
+        # Yalnizca status.traffic blogu alinir; spec.traffic de ayni tag'leri
+        # tasidigi icin tum JSON kullanilirsa her tag iki kez eslesir.
+        TRAFIK="$$(gcloud run services describe "$$SERVICE" \
           --region="$$REGION" \
           --project="$$PROJECT" \
-          --format="value(status.traffic.filter(tag=$$TAG).revisionName)")"
-        BASE="$$(gcloud run services describe "$$SERVICE" \
-          --region="$$REGION" \
-          --project="$$PROJECT" \
-          --format="value(status.traffic.filter(tag=$$TAG).url)")"
+          --format=json \
+          | tr -d '\n' \
+          | sed -n 's/.*"status":[[:space:]]*{.*"traffic":[[:space:]]*\(\[[^]]*\]\).*/\1/p' \
+          | sed 's/}[[:space:]]*,[[:space:]]*{/}\n{/g')"
+
+        ESLEME="$$(printf '%s\n' "$$TRAFIK" | grep -F "\"tag\": \"$$TAG\"" || true)"
+        if [ "$$(printf '%s\n' "$$ESLEME" | grep -c . || true)" != "1" ]; then
+          echo "HATA: $$TAG tag'i tek bir revision'a isaret etmiyor" >&2
+          exit 1
+        fi
+
+        REVISION="$$(printf '%s\n' "$$ESLEME" | sed -n 's/.*"revisionName": "\([^"]*\)".*/\1/p')"
+        BASE="$$(printf '%s\n' "$$ESLEME" | sed -n 's/.*"url": "\([^"]*\)".*/\1/p')"
         if [ -z "$$REVISION" ]; then
           echo "HATA: $$TAG tag'i icin revision adi bulunamadi" >&2
           exit 1
@@ -357,11 +370,19 @@ steps:
         set -euo pipefail
         REV="$$(cat /workspace/revision.txt)"
 
-        # %100 trafigi alan revision'i Cloud Run traffic alanindan filtrele.
-        CANLI="$$(gcloud run services describe mobilrs-test \
+        # %100 trafigi alan revision'i bul (ayni JSON ayristirmasi).
+        # Ayni sekilde yalnizca status.traffic blogu (spec.traffic haric).
+        TRAFIK="$$(gcloud run services describe mobilrs-test \
           --region=europe-west1 \
           --project=project-f671a84c-0cde-40b8-921 \
-          --format="value(status.traffic.filter(percent=100).revisionName)")"
+          --format=json \
+          | tr -d '\n' \
+          | sed -n 's/.*"status":[[:space:]]*{.*"traffic":[[:space:]]*\(\[[^]]*\]\).*/\1/p' \
+          | sed 's/}[[:space:]]*,[[:space:]]*{/}\n{/g')"
+
+        CANLI="$$(printf '%s\n' "$$TRAFIK" \
+          | grep -F '"percent": 100' \
+          | sed -n 's/.*"revisionName": "\([^"]*\)".*/\1/p' || true)"
 
         SATIR_SAYISI="$$(printf '%s\n' "$$CANLI" | grep -c . || true)"
         if [ "$$SATIR_SAYISI" != "1" ] || [ "$$CANLI" != "$$REV" ]; then
