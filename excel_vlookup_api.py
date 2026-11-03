@@ -429,6 +429,8 @@ async def ek2_kayit(kimlik: str):
                 if satir.get("id") != kimlik:
                     continue
                 gosterim = ek2_arac1.oran_gosterim(satir["oran"])
+                kisitlar = ek2_arac1.kural_listesi(satir)
+                esdeger = satir.get("esdeger")
                 return JSONResponse({
                     "ok": True, "tur": "sonuc", "id": satir["id"],
                     "ad": satir["hastalik"], "seviye": satir["alt_tur"],
@@ -440,7 +442,14 @@ async def ek2_kayit(kimlik: str):
                     "sifir": satir["oran"] == 0, "sifir_aciklama": None,
                     "kaynak": "Kaynak: EK-2, sayfa %s · kayıt %s" % (satir["sayfa"], satir["id"]),
                     "kaynak_not": satir.get("kaynak_not", "Ek katalog kaydı."),
-                    "kisitlar": [], "kisit_basligi": "Bu oran için geçerli kurallar (0)",
+                    "esdeger": esdeger,
+                    "esdeger_notu": (
+                        "Bu ek kayıt, ana katalogdaki %s kaydıyla aynı hükmü taşır; "
+                        "çift sayımı önlemek için listelerde gösterilmez." % esdeger
+                        if esdeger else None
+                    ),
+                    "kisitlar": kisitlar,
+                    "kisit_basligi": "{0} ({1})".format(ek2_arac1.KISIT_BASLIGI, len(kisitlar)),
                     "tek_kayit": True, "seviye_adimi": False,
                     "tek_seviye_notu": "Bu kaynak satırı ayrı kayıt olarak aktarılmıştır; bölümün tamamı henüz eksiksiz değildir.",
                     "yas_bloku": dict(ek2_arac1.YAS_BLOGU), "bolum_notu": None,
