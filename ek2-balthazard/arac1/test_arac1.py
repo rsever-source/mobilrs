@@ -263,6 +263,15 @@ class Arac1Testleri(unittest.TestCase):
         self.assertEqual(saglik["ek_kayit"], 206)
         self.assertEqual(saglik["ek_mukerrer"], 0)
 
+    def test_ek_katalog_kural_bilgisi(self):
+        satir = next(
+            s for b in a.ek_katalog()["bolumler"] for s in b["kayitlar"]
+            if s["id"] == "UG-039"
+        )
+        kurallar = a.kural_listesi(satir)
+        self.assertEqual([k["kod"] for k in kurallar], ["K-NAKIL-BALTHAZARD"])
+        self.assertEqual(kurallar[0]["kaynak"], "EK-2, s.183")
+
     def test_yeni_bolum_gezinmesi(self):
         durum, _, veri = self._json("/api/gezinme?bolum=" + urllib.parse.quote("Sinir Sistemi"))
         self.assertEqual(durum, 200)
