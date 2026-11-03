@@ -6509,9 +6509,11 @@
     {
       "component": "news-workflow-stale",
       "first_seen": "2026-11-03T17:53:58.534049+00:00",
-      "status": "reported",
+      "status": "resolved",
       "details": "5 saatten uzun süredir başarılı zamanlanmış haber çalışması yok (5.77 saat). Otomatik kurtarma tetiklemesi deneniyor. Son başarılı zamanlanmış haber çalışması: 220; tamamlanma: 2026-11-03T12:07:58Z; geçen süre: 5.77 saat; çalışma: https://github.com/rsever-source/mobilrs/actions/runs/41632993600 Yeniden tetikleme GitHub tarafından kabul edildi; haber workflow'unun sonucunu tamamlanma raporu üzerinden izle.",
-      "reported_at": "2026-11-03T17:53:58.534049+00:00"
+      "reported_at": "2026-11-03T17:53:58.534049+00:00",
+      "resolved_at": "2026-11-03T17:55:09.769713+00:00",
+      "recovery_details": "Engelli Haberleri Otomatik Güncelle başarıyla tamamlandı; haber akışı durdu uyarısı kapatıldı. Çalışma: https://github.com/rsever-source/mobilrs/actions/runs/41688640948"
     }
   ]
 }
