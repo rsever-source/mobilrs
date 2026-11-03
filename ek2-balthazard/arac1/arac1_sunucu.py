@@ -96,6 +96,38 @@ YAS_BLOGU = {
     "not": "Bu blok yukarıdaki oranı değiştirmez; %10 otomatik aktarılmaz.",
 }
 
+# Tablo/formül gerektiren kategoriler: sabit oranlı hastalık kaydı ÜRETMEZ.
+# Kaynakta bu alanlar için tek satırlık yüzde yoktur; hesaplama tabloları
+# veri/ozel_hesaplamalar.json içindedir. Çipler bunları ayrı kategori olarak
+# gösterir, seçildiğinde "kayıt yok" bilgisi + yöntem notu verilir.
+TABLO_KATEGORILERI = (
+    {
+        "ad": "GÖRME SİSTEMİ",
+        "kisa": "Göz Hastalıkları",
+        "aciklama": ("Görme kaybı görme keskinliği ve görme alanı tablolarıyla "
+                     "hesaplanır (OZ-GOR-001). Sabit oranlı hastalık kaydı yoktur."),
+    },
+    {
+        "ad": "KAS-İSKELET SİSTEMİ",
+        "kisa": "Kas-İskelet Sistemi",
+        "aciklama": ("Omurga, üst ve alt ekstremite tablolarıyla hesaplanır "
+                     "(OZ-KIS-001/002/003). Sabit oranlı hastalık kaydı yoktur."),
+    },
+    {
+        "ad": "ROMATOLOJİ",
+        "kisa": "Romatoloji",
+        "aciklama": ("Romatolojik tanılar kaynakta ayrı bölüm değildir; kas-iskelet, deri, "
+                     "böbrek, akciğer ve sinir sistemi bölümlerinde değerlendirilir "
+                     "(OZ-ROM-001). Bu kategori ayrı oran üretmez."),
+    },
+    {
+        "ad": "YANIKLAR",
+        "kisa": "Yanıklar",
+        "aciklama": ("Yanık sekelleri yanan vücut yüzeyi alanına göre tabloyla belirlenir "
+                     "(OZ-YAN-001). II–VI alt başlıkları ilgili branşa yönlendirir."),
+    },
+)
+
 BOLUM_NOTU = {
     "baslik": "Bölüm notu (kaynak s.26)",
     "metin": (
@@ -412,9 +444,28 @@ def bolum_kisa(ad: str) -> str:
     return ad
 
 
+def tablo_kategorisi(ad: str | None) -> dict | None:
+    """Tablo/formül gerektiren kategori mi? (sabit oranlı kayıt üretmez)"""
+    if not ad:
+        return None
+    return next((k for k in TABLO_KATEGORILERI if ad in (k["ad"], k["kisa"])), None)
+
+
 def gezinme_yuku(bolum_adi: str | None) -> dict:
     katalog_nesnesi = katalog()
     ek_bolumler = ek_katalog().get("bolumler", [])
+
+    tablo_kat = tablo_kategorisi(bolum_adi)
+    if tablo_kat is not None:
+        return {
+            "ok": True,
+            "bolum": {"ad": tablo_kat["ad"], "kisa": tablo_kat["kisa"], "kayit_sayisi": 0},
+            "gruplar": [],
+            "tablo_kategorisi": {
+                "kisa": tablo_kat["kisa"],
+                "aciklama": tablo_kat["aciklama"],
+            },
+        }
 
     def ek_grubu(ek):
         harita = {}
@@ -488,8 +539,18 @@ def gezinme_yuku(bolum_adi: str | None) -> dict:
             "ad": ek["ad"], "kisa": ek.get("kisa", ek["ad"]),
             "kayit_sayisi": len(ek.get("kayitlar", [])), "grup_sayisi": 1,
         })
+    # Tablo/formül gerektiren kategoriler listenin sonuna eklenir.
+    # Sabit oranlı kaydı olmadığı için kayit_sayisi=0 ve grup_sayisi=0'dır.
+    for kat in TABLO_KATEGORILERI:
+        bolum_listesi.append({
+            "ad": kat["ad"], "kisa": kat["kisa"],
+            "kayit_sayisi": 0, "grup_sayisi": 0, "tablo_kategorisi": True,
+        })
     return {
         "ok": True, "bolumler": bolum_listesi,
+        "kategori_notlari": [
+            {"kisa": k["kisa"], "aciklama": k["aciklama"]} for k in TABLO_KATEGORILERI
+        ],
         "kapsam_disi": list(katalog_nesnesi.meta.get("kapsam_disi") or []),
         "kapsam_kismi": list(katalog_nesnesi.meta.get("kapsam_kismi") or []),
     }

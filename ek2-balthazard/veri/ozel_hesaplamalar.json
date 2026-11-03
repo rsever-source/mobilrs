@@ -4608,7 +4608,7 @@
     },
     {
       "id": "OZ-ROM-001",
-      "bolum": "ROMATOLOJİK HASTALIKLAR",
+      "bolum": "ROMATOLOJİ",
       "tur": "kaynak_hiyerarsisi",
       "baslik": "Romatolojik hastalıkların EK-2 içindeki sınıflandırılması",
       "kaynak_sayfalar": [
@@ -4620,7 +4620,49 @@
         132
       ],
       "hesaplama_kurali": "2019 EK-2'de 'romatolojik hastalıklar' için bu envanterde bağımsız ve tek başına ayrı bir üst bölüm başlığı doğrulanmadı. Her tanı, kaynakta yer aldığı özgün bölüm ve tablo başlığı altında tutulmalıdır; ayrı bir bölüm varsayımıyla oran üretilmez.",
-      "uyari": "Hastalık adının romatolojik olması, kaynak tablosundaki anatomik/işlevsel sınıflandırmayı değiştirmez."
+      "uyari": "Hastalık adının romatolojik olması, kaynak tablosundaki anatomik/işlevsel sınıflandırmayı değiştirmez.",
+      "kategori_notu": "Kategori adı 'Romatoloji' olarak sadeleştirildi. Bu envanter bağımsız bir bölüm değildir: kaynakta romatolojik tanılar kas-iskelet, deri, böbrek, akciğer ve sinir sistemi bölümlerinde değerlendirilir. Bu yüzden Romatoloji kategorisi ayrı hastalık kaydı üretmez; yalnızca kaynak hiyerarşisini gösterir."
+    },
+    {
+      "id": "OZ-YAN-001",
+      "bolum": "YANIKLAR",
+      "tur": "sabit_oran_tablosu",
+      "baslik": "Deri ile ilgili yanık arızaları (yanık sekelleri)",
+      "kaynak_sayfalar": [
+        197
+      ],
+      "kaynak_pdf_sayfalar": [
+        84
+      ],
+      "tablolar": [
+        {
+          "ad": "YANIKLAR — I- DERİ İLE İLGİLİ YANIK ARIZALARI",
+          "satirlar": [
+            {
+              "madde": "a",
+              "aciklama": "Vücut yüzeyinin %10'unu kaplayan ve ameliyatla giderilemeyen keloid hipertrofi",
+              "oran": 20
+            },
+            {
+              "madde": "b",
+              "aciklama": "Vücut yüzeyinin %50'sini kaplayanlar",
+              "oran": 30
+            },
+            {
+              "madde": "c",
+              "aciklama": "Vücut yüzeyinin %50'sinden fazlasını kaplayanlar",
+              "oran": 40
+            },
+            {
+              "madde": "d",
+              "aciklama": "Saçlı derinin yarıdan çok alanını kaplayan yanıklar ve yaralar",
+              "oran": 25
+            }
+          ]
+        }
+      ],
+      "hesaplama_kurali": "Yanık sekellerinde engel oranı, yanan vücut yüzeyi alanına ve saçlı deri tutulumuna göre Tablo I'den belirlenir.",
+      "uyari": "II–VI alt başlıkları (akciğer/damar, kulak-burun, göz, ürogenital, sindirim) kaynakta oran vermez; 'ilgili branş tarafından değerlendirilir' der. Bunlar oran olarak eklenmemiştir. e) maddesi (Marjolin ülseri, skuamöz kanserler) de oransızdır."
     }
   ]
 }

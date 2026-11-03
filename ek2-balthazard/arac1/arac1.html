@@ -573,6 +573,10 @@
     <summary>Katalog kapsamı hakkında</summary>
     <p id="kapsam-aciklama" class="ipucu">Kapsam bilgisi yükleniyor…</p>
   </details>
+  <details class="kapsam-notu" id="kategori-notu-kutusu">
+    <summary>Tablo ve formül gerektiren kategoriler</summary>
+    <p id="kategori-notu" class="ipucu">Kategori bilgisi yükleniyor…</p>
+  </details>
 
   <details class="kart" id="ozel-hesaplama-kutusu" aria-labelledby="ozel-hesaplama-baslik">
     <summary class="ozel-baslik" id="ozel-hesaplama-baslik">Tablo ve formül gerektiren değerlendirmeler</summary>
@@ -714,6 +718,26 @@ var tumu = el("button", "cip", "Tümü");
       cipler.appendChild(dugme);
     });
   }
+  // Kaynakta sabit oran yerine tablo/formül isteyen kategoriler (Göz, Kas-İskelet,
+  // Romatoloji, Yanıklar) için bilgi notu. Bunlar hastalık kaydı üretmez.
+  function kategoriNotuKur(notlar) {
+    var kutu = document.getElementById("kategori-notu-kutusu");
+    var hedef = document.getElementById("kategori-notu");
+    if (!kutu || !hedef) { return; }
+    if (!notlar.length) { kutu.classList.add("gizli"); return; }
+    hedef.innerHTML = "";
+    notlar.forEach(function (n) {
+      var satir = document.createElement("p");
+      satir.className = "ipucu";
+      satir.style.marginTop = "6px";
+      var ad = document.createElement("strong");
+      ad.textContent = n.kisa + ": ";
+      satir.appendChild(ad);
+      satir.appendChild(document.createTextNode(n.aciklama));
+      hedef.appendChild(satir);
+    });
+  }
+
   function cipIsaretle() {
     Array.prototype.forEach.call(cipler.children, function (dugme) {
       var secili = (dugme.dataset.bolum || "") === durum.bolum;
@@ -742,9 +766,35 @@ var tumu = el("button", "cip", "Tümü");
         });
         return tum;
       }, []);
+      // Tablo/formül gerektiren kategoriler sabit oranlı kayıt üretmez;
+      // liste yerine kaynak yöntemini açıklayan bilgi kartı gösterilir.
+      if (yanit.tablo_kategorisi) {
+        tabloKategorisiCiz(yanit.tablo_kategorisi);
+        return;
+      }
       gezinme.classList.remove("gizli");
       hastaliklariCiz();
     }).catch(hataGoster);
+  }
+
+  function tabloKategorisiCiz(bilgi) {
+    hastalikKutu.innerHTML = "";
+    var baslik = document.getElementById("hastalik-baslik");
+    baslik.textContent = bilgi.kisa + " (tablo ile değerlendirilir)";
+    var kutu = el("div", "kart");
+    var p1 = el("p", "ipucu");
+    p1.textContent = bilgi.aciklama;
+    var p2 = el("p", "ipucu");
+    p2.textContent = "Bu kategoride tek oranlı hastalık kaydı yoktur; değerlendirme " +
+      "resmî EK-2 tabloları ve ölçümlerle yapılır.";
+    var p3 = el("p", "ipucu");
+    p3.textContent = "Kaynak yöntemini aşağıdaki \"Tablo ve formül gerektiren " +
+      "değerlendirmeler\" bölümünden açabilirsiniz.";
+    kutu.appendChild(p1);
+    kutu.appendChild(p2);
+    kutu.appendChild(p3);
+    hastalikKutu.appendChild(kutu);
+    gezinme.classList.remove("gizli");
   }
 
   function hastaliklariCiz() {
@@ -1243,6 +1293,7 @@ var tumu = el("button", "cip", "Tümü");
   json("/api/bolumler").then(function (yanit) {
     if (!yanit.ok) { throw new Error("Bölümler okunamadı."); }
     cipleriKur(yanit.bolumler || []);
+    kategoriNotuKur(yanit.kategori_notlari || []);
     var parcalar = [];
     if ((yanit.kapsam_kismi || []).length) {
       parcalar.push("Kısmi ek kayıt bulunan bölümler: " + yanit.kapsam_kismi.join(", ") +

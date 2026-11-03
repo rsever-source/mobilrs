@@ -132,7 +132,7 @@ class Arac1ArayuzTestleri(unittest.TestCase):
     def test_bolumler_ve_sayilar(self):
         data = self._json("/api/bolumler")
         self.assertTrue(data["ok"])
-        self.assertEqual(len(data["bolumler"]), 12)
+        self.assertEqual(len(data["bolumler"]), 16)
         short = {x["kisa"]: x["kayit_sayisi"] for x in data["bolumler"]}
         self.assertEqual(short["Kalp-Damar"], 61)
         self.assertEqual(short["Sinir Sistemi"], 36)
@@ -158,7 +158,7 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         html = self._al("/arac1").decode("utf-8")
         data = self._json("/api/ozel-hesaplamalar")
         self.assertTrue(data["ok"])
-        self.assertEqual(len(data["ozel_hesaplamalar"]), 5)
+        self.assertEqual(len(data["ozel_hesaplamalar"]), 6)
         eye = next(x for x in data["ozel_hesaplamalar"] if x["id"] == "OZ-GOR-001")
         self.assertEqual(len(eye["tablolar"][0]["satirlar"]), 27)
         self.assertEqual([a["adim"] for a in eye["adimlar"]], list(range(1, 10)))
@@ -186,7 +186,7 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertEqual(len(table37["satirlar"]), 11)
         self.assertEqual(table37["satirlar"][-1][-1], "3 (5) [7]")
         all_tables = [t for item in data["ozel_hesaplamalar"] for t in item.get("tablolar", [])]
-        self.assertEqual(len(all_tables), 51)
+        self.assertEqual(len(all_tables), 52)
         self.assertTrue(all(
             (t.get("satirlar") and len(t["satirlar"]) > 0) or
             (isinstance(t.get("amac"), str) and t["amac"].strip()) or
