@@ -290,13 +290,20 @@ steps:
 
         echo "ADIM: yas-kutusu"
         # 65+ kutusu hem HTML'de hem de istek gövdesinde işlevsel olmalı.
+        # DIKKAT: "icerir ... || YAS_TAMAM=0" set -e altinda sessizce cikisa yol
+        # aciyordu (grep 1 donunce || ile yakalanan komut da basarisiz sayilir ve
+        # echo/exit satirlarina hic ulasilmaz). Bu yuzden her cagri if ile sarilir.
         YAS_TAMAM=1
-        icerir "$$ARAC1_HTML" '<section class="model-yas-kontrol"' || YAS_TAMAM=0
-        icerir "$$ARAC1_HTML" '<input id="yas-ek-goster" type="checkbox" aria-describedby="yas-ek-bilgi">' || YAS_TAMAM=0
-        icerir "$$ARAC1_HTML" '65 yaş ve üzeri için %10 yaş ekini uygula' || YAS_TAMAM=0
-        icerir "$$ARAC1_HTML" 'var yasEkGoster = document.getElementById("yas-ek-goster");' || YAS_TAMAM=0
-        icerir "$$ARAC1_HTML" 'yas: yasEkGoster.checked ? "65_ve_uzeri" : "65_alti"' || YAS_TAMAM=0
-        icerir "$$ARAC1_HTML" 'yas_ekle: yasEkGoster.checked' || YAS_TAMAM=0
+        for desen in '<section class="model-yas-kontrol"' \
+                      '<input id="yas-ek-goster" type="checkbox" aria-describedby="yas-ek-bilgi">' \
+                      '65 yaş ve üzeri için %10 yaş ekini uygula' \
+                      'var yasEkGoster = document.getElementById("yas-ek-goster");' \
+                      'yas: yasEkGoster.checked ? "65_ve_uzeri" : "65_alti"' \
+                      'yas_ekle: yasEkGoster.checked'; do
+          if ! icerir "$$ARAC1_HTML" "$$desen"; then
+            YAS_TAMAM=0
+          fi
+        done
 
         # Varsayılan olarak işaretli olmamalı: id="yas-ek-goster" ile ilk ">" arasında "checked" yok.
         # (Python sürümü: arac1.split(b'id="yas-ek-goster"',1)[1].split(b'>',1)[0])
@@ -331,8 +338,11 @@ steps:
         echo "ADIM: json-sayilari"
         govde "$$BASE/api/bolumler" > "$$BOLUMLER_JSON"
         govde "$$BASE/api/ozel-hesaplamalar" > "$$OZEL_JSON"
-        BOLUM_SAYISI="$$(grep -o '"id"' "$$BOLUMLER_JSON" | wc -l | tr -d ' ')"
-        OZEL_SAYISI="$$(grep -o '"id"' "$$OZEL_JSON" | wc -l | tr -d ' ')"
+        # /api/bolumler yaniti her bolumde "ad" alanini tasir (kimlik alani yok);
+        # /api/ozel-hesaplamalar yaniti her kayitta "id" alanini tasir.
+        # Onceki surum ikisinde de "id" aradigi icin bolum sayisi 0 cikiyordu.
+        BOLUM_SAYISI="$$(grep -o '"ad"' "$$BOLUMLER_JSON" | wc -l | tr -d ' ' || true)"
+        OZEL_SAYISI="$$(grep -o '"id"' "$$OZEL_JSON" | wc -l | tr -d ' ' || true)"
         if [ "$$BOLUM_SAYISI" != "12" ] || [ "$$OZEL_SAYISI" != "5" ]; then
           echo "HATA: EK-2 katalog veya ozel hesaplama verisi eksik (bolum=$$BOLUM_SAYISI, ozel=$$OZEL_SAYISI)" >&2
           exit 1
