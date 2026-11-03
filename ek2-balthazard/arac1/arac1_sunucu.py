@@ -366,6 +366,41 @@ def belirsiz_yuku(satir) -> dict:
     }
 
 
+def ek_kayit_sonuc_yuku(bolum: dict, satir: dict) -> dict:
+    """EK-2 ek kaydını hem bağımsız Araç-1 hem ana site API'si için biçimlendirir."""
+    gosterim = oran_gosterim(satir["oran"])
+    kisitlar = kural_listesi(satir)
+    esdeger = satir.get("esdeger")
+    return {
+        "ok": True, "tur": "sonuc", "id": satir["id"],
+        "ad": satir["hastalik"], "seviye": satir["alt_tur"],
+        "rozet": "EK-2 ek kayıt", "bolum": bolum["ad"],
+        "bolum_kisa": bolum.get("kisa", bolum["ad"]),
+        "grup": None, "grup_rozet": None,
+        "oran": {"ham": gosterim["ham"], "gosterim": gosterim["gosterim"],
+                 "etiket": "EK-2 kaynak satırında açıkça belirtilen sabit oran"},
+        "sifir": satir["oran"] == 0, "sifir_aciklama": None,
+        "kaynak": "Kaynak: EK-2, sayfa %s · kayıt %s" % (satir["sayfa"], satir["id"]),
+        "kaynak_not": satir.get("kaynak_not", "Ek katalog kaydı."),
+        "esdeger": esdeger,
+        "esdeger_notu": (
+            "Bu ek kayıt, ana katalogdaki %s kaydıyla aynı hükmü taşır; "
+            "çift sayımı önlemek için listelerde gösterilmez." % esdeger
+            if esdeger else None
+        ),
+        "kisitlar": kisitlar,
+        "kisit_basligi": "{0} ({1})".format(KISIT_BASLIGI, len(kisitlar)),
+        "tek_kayit": True, "seviye_adimi": False,
+        "tek_seviye_notu": (
+            "Bu kaynak satırı ayrı kayıt olarak aktarılmıştır; "
+            "bölümün tamamı henüz eksiksiz değildir."
+        ),
+        "yas_bloku": dict(YAS_BLOGU), "bolum_notu": None,
+        "kisa_etiket": kisa_etiket(satir["id"], satir["sayfa"]),
+        "alt_bilgi": dict(ALT_BILGI),
+    }
+
+
 def bolum_kisa(ad: str) -> str:
     """Bölüm kısa adını ana ve ek kataloglarda tek biçimde döndürür."""
     for bolum in katalog().bolumler:
@@ -668,33 +703,7 @@ class Isleyici(BaseHTTPRequestHandler):
                 for satir in bolum.get("kayitlar", []):
                     if satir.get("id") != kimlik:
                         continue
-                    gosterim = oran_gosterim(satir["oran"])
-                    esdeger = satir.get("esdeger")
-                    self._json({
-                        "ok": True, "tur": "sonuc", "id": satir["id"],
-                        "ad": satir["hastalik"], "seviye": satir["alt_tur"],
-                        "rozet": "EK-2 ek kayıt", "bolum": bolum["ad"],
-                        "bolum_kisa": bolum_kisa(bolum["ad"]),
-                        "grup": None, "grup_rozet": None,
-                        "oran": {"ham": gosterim["ham"], "gosterim": gosterim["gosterim"],
-                                 "etiket": "EK-2 kaynak satırında açıkça belirtilen sabit oran"},
-                        "sifir": satir["oran"] == 0, "sifir_aciklama": None,
-                        "kaynak": "Kaynak: EK-2, sayfa %s · kayıt %s" % (satir["sayfa"], satir["id"]),
-                        "kaynak_not": satir.get("kaynak_not", "Ek katalog kaydı."),
-                        "esdeger": esdeger,
-                        "esdeger_notu": (
-                            "Bu ek kayıt, ana katalogdaki %s kaydıyla aynı hükmü taşır; "
-                            "çift sayımı önlemek için listelerde gösterilmez." % esdeger
-                            if esdeger else None
-                        ),
-                        "kisitlar": kural_listesi(satir),
-                        "kisit_basligi": "{0} ({1})".format(KISIT_BASLIGI, len(kural_listesi(satir))),
-                        "tek_kayit": True, "seviye_adimi": False,
-                        "tek_seviye_notu": "Bu kaynak satırı ayrı kayıt olarak aktarılmıştır; bölümün tamamı henüz eksiksiz değildir.",
-                        "yas_bloku": dict(YAS_BLOGU), "bolum_notu": None,
-                        "kisa_etiket": kisa_etiket(satir["id"], satir["sayfa"]),
-                        "alt_bilgi": dict(ALT_BILGI),
-                    })
+                    self._json(ek_kayit_sonuc_yuku(bolum, satir))
                     return
             self._json({"ok": False, "mesaj": "Ek katalog kaydı bulunamadı."}, HTTPStatus.NOT_FOUND)
             return
