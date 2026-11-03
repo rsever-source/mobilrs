@@ -2,208 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-10-27T20:07:59.309119+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "source_diagnostics": {
-        "Anadolu Ajansı – Engelli Yaşam": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 18,
-          "parsed_items": 18,
-          "errors": []
-        },
-        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
-          "stage": "html_list",
-          "anchors": 72,
-          "path_matches": 20,
-          "dated_from_title": 0,
-          "dated_from_context": 0,
-          "detail_attempts": 20,
-          "detail_successes": 20,
-          "parsed_items": 20,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "TRT Haber": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "TRT Haber – Sağlık": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
-          "stage": "html_list",
-          "anchors": 200,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
-          "stage": "html_list",
-          "anchors": 186,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
-          "stage": "html_list",
-          "anchors": 480,
-          "path_matches": 294,
-          "dated_from_title": 294,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 294,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Sosyal Güvenlik Kurumu – Duyurular": {
-          "stage": "html_list",
-          "anchors": 94,
-          "path_matches": 10,
-          "dated_from_title": 10,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 10,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
-          "stage": "tbb_mevzuat",
-          "anchors": 87,
-          "article_links": 12,
-          "keyword_matches": 1,
-          "detail_attempts": 1,
-          "detail_errors": 0,
-          "missing_dates": 0,
-          "parsed_items": 1,
-          "errors": []
-        },
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 11,
-          "keyword_eliminated": 19,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 0,
-          "in_7_day_window": 0,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "26 Eylül 2026 Tarihinde Yapılacak Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavına Katılacak Adaylar ",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 516,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 18,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 16,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 482,
-          "accepted_as_candidate": 0
-        },
-        "examples": {
-          "already_published": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Odasını atölyeye dönüştüren bedensel engelli sanatçı 20 yıldır çini boyuyor"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Bağdat'ta Down sendromlu çocuklar \"Yapabiliriz\" etkinliğinde yeteneklerini sergiledi"
-            }
-          ],
-          "url_seen_within_7_days": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Kanser sürecinde tanıştığı kağıt kıvırma sanatı, Duygu Pakel'in hayatını değiştirdi"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
-              "title": "Kanser sürecinde tanıştığı kağıt kıvırma sanatı, Duygu Pakel'in hayatını değiştirdi"
-            }
-          ],
-          "older_than_7_days": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Konya'da \"özel hastalar\" evden çıkmadan engelli raporlarını yeniletebiliyor"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Görme engelli öğrenciler İngilizceyi dokunarak ve hareket ederek keşfediyor"
-            }
-          ]
-        },
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": []
-    },
-    {
       "run_at": "2026-10-27T20:48:50.976520+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -6341,6 +6139,212 @@
         "zero_candidates_is_not_an_error": true
       },
       "candidates": []
+    },
+    {
+      "run_at": "2026-11-03T12:07:04.386007+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 10,
+          "parsed_items": 10,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 480,
+          "path_matches": 294,
+          "dated_from_title": 294,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 294,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "anchors": 88,
+          "article_links": 12,
+          "keyword_matches": 0,
+          "detail_attempts": 0,
+          "detail_errors": 0,
+          "missing_dates": 0,
+          "parsed_items": 0,
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 10,
+          "keyword_eliminated": 20,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 506,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 18,
+          "duplicate_in_this_run": 2,
+          "url_seen_within_7_days": 14,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 470,
+          "accepted_as_candidate": 2
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "Otizmli üniversite öğrencisi, antrenör olma hayaliyle eğitimini sürdürüyor",
+          "source": "Anadolu Ajansı – Engelli Yaşam",
+          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/otizmli-universite-ogrencisi-antrenor-olma-hayaliyle-egitimini-surduruyor/1832993",
+          "published_at": "2026-11-03T00:00:00+00:00",
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "Otizmli Mahmut Balaban, masa tenisi antrenörü olmak için eğitim alıyor",
+          "summary": "Adana'da yaşayan 21 yaşındaki otizmli üniversite öğrencisi Mahmut Balaban, masa tenisi antrenörü olma hedefiyle eğitimini sürdürüyor. Henüz 3 yaşındayken otizm teşhisi konulan Balaban, ailesinin yönlendirmesiyle spora başladı ve 12 yaşından beri masa tenisiyle ilgileniyor. Liseden mezun olduktan sonra üniversite ve özel yetenek sınavlarını geçen genç sporcu, Çukurova Üniversitesi Spor Bilimleri Fakültesini kazandı. Mezuniyetinin ardından profesyonel olarak antrenörlük yapmak isteyen Balaban, azmiyle hem ailesinin hem de çevresindekilerin takdirini topluyor. Baba Musa Balaban, oğlunun kendi çabalarıyla önemli bir başarı elde ettiğini belirterek onunla gurur duyduklarını ifade etti. Sınıf arkadaşları da Mahmut ile iyi anlaştıklarını ve onunla vakit geçirmekten mutluluk duyduklarını dile getirdi.",
+          "detail_summary": "Adana'nın Sarıçam ilçesinde yaşayan 21 yaşındaki otizmli Mahmut Balaban, Çukurova Üniversitesi Spor Bilimleri Fakültesi Antrenörlük Eğitimi Bölümünde eğitim görüyor. Küçük yaşlarda spora yönlendirilen Balaban, masa tenisi branşında kendini geliştirerek bu alanda kariyer yapmayı amaçlıyor. İki yıl önce Sarıçam TOKİ Anadolu Lisesinden mezun olan genç öğrenci, sınavları başarıyla geçerek üniversiteli oldu. Eğitimini sürdüren Balaban, mezuniyet sonrasında başarılı bir masa tenisi antrenörü olmayı hedefliyor. Baba Musa Balaban, oğlunun azmi sayesinde diğer otizmli bireylere örnek olduğunu ve kendi imkanlarıyla hayatını sürdürdüğünü kaydetti. Sınıf arkadaşı Egemen Suat Dokur, Mahmut'un çok iyi bir insan olduğunu ve boş vakitlerinde arkadaşlarıyla kaynaştığını söyledi.",
+          "decision": "publish"
+        },
+        {
+          "title": "Sigarayı bırakan görme engelli Serkan spora başlayıp milli judocu oldu",
+          "source": "Anadolu Ajansı – Engelli Yaşam",
+          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/sigarayi-birakti-spora-baslayip-milli-judocu-oldu/1832992",
+          "published_at": "2026-11-03T00:00:00+00:00",
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "Sigarayı bırakan görme engelli Serkan spora başlayıp milli judocu oldu",
+          "summary": "Kars'ta yaşayan görme engelli Serkan Arabul, yaklaşık 20 yıl boyunca günde 2-3 paket sigara içti. Nefes darlığı ve maddi sıkıntılar yaşayan Arabul, çocuğunun dershane taksidini hesaplayarak sigarayı bıraktı. Yeşilay Kars Şubesinden destek alan Arabul, 2023 yılında spora yönelerek judoya başladı. Görme engelli sporcu, 2025'te Türkiye üçüncüsü ve 2026'da Türkiye ikincisi oldu. Elde ettiği başarılarla milli sporcu ünvanını kazanan Arabul, hayat kalitesini artırdı. Arabul, uluslararası alanda bayrağı dalgalandırmak için çalışmalarını sürdürüyor. Yeşilay Kars Şubesi, bağımlılıkla mücadelede sportif ve sosyal faaliyetlerin önemine dikkat çekiyor.",
+          "detail_summary": "Kars'ta 2011 yılında geçirdiği trafik kazası sonucunda görme engelli kalan 4 çocuk babası Serkan Arabul, uzun süre sigara bağımlılığıyla yaşadı. Günlük sigara tüketimi zaman zaman 3 pakete kadar çıkan Arabul, evde yaşadığı huzursuzluklar ve sağlık sorunları nedeniyle sigarayı bırakmaya karar verdi. Bir gün çocuğunu kaydettireceği dershanenin önünde sigara içerken harcadığı paranın dershane taksidini karşılayabildiğini fark eden Arabul, elindeki sigarayı kırıp attı. Yeşilay Kars Şubesinden aldığı destekle bağımlılıktan kurtulan Arabul, 2023'te spora yönelerek görme engellilere yönelik judo çalışmalarına başladı. Azmi sayesinde kısa sürede başarı elde eden sporcu, 2025 yılında Türkiye üçüncülüğü, 2026 yılında ise Türkiye ikinciliği kazandı. Elde ettiği derecelerle milli sporcu ünvanını alan Arabul, evlatları için bu adımı attığını ve hayatının olumlu yönde değiştiğini belirtti. Yeşilay Kars Şube Sorumlusu Kübra Toptaş da bağımlılıkla mücadelede sosyal, sanatsal ve sportif faaliyetlerin önemini vurguladı. Toptaş, danışanların YEDAM ve şube faaliyetlerine katılarak bağımlılıklardan uzaklaştığını ifade etti.",
+          "decision": "publish"
+        }
+      ]
     }
   ],
   "system_incidents": [
