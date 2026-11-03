@@ -428,34 +428,7 @@ async def ek2_kayit(kimlik: str):
             for satir in bolum.get("kayitlar", []):
                 if satir.get("id") != kimlik:
                     continue
-                gosterim = ek2_arac1.oran_gosterim(satir["oran"])
-                kisitlar = ek2_arac1.kural_listesi(satir)
-                esdeger = satir.get("esdeger")
-                return JSONResponse({
-                    "ok": True, "tur": "sonuc", "id": satir["id"],
-                    "ad": satir["hastalik"], "seviye": satir["alt_tur"],
-                    "rozet": "EK-2 ek kayıt", "bolum": bolum["ad"],
-                    "bolum_kisa": bolum.get("kisa", bolum["ad"]),
-                    "grup": None, "grup_rozet": None,
-                    "oran": {"ham": gosterim["ham"], "gosterim": gosterim["gosterim"],
-                             "etiket": "EK-2 kaynak satırında açıkça belirtilen sabit oran"},
-                    "sifir": satir["oran"] == 0, "sifir_aciklama": None,
-                    "kaynak": "Kaynak: EK-2, sayfa %s · kayıt %s" % (satir["sayfa"], satir["id"]),
-                    "kaynak_not": satir.get("kaynak_not", "Ek katalog kaydı."),
-                    "esdeger": esdeger,
-                    "esdeger_notu": (
-                        "Bu ek kayıt, ana katalogdaki %s kaydıyla aynı hükmü taşır; "
-                        "çift sayımı önlemek için listelerde gösterilmez." % esdeger
-                        if esdeger else None
-                    ),
-                    "kisitlar": kisitlar,
-                    "kisit_basligi": "{0} ({1})".format(ek2_arac1.KISIT_BASLIGI, len(kisitlar)),
-                    "tek_kayit": True, "seviye_adimi": False,
-                    "tek_seviye_notu": "Bu kaynak satırı ayrı kayıt olarak aktarılmıştır; bölümün tamamı henüz eksiksiz değildir.",
-                    "yas_bloku": dict(ek2_arac1.YAS_BLOGU), "bolum_notu": None,
-                    "kisa_etiket": ek2_arac1.kisa_etiket(satir["id"], satir["sayfa"]),
-                    "alt_bilgi": dict(ek2_arac1.ALT_BILGI),
-                })
+                return JSONResponse(ek2_arac1.ek_kayit_sonuc_yuku(bolum, satir))
         raise HTTPException(404, "Ek katalog kaydı bulunamadı.")
     kayit = ek2_arac1.katalog().kayit(kimlik)
     if kayit is None:
