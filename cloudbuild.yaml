@@ -295,7 +295,7 @@ steps:
         # echo/exit satirlarina hic ulasilmaz). Bu yuzden her cagri if ile sarilir.
         YAS_TAMAM=1
         for desen in '<section class="model-yas-kontrol"' \
-                      '<input id="yas-ek-goster" type="checkbox" aria-describedby="yas-ek-bilgi">' \
+                      '<input id="yas-ek-goster" type="checkbox">' \
                       '65 yaş ve üzeri için %10 yaş ekini uygula' \
                       'var yasEkGoster = document.getElementById("yas-ek-goster");' \
                       'yas: yasEkGoster.checked ? "65_ve_uzeri" : "65_alti"' \
