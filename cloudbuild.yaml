@@ -69,7 +69,7 @@ steps:
   # Bu build'in oluşturduğu revision adını ve tag URL'ini dosyaya yaz.
   # Revision, servisin global latestCreatedRevisionName alanından DEĞİL, yalnızca
   # bu build'e ait benzersiz tag'den okunur.
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+  - name: gcr.io/google.com/cloudsdktool/google-cloud-cli:stable
     id: CaptureRevision
     entrypoint: python3
     env:
@@ -115,7 +115,7 @@ steps:
 
   # Canlı trafik değişmeden, bu build'e ait tag URL'i üzerinde gerçek HTTP kontrolü.
   # (Ekstra image çekmemek için gcloud adımıyla aynı image + python3 kullanılır.)
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+  - name: gcr.io/google.com/cloudsdktool/google-cloud-cli:stable
     id: SmokeTest
     entrypoint: python3
     args:
@@ -250,7 +250,7 @@ steps:
         fi
 
   # %100 trafiğin gerçekten bu build'in revision'ında olduğunu doğrula.
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+  - name: gcr.io/google.com/cloudsdktool/google-cloud-cli:stable
     id: VerifyTraffic
     entrypoint: python3
     args:
