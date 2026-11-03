@@ -69,155 +69,261 @@ steps:
   # Bu build'in oluşturduğu revision adını ve tag URL'ini dosyaya yaz.
   # Revision, servisin global latestCreatedRevisionName alanından DEĞİL, yalnızca
   # bu build'e ait benzersiz tag'den okunur.
-  - name: gcr.io/google.com/cloudsdktool/google-cloud-cli:stable
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     id: CaptureRevision
-    entrypoint: python3
+    entrypoint: bash
     env:
       - 'BUILD_ID=$BUILD_ID'
     args:
       - -c
       - |
-        import json
-        import os
-        import subprocess
+        set -euo pipefail
+        TAG="test-$${BUILD_ID:0:20}"
+        SERVICE="mobilrs-test"
+        REGION="europe-west1"
+        PROJECT="project-f671a84c-0cde-40b8-921"
 
-        TAG = "test-" + os.environ["BUILD_ID"][:20]
-        SERVICE = "mobilrs-test"
-        REGION = "europe-west1"
-        PROJECT = "project-f671a84c-0cde-40b8-921"
+        # Bu build'in tag'ine ait revision'lar: "revision adi<TAB>tag URL'i".
+        # Tag tek bir revision'a isaret etmezse gcloud bos/tek satir dondurur ve
+        # satir sayisi kontrolu hatayi yakalar.
+        ESLEME="$$(gcloud run services describe "$$SERVICE" \
+          --region="$$REGION" \
+          --project="$$PROJECT" \
+          --format="value(status.traffic[].revisionName,status.traffic[].url)" \
+          | paste - - \
+          | awk -F'\t' -v tag="$$TAG" 'index($$2, "https://" tag "---") == 1')"
 
-        data = json.loads(subprocess.check_output([
-            "gcloud", "run", "services", "describe", SERVICE,
-            "--region=" + REGION,
-            "--project=" + PROJECT,
-            "--format=json",
-        ], text=True))
-        entries = [t for t in data.get("status", {}).get("traffic", []) if t.get("tag") == TAG]
-        if len(entries) != 1:
-            raise SystemExit("HATA: " + TAG + " tag'i tek bir revision'a isaret etmiyor: " + repr(entries))
-        revision = entries[0].get("revisionName")
-        if not revision:
-            raise SystemExit("HATA: " + TAG + " tag'i icin revision adi bulunamadi")
-        base = entries[0].get("url") or ""
-        if not base:
-            service_url = data.get("status", {}).get("url", "")
-            if not service_url.startswith("https://"):
-                raise SystemExit("HATA: servis URL'i okunamadi")
-            base = service_url.replace("https://", "https://" + TAG + "---", 1)
-        if not base.startswith("https://" + TAG + "---"):
-            raise SystemExit("HATA: smoke test URL'i bu build'in tag'ine ait degil: " + base)
-        with open("/workspace/revision.txt", "w") as handle:
-            handle.write(revision + "\n")
-        with open("/workspace/base_url.txt", "w") as handle:
-            handle.write(base + "\n")
-        print("revision=" + revision)
-        print("base=" + base)
+        SATIR_SAYISI="$$(printf '%s\n' "$$ESLEME" | grep -c . || true)"
+        if [ "$$SATIR_SAYISI" != "1" ]; then
+          echo "HATA: $$TAG tag'i tek bir revision'a isaret etmiyor ($$SATIR_SAYISI eslesme)" >&2
+          printf '%s\n' "$$ESLEME" >&2
+          exit 1
+        fi
+
+        REVISION="$$(printf '%s\n' "$$ESLEME" | cut -f1)"
+        BASE="$$(printf '%s\n' "$$ESLEME" | cut -f2)"
+        if [ -z "$$REVISION" ]; then
+          echo "HATA: $$TAG tag'i icin revision adi bulunamadi" >&2
+          exit 1
+        fi
+
+        # Tag URL'i servis tarafindan dondurulmediyse servis URL'inden turet.
+        if [ -z "$$BASE" ]; then
+          SERVIS_URL="$$(gcloud run services describe "$$SERVICE" \
+            --region="$$REGION" \
+            --project="$$PROJECT" \
+            --format="value(status.url)")"
+          case "$$SERVIS_URL" in
+            https://*) ;;
+            *)
+              echo "HATA: servis URL'i okunamadi" >&2
+              exit 1
+              ;;
+          esac
+          BASE="$${SERVIS_URL/https:\/\//https://$$TAG---}"
+        fi
+
+        case "$$BASE" in
+          "https://$$TAG---"*) ;;
+          *)
+            echo "HATA: smoke test URL'i bu build'in tag'ine ait degil: $$BASE" >&2
+            exit 1
+            ;;
+        esac
+
+        printf '%s\n' "$$REVISION" > /workspace/revision.txt
+        printf '%s\n' "$$BASE" > /workspace/base_url.txt
+        echo "revision=$$REVISION"
+        echo "base=$$BASE"
 
   # Canlı trafik değişmeden, bu build'e ait tag URL'i üzerinde gerçek HTTP kontrolü.
-  # (Ekstra image çekmemek için gcloud adımıyla aynı image + python3 kullanılır.)
-  - name: gcr.io/google.com/cloudsdktool/google-cloud-cli:stable
+  # Python bağımlılığı yok: aynı gcloud imajı üzerinde curl ile çalışır.
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     id: SmokeTest
-    entrypoint: python3
+    entrypoint: bash
     args:
       - -c
       - |
-        import time, urllib.request, urllib.error
+        set -euo pipefail
 
-        base = open("/workspace/base_url.txt").read().strip()
-        print("Smoke test:", base, flush=True)
+        BASE="$$(cat /workspace/base_url.txt)"
+        echo "Smoke test: $$BASE"
 
-        def status_code(url):
-            try:
-                with urllib.request.urlopen(url, timeout=30) as r:
-                    return r.status
-            except urllib.error.HTTPError as e:
-                return e.code
-            except Exception as e:
-                print("  hata:", e, flush=True)
-                return 0
+        # Durum kodu dondurur; baglanti hatasinda 0 (Python surumundeki gibi).
+        durum_kodu() {
+          curl -s -o /dev/null -m 30 -w '%{http_code}' "$$1" 2>/dev/null || echo 0
+        }
 
-        def check(path, want):
-            url = base + path
-            got = 0
-            for attempt in range(10):
-                got = status_code(url)
-                print("  %s -> %s (deneme %d)" % (url, got, attempt + 1), flush=True)
-                if got == want:
-                    return
-                time.sleep(6)
-            raise SystemExit("HATA: %s icin beklenen %s, alinan %s" % (url, want, got))
+        # Govdeyi dondurur; hata durumunda bos.
+        govde() {
+          curl -s -m 30 "$$1" 2>/dev/null || true
+        }
 
-        for path, want in (("/", 200), ("/api/news", 200),
-                           ("/admin/haber-durumu", 200), ("/admin/api/status", 401),
-                           ("/arac1", 200), ("/arac2", 200),
-                           ("/api/bolumler", 200), ("/api/ozel-hesaplamalar", 200),
-                           ("/api/kayit/KV-001", 200)):
-            check(path, want)
+        kontrol() {
+          _yol="$$1"
+          _beklenen="$$2"
+          _url="$$BASE$$_yol"
+          _alinan=0
+          _deneme=1
+          while [ "$$_deneme" -le 10 ]; do
+            _alinan="$$(durum_kodu "$$_url")"
+            echo "  $$_url -> $$_alinan (deneme $$_deneme)"
+            if [ "$$_alinan" = "$$_beklenen" ]; then
+              return 0
+            fi
+            _deneme=$$((_deneme + 1))
+            sleep 6
+          done
+          echo "HATA: $$_url icin beklenen $$_beklenen, alinan $$_alinan" >&2
+          exit 1
+        }
 
-        home = urllib.request.urlopen(base + "/", timeout=30).read()
-        if "Hastalık Oranı Bulma".encode("utf-8") not in home or "Balthazard Oranı Hesaplama".encode("utf-8") not in home:
-            raise SystemExit("HATA: ana sayfada hastalık oranı veya Balthazard araç kartı bulunamadı")
-        arac1 = urllib.request.urlopen(base + "/arac1", timeout=30).read()
-        arac2 = urllib.request.urlopen(base + "/arac2", timeout=30).read()
-        if "Araç-2'ye geç".encode("utf-8") in arac1:
-            raise SystemExit("HATA: Araç-1 alt eylem alanında gereksiz Araç-2 geçiş düğmesi var")
-        if (b'id="sonuc-halka"' not in arac2 or b'id="sonuc-katkilar-listesi"' not in arac2 or
-                b'id="sonucu-indir"' not in arac2):
-            raise SystemExit("HATA: Araç-2 sonuç özeti bileşenleri eksik")
-        for arac_adi, sayfa in (("Araç-1", arac1), ("Araç-2", arac2)):
-            if (b'<header class="site-header" role="banner">' not in sayfa or
-                    b'class="site-brand" href="/" aria-label="Engelli.me ana sayfa"' not in sayfa or
-                    b'class="site-mobile-home" href="/">Anasayfa</a>' not in sayfa or
-                    b'id="siteAccessibilityPanel"' not in sayfa):
-                raise SystemExit(arac_adi + " ortak Engelli.me üst başlığı eksik.")
-        aside_start = arac1.find(b'<aside class="sag-panel"')
-        if aside_start < 0:
-            raise SystemExit("HATA: Araç-1 HTML içinde <aside class=\"sag-panel\" bulunamadı")
-        aside_end = arac1.find(b"</aside>", aside_start)
-        if aside_end < 0:
-            raise SystemExit("HATA: Araç-1 sağ panelinin kapanış </aside> etiketi bulunamadı")
-        sepet_pos = arac1.find(b'id="sepet"')
-        if sepet_pos < 0:
-            raise SystemExit("HATA: Araç-1 HTML içinde id=\"sepet\" bulunamadı")
-        if not (aside_start < sepet_pos < aside_end):
-            raise SystemExit("HATA: id=\"sepet\" sağ panel <aside class=\"sag-panel\"> içinde değil")
-        if b'id="model-secili-isaretler"' in arac1:
-            raise SystemExit("HATA: Figürsüz Araç-1 arayüzünde kaldırılmış id=\"model-secili-isaretler\" öğesi hâlâ HTML içinde")
-        if b'id="listeyi-kopyala"' in arac1:
-            raise SystemExit("HATA: Eski id=\"listeyi-kopyala\" kopyalama düğmesi hâlâ HTML içinde")
-        if (b'id="balthazard-onizleme"' not in arac1 or b'fetch("/api/hesapla"' not in arac1):
-            raise SystemExit("HATA: Araç-1 canlı Balthazard ön izlemesi eksik")
+        # "Yol BeklenenKod" ciftleri.
+        for ikili in "/ 200" "/api/news 200" "/admin/haber-durumu 200" \
+                      "/admin/api/status 401" "/arac1 200" "/arac2 200" \
+                      "/api/bolumler 200" "/api/ozel-hesaplamalar 200" \
+                      "/api/kayit/KV-001 200"; do
+          kontrol "$${ikili%% *}" "$${ikili##* }"
+        done
 
-        # Yeni arayüzde insan figürü/beden seçimi tamamen kaldırılmış olmalı.
-        nav_start = arac1.find(b'<nav class="sekmeler"')
-        nav_end = arac1.find(b"</nav>", nav_start)
-        nav = arac1[nav_start:nav_end] if nav_start >= 0 and nav_end >= 0 else b""
+        # icerir DOSYA METIN
+        icerir() {
+          grep -qF -- "$$2" "$$1"
+        }
+
+        # icermez DOSYA METIN
+        icermez() {
+          ! grep -qF -- "$$2" "$$1"
+        }
+
+        HOME_HTML="/workspace/smoke_home.html"
+        ARAC1_HTML="/workspace/smoke_arac1.html"
+        ARAC2_HTML="/workspace/smoke_arac2.html"
+        BOLUMLER_JSON="/workspace/smoke_bolumler.json"
+        OZEL_JSON="/workspace/smoke_ozel.json"
+
+        govde "$$BASE/" > "$$HOME_HTML"
+        if ! icerir "$$HOME_HTML" "Hastalık Oranı Bulma" ||
+           ! icerir "$$HOME_HTML" "Balthazard Oranı Hesaplama"; then
+          echo "HATA: ana sayfada hastalık oranı veya Balthazard araç kartı bulunamadı" >&2
+          exit 1
+        fi
+
+        govde "$$BASE/arac1" > "$$ARAC1_HTML"
+        govde "$$BASE/arac2" > "$$ARAC2_HTML"
+
+        if icerir "$$ARAC1_HTML" "Araç-2'ye geç"; then
+          echo "HATA: Araç-1 alt eylem alanında gereksiz Araç-2 geçiş düğmesi var" >&2
+          exit 1
+        fi
+        if ! icerir "$$ARAC2_HTML" 'id="sonuc-halka"' ||
+           ! icerir "$$ARAC2_HTML" 'id="sonuc-katkilar-listesi"' ||
+           ! icerir "$$ARAC2_HTML" 'id="sonucu-indir"'; then
+          echo "HATA: Araç-2 sonuç özeti bileşenleri eksik" >&2
+          exit 1
+        fi
+
+        for cift in "Araç-1:$$ARAC1_HTML" "Araç-2:$$ARAC2_HTML"; do
+          AD="$${cift%%:*}"
+          SAYFA="$${cift##*:}"
+          if ! icerir "$$SAYFA" '<header class="site-header" role="banner">' ||
+             ! icerir "$$SAYFA" 'class="site-brand" href="/" aria-label="Engelli.me ana sayfa"' ||
+             ! icerir "$$SAYFA" 'class="site-mobile-home" href="/">Anasayfa</a>' ||
+             ! icerir "$$SAYFA" 'id="siteAccessibilityPanel"'; then
+            echo "HATA: $$AD ortak Engelli.me üst başlığı eksik." >&2
+            exit 1
+          fi
+        done
+
+        if ! icerir "$$ARAC1_HTML" '<aside class="sag-panel"'; then
+          echo 'HATA: Araç-1 HTML içinde <aside class="sag-panel" bulunamadı' >&2
+          exit 1
+        fi
+        if ! icerir "$$ARAC1_HTML" "</aside>"; then
+          echo 'HATA: Araç-1 sağ panelinin kapanış </aside> etiketi bulunamadı' >&2
+          exit 1
+        fi
+        if ! icerir "$$ARAC1_HTML" 'id="sepet"'; then
+          echo 'HATA: Araç-1 HTML içinde id="sepet" bulunamadı' >&2
+          exit 1
+        fi
+
+        # id="sepet", <aside class="sag-panel"> ile </aside> arasinda olmali.
+        ASIDE_BAS="$$(grep -boF '<aside class="sag-panel"' "$$ARAC1_HTML" | head -n1 | cut -d: -f1)"
+        SEPET_BAS="$$(grep -boF 'id="sepet"' "$$ARAC1_HTML" | head -n1 | cut -d: -f1)"
+        ASIDE_SON_GORE="$$(tail -c +$$((ASIDE_BAS + 1)) "$$ARAC1_HTML" | grep -boF "</aside>" | head -n1 | cut -d: -f1)"
+        if [ -z "$$ASIDE_BAS" ] || [ -z "$$SEPET_BAS" ] || [ -z "$$ASIDE_SON_GORE" ]; then
+          echo 'HATA: Araç-1 sağ panel sınırları okunamadı' >&2
+          exit 1
+        fi
+        ASIDE_SON=$$((ASIDE_BAS + ASIDE_SON_GORE))
+        if [ "$$SEPET_BAS" -le "$$ASIDE_BAS" ] || [ "$$SEPET_BAS" -ge "$$ASIDE_SON" ]; then
+          echo 'HATA: id="sepet" sağ panel <aside class="sag-panel"> içinde değil' >&2
+          exit 1
+        fi
+
+        if icerir "$$ARAC1_HTML" 'id="model-secili-isaretler"'; then
+          echo 'HATA: Figürsüz Araç-1 arayüzünde kaldırılmış id="model-secili-isaretler" öğesi hâlâ HTML içinde' >&2
+          exit 1
+        fi
+        if icerir "$$ARAC1_HTML" 'id="listeyi-kopyala"'; then
+          echo 'HATA: Eski id="listeyi-kopyala" kopyalama düğmesi hâlâ HTML içinde' >&2
+          exit 1
+        fi
+        if ! icerir "$$ARAC1_HTML" 'id="balthazard-onizleme"' ||
+           ! icerir "$$ARAC1_HTML" 'fetch("/api/hesapla"'; then
+          echo "HATA: Araç-1 canlı Balthazard ön izlemesi eksik" >&2
+          exit 1
+        fi
+
         # 65+ kutusu hem HTML'de hem de istek gövdesinde işlevsel olmalı.
-        yas_checkbox = (
-            b'<section class="model-yas-kontrol"' in arac1 and
-            b'<input id="yas-ek-goster" type="checkbox" aria-describedby="yas-ek-bilgi">' in arac1 and
-            "65 yaş ve üzeri için %10 yaş ekini uygula".encode("utf-8") in arac1 and
-            b'var yasEkGoster = document.getElementById("yas-ek-goster");' in arac1 and
-            b'yas: yasEkGoster.checked ? "65_ve_uzeri" : "65_alti"' in arac1 and
-            b'yas_ekle: yasEkGoster.checked' in arac1
-        )
-        yas_kutusu = arac1.split(b'id="yas-ek-goster"', 1)
-        yas_varsayilan_kapali = (
-            len(yas_kutusu) > 1 and
-            b'checked' not in yas_kutusu[1].split(b'>', 1)[0]
-        )
-        if (b'class="insan-model-gorsel"' in arac1 or b'id="model-secim-cagri"' in arac1 or
-                b'function modeliGuncelle(bolumAdi)' in arac1 or b'<svg class="insan-svg"' in arac1 or
-                not yas_checkbox or not yas_varsayilan_kapali or b'id="ozel-hesaplama-kutusu"' not in arac1 or
-                b"v2.0" in arac1 or b">Hakk" in nav):
-            raise SystemExit("HATA: Araç-1 arayüzü beklenen yeni düzende değil veya 65+ kutusu eksik/varsayılan işaretli")
+        YAS_TAMAM=1
+        icerir "$$ARAC1_HTML" '<section class="model-yas-kontrol"' || YAS_TAMAM=0
+        icerir "$$ARAC1_HTML" '<input id="yas-ek-goster" type="checkbox" aria-describedby="yas-ek-bilgi">' || YAS_TAMAM=0
+        icerir "$$ARAC1_HTML" '65 yaş ve üzeri için %10 yaş ekini uygula' || YAS_TAMAM=0
+        icerir "$$ARAC1_HTML" 'var yasEkGoster = document.getElementById("yas-ek-goster");' || YAS_TAMAM=0
+        icerir "$$ARAC1_HTML" 'yas: yasEkGoster.checked ? "65_ve_uzeri" : "65_alti"' || YAS_TAMAM=0
+        icerir "$$ARAC1_HTML" 'yas_ekle: yasEkGoster.checked' || YAS_TAMAM=0
 
-        import json
-        bolumler = json.loads(urllib.request.urlopen(base + "/api/bolumler", timeout=30).read())
-        ozel = json.loads(urllib.request.urlopen(base + "/api/ozel-hesaplamalar", timeout=30).read())
-        if len(bolumler.get("bolumler", [])) != 12 or len(ozel.get("ozel_hesaplamalar", [])) != 5:
-            raise SystemExit("HATA: EK-2 katalog veya ozel hesaplama verisi eksik")
-        print("SMOKE OK", flush=True)
+        # Varsayılan olarak işaretli olmamalı: id="yas-ek-goster" ile ilk ">" arasında "checked" yok.
+        # (Python sürümü: arac1.split(b'id="yas-ek-goster"',1)[1].split(b'>',1)[0])
+        YAS_ETIKET="$$(sed -n 's/.*id="yas-ek-goster"\([^>]*\)>.*/\1/p' "$$ARAC1_HTML" | head -n1)"
+        YAS_VARSAYILAN_KAPALI=0
+        if [ -n "$$YAS_ETIKET" ]; then
+          case "$$YAS_ETIKET" in
+            *checked*) YAS_VARSAYILAN_KAPALI=0 ;;
+            *) YAS_VARSAYILAN_KAPALI=1 ;;
+          esac
+        fi
+
+        # <nav class="sekmeler"> içinde ">Hakk" olmamalı.
+        NAV_HAKK=0
+        NAV_IC="$$(sed -n 's/.*<nav class="sekmeler"\(.*\)<\/nav>.*/\1/p' "$$ARAC1_HTML" | head -n1)"
+        case "$$NAV_IC" in
+          *">Hakk"*) NAV_HAKK=1 ;;
+        esac
+
+        if icerir "$$ARAC1_HTML" 'class="insan-model-gorsel"' ||
+           icerir "$$ARAC1_HTML" 'id="model-secim-cagri"' ||
+           icerir "$$ARAC1_HTML" 'function modeliGuncelle(bolumAdi)' ||
+           icerir "$$ARAC1_HTML" '<svg class="insan-svg"' ||
+           [ "$$YAS_TAMAM" != "1" ] || [ "$$YAS_VARSAYILAN_KAPALI" != "1" ] ||
+           ! icerir "$$ARAC1_HTML" 'id="ozel-hesaplama-kutusu"' ||
+           icerir "$$ARAC1_HTML" "v2.0" || [ "$$NAV_HAKK" = "1" ]; then
+          echo "HATA: Araç-1 arayüzü beklenen yeni düzende değil veya 65+ kutusu eksik/varsayılan işaretli" >&2
+          exit 1
+        fi
+
+        govde "$$BASE/api/bolumler" > "$$BOLUMLER_JSON"
+        govde "$$BASE/api/ozel-hesaplamalar" > "$$OZEL_JSON"
+        BOLUM_SAYISI="$$(grep -o '"id"' "$$BOLUMLER_JSON" | wc -l | tr -d ' ')"
+        OZEL_SAYISI="$$(grep -o '"id"' "$$OZEL_JSON" | wc -l | tr -d ' ')"
+        if [ "$$BOLUM_SAYISI" != "12" ] || [ "$$OZEL_SAYISI" != "5" ]; then
+          echo "HATA: EK-2 katalog veya ozel hesaplama verisi eksik (bolum=$$BOLUM_SAYISI, ozel=$$OZEL_SAYISI)" >&2
+          exit 1
+        fi
+
+        echo "SMOKE OK"
 
   # Smoke test geçtiyse YALNIZCA bu build'in doğrulanmış revision'ını canlıya al.
   # Eşzamanlı trafik güncellemeleri Cloud Run'da ABORTED dönebilir; aynı revision
@@ -249,27 +355,31 @@ steps:
           exit 1
         fi
 
-  # %100 trafiğin gerçekten bu build'in revision'ında olduğunu doğrula.
-  - name: gcr.io/google.com/cloudsdktool/google-cloud-cli:stable
+  # %100 trafiğin gerçekten bu build'in revision'ında olduğunu doğrula (bash + gcloud).
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     id: VerifyTraffic
-    entrypoint: python3
+    entrypoint: bash
     args:
       - -c
       - |
-        import json
-        import subprocess
+        set -euo pipefail
+        REV="$$(cat /workspace/revision.txt)"
 
-        revision = open("/workspace/revision.txt").read().strip()
-        data = json.loads(subprocess.check_output([
-            "gcloud", "run", "services", "describe", "mobilrs-test",
-            "--region=europe-west1",
-            "--project=project-f671a84c-0cde-40b8-921",
-            "--format=json",
-        ], text=True))
-        live = [t for t in data.get("status", {}).get("traffic", []) if t.get("percent") == 100]
-        if len(live) != 1 or live[0].get("revisionName") != revision:
-            raise SystemExit("HATA: %100 trafik beklenen revision'da degil: " + repr(live))
-        print("TAMAM: %100 trafik " + revision + " revision'inda.")
+        # %100 trafigi alan revision'lar (bos satirlar atilir).
+        CANLI="$$(gcloud run services describe mobilrs-test \
+          --region=europe-west1 \
+          --project=project-f671a84c-0cde-40b8-921 \
+          --format="value(status.traffic[].revisionName,status.traffic[].percent)" \
+          | paste - - \
+          | awk -F'\t' '$$2 == "100" {print $$1}' \
+          | grep . || true)"
+
+        SATIR_SAYISI="$$(printf '%s\n' "$$CANLI" | grep -c . || true)"
+        if [ "$$SATIR_SAYISI" != "1" ] || [ "$$CANLI" != "$$REV" ]; then
+          echo "HATA: %100 trafik beklenen revision'da degil (beklenen=$$REV, canli=$$CANLI)" >&2
+          exit 1
+        fi
+        echo "TAMAM: %100 trafik $$REV revision'inda."
 
   # Build'e özel tag'i temizle; başarısız olsa bile canlı trafiği etkilemez.
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
@@ -280,11 +390,29 @@ steps:
     args:
       - -c
       - |
+        set -euo pipefail
+        TAG="test-$${BUILD_ID:0:20}"
+
+        # Yalnizca BU build'in kendi test-* etiketi kaldirilir.
+        # admin-panel, secret-verify, rgprod, rgtest, test gibi mevcut etiketlere
+        # dokunulmaz. Etiket bu serviste yoksa gcloud'u hic cagirmayiz.
+        MEVCUT="$$(gcloud run services describe mobilrs-test \
+          --region=europe-west1 \
+          --project=project-f671a84c-0cde-40b8-921 \
+          --format="value(status.traffic[].tag)" \
+          | grep -c -x -- "$$TAG" || true)"
+
+        if [ "$$MEVCUT" = "0" ]; then
+          echo "Temizlenecek tag yok: $$TAG"
+          exit 0
+        fi
+
         gcloud run services update-traffic mobilrs-test \
           --region=europe-west1 \
           --project=project-f671a84c-0cde-40b8-921 \
-          --remove-tags="test-$${BUILD_ID:0:20}" \
+          --remove-tags="$$TAG" \
           --quiet
+        echo "Tag temizlendi: $$TAG"
     allowFailure: true
 
 options:
