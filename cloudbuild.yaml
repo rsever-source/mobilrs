@@ -83,25 +83,17 @@ steps:
         REGION="europe-west1"
         PROJECT="project-f671a84c-0cde-40b8-921"
 
-        # Bu build'in tag'ine ait revision'lar: "revision adi<TAB>tag URL'i".
-        # Tag tek bir revision'a isaret etmezse gcloud bos/tek satir dondurur ve
-        # satir sayisi kontrolu hatayi yakalar.
-        ESLEME="$$(gcloud run services describe "$$SERVICE" \
+        # Cloud Run traffic hedefini tag alanindan dogrudan filtrele.
+        # revisionName ve URL ayri sorgulanir; value() ciktisini paste ile
+        # eslestirmek gcloud satir bicimine bagli oldugu icin guvenilir degil.
+        REVISION="$$(gcloud run services describe "$$SERVICE" \
           --region="$$REGION" \
           --project="$$PROJECT" \
-          --format="value(status.traffic[].revisionName,status.traffic[].url)" \
-          | paste - - \
-          | awk -F'\t' -v tag="$$TAG" 'index($$2, "https://" tag "---") == 1')"
-
-        SATIR_SAYISI="$$(printf '%s\n' "$$ESLEME" | grep -c . || true)"
-        if [ "$$SATIR_SAYISI" != "1" ]; then
-          echo "HATA: $$TAG tag'i tek bir revision'a isaret etmiyor ($$SATIR_SAYISI eslesme)" >&2
-          printf '%s\n' "$$ESLEME" >&2
-          exit 1
-        fi
-
-        REVISION="$$(printf '%s\n' "$$ESLEME" | cut -f1)"
-        BASE="$$(printf '%s\n' "$$ESLEME" | cut -f2)"
+          --format="value(status.traffic.filter(tag=$$TAG).revisionName)")"
+        BASE="$$(gcloud run services describe "$$SERVICE" \
+          --region="$$REGION" \
+          --project="$$PROJECT" \
+          --format="value(status.traffic.filter(tag=$$TAG).url)")"
         if [ -z "$$REVISION" ]; then
           echo "HATA: $$TAG tag'i icin revision adi bulunamadi" >&2
           exit 1
@@ -365,14 +357,11 @@ steps:
         set -euo pipefail
         REV="$$(cat /workspace/revision.txt)"
 
-        # %100 trafigi alan revision'lar (bos satirlar atilir).
+        # %100 trafigi alan revision'i Cloud Run traffic alanindan filtrele.
         CANLI="$$(gcloud run services describe mobilrs-test \
           --region=europe-west1 \
           --project=project-f671a84c-0cde-40b8-921 \
-          --format="value(status.traffic[].revisionName,status.traffic[].percent)" \
-          | paste - - \
-          | awk -F'\t' '$$2 == "100" {print $$1}' \
-          | grep . || true)"
+          --format="value(status.traffic.filter(percent=100).revisionName)")"
 
         SATIR_SAYISI="$$(printf '%s\n' "$$CANLI" | grep -c . || true)"
         if [ "$$SATIR_SAYISI" != "1" ] || [ "$$CANLI" != "$$REV" ]; then
