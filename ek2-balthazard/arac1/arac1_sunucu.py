@@ -50,7 +50,9 @@ sys.path.insert(0, str(KOK / "arac2"))
 
 from balthazard_motoru import YAS_ALTI, balthazard, bicimle_gosterim  # noqa: E402
 from arac2_sunucu import gosterim_ekle  # noqa: E402
-from katalog_okuyucu import (Katalog, KatalogHatasi, katla, yukle, yukle_ek_katalog, yukle_ozel_hesaplamalar)  # noqa: E402
+from katalog_okuyucu import (Katalog, KatalogHatasi, katla, kural_kapsamini_dogrula,
+                             yukle, yukle_ek_katalog, yukle_kurallar,
+                             yukle_ozel_hesaplamalar)  # noqa: E402
 
 SAYFA = BURASI / "arac1.html"
 VARSAYILAN_PORT = 8766
@@ -58,8 +60,10 @@ ARAC2_ADRESI = "http://127.0.0.1:8765/arac2"
 AZAMI_SORGU = 120
 EK_KATALOG_YOLU = KOK / "veri" / "katalog_ek2_ek.json"
 OZEL_HESAPLAMA_YOLU = KOK / "veri" / "ozel_hesaplamalar.json"
+KURAL_YOLU = KOK / "veri" / "kurallar_ek2.json"
 _EK_KATALOG: dict | None = None
 _OZEL_HESAPLAMALAR: dict | None = None
+_KURALLAR: dict | None = None
 
 # --- Sözleşme metinleri (§3.10, §3.12, §3.14, §3.16, §4.4, §4.10) -----------
 
@@ -210,12 +214,49 @@ def ek_katalog() -> dict:
     return _EK_KATALOG
 
 
+def ek_mukerrer(satir: dict) -> bool:
+    """Ana katalogda birebir karşılığı olan ek satır (``esdeger`` alanı).
+
+    Bu satırlar veride korunur (kaynak izi ve ``/api/kayit/<id>`` erişimi için)
+    ancak gezinme ve aramada gizlenir; aynı evre iki kez listelenmez.
+    """
+    return bool(satir.get("esdeger"))
+
+
 def ozel_hesaplamalar() -> dict:
     """Formül/tablo gerektiren kaynak yöntemleri; bunlar sabit oran olarak sunulmaz."""
     global _OZEL_HESAPLAMALAR
     if _OZEL_HESAPLAMALAR is None:
         _OZEL_HESAPLAMALAR = yukle_ozel_hesaplamalar(OZEL_HESAPLAMA_YOLU)
     return _OZEL_HESAPLAMALAR
+
+
+def kurallar() -> dict:
+    """Ek kayıtların dışlama/birleşim/yönlendirme kural katmanı."""
+    global _KURALLAR
+    if _KURALLAR is None:
+        _KURALLAR = yukle_kurallar(KURAL_YOLU)
+        kural_kapsamini_dogrula(ek_katalog(), _KURALLAR)
+    return _KURALLAR
+
+
+def kural_listesi(satir: dict) -> list[dict]:
+    """Ek kaydın bağlı olduğu kuralları arayüz biçimine çevirir."""
+    harita = {k["kod"]: k for k in kurallar().get("kurallar", [])}
+    sonuc = []
+    for kod in satir.get("kural", []):
+        kural = harita[kod]
+        sonuc.append({
+            "kod": kod,
+            "tur": kural["tur"],
+            "onem": kural["onem"],
+            "ikon": kural["ikon"],
+            "ton": kural["ton"],
+            "aciklama": kural["aciklama"],
+            "uygulama": kural["uygulama"],
+            "kaynak": "EK-2, s.%s" % kural["kaynak"]["sayfa"],
+        })
+    return sonuc
 
 
 def kisa_etiket(kayit_id: str, sayfa: int) -> str:
@@ -343,7 +384,11 @@ def gezinme_yuku(bolum_adi: str | None) -> dict:
     def ek_grubu(ek):
         harita = {}
         for satir in ek.get("kayitlar", []):
+            if ek_mukerrer(satir):
+                continue
             harita.setdefault(satir["hastalik"], []).append(satir)
+        if not harita:
+            return None
         hastaliklar = [{
             "anahtar": ad, "ad": ad, "tek_kayit": len(satirlar) == 1,
             "seviyeler": [{
@@ -353,7 +398,7 @@ def gezinme_yuku(bolum_adi: str | None) -> dict:
         } for ad, satirlar in harita.items()]
         return {
             "anahtar": ek["ad"], "ad": "EK-2 ek kayıtlar", "rozet": "EK-2",
-            "kayit_sayisi": len(ek.get("kayitlar", [])), "hastaliklar": hastaliklar,
+            "kayit_sayisi": sum(len(s) for s in harita.values()), "hastaliklar": hastaliklar,
         }
 
     if bolum_adi:
@@ -368,9 +413,14 @@ def gezinme_yuku(bolum_adi: str | None) -> dict:
                 "hastaliklar": [hastalik_sozluk(h) for h in grup.hastaliklar],
             } for grup in bolum.gruplar]
             ek_ayni = next((b for b in ek_bolumler if b.get("ad") == bolum.ad), None)
-            ek_sayi = len(ek_ayni.get("kayitlar", [])) if ek_ayni else 0
+            ek_sayi = (
+                sum(1 for s in ek_ayni.get("kayitlar", []) if not ek_mukerrer(s))
+                if ek_ayni else 0
+            )
             if ek_ayni:
-                gruplar.append(ek_grubu(ek_ayni))
+                ek_grup = ek_grubu(ek_ayni)
+                if ek_grup is not None:
+                    gruplar.append(ek_grup)
             return {
                 "ok": True,
                 "bolum": {"ad": bolum.ad, "kisa": bolum.kisa,
@@ -381,16 +431,20 @@ def gezinme_yuku(bolum_adi: str | None) -> dict:
             "ok": True,
             "bolum": {"ad": ek["ad"], "kisa": ek.get("kisa", ek["ad"]),
                       "kayit_sayisi": len(ek.get("kayitlar", []))},
-            "gruplar": [ek_grubu(ek)],
+            "gruplar": [g for g in (ek_grubu(ek),) if g is not None],
         }
 
     bolum_listesi = []
     for bolum in katalog_nesnesi.bolumler:
         ek_ayni = next((b for b in ek_bolumler if b.get("ad") == bolum.ad), None)
+        ek_sayi = (
+            sum(1 for s in ek_ayni.get("kayitlar", []) if not ek_mukerrer(s))
+            if ek_ayni else 0
+        )
         bolum_listesi.append({
             "ad": bolum.ad, "kisa": bolum.kisa,
-            "kayit_sayisi": len(bolum.kayitlar) + (len(ek_ayni.get("kayitlar", [])) if ek_ayni else 0),
-            "grup_sayisi": len(bolum.gruplar) + (1 if ek_ayni else 0),
+            "kayit_sayisi": len(bolum.kayitlar) + ek_sayi,
+            "grup_sayisi": len(bolum.gruplar) + (1 if ek_sayi else 0),
         })
     for ek in ek_bolumler:
         if any(b.get("ad") == ek["ad"] for b in bolum_listesi):
@@ -458,6 +512,8 @@ def arama_yuku(metin: str, bolum_adi: str | None) -> dict:
         if bolum_adi and bolum_adi not in (bolum.get("ad"), bolum.get("kisa")):
             continue
         for satir in bolum.get("kayitlar", []):
+            if ek_mukerrer(satir):
+                continue
             metin_satir = katla(" ".join((satir.get("hastalik", ""), satir.get("alt_tur", ""), bolum.get("ad", ""))))
             if katla(temiz) not in metin_satir:
                 continue
@@ -542,6 +598,8 @@ class Isleyici(BaseHTTPRequestHandler):
             self._json(gezinme_yuku(None))
         elif yol == "/api/ozel-hesaplamalar":
             self._json({"ok": True, **ozel_hesaplamalar()})
+        elif yol == "/api/kurallar":
+            self._json({"ok": True, **kurallar()})
         elif yol == "/api/gezinme":
             veri = gezinme_yuku(_ilk(sorgu, "bolum"))
             self._json(veri, HTTPStatus.OK if veri.get("ok") else HTTPStatus.NOT_FOUND)
@@ -586,7 +644,14 @@ class Isleyici(BaseHTTPRequestHandler):
                 "ok": True,
                 "kayit": len(katalog_nesnesi.kayitlar),
                 "ek_kayit": sum(len(b.get("kayitlar", [])) for b in ek_katalog().get("bolumler", [])),
+                "ek_mukerrer": sum(
+                    1
+                    for b in ek_katalog().get("bolumler", [])
+                    for s in b.get("kayitlar", [])
+                    if ek_mukerrer(s)
+                ),
                 "ozel_hesaplama": len(ozel_hesaplamalar().get("ozel_hesaplamalar", [])),
+                "kural": len(kurallar().get("kurallar", [])),
                 "belirsiz": sum(1 for s in katalog_nesnesi.belirsiz if s.durum == "belirsiz"),
                 "bolumler": [b["kisa"] for b in gezinme_yuku(None)["bolumler"]],
             }
@@ -604,6 +669,7 @@ class Isleyici(BaseHTTPRequestHandler):
                     if satir.get("id") != kimlik:
                         continue
                     gosterim = oran_gosterim(satir["oran"])
+                    esdeger = satir.get("esdeger")
                     self._json({
                         "ok": True, "tur": "sonuc", "id": satir["id"],
                         "ad": satir["hastalik"], "seviye": satir["alt_tur"],
@@ -615,7 +681,14 @@ class Isleyici(BaseHTTPRequestHandler):
                         "sifir": satir["oran"] == 0, "sifir_aciklama": None,
                         "kaynak": "Kaynak: EK-2, sayfa %s · kayıt %s" % (satir["sayfa"], satir["id"]),
                         "kaynak_not": satir.get("kaynak_not", "Ek katalog kaydı."),
-                        "kisitlar": [], "kisit_basligi": "Bu oran için geçerli kurallar (0)",
+                        "esdeger": esdeger,
+                        "esdeger_notu": (
+                            "Bu ek kayıt, ana katalogdaki %s kaydıyla aynı hükmü taşır; "
+                            "çift sayımı önlemek için listelerde gösterilmez." % esdeger
+                            if esdeger else None
+                        ),
+                        "kisitlar": kural_listesi(satir),
+                        "kisit_basligi": "{0} ({1})".format(KISIT_BASLIGI, len(kural_listesi(satir))),
                         "tek_kayit": True, "seviye_adimi": False,
                         "tek_seviye_notu": "Bu kaynak satırı ayrı kayıt olarak aktarılmıştır; bölümün tamamı henüz eksiksiz değildir.",
                         "yas_bloku": dict(YAS_BLOGU), "bolum_notu": None,

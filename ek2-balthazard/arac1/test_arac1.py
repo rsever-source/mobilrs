@@ -223,7 +223,7 @@ class Arac1Testleri(unittest.TestCase):
         self.assertEqual(veri["kayit"], 424)
         self.assertEqual(veri["belirsiz"], 16)
         self.assertEqual(veri["kayit"], 424)
-        self.assertEqual(veri["ek_kayit"], 136)
+        self.assertEqual(veri["ek_kayit"], 206)
         self.assertEqual(veri["ozel_hesaplama"], 5)
         self.assertEqual(veri["bolumler"], [
             "Ruh Sağlığı", "Deri", "Hematoloji", "Kulak Burun Boğaz", "Kalp-Damar",
@@ -239,18 +239,35 @@ class Arac1Testleri(unittest.TestCase):
         self.assertTrue(any(x["id"] == "OZ-GOR-001" for x in veri["ozel_hesaplamalar"]))
 
     def test_ek_katalog_kaydi_ucu(self):
-        durum, _, veri = self._json("/api/kayit/KV-001")
+        durum, _, veri = self._json("/api/kayit/SS-023")
         self.assertEqual(durum, 200)
         self.assertTrue(veri["ok"])
-        self.assertEqual(veri["id"], "KV-001")
+        self.assertEqual(veri["id"], "SS-023")
         self.assertEqual(veri["rozet"], "EK-2 ek kayıt")
-        self.assertEqual(veri["bolum_kisa"], "Kalp-Damar")
+        self.assertEqual(veri["bolum_kisa"], "Sindirim")
+
+    def test_mukerrer_ek_kayit_gizlenir_ama_acilir(self):
+
+        _, _, geo = self._json(
+            "/api/gezinme?bolum=" + urllib.parse.quote("KARDİYOVASKÜLER SİSTEM"))
+        kimlikler = [s["id"] for g in geo["gruplar"] for h in g["hastaliklar"]
+                    for s in h["seviyeler"]]
+        self.assertFalse([i for i in kimlikler if i.startswith("KV-")])
+        self.assertEqual(geo["bolum"]["kayit_sayisi"], 61)
+
+        _, _, arama = self._json(
+            "/api/ara?metin=aritmi&bolum=" + urllib.parse.quote("KARDİYOVASKÜLER SİSTEM"))
+        self.assertFalse([s for s in arama["sonuclar"] if s["id"].startswith("KV-")])
+
+        _, _, saglik = self._json("/saglik")
+        self.assertEqual(saglik["ek_kayit"], 206)
+        self.assertEqual(saglik["ek_mukerrer"], 0)
 
     def test_yeni_bolum_gezinmesi(self):
         durum, _, veri = self._json("/api/gezinme?bolum=" + urllib.parse.quote("Sinir Sistemi"))
         self.assertEqual(durum, 200)
         self.assertTrue(veri["ok"])
-        self.assertEqual(veri["bolum"]["kayit_sayisi"], 21)
+        self.assertEqual(veri["bolum"]["kayit_sayisi"], 36)
 
     def test_bolumler_ucu(self):
         veri = self.bolumler
@@ -259,9 +276,9 @@ class Arac1Testleri(unittest.TestCase):
         sayilar = {b["kisa"]: b["kayit_sayisi"] for b in veri["bolumler"]}
         self.assertEqual(sayilar, {
             "Ruh Sağlığı": 56, "Deri": 142, "Hematoloji": 78, "Kulak Burun Boğaz": 87,
-            "Kalp-Damar": 93, "Kadın Hastalıkları": 3, "Böbrek ve İdrar": 18,
-            "Sindirim": 22, "Endokrin ve Metabolizma": 28,
-            "Göğüs Hastalıkları": 5, "Onkoloji": 7, "Sinir Sistemi": 21
+            "Kalp-Damar": 61, "Kadın Hastalıkları": 6, "Böbrek ve İdrar": 66,
+            "Sindirim": 31, "Endokrin ve Metabolizma": 55,
+            "Göğüs Hastalıkları": 5, "Onkoloji": 7, "Sinir Sistemi": 36
         })
         self.assertTrue(any("GÖRME" in k for k in veri["kapsam_disi"]))
         self.assertEqual(len(veri["kapsam_kismi"]), 8)
@@ -272,10 +289,10 @@ class Arac1Testleri(unittest.TestCase):
         self.assertEqual(
             sayilar,
             {"ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR": 6, "DERİ": 15,
-             "HEMATOLOJİK HASTALIKLAR": 10, "KULAK BURUN BOĞAZ": 7, "KARDİYOVASKÜLER SİSTEM": 10},
+             "HEMATOLOJİK HASTALIKLAR": 10, "KULAK BURUN BOĞAZ": 7, "KARDİYOVASKÜLER SİSTEM": 9},
         )
         toplam = sum(len(g["hastaliklar"]) for v in self.gezinme.values() for g in v["gruplar"])
-        self.assertEqual(toplam, 109)
+        self.assertEqual(toplam, 102)
 
     def test_gezinme_tek_kayitli_gruplar(self):
         tekli = sorted(

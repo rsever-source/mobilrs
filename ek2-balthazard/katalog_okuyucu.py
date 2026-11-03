@@ -45,12 +45,15 @@ __all__ = [
     "SORUN_TIPLERI",
     "yukle_ek_katalog",
     "yukle_ozel_hesaplamalar",
+    "yukle_kurallar",
+    "kural_kapsamini_dogrula",
 ]
 
 KOK = Path(__file__).resolve().parent
 VERI_KLASORU = KOK / "veri"
 KATALOG_ADI = "katalog.json"
 BELIRSIZ_ADI = "belirsiz.json"
+KURALLAR_ADI = "kurallar_ek2.json"
 
 # --- Sözleşme sabitleri ------------------------------------------------------
 
@@ -83,6 +86,16 @@ SORUN_TIPLERI = {
     "kombinasyon_kisiti": "Bu oran başka bir hastalıkla birlikte kullanılamaz.",
     "numaralandirma_atlamasi": "Kaynakta madde numarası atlıyor.",
 }
+
+# Ek kural katmanı (``veri/kurallar_ek2.json``) — oran üretmez, kullanım kuralı tanımlar.
+GECERLI_KURAL_UYGULAMALARI = (
+    "balthazard",
+    "karsilikli_dislama",
+    "kosullu_oran",
+    "tablo_yonlendirme",
+    "tek_secim",
+)
+GECERLI_KURAL_TONLARI = ("kirmizi", "amber", "notr")
 
 # §3.4 — değişmezler.
 BEKLENEN_KESIN = 424
@@ -746,6 +759,54 @@ def yukle_ek_katalog(yol: Path | None = None) -> dict:
                 raise KatalogHatasi("EK-2 ek kataloğunda geçersiz kaynak sayfası: %s" % kimlik)
             kimlikler.add(kimlik)
     return veri
+
+
+def yukle_kurallar(yol: Path | None = None) -> dict:
+    """Ek kural katmanını salt okunur yükler ve doğrular.
+
+    Kurallar oran üretmez; dışlama, Balthazard birleşimi, koşullu oran ve
+    tablo yönlendirmesi tanımlar. Ek kayıtlar ``kural`` alanıyla bu kodlara
+    bağlanır.
+    """
+    dosya = yol or (VERI_KLASORU / KURALLAR_ADI)
+    try:
+        veri = json.loads(dosya.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as hata:
+        raise KatalogHatasi("EK-2 kural katmanı okunamadı: %s" % hata) from hata
+    kurallar = veri.get("kurallar")
+    if not isinstance(kurallar, list) or not kurallar:
+        raise KatalogHatasi("EK-2 kural katmanında kural listesi boş/geçersiz.")
+    kodlar = set()
+    for kural in kurallar:
+        kod = kural.get("kod")
+        if not kod or kod in kodlar:
+            raise KatalogHatasi("EK-2 kural katmanında boş/tekrarlı kural kodu.")
+        if not kural.get("baslik") or not kural.get("aciklama"):
+            raise KatalogHatasi("EK-2 kuralında başlık/açıklama eksik: %s" % kod)
+        if kural.get("uygulama") not in GECERLI_KURAL_UYGULAMALARI:
+            raise KatalogHatasi("EK-2 kuralında geçersiz uygulama: %s" % kod)
+        if kural.get("ton") not in GECERLI_KURAL_TONLARI:
+            raise KatalogHatasi("EK-2 kuralında geçersiz ton: %s" % kod)
+        kaynak = kural.get("kaynak") or {}
+        if not isinstance(kaynak.get("sayfa"), int) or kaynak["sayfa"] < 1:
+            raise KatalogHatasi("EK-2 kuralında geçersiz kaynak sayfası: %s" % kod)
+        kapsam = kural.get("kapsam") or {}
+        if not isinstance(kapsam.get("idler"), list):
+            raise KatalogHatasi("EK-2 kuralında kapsam.idler listesi eksik: %s" % kod)
+        kodlar.add(kod)
+    return veri
+
+
+def kural_kapsamini_dogrula(ek_katalog: dict, kurallar: dict) -> None:
+    """Ek kayıtlardaki ``kural`` kodlarının tanımlı olduğunu doğrular."""
+    kodlar = {kural.get("kod") for kural in kurallar.get("kurallar", [])}
+    for bolum in ek_katalog.get("bolumler", []):
+        for satir in bolum.get("kayitlar", []):
+            for kod in satir.get("kural", []):
+                if kod not in kodlar:
+                    raise KatalogHatasi(
+                        "Tanımsız kural kodu: %s (%s)" % (kod, satir.get("id"))
+                    )
 
 
 def yukle_ozel_hesaplamalar(yol: Path | None = None) -> dict:

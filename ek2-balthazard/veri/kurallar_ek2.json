@@ -1,0 +1,548 @@
+{
+  "meta": {
+    "ad": "EK-2 kural katmanı — dışlama, birleştirme ve yönlendirme kuralları",
+    "surum": "0.2",
+    "kaynak": "20.02.2019 tarihli ve 30692 sayılı Resmî Gazete, EK-2",
+    "kapsam": "136 ek kayıt ve kural katmanına bağlanan ana katalog kayıtları",
+    "not": "Faz 4 bağımsız denetimi sonrası: K-STOMA-ORGAN yalnız 6 stoma kaydına bağlandı; K-NOROJEN-MESANE yanlış hedeflerden (UG-011…013) ayrıldı; afazi, nakil, epilepsi ve uyku kapsamları eksik kayıtlarla tamamlandı; 4 yeni mevzuat dayanaklı kural eklendi. 'Net %20 ilave' yorumu açık olduğu için kural olarak eklenmedi."
+  },
+  "kurallar": [
+    {
+      "kod": "K-NAKIL-BALTHAZARD",
+      "tur": "BİRLEŞİM KURALI",
+      "baslik": "Organ nakli + sınıf/tablo oranı",
+      "uygulama": "balthazard",
+      "onem": "Dikkat",
+      "ton": "amber",
+      "ikon": "∑",
+      "aciklama": "Organ nakli oranı tek başına engel oranı değildir; nakil sonrası durum ilgili sınıf veya tablo oranıyla Balthazard formülüne göre birleştirilir. İki oran düz toplanmaz.",
+      "kaynak": {
+        "sayfa": 183,
+        "pdf_sayfa": 70,
+        "alinti": "Karaciğer transplantasyonlu hastalarda Engel Oranı %70 oranına … Balthazard Formülü ile eklenmesi ile kişinin engel oranı elde edilir."
+      },
+      "kapsam": {
+        "idler": [
+          "GH-005",
+          "SS-029",
+          "SS-030",
+          "UG-039"
+        ],
+        "hastaliklar": [
+          "Karaciğer nakli",
+          "Pankreas nakli",
+          "Böbrek nakli",
+          "Kalp transplantasyonu",
+          "Akciğer transplantasyonu"
+        ],
+        "gruplar": [
+          "nakil"
+        ]
+      }
+    },
+    {
+      "kod": "K-DM-KOMPLIKASYON",
+      "tur": "BİRLEŞİM KURALI",
+      "baslik": "Diabetes mellitus komplikasyonları",
+      "uygulama": "balthazard",
+      "onem": "Dikkat",
+      "ton": "amber",
+      "ikon": "∑",
+      "aciklama": "Diabetes mellitus oranına komplikasyon oranları Balthazard formülü ile eklenir. Komplikasyonun yol açtığı kayıp DM oranının içinde ikinci kez sayılmaz.",
+      "kaynak": {
+        "sayfa": 194,
+        "pdf_sayfa": 81,
+        "alinti": "Komplikasyonlar Balthazard formülü ile eklenir."
+      },
+      "kapsam": {
+        "idler": [
+          "EM-018",
+          "EM-019",
+          "EM-020"
+        ],
+        "hastaliklar": [
+          "Diabetes mellitus"
+        ],
+        "gruplar": [
+          "dm-komplikasyon"
+        ]
+      }
+    },
+    {
+      "kod": "K-STOMA-ORGAN",
+      "tur": "BİRLEŞİM KURALI",
+      "baslik": "Stoma + organ hastalığı",
+      "uygulama": "balthazard",
+      "onem": "Dikkat",
+      "ton": "amber",
+      "ikon": "∑",
+      "aciklama": "Stoma oranı ile ilgili organa ait diğer bozukluk oranı Balthazard yöntemi ile birleştirilir; aynı organ kaybı iki kez sayılmaz.",
+      "kaynak": {
+        "sayfa": 183,
+        "pdf_sayfa": 70,
+        "alinti": "İlgili organa ait diğer bozukluklar için belirlenmiş engel oranı varsa Balthazard yöntemi ile toplanır."
+      },
+      "kapsam": {
+        "idler": [
+          "SS-023",
+          "SS-024",
+          "SS-025",
+          "SS-026",
+          "SS-027",
+          "SS-028"
+        ],
+        "hastaliklar": [
+          "Özefagostomi",
+          "Gastrostomi",
+          "Jejunostomi",
+          "İleostomi",
+          "İleal-poş anal anastomoz",
+          "Kolostomi"
+        ],
+        "gruplar": [
+          "stoma"
+        ]
+      }
+    },
+    {
+      "kod": "K-NOROJEN-MESANE",
+      "tur": "YÖNLENDİRME",
+      "baslik": "Nörojen mesane → kas-iskelet Tablo 4.3 (ürogenital tarafta puanlanmaz)",
+      "uygulama": "tablo_yonlendirme",
+      "onem": "Bilgi",
+      "ton": "notr",
+      "ikon": "→",
+      "aciklama": "Nörojen mesane ürogenital bölümde ayrıca puanlanmaz; değerlendirme kas-iskelet sistemi bölümündeki Tablo 4.3'e göre yapılır. İki taraftan birden oran üretilmez.",
+      "kaynak": {
+        "sayfa": 189,
+        "pdf_sayfa": 76,
+        "alinti": "Nörojen mesane için kas-iskelet sistemi bölümü sayfa 189'daki tablo 4.3'e bakınız."
+      },
+      "kapsam": {
+        "idler": [],
+        "hastaliklar": [
+          "Nörojen mesane"
+        ],
+        "gruplar": [
+          "norojen-mesane"
+        ]
+      },
+      "uyari": "Kaynak cümlesi (s.189) ürogenital bölümdeki mesane hastalıkları için değil, nörojen mesane tanısı için kas-iskelet Tablo 4.3'e yönlendirir. Bu nedenle kural UG-011…UG-018 kayıtlarına bağlanmaz."
+    },
+    {
+      "kod": "K-TRIGEMINAL-NOROJENIK",
+      "tur": "KARŞILIKLI DIŞLAMA",
+      "baslik": "Trigeminal nevralji ↔ nörojenik ağrı",
+      "uygulama": "karsilikli_dislama",
+      "onem": "Dikkat",
+      "ton": "kirmizi",
+      "ikon": "⛔",
+      "aciklama": "Hasta nörojenik ağrı maddelerinden puan almışsa trigeminal nevralji kategorisinden ayrıca puan alamaz. İki kayıt birlikte seçilemez.",
+      "kaynak": {
+        "sayfa": 204,
+        "pdf_sayfa": 91,
+        "alinti": "Hasta nörojenik ağrı maddelerinden puan almış ise bu kategoriden (trigeminal nevraljiden) puan almaz."
+      },
+      "kapsam": {
+        "idler": [
+          "SN-009",
+          "SN-010",
+          "SN-011"
+        ],
+        "hastaliklar": [
+          "Trigeminal nevralji",
+          "Nörojenik kaynaklı ağrılar"
+        ],
+        "gruplar": [
+          "trigeminal",
+          "norojenik-agri"
+        ]
+      }
+    },
+    {
+      "kod": "K-AFAZI-BALTHAZARD",
+      "tur": "BİRLEŞİM KURALI",
+      "baslik": "Motor + sensöryel afazi",
+      "uygulama": "balthazard",
+      "onem": "Dikkat",
+      "ton": "amber",
+      "ikon": "∑",
+      "aciklama": "Motor ve sensöryel afazi birlikte varsa iki oran Balthazard formülüne göre değerlendirilir; basit toplama yapılmaz.",
+      "kaynak": {
+        "sayfa": 200,
+        "pdf_sayfa": 87,
+        "alinti": "Motor ve Sensöriyel afazisi olanlarda Balthazard formülüne göre değerlendirme yapılır."
+      },
+      "kapsam": {
+        "idler": [
+          "SN-030",
+          "SN-031",
+          "SN-032",
+          "SN-033",
+          "SN-034",
+          "SN-035"
+        ],
+        "hastaliklar": [
+          "Motor afazi",
+          "Sensöryel afazi"
+        ],
+        "gruplar": [
+          "afazi"
+        ]
+      }
+    },
+    {
+      "kod": "K-HERNI-KOSUL",
+      "tur": "KOŞULLU ORAN",
+      "baslik": "Herni yalnızca ameliyat edilemeyen olgularda",
+      "uygulama": "kosullu_oran",
+      "onem": "Dikkat",
+      "ton": "amber",
+      "ikon": "⚠",
+      "aciklama": "Herni oranları yalnızca cerrahi tedavi yapılamayan olgularda uygulanır. Ameliyat edilebilir herni bu oranlarla puanlanmaz.",
+      "kaynak": {
+        "sayfa": 184,
+        "pdf_sayfa": 71,
+        "alinti": "Sadece cerrahi tedavi yapılamayan … hernileşmeye bağlı bozukluklar değerlendirilir."
+      },
+      "kapsam": {
+        "idler": [
+          "SS-020",
+          "SS-021",
+          "SS-022"
+        ],
+        "hastaliklar": [
+          "Herniler"
+        ],
+        "gruplar": [
+          "herni"
+        ]
+      }
+    },
+    {
+      "kod": "K-GOGUS-SFT",
+      "tur": "KOŞULLU ORAN",
+      "baslik": "Göğüs hastalıklarında solunum fonksiyon testi zorunluluğu",
+      "uygulama": "kosullu_oran",
+      "onem": "Dikkat",
+      "ton": "amber",
+      "ikon": "⚠",
+      "aciklama": "Oran, solunum ve dolaşım fonksiyonundaki etkilenmeye göre Solunum Fonksiyon Testleri (FVC, FEV1, FEV1/FVC) ile belirlenir; testler göğüs hastalıkları uzmanınca yorumlanır.",
+      "kaynak": {
+        "sayfa": 196,
+        "pdf_sayfa": 83,
+        "alinti": "Solunum Fonksiyon Testlerine göre değerlendirme yapılır … FVC, FEV1, FEV1/FVC oranları yazılır."
+      },
+      "kapsam": {
+        "idler": [
+          "GH-001",
+          "GH-002",
+          "GH-003"
+        ],
+        "hastaliklar": [
+          "Akciğer, plevra ve göğüs kafesi hastalıkları"
+        ],
+        "gruplar": [
+          "gogus-sft"
+        ]
+      }
+    },
+    {
+      "kod": "K-GOGUS-AKUT",
+      "tur": "KOŞULLU ORAN",
+      "baslik": "Akut dönem sonrası ve optimal tedavi sonrası değerlendirme",
+      "uygulama": "kosullu_oran",
+      "onem": "Bilgi",
+      "ton": "notr",
+      "ikon": "ℹ",
+      "aciklama": "Göğüs hastalıklarında değerlendirme akut dönem geçtikten ve optimal tedavi uygulandıktan sonra yapılır; SFT yetersiz kalırsa arter kan gazları, egzersiz testleri, ekokardiyografi ve sağ kalp kateterizasyonu kullanılır.",
+      "kaynak": {
+        "sayfa": 196,
+        "pdf_sayfa": 83,
+        "alinti": "Akut dönem geçtikten sonra ve optimal tedavinin ardından klinik gözlem ve Solunum Fonksiyon Testleri ile değerlendirme yapılır."
+      },
+      "kapsam": {
+        "idler": [
+          "GH-001",
+          "GH-002",
+          "GH-003"
+        ],
+        "hastaliklar": [
+          "Akciğer, plevra ve göğüs kafesi hastalıkları"
+        ],
+        "gruplar": [
+          "gogus-akut"
+        ]
+      }
+    },
+    {
+      "kod": "K-GOGUS-TB",
+      "tur": "KOŞULLU ORAN",
+      "baslik": "Tüberkülozda tedavi sonunda değerlendirme",
+      "uygulama": "kosullu_oran",
+      "onem": "Bilgi",
+      "ton": "notr",
+      "ikon": "ℹ",
+      "aciklama": "Akciğer ve/veya plevra tüberkülozunda karar tedavi sonunda, göğüs hastalıkları ölçeğine göre verilir. İlaca dirençli kronik olgularda da uygun tedavi süresinin bitimi beklenir.",
+      "kaynak": {
+        "sayfa": 196,
+        "pdf_sayfa": 83,
+        "alinti": "Akciğer ve/veya plevra tüberkülozunda verilecek karar tedavi sonunda ve 1. maddedeki ölçeğe göre değerlendirilir."
+      },
+      "kapsam": {
+        "idler": [],
+        "hastaliklar": [
+          "Akciğer tüberkülozu",
+          "Plevra tüberkülozu"
+        ],
+        "gruplar": [
+          "gogus-tb"
+        ]
+      }
+    },
+    {
+      "kod": "K-GOGUS-MALIGNITE",
+      "tur": "YÖNLENDİRME",
+      "baslik": "Göğüs malignitelerinde onkolojiye yönlendirme",
+      "uygulama": "tablo_yonlendirme",
+      "onem": "Bilgi",
+      "ton": "notr",
+      "ikon": "→",
+      "aciklama": "Akciğer, plevra ve toraks malignitelerinde oran göğüs bölümünden değil, onkolojinin ilgili maddesinden belirlenir.",
+      "kaynak": {
+        "sayfa": 196,
+        "pdf_sayfa": 83,
+        "alinti": "Akciğer, plevra ve toraksın diğer malignitelerinde onkolojinin ilgili maddesine göre değerlendirme yapılır."
+      },
+      "kapsam": {
+        "idler": [],
+        "hastaliklar": [
+          "Akciğer malignitesi",
+          "Plevra malignitesi"
+        ],
+        "gruplar": [
+          "gogus-malignite"
+        ]
+      }
+    },
+    {
+      "kod": "K-GOGUS-CERRAHI",
+      "tur": "KOŞULLU ORAN",
+      "baslik": "Toraks cerrahisi sonrası yıllık kontrol",
+      "uygulama": "kosullu_oran",
+      "onem": "Bilgi",
+      "ton": "notr",
+      "ikon": "ℹ",
+      "aciklama": "Toraks cerrahisi uygulanan hastalar yıllık kontrollere göre solunum ve dolaşım fonksiyon bozukluğu ölçeğiyle değerlendirilir.",
+      "kaynak": {
+        "sayfa": 196,
+        "pdf_sayfa": 83,
+        "alinti": "Toraks cerrahisi uygulanan hastalar (yıllık kontrollere göre) 1. maddedeki solunum ve dolaşım fonksiyon bozukluklarına göre değerlendirilir."
+      },
+      "kapsam": {
+        "idler": [
+          "GH-004"
+        ],
+        "hastaliklar": [
+          "Pnömonektomi"
+        ],
+        "gruplar": [
+          "gogus-cerrahi"
+        ]
+      }
+    },
+    {
+      "kod": "K-UYKU-TEK-PUAN",
+      "tur": "TEK PUANLAMA",
+      "baslik": "Uyku bozukluğunda genel şiddet veya alt tür",
+      "uygulama": "tek_secim",
+      "onem": "Dikkat",
+      "ton": "kirmizi",
+      "ikon": "⛔",
+      "aciklama": "Aynı uyku bozukluğu hem genel şiddet basamağından hem alt türden puanlanamaz; tek puanlama yolu seçilir. İki kayıt birlikte kullanılmaz.",
+      "kaynak": {
+        "sayfa": 201,
+        "pdf_sayfa": 88,
+        "alinti": "Uyku ile ilişkili bozukluklar: genel şiddet 5/10/35; alt türler insomniler 10, uykuda solunum 35, hipersomniler 35, sirkadiyen 10, parasomniler 10, REM 35, uykuda hareket 10."
+      },
+      "kapsam": {
+        "idler": [
+          "SN-006",
+          "SN-007",
+          "SN-008",
+          "SN-023",
+          "SN-024",
+          "SN-025",
+          "SN-026",
+          "SN-027",
+          "SN-028",
+          "SN-029"
+        ],
+        "hastaliklar": [
+          "Uyku bozuklukları"
+        ],
+        "gruplar": [
+          "uyku"
+        ]
+      }
+    },
+    {
+      "kod": "K-EPILEPSI-TEK-SECIM",
+      "tur": "TEK PUANLAMA",
+      "baslik": "Epilepsi basamaklarından yalnızca biri",
+      "uygulama": "tek_secim",
+      "onem": "Dikkat",
+      "ton": "kirmizi",
+      "ikon": "⛔",
+      "aciklama": "Epilepsi basamakları birbirini dışlar; hastanın durumuna karşılık gelen tek basamak seçilir. Birden fazla basamak birlikte puanlanmaz.",
+      "kaynak": {
+        "sayfa": 201,
+        "pdf_sayfa": 88,
+        "alinti": "Epilepsi basamakları 5 / 15 / 20 / 40 / 70 / 90 (s.201)."
+      },
+      "kapsam": {
+        "idler": [
+          "SN-001",
+          "SN-002",
+          "SN-003",
+          "SN-004",
+          "SN-005",
+          "SN-022"
+        ],
+        "hastaliklar": [
+          "Epilepsi"
+        ],
+        "gruplar": [
+          "epilepsi"
+        ]
+      }
+    },
+    {
+      "kod": "K-HAREKET-KAS-ISKELET",
+      "tur": "YÖNLENDİRME",
+      "baslik": "Hareket bozuklukları → kas-iskelet tabloları",
+      "uygulama": "tablo_yonlendirme",
+      "onem": "Bilgi",
+      "ton": "notr",
+      "ikon": "→",
+      "aciklama": "Hareket bozuklukları sinir sisteminde ayrıca puanlanmaz; değerlendirme kas-iskelet sistemi Tablo 4.1/4.2'ye göre yapılır.",
+      "kaynak": {
+        "sayfa": 205,
+        "pdf_sayfa": 92,
+        "alinti": "Hareket bozuklukları için kas-iskelet sistemi tablolarına bakınız."
+      },
+      "kapsam": {
+        "idler": [],
+        "hastaliklar": [
+          "Hareket bozuklukları"
+        ],
+        "gruplar": [
+          "hareket-bozuklugu"
+        ]
+      }
+    },
+    {
+      "kod": "K-TRAKEOTOMI-KONUSMA",
+      "tur": "BİRLEŞİM KURALI",
+      "baslik": "Kalıcı trakeotomi + konuşma engeli",
+      "uygulama": "balthazard",
+      "onem": "Dikkat",
+      "ton": "amber",
+      "ikon": "∑",
+      "aciklama": "Kalıcı trakeotomili ve stomalı hastalarda %40 oranına konuşma engeline ait engel oranı Balthazard formülü kullanılarak ilave edilir.",
+      "kaynak": {
+        "sayfa": 127,
+        "pdf_sayfa": 14,
+        "alinti": "Kalıcı trakeotomili ve stomalı hastalarda Engel Oranı %40 olarak belirlenmiştir. Bu orana konuşma engeline ait Engel Oranı Balthazard Formülü kullanılarak ilave edilir."
+      },
+      "kapsam": {
+        "idler": [],
+        "hastaliklar": [
+          "Kalıcı trakeotomi"
+        ],
+        "gruplar": [
+          "konusma"
+        ]
+      }
+    },
+    {
+      "kod": "K-ISITME-KONUSMA",
+      "tur": "BİRLEŞİM KURALI",
+      "baslik": "İşitme kaybı + eşlik eden konuşma bozukluğu",
+      "uygulama": "balthazard",
+      "onem": "Dikkat",
+      "ton": "amber",
+      "ikon": "∑",
+      "aciklama": "İşitme kaybına eşlik eden konuşma bozuklukları için engel oranı Tablo 5'ten belirlenir ve işitme engeli oranına Balthazard formülü ile eklenir.",
+      "kaynak": {
+        "sayfa": 117,
+        "pdf_sayfa": 4,
+        "alinti": "İşitme kaybına eşlik eden konuşma bozukluklarına ait engel oranı, işitme engeline ait engel oranına Balthazard Formülü veya Ek-3'te bulunan Balthazard Hesaplama Tablosu'ndan yararlanılarak belirlenir."
+      },
+      "kapsam": {
+        "idler": [],
+        "hastaliklar": [
+          "İşitme engeli",
+          "Konuşma engeli"
+        ],
+        "gruplar": [
+          "isitme-konusma"
+        ]
+      }
+    },
+    {
+      "kod": "K-FASIYAL-TRIGEMINAL",
+      "tur": "BİRLEŞİM KURALI",
+      "baslik": "Bilateral fasiyal paralizi ve trigeminal nevralji",
+      "uygulama": "balthazard",
+      "onem": "Dikkat",
+      "ton": "amber",
+      "ikon": "∑",
+      "aciklama": "Bilateral fasiyal paralizi ve trigeminal nevralji için Balthazard formülü veya Balthazard Hesaplama Tablosu (Ek 3) kullanılır.",
+      "kaynak": {
+        "sayfa": 204,
+        "pdf_sayfa": 91,
+        "alinti": "Bilateral fasial paralizi ve trigeminal nevralji için Balthazard formülü veya Balthazard Hesaplama Tablosu (Ek 3) kullanılır."
+      },
+      "kapsam": {
+        "idler": [
+          "SN-036"
+        ],
+        "hastaliklar": [
+          "Periferik fasiyal paralizi",
+          "Trigeminal nevralji"
+        ],
+        "gruplar": [
+          "fasiyal-trigeminal"
+        ],
+        "not": "SN-016…SN-018 fasiyal paralizi ayrı kayıttır; bilateral olduğunda bu kural uygulanır. Trigeminal kaydı SN-036."
+      }
+    },
+    {
+      "kod": "K-ONKOLOJI-YILLIK-TAKIP",
+      "tur": "KOŞULLU ORAN",
+      "baslik": "Onkolojide yıllık metastaz/nüks değerlendirmesi",
+      "uygulama": "kosullu_oran",
+      "onem": "Bilgi",
+      "ton": "notr",
+      "ikon": "ℹ",
+      "aciklama": "Tedaviye cevap veren evre I–II malign tümörlerde ve malign transformasyon gösteren benign tümörlerde hasta yılda en az bir kez metastaz ve nüks açısından değerlendirilir.",
+      "kaynak": {
+        "sayfa": 199,
+        "pdf_sayfa": 86,
+        "alinti": "Ancak bu gruptaki hastalar yılda en az bir kez metastaz ve nüks açısından değerlendirilerek klinik evre ve fonksiyon kaybı değişimi olup olmadığı tespit edilmelidir."
+      },
+      "kapsam": {
+        "idler": [
+          "ON-001"
+        ],
+        "hastaliklar": [
+          "Malign tümörler"
+        ],
+        "gruplar": [
+          "onkoloji-erken-evre"
+        ]
+      }
+    }
+  ]
+}
