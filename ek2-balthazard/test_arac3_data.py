@@ -81,6 +81,18 @@ class Arac3DataTests(unittest.TestCase):
         self.assertIn('href="#main-content"', source)
         self.assertEqual(len(re.findall(r"<main\b", source)), 1)
 
+    def test_mapping_is_embedded_and_does_not_depend_on_api(self):
+        source = HTML.read_text(encoding="utf-8")
+        self.assertIn("const ARAC3_MAPPING_DATA=", source)
+        self.assertNotIn("fetch('/api/arac3/eslestirme'", source)
+        self.assertIn("Harici API isteği yapılmaz", source)
+        self.assertIn("mappingLoadError", source)
+        embedded = re.search(r"const ARAC3_MAPPING_DATA=(\\{.*?\\});\\nlet category", source)
+        self.assertIsNotNone(embedded, "Araç 3 gömülü eşleştirme verisi bulunamadı")
+        data = json.loads(embedded.group(1))
+        self.assertEqual(len(data["kayitlar"]), 182)
+        self.assertEqual(data["ozet"]["mevcut_kayit_sayisi"], 182)
+
     def test_disease_specific_level_selection_ui(self):
         source = HTML.read_text(encoding="utf-8")
         self.assertIn("function orderedLevels(m)", source)
