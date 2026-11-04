@@ -27,3 +27,39 @@ jobs:
         run: python -m unittest discover -s ek2-balthazard/arac2 -p "test_*.py" -v
       - name: Test catalog and calculator
         run: python -m unittest discover -s ek2-balthazard -p "test_*.py" -v
+      - name: Check Araç 3 inline JavaScript syntax
+        run: |
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+
+          class InlineScriptParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.in_script = False
+                  self.current = []
+                  self.scripts = []
+
+              def handle_starttag(self, tag, attrs):
+                  if tag.lower() == "script":
+                      self.in_script = True
+                      self.current = []
+
+              def handle_data(self, data):
+                  if self.in_script:
+                      self.current.append(data)
+
+              def handle_endtag(self, tag):
+                  if tag.lower() == "script" and self.in_script:
+                      self.scripts.append("".join(self.current))
+                      self.in_script = False
+                      self.current = []
+
+          html = Path("ek2-balthazard/arac3/arac3.html").read_text(encoding="utf-8")
+          parser = InlineScriptParser()
+          parser.feed(html)
+          if not parser.scripts or not any(script.strip() for script in parser.scripts):
+              raise SystemExit("Araç 3 inline JavaScript bulunamadı.")
+          Path("/tmp/arac3-inline.js").write_text("\n".join(parser.scripts), encoding="utf-8")
+          PY
+          node --check /tmp/arac3-inline.js
