@@ -335,10 +335,8 @@
   @media(max-width:760px){
     body{padding-top:0!important}
     .site-header{display:none!important;min-height:0}
-    .site-scroll-home{position:fixed;z-index:999;left:50%;bottom:calc(112px + env(safe-area-inset-bottom, 0px));display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:10px 18px;border:1px solid rgba(7,91,199,.28);border-radius:999px;background:rgba(255,255,255,.78);color:#075bc7;text-decoration:none;font-size:14px;font-weight:750;box-shadow:0 5px 22px rgba(18,44,80,.12);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;visibility:hidden;transform:translate(-50%,8px);transition:opacity .18s ease,transform .18s ease,visibility .18s}
-    .site-scroll-home.is-visible{opacity:1;visibility:visible;transform:translate(-50%,0)}
-    body.high-contrast .site-scroll-home{background:#fff;color:#000;border:2px solid #000;backdrop-filter:none}
-    body.dark-mode .site-scroll-home{background:rgba(26,38,54,.88);color:#edf2f8;border-color:#62738e}
+    /* Dar ekranda sabit Ana Sayfa balonu içerik ve butonların üstüne binmesin. */
+    .site-scroll-home{display:none!important}
   }
   body.high-contrast .site-header{background:#fff;color:#000;border-bottom:2px solid #000;box-shadow:none;backdrop-filter:none}
   body.high-contrast .site-brand,body.high-contrast .site-brand-accent{color:#000}
@@ -834,7 +832,9 @@ var tumu = el("button", "cip", "Tümü");
       }
       anaKutu.open = true;
       bulunanlar.forEach(function (kayit) { kayit.open = true; });
-      durumYazi.textContent = "İlgili kaynak yöntemi aşağıda açıldı.";
+      // Kaynak yöntemi artık açık ve görünür; alttaki kategori kartı aynı
+      // açıklamayı tekrar edeceği için tüm hastalık panelini kapat.
+      goster(gezinme, false);
       bulunanlar[0].scrollIntoView({ behavior: "smooth", block: "center" });
     }
     var ilkKayit = document.getElementById("ozel-kayit-" + kimlikler[0]);
