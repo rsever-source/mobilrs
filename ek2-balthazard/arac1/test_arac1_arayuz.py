@@ -202,6 +202,8 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         self.assertIn("function ozelHesaplamalariYukle()", html)
         self.assertIn("Tekrar dene", html)
         self.assertIn("ilgiliKaynakYontemleriniAc", html)
+        self.assertIn("goster(gezinme, false)", html)
+        self.assertIn(".site-scroll-home{display:none!important}", html)
         self.assertNotIn("Bu kategoride tek oranlı hastalık kaydı yoktur", html)
         self.assertTrue(all(
             (t.get("satirlar") and len(t["satirlar"]) > 0) or
