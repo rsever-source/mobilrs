@@ -4,7 +4,7 @@ from pathlib import Path
 import unittest
 
 
-HTML = Path(__file__).with_name("arac3.html")
+HTML = Path(__file__).parent / "arac3" / "arac3.html"
 
 
 class Arac3DataTests(unittest.TestCase):
@@ -67,3 +67,5 @@ class Arac3DataTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
