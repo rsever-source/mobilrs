@@ -104,6 +104,34 @@ class Arac3DataTests(unittest.TestCase):
         self.assertIn("Resmî kaynak: 28.09.2021 tarihli Resmî Gazete", self.html)
         self.assertIn("FAS '+input.value+' · '+fasGuide[input.value].indicator", self.html)
 
+    def test_ek1_levels_are_rendered_for_search_results_and_selected_diseases(self):
+        self.assertIn("function ek1DuzeyHTML(d)", self.html)
+        self.assertIn("'+ek1DuzeyHTML(d)", self.html)
+        self.assertIn("EK-1 çalışma gücü kaybı düzeyi", self.html)
+
+    def test_neurogenic_bladder_has_only_medium_level_and_reevaluation_note(self):
+        start = self.html.index("'Nörojenik mesane':{")
+        end = self.html.index("},\n  'Lepra':", start)
+        record = self.html[start:end]
+        self.assertIn("ad:'Orta Düzey'", record)
+        self.assertNotIn("Ağır Düzey", record)
+        self.assertNotIn("Hafif Düzey", record)
+        self.assertIn("2 yıl sonra yeniden değerlendirilir.", record)
+        self.assertIn("devamlı sonda ya da TAK", record)
+
+    def test_single_level_and_multi_level_diseases_are_not_filled_with_missing_levels(self):
+        lepra_start = self.html.index("'Lepra':{")
+        lepra_end = self.html.index("},\n  'Polimiyozit", lepra_start)
+        lepra = self.html[lepra_start:lepra_end]
+        self.assertIn("ad:'Ağır Düzey'", lepra)
+        self.assertNotIn("Orta Düzey", lepra)
+        self.assertNotIn("Hafif Düzey", lepra)
+        polymyositis_start = self.html.index("'Polimiyozit ve Dermatomiyozit':{")
+        polymyositis_end = self.html.index("\n};\nfunction ek1DuzeyHTML", polymyositis_start)
+        polymyositis = self.html[polymyositis_start:polymyositis_end]
+        for level in ("Ağır Düzey", "Orta Düzey", "Hafif Düzey"):
+            self.assertIn(level, polymyositis)
+
     def test_all_tool_pages_link_to_arac3(self):
         for path in ("arac1", "arac2"):
             source = (HTML.parent.parent / path / f"{path}.html").read_text(encoding="utf-8")
