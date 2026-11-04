@@ -100,6 +100,15 @@ class Arac3DataTests(unittest.TestCase):
         self.assertIn("d.calculator?'<span class=\"tag\">KDS hesaplayıcısı</span>'", self.html)
         self.assertIn("d.calculator?'<span class=\"tag\">KDS bağlantısı</span>'", self.html)
 
+    def test_official_source_and_fas_indicator_labels_are_visible(self):
+        self.assertIn("Resmî kaynak: 28.09.2021 tarihli Resmî Gazete", self.html)
+        self.assertIn("FAS '+input.value+' · '+fasGuide[input.value].indicator", self.html)
+
+    def test_all_tool_pages_link_to_arac3(self):
+        for path in ("arac1", "arac2"):
+            source = (HTML.parent.parent / path / f"{path}.html").read_text(encoding="utf-8")
+            self.assertIn('href="/arac3">Çalışma Gücü Kaybı</a>', source)
+
 
 if __name__ == "__main__":
     unittest.main()
