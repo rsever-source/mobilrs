@@ -15,7 +15,7 @@ TXT’deki 16 branş başlığı ve her başlığın altındaki tüm normal kay�
 - 18 hasFas: true kaydı
 - 1 calculator: KDS kaydı (Kognitif bozukluklar)
 
-Her kayıtta TXT dosya adı, satır numarası ve PDF bölüm adı source alanında tutulur. Klinik kriter metni veri içine yeniden yazılmamış; kaynakta olmayan kriter veya hastalık üretilmemiştir.
+Her kayıtta TXT dosya adı, satır numarası, PDF bölüm adı ve görsel olarak doğrulanan basılı PDF sayfa aralığı source alanında tutulur. Klinik kriter metni veri içine yeniden yazılmamış; kaynakta olmayan kriter veya hastalık üretilmemiştir.
 
 ## Önceki 17 sabit kaydın durumu
 
