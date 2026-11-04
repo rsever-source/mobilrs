@@ -100,7 +100,7 @@ class Arac3DataTests(unittest.TestCase):
         self.assertNotIn("fetch('/api/arac3/eslestirme'", source)
         self.assertIn("182 hastalık kaydı ve Ek-1 düzeyleri bu sayfanın içinde sabit veridir", source)
         self.assertIn("mappingLoadError", source)
-        embedded = re.search(r"const ARAC3_MAPPING_DATA=(\{.*?\});\nlet category", source)
+        embedded = re.search(r"const ARAC3_MAPPING_DATA=(\{.*?\});\nconst mappingReady", source)
         self.assertIsNotNone(embedded, "Araç 3 gömülü eşleştirme verisi bulunamadı")
         data = json.loads(embedded.group(1))
         self.assertEqual(len(data["kayitlar"]), 182)
