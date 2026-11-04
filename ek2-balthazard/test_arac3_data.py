@@ -12,7 +12,7 @@ class Arac3DataTests(unittest.TestCase):
     def setUpClass(cls):
         source = HTML.read_text(encoding="utf-8")
         cls.html = source
-        match = re.search(r"const diseases=(\[.*?\]);\nlet category", source)
+        match = re.search(r"const diseases=(\[.*?\]);\nconst ek1Duzeyleri", source)
         if not match:
             raise AssertionError("Araç 3 veri dizisi bulunamadı")
         cls.records = json.loads(match.group(1))
