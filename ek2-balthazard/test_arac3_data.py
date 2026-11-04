@@ -81,6 +81,31 @@ class Arac3DataTests(unittest.TestCase):
         self.assertIn('href="#main-content"', source)
         self.assertEqual(len(re.findall(r"<main\b", source)), 1)
 
+    def test_disease_specific_level_selection_ui(self):
+        source = HTML.read_text(encoding="utf-8")
+        self.assertIn("function orderedLevels(m)", source)
+        self.assertIn("function renderLevelPicker(d,m)", source)
+        self.assertIn("data-level=", source)
+        self.assertIn("Seçilen düzey:", source)
+        self.assertIn("entry.levelKey", source)
+        self.assertIn("Her hastalık için yalnızca seçtiğiniz düzeyin kendi kriteri gösterilir", source)
+        self.assertIn("Bu düzey başlığı kaynak veride bulunuyor ancak kriter metni boş", source)
+
+        mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
+        data = json.loads(mapping_path.read_text(encoding="utf-8"))
+        by_name = {row["mevcut_hastalik_adi"]: row for row in data["kayitlar"]}
+
+        new_bladder = by_name["Yeni mesane yapılması"]["duzeyler"]
+        self.assertEqual([level["anahtar"] for level in new_bladder], ["agir", "orta"])
+        self.assertNotEqual(new_bladder[0]["kriter"], new_bladder[1]["kriter"])
+
+        neurogenic_bladder = by_name["Nörojenik mesane"]["duzeyler"]
+        self.assertEqual([level["anahtar"] for level in neurogenic_bladder], ["orta"])
+
+        copd = by_name["Kronik pulmoner yetmezlik"]["duzeyler"]
+        self.assertEqual([level["anahtar"] for level in copd], ["agir", "orta", "hafif"])
+        self.assertEqual(len({level["kriter"] for level in copd}), 3)
+
     def test_expected_fas_connections(self):
         expected = {
             "Parapleji/Paraparezi, Monopleji/Monoparezi, Hemipleji/Hemiparezi, Kuadripleji/Kuadriparezi vb. motor kaybı olanlar",
