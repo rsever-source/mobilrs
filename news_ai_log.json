@@ -2,208 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-10-28T16:44:05.940468+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "source_diagnostics": {
-        "Anadolu Ajansı – Engelli Yaşam": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 16,
-          "parsed_items": 16,
-          "errors": []
-        },
-        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
-          "stage": "html_list",
-          "anchors": 72,
-          "path_matches": 20,
-          "dated_from_title": 0,
-          "dated_from_context": 0,
-          "detail_attempts": 20,
-          "detail_successes": 20,
-          "parsed_items": 20,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "TRT Haber": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "TRT Haber – Sağlık": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
-          "stage": "html_list",
-          "anchors": 200,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
-          "stage": "html_list",
-          "anchors": 186,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
-          "stage": "html_list",
-          "anchors": 480,
-          "path_matches": 294,
-          "dated_from_title": 294,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 294,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Sosyal Güvenlik Kurumu – Duyurular": {
-          "stage": "html_list",
-          "anchors": 94,
-          "path_matches": 10,
-          "dated_from_title": 10,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 10,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
-          "stage": "tbb_mevzuat",
-          "anchors": 88,
-          "article_links": 12,
-          "keyword_matches": 0,
-          "detail_attempts": 0,
-          "detail_errors": 0,
-          "missing_dates": 0,
-          "parsed_items": 0,
-          "errors": []
-        },
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 11,
-          "keyword_eliminated": 19,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 0,
-          "in_7_day_window": 0,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "26 Eylül 2026 Tarihinde Yapılacak Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavına Katılacak Adaylar ",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 513,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 18,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 18,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 477,
-          "accepted_as_candidate": 0
-        },
-        "examples": {
-          "already_published": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Odasını atölyeye dönüştüren bedensel engelli sanatçı 20 yıldır çini boyuyor"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Bağdat'ta Down sendromlu çocuklar \"Yapabiliriz\" etkinliğinde yeteneklerini sergiledi"
-            }
-          ],
-          "older_than_7_days": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Kanser sürecinde tanıştığı kağıt kıvırma sanatı, Duygu Pakel'in hayatını değiştirdi"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Konya'da \"özel hastalar\" evden çıkmadan engelli raporlarını yeniletebiliyor"
-            }
-          ],
-          "url_seen_within_7_days": [
-            {
-              "source": "TRT Haber",
-              "title": "İngiltere ve AB arasında serbest dolaşım seçeneği görüşülüyor"
-            },
-            {
-              "source": "TRT Haber",
-              "title": "ABD'de yolcu uçağı terör tehdidi ihbarı üzerine havalimanına geri döndü"
-            }
-          ]
-        },
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": []
-    },
-    {
       "run_at": "2026-10-28T22:43:25.645963+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -6325,6 +6123,246 @@
           "generated_title": "Bakan Göktaş, Tuzla Belediyesi Gündüz Bakımevi'nin açılışına katıldı",
           "summary": "",
           "detail_summary": "",
+          "decision": "reject"
+        }
+      ]
+    },
+    {
+      "run_at": "2026-11-04T18:06:14.274049+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 10,
+          "parsed_items": 10,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 480,
+          "path_matches": 294,
+          "dated_from_title": 294,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 294,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "anchors": 88,
+          "article_links": 12,
+          "keyword_matches": 0,
+          "detail_attempts": 0,
+          "detail_errors": 0,
+          "missing_dates": 0,
+          "parsed_items": 0,
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 10,
+          "keyword_eliminated": 20,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 506,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 17,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 12,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 473,
+          "accepted_as_candidate": 4
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "Mülkiyede öğrenciler için kariyer zirvesi gerçekleştirildi",
+          "source": "TRT Haber",
+          "url": "https://www.trthaber.com/haber/guncel/mulkiyede-ogrenciler-icin-kariyer-zirvesi-gerceklestirildi-962248.html",
+          "published_at": "2026-11-04T14:02:00+00:00",
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "Haber, genel kariyer etkinlikleri ve üniversite faaliyetleriyle ilgili olup engelli bireylerin hakları, bakımı veya istihdamı gibi özel politika alanlarıyla doğrudan bir ilgisi bul",
+          "reject_label": "Kapsam dışı",
+          "generated_title": "Mülkiye'de Öğrenciler İçin Kariyer Zirvesi Gerçekleştirildi",
+          "summary": "",
+          "detail_summary": "",
+          "decision": "reject"
+        },
+        {
+          "title": "Bakan Memişoğlu'ndan organ bağışı çağrısı: 32 bin kişi umut bekliyor",
+          "source": "TRT Haber – Sağlık",
+          "url": "https://www.trthaber.com/haber/saglik/bakan-memisoglundan-organ-bagisi-cagrisi-32-bin-kisi-umut-bekliyor-962237.html",
+          "published_at": "2026-11-04T12:33:00+00:00",
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "Sağlık Bakanı Memişoğlu'ndan Organ Bağışı Çağrısı",
+          "summary": "Sağlık Bakanı Kemal Memişoğlu, Organ Bağışı Haftası dolayısıyla bir açıklama yaparak vatandaşları organ bağışında bulunmaya davet etti. Türkiye genelinde yaklaşık 32 bin kişinin organ nakli için umut beklediğini belirtti. Ülke genelindeki 152 organ nakli merkezinde son bir yılda yaklaşık 5 bin nakil gerçekleştirildi. Geçen yıl organ bağışı süreçleri e-Devlet ve e-Nabız üzerinden dijitalleştirilerek kolaylaştırıldı. Bu sistem sayesinde bugüne kadar 188 binden fazla vatandaş dijital organ bağışı vasiyetini oluşturdu. Bakan Memişoğlu, organ bağışının bir insana yeniden hayat olabileceğini vurguladı.",
+          "detail_summary": "Sağlık Bakanı Kemal Memişoğlu, Organ Bağışı Haftası kapsamında NSosyal hesabı üzerinden önemli bir çağrıda bulundu. Bakan Memişoğlu, iyiliğin ve hayatın paylaştıkça çoğaldığını belirterek tüm vatandaşları organ bağışı hareketine katılmaya davet etti. Güncel verilere göre, Türkiye genelinde yaklaşık 32 bin vatandaş organ nakli için sırada bekliyor. Ülke genelindeki 152 organ nakli merkezinde, sağlık çalışanlarının büyük gayretleriyle son bir yılda yaklaşık 5 bin organ nakli yapıldı. Geçtiğimiz yıl organ bağışı süreçleri e-Devlet ve e-Nabız platformları üzerinden dijital hale getirilerek vatandaşlar için daha erişilebilir kılındı. Söz konusu dijital dönüşümün ardından 188 binden fazla vatandaş e-Nabız ve e-Devlet aracılığıyla organ bağışı vasiyetini oluşturdu. Bakan Memişoğlu, organ bağışının bir insana yeniden hayat ve bir aileye yeniden umut olabileceğinin altını çizdi.",
+          "decision": "publish"
+        },
+        {
+          "title": "01.11.2026 “Otizm Eylem Planı” kapsamında 206 bin 746 çocuğun gelişimleri izlendi ve bireysel müdahale programları uygulandı Haberin Detayı",
+          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
+          "url": "https://www.aile.gov.tr/haberler/otizm-eylem-plani-kapsaminda-206-bin-746-cocugun-gelisimleri-izlendi-ve-bireysel-mudahale-programlari-uygulandi/",
+          "published_at": "2026-11-01T00:00:00+00:00",
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "Otizm Eylem Planı ile 200 binin üzerinde çocuğun gelişimi izlendi",
+          "summary": "Aile ve Sosyal Hizmetler Bakanlığı koordinasyonunda yürütülen II. Ulusal Otizm Eylem Planı kapsamında önemli çalışmalar gerçekleştirildi. 2023-2025 dönemi faaliyetleri doğrultusunda 206 bin 746 çocuğun gelişim süreçleri yakından takip edildi. Dijital İzleme ve Tarama Programı aracılığıyla aile hekimlerinin vaka takipleri sistematik bir yapıya kavuşturuldu. Otizmli bireylerin erken tanı ve müdahale hizmetlerine erişimini artırmak için çeşitli çok disiplinli modeller devreye alındı. Pilot uygulamalar ve bireysel hizmet danışmanlığı ile ailelere psikososyal destek sağlandı. Toplumsal farkındalığı artırmak ve faaliyetleri denetlemek amacıyla 81 ilde İl Otizm İzleme Komisyonları kuruldu.",
+          "detail_summary": "Aile ve Sosyal Hizmetler Bakanlığı'nın koordinasyonunda sürdürülen II. Ulusal Otizm Eylem Planı'nın 2023-2025 dönemi faaliyet raporu açıklandı. Rapora göre, otizmli bireylerin erken tanı ve müdahale hizmetlerine erişimini artırmak, aileleri desteklemek ve toplumsal farkındalığı güçlendirmek amacıyla geniş kapsamlı çalışmalar yürütüldü. Erken tanı faaliyetleri kapsamında 15 Eylül 2025'te kullanıma açılan Hastalık Yönetim Platformu (HYP) modülü üzerinden geçen yıl 206 bin 746 çocuğun gelişimleri izlendi ve bireysel müdahale programları uygulandı. Sağlık personelinin bilgi ve becerilerini artırmak amacıyla çok disiplinli eğitim programları düzenlenirken, 14 ilde Çok Disiplinli Hizmet Modelleri ve ÇÖZGEM ile 876 kamu ruh sağlığı polikliniğinde hizmet sunuldu. Bireysel Hizmet Danışmanlığı çalışmaları çerçevesinde pilot uygulamalarla 503 kişiye danışmanlık verilirken, 4 ilde gerçekleştirilen pilot uygulamada 801 aileyle görüşülerek 301 çocuk ve ailesine destek sağlandı. Otizm alanındaki çalışmaların etkin takibi ve kurumlar arası iş birliğinin güçlendirilmesi için 81 ilde vali yardımcıları başkanlığında İl Otizm İzleme Komisyonları oluşturuldu. Ayrıca otizm.gov.tr platformu üzerinden yürütülen bilgilendirme çalışmalarıyla bugüne kadar 16 bin 278 aileye ulaşılarak psikososyal destek ve rehberlik hizmeti sunuldu.",
+          "decision": "publish"
+        },
+        {
+          "title": "4 Kasım 2026 Bedeli Ödenecek İlaçlar Listesinde Yapılan Düzenlemeler Hakkında Duyuru 2026/43 GENEL SAĞLIK SİGORTASI GENEL MÜDÜRLÜĞÜ",
+          "source": "Sosyal Güvenlik Kurumu – Duyurular",
+          "url": "https://www.sgk.gov.tr/duyuru/detay/Bedeli-Odenecek-Ilaclar-Listesinde-Yapilan-Duzenlemeler-Hakkinda-Duyuru-202643-2026-11-04-06-22-08",
+          "published_at": "2026-11-04T00:00:00+00:00",
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "Genel ilaç listesi düzenlemesini içeren teknik bir SGK duyurusu olup engelli bireylere yönelik doğrudan somut bir etki içermemektedir.",
+          "reject_label": "Genel ilaç",
+          "generated_title": "SGK'dan Bedeli Ödenecek İlaçlar Listesi Düzenlemesi",
+          "summary": "Sosyal Güvenlik Kurumu tarafından bedeli ödenecek ilaçlar listesinde yapılan düzenlemelere ilişkin yeni bir duyuru yayımlandı. 4 Kasım 2026 tarihli duyuru 2026/43 numarasıyla Genel Sağlık Sigortası Genel Müdürlüğü tarafından paylaşıldı. Söz konusu duyuru metniyle birlikte uygulama detaylarını içeren ek dosyalar erişime açıldı.",
+          "detail_summary": "Sosyal Güvenlik Kurumu Genel Sağlık Sigortası Genel Müdürlüğü tarafından 4 Kasım 2026 tarihinde yeni bir duyuru yayımlandı. Bedeli Ödenecek İlaçlar Listesinde Yapılan Düzenlemeler Hakkında Duyuru 2026/43 başlığıyla paylaşılan bildirimde güncel listelere yer verildi. Kurumun resmi web sitesi üzerinden duyuruya ait PDF ve XLSX formatındaki ek dosyaların indirilebileceği bildirildi.",
           "decision": "reject"
         }
       ]
