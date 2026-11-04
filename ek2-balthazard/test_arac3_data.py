@@ -106,6 +106,18 @@ class Arac3DataTests(unittest.TestCase):
         self.assertEqual([level["anahtar"] for level in copd], ["agir", "orta", "hafif"])
         self.assertEqual(len({level["kriter"] for level in copd}), 3)
 
+    def test_cognitive_mild_criterion_excludes_kds_table(self):
+        mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
+        data = json.loads(mapping_path.read_text(encoding="utf-8"))
+        row = next(item for item in data["kayitlar"] if item["mevcut_kayit_id"] == "MEVCUT-004")
+        mild = next(level for level in row["duzeyler"] if level["anahtar"] == "hafif")
+        self.assertEqual(
+            mild["kriter"],
+            "Hafif düzey bilişsel bozukluk; klinik kognitif değerlendirme skoru 4-5 ve minimental test skoru 22 ila 25 arası olmalıdır."
+        )
+        self.assertNotIn("Klinik Kognitif Değerlendirme Skoru (KDS)", mild["kriter"])
+        self.assertNotIn("Günlük aktivite:", mild["kriter"])
+
     def test_expected_fas_connections(self):
         expected = {
             "Parapleji/Paraparezi, Monopleji/Monoparezi, Hemipleji/Hemiparezi, Kuadripleji/Kuadriparezi vb. motor kaybı olanlar",
