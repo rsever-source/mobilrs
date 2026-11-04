@@ -60,6 +60,6 @@ jobs:
           parser.feed(html)
           if not parser.scripts or not any(script.strip() for script in parser.scripts):
               raise SystemExit("Araç 3 inline JavaScript bulunamadı.")
-          Path("/tmp/arac3-inline.js").write_text("\\n".join(parser.scripts), encoding="utf-8")
+          Path("/tmp/arac3-inline.js").write_text("\n".join(parser.scripts), encoding="utf-8")
           PY
           node --check /tmp/arac3-inline.js
