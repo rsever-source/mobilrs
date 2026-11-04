@@ -81,6 +81,18 @@ class Arac3DataTests(unittest.TestCase):
         self.assertIn('href="#main-content"', source)
         self.assertEqual(len(re.findall(r"<main\b", source)), 1)
 
+    def test_mapping_notice_count_and_mobile_header_match_arac1(self):
+        source = HTML.read_text(encoding="utf-8")
+        mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
+        data = json.loads(mapping_path.read_text(encoding="utf-8"))
+        self.assertEqual(data["ozet"]["duzey_basligi_var_kriter_metni_bos_mevcut_kayit"], 11)
+        self.assertIn("duzey_basligi_var_kriter_metni_bos_mevcut_kayit", source)
+        self.assertNotIn("duzey_basligi_var_kriter_metni_bos_duzeyler", source)
+        self.assertRegex(
+            source,
+            r"@media\(max-width:760px\)\{[^}]*body\{padding-top:0!important\}[^}]*\.site-header\{display:none!important;min-height:0\}[^}]*\.app\{padding-top:0!important\}"
+        )
+
     def test_arac3_initializes_embedded_data_and_mobile_controls(self):
         source = HTML.read_text(encoding="utf-8")
         self.assertIn("const mappingReady=Array.isArray(ARAC3_MAPPING_DATA.kayitlar)", source)
