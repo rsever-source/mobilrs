@@ -187,6 +187,15 @@ body.high-contrast .choose-level,body.high-contrast .level-picker,body.high-cont
   .level-picker-actions button{min-height:42px}
 }
 
+
+/* Mobil görünüm Araç 1 ve 2 ile aynı: üst marka/erişilebilirlik şeridi gizlenir,
+   araç sekmeleri sayfanın en üstünde kalır. */
+@media(max-width:760px){
+  body{padding-top:0!important}
+  .site-header{display:none!important;min-height:0}
+  .app{padding-top:0!important}
+  .site-scroll-home{display:none!important}
+}
 </style>
 </head>
 <body><a class="skip-link" href="#main-content">İçeriğe geç</a><div class="app">
@@ -342,7 +351,7 @@ function renderSelected(){
   }));
 }
 
-$('search').addEventListener('input',renderResults);renderChips();renderResults();renderSelected();document.getElementById('noticeMapping').textContent='Ek-1 eşleştirmesi hazır: '+ARAC3_MAPPING_DATA.kayitlar.length+' hastalık kaydı; '+ARAC3_MAPPING_DATA.ozet.en_az_bir_kriter_metni_dolu_mevcut_kayit+' kayıtta kriter metni mevcut, '+ARAC3_MAPPING_DATA.ozet.duzey_basligi_var_kriter_metni_bos_duzeyler+' kayıtta kriter başlığı var ancak metin boş.';document.querySelector('.notice').textContent="Bu araç, seçtiğiniz hastalıkların Ek-1 çalışma gücü kaybı düzey ve kriterlerini incelemenize yardımcı olur. Kesin değerlendirme sağlık kurulu ve SGK tarafından yapılır; araç otomatik maluliyet kararı veya yüzde üretmez.";
+$('search').addEventListener('input',renderResults);renderChips();renderResults();renderSelected();document.getElementById('noticeMapping').textContent='Ek-1 eşleştirmesi hazır: '+ARAC3_MAPPING_DATA.kayitlar.length+' hastalık kaydı; '+ARAC3_MAPPING_DATA.ozet.en_az_bir_kriter_metni_dolu_mevcut_kayit+' kayıtta kriter metni mevcut, '+ARAC3_MAPPING_DATA.ozet.duzey_basligi_var_kriter_metni_bos_mevcut_kayit+' kayıtta kriter başlığı var ancak metin boş.';document.querySelector('.notice').textContent="Bu araç, seçtiğiniz hastalıkların Ek-1 çalışma gücü kaybı düzey ve kriterlerini incelemenize yardımcı olur. Kesin değerlendirme sağlık kurulu ve SGK tarafından yapılır; araç otomatik maluliyet kararı veya yüzde üretmez.";
 
 
 // Engelli.me ortak erişilebilirlik araçları — Araç 1 ve Araç 2 ile aynı davranış.
