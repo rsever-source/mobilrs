@@ -98,7 +98,7 @@ class Arac3DataTests(unittest.TestCase):
         source = HTML.read_text(encoding="utf-8")
         self.assertIn("const ARAC3_MAPPING_DATA=", source)
         self.assertNotIn("fetch('/api/arac3/eslestirme'", source)
-        self.assertIn("Harici API isteği yapılmaz", source)
+        self.assertIn("182 hastalık kaydı ve Ek-1 düzeyleri bu sayfanın içinde sabit veridir", source)
         self.assertIn("mappingLoadError", source)
         embedded = re.search(r"const ARAC3_MAPPING_DATA=(\{.*?\});\nlet category", source)
         self.assertIsNotNone(embedded, "Araç 3 gömülü eşleştirme verisi bulunamadı")
