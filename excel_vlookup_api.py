@@ -396,6 +396,14 @@ async def ek2_arac3_sayfa(request: Request):
     return HTMLResponse(_ek2_sayfa("arac3", "__ARAC1_ADRESI__", "/arac1", request.state.csp_nonce))
 
 
+@app.get("/api/arac3/eslestirme")
+async def arac3_eslestirme():
+    dosya = EK2_ROOT / "arac3" / "arac3_182_ek1_eslestirme.json"
+    if not dosya.is_file():
+        raise HTTPException(503, "Araç 3 Ek-1 eşleştirme verisi henüz kullanıma hazır değil.")
+    return FileResponse(dosya, media_type="application/json; charset=utf-8")
+
+
 @app.get("/api/bolumler")
 async def ek2_bolumler():
     return JSONResponse(ek2_arac1.gezinme_yuku(None))
