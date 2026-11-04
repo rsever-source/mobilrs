@@ -11,6 +11,7 @@ class Arac3DataTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         source = HTML.read_text(encoding="utf-8")
+        cls.html = source
         match = re.search(r"const diseases=(\[.*?\]);\nlet category", source)
         if not match:
             raise AssertionError("Araç 3 veri dizisi bulunamadı")
@@ -64,8 +65,44 @@ class Arac3DataTests(unittest.TestCase):
         actual = {record["name"] for record in self.records if record["hasFas"]}
         self.assertEqual(actual, expected)
 
+    def test_fas_guide_contains_all_user_selectable_levels(self):
+        for level in range(6):
+            self.assertIn(f"{level}:{{description:", self.html)
+        self.assertIn("otomatik atama yapılmaz", self.html)
+
+    def test_fas_guide_indicators_match_source(self):
+        expected = {
+            0: ("Yürüyemez veya iki kişinin yardımına ihtiyaç duyar.", "Ağır"),
+            1: ("Sürekli fiziksel desteğe ihtiyaç duyar.", "Ağır"),
+            2: ("Aralıklı veya hafif dokunarak yardıma ihtiyaç duyar.", "Ağır"),
+            3: ("Gözetim veya sözel yönlendirme gerekir.", "Orta"),
+            4: ("Eğim/merdivende yardım gerekir.", "Hafif"),
+            5: ("Her zeminde bağımsız yürür.", "Etkilemez"),
+        }
+        for level, (description, indicator) in expected.items():
+            self.assertIn(f"{level}:{{description:'{description}',indicator:'{indicator}'", self.html)
+
+    def test_fas_state_is_per_record_and_removed_with_record(self):
+        self.assertIn("const fasLevels={};", self.html)
+        self.assertIn("fasLevels[input.closest('.fas-picker').dataset.fasId]=Number(input.value)", self.html)
+        self.assertIn("delete fasLevels[id]", self.html)
+
+    def test_non_fas_records_do_not_render_fas_picker(self):
+        self.assertIn("if(!d.hasFas)return ''", self.html)
+        self.assertIn("(d.hasFas?fasPicker(d,'selected'):'')", self.html)
+
+    def test_fas_display_is_informational_not_a_percentage_or_balthazard_result(self):
+        self.assertIn("FAS seçimi kullanıcı tarafından bilgi amaçlı yapılır", self.html)
+        self.assertIn("Seçilen maddeler için Balthazard hesabı yapılmaz", self.html)
+        self.assertNotIn("fasLevels[input.closest('.fas-picker').dataset.fasId]=Number(input.value)*", self.html)
+
+    def test_kds_marker_remains_independent(self):
+        self.assertIn("d.calculator?'<span class=\"tag\">KDS hesaplayıcısı</span>'", self.html)
+        self.assertIn("d.calculator?'<span class=\"tag\">KDS bağlantısı</span>'", self.html)
+
 
 if __name__ == "__main__":
     unittest.main()
+
 
 
