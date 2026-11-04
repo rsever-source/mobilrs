@@ -79,7 +79,7 @@ class Arac3DataTests(unittest.TestCase):
         self.assertIn(".site-accessibility-panel.open{display:flex;flex-direction:column}", source)
         self.assertIn('<footer class="alt-bilgi">', source)
         self.assertIn('href="#main-content"', source)
-        self.assertEqual(len(re.findall(r"<main\\b", source)), 1)
+        self.assertEqual(len(re.findall(r"<main\b", source)), 1)
 
     def test_expected_fas_connections(self):
         expected = {
