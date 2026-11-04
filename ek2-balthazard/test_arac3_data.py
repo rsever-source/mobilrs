@@ -81,6 +81,19 @@ class Arac3DataTests(unittest.TestCase):
         self.assertIn('href="#main-content"', source)
         self.assertEqual(len(re.findall(r"<main\b", source)), 1)
 
+    def test_arac3_initializes_embedded_data_and_mobile_controls(self):
+        source = HTML.read_text(encoding="utf-8")
+        self.assertIn("const mappingReady=Array.isArray(ARAC3_MAPPING_DATA.kayitlar)", source)
+        self.assertIn("new Map(mappingReady?ARAC3_MAPPING_DATA.kayitlar.map", source)
+        self.assertNotIn("apply();loadMapping();", source)
+        self.assertNotIn("Ek-1 kriter verisi yükleniyor", source)
+        self.assertIn("182 hastalık kaydı ve Ek-1 düzeyleri bu sayfanın içinde sabit veridir", source)
+        self.assertNotIn('class="back"', source)
+        self.assertIn('id="siteAccessibilityToggle"', source)
+        self.assertIn('id="siteAccessibilityPanel"', source)
+        self.assertIn('grid-template-areas:"brand home" "tools tools"', source)
+        self.assertIn(".site-accessibility-panel.open{display:flex;flex-direction:column}", source)
+
     def test_mapping_is_embedded_and_does_not_depend_on_api(self):
         source = HTML.read_text(encoding="utf-8")
         self.assertIn("const ARAC3_MAPPING_DATA=", source)
