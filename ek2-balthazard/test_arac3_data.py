@@ -40,6 +40,22 @@ class Arac3DataTests(unittest.TestCase):
             self.assertEqual(source["pdfSection"], record["category"])
             self.assertTrue(source["pdfPages"])
 
+
+    def test_ek1_mapping_dataset_integrity(self):
+        mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
+        data = json.loads(mapping_path.read_text(encoding="utf-8"))
+        records = data["kayitlar"]
+        self.assertEqual(len(records), 182)
+        self.assertEqual(len({row["mevcut_kayit_id"] for row in records}), 182)
+        self.assertEqual(data["ozet"]["duzey_basligi_bulunan_mevcut_kayit"], 177)
+        self.assertEqual(data["ozet"]["en_az_bir_kriter_metni_dolu_mevcut_kayit"], 166)
+        self.assertEqual(data["ozet"]["duzey_basligi_var_kriter_metni_bos_mevcut_kayit"], 11)
+        self.assertEqual(data["ozet"]["eslesme_yok_kayitlar"], [])
+        for row in records:
+            self.assertIsInstance(row.get("duzeyler"), list)
+            if not row.get("duzey_gosterimi_izinli"):
+                self.assertFalse(row.get("duzeyler"), row["mevcut_kayit_id"])
+
     def test_expected_fas_connections(self):
         expected = {
             "Parapleji/Paraparezi, Monopleji/Monoparezi, Hemipleji/Hemiparezi, Kuadripleji/Kuadriparezi vb. motor kaybı olanlar",
