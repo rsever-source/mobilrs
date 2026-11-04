@@ -56,6 +56,31 @@ class Arac3DataTests(unittest.TestCase):
             if not row.get("duzey_gosterimi_izinli"):
                 self.assertFalse(row.get("duzeyler"), row["mevcut_kayit_id"])
 
+
+    def test_shared_accessibility_toolbar_footer_and_mobile_layout(self):
+        source = HTML.read_text(encoding="utf-8")
+        for control_id in (
+            "siteAccessibilityToggle",
+            "siteAccessibilityPanel",
+            "siteAccessibilityReset",
+            "siteContrastToggle",
+            "siteDarkToggle",
+        ):
+            self.assertIn(f'id="{control_id}"', source)
+
+        self.assertIn('data-site-font="1.12"', source)
+        self.assertIn('data-site-font="1.25"', source)
+        self.assertIn('localStorage.setItem("engellime-font-size"', source)
+        self.assertIn('localStorage.setItem("engellime-high-contrast"', source)
+        self.assertIn('localStorage.setItem("engellime-dark-mode"', source)
+        self.assertIn('body.font-large .sayfa{zoom:1.12}', source)
+        self.assertIn('body.font-xlarge .sayfa{zoom:1.25}', source)
+        self.assertIn("@media(max-width:760px)", source)
+        self.assertIn(".site-accessibility-panel.open{display:flex;flex-direction:column}", source)
+        self.assertIn('<footer class="alt-bilgi">', source)
+        self.assertIn('href="#main-content"', source)
+        self.assertEqual(len(re.findall(r"<main\\b", source)), 1)
+
     def test_expected_fas_connections(self):
         expected = {
             "Parapleji/Paraparezi, Monopleji/Monoparezi, Hemipleji/Hemiparezi, Kuadripleji/Kuadriparezi vb. motor kaybı olanlar",
