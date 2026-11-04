@@ -196,7 +196,7 @@
           "anahtar": "hafif",
           "duzey": "Hafif",
           "baslik": "Hafif Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
-          "kriter": "Hafif düzey bilişsel bozukluk; klinik kognitif değerlendirme skoru 4-5 ve minimental test skoru 22 ila 25 arası olmalıdır. Klinik Kognitif Değerlendirme Skoru (KDS) Kategori 0.0 0.5 1.0 2.0 3.0 Hafıza kaybı yok Kalıcı hafif Orta derecede Şiddetli hafıza Şiddetli hafıza Hafıza (H) veya kalıcı unutkanlık; hafıza kaybı; yeni kaybı; sadece iyi kaybı sadece olmayan, hafif olayları kısmen olaylarda daha öğrenilen materyal fragmanlar kalır hatırlar, benign belirgin; defekt hafızada tutulmakta hafıza kaybı günlük aktivitelerde yenileri çabucak unutkanlık karışıklıklara neden hafızadan oluyor silinmekte Oryantasyon Zaman Zaman Zaman Sadece şahıs Tam oryante oryantasyonunda oryantasyonunda oryantasyonunda oryantasyonu (O) hafif zorluk orta derecede şiddetli bozukluk; kalmış dışında tam zorluk; muayene genellikle zamana ortamına oryante sıklıkla mekâna oryante olsa da başka dezoryante ortamlarda mekâna dezoryante olabilir Yargılama ve Günlük hayat, iş ve Problem çözmede, Problem çözmede, Problem çözmede, Yargılama problem finansal benzerlik ve benzerlik ve benzerlik ve yapamaz ve konulardaki farklılıkları farklılıkları farklılıklarda problemleri çözme (YPÇ) problemleri çözer, belirlemede hafif belirlemede orta şiddetli bozukluk; çözemez geçmişteki derecede bozukluk; sosyal yargılama bozukluk performansıyla sosyal yargılama genellikle ilişkili olarak genellikle bozulmuştur. yargılama iyidir. sürdürülebilir. Toplumsal Sosyal gruplar, Bu aktivitelerde Bu aktivitelerin Evinin dışında Evinin dışında istemli aktiviteler, bazılarında başarılı bağımsız hareket bağımsız hareket İlişkiler hafif bozukluk alışveriş ve olsa da bağımsız edemez. Sinema edemez. Sinema (Tİ) mesleğinde rutin olarak fonksiyon tiyatro vb sosyal tiyatro vb sosyal düzeydeki işlerde göremez. Yüzeyel aktivitelere refakatli aktivitelere bağımsız olarak muayenede normal olarak katılacak refakatli olarak fonksiyon derecede iyi bile görünür. katılamayacak görebilir. görünür. derecede hasta görünür. Ev ve Ev yaşamını, Ev yaşamı Ev içi Sadece basit ev Evde belirgin hobilerini ve hobileri ve faaliyetlerinde orta işlerini yapabilir ilgi olarak Hobiler (EH) entelektüel ilgisini entelektüel derecede ama alanları çok fonksiyonel ilgisinde hafif mutlak bozulma, kısıtlanmıştır, sürdürebilmekte değildir daha zor ev işleri, zorlukla bozulma komplike hobiler ve sürdürebilir. ilgi alanları terk edilir. Özbakımını tam Özbakımını tam Özbakım için Giyinme, hijyen ve Özbakımı için Özbakım olarak destek, cesaret ve bireysel ilişkiler daha fazla olarak yapabiliyor. (Ö) hatırlatmaya için bile yardıma yardıma yapabiliyor. gereksinimi ihtiyacı vardır. ihtiyacı vardır. vardır. Sık inkontinans. Tablo da dikey sütunda 6 kategori yer alır. Bunlar; Hafıza (H) 0-3 Oryantasyon (O) 0-3 Yargılama ve Problem Çözme (YPÇ) 0-3 Toplumsal İlişkiler (Tİ) 0-3 Ev ve Hobiler (EH) 0-3 Özbakım (Ö) 0-3 Günlük aktivite: Sağlıklı birinin gündelik kişisel, sosyal ve mesleki aktiviteleri kastedilir.",
+          "kriter": "Hafif düzey bilişsel bozukluk; klinik kognitif değerlendirme skoru 4-5 ve minimental test skoru 22 ila 25 arası olmalıdır.",
           "kriter_durumu": "metin_var"
         }
       ],
@@ -997,7 +997,8 @@
       "duzeyler": [
         {
           "anahtar": "agir",
-          "duzey": "Ağır",          "baslik": "Ağır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
+          "duzey": "Ağır",
+          "baslik": "Ağır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
           "kriter": "Tedaviye rağmen çalışma olanağı vermeyen",
           "kriter_durumu": "metin_var"
         },
@@ -1996,7 +1997,8 @@
         }
       ],
       "dipnotlar": [],
-      "not": "",      "duzey_gosterimi_izinli": true,
+      "not": "",
+      "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
       "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
@@ -2995,7 +2997,8 @@
       "mevcut_bolum": "Hematolojik Hastalıklar",
       "mevcut_hastalik_adi": "Allojenik kemik iliği/kök hücre nakli",
       "eslesme_durumu": "Tam eşleşme",
-      "ek1_kayit_id": "ek1-075",      "ek1_alt_kayit_id": null,
+      "ek1_kayit_id": "ek1-075",
+      "ek1_alt_kayit_id": null,
       "ek1_alt_madde_no": null,
       "ek1_alt_kategori": null,
       "ek1_brans": "F. HEMATOLOJİK HASTALIKLAR",
@@ -3994,7 +3997,8 @@
           "kriter": "Portal Hipertansiyona bağlı olarak gelişen, endoskopik ve medikal tedavi ile hastaneye yatış gerektiren aşağıdaki maddelerden en az birinin sağlanması, a) TİPS veya cerrahi tedavi gerektiren b) Aşağıdakilerden en az birinin varlığı 1. Parasentez gerektiren asit, 2. Torasentez gerektiren hepatik hidrotoraks, 3. Spontan bakteriyel peritonit, 4. Tekrarlayan hepatik ensefalopati atakları 5. Hepatorenal sendrom, 6. Hepatopulmoner sendrom 7. Tekrarlayan portal hipertansiyona bağlı yılda en az 2 kez gelişen GİS kanamalar",
           "kriter_durumu": "metin_var"
         },
-        {          "anahtar": "orta",
+        {
+          "anahtar": "orta",
           "duzey": "Orta",
           "baslik": "Orta Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
           "kriter": "Portal Hipertansiyona bağlı olarak gelişen komplikasyonlar nedeniyle endoskopik tedavi yapılmış olanlar",
@@ -4993,7 +4997,8 @@
       "ek1_pdf_sayfa": 30,
       "ek1_resmi_ad": "Hipertrofik skar ve keloid",
       "ek1_kriter_pdf_sayfalari": [],
-      "duzeyler": [        {
+      "duzeyler": [
+        {
           "anahtar": "hafif",
           "duzey": "Hafif",
           "baslik": "Hafif Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
@@ -5992,7 +5997,8 @@
       "ek1_pdf_sayfa": 35,
       "ek1_resmi_ad": "Hipofiz ve Hipotalamus Bez Hastalıkları",
       "ek1_kriter_pdf_sayfalari": [],
-      "duzeyler": [        {
+      "duzeyler": [
+        {
           "anahtar": "agir",
           "duzey": "Ağır",
           "baslik": "Ağır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
