@@ -235,81 +235,6 @@ body.high-contrast .selected-count{background:#000;color:#fff;border:1px solid #
 }
 
 </style>
-<style id="arac3-branch-grid">
-/* Gönderilen örnekten uyarlanan üç sütunlu, ikonlu branş seçimi */
-.branch-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:12px;
-  margin:14px 0 4px;
-}
-.branch-btn{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  width:100%;
-  min-height:54px;
-  padding:8px 16px;
-  background:#fff;
-  border:1px solid #cbd5e1;
-  border-radius:9999px;
-  cursor:pointer;
-  text-align:left;
-  font-size:13.5px;
-  font-weight:600;
-  color:#0f172a;
-  line-height:1.25;
-  transition:all .15s ease;
-}
-.branch-btn:hover,.branch-btn.active{
-  border-color:#2563eb;
-  background-color:#f0f7ff;
-}
-.branch-btn:focus-visible{
-  outline:3px solid rgba(37,99,235,.2);
-  outline-offset:2px;
-}
-.branch-btn svg{
-  display:block;
-  width:22px;
-  height:22px;
-  flex:0 0 22px;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  color:#64748b;
-}
-.branch-btn:hover svg,.branch-btn.active svg{color:#2563eb}
-.branch-btn span{min-width:0}
-body.dark-mode .branch-btn{
-  background:#1a2636;
-  border-color:#45566d;
-  color:#edf2f8;
-}
-body.dark-mode .branch-btn:hover,body.dark-mode .branch-btn.active{
-  background:#203b66;
-  border-color:#6b9eea;
-  color:#fff;
-}
-body.high-contrast .branch-btn{
-  background:#fff;
-  color:#000;
-  border:2px solid #000;
-  box-shadow:none;
-}
-body.high-contrast .branch-btn.active{
-  background:#000;
-  color:#fff;
-}
-@media(max-width:992px){
-  .branch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:576px){
-  .branch-grid{grid-template-columns:1fr}
-}
-</style>
 </head>
 <body><a class="skip-link" href="#main-content">İçeriğe geç</a><div class="app">
 <header class="site-header" role="banner">
@@ -344,7 +269,7 @@ body.high-contrast .branch-btn.active{
   <a class="sekme" href="/arac2">Balthazard Hesapla</a>
   <a class="sekme" href="/arac3" aria-current="page">Çalışma Gücü Kaybı</a>
 </nav>
-<main id="main" class="main" tabindex="-1"><div class="page-head"><h1>Maluliyet ve Çalışma Gücü Kaybı Rehberi</h1></div><div class="intro"><b>Ek-1 Hastalık Listesi rehberi</b><br>Hastalık veya durumu arayın; ilgili branş, FAS ve kaynak kapsamını inceleyin.<div class="notice">Bu araç bilgi amaçlıdır. Kesin karar sağlık kurulu raporu ve SGK Sağlık Kurulu tarafından verilir. Klinik kriteri doğrulanmamış kayıtlar düzey üretmez.</div><div id="noticeMapping" class="mapping-note" aria-live="polite">182 hastalık kaydı ve Ek-1 düzeyleri bu sayfanın içinde sabit veridir; ayrı bir yükleme isteği gerekmez.</div></div><div class="layout"><section class="panel"><label class="field" for="search">Hastalık veya durum arayın</label><input id="search" class="input" placeholder="Örn. MS, KOAH, diyaliz, felç, şizofreni" autocomplete="off"><div id="chips" class="branch-grid" aria-label="Hastalık branşları"></div><div id="results" class="results" aria-live="polite"></div></section><aside class="panel selected-panel"><h2 class="selected-heading">Seçtikleriniz <span id="selectedCount" class="selected-count">0</span></h2><div id="selected" class="selected"></div><div id="summary"></div><section class="fas"><h2>FAS rehberi</h2><div class="fas-row"><b>FAS 0</b><span>Yürüyemez veya iki kişinin yardımına ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 1</b><span>Sürekli fiziksel desteğe ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 2</b><span>Aralıklı veya hafif dokunarak yardıma ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 3</b><span>Gözetim veya sözel yönlendirme gerekir.</span><span class="severity medium">Orta</span></div><div class="fas-row"><b>FAS 4</b><span>Eğim/merdivende yardım gerekir.</span><span class="severity light">Hafif</span></div><div class="fas-row"><b>FAS 5</b><span>Her zeminde bağımsız yürür.</span><span class="severity">Etkilemez</span></div></section></aside></div></main>
+<main id="main" class="main" tabindex="-1"><div class="page-head"><h1>Maluliyet ve Çalışma Gücü Kaybı Rehberi</h1></div><div class="intro"><b>Ek-1 Hastalık Listesi rehberi</b><br>Hastalık veya durumu arayın; ilgili branş, FAS ve kaynak kapsamını inceleyin.<div class="notice">Bu araç bilgi amaçlıdır. Kesin karar sağlık kurulu raporu ve SGK Sağlık Kurulu tarafından verilir. Klinik kriteri doğrulanmamış kayıtlar düzey üretmez.</div><div id="noticeMapping" class="mapping-note" aria-live="polite">182 hastalık kaydı ve Ek-1 düzeyleri bu sayfanın içinde sabit veridir; ayrı bir yükleme isteği gerekmez.</div></div><div class="layout"><section class="panel"><label class="field" for="search">Hastalık veya durum arayın</label><input id="search" class="input" placeholder="Örn. MS, KOAH, diyaliz, felç, şizofreni" autocomplete="off"><div id="chips" class="chips" aria-label="Hastalık branşları"></div><div id="results" class="results" aria-live="polite"></div></section><aside class="panel selected-panel"><h2 class="selected-heading">Seçtikleriniz <span id="selectedCount" class="selected-count">0</span></h2><div id="selected" class="selected"></div><div id="summary"></div><section class="fas"><h2>FAS rehberi</h2><div class="fas-row"><b>FAS 0</b><span>Yürüyemez veya iki kişinin yardımına ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 1</b><span>Sürekli fiziksel desteğe ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 2</b><span>Aralıklı veya hafif dokunarak yardıma ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 3</b><span>Gözetim veya sözel yönlendirme gerekir.</span><span class="severity medium">Orta</span></div><div class="fas-row"><b>FAS 4</b><span>Eğim/merdivende yardım gerekir.</span><span class="severity light">Hafif</span></div><div class="fas-row"><b>FAS 5</b><span>Her zeminde bağımsız yürür.</span><span class="severity">Etkilemez</span></div></section></aside></div></main>
 <footer class="alt-bilgi">
   <p>Bu araç, Ek-1 çalışma gücü kaybı kriterlerini incelemeye yardımcı olur. SGK Sağlık Kurulu veya sağlık kurulu kararı yerine geçmez.</p>
   <p>Veri dayanağı: 28.09.2021 tarihli Resmî Gazete Ek-1 Hastalık Listesi. Her hastalık için mevcut düzeyler ve kriterler kendi kaynak sayfa bilgisiyle gösterilir.</p>
@@ -373,33 +298,10 @@ function levelIsSelectable(level){
   if(typeof level.kriter==='string'&&level.kriter.trim().length>0)return true;
   return level.secim_izinli===true;
 }
-const categoryIcons={
-  'Nörolojik Hastalıklar':'<path d="M12 4a4 4 0 0 0-7 2 4 4 0 0 0 0 7 4 4 0 0 0 7 3"/><path d="M12 4a4 4 0 0 1 7 2 4 4 0 0 1 0 7 4 4 0 0 1-7 3"/><path d="M12 4v14M8 8c2 0 2 2 4 2m4-2c-2 0-2 2-4 2m-4 3c2 0 2-2 4-2m4 2c-2 0-2-2-4-2"/>',
-  'Psikiyatrik Hastalıklar':'<path d="M12 21v-4"/><path d="M8 17h8"/><path d="M7 13a7 7 0 1 1 10 0c-1 1-2 1-2 4H9c0-3-1-3-2-4Z"/><path d="M9 9h.01M15 9h.01M10 12c1.2 1 2.8 1 4 0"/>',
-  'Göz Hastalıkları':'<path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="3"/>',
-  'Kulak Burun Boğaz Hastalıkları':'<path d="M18 9a6 6 0 0 0-12 0c0 3 2 4 3 5 1 1 1 2 1 3a2 2 0 0 0 4 0"/><path d="M10 9a2 2 0 0 1 4 0c0 2-2 2-2 4"/>',
-  'Onkolojik Hastalıklar':'<path d="M12 3c-2 4-5 5-5 9a5 5 0 0 0 10 0c0-4-3-5-5-9Z"/><path d="M9 15c1 1 2 1 3 1"/>',
-  'Hematolojik Hastalıklar':'<path d="M12 2s-7 8-7 13a7 7 0 0 0 14 0c0-5-7-13-7-13Z"/><path d="M9 16a3 3 0 0 0 3 3"/>',
-  'Ortopedi ve Travmatolojik Hastalıklar':'<path d="M7 7a2.5 2.5 0 1 1 3-3l4 4a2.5 2.5 0 1 1 3 3l-4 4a2.5 2.5 0 1 1-3 3l-4-4a2.5 2.5 0 1 1 1-7Z"/>',
-  'Romatolojik Hastalıklar':'<path d="m7 4 3 3-3 3-3-3 3-3Zm10 10 3 3-3 3-3-3 3-3Z"/><path d="m10 10 4 4m-1-7 4 4m-8 2 4 4"/>',
-  'Gastroenterolojik Hastalıklar':'<path d="M9 3v5c0 2-2 2-2 5a5 5 0 0 0 10 0c0-2-2-3-2-5V3"/><path d="M9 6h6M9 10c2 1 4 1 6 0"/>',
-  'Dermatolojik Hastalıklar':'<rect x="3" y="4" width="18" height="16" rx="4"/><path d="M7 9h.01M12 8h.01M16 12h.01M9 15h.01M14 17h.01"/>',
-  'Kalp Hastalıkları':'<path d="M20.8 8.7c0 5.2-8.8 11.1-8.8 11.1S3.2 13.9 3.2 8.7A4.7 4.7 0 0 1 12 6.1a4.7 4.7 0 0 1 8.8 2.6Z"/>',
-  'Damar Hastalıkları':'<path d="M3 12h4l2-5 4 10 2-5h6"/><path d="M5 5v2m14 10v2"/>',
-  'Üriner Sistem Hastalıkları':'<path d="M7 4c-2 0-3 2-3 5s1 6 4 6c2 0 3-2 3-4V7c0-2-1-3-4-3Zm10 0c2 0 3 2 3 5s-1 6-4 6c-2 0-3-2-3-4V7c0-2 1-3 4-3Z"/><path d="M12 14v6m-3 0h6"/>',
-  'Endokrinoloji ve Metabolizma Hastalıkları':'<path d="M12 3c-2 3-5 3-6 6-1 3 1 5 4 4 1 0 2-1 2-2 0 1 1 2 2 2 3 1 5-1 4-4-1-3-4-3-6-6Z"/><path d="M12 11v9"/>',
-  'Göğüs Hastalıkları':'<path d="M11 5v7c-2-3-3-5-5-4-2 2-3 8-3 11h7l1-7"/><path d="M13 5v7c2-3 3-5 5-4 2 2 3 8 3 11h-7l-1-7"/><path d="M12 3v5"/>',
-  'Enfeksiyon Hastalıkları':'<circle cx="12" cy="12" r="5"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.9 4.9 7 7m10 10 2.1 2.1m0-14.2L17 7M7 17l-2.1 2.1"/><circle cx="10" cy="11" r=".7"/><circle cx="14" cy="13" r=".7"/>',
-  'Amputasyonlar':'<path d="M8 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/><path d="M8 8v5l-3 5m3-7 4 2 3 5m-7-7 4-3"/><path d="m15 4 4 4m-4 0 4-4"/>'
-};
 function renderChips(){
-  $('chips').innerHTML=categories.map(c=>{
-    const icon=categoryIcons[c]||'<circle cx="12" cy="12" r="8"/>';
-    return '<button type="button" class="branch-btn '+(c===category?'active':'')+'" data-branch="'+esc(c)+'" aria-pressed="'+(c===category?'true':'false')+'"><svg viewBox="0 0 24 24" aria-hidden="true">'+icon+'</svg><span>'+esc(c)+'</span></button>';
-  }).join('');
-  $('chips').querySelectorAll('.branch-btn').forEach(button=>button.addEventListener('click',()=>{
-    const selectedBranch=button.dataset.branch;
-    category=category===selectedBranch?null:selectedBranch;
+  $('chips').innerHTML=categories.map(c=>'<button type="button" class="chip '+(c===category?'on':'')+'" aria-pressed="'+(c===category?'true':'false')+'">'+esc(c)+'</button>').join('');
+  $('chips').querySelectorAll('.chip').forEach((b,i)=>b.addEventListener('click',()=>{
+    category=category===categories[i]?null:categories[i];
     renderChips();renderResults();
   }));
 }
