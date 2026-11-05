@@ -229,7 +229,7 @@ class Arac3DataTests(unittest.TestCase):
         self.assertIn('id="arac3-branch-grid"', source)
         self.assertIn('id="chips" class="branch-grid"', source)
         self.assertIn("grid-template-columns:repeat(3,minmax(0,1fr))", source)
-        self.assertIn("class=" + repr('branch-btn '), source)
+        self.assertIn('class="branch-btn ', source)
         self.assertIn('data-branch="', source)
         self.assertIn("button.dataset.branch", source)
         self.assertIn("category=category===selectedBranch?null:selectedBranch", source)
@@ -244,7 +244,7 @@ class Arac3DataTests(unittest.TestCase):
 
         icon_block = re.search(r"const categoryIcons=\{(.*?)\n\};", source, re.S)
         self.assertIsNotNone(icon_block)
-        icon_categories = set(re.findall(r"^\\s*'([^']+)'\\s*:", icon_block.group(1), re.M))
+        icon_categories = set(re.findall(r"^\s*'([^']+)'\s*:", icon_block.group(1), re.M))
         self.assertEqual(icon_categories, set(categories))
 
         # Örnek kodun özellikle korunmasını istediği iki branş da birebir bulunmalı.
