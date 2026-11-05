@@ -250,9 +250,9 @@ class Arac3DataTests(unittest.TestCase):
             source,
         )
 
-        categories_match = re.search(r"const categories=\\[(.*?)\\];", source, re.S)
-        self.assertIsNotNone(categories_match)
-        categories = re.findall(r"'([^']+)'", categories_match.group(1))
+        categories_line = next(line for line in source.splitlines() if line.startswith("const categories="))
+
+        categories = re.findall(r"'([^']+)'", categories_line)
         self.assertEqual(len(categories), 17)
         self.assertIn("Kalp Hastalıkları", categories)
         self.assertIn("Amputasyonlar", categories)
