@@ -224,6 +224,34 @@ class Arac3DataTests(unittest.TestCase):
             ],
         )
 
+    def test_category_chips_use_desktop_grid_layout_and_icons(self):
+        source = HTML.read_text(encoding="utf-8")
+        self.assertIn('id="arac3-category-grid"', source)
+        self.assertIn("grid-template-columns:repeat(3,minmax(0,1fr))", source)
+        self.assertIn("const categoryIcons=", source)
+        self.assertIn("class=\"chip-icon\"", source)
+        self.assertIn("categories.map(c=>", source)
+        for category in (
+            "Nörolojik Hastalıklar",
+            "Psikiyatrik Hastalıklar",
+            "Göz Hastalıkları",
+            "Kulak Burun Boğaz Hastalıkları",
+            "Onkolojik Hastalıklar",
+            "Hematolojik Hastalıklar",
+            "Ortopedi ve Travmatolojik Hastalıklar",
+            "Amputasyonlar",
+            "Romatolojik Hastalıklar",
+            "Gastroenterolojik Hastalıklar",
+            "Dermatolojik Hastalıklar",
+            "Kalp Hastalıkları",
+            "Damar Hastalıkları",
+            "Üriner Sistem Hastalıkları",
+            "Endokrinoloji ve Metabolizma Hastalıkları",
+            "Göğüs Hastalıkları",
+            "Enfeksiyon Hastalıkları",
+        ):
+            self.assertIn(category, source)
+
     def test_expected_fas_connections(self):
         expected = {
             "Parapleji/Paraparezi, Monopleji/Monoparezi, Hemipleji/Hemiparezi, Kuadripleji/Kuadriparezi vb. motor kaybı olanlar",
