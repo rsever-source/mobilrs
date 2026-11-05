@@ -193,7 +193,7 @@ class Arac3DataTests(unittest.TestCase):
     def test_amputation_category_filters_exact_six_diseases(self):
         source = HTML.read_text(encoding="utf-8")
         ids_match = re.search(
-            r"const AMPUTASYON_DISEASE_IDS = new Set\\(\\[(.*?)\\]\\);",
+            r"const AMPUTASYON_DISEASE_IDS = new Set\(\[(.*?)\]\);",
             source,
             re.S,
         )
