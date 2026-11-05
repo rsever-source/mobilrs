@@ -190,6 +190,40 @@ class Arac3DataTests(unittest.TestCase):
             6,
         )
 
+    def test_amputation_category_filters_exact_six_diseases(self):
+        source = HTML.read_text(encoding="utf-8")
+        ids_match = re.search(
+            r"const AMPUTASYON_DISEASE_IDS = new Set\\(\\[(.*?)\\]\\);",
+            source,
+            re.S,
+        )
+        self.assertIsNotNone(ids_match, "Amputasyon kategori kimlik kümesi bulunamadı")
+        actual_ids = set(re.findall(r"""['"]([^'"]+)['"]""", ids_match.group(1)))
+        expected_ids = {"d088", "d089", "d090", "d091", "d096", "d097"}
+        self.assertEqual(actual_ids, expected_ids)
+        self.assertIn("function matchesCategory(d, selectedCategory)", source)
+        self.assertIn("selectedCategory === 'Amputasyonlar'", source)
+        self.assertIn("AMPUTASYON_DISEASE_IDS.has(d.id)", source)
+        self.assertIn("diseases.filter(d=>matchesCategory(d,category)", source)
+
+        records_by_id = {record["id"]: record for record in self.records}
+        self.assertEqual(set(records_by_id) & expected_ids, expected_ids)
+        self.assertTrue(all(
+            records_by_id[record_id]["category"] == "Ortopedi ve Travmatolojik Hastalıklar"
+            for record_id in expected_ids
+        ))
+        self.assertEqual(
+            [records_by_id[record_id]["name"] for record_id in sorted(expected_ids)],
+            [
+                "Skapulotorasik (tek taraflı)",
+                "Omuz dezartikülasyonu (tek taraflı)",
+                "Kol (omuz ile dirsek arası) (tek taraflı)",
+                "Dirsek dezartikülasyonu (tek taraflı)",
+                "Hemipelvektomi",
+                "Kalça dezartikülasyonu (tek taraflı)",
+            ],
+        )
+
     def test_expected_fas_connections(self):
         expected = {
             "Parapleji/Paraparezi, Monopleji/Monoparezi, Hemipleji/Hemiparezi, Kuadripleji/Kuadriparezi vb. motor kaybı olanlar",

@@ -330,13 +330,23 @@ function renderLevelPicker(d,m){
     '<div class="level-picker-actions"><button type="button" class="add-level" '+(validSelection?'':'disabled')+'>Listeye Ekle</button><button type="button" class="cancel-level">Vazgeç</button></div>'+
     '<p class="level-picker-note">Yalnızca bu hastalık için Ek-1’de bulunan düzeyler gösterilir. Düzey seçimi kullanıcıya aittir; araç tıbbi uygunluk veya SGK kararı vermez.</p></section>';
 }
+const AMPUTASYON_DISEASE_IDS = new Set([
+  'd088', 'd089', 'd090', 'd091', 'd096', 'd097'
+]);
+function matchesCategory(d, selectedCategory) {
+  if (!selectedCategory) return true;
+  if (selectedCategory === 'Amputasyonlar') {
+    return AMPUTASYON_DISEASE_IDS.has(d.id);
+  }
+  return d.category === selectedCategory;
+}
 function renderResults(){
   let q=$('search').value.trim().toLocaleLowerCase('tr-TR');
   if(!q&&!category){
     $('results').innerHTML='<div class="empty">Hastalıkları görmek için arama yapın veya bir branş seçin.</div>';
     return;
   }
-  let rows=diseases.filter(d=>(!category||(category!='Amputasyonlar'&&d.category===category)||['MEVCUT-088','MEVCUT-089','MEVCUT-090','MEVCUT-091','MEVCUT-096','MEVCUT-097'].includes(d.mevcut_kayit_id))&&(!q||(d.name+' '+d.aliases.join(' ')).toLocaleLowerCase('tr-TR').includes(q)));
+  let rows=diseases.filter(d=>matchesCategory(d,category)&&(!q||(d.name+' '+d.aliases.join(' ')).toLocaleLowerCase('tr-TR').includes(q)));
   $('results').innerHTML=rows.length?rows.map(d=>{
     let m=mapFor(d.id);
     let levels=orderedLevels(m);
