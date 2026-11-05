@@ -125,8 +125,10 @@ class Arac3DataTests(unittest.TestCase):
         self.assertIn("data-level=", source)
         self.assertIn("Seçilen düzey:", source)
         self.assertIn("entry.levelKey", source)
-        self.assertIn("Her hastalık için yalnızca seçtiğiniz düzeyin kendi kriteri gösterilir", source)
+        self.assertIn("Her hastalık için yalnızca seçilen düzeyin kriteri gösterilir", source)
         self.assertIn("Bu düzey başlığı kaynak veride bulunuyor ancak kriter metni boş", source)
+        self.assertIn("function levelIsSelectable(level)", source)
+        self.assertIn("level.secim_izinli===true", source)
 
         mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
         data = json.loads(mapping_path.read_text(encoding="utf-8"))
@@ -154,6 +156,39 @@ class Arac3DataTests(unittest.TestCase):
         )
         self.assertNotIn("Klinik Kognitif Değerlendirme Skoru (KDS)", mild["kriter"])
         self.assertNotIn("Günlük aktivite:", mild["kriter"])
+
+    def test_empty_criteria_amputation_levels_are_selectable(self):
+        mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
+        data = json.loads(mapping_path.read_text(encoding="utf-8"))
+        expected_ids = {
+            "MEVCUT-088", "MEVCUT-089", "MEVCUT-090", "MEVCUT-091",
+            "MEVCUT-096", "MEVCUT-097",
+        }
+        flagged = {
+            row["mevcut_kayit_id"]
+            for row in data["kayitlar"]
+            for level in (row.get("duzeyler") or [])
+            if level.get("secim_izinli") is True
+        }
+        self.assertEqual(flagged, expected_ids)
+
+        by_id = {row["mevcut_kayit_id"]: row for row in data["kayitlar"]}
+        for record_id in expected_ids:
+            row = by_id[record_id]
+            self.assertFalse(row["kriter_metni_var"], record_id)
+            self.assertEqual(row["kriter_metni_bos_duzeyler"], ["Ağır"], record_id)
+            self.assertEqual(len(row["duzeyler"]), 1, record_id)
+            level = row["duzeyler"][0]
+            self.assertEqual(level["anahtar"], "agir", record_id)
+            self.assertEqual(level["kriter"], "", record_id)
+            self.assertEqual(level["kriter_durumu"], "baslik_var_metin_yok", record_id)
+
+        # Bu 6 kayit disinda secim izni verilmemis olmali.
+        self.assertEqual(
+            len([level for row in data["kayitlar"] for level in (row.get("duzeyler") or [])
+                 if "secim_izinli" in level]),
+            6,
+        )
 
     def test_expected_fas_connections(self):
         expected = {
