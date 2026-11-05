@@ -372,7 +372,7 @@ function renderSelected(){
     const m=mapFor(entry.id);
     const level=orderedLevels(m).find(item=>item.anahtar===entry.levelKey);
     const selectedDetail=level&&typeof level.kriter==='string'&&level.kriter.trim()
-      ?'<article class="selected-level"><h3>'+esc(level.baslik||((level.duzey||'')+' Düzeyde Çalışma Gücüne Neden Olan Durumlar'))+'</h3><p>'+esc(level.kriter)+'</p></article>'
+      ?'<article class="selected-level"><h3>'+esc(level.baslik||((level.duzey||'')+' Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar'))+'</h3><p>'+esc(level.kriter)+'</p></article>'
       :'<div class="empty">Seçilen düzeyin kriter metni bulunamadı; kayıt yeniden kontrol edilmelidir.</div>';
     return '<section class="selected-detail"><div class="selected-item"><strong>'+esc(d.name)+'</strong><button type="button" class="remove" data-id="'+entry.id+'">Kaldır</button></div><div class="meta">'+esc(m?.ek1_brans||d.category)+' · '+esc(m?.ek1_resmi_ad||'Ek-1 eşleştirmesi bulunamadı')+'</div><div class="selected-level-label">Seçilen düzey: <strong>'+esc(level?.duzey||'Belirtilmemiş')+'</strong></div>'+selectedDetail+'<div class="criteria-source">'+esc(sourceLabel(m))+'<br>Resmî madde: '+esc(m?.ek1_madde_no??'—')+' · Eşleşme: '+esc(m?.eslesme_durumu||'Yok')+'</div><div class="mapping-note">'+(m?.kaynak_dogrulama==='metin_ve_gorsel_kontrol_edildi'?'Kaynak metni ve PDF görüntüsü kontrol edildi.':'Metin katmanı aktarılmıştır; bu eşleştirmenin PDF görüntüsüyle ayrıca doğrulanması beklenmektedir.')+'</div></section>';
   }).join('');
