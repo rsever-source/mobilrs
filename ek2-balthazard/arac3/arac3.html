@@ -235,84 +235,79 @@ body.high-contrast .selected-count{background:#000;color:#fff;border:1px solid #
 }
 
 </style>
-<style id="arac3-category-grid">
-/* Araç 3 kategori seçicileri: masaüstünde referans görseldeki kart düzeni */
-.chips{
+<style id="arac3-branch-grid">
+/* Gönderilen örnekten uyarlanan üç sütunlu, ikonlu branş seçimi */
+.branch-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:10px;
-  margin:16px 0 8px;
-  align-items:stretch;
+  gap:12px;
+  margin:14px 0 4px;
 }
-.chip{
+.branch-btn{
   display:flex;
   align-items:center;
-  justify-content:flex-start;
   gap:10px;
   width:100%;
-  min-height:48px;
-  padding:10px 14px;
-  border:1px solid #d7dee8;
-  border-radius:13px;
-  background:var(--card);
-  color:var(--ink);
+  min-height:54px;
+  padding:8px 16px;
+  background:#fff;
+  border:1px solid #cbd5e1;
+  border-radius:9999px;
+  cursor:pointer;
   text-align:left;
-  white-space:normal;
-  font-size:13px;
+  font-size:13.5px;
+  font-weight:600;
+  color:#0f172a;
   line-height:1.25;
-  font-weight:700;
-  box-shadow:0 1px 2px rgba(24,34,52,.035);
-  transition:border-color .16s ease,background .16s ease,box-shadow .16s ease;
+  transition:all .15s ease;
 }
-.chip:hover{
-  border-color:#9bb8e8;
-  background:#f7faff;
-  box-shadow:0 3px 10px rgba(24,76,150,.07);
+.branch-btn:hover,.branch-btn.active{
+  border-color:#2563eb;
+  background-color:#f0f7ff;
 }
-.chip:focus-visible{
-  outline:3px solid rgba(11,87,227,.22);
+.branch-btn:focus-visible{
+  outline:3px solid rgba(37,99,235,.2);
   outline-offset:2px;
 }
-.chip.on{
-  background:#eaf1ff;
-  border-color:#8eb2f5;
-  color:#174da9;
-  box-shadow:inset 0 0 0 1px #b4ccf8;
-}
-.chip-icon{
-  display:inline-flex;
-  flex:0 0 23px;
-  width:23px;
-  height:23px;
-  align-items:center;
-  justify-content:center;
-  color:#7b8ba4;
-}
-.chip-icon svg{
+.branch-btn svg{
   display:block;
-  width:21px;
-  height:21px;
+  width:22px;
+  height:22px;
+  flex:0 0 22px;
   fill:none;
   stroke:currentColor;
-  stroke-width:1.7;
+  stroke-width:1.8;
   stroke-linecap:round;
   stroke-linejoin:round;
+  color:#64748b;
 }
-.chip.on .chip-icon{color:#2762c5}
-body.dark-mode .chip{background:#1a2636;border-color:#45566d;color:#edf2f8}
-body.dark-mode .chip:hover{background:#22334a;border-color:#7898c8}
-body.dark-mode .chip.on{background:#203b66;border-color:#6b9eea;color:#fff}
-body.dark-mode .chip-icon{color:#a8b9d2}
-body.high-contrast .chip{border:2px solid #000;border-radius:10px;background:#fff;color:#000;box-shadow:none}
-body.high-contrast .chip.on{background:#000;color:#fff}
-@media(max-width:980px){
-  .chips{grid-template-columns:repeat(2,minmax(0,1fr))}
+.branch-btn:hover svg,.branch-btn.active svg{color:#2563eb}
+.branch-btn span{min-width:0}
+body.dark-mode .branch-btn{
+  background:#1a2636;
+  border-color:#45566d;
+  color:#edf2f8;
 }
-@media(max-width:640px){
-  .chips{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
-  .chip{min-height:44px;padding:8px 10px;font-size:12px;gap:7px}
-  .chip-icon{flex-basis:20px;width:20px;height:20px}
-  .chip-icon svg{width:19px;height:19px}
+body.dark-mode .branch-btn:hover,body.dark-mode .branch-btn.active{
+  background:#203b66;
+  border-color:#6b9eea;
+  color:#fff;
+}
+body.high-contrast .branch-btn{
+  background:#fff;
+  color:#000;
+  border:2px solid #000;
+  box-shadow:none;
+}
+body.high-contrast .branch-btn.active{
+  background:#000;
+  color:#fff;
+}
+@media(max-width:992px){
+  .branch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:576px){
+  .branch-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -349,7 +344,7 @@ body.high-contrast .chip.on{background:#000;color:#fff}
   <a class="sekme" href="/arac2">Balthazard Hesapla</a>
   <a class="sekme" href="/arac3" aria-current="page">Çalışma Gücü Kaybı</a>
 </nav>
-<main id="main" class="main" tabindex="-1"><div class="page-head"><h1>Maluliyet ve Çalışma Gücü Kaybı Rehberi</h1></div><div class="intro"><b>Ek-1 Hastalık Listesi rehberi</b><br>Hastalık veya durumu arayın; ilgili branş, FAS ve kaynak kapsamını inceleyin.<div class="notice">Bu araç bilgi amaçlıdır. Kesin karar sağlık kurulu raporu ve SGK Sağlık Kurulu tarafından verilir. Klinik kriteri doğrulanmamış kayıtlar düzey üretmez.</div><div id="noticeMapping" class="mapping-note" aria-live="polite">182 hastalık kaydı ve Ek-1 düzeyleri bu sayfanın içinde sabit veridir; ayrı bir yükleme isteği gerekmez.</div></div><div class="layout"><section class="panel"><label class="field" for="search">Hastalık veya durum arayın</label><input id="search" class="input" placeholder="Örn. MS, KOAH, diyaliz, felç, şizofreni" autocomplete="off"><div id="chips" class="chips" aria-label="Hastalık branşları"></div><div id="results" class="results" aria-live="polite"></div></section><aside class="panel selected-panel"><h2 class="selected-heading">Seçtikleriniz <span id="selectedCount" class="selected-count">0</span></h2><div id="selected" class="selected"></div><div id="summary"></div><section class="fas"><h2>FAS rehberi</h2><div class="fas-row"><b>FAS 0</b><span>Yürüyemez veya iki kişinin yardımına ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 1</b><span>Sürekli fiziksel desteğe ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 2</b><span>Aralıklı veya hafif dokunarak yardıma ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 3</b><span>Gözetim veya sözel yönlendirme gerekir.</span><span class="severity medium">Orta</span></div><div class="fas-row"><b>FAS 4</b><span>Eğim/merdivende yardım gerekir.</span><span class="severity light">Hafif</span></div><div class="fas-row"><b>FAS 5</b><span>Her zeminde bağımsız yürür.</span><span class="severity">Etkilemez</span></div></section></aside></div></main>
+<main id="main" class="main" tabindex="-1"><div class="page-head"><h1>Maluliyet ve Çalışma Gücü Kaybı Rehberi</h1></div><div class="intro"><b>Ek-1 Hastalık Listesi rehberi</b><br>Hastalık veya durumu arayın; ilgili branş, FAS ve kaynak kapsamını inceleyin.<div class="notice">Bu araç bilgi amaçlıdır. Kesin karar sağlık kurulu raporu ve SGK Sağlık Kurulu tarafından verilir. Klinik kriteri doğrulanmamış kayıtlar düzey üretmez.</div><div id="noticeMapping" class="mapping-note" aria-live="polite">182 hastalık kaydı ve Ek-1 düzeyleri bu sayfanın içinde sabit veridir; ayrı bir yükleme isteği gerekmez.</div></div><div class="layout"><section class="panel"><label class="field" for="search">Hastalık veya durum arayın</label><input id="search" class="input" placeholder="Örn. MS, KOAH, diyaliz, felç, şizofreni" autocomplete="off"><div id="chips" class="branch-grid" aria-label="Hastalık branşları"></div><div id="results" class="results" aria-live="polite"></div></section><aside class="panel selected-panel"><h2 class="selected-heading">Seçtikleriniz <span id="selectedCount" class="selected-count">0</span></h2><div id="selected" class="selected"></div><div id="summary"></div><section class="fas"><h2>FAS rehberi</h2><div class="fas-row"><b>FAS 0</b><span>Yürüyemez veya iki kişinin yardımına ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 1</b><span>Sürekli fiziksel desteğe ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 2</b><span>Aralıklı veya hafif dokunarak yardıma ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 3</b><span>Gözetim veya sözel yönlendirme gerekir.</span><span class="severity medium">Orta</span></div><div class="fas-row"><b>FAS 4</b><span>Eğim/merdivende yardım gerekir.</span><span class="severity light">Hafif</span></div><div class="fas-row"><b>FAS 5</b><span>Her zeminde bağımsız yürür.</span><span class="severity">Etkilemez</span></div></section></aside></div></main>
 <footer class="alt-bilgi">
   <p>Bu araç, Ek-1 çalışma gücü kaybı kriterlerini incelemeye yardımcı olur. SGK Sağlık Kurulu veya sağlık kurulu kararı yerine geçmez.</p>
   <p>Veri dayanağı: 28.09.2021 tarihli Resmî Gazete Ek-1 Hastalık Listesi. Her hastalık için mevcut düzeyler ve kriterler kendi kaynak sayfa bilgisiyle gösterilir.</p>
@@ -400,10 +395,11 @@ const categoryIcons={
 function renderChips(){
   $('chips').innerHTML=categories.map(c=>{
     const icon=categoryIcons[c]||'<circle cx="12" cy="12" r="8"/>';
-    return '<button type="button" class="chip '+(c===category?'on':'')+'" aria-pressed="'+(c===category?'true':'false')+'"><span class="chip-icon" aria-hidden="true"><svg viewBox="0 0 24 24">'+icon+'</svg></span><span>'+esc(c)+'</span></button>';
+    return '<button type="button" class="branch-btn '+(c===category?'active':'')+'" data-branch="'+esc(c)+'" aria-pressed="'+(c===category?'true':'false')+'"><svg viewBox="0 0 24 24" aria-hidden="true">'+icon+'</svg><span>'+esc(c)+'</span></button>';
   }).join('');
-  $('chips').querySelectorAll('.chip').forEach((b,i)=>b.addEventListener('click',()=>{
-    category=category===categories[i]?null:categories[i];
+  $('chips').querySelectorAll('.branch-btn').forEach(button=>button.addEventListener('click',()=>{
+    const selectedBranch=button.dataset.branch;
+    category=category===selectedBranch?null:selectedBranch;
     renderChips();renderResults();
   }));
 }
