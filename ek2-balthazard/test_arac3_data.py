@@ -224,6 +224,46 @@ class Arac3DataTests(unittest.TestCase):
             ],
         )
 
+    def test_arac3_category_pills_match_arac1_and_hide_desktop_home_shortcut(self):
+        source = HTML.read_text(encoding="utf-8")
+        arac1_path = Path(__file__).parent / "arac1" / "arac1.html"
+        arac1 = arac1_path.read_text(encoding="utf-8")
+
+        # Araç 1'deki branş/kategori kapsüllerinin temel ölçü ve renkleri.
+        for rule in (
+            ".cipler{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:4px 0 14px;overflow:visible}",
+            ".cip{min-width:0;width:100%;border:1px solid #d5e2f2;background:#fff;color:#172642;padding:8px 8px;border-radius:999px;font-size:13px;line-height:1.25;font-family:inherit;cursor:pointer;white-space:normal;overflow-wrap:anywhere}",
+            '.cip[aria-pressed="true"]{background:#dceeff;border-color:#78baff;color:#064eb5;font-weight:700}',
+        ):
+            self.assertIn(rule, arac1)
+
+        self.assertIn(
+            ".chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:4px 0 14px;overflow:visible}",
+            source,
+        )
+        self.assertIn(
+            ".chip{min-width:0;width:100%;border:1px solid #d5e2f2;background:#fff;color:#172642;padding:8px 8px;border-radius:999px;font-size:13px;line-height:1.25;font-family:inherit;cursor:pointer;white-space:normal;overflow-wrap:anywhere}",
+            source,
+        )
+        self.assertIn(
+            '.chip[aria-pressed="true"],.chip.on{background:#dceeff;border-color:#78baff;color:#064eb5;font-weight:700}',
+            source,
+        )
+
+        categories_match = re.search(r"const categories=\\[(.*?)\\];", source, re.S)
+        self.assertIsNotNone(categories_match)
+        categories = re.findall(r"'([^']+)'", categories_match.group(1))
+        self.assertEqual(len(categories), 17)
+        self.assertIn("Kalp Hastalıkları", categories)
+        self.assertIn("Amputasyonlar", categories)
+
+        # Yalnızca scroll ile açılan masaüstü kısayolu kaldırılmalı;
+        # dar ekranda kullanılan başlık bağlantısı korunmalı.
+        self.assertNotIn('<a class="site-scroll-home"', source)
+        self.assertNotIn('document.querySelector(".site-scroll-home")', source)
+        self.assertIn('<a class="site-mobile-home"', source)
+        self.assertIn("grid-template-areas:\\"brand home\\" \\"tools tools\\"", source)
+
     def test_expected_fas_connections(self):
         expected = {
             "Parapleji/Paraparezi, Monopleji/Monoparezi, Hemipleji/Hemiparezi, Kuadripleji/Kuadriparezi vb. motor kaybı olanlar",
