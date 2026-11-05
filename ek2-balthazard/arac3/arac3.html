@@ -196,6 +196,42 @@ body.high-contrast .choose-level,body.high-contrast .level-picker,body.high-cont
   .app{padding-top:0!important}
   .site-scroll-home{display:none!important}
 }
+
+/* Araç 3: daha belirgin hastalık kartları ve seçilenler paneli */
+.result{align-items:center;border:1px solid #d7e2f1;border-radius:16px;padding:16px;background:var(--card);box-shadow:0 2px 9px rgba(18,44,80,.045)}
+.result h2{font-size:17px;line-height:1.4;font-weight:850;letter-spacing:-.2px;color:var(--ink);margin:0 0 6px}
+.result .meta{font-size:12px;margin-bottom:3px}
+.result .tags{margin-top:9px}
+.result .result-source{font-size:11px;line-height:1.5}
+.selected-panel{border-color:#cbdcf6;background:linear-gradient(180deg,var(--card),var(--soft));box-shadow:0 5px 18px rgba(18,44,80,.06)}
+.selected-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px;font-size:21px;line-height:1.3;font-weight:850;letter-spacing:-.35px}
+.selected-count{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 9px;border-radius:999px;background:var(--blue);color:#fff;font-size:13px;font-weight:850}
+.selected-detail{margin:10px 0;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:0 2px 8px rgba(18,44,80,.04)}
+.selected-item{align-items:center;padding:0 0 10px;margin-bottom:8px;border-bottom:1px solid var(--line);font-size:14px}
+.selected-item strong{font-size:16px;line-height:1.4;font-weight:850;color:var(--ink)}
+.remove{flex:0 0 auto;padding:5px 8px;border-radius:7px;font-size:12px;font-weight:750}
+.selected-level-label{margin:9px 0 11px;padding:8px 10px;border-radius:9px;background:var(--soft);font-size:12px;color:var(--muted)}
+.selected-level{padding:12px;border:1px solid #dce5f2;border-radius:12px;background:var(--card)}
+.selected-level h3{font-size:14px;line-height:1.45;margin:0 0 8px;font-weight:850}
+.selected-level p{font-size:13px;line-height:1.65;margin:0;white-space:pre-wrap}
+.summary{border:1px solid #d4e3fa;background:var(--soft);padding:14px;font-size:12px;line-height:1.65}
+.criteria-check{display:none}
+body.dark-mode .result,body.dark-mode .selected-panel,body.dark-mode .selected-detail,body.dark-mode .selected-level{background:var(--card);border-color:var(--line)}
+body.high-contrast .selected-count{background:#000;color:#fff;border:1px solid #000}
+@media(max-width:900px){
+ .result{align-items:flex-start;padding:13px;gap:10px}
+ .result h2{font-size:16px}
+ .choose-level{padding:9px 10px;font-size:12px;white-space:normal;min-width:104px}
+ .selected-panel{margin-top:2px}
+ .selected-heading{font-size:20px}
+ .selected-detail{padding:12px}
+}
+@media(max-width:420px){
+ .result{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ .choose-level{justify-self:start}
+ .selected-item strong{font-size:15px}
+}
+
 </style>
 </head>
 <body><a class="skip-link" href="#main-content">İçeriğe geç</a><div class="app">
@@ -231,7 +267,7 @@ body.high-contrast .choose-level,body.high-contrast .level-picker,body.high-cont
   <a class="sekme" href="/arac2">Balthazard Hesapla</a>
   <a class="sekme" href="/arac3" aria-current="page">Çalışma Gücü Kaybı</a>
 </nav>
-<main id="main" class="main" tabindex="-1"><div class="page-head"><h1>Maluliyet ve Çalışma Gücü Kaybı Rehberi</h1></div><div class="intro"><b>Ek-1 Hastalık Listesi rehberi</b><br>Hastalık veya durumu arayın; ilgili branş, FAS ve kaynak kapsamını inceleyin.<div class="notice">Bu araç bilgi amaçlıdır. Kesin karar sağlık kurulu raporu ve SGK Sağlık Kurulu tarafından verilir. Klinik kriteri doğrulanmamış kayıtlar düzey üretmez.</div><div id="noticeMapping" class="mapping-note" aria-live="polite">182 hastalık kaydı ve Ek-1 düzeyleri bu sayfanın içinde sabit veridir; ayrı bir yükleme isteği gerekmez.</div></div><div class="layout"><section class="panel"><label class="field" for="search">Hastalık veya durum arayın</label><input id="search" class="input" placeholder="Örn. MS, KOAH, diyaliz, felç, şizofreni" autocomplete="off"><div id="chips" class="chips" aria-label="Hastalık branşları"></div><div id="results" class="results" aria-live="polite"></div></section><aside class="panel"><b>Seçtikleriniz</b><div id="selected" class="selected"></div><div id="summary"></div><section class="fas"><h2>FAS rehberi</h2><div class="fas-row"><b>FAS 0</b><span>Yürüyemez veya iki kişinin yardımına ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 1</b><span>Sürekli fiziksel desteğe ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 2</b><span>Aralıklı veya hafif dokunarak yardıma ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 3</b><span>Gözetim veya sözel yönlendirme gerekir.</span><span class="severity medium">Orta</span></div><div class="fas-row"><b>FAS 4</b><span>Eğim/merdivende yardım gerekir.</span><span class="severity light">Hafif</span></div><div class="fas-row"><b>FAS 5</b><span>Her zeminde bağımsız yürür.</span><span class="severity">Etkilemez</span></div></section></aside></div></main>
+<main id="main" class="main" tabindex="-1"><div class="page-head"><h1>Maluliyet ve Çalışma Gücü Kaybı Rehberi</h1></div><div class="intro"><b>Ek-1 Hastalık Listesi rehberi</b><br>Hastalık veya durumu arayın; ilgili branş, FAS ve kaynak kapsamını inceleyin.<div class="notice">Bu araç bilgi amaçlıdır. Kesin karar sağlık kurulu raporu ve SGK Sağlık Kurulu tarafından verilir. Klinik kriteri doğrulanmamış kayıtlar düzey üretmez.</div><div id="noticeMapping" class="mapping-note" aria-live="polite">182 hastalık kaydı ve Ek-1 düzeyleri bu sayfanın içinde sabit veridir; ayrı bir yükleme isteği gerekmez.</div></div><div class="layout"><section class="panel"><label class="field" for="search">Hastalık veya durum arayın</label><input id="search" class="input" placeholder="Örn. MS, KOAH, diyaliz, felç, şizofreni" autocomplete="off"><div id="chips" class="chips" aria-label="Hastalık branşları"></div><div id="results" class="results" aria-live="polite"></div></section><aside class="panel selected-panel"><h2 class="selected-heading">Seçtikleriniz <span id="selectedCount" class="selected-count">0</span></h2><div id="selected" class="selected"></div><div id="summary"></div><section class="fas"><h2>FAS rehberi</h2><div class="fas-row"><b>FAS 0</b><span>Yürüyemez veya iki kişinin yardımına ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 1</b><span>Sürekli fiziksel desteğe ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 2</b><span>Aralıklı veya hafif dokunarak yardıma ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 3</b><span>Gözetim veya sözel yönlendirme gerekir.</span><span class="severity medium">Orta</span></div><div class="fas-row"><b>FAS 4</b><span>Eğim/merdivende yardım gerekir.</span><span class="severity light">Hafif</span></div><div class="fas-row"><b>FAS 5</b><span>Her zeminde bağımsız yürür.</span><span class="severity">Etkilemez</span></div></section></aside></div></main>
 <footer class="alt-bilgi">
   <p>Bu araç, Ek-1 çalışma gücü kaybı kriterlerini incelemeye yardımcı olur. SGK Sağlık Kurulu veya sağlık kurulu kararı yerine geçmez.</p>
   <p>Veri dayanağı: 28.09.2021 tarihli Resmî Gazete Ek-1 Hastalık Listesi. Her hastalık için mevcut düzeyler ve kriterler kendi kaynak sayfa bilgisiyle gösterilir.</p>
@@ -324,6 +360,7 @@ function renderResults(){
   }));
 }
 function renderSelected(){
+  const count=$('selectedCount'); if(count) count.textContent=String(selected.length);
   if(!selected.length){
     $('selected').innerHTML='<div class="empty">Henüz hastalık eklemediniz. Arama listesinden bir hastalık seçip size uyan düzeyi işaretleyin.</div>';
     $('summary').innerHTML='';
@@ -334,24 +371,20 @@ function renderSelected(){
     if(!d)return '';
     const m=mapFor(entry.id);
     const level=orderedLevels(m).find(item=>item.anahtar===entry.levelKey);
-    const key=m&&level?m.mevcut_kayit_id+'|'+level.anahtar:'';
     const selectedDetail=level&&typeof level.kriter==='string'&&level.kriter.trim()
-      ?'<article class="selected-level"><h3>'+esc(level.baslik||((level.duzey||'')+' Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar'))+'</h3><p>'+esc(level.kriter)+'</p><label class="criteria-check"><input type="checkbox" data-criterion="'+esc(key)+'" '+(markedCriteria.has(key)?'checked':'')+'> Bu kriteri kişisel not olarak işaretle</label></article>'
+      ?'<article class="selected-level"><h3>'+esc(level.baslik||((level.duzey||'')+' Düzeyde Çalışma Gücüne Neden Olan Durumlar'))+'</h3><p>'+esc(level.kriter)+'</p></article>'
       :'<div class="empty">Seçilen düzeyin kriter metni bulunamadı; kayıt yeniden kontrol edilmelidir.</div>';
     return '<section class="selected-detail"><div class="selected-item"><strong>'+esc(d.name)+'</strong><button type="button" class="remove" data-id="'+entry.id+'">Kaldır</button></div><div class="meta">'+esc(m?.ek1_brans||d.category)+' · '+esc(m?.ek1_resmi_ad||'Ek-1 eşleştirmesi bulunamadı')+'</div><div class="selected-level-label">Seçilen düzey: <strong>'+esc(level?.duzey||'Belirtilmemiş')+'</strong></div>'+selectedDetail+'<div class="criteria-source">'+esc(sourceLabel(m))+'<br>Resmî madde: '+esc(m?.ek1_madde_no??'—')+' · Eşleşme: '+esc(m?.eslesme_durumu||'Yok')+'</div><div class="mapping-note">'+(m?.kaynak_dogrulama==='metin_ve_gorsel_kontrol_edildi'?'Kaynak metni ve PDF görüntüsü kontrol edildi.':'Metin katmanı aktarılmıştır; bu eşleştirmenin PDF görüntüsüyle ayrıca doğrulanması beklenmektedir.')+'</div></section>';
   }).join('');
-  $('summary').innerHTML='<div class="summary"><strong>Çalışma gücü kaybı inceleme özeti</strong><br>'+selected.length+' hastalık eklendi. '+markedCriteria.size+' kriter kişisel not olarak işaretlendi.<br>Her hastalık için yalnızca seçtiğiniz düzeyin kendi kriteri gösterilir. Bu işaretlemeler resmî düzey veya SGK kararı değildir. Kriterlerin karşılanıp karşılanmadığı sağlık kurulu ve SGK tarafından değerlendirilir. Bu araç yüzde veya Balthazard hesabı yapmaz.</div>';
+  $('summary').innerHTML='<div class="summary"><strong>İnceleme özeti</strong><br>'+selected.length+' hastalık seçildi. Her hastalık için yalnızca seçilen düzeyin kriteri gösterilir. Kesin değerlendirme sağlık kurulu ve SGK tarafından yapılır; bu araç yüzde veya Balthazard hesabı üretmez.</div>';
   $('selected').querySelectorAll('.remove').forEach(b=>b.addEventListener('click',()=>{
     selected=selected.filter(entry=>entry.id!==b.dataset.id);
     renderResults();renderSelected();
   }));
-  $('selected').querySelectorAll('[data-criterion]').forEach(c=>c.addEventListener('change',()=>{
-    if(c.checked)markedCriteria.add(c.dataset.criterion);else markedCriteria.delete(c.dataset.criterion);
-    renderSelected();
-  }));
+  
 }
 
-$('search').addEventListener('input',renderResults);renderChips();renderResults();renderSelected();document.getElementById('noticeMapping').textContent='Ek-1 eşleştirmesi hazır: '+ARAC3_MAPPING_DATA.kayitlar.length+' hastalık kaydı; '+ARAC3_MAPPING_DATA.ozet.en_az_bir_kriter_metni_dolu_mevcut_kayit+' kayıtta kriter metni mevcut, '+ARAC3_MAPPING_DATA.ozet.duzey_basligi_var_kriter_metni_bos_mevcut_kayit+' kayıtta kriter başlığı var ancak metin boş.';document.querySelector('.notice').textContent="Bu araç, seçtiğiniz hastalıkların Ek-1 çalışma gücü kaybı düzey ve kriterlerini incelemenize yardımcı olur. Kesin değerlendirme sağlık kurulu ve SGK tarafından yapılır; araç otomatik maluliyet kararı veya yüzde üretmez.";
+$('search').addEventListener('input',renderResults);renderChips();renderResults();renderSelected();document.getElementById('noticeMapping').textContent='Ek-1 eşleştirmesi hazır: '+ARAC3_MAPPING_DATA.kayitlar.length+' hastalık kaydı. Düzey ve kriterler sayfa içindeki sabit veriden gösterilir.';document.querySelector('.notice').textContent="Bu araç, seçtiğiniz hastalıkların Ek-1 çalışma gücü kaybı düzey ve kriterlerini incelemenize yardımcı olur. Kesin değerlendirme sağlık kurulu ve SGK tarafından yapılır; araç otomatik maluliyet kararı veya yüzde üretmez.";
 
 
 // Engelli.me ortak erişilebilirlik araçları — Araç 1 ve Araç 2 ile aynı davranış.
