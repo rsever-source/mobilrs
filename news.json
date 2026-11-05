@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T07:03:48.529214+00:00",
+  "updated_at": "2026-11-05T16:35:30.975508+00:00",
   "items": [
     {
       "id": "0b2d44cb714a6ffbe6b0",
@@ -122,7 +122,24 @@
       "created_at": "2026-10-25T11:49:31.733424+00:00"
     }
   ],
-  "pending": [],
+  "pending": [
+    {
+      "source": "Anadolu Ajansı – Engelli Yaşam",
+      "title": "Engelli adaylar ile işverenler 21. Engelsiz Kariyer Günleri'nde buluştu",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/engelli-adaylar-ile-isverenler-21-engelsiz-kariyer-gunlerinde-bulustu/1833009",
+      "description": "- 2008 yılında düzenlenmeye başlayan Engelsiz Kariyer Günleri, bugüne kadar 4 bin 500'den fazla engelli adayın istihdamına aracılık etti",
+      "published_at": "2026-11-05T00:00:00+00:00",
+      "id": "652030817bb4ca1d15b2"
+    },
+    {
+      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
+      "title": "05.11.2026 Kasım ayı yaşlı ve engelli aylıkları hesaplara yatırılmaya başlandı Haberin Detayı",
+      "url": "https://www.aile.gov.tr/haberler/kasim-ayi-yasli-ve-engelli-ayliklari-hesaplara-yatirilmaya-baslandi/",
+      "description": "05.11.2026 Kasım ayı yaşlı ve engelli aylıkları hesaplara yatırılmaya başlandı Haberin Detayı",
+      "published_at": "2026-11-05T00:00:00+00:00",
+      "id": "a2570b032b3123b0b9be"
+    }
+  ],
   "seen_urls": {
     "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/engellilere-yonelik-gunduzlu-ve-gecici-bakim-hizmetleri-yayginlastirilacak/1832970": "2026-10-30T13:14:39.698886+00:00",
     "https://www.sgk.gov.tr/duyuru/detay/Eczanelerden-Ilac-Teminine-Iliskin-Protokol-Hakkinda-2026-10-30-03-09-11": "2026-10-30T13:14:39.698886+00:00",
@@ -145,6 +162,10 @@
     "https://www.trthaber.com/haber/guncel/mulkiyede-ogrenciler-icin-kariyer-zirvesi-gerceklestirildi-962248.html": "2026-11-04T18:06:14.274049+00:00",
     "https://www.trthaber.com/haber/saglik/bakan-memisoglundan-organ-bagisi-cagrisi-32-bin-kisi-umut-bekliyor-962237.html": "2026-11-04T18:06:14.274049+00:00",
     "https://www.aile.gov.tr/haberler/otizm-eylem-plani-kapsaminda-206-bin-746-cocugun-gelisimleri-izlendi-ve-bireysel-mudahale-programlari-uygulandi/": "2026-11-04T18:06:14.274049+00:00",
-    "https://www.sgk.gov.tr/duyuru/detay/Bedeli-Odenecek-Ilaclar-Listesinde-Yapilan-Duzenlemeler-Hakkinda-Duyuru-202643-2026-11-04-06-22-08": "2026-11-04T18:06:14.274049+00:00"
+    "https://www.sgk.gov.tr/duyuru/detay/Bedeli-Odenecek-Ilaclar-Listesinde-Yapilan-Duzenlemeler-Hakkinda-Duyuru-202643-2026-11-04-06-22-08": "2026-11-04T18:06:14.274049+00:00",
+    "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/engelli-adaylar-ile-isverenler-21-engelsiz-kariyer-gunlerinde-bulustu/1833009": "2026-11-05T16:35:30.975508+00:00",
+    "https://www.trthaber.com/haber/guncel/bruksele-giden-ucak-bomba-ihbari-uzerine-bruksel-havalimanina-guvenli-inis-yapti-962333.html": "2026-11-05T16:35:30.975508+00:00",
+    "https://www.aile.gov.tr/haberler/kasim-ayi-yasli-ve-engelli-ayliklari-hesaplara-yatirilmaya-baslandi/": "2026-11-05T16:35:30.975508+00:00",
+    "https://www.sgk.gov.tr/duyuru/detay/Turkiye---Almanya-Danisma-Gunleri-Adana-01-02-03-Aralik-2026-2026-11-05-02-38-24": "2026-11-05T16:35:30.975508+00:00"
   }
 }
