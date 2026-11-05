@@ -262,7 +262,7 @@ class Arac3DataTests(unittest.TestCase):
         self.assertNotIn('<a class="site-scroll-home"', source)
         self.assertNotIn('document.querySelector(".site-scroll-home")', source)
         self.assertIn('<a class="site-mobile-home"', source)
-        self.assertIn("grid-template-areas:\\"brand home\\" \\"tools tools\\"", source)
+        self.assertIn('grid-template-areas:"brand home" "tools tools"', source)
 
     def test_expected_fas_connections(self):
         expected = {
