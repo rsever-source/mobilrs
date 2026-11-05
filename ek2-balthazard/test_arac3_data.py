@@ -248,8 +248,8 @@ class Arac3DataTests(unittest.TestCase):
         self.assertEqual(icon_categories, set(categories))
 
         # Örnek kodun özellikle korunmasını istediği iki branş da birebir bulunmalı.
-        self.assertIn("'Kalp Hastalıkları'", categories)
-        self.assertIn("'Amputasyonlar'", categories)
+        self.assertIn("Kalp Hastalıkları", categories)
+        self.assertIn("Amputasyonlar", categories)
 
     def test_expected_fas_connections(self):
         expected = {
