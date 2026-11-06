@@ -234,6 +234,41 @@ body.high-contrast .selected-count{background:#000;color:#fff;border:1px solid #
  .selected-item strong{font-size:15px}
 }
 
+
+/* Araç 3 — okunabilir metin ve uzun hastalık adları için esnek balonlar */
+.field{font-size:14px}
+.input{font-size:17px}
+.chips{align-items:stretch;grid-auto-rows:auto}
+.chip{
+  min-height:42px;
+  height:auto;
+  padding:9px 11px;
+  border-radius:14px;
+  font-size:14px;
+  font-weight:650;
+  line-height:1.4;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
+  text-align:center;
+}
+.chip[aria-pressed="true"],.chip.on{font-weight:750}
+.selected-heading{font-size:20px;font-weight:800;line-height:1.35}
+.selected-item{align-items:flex-start;flex-wrap:wrap;gap:8px 12px;font-size:14px;line-height:1.45}
+.selected-item strong{flex:1 1 180px;min-width:0;overflow-wrap:anywhere;word-break:normal}
+.selected-item .remove{flex:0 0 auto}
+.empty{font-size:14px;line-height:1.55}
+.summary{font-size:13px;line-height:1.6}
+.result h2{font-size:16px;line-height:1.45;overflow-wrap:anywhere}
+.meta{font-size:13px;line-height:1.45}
+.fas h2{font-size:18px}
+.fas-row{font-size:13px;line-height:1.45}
+.severity{font-size:11px}
+@media(max-width:640px){
+  .chip{font-size:14px;padding:9px 8px}
+  .selected-item strong{flex-basis:140px}
+}
+
 </style>
 </head>
 <body><a class="skip-link" href="#main-content">İçeriğe geç</a><div class="app">
@@ -269,7 +304,7 @@ body.high-contrast .selected-count{background:#000;color:#fff;border:1px solid #
   <a class="sekme" href="/arac2">Balthazard Hesapla</a>
   <a class="sekme" href="/arac3" aria-current="page">Çalışma Gücü Kaybı</a>
 </nav>
-<main id="main" class="main" tabindex="-1"><div class="page-head"><h1>Maluliyet ve Çalışma Gücü Kaybı Rehberi</h1></div><div class="intro"><b>Ek-1 Hastalık Listesi rehberi</b><br>Hastalık veya durumu arayın; ilgili branş, FAS ve kaynak kapsamını inceleyin.<div class="notice">Bu araç bilgi amaçlıdır. Kesin karar sağlık kurulu raporu ve SGK Sağlık Kurulu tarafından verilir. Klinik kriteri doğrulanmamış kayıtlar düzey üretmez.</div><div id="noticeMapping" class="mapping-note" aria-live="polite">182 hastalık kaydı ve Ek-1 düzeyleri bu sayfanın içinde sabit veridir; ayrı bir yükleme isteği gerekmez.</div></div><div class="layout"><section class="panel"><label class="field" for="search">Hastalık veya durum arayın</label><input id="search" class="input" placeholder="Örn. MS, KOAH, diyaliz, felç, şizofreni" autocomplete="off"><div id="chips" class="chips" aria-label="Hastalık branşları"></div><div id="results" class="results" aria-live="polite"></div></section><aside class="panel selected-panel"><h2 class="selected-heading">Seçtikleriniz <span id="selectedCount" class="selected-count">0</span></h2><div id="selected" class="selected"></div><div id="summary"></div><section class="fas"><h2>FAS rehberi</h2><div class="fas-row"><b>FAS 0</b><span>Yürüyemez veya iki kişinin yardımına ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 1</b><span>Sürekli fiziksel desteğe ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 2</b><span>Aralıklı veya hafif dokunarak yardıma ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 3</b><span>Gözetim veya sözel yönlendirme gerekir.</span><span class="severity medium">Orta</span></div><div class="fas-row"><b>FAS 4</b><span>Eğim/merdivende yardım gerekir.</span><span class="severity light">Hafif</span></div><div class="fas-row"><b>FAS 5</b><span>Her zeminde bağımsız yürür.</span><span class="severity">Etkilemez</span></div></section></aside></div></main>
+<main id="main" class="main" tabindex="-1"><div class="page-head"><h1>Maluliyet ve Çalışma Gücü Kaybı Rehberi</h1></div><div class="intro"><b>Ek-1 Hastalık Listesi rehberi</b><br>Hastalık veya durumu arayın; ilgili branş, FAS ve kaynak kapsamını inceleyin.<div class="notice">Bu araç bilgi amaçlıdır. Kesin karar sağlık kurulu raporu ve SGK Sağlık Kurulu tarafından verilir. Klinik kriteri doğrulanmamış kayıtlar düzey üretmez.</div><div id="noticeMapping" class="mapping-note" aria-live="polite">182 hastalık kaydı ve Ek-1 düzeyleri bu sayfanın içinde sabit veridir; ayrı bir yükleme isteği gerekmez.</div></div><div class="layout"><section class="panel"><label class="field" for="search">Hastalık veya durum arayın</label><input id="search" class="input" placeholder="Örn. MS, KOAH, diyaliz, felç, şizofreni" autocomplete="off"><div id="chips" class="chips" aria-label="Hastalık branşları"></div><div id="results" class="results" aria-live="polite"></div></section><aside class="panel selected-panel"><h2 class="selected-heading">Seçtikleriniz</h2><div id="selected" class="selected"></div><div id="summary"></div><section class="fas"><h2>FAS rehberi</h2><div class="fas-row"><b>FAS 0</b><span>Yürüyemez veya iki kişinin yardımına ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 1</b><span>Sürekli fiziksel desteğe ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 2</b><span>Aralıklı veya hafif dokunarak yardıma ihtiyaç duyar.</span><span class="severity heavy">Ağır</span></div><div class="fas-row"><b>FAS 3</b><span>Gözetim veya sözel yönlendirme gerekir.</span><span class="severity medium">Orta</span></div><div class="fas-row"><b>FAS 4</b><span>Eğim/merdivende yardım gerekir.</span><span class="severity light">Hafif</span></div><div class="fas-row"><b>FAS 5</b><span>Her zeminde bağımsız yürür.</span><span class="severity">Etkilemez</span></div></section></aside></div></main>
 <footer class="alt-bilgi">
   <p>Bu araç, Ek-1 çalışma gücü kaybı kriterlerini incelemeye yardımcı olur. SGK Sağlık Kurulu veya sağlık kurulu kararı yerine geçmez.</p>
   <p>Veri dayanağı: 28.09.2021 tarihli Resmî Gazete Ek-1 Hastalık Listesi. Her hastalık için mevcut düzeyler ve kriterler kendi kaynak sayfa bilgisiyle gösterilir.</p>
@@ -384,7 +419,6 @@ function renderResults(){
   }));
 }
 function renderSelected(){
-  const count=$('selectedCount'); if(count) count.textContent=String(selected.length);
   if(!selected.length){
     $('selected').innerHTML='<div class="empty">Henüz hastalık eklemediniz. Arama listesinden bir hastalık seçip size uyan düzeyi işaretleyin.</div>';
     $('summary').innerHTML='';
