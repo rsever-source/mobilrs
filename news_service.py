@@ -1173,6 +1173,7 @@ def update_news():
         },
         "filter_diagnostics": {
             "parsed_total": parsed_total,
+            "pending_total": len(pending),
             "counts": filter_counts,
             "examples": filter_examples if not candidates else {},
             "zero_candidates_is_not_an_error": True,
