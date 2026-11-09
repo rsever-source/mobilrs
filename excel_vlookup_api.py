@@ -1,4 +1,5 @@
-import asyncio, base64, hashlib, html as html_lib, io, json, os, re, secrets, sys, time, uuid, zipfile
+import asyncio, io, json, os, re, secrets, sys, time, uuid, zipfile
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
@@ -8,6 +9,12 @@ import requests
 from fastapi import BackgroundTasks, FastAPI, UploadFile, File, Form, Header, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse, FileResponse, JSONResponse, Response
 from starlette.background import BackgroundTask
+from security_utils import (
+    SlidingWindowLimiter,
+    csp_attr_hashes,
+    parse_content_length,
+    resolve_client_ip,
+)
 
 from tufe_service import get_current_tufe, save_cache
 from otv_service import get_otv_data, refresh_otv_data, _load as load_otv_cache
@@ -67,12 +74,6 @@ async def add_security_headers(request: Request, call_next):
     nonce = secrets.token_urlsafe(24)
     request.state.csp_nonce = nonce
     response = await call_next(request)
-    def csp_hash(value):
-        digest = hashlib.sha256(html_lib.unescape(value).encode("utf-8")).digest()
-        return "'sha256-" + base64.b64encode(digest).decode("ascii") + "'"
-    csp_sources = "\n".join((HOME_HTML, CHAT_HTML, KVKK_HTML, _ek2_html("arac1"), _ek2_html("arac2"), _ek2_html("arac3")))
-    script_attr_hashes = sorted({csp_hash(value) for value in re.findall(r'\bon(?:click|submit|change|input|load)\s*=\s*"([^"]*)"', csp_sources, re.IGNORECASE)})
-    style_attr_hashes = sorted({csp_hash(value) for value in re.findall(r'\bstyle\s*=\s*"([^"]*)"', csp_sources, re.IGNORECASE)})
     response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["X-Frame-Options"] = "DENY"
@@ -81,9 +82,9 @@ async def add_security_headers(request: Request, call_next):
     response.headers["Content-Security-Policy"] = (
         "default-src 'self'; "
         f"script-src 'self' 'nonce-{nonce}'; "
-        f"script-src-attr 'unsafe-hashes' {' '.join(script_attr_hashes)}; "
+        f"script-src-attr 'unsafe-hashes' {' '.join(_CSP_SCRIPT_ATTR_HASHES)}; "
         f"style-src 'self' 'nonce-{nonce}'; "
-        f"style-src-attr 'unsafe-hashes' {' '.join(style_attr_hashes)}; "
+        f"style-src-attr 'unsafe-hashes' {' '.join(_CSP_STYLE_ATTR_HASHES)}; "
         "img-src 'self' data:; "
         "font-src 'self' data:; "
         "connect-src 'self'; "
@@ -115,7 +116,7 @@ OUTPUT_DIR = "outputs"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 MAX_FILE_SIZE = 25 * 1024 * 1024
 MAX_ARCHIVE_ENTRIES = 2000
-MAX_ARCHIVE_UNCOMPRESSED = 100 * 1024 * 1024
+MAX_ARCHIVE_UNCOMPRESSED = 64 * 1024 * 1024
 MAX_EXCEL_ROWS = 200_000
 MAX_PDF_PAGES = 50
 MAX_PDF_ROWS = 100_000
@@ -124,33 +125,38 @@ RATE_LIMIT_WINDOW = 60
 UPLOAD_RATE_LIMIT = 6
 REFRESH_RATE_LIMIT_WINDOW = 300
 REFRESH_RATE_LIMIT = 1
-_RATE_LIMITS = {}
-_RATE_LIMIT_LOCK = asyncio.Lock()
+_RATE_LIMITS = SlidingWindowLimiter()
 _REFRESH_LOCK = asyncio.Lock()
+
+# Ağır dosya işlemleri (pandas/pdfplumber) aynı anda en fazla bu kadar
+# çalışır. Sınır, 512 MiB'lik Cloud Run örneğinde bellek taşmasını ve
+# zaman aşımına uğrayan işlerin birikmesini engeller.
+HEAVY_WORK_CONCURRENCY = 2
+HEAVY_WORK_QUEUE_TIMEOUT = 30
+_HEAVY_WORK_POOL = ThreadPoolExecutor(max_workers=HEAVY_WORK_CONCURRENCY, thread_name_prefix="heavy")
+_HEAVY_WORK_SLOTS = asyncio.Semaphore(HEAVY_WORK_CONCURRENCY)
+MAX_REQUEST_BODY = 2 * MAX_FILE_SIZE + 8 * 1024 * 1024
+UPLOAD_CHUNK_SIZE = 1024 * 1024
 MONTH_NAMES = {1:"Ocak",2:"Şubat",3:"Mart",4:"Nisan",5:"Mayıs",6:"Haziran",7:"Temmuz",8:"Ağustos",9:"Eylül",10:"Ekim",11:"Kasım",12:"Aralık"}
 
 
+def client_ip_from_request(request: Request) -> str:
+    """İstemci IP'sini platformun eklediği güvenilir değerden çözer.
+
+    Cloud Run, istemcinin gönderdiği X-Forwarded-For değerini koruyup gerçek
+    istemci IP'sini sona eklediği için yalnızca en sağdaki değer güvenilirdir.
+    """
+    return resolve_client_ip(
+        request.headers.get("x-forwarded-for", ""),
+        request.client.host if request.client else None,
+    )
+
+
 async def enforce_rate_limit(request: Request, bucket: str, limit: int, window: int):
-    forwarded = request.headers.get("x-forwarded-for", "")
-    client_ip = forwarded.split(",")[0].strip() if forwarded else ""
-    if not client_ip:
-        client_ip = request.client.host if request.client else "unknown"
-    key = f"{bucket}:{client_ip}"
-    now = time.monotonic()
-    async with _RATE_LIMIT_LOCK:
-        cutoff = now - window
-        for k in list(_RATE_LIMITS):
-            if not _RATE_LIMITS[k] or _RATE_LIMITS[k][-1] <= cutoff:
-                _RATE_LIMITS.pop(k, None)
-        hits = [t for t in _RATE_LIMITS.get(key, []) if t > cutoff]
-        if len(hits) >= limit:
-            retry_after = max(1, int(window - (now - hits[0])) + 1)
-            raise HTTPException(429, "Çok fazla istek. Lütfen biraz sonra tekrar deneyin.", headers={"Retry-After": str(retry_after)})
-        hits.append(now)
-        _RATE_LIMITS[key] = hits
-        if len(_RATE_LIMITS) > 4096:
-            oldest = min(_RATE_LIMITS, key=lambda k: _RATE_LIMITS[k][-1])
-            _RATE_LIMITS.pop(oldest, None)
+    client_ip = client_ip_from_request(request)
+    allowed, retry_after = _RATE_LIMITS.check(f"{bucket}:{client_ip}", limit, window)
+    if not allowed:
+        raise HTTPException(429, "Çok fazla istek. Lütfen biraz sonra tekrar deneyin.", headers={"Retry-After": str(retry_after)})
 
 
 def unique_output_path(ext):
@@ -163,11 +169,49 @@ def delete_file(path):
     except Exception: pass
 
 
+async def run_heavy_job(func, *args, timeout):
+    """Ağır işlemi sınırlı havuzda çalıştırır.
+
+    Zaman aşımında iş parçacığı durdurulamaz (Python bunu desteklemez) ama
+    yeni işler sıraya girer ve eşzamanlılık sabit kalır; böylece yavaş
+    istekler birikerek bellek/CPU tüketmez.
+    """
+    try:
+        await asyncio.wait_for(_HEAVY_WORK_SLOTS.acquire(), timeout=HEAVY_WORK_QUEUE_TIMEOUT)
+    except asyncio.TimeoutError:
+        raise HTTPException(503, "Sunucu şu anda yoğun. Lütfen biraz sonra tekrar deneyin.", headers={"Retry-After": "15"})
+    future = asyncio.get_running_loop().run_in_executor(_HEAVY_WORK_POOL, func, *args)
+    future.add_done_callback(lambda _future: _HEAVY_WORK_SLOTS.release())
+    try:
+        return await asyncio.wait_for(asyncio.shield(future), timeout=timeout)
+    except asyncio.TimeoutError:
+        raise HTTPException(504, "İşlem zaman sınırını aştı.")
+
+
+def guard_request_body(request, max_size=MAX_REQUEST_BODY):
+    """Content-Length sınırı aşıyorsa gövdeyi okumadan isteği reddeder."""
+    declared = parse_content_length(request.headers.get("content-length"))
+    if declared is not None and declared > max_size:
+        raise HTTPException(413, f"İstek gövdesi çok büyük. Maksimum {max_size//(1024*1024)} MB.")
+    return declared
+
+
 async def read_upload_limited(upload, max_size=MAX_FILE_SIZE):
-    data = await upload.read()
-    if len(data) > max_size:
+    """Yüklenen dosyayı parça parça okur ve sınır aşımında erken durur."""
+    declared = getattr(upload, "size", None)
+    if isinstance(declared, int) and declared > max_size:
         raise HTTPException(413, f"{upload.filename or 'Dosya'} çok büyük. Maksimum {max_size//(1024*1024)} MB.")
-    return data
+    chunks = []
+    total = 0
+    while True:
+        chunk = await upload.read(UPLOAD_CHUNK_SIZE)
+        if not chunk:
+            break
+        total += len(chunk)
+        if total > max_size:
+            raise HTTPException(413, f"{upload.filename or 'Dosya'} çok büyük. Maksimum {max_size//(1024*1024)} MB.")
+        chunks.append(chunk)
+    return b"".join(chunks)
 
 
 def check_extension(filename, allowed): return (filename or "").lower().endswith(allowed)
@@ -546,18 +590,16 @@ async def kvkk_page(request: Request):
 @app.post("/excel-islem")
 async def excel_motor(request: Request, komut:str=Form(...), file1:UploadFile=File(...), file2:UploadFile=File(...)):
     await enforce_rate_limit(request, "upload", UPLOAD_RATE_LIMIT, RATE_LIMIT_WINDOW)
+    guard_request_body(request)
     out=None
     try:
         if not check_extension(file1.filename,(".xlsx",".xls")) or not check_extension(file2.filename,(".xlsx",".xls")): raise HTTPException(400,"Geçerli Excel dosyaları seç.")
         d1=await read_upload_limited(file1); d2=await read_upload_limited(file2); validate_file_signature(d1,file1.filename,file1.content_type); validate_file_signature(d2,file2.filename,file2.content_type)
-        out=await asyncio.wait_for(asyncio.to_thread(build_excel_result,d1,d2,komut), timeout=FILE_PROCESS_TIMEOUT)
+        out=await run_heavy_job(build_excel_result, d1, d2, komut, timeout=FILE_PROCESS_TIMEOUT)
         return FileResponse(out,media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",filename="excel_sonuc.xlsx",background=BackgroundTask(delete_file,out))
     except HTTPException:
         if out: delete_file(out)
         raise
-    except asyncio.TimeoutError:
-        if out: delete_file(out)
-        raise HTTPException(504,"Excel işlemi zaman sınırını aştı.")
     except Exception as e:
         if out: delete_file(out)
         raise HTTPException(500,"Excel işlemi sırasında beklenmeyen bir hata oluştu.")
@@ -566,18 +608,16 @@ async def excel_motor(request: Request, komut:str=Form(...), file1:UploadFile=Fi
 @app.post("/pdf-excel-islem")
 async def pdf_excel_motor(request: Request, pdf_file:UploadFile=File(...)):
     await enforce_rate_limit(request, "upload", UPLOAD_RATE_LIMIT, RATE_LIMIT_WINDOW)
+    guard_request_body(request)
     out=None
     try:
         if not check_extension(pdf_file.filename,(".pdf",)): raise HTTPException(400,"Geçerli bir PDF dosyası seç.")
         pdf_data=await read_upload_limited(pdf_file); validate_file_signature(pdf_data,pdf_file.filename,pdf_file.content_type)
-        out=await asyncio.wait_for(asyncio.to_thread(build_pdf_result,pdf_data), timeout=FILE_PROCESS_TIMEOUT)
+        out=await run_heavy_job(build_pdf_result, pdf_data, timeout=FILE_PROCESS_TIMEOUT)
         return FileResponse(out,media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",filename="pdf_to_excel_sonuc.xlsx",background=BackgroundTask(delete_file,out))
     except HTTPException:
         if out: delete_file(out)
         raise
-    except asyncio.TimeoutError:
-        if out: delete_file(out)
-        raise HTTPException(504,"PDF işlemi zaman sınırını aştı.")
     except Exception as e:
         if out: delete_file(out)
         raise HTTPException(500,"PDF → Excel işlemi sırasında beklenmeyen bir hata oluştu.")
@@ -854,15 +894,15 @@ function goNextPage(){history.forward()}
 function tl(v){return Number(v||0).toLocaleString('tr-TR')+' ₺'}
 function otvRateFor(v){let p=Number(v.price||0),b=(v.brand||'').toUpperCase(),m=(v.model||'').toUpperCase();if(!p)return null;let solve=(rules)=>{for(let [r,min,max] of rules){let base=p/1.20/(1+r);if(base>min&&(max==null||base<=max))return r}return null};if(b==='TOGG')return solve([[.25,0,1650000],[.55,1650000,null]]);if(b==='TOYOTA'&&m.includes('C-HR'))return solve([[.70,0,1250000],[.80,1250000,null]]);if(b==='TOYOTA'&&m.includes('COROLLA'))return solve([[.75,0,850000],[.80,850000,1100000],[.90,1100000,1650000],[1.00,1650000,null]]);if(b==='FIAT'&&m.includes('ULYSSE'))return solve([[1.50,0,1650000],[1.70,1650000,null]]);if(b==='FIAT'&&m.includes('EGEA'))return solve([[.75,0,850000],[.80,850000,1100000],[.90,1100000,1650000],[1.00,1650000,null]])||solve([[.70,0,650000],[.75,650000,900000],[.80,900000,1100000],[.90,1100000,null]]);return solve([[.70,0,650000],[.75,650000,900000],[.80,900000,1100000],[.90,1100000,null]])}
 function exemptPrice(v){let r=otvRateFor(v);return r==null?null:Math.round(Number(v.price)/(1+r))}
-function verifiedRow(v){let ep=exemptPrice(v);return '<div class="row"><div class="rowtop"><div><div class="name">'+brandLogo(v.brand,'row-logo')+(v.brand||'')+' '+(v.model||'')+'</div><div class="meta">'+(v.trim||'')+'</div></div><span class="tag">Uygun</span></div><div class="price">Liste Fiyatı<b>'+tl(v.price)+'</b></div>'+(ep?'<div class="price">Hesaplanmış ÖTV Muaf Fiyat<b>'+tl(ep)+'</b></div>':'')+'<div class="note">Yerlilik: %'+(v.locality||'—')+' · Kaynak: '+(v.source_name||v.brand)+' · Son kontrol: '+(v.checked_at||'—')+'</div></div>'}
+function verifiedRow(v){let ep=exemptPrice(v);return '<div class="row"><div class="rowtop"><div><div class="name">'+brandLogo(v.brand,'row-logo')+esc(v.brand||'')+' '+esc(v.model||'')+'</div><div class="meta">'+esc(v.trim||'')+'</div></div><span class="tag">Uygun</span></div><div class="price">Liste Fiyatı<b>'+tl(v.price)+'</b></div>'+(ep?'<div class="price">Hesaplanmış ÖTV Muaf Fiyat<b>'+tl(ep)+'</b></div>':'')+'<div class="note">Yerlilik: %'+esc(v.locality||'—')+' · Kaynak: '+esc(v.source_name||v.brand)+' · Son kontrol: '+esc(v.checked_at||'—')+'</div></div>'}
 const BRAND_LOGOS={fiat:'fiat.svg',renault:'renault.svg',togg:'togg.svg',toyota:'toyota.svg',hyundai:'hyundai.svg'};
 function eligibleVehicles(){return (otvData.vehicles||[]).filter(v=>Number(v.price)>0)}
 function filteredVehicles(){return eligibleVehicles().filter(v=>!activeBrand||v.brand===activeBrand)}
 function allBrands(){return [...new Set(eligibleVehicles().map(v=>v.brand).filter(Boolean))]}
 function brandLogo(brand,cls){let file=BRAND_LOGOS[String(brand||'').trim().toLowerCase()];return file?'<span class="'+(cls||'vehicle-logo')+'"><img src="/brand-logos/'+file+'" alt="" width="38" height="38" loading="lazy" decoding="async"></span>':''}
-function buttons(){let bs=allBrands();if(activeBrand&&!bs.includes(activeBrand))activeBrand=null;let el=document.getElementById('otvChips');el.innerHTML=bs.map(b=>'<button class="chip '+(b===activeBrand?'on':'')+'" data-brand="'+String(b).replace(/"/g,'&quot;')+'">'+b+'</button>').join('');el.querySelectorAll('.chip').forEach(btn=>btn.addEventListener('click',()=>setBrand(btn.dataset.brand)))}
+function buttons(){let bs=allBrands();if(activeBrand&&!bs.includes(activeBrand))activeBrand=null;let el=document.getElementById('otvChips');el.innerHTML=bs.map(b=>'<button class="chip '+(b===activeBrand?'on':'')+'" data-brand="'+esc(b)+'">'+esc(b)+'</button>').join('');el.querySelectorAll('.chip').forEach(btn=>btn.addEventListener('click',()=>setBrand(btn.dataset.brand)))}
 function setBrand(b){activeBrand=activeBrand===b?null:b;renderOTV()}
-function renderHomeVehicles(){let el=document.getElementById("homeVehicles"),all=eligibleVehicles(),byModel={};all.forEach(v=>{let key=((v.brand||"")+" "+(v.model||"")).trim().toUpperCase();if(!byModel[key]||Number(v.price)<Number(byModel[key].price))byModel[key]=v});let vs=Object.values(byModel).sort((a,b)=>Number(a.price)-Number(b.price)).slice(0,6);el.innerHTML=vs.length?vs.map(v=>'<div class="vehicle-card"><div class="vehicle-info"><div class="brandline">'+(v.brand||'')+'</div><div class="vehicle-title">'+brandLogo(v.brand)+'<h3>'+(v.model||'')+'</h3></div><div class="trim">'+(v.trim||'')+'</div></div><div class="price-line"><div class="price-label">ÖTV muaf fiyatı</div><div class="price">'+tl(exemptPrice(v)||v.price)+'</div></div></div>').join(''):'<div class="panel">Araç listesi yükleniyor…</div>';el.querySelectorAll('.vehicle-logo img').forEach(img=>img.addEventListener('error',()=>{img.style.visibility='hidden'}))}
+function renderHomeVehicles(){let el=document.getElementById("homeVehicles"),all=eligibleVehicles(),byModel={};all.forEach(v=>{let key=((v.brand||"")+" "+(v.model||"")).trim().toUpperCase();if(!byModel[key]||Number(v.price)<Number(byModel[key].price))byModel[key]=v});let vs=Object.values(byModel).sort((a,b)=>Number(a.price)-Number(b.price)).slice(0,6);el.innerHTML=vs.length?vs.map(v=>'<div class="vehicle-card"><div class="vehicle-info"><div class="brandline">'+esc(v.brand||'')+'</div><div class="vehicle-title">'+brandLogo(v.brand)+'<h3>'+esc(v.model||'')+'</h3></div><div class="trim">'+esc(v.trim||'')+'</div></div><div class="price-line"><div class="price-label">ÖTV muaf fiyatı</div><div class="price">'+tl(exemptPrice(v)||v.price)+'</div></div></div>').join(''):'<div class="panel">Araç listesi yükleniyor…</div>';el.querySelectorAll('.vehicle-logo img').forEach(img=>img.addEventListener('error',()=>{img.style.visibility='hidden'}))}
 function toggleHelpers(){document.getElementById("helpers").classList.toggle("open")}
 function renderHome(){renderHomeVehicles();let c=document.getElementById('heroCount'),b=document.getElementById('heroBrands'),t=document.getElementById('heroTime'),all=eligibleVehicles();c.textContent=all.length;b.textContent=allBrands().length;t.textContent=otvData.updated_time?'Son araştırma saati: '+otvData.updated_time:'Son araştırma saati: —'}
 function pdfSecildi(input){let el=document.getElementById('pdfFileName');el.textContent=input.files&&input.files.length?'✓ PDF seçildi: '+input.files[0].name:'PDF seçilmedi — PDF dosyasını seç'}
@@ -894,6 +934,13 @@ window.addEventListener('resize',()=>syncBottomHome(),{passive:true});
 document.addEventListener('pointercancel',()=>{swipeActive=false},{passive:true});
 renderHome();renderNews();loadOTV();loadNews();setTimeout(triggerOTVBackgroundRefresh,800);
 </script></body></html>'''
+
+
+# CSP satır içi olay öznitelikleri statiktir; hash'ler istek başına değil,
+# modül yüklenirken bir kez hesaplanır (her istekte ~540 KB taramayı önler).
+_CSP_SCRIPT_ATTR_HASHES, _CSP_STYLE_ATTR_HASHES = csp_attr_hashes(
+    "\n".join((HOME_HTML, CHAT_HTML, KVKK_HTML, _ek2_html("arac1"), _ek2_html("arac2"), _ek2_html("arac3")))
+)
 
 
 if __name__ == "__main__":
