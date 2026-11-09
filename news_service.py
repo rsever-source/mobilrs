@@ -726,37 +726,68 @@ def _gib_api_items(source):
             "sortFieldName": "startdate",
             "sortType": "DESC",
         }
-        started = time.monotonic()
-        try:
-            response = _SESSION.post(
-                source["url"], json=source.get("body", {}), params=params,
-                headers={"Content-Type": "application/json"}, timeout=TIMEOUT,
-            )
-        except Exception as exc:
-            # Zaman aşımı/bağlantı hatası: yanıt gelmediği için durum kodu yok.
+        response = None
+        # Bu POST yalnızca duyuru listesi okur; her deneme aynı sayfayı sorgular.
+        # İlk deneme + en fazla iki tekrar: her denemede 20 sn üst sınır.
+        for attempt in range(1, 4):
+            started = time.monotonic()
+            try:
+                candidate = _SESSION.post(
+                    source["url"], json=source.get("body", {}), params=params,
+                    headers={"Content-Type": "application/json"}, timeout=TIMEOUT,
+                )
+            except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as exc:
+                elapsed_ms = round((time.monotonic() - started) * 1000)
+                will_retry = attempt < 3
+                print(
+                    "GİB duyuru API bağlantı denemesi başarısız:",
+                    {"source": source["name"], "stage": "gib_api", "page": page,
+                     "attempt": attempt, "max_attempts": 3, "timeout_s": TIMEOUT,
+                     "elapsed_ms": elapsed_ms, "error": exc.__class__.__name__,
+                     "retry": will_retry, "detail": str(exc)[:300]}
+                )
+                if will_retry:
+                    time.sleep(attempt)  # 1 sn, ardından 2 sn; toplam süre sınırlı.
+                    continue
+                source_error = f"page {page}: {exc.__class__.__name__}: {str(exc)[:300]}"
+                break
+            except Exception as exc:
+                # Beklenmeyen hata kalıcı kabul edilir; gereksiz tekrar yapma.
+                source_error = f"page {page}: {exc.__class__.__name__}: {str(exc)[:300]}"
+                print("GİB duyuru API beklenmeyen hata:", page, repr(exc))
+                break
+
+            elapsed_ms = round((time.monotonic() - started) * 1000)
             print(
-                "GİB duyuru API'si okunamadı:",
+                "Haber kaynağı HTTP:",
                 {"source": source["name"], "stage": "gib_api", "page": page,
-                 "http_status": None, "error": exc.__class__.__name__,
-                 "timeout": isinstance(exc, requests.exceptions.Timeout),
-                 "timeout_s": TIMEOUT, "detail": str(exc)[:300]}
+                 "attempt": attempt, "max_attempts": 3, "status": candidate.status_code,
+                 "content_type": candidate.headers.get("Content-Type", ""),
+                 "bytes": len(candidate.content), "elapsed_ms": elapsed_ms}
             )
-            source_error = f"page {page}: {exc.__class__.__name__}: {str(exc)[:300]}"
+            if 500 <= candidate.status_code <= 599 and attempt < 3:
+                print(
+                    "GİB geçici sunucu hatası; yeniden denenecek:",
+                    {"source": source["name"], "page": page, "attempt": attempt,
+                     "status": candidate.status_code, "retry_after_s": attempt}
+                )
+                time.sleep(attempt)
+                continue
+            response = candidate
             break
-        elapsed_ms = round((time.monotonic() - started) * 1000)
-        print(
-            "Haber kaynağı HTTP:",
-            {"source": source["name"], "stage": "gib_api", "page": page,
-             "status": response.status_code,
-             "content_type": response.headers.get("Content-Type", ""),
-             "bytes": len(response.content), "elapsed_ms": elapsed_ms}
-        )
+
+        if response is None:
+            # Üç deneme de bağlantı/zaman aşımı hatasıyla sonuçlandı veya
+            # kalıcı bir istemci/istemci-kodu hatası oluştu.
+            if source_error is None:
+                source_error = f"page {page}: GİB API isteği başarısız"
+            break
         if response.status_code != 200:
             print(
                 "GİB duyuru API'si hata döndü:",
                 {"source": source["name"], "stage": "gib_api", "page": page,
-                 "http_status": response.status_code, "timeout_s": TIMEOUT,
-                 "detail": response.text[:300]}
+                 "http_status": response.status_code, "attempts": attempt,
+                 "timeout_s": TIMEOUT, "detail": response.text[:300]}
             )
             source_error = f"page {page}: HTTP {response.status_code}: {response.text[:300]}"
             break
