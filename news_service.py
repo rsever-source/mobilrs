@@ -32,6 +32,29 @@ AI_TIMEOUT = 60
 _GIB_SOURCE_DIAGNOSTICS = {}
 _SOURCE_DIAGNOSTICS = {}
 
+def _gib_error_type(exc):
+    """Classify a GİB request failure without inferring unmeasured network timings."""
+    if isinstance(exc, requests.exceptions.SSLError):
+        return "SSL_ERROR"
+    if isinstance(exc, requests.exceptions.ReadTimeout):
+        return "READ_TIMEOUT"
+    if isinstance(exc, requests.exceptions.ConnectTimeout):
+        return "CONNECT_TIMEOUT"
+    if isinstance(exc, requests.exceptions.Timeout):
+        return "TIMEOUT"
+
+    detail = str(exc).lower()
+    if any(token in detail for token in (
+        "getaddrinfo failed", "name or service not known",
+        "temporary failure in name resolution", "nodename nor servname",
+        "failed to resolve",
+    )):
+        return "DNS_ERROR"
+    if isinstance(exc, requests.exceptions.ConnectionError):
+        return "CONNECTION_ERROR"
+    return "REQUEST_ERROR"
+
+
 def _make_session():
     session = requests.Session()
     session.headers.update({"User-Agent": UA})
@@ -739,22 +762,35 @@ def _gib_api_items(source):
             except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as exc:
                 elapsed_ms = round((time.monotonic() - started) * 1000)
                 will_retry = attempt < 3
+                error_type = _gib_error_type(exc)
                 print(
                     "GİB duyuru API bağlantı denemesi başarısız:",
                     {"source": source["name"], "stage": "gib_api", "page": page,
                      "attempt": attempt, "max_attempts": 3, "timeout_s": TIMEOUT,
-                     "elapsed_ms": elapsed_ms, "error": exc.__class__.__name__,
+                     "elapsed_ms": elapsed_ms, "error": error_type,
+                     "error_class": exc.__class__.__name__, "http_status": None,
+                     "is_timeout": isinstance(exc, requests.exceptions.Timeout),
                      "retry": will_retry, "detail": str(exc)[:300]}
                 )
                 if will_retry:
-                    time.sleep(attempt)  # 1 sn, ardından 2 sn; toplam süre sınırlı.
+                    time.sleep(attempt)  # Mevcut yeniden deneme davranışı korunur.
                     continue
-                source_error = f"page {page}: {exc.__class__.__name__}: {str(exc)[:300]}"
+                source_error = f"page {page}: {error_type}: {str(exc)[:300]}"
                 break
             except Exception as exc:
                 # Beklenmeyen hata kalıcı kabul edilir; gereksiz tekrar yapma.
-                source_error = f"page {page}: {exc.__class__.__name__}: {str(exc)[:300]}"
-                print("GİB duyuru API beklenmeyen hata:", page, repr(exc))
+                elapsed_ms = round((time.monotonic() - started) * 1000)
+                error_type = _gib_error_type(exc)
+                source_error = f"page {page}: {error_type}: {str(exc)[:300]}"
+                print(
+                    "GİB duyuru API beklenmeyen hata:",
+                    {"source": source["name"], "stage": "gib_api", "page": page,
+                     "attempt": attempt, "max_attempts": 3, "timeout_s": TIMEOUT,
+                     "elapsed_ms": elapsed_ms, "error": error_type,
+                     "error_class": exc.__class__.__name__, "http_status": None,
+                     "is_timeout": isinstance(exc, requests.exceptions.Timeout),
+                     "retry": False, "detail": str(exc)[:300]}
+                )
                 break
 
             elapsed_ms = round((time.monotonic() - started) * 1000)
