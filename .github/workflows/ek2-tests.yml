@@ -5,6 +5,7 @@ on:
     branches:
       - deploy/ek2-live-homepage
       - cloud-run-migration
+      - security-fixes
   pull_request:
     branches:
       - cloud-run-migration
@@ -21,6 +22,14 @@ jobs:
           python-version: "3.12"
       - name: Syntax check site API
         run: python -m py_compile excel_vlookup_api.py
+      - name: Syntax check security modules
+        run: python -m py_compile security_utils.py admin_dashboard.py
+      - name: Install test dependencies
+        run: pip install fastapi requests beautifulsoup4
+      - name: Security and admin session tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+      - name: Check OTV HTML escaping
+        run: node tests/otv_escape_check.js
       - name: Test Araç-1
         run: python -m unittest discover -s ek2-balthazard/arac1 -p "test_*.py" -v
       - name: Test Araç-2

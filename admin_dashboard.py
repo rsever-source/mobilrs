@@ -1,3 +1,4 @@
+import asyncio
 import hashlib
 import hmac
 import json
@@ -14,8 +15,23 @@ from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import HTMLResponse, JSONResponse, Response
 from pydantic import BaseModel, Field
 
+from security_utils import (
+    SESSION_COOKIE_NAME,
+    SessionRevocationStore,
+    SlidingWindowLimiter,
+    parse_session_token,
+    resolve_client_ip,
+    safe_https_url,
+)
+
 router = APIRouter()
-SESSION_TTL = 7 * 24 * 60 * 60
+# Stateless oturumda çalınmış bir çerez sunucudan iptal edilemediği için
+# süre 7 günden 12 saate indirildi; çıkışta nonce iptal listesine yazılır.
+SESSION_TTL = 12 * 60 * 60
+LOGIN_ATTEMPT_LIMIT = 5
+LOGIN_ATTEMPT_WINDOW = 10 * 60
+LOGIN_FAILURE_DELAY_SECONDS = 0.4
+LOGIN_MAX_DELAY_SECONDS = 2.0
 REPO = "rsever-source/mobilrs"
 BRANCH = "cloud-run-migration"
 RAW = "https://raw.githubusercontent.com/" + REPO + "/" + BRANCH + "/"
@@ -40,6 +56,7 @@ SESSION_EXPIRED = "expired"
 SESSION_MALFORMED = "malformed"
 SESSION_BAD_SIGNATURE = "bad_signature"
 SESSION_NO_SECRET = "no_secret"
+SESSION_REVOKED = "revoked"
 
 # Oturum çerezi SameSite=Lax olmalı. Strict iken iOS Safari (ve diğer
 # tarayıcılar) başka bir siteden/uygulamadan gelen üst düzey gezinmede çerezi
@@ -51,6 +68,18 @@ SESSION_COOKIE_SAMESITE = "lax"
 
 def _admin_password():
     return os.environ.get("ADMIN_PASSWORD", "")
+
+
+def _client_ip(request):
+    """Cloud Run'un sona eklediği güvenilir istemci IP'sini çözer."""
+    return resolve_client_ip(
+        request.headers.get("x-forwarded-for", ""),
+        request.client.host if getattr(request, "client", None) else None,
+    )
+
+
+_login_failures = SlidingWindowLimiter()
+SESSION_REVOCATIONS = SessionRevocationStore()
 
 
 def _session_signature(expiry, nonce):
@@ -68,7 +97,7 @@ def _session_state(request):
     veya parola dışarı verilmez; _cookie_session() ile tanı logu aynı
     değerlendirmeyi paylaşır.
     """
-    token = request.cookies.get("eng_admin_session", "")
+    token = request.cookies.get(SESSION_COOKIE_NAME, "")
     if not token:
         return SESSION_MISSING
     if not _admin_password():
@@ -85,6 +114,8 @@ def _session_state(request):
     expected = _session_signature(expiry, nonce)
     if not expected or not hmac.compare_digest(signature, expected):
         return SESSION_BAD_SIGNATURE
+    if SESSION_REVOCATIONS.is_revoked(nonce):
+        return SESSION_REVOKED
     return SESSION_VALID
 
 
@@ -117,7 +148,7 @@ def _log_session_state(request, endpoint, state):
         "message": "admin_session",
         "endpoint": endpoint,
         "state": state,
-        "session_cookie": "eng_admin_session" in cookies,
+        "session_cookie": SESSION_COOKIE_NAME in cookies,
         "cookie_count": len(cookies),
         "host": _safe_header(request, "host"),
         "fetch_site": _safe_header(request, "sec-fetch-site"),
@@ -140,14 +171,14 @@ def _set_session(response):
     nonce = secrets.token_urlsafe(24)
     signature = _session_signature(expiry, nonce)
     response.set_cookie(
-        "eng_admin_session", expiry + "." + nonce + "." + signature,
+        SESSION_COOKIE_NAME, expiry + "." + nonce + "." + signature,
         max_age=SESSION_TTL, httponly=True, secure=True,
         samesite=SESSION_COOKIE_SAMESITE, path="/admin"
     )
 
 
 def _clear_session(response):
-    response.delete_cookie("eng_admin_session", path="/admin", secure=True, httponly=True,
+    response.delete_cookie(SESSION_COOKIE_NAME, path="/admin", secure=True, httponly=True,
                            samesite=SESSION_COOKIE_SAMESITE)
 
 
@@ -209,6 +240,24 @@ _STATUS_SCOPE = (
     "Bu uyarı yalnızca GitHub Actions durum bilgisinin okunmasını etkiler; "
     "haber işleme sorunları ayrı bölümde gösterilir."
 )
+
+
+_URL_FIELDS = ("url", "html_url", "final_url", "source_url", "locality_source_url")
+
+
+def _sanitize_urls(value):
+    """Panelin bağlantı olarak bastığı alanlarda yalnızca https:// bırakır."""
+    if isinstance(value, dict):
+        cleaned = {}
+        for key, item in value.items():
+            if key in _URL_FIELDS and isinstance(item, str):
+                cleaned[key] = item if safe_https_url(item) else ""
+            else:
+                cleaned[key] = _sanitize_urls(item)
+        return cleaned
+    if isinstance(value, list):
+        return [_sanitize_urls(item) for item in value]
+    return value
 
 
 def _warning(title, details, retry_after=None):
@@ -343,6 +392,7 @@ header{{display:flex;gap:18px;align-items:center;justify-content:space-between;f
 <script nonce="{nonce}">
 let state=null;
 function el(id){{return document.getElementById(id)}}
+function safeHref(v){{try{{const u=new URL(String(v||''));return u.protocol==='https:'?u.href:''}}catch(e){{return ''}}}}
 function safeText(v){{return v===null||v===undefined?'—':String(v)}}
 function node(tag,text,cls){{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n}}
 function counts(log){{const last=(log.news_runs||[]).slice(-1)[0]||{{}};const out={{published:0,duplicates:0,rejected:0,pending:0}};for(const c of (last.candidates||[])){{const s=String(c.status||'').toLowerCase(),d=String(c.decision||'').toLowerCase();if(s==='published'||c.publish===true||d==='publish')out.published++;else if(c.duplicate===true||d==='duplicate'||s.includes('duplicate'))out.duplicates++;else if(d==='reject'||c.publish===false||s==='rejected')out.rejected++;else out.pending++}}const f=last.filter_diagnostics?.counts||{{}};out.duplicates=Math.max(out.duplicates,Number(f.duplicate_in_this_run||0)+Number(f.url_seen_within_7_days||0)+Number(f.already_published||0));out.rejected=Math.max(out.rejected,Number(f.older_than_7_days||0)+Number(f.missing_date||0)+Number(f.future_date||0));out.pending=Math.max(out.pending,Number(f.pending_unknown_or_expired_date||0));return out}}
@@ -455,7 +505,7 @@ function renderPendingNews(items,log){{
   const info=pendingAttemptInfo(item,log);
   wrap.appendChild(node('div',info.label,info.count>1?'status bad':'status warn'));
   wrap.appendChild(node('div',info.detail,'muted'));
-  if(item.url){{const a=node('a',item.url);a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';wrap.appendChild(node('div',undefined,'muted')).appendChild(a)}}
+  if(item.url){{const a=node('a',item.url),href=safeHref(item.url);if(href){{a.href=href;a.target='_blank';a.rel='noopener noreferrer'}}wrap.appendChild(node('div',undefined,'muted')).appendChild(a)}}
   root.appendChild(wrap);
  }}
 }}
@@ -486,7 +536,7 @@ function renderErrorItems(targetId,items){{
    const list=node('ul');list.style.paddingLeft='20px';
    for(const detail of item.urls){{
     const li=node('li');const a=node('a',detail.title||detail.url||'Detay sayfası');
-    if(detail.url){{a.href=detail.url;a.target='_blank';a.rel='noopener noreferrer'}}
+    if(detail.url){{const href=safeHref(detail.url);if(href){{a.href=href;a.target='_blank';a.rel='noopener noreferrer'}}}}
     li.appendChild(a);
     if(detail.reason)li.appendChild(node('div',detail.reason,'muted'));
     list.appendChild(li);
@@ -578,11 +628,30 @@ async def admin_page(request: Request):
 @router.post("/admin/api/login/password")
 async def admin_password_login(request: Request, body: PasswordLogin):
     _origin_guard(request)
+    attempt_key = "login:" + _client_ip(request)
+    allowed, retry_after = _login_failures.check(attempt_key, LOGIN_ATTEMPT_LIMIT, LOGIN_ATTEMPT_WINDOW)
+    if not allowed:
+        logger.info(json.dumps({
+            "severity": "WARNING", "message": "admin_session", "event": "login_throttled",
+            "endpoint": "login", "retry_after": retry_after,
+        }, separators=(",", ":")))
+        raise HTTPException(
+            429,
+            "Çok fazla başarısız giriş denemesi. Lütfen biraz sonra tekrar deneyin.",
+            headers={"Retry-After": str(retry_after)},
+        )
     password = _admin_password()
     if not password:
         raise HTTPException(503, "Yönetici parolası Secret Manager üzerinden yapılandırılmalı.")
     if not hmac.compare_digest(body.password, password):
+        failures = _login_failures.count(attempt_key, LOGIN_ATTEMPT_WINDOW)
+        await asyncio.sleep(min(failures * LOGIN_FAILURE_DELAY_SECONDS, LOGIN_MAX_DELAY_SECONDS))
+        logger.info(json.dumps({
+            "severity": "WARNING", "message": "admin_session", "event": "login_failed",
+            "endpoint": "login", "failures_in_window": failures,
+        }, separators=(",", ":")))
         raise HTTPException(401, "Parola hatalı.")
+    _login_failures.reset(attempt_key)
     response = JSONResponse({"ok": True})
     _set_session(response)
     logger.info(json.dumps({
@@ -595,6 +664,10 @@ async def admin_password_login(request: Request, body: PasswordLogin):
 @router.post("/admin/api/logout")
 async def admin_logout(request: Request):
     _origin_guard(request)
+    parsed = parse_session_token(request.cookies.get(SESSION_COOKIE_NAME, ""))
+    if parsed is not None:
+        expires_at, nonce, _signature = parsed
+        SESSION_REVOCATIONS.revoke(nonce, expires_at)
     response = JSONResponse({"ok": True})
     _clear_session(response)
     return response
@@ -719,7 +792,7 @@ def admin_status(request: Request):
             "yapılamıyor. Panel bu dosyayı yalnızca okur.",
         ))
     result["errors"] = errors
-    return JSONResponse(result, headers={"Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow, noarchive"})
+    return JSONResponse(_sanitize_urls(result), headers={"Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow, noarchive"})
 
 
 @router.get("/admin/robots.txt", include_in_schema=False)
