@@ -573,24 +573,44 @@ function readableGeminiError(value){{
  if(/429|rate.?limit/i.test(raw))return 'Gemini istek sınırına takıldı; haber işlenemedi.';
  return raw||'Hata ayrıntısı kaydedilmemiş.';
 }}
+function sourceReadSucceeded(run,sourceName){{
+ const diagnostic=(run?.source_diagnostics||{{}})[sourceName];
+ if(!diagnostic)return false;
+ const hasDiagnosticErrors=Array.isArray(diagnostic.errors)&&diagnostic.errors.length>0;
+ const hasFetchError=Boolean(diagnostic.error);
+ const hasRunError=(run.source_errors||[]).some(item=>item.source===sourceName);
+ return !hasDiagnosticErrors&&!hasFetchError&&!hasRunError;
+}}
 function renderErrors(data){{
  const runs=(data.log?.news_runs||[]).slice(-1);
+ const latestRun=runs[0]||null;
  const sourceErrors=[];
  const systemErrors=[];
  const pendingByUrl=new Set((data.news_pending||[]).map(item=>item.url).filter(Boolean));
  const pendingTitles=(data.news_pending||[]).map(item=>String(item.title||'')).filter(Boolean);
+ const incidents=data.log?.system_incidents||[];
+ const sourceIncidents=new Map(incidents
+  .filter(item=>String(item.component||'').startsWith('news-source:'))
+  .map(item=>[String(item.component).slice('news-source:'.length),item]));
  for(const run of runs){{
   for(const err of (run.source_errors||[])){{
+   const incident=sourceIncidents.get(err.source);
+   // Açık olay kartı aynı hatayı zaten gösterir; tarama hatasını ikinci kez basma.
+   if(incident&&incident.status!=='resolved')continue;
    const diagnostic=(run.source_diagnostics||{{}})[err.source]||{{}};
    sourceErrors.push({{title:err.source||'Bilinmeyen kaynak',when:'Tarama: '+safeText(run.run_at),details:readableError(err.error||'Kaynak hatası ayrıntısı kaydedilmemiş.'),urls:diagnostic.missing_date_items||[]}});
   }}
   // Haber bazlı işlem hataları ayrı hata listesinde tekrarlanmaz; bekleyen haberler bölümünde yalnızca haber gösterilir.
  }}
- for(const incident of (data.log?.system_incidents||[])){{
+ for(const incident of incidents){{
   const component=String(incident.component||'');
   const isSource=component.startsWith('news-source:');
   if(isSource&&incident.status!=='resolved'){{
-   sourceErrors.push({{title:component.slice('news-source:'.length)||'Bilinmeyen kaynak',when:'İlk görülme: '+safeText(incident.first_seen)+' · Durum: açık',details:readableError(incident.details)}});
+   const sourceName=component.slice('news-source:'.length);
+   // Son taramada kaynak başarıyla yanıtlandı ve ayrıştırıldıysa eski açık uyarıyı
+   // operasyonel rapordan kaldır. Geçmiş olay news_ai_log içinde korunur.
+   if(latestRun&&sourceReadSucceeded(latestRun,sourceName))continue;
+   sourceErrors.push({{title:sourceName||'Bilinmeyen kaynak',when:'İlk görülme: '+safeText(incident.first_seen)+' · Durum: açık',details:readableError(incident.details)}});
   }}else if(!isSource&&incident.status!=='resolved'){{
    const isNewsItem=component.startsWith('news-item:');
    const incidentDetails=String(incident.details||'');
