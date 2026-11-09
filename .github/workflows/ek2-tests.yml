@@ -25,7 +25,7 @@ jobs:
       - name: Syntax check security modules
         run: python -m py_compile security_utils.py admin_dashboard.py
       - name: Install test dependencies
-        run: pip install fastapi requests
+        run: pip install fastapi requests beautifulsoup4
       - name: Security and admin session tests
         run: python -m unittest discover -s tests -p "test_*.py" -v
       - name: Check OTV HTML escaping
