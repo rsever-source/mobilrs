@@ -73,7 +73,18 @@ body{background:#f4f6f9;color:var(--ink);font-family:Inter,Aptos,"Segoe UI",syst
 async def add_security_headers(request: Request, call_next):
     nonce = secrets.token_urlsafe(24)
     request.state.csp_nonce = nonce
-    response = await call_next(request)
+    if request.method == "POST" and request.url.path in UPLOAD_PATHS:
+        declared = parse_content_length(request.headers.get("content-length"))
+        if declared is not None and declared > MAX_REQUEST_BODY:
+            # Gövde ayrıştırılmadan reddedilir; çok büyük istek diske/ belleğe alınmaz.
+            response = JSONResponse(
+                {"detail": "İstek gövdesi çok büyük. Maksimum " + str(MAX_REQUEST_BODY // (1024 * 1024)) + " MB."},
+                status_code=413,
+            )
+        else:
+            response = await call_next(request)
+    else:
+        response = await call_next(request)
     response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["X-Frame-Options"] = "DENY"
@@ -136,6 +147,7 @@ HEAVY_WORK_QUEUE_TIMEOUT = 30
 _HEAVY_WORK_POOL = ThreadPoolExecutor(max_workers=HEAVY_WORK_CONCURRENCY, thread_name_prefix="heavy")
 _HEAVY_WORK_SLOTS = asyncio.Semaphore(HEAVY_WORK_CONCURRENCY)
 MAX_REQUEST_BODY = 2 * MAX_FILE_SIZE + 8 * 1024 * 1024
+UPLOAD_PATHS = frozenset({"/excel-islem", "/pdf-excel-islem"})
 UPLOAD_CHUNK_SIZE = 1024 * 1024
 MONTH_NAMES = {1:"Ocak",2:"Şubat",3:"Mart",4:"Nisan",5:"Mayıs",6:"Haziran",7:"Temmuz",8:"Ağustos",9:"Eylül",10:"Ekim",11:"Kasım",12:"Aralık"}
 
