@@ -227,5 +227,75 @@ class NewsSourceDiagnosticsTests(unittest.TestCase):
         self.assertTrue(any("Yayın tarihi çözümlenemedi" in error for error in errors))
 
 
+
+class FakeGibResponse:
+    def __init__(self, status_code=200, payload=None, json_error=None, text=""):
+        self.status_code = status_code
+        self._payload = payload if payload is not None else {"resultContainer": {"content": []}}
+        self._json_error = json_error
+        self.text = text
+        self.content = text.encode("utf-8")
+        self.headers = {"Content-Type": "application/json"}
+
+    def json(self):
+        if self._json_error:
+            raise self._json_error
+        return self._payload
+
+
+class GibApiRetryTests(unittest.TestCase):
+    def setUp(self):
+        ns._GIB_SOURCE_DIAGNOSTICS.clear()
+        self.source = {
+            "name": "Test GIB",
+            "url": "https://gib.gov.tr/api/list",
+            "kind": "gib_api",
+            "body": {},
+            "size": 10,
+            "pages": 1,
+            "keywords": ["engelli"],
+            "detail_url": "https://www.gib.gov.tr/duyuru-arsivi/guncel",
+            "file_url": "https://cdn.gib.gov.tr/file/",
+        }
+
+    def _run(self, outcomes):
+        with patch.object(ns, "_load_json", return_value={"items": [], "seen_urls": {}}), \
+             patch.object(ns.time, "sleep"), \
+             patch.object(ns._SESSION, "post", side_effect=outcomes) as post:
+            items = ns._gib_api_items(self.source)
+        return items, post.call_count, ns._GIB_SOURCE_DIAGNOSTICS["Test GIB"]
+
+    def test_timeout_then_success_retries_once(self):
+        response = FakeGibResponse()
+        _, calls, diagnostic = self._run([
+            requests.exceptions.ReadTimeout("first timeout"), response
+        ])
+        self.assertEqual(calls, 2)
+        self.assertIsNone(diagnostic["error"])
+
+    def test_three_timeouts_stop_after_three_attempts(self):
+        _, calls, diagnostic = self._run([
+            requests.exceptions.ReadTimeout("timeout 1"),
+            requests.exceptions.ReadTimeout("timeout 2"),
+            requests.exceptions.ReadTimeout("timeout 3"),
+        ])
+        self.assertEqual(calls, 3)
+        self.assertIn("ReadTimeout", diagnostic["error"])
+
+    def test_client_error_is_not_retried(self):
+        _, calls, diagnostic = self._run([
+            FakeGibResponse(status_code=400, text="bad request")
+        ])
+        self.assertEqual(calls, 1)
+        self.assertIn("HTTP 400", diagnostic["error"])
+
+    def test_invalid_json_is_not_retried(self):
+        _, calls, diagnostic = self._run([
+            FakeGibResponse(json_error=ValueError("invalid JSON"))
+        ])
+        self.assertEqual(calls, 1)
+        self.assertIn("JSON parse", diagnostic["error"])
+
+
 if __name__ == "__main__":
     unittest.main()
