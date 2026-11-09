@@ -226,6 +226,15 @@ class ApiSourceTests(unittest.TestCase):
         self.assertIn("chunk = await upload.read(UPLOAD_CHUNK_SIZE)", self.text)
         self.assertNotIn("data = await upload.read()\n", self.text)
 
+    def test_oversized_body_is_rejected_before_multipart_parsing(self):
+        start = self.text.index("async def add_security_headers")
+        body = self.text[start:self.text.index('response.headers["Strict-Transport-Security"]', start)]
+        self.assertIn("declared > MAX_REQUEST_BODY", body)
+        self.assertIn("status_code=413", body)
+        # Kontrol, gövde ayrıştıran call_next'ten önce yapılmalı.
+        self.assertLess(body.index("declared > MAX_REQUEST_BODY"), body.index("await call_next(request)"))
+        self.assertIn('UPLOAD_PATHS = frozenset({"/excel-islem", "/pdf-excel-islem"})', self.text)
+
     def test_concurrent_heavy_work_is_bounded(self):
         self.assertIn("HEAVY_WORK_CONCURRENCY = 2", self.text)
         self.assertIn("run_heavy_job(build_excel_result", self.text)
