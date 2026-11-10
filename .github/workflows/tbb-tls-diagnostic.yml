@@ -162,4 +162,18 @@ jobs:
           print("OFFICIAL_DOCUMENT_OK", official_document,
                 "characters=", len(official_text))
           print("OFFICIAL_DOCUMENT_SAMPLE", official_text[:1000])
+          required_turkish_text = (
+              "ÇARŞAMBA",
+              "ENGELLİ BİREYLERE YÖNELİK ÖZEL BAKIM MERKEZLERİ YÖNETMELİĞİ",
+              "Yönetmeliğin amacı",
+          )
+          missing_turkish_text = [
+              phrase for phrase in required_turkish_text if phrase not in official_text
+          ]
+          print(
+              "OFFICIAL_DOCUMENT_TURKISH_CHECK",
+              {"passed": not missing_turkish_text, "missing": missing_turkish_text},
+          )
+          if missing_turkish_text:
+              raise SystemExit("Resmî Gazete gerçek belge metninde Türkçe karakter kontrolü başarısız.")
           PY
