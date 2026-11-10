@@ -1562,6 +1562,24 @@ def update_news():
     for source in sources:
         try:
             source_items = _source_items(source)
+            if source.get("kind") == "tbb_mevzuat":
+                tbb_diagnostic = _SOURCE_DIAGNOSTICS.get(source["name"], {})
+                # Only this TBB-specific validation is allowed to resolve its incident.
+                if tbb_diagnostic.get("validated") is True:
+                    try:
+                        record_check(
+                            "news-source:" + source["name"],
+                            "success",
+                            (
+                                "TBB TLS doğrulaması açıkken liste ve "
+                                f"{tbb_diagnostic.get('detail_successes', 0)} detay sayfası "
+                                "başlık, yayın tarihi, içerik ve bağlantı yönünden doğrulandı."
+                            ),
+                            immediate=True,
+                        )
+                    except Exception as report_exc:
+                        # A reporting API problem must not stop normal news processing.
+                        print("TBB kaynak iyileşme durumu raporlanamadı:", repr(report_exc))
             source_counts[source["name"]] = len(source_items)
             parsed_total += len(source_items)
             for item in source_items:
@@ -1663,34 +1681,41 @@ def update_news():
             "source": item.get("source", ""),
             "url": item.get("url", ""),
             "published_at": item.get("published_at"),
+            "content_origin": item.get("content_origin"),
             "status": "not_sent",
         }
         try:
-            if item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları":
-                tbb_response = _SESSION.get(item["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
-                tbb_response.raise_for_status()
-                tbb_soup = BeautifulSoup(tbb_response.text, "html.parser")
-                official_url = ""
-                for link in tbb_soup.find_all("a", href=True):
-                    href = urljoin(item["url"], link.get("href", ""))
-                    if "resmigazete.gov.tr/eskiler/" in href:
-                        official_url = href
-                        break
-                if not official_url:
-                    raise RuntimeError("TBB duyurusunda Resmî Gazete bağlantısı bulunamadı")
-                article = _article_text(official_url)
+            tbb_content_from_gazette = False
+            if item.get("source") == TBB_SOURCE_NAME:
+                official_url = item.get("content_url")
+                if official_url:
+                    # The public/source link remains the TBB announcement URL.
+                    # Only the underlying legal text is read from Resmî Gazete.
+                    article = _article_text(official_url)
+                    tbb_content_from_gazette = True
+                else:
+                    # Some TBB notices contain their complete text on the TBB detail page.
+                    article = item.get("content") or _article_text(item["url"])
             else:
                 # İstemci tarafında oluşturulan duyuru sayfalarında gövde kaynakta
                 # hazır gelir; detay sayfasını kazımaya gerek yok.
                 article = item.get("content") or _article_text(item["url"])
             source_context = ""
-            if item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları":
-                source_context = """TBB / RESMÎ GAZETE DUYURULARI İÇİN EK KURAL:
+            if item.get("source") == TBB_SOURCE_NAME:
+                if tbb_content_from_gazette:
+                    source_context = """TBB DUYURUSU / RESMÎ GAZETE İÇERİĞİ:
+Haberin kaynak ve tıklanacak duyuru bağlantısı TBB'nin duyuru sayfasıdır; bu bağlantı kesinlikle Resmî Gazete bağlantısıyla değiştirilmemelidir.
+Mevzuatın tam metni Resmî Gazete belgesinden alınmıştır. Özette veya detay açıklamasında içeriğin Resmî Gazete'de yayımlanan mevzuat belgesinden alındığını açıkça belirt.
 detail_summary içinde yönetmelikteki önemli maddeleri sırayla ve ayrı ayrı ver.
 Her madde mutlaka yeni bir satırda başlasın; maddeleri aynı paragrafta birleştirme.
 Format: "- Madde X: açıklama"
 Mümkünse maddelerin arasında birer boş satır bırak.
 Yalnızca Resmî Gazete metninde doğrulanabilen madde numaralarını ve içerikleri kullan; madde numarası uydurma.
+"""
+                else:
+                    source_context = """TBB DUYURUSU:
+Haberin kaynak bağlantısı TBB duyuru detay sayfasıdır. İçerik TBB detay sayfasından alınmıştır.
+Mevzuat maddeleri varsa yalnızca sayfada doğrulanabilen maddeleri kullan; madde numarası uydurma.
 """
             if item.get("source") == "Resmî Gazete – TBB Mevzuat Yedeği":
                 source_context = """RESMÎ GAZETE YEDEK KAYNAĞI İÇİN EK KURAL:
@@ -1835,7 +1860,9 @@ Kaynak metni:
             added.append({
                 "id": item["id"], "title": title[:180], "summary": summary[:900], "detail_summary": detail_summary[:1400],
                 "source": item["source"], "url": item["url"],
-                "published_at": item.get("published_at"), "created_at": now.isoformat()
+                "published_at": item.get("published_at"),
+                **({"content_origin": item.get("content_origin")} if item.get("content_origin") else {}),
+                "created_at": now.isoformat()
             })
         except Exception as exc:
             print("Haber işlenemedi:", item.get("title"), repr(exc))
