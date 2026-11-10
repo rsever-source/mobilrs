@@ -920,7 +920,10 @@ def _resmigazete_document_text(url):
                     extracted.append(text)
         article = _clean("\\n".join(extracted))
     else:
-        soup = BeautifulSoup(response.text, "html.parser")
+        # Requests may default to ISO-8859-1 when the server omits a charset.
+        # Parse the original bytes so BeautifulSoup can honor HTML meta charset
+        # declarations and detect legacy Turkish encodings such as Windows-1254.
+        soup = BeautifulSoup(response.content, "html.parser")
         for tag in soup(["script", "style", "noscript", "svg", "nav", "footer"]):
             tag.decompose()
         article = _clean(soup.get_text(" ", strip=True))
