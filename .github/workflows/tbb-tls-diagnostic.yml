@@ -91,3 +91,73 @@ jobs:
               except requests.exceptions.RequestException as exc:
                   print("FOLLOW_REDIRECT_FAIL", host, type(exc).__name__, str(exc)[:1000])
           '
+          docker run --rm mobilrs-tbb-tls-probe python -c '
+          import requests
+          from bs4 import BeautifulSoup
+          print("\\n===== CONTROLLED TBB HOST HEADER TEST =====")
+          url = "https://tbb.gov.tr/tr/mevzuat-duyurulari"
+          try:
+              response = requests.get(
+                  url, headers={"Host": "www.tbb.gov.tr"},
+                  timeout=(8, 20), allow_redirects=False,
+              )
+              print("HOST_OVERRIDE", response.status_code, response.url,
+                    "location=", response.headers.get("Location"),
+                    "bytes=", len(response.content))
+              soup = BeautifulSoup(response.text, "html.parser")
+              print("PAGE_TITLE", soup.title.get_text(" ", strip=True) if soup.title else "NO_TITLE")
+              keywords = ("engelli", "ötv", "malul", "erişilebilirlik",
+                          "engelli raporu", "engelli kimlik", "bakım",
+                          "sosyal yardım", "ulaşım", "ücretsiz seyahat",
+                          "engelli istihdam")
+              matches = []
+              for a in soup.find_all("a", href=True):
+                  title = " ".join(a.get_text(" ", strip=True).split())
+                  if title and any(k in title.casefold() for k in keywords):
+                      matches.append((title[:180], a["href"]))
+              print("TBB_KEYWORD_MATCHES", len(matches))
+              for item in matches[:15]:
+                  print("TBB_MATCH", item)
+              links = [(a.get_text(" ", strip=True)[:100], a["href"])
+                       for a in soup.find_all("a", href=True)
+                       if "/tr/mevzuat-duyurulari/" in a["href"]]
+              print("DETAIL_LINKS", len(links))
+              for item in links[:5]:
+                  print("DETAIL_LINK", item)
+                  detail_url = item[1]
+                  if detail_url.startswith("https://www.tbb.gov.tr/"):
+                      detail_url = "https://tbb.gov.tr/" + detail_url.split("www.tbb.gov.tr/", 1)[1]
+                  elif detail_url.startswith("/"):
+                      detail_url = "https://tbb.gov.tr" + detail_url
+                  try:
+                      detail = requests.get(
+                          detail_url, headers={"Host": "www.tbb.gov.tr"},
+                          timeout=(8, 20), allow_redirects=False,
+                      )
+                      print("DETAIL_FETCH", detail.status_code, detail.url,
+                            "location=", detail.headers.get("Location"),
+                            "bytes=", len(detail.content))
+                  except requests.exceptions.RequestException as exc:
+                      print("DETAIL_FAIL", type(exc).__name__, str(exc)[:500])
+          except requests.exceptions.RequestException as exc:
+              print("HOST_OVERRIDE_FAIL", type(exc).__name__, str(exc)[:1000])
+
+          print("\\n===== OFFICIAL RESMI GAZETE ALTERNATIVE TEST =====")
+          for path in ("/j.html", "/10.11.2026"):
+              try:
+                  response = requests.get("https://www.resmigazete.gov.tr" + path,
+                                          timeout=(8, 20))
+                  response.raise_for_status()
+                  soup = BeautifulSoup(response.text, "html.parser")
+                  anchors = soup.find_all("a", href=True)
+                  print("RG_OK", path, response.status_code, len(response.content),
+                        "title=", soup.title.get_text(" ", strip=True) if soup.title else "",
+                        "anchors=", len(anchors),
+                        "body_sample=", " ".join(soup.get_text(" ", strip=True).split())[:800])
+                  print("RG_LINK_SAMPLES", [
+                      (a.get_text(" ", strip=True)[:100], a["href"])
+                      for a in anchors[:15]
+                  ])
+              except requests.exceptions.RequestException as exc:
+                  print("RG_FAIL", path, type(exc).__name__, str(exc)[:1000])
+          '
