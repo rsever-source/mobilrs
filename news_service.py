@@ -13,7 +13,6 @@ from system_report import append_news_run
 from xml.etree import ElementTree as ET
 
 import requests
-import pdfplumber
 from bs4 import BeautifulSoup
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -912,6 +911,7 @@ def _resmigazete_document_text(url):
     path = url.split("?", 1)[0].lower()
 
     if path.endswith(".pdf") or "application/pdf" in content_type:
+        import pdfplumber
         with pdfplumber.open(io.BytesIO(response.content)) as document:
             extracted = []
             for page in document.pages[:40]:
