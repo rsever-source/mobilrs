@@ -53,10 +53,17 @@
     "name": "Gelir İdaresi Başkanlığı – Güncel Duyurular",
     "kind": "gib_api",
     "url": "https://gib.gov.tr/api/gibportal/duyuru/listPublish",
-    "body": {"type": null, "ilkodu": "UNIVERSAL"},
+    "body": {
+      "type": null,
+      "ilkodu": "UNIVERSAL"
+    },
     "size": 10,
     "pages": 3,
-    "keywords": ["engelli", "ötv", "özel tüketim vergisi"],
+    "keywords": [
+      "engelli",
+      "ötv",
+      "özel tüketim vergisi"
+    ],
     "detail_url": "https://www.gib.gov.tr/duyuru-arsivi/guncel",
     "file_url": "https://cdn.gib.gov.tr/api/gibportal-file/file/getFile?objectKey="
   },
@@ -64,6 +71,27 @@
     "name": "Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
     "kind": "tbb_mevzuat",
     "url": "https://www.tbb.gov.tr/tr/mevzuat-duyurulari",
+    "keywords": [
+      "engelli",
+      "ötv",
+      "özel tüketim vergisi",
+      "malul",
+      "erişilebilirlik",
+      "engelli raporu",
+      "engelli kimlik",
+      "bakım",
+      "sosyal yardım",
+      "ulaşım",
+      "ücretsiz seyahat",
+      "engelli istihdam"
+    ]
+  },
+  {
+    "name": "Resmî Gazete – TBB Mevzuat Yedeği",
+    "kind": "resmigazete",
+    "url": "https://www.resmigazete.gov.tr",
+    "lookback_days": 7,
+    "max_items": 30,
     "keywords": [
       "engelli",
       "ötv",
