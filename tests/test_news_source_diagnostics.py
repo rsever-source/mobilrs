@@ -1,4 +1,5 @@
 import unittest
+from datetime import datetime, timedelta, timezone
 from unittest.mock import patch
 
 import requests
@@ -295,6 +296,86 @@ class GibApiRetryTests(unittest.TestCase):
         ])
         self.assertEqual(calls, 1)
         self.assertIn("JSON parse", diagnostic["error"])
+
+
+class ResmiGazeteFallbackTests(unittest.TestCase):
+    def setUp(self):
+        ns._SOURCE_DIAGNOSTICS.clear()
+        ns._GIB_SOURCE_DIAGNOSTICS.clear()
+        self.source = {
+            "name": "Resmî Gazete – TBB Mevzuat Yedeği",
+            "kind": "resmigazete",
+            "url": "https://www.resmigazete.gov.tr",
+            "lookback_days": 1,
+            "max_items": 10,
+            "keywords": ["engelli", "ötv", "erişilebilirlik"],
+        }
+        self.detail_url = "https://www.resmigazete.gov.tr/eskiler/2026/11/20261110-2.htm"
+        self.listing = FakeResponse(
+            "<html><body><a href='/eskiler/2026/11/20261110-2.htm'>"
+            "Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği"
+            "</a></body></html>",
+            url="https://www.resmigazete.gov.tr/10.11.2026",
+        )
+        self.detail = FakeResponse(
+            "<html><body><main><h1>Engelli Bireylere Yönelik Özel Bakım Merkezleri Yönetmeliği</h1>"
+            "<p>Bu Yönetmeliğin amacı engelli bireylere sunulan özel bakım hizmetlerinin "
+            "usul ve esaslarını, başvuru ve değerlendirme işlemlerini ve hizmet sunumunu "
+            "düzenlemektir. Kuruluşlar Bakanlık tarafından denetlenir.</p></main></body></html>",
+            url=self.detail_url,
+        )
+
+    def test_official_gazette_keyword_item_is_parsed_from_official_document(self):
+        with patch.object(
+            ns._SESSION, "get", side_effect=[self.listing, self.detail]
+        ) as get, patch.object(ns.time, "sleep"):
+            items = ns._resmigazete_items(self.source)
+
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0]["source"], self.source["name"])
+        self.assertEqual(items[0]["url"], self.detail_url)
+        self.assertIn("engelli bireylere", items[0]["title"].casefold())
+        self.assertIn("özel bakım hizmetlerinin", items[0]["content"].casefold())
+        expected_day = datetime.now(timezone(timedelta(hours=3))).date()
+        self.assertEqual(
+            ns._date(items[0]["published_at"]).date(),
+            expected_day,
+        )
+        self.assertEqual(get.call_count, 2)
+        diagnostic = ns._SOURCE_DIAGNOSTICS[self.source["name"]]
+        self.assertEqual(diagnostic["keyword_matches"], 1)
+        self.assertEqual(diagnostic["parsed_items"], 1)
+        self.assertEqual(diagnostic["errors"], [])
+
+    def test_official_gazette_index_timeout_retries_then_parses(self):
+        with patch.object(
+            ns._SESSION,
+            "get",
+            side_effect=[
+                requests.exceptions.ReadTimeout("temporary timeout"),
+                self.listing,
+                self.detail,
+            ],
+        ) as get, patch.object(ns.time, "sleep"):
+            items = ns._resmigazete_items(self.source)
+
+        self.assertEqual(len(items), 1)
+        self.assertEqual(get.call_count, 3)
+
+    def test_official_gazette_unrelated_notice_is_not_selected(self):
+        unrelated = FakeResponse(
+            "<html><body><a href='/eskiler/2026/11/20261110-3.htm'>"
+            "Gençlik ve Spor Bakanlığı Yurt Hizmetleri Yönetmeliği"
+            "</a></body></html>",
+            url="https://www.resmigazete.gov.tr/10.11.2026",
+        )
+        with patch.object(ns._SESSION, "get", return_value=unrelated):
+            items = ns._resmigazete_items(self.source)
+
+        self.assertEqual(items, [])
+        diagnostic = ns._SOURCE_DIAGNOSTICS[self.source["name"]]
+        self.assertEqual(diagnostic["keyword_matches"], 0)
+        self.assertEqual(diagnostic["errors"], [])
 
 
 if __name__ == "__main__":
