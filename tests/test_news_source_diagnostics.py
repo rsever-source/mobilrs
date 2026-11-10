@@ -377,6 +377,32 @@ class ResmiGazeteFallbackTests(unittest.TestCase):
         self.assertEqual(diagnostic["keyword_matches"], 0)
         self.assertEqual(diagnostic["errors"], [])
 
+    def test_official_gazette_legacy_turkish_html_decodes_from_original_bytes(self):
+        html = (
+            "<html><head><title>Resmî Gazete</title></head><body>"
+            "<h1>7 Ekim 2026 ÇARŞAMBA</h1>"
+            "<p>ENGELLİ BİREYLERE YÖNELİK ÖZEL BAKIM MERKEZLERİ YÖNETMELİĞİ</p>"
+            "<p>Bu Yönetmeliğin amacı ve kapsamı engelli bireylere yönelik hizmetlerdir.</p>"
+            "</body></html>"
+        )
+        class LegacyResponse:
+            content = html.encode("cp1254")
+            headers = {"Content-Type": "text/html"}
+            url = "https://www.resmigazete.gov.tr/eskiler/2026/10/20261007-4.htm"
+            text = content.decode("iso-8859-1")
+
+            def raise_for_status(self):
+                return None
+
+        with patch.object(ns._SESSION, "get", return_value=LegacyResponse()):
+            article = ns._resmigazete_document_text(
+                "https://www.resmigazete.gov.tr/eskiler/2026/10/20261007-4.htm"
+            )
+
+        self.assertIn("ÇARŞAMBA", article)
+        self.assertIn("YÖNETMELİĞİ", article)
+        self.assertIn("Yönetmeliğin amacı", article)
+
 
 if __name__ == "__main__":
     unittest.main()
