@@ -229,6 +229,41 @@ class NewsSourceDiagnosticsTests(unittest.TestCase):
 
 
 
+class TbbPrimarySourcePolicyTests(unittest.TestCase):
+    def setUp(self):
+        ns._SOURCE_DIAGNOSTICS.clear()
+
+    def test_resmigazete_fallback_is_skipped_in_normal_news_flow(self):
+        source = {
+            "name": "Resmî Gazete – TBB Mevzuat Yedeği",
+            "kind": "resmigazete",
+            "enabled": False,
+            "disabled_reason": "manual fallback only",
+        }
+        with patch.object(ns, "_resmigazete_items") as fallback_parser:
+            items = ns._source_items(source)
+
+        self.assertEqual(items, [])
+        fallback_parser.assert_not_called()
+        diagnostic = ns._SOURCE_DIAGNOSTICS[source["name"]]
+        self.assertEqual(diagnostic["stage"], "skipped")
+        self.assertEqual(diagnostic["reason"], "manual fallback only")
+        self.assertEqual(diagnostic["errors"], [])
+
+    def test_tbb_primary_source_remains_enabled_and_is_called(self):
+        source = {
+            "name": "Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
+            "kind": "tbb_mevzuat",
+            "enabled": True,
+        }
+        expected = [{"source": source["name"], "title": "Test", "url": "https://www.tbb.gov.tr/tr/mevzuat-duyurulari/test"}]
+        with patch.object(ns, "_tbb_mevzuat_items", return_value=expected) as tbb_parser:
+            items = ns._source_items(source)
+
+        self.assertEqual(items, expected)
+        tbb_parser.assert_called_once_with(source)
+
+
 class FakeGibResponse:
     def __init__(self, status_code=200, payload=None, json_error=None, text=""):
         self.status_code = status_code
