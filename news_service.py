@@ -895,8 +895,54 @@ def _gib_api_items(source):
 
 
 
+def _resmigazete_html_text(response, url):
+    """Resmî Gazete HTML'ini UTF-8 veya eski Türkçe Windows-1254 kodlamasıyla çöz."""
+    content = response.content
+    content_type = str(response.headers.get("Content-Type", ""))
+    declared_match = re.search(r"charset\\s*=\\s*['\\"]?([a-zA-Z0-9._:-]+)", content_type, re.I)
+    declared = declared_match.group(1).strip().lower() if declared_match else ""
+
+    # Bazı eski Resmî Gazete sayfalarında charset bildirimi yok veya hatalı
+    # ISO-8859-1/Windows-1252 olarak geliyor. Türkçe tek baytlı içerikte bu,
+    # Ş/İ/Ğ harflerini Þ/Ý/Ð olarak bozar. Geçerli UTF-8'i önce koru; değilse
+    # Türkçe Windows-1254'e dön.
+    generic_western = {"iso-8859-1", "iso8859-1", "latin-1", "latin1",
+                       "windows-1252", "cp1252", "us-ascii", "ascii"}
+    turkish_legacy = {"windows-1254", "cp1254", "iso-8859-9", "iso8859-9",
+                      "latin-5", "latin5"}
+
+    if content.startswith(b"\\xef\\xbb\\xbf"):
+        encoding = "utf-8-sig"
+    elif declared in turkish_legacy:
+        encoding = "cp1254"
+    elif declared in generic_western or not declared:
+        try:
+            content.decode("utf-8-sig")
+            encoding = "utf-8-sig"
+        except UnicodeDecodeError:
+            encoding = "cp1254"
+    else:
+        try:
+            content.decode(declared)
+            encoding = declared
+        except (LookupError, UnicodeDecodeError):
+            try:
+                content.decode("utf-8-sig")
+                encoding = "utf-8-sig"
+            except UnicodeDecodeError:
+                encoding = "cp1254"
+
+    decoded = content.decode(encoding, errors="strict")
+    print("Resmî Gazete HTML karakter kodlaması:",
+          {"url": url, "header_charset": declared or None, "used_encoding": encoding})
+    soup = BeautifulSoup(decoded, "html.parser")
+    for tag in soup(["script", "style", "noscript", "svg", "nav", "footer"]):
+        tag.decompose()
+    return _clean(soup.get_text(" ", strip=True))
+
+
 def _resmigazete_document_text(url):
-    """Resmî Gazete HTML/PDF metnini HTTPS üzerinden oku."""
+    """Resmî Gazete HTML/PDF metnini HTTPS üzerinden, karakterleri koruyarak oku."""
     response = _SESSION.get(
         url,
         headers={
@@ -920,18 +966,11 @@ def _resmigazete_document_text(url):
                     extracted.append(text)
         article = _clean("\\n".join(extracted))
     else:
-        # Requests may default to ISO-8859-1 when the server omits a charset.
-        # Parse the original bytes so BeautifulSoup can honor HTML meta charset
-        # declarations and detect legacy Turkish encodings such as Windows-1254.
-        soup = BeautifulSoup(response.content, "html.parser")
-        for tag in soup(["script", "style", "noscript", "svg", "nav", "footer"]):
-            tag.decompose()
-        article = _clean(soup.get_text(" ", strip=True))
+        article = _resmigazete_html_text(response, url)
 
     if len(article) < 80:
         raise ValueError(f"Resmî Gazete belgesinden yeterli metin çıkarılamadı: {url}")
     return article[:18000]
-
 
 def _resmigazete_items(source):
     """TBB duyurularının resmî kaynağı olan Resmî Gazete'yi yedek olarak tara.
