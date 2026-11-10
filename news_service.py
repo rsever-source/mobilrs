@@ -1856,6 +1856,9 @@ Kaynak metni:
                 ai_log["candidates"].append(ai_entry)
                 continue
             ai_entry["status"] = "published"
+            # Keep the actual Engelli.me publication timestamp separately from the
+            # source article's published_at date.
+            ai_entry["site_published_at"] = now.isoformat()
             ai_log["candidates"].append(ai_entry)
             added.append({
                 "id": item["id"], "title": title[:180], "summary": summary[:900], "detail_summary": detail_summary[:1400],
