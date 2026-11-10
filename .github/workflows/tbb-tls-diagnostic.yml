@@ -153,4 +153,13 @@ jobs:
           print("FALLBACK_DIAGNOSTIC",
                 json.dumps(ns._SOURCE_DIAGNOSTICS.get(fallback_source["name"], {}),
                            ensure_ascii=False))
+
+          print("===== REAL TBB-LINKED OFFICIAL DOCUMENT EXTRACTION =====")
+          official_document = (
+              "https://www.resmigazete.gov.tr/eskiler/2026/10/20261007-4.htm"
+          )
+          official_text = ns._resmigazete_document_text(official_document)
+          print("OFFICIAL_DOCUMENT_OK", official_document,
+                "characters=", len(official_text))
+          print("OFFICIAL_DOCUMENT_SAMPLE", official_text[:1000])
           PY
