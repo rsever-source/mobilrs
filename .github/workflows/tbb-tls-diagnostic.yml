@@ -45,6 +45,28 @@ jobs:
           from bs4 import BeautifulSoup
 
           print("certifi", certifi.__version__)
+          session = requests.Session()
+          session.headers.update({
+              "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36",
+              "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+              "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
+          })
+          print("===== RESMI GAZETE ALTERNATE ROUTES =====")
+          for url in (
+              "https://www.resmigazete.gov.tr/gbook.html",
+              "https://www.resmigazete.gov.tr/10.11.2026",
+              "https://resmigazete.gov.tr/fihrist?tarih=2026-11-10",
+              "https://resmigazete.gov.tr/10.11.2026",
+              "https://www.resmigazete.gov.tr/eskiler/2026/11/20261110-2.htm",
+          ):
+              try:
+                  response = session.get(url, timeout=(8, 25), allow_redirects=True)
+                  soup = BeautifulSoup(response.text, "html.parser")
+                  print("RG_ROUTE", url, "status=", response.status_code,
+                        "final=", response.url, "bytes=", len(response.content),
+                        "title=", soup.title.get_text(" ", strip=True) if soup.title else "")
+              except requests.exceptions.RequestException as exc:
+                  print("RG_ROUTE_FAIL", url, type(exc).__name__, str(exc)[:400])
           for host in ("www.tbb.gov.tr", "tbb.gov.tr"):
               url = f"https://{host}/tr/mevzuat-duyurulari"
               for mode, verify in (("certifi", True), ("system-ca", "/etc/ssl/certs/ca-certificates.crt")):
