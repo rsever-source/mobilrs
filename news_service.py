@@ -1,4 +1,5 @@
 import hashlib
+import io
 import json
 import os
 import re
@@ -12,6 +13,7 @@ from system_report import append_news_run
 from xml.etree import ElementTree as ET
 
 import requests
+import pdfplumber
 from bs4 import BeautifulSoup
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -893,9 +895,220 @@ def _gib_api_items(source):
     return items
 
 
+
+def _resmigazete_document_text(url):
+    """Resmî Gazete HTML/PDF metnini HTTPS üzerinden oku."""
+    response = _SESSION.get(
+        url,
+        headers={
+            "User-Agent": "Mozilla/5.0 (compatible; EngelliMe-News/1.0; +https://engelli.me)",
+            "Accept": "text/html,application/pdf;q=0.9,*/*;q=0.8",
+            "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.7",
+        },
+        timeout=(8, 25),
+    )
+    response.raise_for_status()
+    content_type = str(response.headers.get("Content-Type", "")).lower()
+    path = url.split("?", 1)[0].lower()
+
+    if path.endswith(".pdf") or "application/pdf" in content_type:
+        with pdfplumber.open(io.BytesIO(response.content)) as document:
+            extracted = []
+            for page in document.pages[:40]:
+                text = page.extract_text() or ""
+                if text:
+                    extracted.append(text)
+        article = _clean("\\n".join(extracted))
+    else:
+        soup = BeautifulSoup(response.text, "html.parser")
+        for tag in soup(["script", "style", "noscript", "svg", "nav", "footer"]):
+            tag.decompose()
+        article = _clean(soup.get_text(" ", strip=True))
+
+    if len(article) < 80:
+        raise ValueError(f"Resmî Gazete belgesinden yeterli metin çıkarılamadı: {url}")
+    return article[:18000]
+
+
+def _resmigazete_items(source):
+    """TBB duyurularının resmî kaynağı olan Resmî Gazete'yi yedek olarak tara.
+
+    TBB mevzuat duyuruları, ilgili mevzuat metnine Resmî Gazete bağlantısı verir.
+    TBB'nin www SSL zinciri bozuk olduğunda bu kaynak, doğrudan Resmî Gazete'nin
+    tarih bazlı günlük fihristinden taranır. SSL doğrulaması açık kalır.
+    """
+    keywords = [str(k).casefold() for k in source.get("keywords", [])]
+    base = str(source.get("url", "https://www.resmigazete.gov.tr")).rstrip("/")
+    lookback_days = max(1, min(int(source.get("lookback_days", 7)), 14))
+    max_items = max(1, min(int(source.get("max_items", 30)), 100))
+    today = datetime.now(timezone(timedelta(hours=3))).date()
+
+    previous = _load_json(NEWS_FILE, {})
+    if not isinstance(previous, dict):
+        previous = {}
+    known_ids = {
+        entry.get("id") for entry in previous.get("items", [])
+        if isinstance(entry, dict) and entry.get("id")
+    }
+    seen_before = previous.get("seen_urls", {})
+    if not isinstance(seen_before, dict):
+        seen_before = {}
+
+    items = []
+    seen = set()
+    page_errors = []
+    detail_errors = []
+    page_stats = []
+    anchors_total = 0
+    keyword_matches = 0
+    detail_attempts = 0
+    skipped_known = 0
+
+    headers = {
+        "User-Agent": "Mozilla/5.0 (compatible; EngelliMe-News/1.0; +https://engelli.me)",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.7",
+    }
+
+    for offset in range(lookback_days):
+        day = today - timedelta(days=offset)
+        day_url = f"{base}/{day.strftime('%d.%m.%Y')}"
+        response = None
+
+        for attempt in range(1, 4):
+            started = time.monotonic()
+            try:
+                candidate = _SESSION.get(day_url, headers=headers, timeout=(8, 20))
+                if candidate.status_code == 404:
+                    response = None
+                    break
+                candidate.raise_for_status()
+                response = candidate
+                break
+            except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as exc:
+                elapsed_ms = round((time.monotonic() - started) * 1000)
+                if attempt < 3:
+                    delay = attempt * 2
+                    print(
+                        "Resmî Gazete günlük fihrist yeniden denenecek:",
+                        {"date": day.isoformat(), "attempt": attempt,
+                         "delay_s": delay, "error": type(exc).__name__,
+                         "elapsed_ms": elapsed_ms},
+                    )
+                    time.sleep(delay)
+                    continue
+                page_errors.append(
+                    f"{day.isoformat()} fihristi okunamadı: {type(exc).__name__}: {str(exc)[:250]}"
+                )
+            except requests.exceptions.RequestException as exc:
+                page_errors.append(
+                    f"{day.isoformat()} fihristi HTTP hatası: {type(exc).__name__}: {str(exc)[:250]}"
+                )
+                break
+
+        if response is None:
+            continue
+
+        soup = BeautifulSoup(response.text, "html.parser")
+        anchors = soup.find_all("a", href=True)
+        anchors_total += len(anchors)
+        day_matches = 0
+
+        for a in anchors:
+            title = _clean(a.get_text(" ", strip=True))
+            if len(title) < 10:
+                continue
+            title_folded = title.casefold()
+            if keywords and not any(keyword in title_folded for keyword in keywords):
+                continue
+
+            href = urljoin(day_url, a.get("href", ""))
+            parsed = requests.utils.urlparse(href)
+            if parsed.scheme != "https" or parsed.hostname not in (
+                "www.resmigazete.gov.tr", "resmigazete.gov.tr"
+            ):
+                continue
+            if "/eskiler/" not in parsed.path:
+                continue
+            extension = os.path.splitext(parsed.path.lower())[1]
+            if extension not in (".htm", ".html", ".pdf"):
+                continue
+            # Günlük sayının tamamını içeren büyük PDF'yi belge eki gibi değerlendirme.
+            if parsed.path.lower().endswith(f"/{day.strftime('%Y%m%d')}.pdf"):
+                continue
+
+            day_matches += 1
+            keyword_matches += 1
+            if href in seen or href in seen_before or _id({"url": href}) in known_ids:
+                skipped_known += 1
+                continue
+            seen.add(href)
+            if len(items) >= max_items:
+                continue
+
+            detail_attempts += 1
+            article = None
+            last_detail_error = None
+            for attempt in range(1, 3):
+                try:
+                    article = _resmigazete_document_text(href)
+                    break
+                except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as exc:
+                    last_detail_error = exc
+                    if attempt < 2:
+                        time.sleep(2)
+                except Exception as exc:
+                    last_detail_error = exc
+                    break
+
+            if not article:
+                detail_errors.append(
+                    f"Belge metni okunamadı ({href}): "
+                    f"{type(last_detail_error).__name__}: {str(last_detail_error)[:220]}"
+                )
+                continue
+
+            items.append({
+                "source": source["name"],
+                "title": title[:300],
+                "url": href,
+                "description": title[:900],
+                "content": article,
+                "published_at": datetime(
+                    day.year, day.month, day.day, tzinfo=timezone.utc
+                ).isoformat(),
+            })
+
+        page_stats.append({
+            "date": day.isoformat(),
+            "anchors": len(anchors),
+            "keyword_matches": day_matches,
+        })
+
+    errors = page_errors + detail_errors
+    diagnostic = {
+        "stage": "resmigazete_fallback",
+        "lookback_days": lookback_days,
+        "pages_read": len(page_stats),
+        "page_failures": len(page_errors),
+        "anchors": anchors_total,
+        "keyword_matches": keyword_matches,
+        "detail_attempts": detail_attempts,
+        "detail_errors": len(detail_errors),
+        "skipped_known": skipped_known,
+        "parsed_items": len(items),
+        "page_stats": page_stats,
+        "errors": errors[:20],
+    }
+    _SOURCE_DIAGNOSTICS[source["name"]] = diagnostic
+    print("Resmî Gazete yedek kaynak sonuç:", diagnostic)
+    return items
+
 def _source_items(source):
     if source.get("kind") == "tbb_mevzuat":
         return _tbb_mevzuat_items(source)
+    if source.get("kind") == "resmigazete":
+        return _resmigazete_items(source)
     if source.get("kind") == "gib_api":
         return _gib_api_items(source)
     if source.get("kind") == "html":
@@ -1246,6 +1459,13 @@ Her madde mutlaka yeni bir satırda başlasın; maddeleri aynı paragrafta birle
 Format: "- Madde X: açıklama"
 Mümkünse maddelerin arasında birer boş satır bırak.
 Yalnızca Resmî Gazete metninde doğrulanabilen madde numaralarını ve içerikleri kullan; madde numarası uydurma.
+"""
+            if item.get("source") == "Resmî Gazete – TBB Mevzuat Yedeği":
+                source_context = """RESMÎ GAZETE YEDEK KAYNAĞI İÇİN EK KURAL:
+Bu haberin kaynağı doğrudan T.C. Resmî Gazete'de yayımlanan mevzuat metnidir.
+Engelli bireyler açısından somut ve anlamlı etkisi yoksa publish=false ver.
+Yönetmelik veya tebliğ ilgiliyse detail_summary içinde önemli maddeleri ayrı satırlarda açıkla.
+Format: "- Madde X: açıklama". Yalnızca metinde doğrulanabilen madde numaralarını kullan; madde uydurma.
 """
             if item.get("source") == "Sosyal Güvenlik Kurumu – Duyurular":
                 source_context = """SGK DUYURULARI İÇİN EK KURAL:
