@@ -47,7 +47,7 @@ jobs:
           python-version: "3.11"
 
       - name: Bağımlılıkları kur
-        run: pip install requests beautifulsoup4
+        run: pip install requests beautifulsoup4 pdfplumber
 
       - name: Haberleri Gemini ile güncelle
         env:
@@ -186,7 +186,7 @@ jobs:
           python-version: "3.11"
 
       - name: Bağımlılıkları kur
-        run: pip install requests beautifulsoup4
+        run: pip install requests beautifulsoup4 pdfplumber
 
       - name: GİB kaynağını test et (Gemini yok, dosya yazımı yok)
         run: |
