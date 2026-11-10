@@ -140,4 +140,17 @@ jobs:
                       print("RG_DETAIL_TEXT", " ".join(soup.get_text(" ", strip=True).split())[:600])
               except requests.exceptions.RequestException as exc:
                   print("RG_DETAIL_ERROR", href, type(exc).__name__, str(exc)[:300])
+
+          print("===== ACTUAL ENGELLI.ME RESMI GAZETE FALLBACK PARSER =====")
+          import news_service as ns
+          fallback_source = next(s for s in sources if s.get("kind") == "resmigazete")
+          fallback_items = ns._resmigazete_items(fallback_source)
+          print("FALLBACK_ITEMS", len(fallback_items))
+          for item in fallback_items[:20]:
+              print("FALLBACK_ITEM", item.get("published_at"),
+                    item.get("title"), item.get("url"),
+                    "content_chars=", len(item.get("content", "")))
+          print("FALLBACK_DIAGNOSTIC",
+                json.dumps(ns._SOURCE_DIAGNOSTICS.get(fallback_source["name"], {}),
+                           ensure_ascii=False))
           PY
