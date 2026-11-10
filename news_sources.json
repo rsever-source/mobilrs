@@ -105,6 +105,9 @@
       "ulaşım",
       "ücretsiz seyahat",
       "engelli istihdam"
-    ]
+    ],
+    "enabled": false,
+    "role": "manual_fallback_only",
+    "disabled_reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır."
   }
 ]
