@@ -7,9 +7,9 @@ import time
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from html import unescape
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 
-from system_report import append_news_run
+from system_report import append_news_run, record_check
 from xml.etree import ElementTree as ET
 
 import requests
@@ -28,6 +28,7 @@ GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
 UA = "Mozilla/5.0 (compatible; EngelliMe-News/1.0; +https://engelli.me)"
 TIMEOUT = 20
 AI_TIMEOUT = 60
+TBB_SOURCE_NAME = "Türkiye Belediyeler Birliği – Mevzuat Duyuruları"
 
 # Per-run diagnostics included in the central news report.
 _GIB_SOURCE_DIAGNOSTICS = {}
@@ -566,96 +567,270 @@ def _html_items(source):
     return items
 
 
-def _tbb_mevzuat_items(source):
-    response = _SESSION.get(source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
-    response.raise_for_status()
+def _tbb_is_list_url(value):
+    parsed = urlsplit(str(value or ""))
+    return (
+        parsed.scheme == "https"
+        and parsed.hostname == "www.tbb.gov.tr"
+        and parsed.path.rstrip("/") == "/tr/mevzuat-duyurulari"
+    )
+
+
+def _tbb_is_detail_url(value):
+    parsed = urlsplit(str(value or ""))
+    return (
+        parsed.scheme == "https"
+        and parsed.hostname == "www.tbb.gov.tr"
+        and parsed.path.startswith("/tr/mevzuat-duyurulari/")
+        and parsed.path.rstrip("/") != "/tr/mevzuat-duyurulari"
+    )
+
+
+def _tbb_title_key(value):
+    return re.sub(r"[^0-9a-zçğıöşü]+", " ", _clean(value).casefold()).strip()
+
+
+def _tbb_titles_match(list_title, detail_title):
+    left = _tbb_title_key(list_title)
+    right = _tbb_title_key(detail_title)
+    if not left or not right:
+        return False
+    if left in right or right in left:
+        return True
+    left_words, right_words = set(left.split()), set(right.split())
+    return bool(left_words and right_words) and (
+        len(left_words & right_words) / min(len(left_words), len(right_words)) >= 0.6
+    )
+
+
+def _tbb_detail_published_at(soup):
+    """Read the TBB announcement publication date, never a date mentioned in its legal text."""
+    meta_selectors = (
+        'meta[property="article:published_time"]',
+        'meta[name="article:published_time"]',
+        'meta[property="og:article:published_time"]',
+        'meta[itemprop="datePublished"]',
+        'meta[property="datePublished"]',
+        'meta[name="datePublished"]',
+        'meta[name="publishdate"]',
+        'meta[name="pubdate"]',
+        'meta[name="date"]',
+    )
+    for selector in meta_selectors:
+        node = soup.select_one(selector)
+        if node and node.get("content"):
+            value = node.get("content")
+            parsed = _date(value) or _date_from_text(value)
+            if parsed:
+                return parsed.isoformat()
+
+    for script in soup.find_all("script", type="application/ld+json"):
+        raw = script.string or script.get_text()
+        match = re.search(r'"datePublished"\s*:\s*"([^"]+)"', raw)
+        if match:
+            parsed = _date(match.group(1)) or _date_from_text(match.group(1))
+            if parsed:
+                return parsed.isoformat()
+
+    candidates = set()
+    for node in soup.find_all("time"):
+        value = node.get("datetime") or node.get_text(" ", strip=True)
+        parsed = _date(value) or _date_from_text(value)
+        if parsed:
+            candidates.add(parsed)
+
+    # Some TBB templates expose a visible date in a short date/tarih metadata node.
+    for selector in (
+        "[class*='date']", "[class*='tarih']", "[class*='publish']",
+        "[id*='date']", "[id*='tarih']",
+    ):
+        for node in soup.select(selector):
+            value = _clean(node.get_text(" ", strip=True))
+            if not value or len(value) > 100:
+                continue
+            parsed = _date(value) or _date_from_text(value)
+            if parsed:
+                candidates.add(parsed)
+
+    if len(candidates) == 1:
+        return next(iter(candidates)).isoformat()
+    return None
+
+
+def _tbb_detail_content(soup):
+    """Extract readable text from the TBB detail body, excluding page chrome."""
+    for tag in soup(["script", "style", "noscript", "svg", "nav", "footer", "header"]):
+        tag.decompose()
+    selectors = (
+        "[itemprop='articleBody']", "article", ".article-body", ".entry-content",
+        ".news-detail-content", ".detail-content", ".duyuru-icerik", "main",
+    )
+    candidates = []
+    for selector in selectors:
+        for node in soup.select(selector):
+            value = _clean(node.get_text(" ", strip=True))
+            if value:
+                candidates.append(value)
+    if not candidates:
+        return ""
+    # Prefer the most substantial article container, not a navigation/sidebar fragment.
+    return max(candidates, key=len)[:12000]
+
+
+def _tbb_gazette_link(soup, page_url):
+    for link in soup.find_all("a", href=True):
+        href = urljoin(page_url, link.get("href", ""))
+        parsed = urlsplit(href)
+        if (
+            parsed.scheme == "https"
+            and parsed.hostname in ("www.resmigazete.gov.tr", "resmigazete.gov.tr")
+            and "/eskiler/" in parsed.path
+        ):
+            return href
+    return ""
+
+
+def _tbb_detail_fields(response, requested_url, list_title):
+    final_url = getattr(response, "url", requested_url)
+    if not _tbb_is_detail_url(final_url):
+        raise ValueError(f"TBB detay bağlantısı beklenmeyen adrese yönlendi: {final_url}")
+
     soup = BeautifulSoup(response.text, "html.parser")
-    keywords = [str(k).lower() for k in source.get("keywords", [])]
-    items = []
+    heading = soup.find("h1")
+    detail_title = _clean(heading.get_text(" ", strip=True)) if heading else ""
+    if not detail_title:
+        meta = soup.select_one('meta[property="og:title"], meta[name="title"]')
+        detail_title = _clean(meta.get("content", "")) if meta else ""
+    if not detail_title:
+        title_node = soup.find("title")
+        detail_title = _clean(title_node.get_text(" ", strip=True)) if title_node else ""
+    if not detail_title or not _tbb_titles_match(list_title, detail_title):
+        raise ValueError(
+            "TBB detay başlığı duyuru listesindeki başlıkla eşleşmiyor "
+            f"(liste={list_title[:120]!r}, detay={detail_title[:120]!r})"
+        )
+
+    published_at = _tbb_detail_published_at(soup)
+    if not published_at:
+        raise ValueError("TBB detay sayfasında güvenilir duyuru yayın tarihi bulunamadı")
+
+    content = _tbb_detail_content(soup)
+    if len(content) < 50:
+        raise ValueError("TBB detay sayfasından yeterli duyuru içeriği çıkarılamadı")
+
+    return {
+        "title": detail_title,
+        "published_at": published_at,
+        "content": content,
+        "content_url": _tbb_gazette_link(soup, final_url),
+        "url": final_url,
+    }
+
+
+def _tbb_mevzuat_items(source):
+    """Read TBB with normal TLS verification and expose a strict per-source health result."""
+    source_name = source.get("name", TBB_SOURCE_NAME)
+    response = _SESSION.get(
+        source["url"], headers={"User-Agent": UA}, timeout=TIMEOUT,
+        verify=True, allow_redirects=True,
+    )
+    response.raise_for_status()
+    if not _tbb_is_list_url(getattr(response, "url", source["url"])):
+        raise ValueError(
+            "TBB duyuru listesi beklenmeyen adrese yönlendi: "
+            + str(getattr(response, "url", source["url"]))
+        )
+
+    soup = BeautifulSoup(response.text, "html.parser")
+    keywords = [str(k).casefold() for k in source.get("keywords", []) if str(k).strip()]
+    links = []
     seen = set()
-    article_links = 0
-    detail_attempts = 0
-    detail_errors = []
-    missing_dates = []
-
-    for a in soup.find_all("a", href=True):
-        href = urljoin(source["url"], a.get("href", ""))
-        title = _clean(a.get_text(" ", strip=True))
-        if not title or len(title) < 12 or href in seen:
+    all_anchors = soup.find_all("a", href=True)
+    for anchor in all_anchors:
+        href = urljoin(source["url"], anchor.get("href", ""))
+        title = _clean(anchor.get_text(" ", strip=True))
+        if len(title) < 12 or href in seen or not _tbb_is_detail_url(href):
             continue
-        if not href.startswith("https://www.tbb.gov.tr/tr/mevzuat-duyurulari/"):
-            continue
-        if href.rstrip("/") == source["url"].rstrip("/"):
-            continue
-        article_links += 1
-        if not any(k in title.lower() for k in keywords):
-            continue
-
         seen.add(href)
-        description = title
-        published_at = None
-        detail_attempts += 1
+        links.append({"title": title, "url": href})
+
+    matching = [
+        item for item in links
+        if not keywords or any(keyword in item["title"].casefold() for keyword in keywords)
+    ]
+    # If there is no keyword-relevant announcement today, validate the newest listed
+    # detail page as a health probe without publishing it as a news candidate.
+    health_probe = not matching
+    targets = matching if matching else links[:1]
+
+    items = []
+    detail_errors = []
+    detail_successes = 0
+    for listed in targets:
+        href, title = listed["url"], listed["title"]
         try:
-            detail = _SESSION.get(href, headers={"User-Agent": UA}, timeout=TIMEOUT)
-            detail.raise_for_status()
-            detail_soup = BeautifulSoup(detail.text, "html.parser")
-            detail_text = _clean(detail_soup.get_text(" ", strip=True))
-            marker = re.search(
-                r"([0-9]{1,2}\s+(?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+[0-9]{4}\s+Tarihli.*?Resmî Gazete['’]?\s*de yayımlanmıştır\.)",
-                detail_text,
-                re.IGNORECASE,
+            detail = _SESSION.get(
+                href, headers={"User-Agent": UA}, timeout=TIMEOUT,
+                verify=True, allow_redirects=True,
             )
-            if marker:
-                description = marker.group(1)
-                date_match = re.search(
-                    r"([0-9]{1,2})\s+(Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+([0-9]{4})",
-                    description,
-                    re.IGNORECASE,
-                )
-                if date_match:
-                    months = {
-                        "ocak": 1, "şubat": 2, "mart": 3, "nisan": 4, "mayıs": 5, "haziran": 6,
-                        "temmuz": 7, "ağustos": 8, "eylül": 9, "ekim": 10, "kasım": 11, "aralık": 12,
-                    }
-                    day, month_name, year = date_match.groups()
-                    published_at = datetime(
-                        int(year), months[month_name.lower()], int(day), tzinfo=timezone.utc
-                    ).isoformat()
+            detail.raise_for_status()
+            fields = _tbb_detail_fields(detail, href, title)
+            detail_successes += 1
+            if health_probe:
+                continue
+
+            items.append({
+                "source": source_name,
+                "title": fields["title"][:300],
+                "url": href,  # Keep the TBB announcement as the public/source link.
+                "description": fields["content"][:900],
+                "content": fields["content"],
+                "content_url": fields["content_url"] or None,
+                "content_origin": (
+                    "Resmî Gazete mevzuat belgesi"
+                    if fields["content_url"] else "TBB duyuru detay sayfası"
+                ),
+                "published_at": fields["published_at"],
+            })
         except Exception as exc:
-            error = f"Detay sayfası okunamadı ({href}): {type(exc).__name__}: {str(exc)[:250]}"
-            detail_errors.append(error)
-            print("TBB mevzuat duyurusu okunamadı:", href, repr(exc))
-
-        if not published_at:
-            if not any(error.startswith(f"Detay sayfası okunamadı ({href})") for error in detail_errors):
-                missing_dates.append(f"Yayın tarihi çözümlenemedi: {href}")
-            continue
-
-        items.append({
-            "source": source["name"],
-            "title": title[:300],
-            "url": href,
-            "description": description[:900],
-            "published_at": published_at,
-        })
+            detail_errors.append(
+                f"Detay sayfası doğrulanamadı ({href}): {type(exc).__name__}: {str(exc)[:250]}"
+            )
+            print("TBB mevzuat duyurusu doğrulanamadı:", href, repr(exc))
 
     errors = []
-    if len(soup.find_all("a", href=True)) == 0:
-        errors.append("Sayfada bağlantı bulunamadı; beklenen HTML yapısı değişmiş olabilir.")
-    elif article_links == 0:
-        errors.append("TBB mevzuat duyurusu bağlantıları bulunamadı; sayfa yapısı değişmiş olabilir.")
+    if not all_anchors:
+        errors.append("TBB duyuru listesinde bağlantı bulunamadı.")
+    elif not links:
+        errors.append("TBB mevzuat duyurusu detay bağlantıları bulunamadı.")
+    if links and not targets:
+        errors.append("TBB duyuru detay doğrulaması için uygun bağlantı bulunamadı.")
     errors.extend(detail_errors)
-    errors.extend(missing_dates)
-    _SOURCE_DIAGNOSTICS[source["name"]] = {
-        "stage": "tbb_mevzuat", "anchors": len(soup.find_all("a", href=True)),
-        "article_links": article_links, "keyword_matches": len(seen),
-        "detail_attempts": detail_attempts, "detail_errors": len(detail_errors),
-        "missing_dates": len(missing_dates), "parsed_items": len(items),
+
+    validated = bool(
+        _tbb_is_list_url(getattr(response, "url", source["url"]))
+        and links
+        and targets
+        and detail_successes == len(targets)
+        and not errors
+    )
+    diagnostic = {
+        "stage": "tbb_mevzuat",
+        "tls_verified": True,
+        "list_read": True,
+        "anchors": len(all_anchors),
+        "article_links": len(links),
+        "keyword_matches": len(matching),
+        "health_probe": health_probe,
+        "detail_attempts": len(targets),
+        "detail_successes": detail_successes,
+        "parsed_items": len(items),
+        "validated": validated,
         "errors": errors[:30],
     }
-    if errors and (not article_links or detail_errors or missing_dates):
-        # Partial results remain usable; update_news records the diagnostic as a source error.
-        print("TBB kaynak tanılama hataları:", source["name"], errors[:10])
+    _SOURCE_DIAGNOSTICS[source_name] = diagnostic
+    print("TBB kaynak doğrulaması:", diagnostic)
+
     return items
 
 
@@ -1387,6 +1562,24 @@ def update_news():
     for source in sources:
         try:
             source_items = _source_items(source)
+            if source.get("kind") == "tbb_mevzuat":
+                tbb_diagnostic = _SOURCE_DIAGNOSTICS.get(source["name"], {})
+                # Only this TBB-specific validation is allowed to resolve its incident.
+                if tbb_diagnostic.get("validated") is True:
+                    try:
+                        record_check(
+                            "news-source:" + source["name"],
+                            "success",
+                            (
+                                "TBB TLS doğrulaması açıkken liste ve "
+                                f"{tbb_diagnostic.get('detail_successes', 0)} detay sayfası "
+                                "başlık, yayın tarihi, içerik ve bağlantı yönünden doğrulandı."
+                            ),
+                            immediate=True,
+                        )
+                    except Exception as report_exc:
+                        # A reporting API problem must not stop normal news processing.
+                        print("TBB kaynak iyileşme durumu raporlanamadı:", repr(report_exc))
             source_counts[source["name"]] = len(source_items)
             parsed_total += len(source_items)
             for item in source_items:
@@ -1488,34 +1681,41 @@ def update_news():
             "source": item.get("source", ""),
             "url": item.get("url", ""),
             "published_at": item.get("published_at"),
+            "content_origin": item.get("content_origin"),
             "status": "not_sent",
         }
         try:
-            if item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları":
-                tbb_response = _SESSION.get(item["url"], headers={"User-Agent": UA}, timeout=TIMEOUT)
-                tbb_response.raise_for_status()
-                tbb_soup = BeautifulSoup(tbb_response.text, "html.parser")
-                official_url = ""
-                for link in tbb_soup.find_all("a", href=True):
-                    href = urljoin(item["url"], link.get("href", ""))
-                    if "resmigazete.gov.tr/eskiler/" in href:
-                        official_url = href
-                        break
-                if not official_url:
-                    raise RuntimeError("TBB duyurusunda Resmî Gazete bağlantısı bulunamadı")
-                article = _article_text(official_url)
+            tbb_content_from_gazette = False
+            if item.get("source") == TBB_SOURCE_NAME:
+                official_url = item.get("content_url")
+                if official_url:
+                    # The public/source link remains the TBB announcement URL.
+                    # Only the underlying legal text is read from Resmî Gazete.
+                    article = _article_text(official_url)
+                    tbb_content_from_gazette = True
+                else:
+                    # Some TBB notices contain their complete text on the TBB detail page.
+                    article = item.get("content") or _article_text(item["url"])
             else:
                 # İstemci tarafında oluşturulan duyuru sayfalarında gövde kaynakta
                 # hazır gelir; detay sayfasını kazımaya gerek yok.
                 article = item.get("content") or _article_text(item["url"])
             source_context = ""
-            if item.get("source") == "Türkiye Belediyeler Birliği – Mevzuat Duyuruları":
-                source_context = """TBB / RESMÎ GAZETE DUYURULARI İÇİN EK KURAL:
+            if item.get("source") == TBB_SOURCE_NAME:
+                if tbb_content_from_gazette:
+                    source_context = """TBB DUYURUSU / RESMÎ GAZETE İÇERİĞİ:
+Haberin kaynak ve tıklanacak duyuru bağlantısı TBB'nin duyuru sayfasıdır; bu bağlantı kesinlikle Resmî Gazete bağlantısıyla değiştirilmemelidir.
+Mevzuatın tam metni Resmî Gazete belgesinden alınmıştır. Özette veya detay açıklamasında içeriğin Resmî Gazete'de yayımlanan mevzuat belgesinden alındığını açıkça belirt.
 detail_summary içinde yönetmelikteki önemli maddeleri sırayla ve ayrı ayrı ver.
 Her madde mutlaka yeni bir satırda başlasın; maddeleri aynı paragrafta birleştirme.
 Format: "- Madde X: açıklama"
 Mümkünse maddelerin arasında birer boş satır bırak.
 Yalnızca Resmî Gazete metninde doğrulanabilen madde numaralarını ve içerikleri kullan; madde numarası uydurma.
+"""
+                else:
+                    source_context = """TBB DUYURUSU:
+Haberin kaynak bağlantısı TBB duyuru detay sayfasıdır. İçerik TBB detay sayfasından alınmıştır.
+Mevzuat maddeleri varsa yalnızca sayfada doğrulanabilen maddeleri kullan; madde numarası uydurma.
 """
             if item.get("source") == "Resmî Gazete – TBB Mevzuat Yedeği":
                 source_context = """RESMÎ GAZETE YEDEK KAYNAĞI İÇİN EK KURAL:
@@ -1660,7 +1860,9 @@ Kaynak metni:
             added.append({
                 "id": item["id"], "title": title[:180], "summary": summary[:900], "detail_summary": detail_summary[:1400],
                 "source": item["source"], "url": item["url"],
-                "published_at": item.get("published_at"), "created_at": now.isoformat()
+                "published_at": item.get("published_at"),
+                **({"content_origin": item.get("content_origin")} if item.get("content_origin") else {}),
+                "created_at": now.isoformat()
             })
         except Exception as exc:
             print("Haber işlenemedi:", item.get("title"), repr(exc))

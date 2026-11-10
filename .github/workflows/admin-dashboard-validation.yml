@@ -10,6 +10,7 @@ on:
       - "news_service.py"
       - "system_report.py"
       - "tests/test_news_source_diagnostics.py"
+      - "tests/test_system_report_incidents.py"
       - "tests/test_admin_session.py"
       - "requirements.txt"
       - "ADMIN_DASHBOARD_SETUP.md"
@@ -23,6 +24,7 @@ on:
       - "news_service.py"
       - "system_report.py"
       - "tests/test_news_source_diagnostics.py"
+      - "tests/test_system_report_incidents.py"
       - "tests/test_admin_session.py"
       - "requirements.txt"
       - "ADMIN_DASHBOARD_SETUP.md"
@@ -42,9 +44,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Check Python syntax
-        run: python -m py_compile admin_dashboard.py excel_vlookup_api.py news_service.py system_report.py tests/test_news_source_diagnostics.py tests/test_admin_session.py
+        run: python -m py_compile admin_dashboard.py excel_vlookup_api.py news_service.py system_report.py tests/test_news_source_diagnostics.py tests/test_system_report_incidents.py tests/test_admin_session.py
       - name: Test news source parsing diagnostics
         run: python -m unittest discover -s tests -p 'test_news_source_diagnostics.py' -v
+      - name: Test per-source incident lifecycle
+        run: python -m unittest discover -s tests -p 'test_system_report_incidents.py' -v
       - name: Test admin session cookie handling
         run: python -m unittest discover -s tests -p 'test_admin_session.py' -v
       - name: Check embedded browser JavaScript syntax

@@ -152,8 +152,9 @@ class NewsSourceDiagnosticsTests(unittest.TestCase):
         ):
             items = ns._tbb_mevzuat_items(source)
         self.assertEqual(items, [])
-        errors = ns._SOURCE_DIAGNOSTICS[source["name"]]["errors"]
-        self.assertTrue(any("Detay sayfası okunamadı" in error for error in errors))
+        diagnostic = ns._SOURCE_DIAGNOSTICS[source["name"]]
+        self.assertFalse(diagnostic["validated"])
+        self.assertTrue(any("Detay sayfası doğrulanamadı" in error for error in diagnostic["errors"]))
 
     def test_aa_byline_date_is_parsed_without_h1(self):
         # Gerçek AA DOM yapısı: başlık h1 değil; tarih div.news-writeby içinde
@@ -218,15 +219,114 @@ class NewsSourceDiagnosticsTests(unittest.TestCase):
             url=source["url"],
         )
         detail = FakeResponse(
-            "<html><body>Bu duyuru metninde beklenen yayın tarihi bulunmuyor.</body></html>",
+            "<html><head><title>Engelli yönetmelik duyurusu</title></head><body>"
+            "<h1>Engelli yönetmelik duyurusu</h1><main><article>"
+            "Bu TBB duyurusu, engelli bireylere ilişkin yönetmelik değişikliğini "
+            "ve belediyelerin uygulaması gereken esasları açıklamaktadır."
+            "</article></main></body></html>",
             url="https://www.tbb.gov.tr/tr/mevzuat-duyurulari/engelli-duyurusu",
         )
         with patch.object(ns._SESSION, "get", side_effect=[listing, detail]):
             items = ns._tbb_mevzuat_items(source)
         self.assertEqual(items, [])
-        errors = ns._SOURCE_DIAGNOSTICS[source["name"]]["errors"]
-        self.assertTrue(any("Yayın tarihi çözümlenemedi" in error for error in errors))
+        diagnostic = ns._SOURCE_DIAGNOSTICS[source["name"]]
+        self.assertFalse(diagnostic["validated"])
+        self.assertTrue(any("yayın tarihi bulunamadı" in error for error in diagnostic["errors"]))
 
+
+
+    def test_tbb_validates_tls_list_title_date_content_and_keeps_tbb_link(self):
+        source = {
+            "name": ns.TBB_SOURCE_NAME,
+            "url": "https://www.tbb.gov.tr/tr/mevzuat-duyurulari",
+            "keywords": ["engelli"],
+        }
+        tbb_url = "https://www.tbb.gov.tr/tr/mevzuat-duyurulari/engelli-duyurusu"
+        gazette_url = "https://www.resmigazete.gov.tr/eskiler/2026/11/20261109.htm"
+        listing = FakeResponse(
+            "<html><body><a href='/tr/mevzuat-duyurulari/engelli-duyurusu'>"
+            "Engelli yönetmelik duyurusu</a></body></html>",
+            url=source["url"],
+        )
+        detail = FakeResponse(
+            "<html><head><meta property='article:published_time' "
+            "content='2026-11-09T10:00:00+03:00'></head><body>"
+            "<h1>Engelli yönetmelik duyurusu</h1><main><article>"
+            "Bu TBB duyurusu, engelli bireylere ilişkin yönetmelik değişikliğini "
+            "ve belediyelerin uygulaması gereken esasları açıklamaktadır. "
+            "Ayrıntılı açıklama ve uygulama hükümleri bu sayfada yer almaktadır."
+            "</article></main>"
+            f"<a href='{gazette_url}'>Resmî Gazete</a></body></html>",
+            url=tbb_url,
+        )
+        with patch.object(ns._SESSION, "get", side_effect=[listing, detail]) as get:
+            items = ns._tbb_mevzuat_items(source)
+
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0]["url"], tbb_url)
+        self.assertEqual(items[0]["content_url"], gazette_url)
+        self.assertEqual(items[0]["content_origin"], "Resmî Gazete mevzuat belgesi")
+        self.assertIn("TBB duyurusu", items[0]["content"])
+        self.assertEqual(items[0]["published_at"], "2026-11-09T07:00:00+00:00")
+        diagnostic = ns._SOURCE_DIAGNOSTICS[source["name"]]
+        self.assertTrue(diagnostic["tls_verified"])
+        self.assertTrue(diagnostic["list_read"])
+        self.assertTrue(diagnostic["validated"])
+        self.assertEqual(get.call_count, 2)
+        self.assertTrue(all(call.kwargs.get("verify") is True for call in get.call_args_list))
+
+    def test_tbb_no_keyword_match_uses_detail_probe_for_source_health(self):
+        source = {
+            "name": ns.TBB_SOURCE_NAME,
+            "url": "https://www.tbb.gov.tr/tr/mevzuat-duyurulari",
+            "keywords": ["engelli"],
+        }
+        listing = FakeResponse(
+            "<html><body><a href='/tr/mevzuat-duyurulari/personel-duyurusu'>"
+            "Belediyelere yönelik personel mevzuatı duyurusu</a></body></html>",
+            url=source["url"],
+        )
+        detail = FakeResponse(
+            "<html><head><meta property='article:published_time' "
+            "content='2026-11-09T10:00:00+03:00'></head><body>"
+            "<h1>Belediyelere yönelik personel mevzuatı duyurusu</h1><main><article>"
+            "Bu TBB duyurusu belediyelerin personel mevzuatı uygulamalarına ilişkin "
+            "bilgilendirme içerir. Ayrıntılar ve uygulama esasları açıklanmıştır."
+            "</article></main></body></html>",
+            url="https://www.tbb.gov.tr/tr/mevzuat-duyurulari/personel-duyurusu",
+        )
+        with patch.object(ns._SESSION, "get", side_effect=[listing, detail]):
+            items = ns._tbb_mevzuat_items(source)
+
+        self.assertEqual(items, [])
+        diagnostic = ns._SOURCE_DIAGNOSTICS[source["name"]]
+        self.assertTrue(diagnostic["health_probe"])
+        self.assertTrue(diagnostic["validated"])
+        self.assertEqual(diagnostic["detail_successes"], 1)
+
+    def test_tbb_redirect_to_non_tbb_page_cannot_validate_source(self):
+        source = {
+            "name": ns.TBB_SOURCE_NAME,
+            "url": "https://www.tbb.gov.tr/tr/mevzuat-duyurulari",
+            "keywords": ["engelli"],
+        }
+        listing = FakeResponse(
+            "<html><body><a href='/tr/mevzuat-duyurulari/engelli-duyurusu'>"
+            "Engelli yönetmelik duyurusu</a></body></html>",
+            url=source["url"],
+        )
+        wrong_page = FakeResponse(
+            "<html><body><h1>Engelli yönetmelik duyurusu</h1><main>"
+            "Bu sayfa yanlış hedefe yönlendirilmiştir ve duyuru kaynağı değildir."
+            "</main></body></html>",
+            url="https://example.com/fake",
+        )
+        with patch.object(ns._SESSION, "get", side_effect=[listing, wrong_page]):
+            ns._tbb_mevzuat_items(source)
+
+        diagnostic = ns._SOURCE_DIAGNOSTICS[source["name"]]
+        self.assertFalse(diagnostic["validated"])
+        self.assertTrue(any("beklenmeyen adrese yönlendi" in error for error in diagnostic["errors"]))
 
 
 class TbbPrimarySourcePolicyTests(unittest.TestCase):

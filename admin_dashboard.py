@@ -579,6 +579,8 @@ function sourceReadSucceeded(run,sourceName){{
  const hasDiagnosticErrors=Array.isArray(diagnostic.errors)&&diagnostic.errors.length>0;
  const hasFetchError=Boolean(diagnostic.error);
  const hasRunError=(run.source_errors||[]).some(item=>item.source===sourceName);
+ const isTbb=sourceName==='Türkiye Belediyeler Birliği – Mevzuat Duyuruları';
+ if(isTbb&&diagnostic.validated!==true)return false;
  return !hasDiagnosticErrors&&!hasFetchError&&!hasRunError;
 }}
 function renderErrors(data){{
@@ -609,8 +611,11 @@ function renderErrors(data){{
    const sourceName=component.slice('news-source:'.length);
    // Son taramada kaynak başarıyla yanıtlandı ve ayrıştırıldıysa eski açık uyarıyı
    // operasyonel rapordan kaldır. Geçmiş olay news_ai_log içinde korunur.
-   if(latestRun&&sourceReadSucceeded(latestRun,sourceName))continue;
-   sourceErrors.push({{title:sourceName||'Bilinmeyen kaynak',when:'İlk görülme: '+safeText(incident.first_seen)+' · Durum: açık',details:readableError(incident.details)}});
+   const isTbb=sourceName==='Türkiye Belediyeler Birliği – Mevzuat Duyuruları';
+   if(latestRun&&!isTbb&&sourceReadSucceeded(latestRun,sourceName))continue;
+   const lastSeen=incident.last_seen||incident.first_seen;
+   const occurrences=Number(incident.occurrences||1);
+   sourceErrors.push({{title:sourceName||'Bilinmeyen kaynak',when:'Son görülme: '+safeText(lastSeen)+' · Tekrar: '+occurrences+' · Durum: açık',details:readableError(incident.details)}});
   }}else if(!isSource&&incident.status!=='resolved'){{
    const isNewsItem=component.startsWith('news-item:');
    const incidentDetails=String(incident.details||'');
