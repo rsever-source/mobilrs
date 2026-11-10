@@ -55,6 +55,7 @@ jobs:
               [ -f "$cert" ] || continue
               echo "--- $(basename "$cert") ---"
               openssl x509 -in "$cert" -noout -subject -issuer -dates -fingerprint -sha256 || true
+              openssl x509 -in "$cert" -noout -text | sed -n '/X509v3 Subject Alternative Name/,+1p; /X509v3 Authority Key Identifier/,+2p; /Authority Information Access/,+7p' || true
             done
             echo "--- OpenSSL verification summary ---"
             tail -n 8 "$log"
@@ -71,13 +72,22 @@ jobs:
           print("system verify paths:", ssl.get_default_verify_paths())
           for host in ("www.tbb.gov.tr", "tbb.gov.tr"):
               url = "https://" + host + "/tr/mevzuat-duyurulari"
+              for trust_mode, verify in (("certifi-default", True),
+                                         ("debian-system-ca", "/etc/ssl/certs/ca-certificates.crt")):
+                  try:
+                      response = requests.get(url, timeout=(8, 20), allow_redirects=False,
+                                              verify=verify)
+                      print("TLS_OK", host, trust_mode, "status=", response.status_code,
+                            "location=", response.headers.get("Location"),
+                            "final_url=", response.url, "bytes=", len(response.content))
+                  except requests.exceptions.SSLError as exc:
+                      print("TLS_FAIL", host, trust_mode, type(exc).__name__, str(exc)[:1000])
+                  except requests.exceptions.RequestException as exc:
+                      print("REQUEST_FAIL", host, trust_mode, type(exc).__name__, str(exc)[:1000])
               try:
                   response = requests.get(url, timeout=(8, 20), allow_redirects=True)
-                  print("TLS_OK", host, "status=", response.status_code,
+                  print("TLS_OK_FOLLOW_REDIRECT", host, "status=", response.status_code,
                         "final_url=", response.url, "bytes=", len(response.content))
-                  print("title=", response.text[:500].replace("\n", " "))
-              except requests.exceptions.SSLError as exc:
-                  print("TLS_FAIL", host, type(exc).__name__, str(exc)[:1000])
               except requests.exceptions.RequestException as exc:
-                  print("REQUEST_FAIL", host, type(exc).__name__, str(exc)[:1000])
+                  print("FOLLOW_REDIRECT_FAIL", host, type(exc).__name__, str(exc)[:1000])
           '
