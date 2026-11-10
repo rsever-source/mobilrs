@@ -160,4 +160,50 @@ jobs:
                   ])
               except requests.exceptions.RequestException as exc:
                   print("RG_FAIL", path, type(exc).__name__, str(exc)[:1000])
+          docker run --rm mobilrs-tbb-tls-probe python -c '
+          import json
+          from datetime import datetime, timedelta
+          from zoneinfo import ZoneInfo
+          from urllib.parse import urljoin, urlparse
+          import requests
+          from bs4 import BeautifulSoup
+
+          sources = json.load(open("news_sources.json", encoding="utf-8"))
+          tbb = next(s for s in sources if s.get("kind") == "tbb_mevzuat")
+          keywords = [str(k).casefold() for k in tbb.get("keywords", [])]
+          today = datetime.now(ZoneInfo("Europe/Istanbul")).date()
+          found = []
+          errors = []
+          print("\\n===== OFFICIAL GAZETTE 7-DAY KEYWORD SCAN =====")
+          for offset in range(7):
+              day = today - timedelta(days=offset)
+              path = "/" + day.strftime("%d.%m.%Y")
+              url = "https://www.resmigazete.gov.tr" + path
+              try:
+                  response = requests.get(url, timeout=(8, 20))
+                  if response.status_code == 404:
+                      print("RG_NO_ISSUE", day.isoformat())
+                      continue
+                  response.raise_for_status()
+                  soup = BeautifulSoup(response.text, "html.parser")
+                  anchors = soup.find_all("a", href=True)
+                  page_matches = 0
+                  for a in anchors:
+                      title = " ".join(a.get_text(" ", strip=True).split())
+                      if len(title) < 10 or not any(k in title.casefold() for k in keywords):
+                          continue
+                      href = urljoin(url, a["href"])
+                      if urlparse(href).netloc not in ("www.resmigazete.gov.tr", "resmigazete.gov.tr"):
+                          continue
+                      found.append((day.isoformat(), title[:220], href))
+                      page_matches += 1
+                  print("RG_DAY", day.isoformat(), "status=", response.status_code,
+                        "anchors=", len(anchors), "keyword_matches=", page_matches)
+              except requests.exceptions.RequestException as exc:
+                  errors.append((day.isoformat(), type(exc).__name__, str(exc)[:400]))
+                  print("RG_DAY_FAIL", day.isoformat(), type(exc).__name__, str(exc)[:400])
+          print("RG_TOTAL_MATCHES", len(found))
+          for item in found[:40]:
+              print("RG_MATCH", item)
+          print("RG_ERRORS", errors)
           '
