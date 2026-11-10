@@ -899,7 +899,7 @@ def _resmigazete_html_text(response, url):
     """Resmî Gazete HTML'ini UTF-8 veya eski Türkçe Windows-1254 kodlamasıyla çöz."""
     content = response.content
     content_type = str(response.headers.get("Content-Type", ""))
-    declared_match = re.search(r"charset\\s*=\\s*['\\"]?([a-zA-Z0-9._:-]+)", content_type, re.I)
+    declared_match = re.search(r"""charset\s*=\s*['"]?([a-zA-Z0-9._:-]+)""", content_type, re.I)
     declared = declared_match.group(1).strip().lower() if declared_match else ""
 
     # Bazı eski Resmî Gazete sayfalarında charset bildirimi yok veya hatalı
@@ -911,7 +911,7 @@ def _resmigazete_html_text(response, url):
     turkish_legacy = {"windows-1254", "cp1254", "iso-8859-9", "iso8859-9",
                       "latin-5", "latin5"}
 
-    if content.startswith(b"\\xef\\xbb\\xbf"):
+    if content.startswith(b"\xef\xbb\xbf"):
         encoding = "utf-8-sig"
     elif declared in turkish_legacy:
         encoding = "cp1254"
@@ -964,7 +964,7 @@ def _resmigazete_document_text(url):
                 text = page.extract_text() or ""
                 if text:
                     extracted.append(text)
-        article = _clean("\\n".join(extracted))
+        article = _clean("\n".join(extracted))
     else:
         article = _resmigazete_html_text(response, url)
 
