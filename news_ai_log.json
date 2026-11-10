@@ -6511,6 +6511,15 @@
       "first_seen": "2026-11-09T20:50:37.312511+00:00",
       "status": "pending_24h",
       "details": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='www.tbb.gov.tr', port=443): Max retries exceeded with url: /tr/mevzuat-duyurulari (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1018)')))\"))"
+    },
+    {
+      "component": "news-workflow-stale",
+      "first_seen": "2026-11-10T17:56:30.513789+00:00",
+      "last_seen": "2026-11-10T17:56:30.513789+00:00",
+      "occurrences": 1,
+      "status": "reported",
+      "details": "5 saatten uzun süredir başarılı zamanlanmış haber çalışması yok (5.10 saat). Otomatik kurtarma tetiklemesi deneniyor. Son başarılı zamanlanmış haber çalışması: 251; tamamlanma: 2026-11-10T12:50:12Z; geçen süre: 5.10 saat; çalışma: https://github.com/rsever-source/mobilrs/actions/runs/42819028144 Yeniden tetikleme GitHub tarafından kabul edildi; haber workflow'unun sonucunu tamamlanma raporu üzerinden izle.",
+      "reported_at": "2026-11-10T17:56:30.513789+00:00"
     }
   ]
 }
