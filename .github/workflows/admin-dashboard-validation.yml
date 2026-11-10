@@ -24,6 +24,7 @@ on:
       - "news_service.py"
       - "system_report.py"
       - "tests/test_news_source_diagnostics.py"
+      - "tests/test_system_report_incidents.py"
       - "tests/test_admin_session.py"
       - "requirements.txt"
       - "ADMIN_DASHBOARD_SETUP.md"
