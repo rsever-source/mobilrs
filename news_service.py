@@ -1147,6 +1147,21 @@ def _resmigazete_items(source):
     return items
 
 def _source_items(source):
+    # Resmî Gazete kaydı yalnızca manuel/yedek tanılama içindir; normal haber
+    # toplama akışında TBB'nin yerine geçmemeli veya TBB ile paralel yayın yapmamalı.
+    if source.get("enabled", True) is False:
+        source_name = source.get("name", "İsimsiz kaynak")
+        _SOURCE_DIAGNOSTICS[source_name] = {
+            "stage": "skipped",
+            "reason": source.get("disabled_reason", "Kaynak normal haber akışında devre dışı."),
+            "errors": [],
+        }
+        print("Haber kaynağı atlandı:", {
+            "source": source_name,
+            "reason": _SOURCE_DIAGNOSTICS[source_name]["reason"],
+        })
+        return []
+
     if source.get("kind") == "tbb_mevzuat":
         return _tbb_mevzuat_items(source)
     if source.get("kind") == "resmigazete":
