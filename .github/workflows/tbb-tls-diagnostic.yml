@@ -1,0 +1,83 @@
+name: TBB TLS certificate diagnostics
+
+on:
+  push:
+    branches:
+      - cloud-run-migration
+    paths:
+      - ".github/workflows/tbb-tls-diagnostic.yml"
+      - "Dockerfile"
+      - "requirements.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout Cloud Run source
+        uses: actions/checkout@v4
+        with:
+          ref: cloud-run-migration
+
+      - name: Build the same application image used by Cloud Run
+        run: docker build --pull -t mobilrs-tbb-tls-probe .
+
+      - name: Inspect public TLS certificate chains
+        shell: bash
+        run: |
+          set -u
+          for host in www.tbb.gov.tr tbb.gov.tr; do
+            echo
+            echo "===== TLS CHAIN: $host ====="
+            log="/tmp/${host}.tls.txt"
+            timeout 25 openssl s_client \
+              -connect "${host}:443" \
+              -servername "$host" \
+              -showcerts \
+              -verify_return_error \
+              </dev/null >"$log" 2>&1 || true
+            grep -E '^(CONNECTED|depth=|verify error:|Verification:|Verify return code:|New,|Protocol|Cipher| *[0-9]+ s:| *i:)' "$log" || true
+            mkdir -p "/tmp/${host}.chain"
+            awk -v dir="/tmp/${host}.chain" '
+              /-----BEGIN CERTIFICATE-----/ {
+                n++; file=sprintf("%s/cert-%02d.pem", dir, n); inside=1
+              }
+              inside { print > file }
+              /-----END CERTIFICATE-----/ {
+                close(file); inside=0
+              }
+            ' "$log"
+            for cert in "/tmp/${host}.chain/"*.pem; do
+              [ -f "$cert" ] || continue
+              echo "--- $(basename "$cert") ---"
+              openssl x509 -in "$cert" -noout -subject -issuer -dates -fingerprint -sha256 || true
+            done
+            echo "--- OpenSSL verification summary ---"
+            tail -n 8 "$log"
+          done
+
+      - name: Verify requests and certifi inside the production image
+        shell: bash
+        run: |
+          docker run --rm mobilrs-tbb-tls-probe python -c '
+          import ssl, certifi, requests
+          print("Python requests:", requests.__version__)
+          print("certifi:", certifi.__version__)
+          print("certifi bundle:", certifi.where())
+          print("system verify paths:", ssl.get_default_verify_paths())
+          for host in ("www.tbb.gov.tr", "tbb.gov.tr"):
+              url = "https://" + host + "/tr/mevzuat-duyurulari"
+              try:
+                  response = requests.get(url, timeout=(8, 20), allow_redirects=True)
+                  print("TLS_OK", host, "status=", response.status_code,
+                        "final_url=", response.url, "bytes=", len(response.content))
+                  print("title=", response.text[:500].replace("\n", " "))
+              except requests.exceptions.SSLError as exc:
+                  print("TLS_FAIL", host, type(exc).__name__, str(exc)[:1000])
+              except requests.exceptions.RequestException as exc:
+                  print("REQUEST_FAIL", host, type(exc).__name__, str(exc)[:1000])
+          '
