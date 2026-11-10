@@ -84,7 +84,9 @@
       "ulaşım",
       "ücretsiz seyahat",
       "engelli istihdam"
-    ]
+    ],
+    "enabled": true,
+    "role": "primary"
   },
   {
     "name": "Resmî Gazete – TBB Mevzuat Yedeği",
