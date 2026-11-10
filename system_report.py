@@ -16,6 +16,7 @@ REPORT_BRANCH = "cloud-run-migration"
 MAX_NEWS_RUNS = 31
 INCIDENT_RETENTION_DAYS = 90
 REPORT_AFTER = timedelta(hours=24)
+TBB_SOURCE_COMPONENT = "news-source:Türkiye Belediyeler Birliği – Mevzuat Duyuruları"
 API_ROOT = "https://api.github.com"
 
 
@@ -145,13 +146,19 @@ def _set_incident(report, component, status, details, now, immediate=False):
             active = {
                 "component": component,
                 "first_seen": _iso(now),
+                "last_seen": _iso(now),
+                "occurrences": 1,
                 "status": "pending_24h",
                 "details": str(details or "Failure reported without details")[:2500],
             }
             incidents.append(active)
-        elif details and _stable_details(details) != _stable_details(active.get("details")):
-            # Only persist changed error details, not changing run URLs every 30 minutes.
-            active["details"] = str(details)[:2500]
+        else:
+            # Keep one active card per component. Refresh the timestamp and count
+            # instead of appending another row for the same recurring source failure.
+            active["last_seen"] = _iso(now)
+            active["occurrences"] = int(active.get("occurrences", 1) or 1) + 1
+            if details and _stable_details(details) != _stable_details(active.get("details")):
+                active["details"] = str(details)[:2500]
         first_seen = _parse(active.get("first_seen")) or now
         if immediate and active.get("status") == "pending_24h":
             active["status"] = "reported"
@@ -225,6 +232,10 @@ def append_news_run(entry):
         # are removed; reported incidents remain as resolved history.
         for incident in list(report["system_incidents"]):
             component = incident.get("component", "")
+            if component == TBB_SOURCE_COMPONENT:
+                # TBB is resolved only by the TBB-specific validated probe below.
+                # Missing from a partial/empty source_errors list is not proof of recovery.
+                continue
             if component.startswith(("news-source:", "news-item:")) and component not in current_errors:
                 _set_incident(report, component, "success", "No longer failing in the latest news run", now)
 
