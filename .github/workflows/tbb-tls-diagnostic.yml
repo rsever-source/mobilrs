@@ -26,161 +26,59 @@ jobs:
       - name: Build the same application image used by Cloud Run
         run: docker build --pull -t mobilrs-tbb-tls-probe .
 
-      - name: Inspect public TLS certificate chains
+      - name: Inspect certificate and test safe alternate sources
         shell: bash
         run: |
-          set -u
+          set -euo pipefail
           for host in www.tbb.gov.tr tbb.gov.tr; do
-            echo
             echo "===== TLS CHAIN: $host ====="
-            log="/tmp/${host}.tls.txt"
-            timeout 25 openssl s_client \
-              -connect "${host}:443" \
-              -servername "$host" \
-              -showcerts \
-              -verify_return_error \
-              </dev/null >"$log" 2>&1 || true
-            grep -E '^(CONNECTED|depth=|verify error:|Verification:|Verify return code:|New,|Protocol|Cipher| *[0-9]+ s:| *i:)' "$log" || true
-            mkdir -p "/tmp/${host}.chain"
-            awk -v dir="/tmp/${host}.chain" '
-              /-----BEGIN CERTIFICATE-----/ {
-                n++; file=sprintf("%s/cert-%02d.pem", dir, n); inside=1
-              }
-              inside { print > file }
-              /-----END CERTIFICATE-----/ {
-                close(file); inside=0
-              }
-            ' "$log"
-            for cert in "/tmp/${host}.chain/"*.pem; do
-              [ -f "$cert" ] || continue
-              echo "--- $(basename "$cert") ---"
-              openssl x509 -in "$cert" -noout -subject -issuer -dates -fingerprint -sha256 || true
-              openssl x509 -in "$cert" -noout -text | sed -n '/X509v3 Subject Alternative Name/,+1p; /X509v3 Authority Key Identifier/,+2p; /Authority Information Access/,+7p' || true
-            done
-            echo "--- OpenSSL verification summary ---"
-            tail -n 8 "$log"
+            timeout 20 openssl s_client -connect "${host}:443" -servername "$host" -showcerts -verify_return_error </dev/null 2>&1 | grep -E '^(depth=|verify error:|Verification:|Verify return code:| *[0-9]+ s:| *i:)' || true
           done
-
-      - name: Verify requests and certifi inside the production image
-        shell: bash
-        run: |
-          docker run --rm mobilrs-tbb-tls-probe python -c '
-          import ssl, certifi, requests
-          print("Python requests:", requests.__version__)
-          print("certifi:", certifi.__version__)
-          print("certifi bundle:", certifi.where())
-          print("system verify paths:", ssl.get_default_verify_paths())
-          for host in ("www.tbb.gov.tr", "tbb.gov.tr"):
-              url = "https://" + host + "/tr/mevzuat-duyurulari"
-              for trust_mode, verify in (("certifi-default", True),
-                                         ("debian-system-ca", "/etc/ssl/certs/ca-certificates.crt")):
-                  try:
-                      response = requests.get(url, timeout=(8, 20), allow_redirects=False,
-                                              verify=verify)
-                      print("TLS_OK", host, trust_mode, "status=", response.status_code,
-                            "location=", response.headers.get("Location"),
-                            "final_url=", response.url, "bytes=", len(response.content))
-                  except requests.exceptions.SSLError as exc:
-                      print("TLS_FAIL", host, trust_mode, type(exc).__name__, str(exc)[:1000])
-                  except requests.exceptions.RequestException as exc:
-                      print("REQUEST_FAIL", host, trust_mode, type(exc).__name__, str(exc)[:1000])
-              try:
-                  response = requests.get(url, timeout=(8, 20), allow_redirects=True)
-                  print("TLS_OK_FOLLOW_REDIRECT", host, "status=", response.status_code,
-                        "final_url=", response.url, "bytes=", len(response.content))
-              except requests.exceptions.RequestException as exc:
-                  print("FOLLOW_REDIRECT_FAIL", host, type(exc).__name__, str(exc)[:1000])
-          '
-          docker run --rm mobilrs-tbb-tls-probe python -c '
-          import requests
-          from bs4 import BeautifulSoup
-          print("\\n===== CONTROLLED TBB HOST HEADER TEST =====")
-          url = "https://tbb.gov.tr/tr/mevzuat-duyurulari"
-          try:
-              response = requests.get(
-                  url, headers={"Host": "www.tbb.gov.tr"},
-                  timeout=(8, 20), allow_redirects=False,
-              )
-              print("HOST_OVERRIDE", response.status_code, response.url,
-                    "location=", response.headers.get("Location"),
-                    "bytes=", len(response.content))
-              soup = BeautifulSoup(response.text, "html.parser")
-              print("PAGE_TITLE", soup.title.get_text(" ", strip=True) if soup.title else "NO_TITLE")
-              keywords = ("engelli", "ötv", "malul", "erişilebilirlik",
-                          "engelli raporu", "engelli kimlik", "bakım",
-                          "sosyal yardım", "ulaşım", "ücretsiz seyahat",
-                          "engelli istihdam")
-              matches = []
-              for a in soup.find_all("a", href=True):
-                  title = " ".join(a.get_text(" ", strip=True).split())
-                  if title and any(k in title.casefold() for k in keywords):
-                      matches.append((title[:180], a["href"]))
-              print("TBB_KEYWORD_MATCHES", len(matches))
-              for item in matches[:15]:
-                  print("TBB_MATCH", item)
-              links = [(a.get_text(" ", strip=True)[:100], a["href"])
-                       for a in soup.find_all("a", href=True)
-                       if "/tr/mevzuat-duyurulari/" in a["href"]]
-              print("DETAIL_LINKS", len(links))
-              for item in links[:5]:
-                  print("DETAIL_LINK", item)
-                  detail_url = item[1]
-                  if detail_url.startswith("https://www.tbb.gov.tr/"):
-                      detail_url = "https://tbb.gov.tr/" + detail_url.split("www.tbb.gov.tr/", 1)[1]
-                  elif detail_url.startswith("/"):
-                      detail_url = "https://tbb.gov.tr" + detail_url
-                  try:
-                      detail = requests.get(
-                          detail_url, headers={"Host": "www.tbb.gov.tr"},
-                          timeout=(8, 20), allow_redirects=False,
-                      )
-                      print("DETAIL_FETCH", detail.status_code, detail.url,
-                            "location=", detail.headers.get("Location"),
-                            "bytes=", len(detail.content))
-                  except requests.exceptions.RequestException as exc:
-                      print("DETAIL_FAIL", type(exc).__name__, str(exc)[:500])
-          except requests.exceptions.RequestException as exc:
-              print("HOST_OVERRIDE_FAIL", type(exc).__name__, str(exc)[:1000])
-
-          print("\\n===== OFFICIAL RESMI GAZETE ALTERNATIVE TEST =====")
-          for path in ("/j.html", "/10.11.2026"):
-              try:
-                  response = requests.get("https://www.resmigazete.gov.tr" + path,
-                                          timeout=(8, 20))
-                  response.raise_for_status()
-                  soup = BeautifulSoup(response.text, "html.parser")
-                  anchors = soup.find_all("a", href=True)
-                  print("RG_OK", path, response.status_code, len(response.content),
-                        "title=", soup.title.get_text(" ", strip=True) if soup.title else "",
-                        "anchors=", len(anchors),
-                        "body_sample=", " ".join(soup.get_text(" ", strip=True).split())[:800])
-                  print("RG_LINK_SAMPLES", [
-                      (a.get_text(" ", strip=True)[:100], a["href"])
-                      for a in anchors[:15]
-                  ])
-              except requests.exceptions.RequestException as exc:
-                  print("RG_FAIL", path, type(exc).__name__, str(exc)[:1000])
-          docker run --rm mobilrs-tbb-tls-probe python -c '
+          docker run --rm -i mobilrs-tbb-tls-probe python - <<'PY'
           import json
           from datetime import datetime, timedelta
-          from zoneinfo import ZoneInfo
           from urllib.parse import urljoin, urlparse
+          from zoneinfo import ZoneInfo
+
+          import certifi
           import requests
           from bs4 import BeautifulSoup
 
+          print("certifi", certifi.__version__)
+          for host in ("www.tbb.gov.tr", "tbb.gov.tr"):
+              url = f"https://{host}/tr/mevzuat-duyurulari"
+              for mode, verify in (("certifi", True), ("system-ca", "/etc/ssl/certs/ca-certificates.crt")):
+                  try:
+                      response = requests.get(url, timeout=(6, 12), allow_redirects=False, verify=verify)
+                      print("TLS_RESULT", host, mode, response.status_code, response.headers.get("Location"))
+                  except requests.exceptions.RequestException as exc:
+                      print("TLS_ERROR", host, mode, type(exc).__name__, str(exc)[:500])
+
+          print("===== TBB HOST-HEADER ALTERNATIVE =====")
+          try:
+              response = requests.get(
+                  "https://tbb.gov.tr/tr/mevzuat-duyurulari",
+                  headers={"Host": "www.tbb.gov.tr"},
+                  timeout=(6, 12),
+                  allow_redirects=False,
+              )
+              print("TBB_HOST_OVERRIDE", response.status_code, response.headers.get("Location"),
+                    len(response.content), response.text[:160].replace("\\n", " "))
+          except requests.exceptions.RequestException as exc:
+              print("TBB_HOST_OVERRIDE_ERROR", type(exc).__name__, str(exc)[:500])
+
+          print("===== OFFICIAL GAZETTE 7-DAY SCAN =====")
           sources = json.load(open("news_sources.json", encoding="utf-8"))
-          tbb = next(s for s in sources if s.get("kind") == "tbb_mevzuat")
-          keywords = [str(k).casefold() for k in tbb.get("keywords", [])]
+          tbb_source = next(s for s in sources if s.get("kind") == "tbb_mevzuat")
+          keywords = [str(k).casefold() for k in tbb_source.get("keywords", [])]
           today = datetime.now(ZoneInfo("Europe/Istanbul")).date()
           found = []
           errors = []
-          print("\\n===== OFFICIAL GAZETTE 7-DAY KEYWORD SCAN =====")
           for offset in range(7):
               day = today - timedelta(days=offset)
-              path = "/" + day.strftime("%d.%m.%Y")
-              url = "https://www.resmigazete.gov.tr" + path
+              url = "https://www.resmigazete.gov.tr/" + day.strftime("%d.%m.%Y")
               try:
-                  response = requests.get(url, timeout=(8, 20))
+                  response = requests.get(url, timeout=(6, 12))
                   if response.status_code == 404:
                       print("RG_NO_ISSUE", day.isoformat())
                       continue
@@ -193,17 +91,31 @@ jobs:
                       if len(title) < 10 or not any(k in title.casefold() for k in keywords):
                           continue
                       href = urljoin(url, a["href"])
-                      if urlparse(href).netloc not in ("www.resmigazete.gov.tr", "resmigazete.gov.tr"):
+                      if urlparse(href).netloc != "www.resmigazete.gov.tr":
+                          continue
+                      if not href.endswith((".htm", ".html", ".pdf")):
                           continue
                       found.append((day.isoformat(), title[:220], href))
                       page_matches += 1
-                  print("RG_DAY", day.isoformat(), "status=", response.status_code,
-                        "anchors=", len(anchors), "keyword_matches=", page_matches)
+                  print("RG_DAY", day.isoformat(), response.status_code,
+                        "anchors", len(anchors), "keyword_matches", page_matches)
               except requests.exceptions.RequestException as exc:
-                  errors.append((day.isoformat(), type(exc).__name__, str(exc)[:400]))
-                  print("RG_DAY_FAIL", day.isoformat(), type(exc).__name__, str(exc)[:400])
-          print("RG_TOTAL_MATCHES", len(found))
-          for item in found[:40]:
-              print("RG_MATCH", item)
-          print("RG_ERRORS", errors)
-          '
+                  errors.append((day.isoformat(), type(exc).__name__, str(exc)[:300]))
+                  print("RG_DAY_ERROR", day.isoformat(), type(exc).__name__, str(exc)[:300])
+
+          print("RG_TOTAL_MATCHES", len(found), "RG_ERRORS", errors)
+          for row in found[:50]:
+              print("RG_MATCH", row)
+
+          print("===== SAMPLE OFFICIAL DOCUMENT FETCH =====")
+          for day, title, href in found[:8]:
+              try:
+                  response = requests.get(href, timeout=(6, 12))
+                  print("RG_DETAIL", response.status_code, response.headers.get("Content-Type"),
+                        len(response.content), href)
+                  if response.status_code == 200 and "html" in response.headers.get("Content-Type", "").lower():
+                      soup = BeautifulSoup(response.text, "html.parser")
+                      print("RG_DETAIL_TEXT", " ".join(soup.get_text(" ", strip=True).split())[:600])
+              except requests.exceptions.RequestException as exc:
+                  print("RG_DETAIL_ERROR", href, type(exc).__name__, str(exc)[:300])
+          PY
