@@ -387,7 +387,7 @@ class ResmiGazeteFallbackTests(unittest.TestCase):
         )
         class LegacyResponse:
             content = html.encode("cp1254")
-            headers = {"Content-Type": "text/html"}
+            headers = {"Content-Type": "text/html; charset=ISO-8859-1"}
             url = "https://www.resmigazete.gov.tr/eskiler/2026/10/20261007-4.htm"
             text = content.decode("iso-8859-1")
 
@@ -402,6 +402,25 @@ class ResmiGazeteFallbackTests(unittest.TestCase):
         self.assertIn("ÇARŞAMBA", article)
         self.assertIn("YÖNETMELİĞİ", article)
         self.assertIn("Yönetmeliğin amacı", article)
+
+
+    def test_official_gazette_utf8_html_keeps_turkish_characters(self):
+        html = (
+            "<html><body><h1>7 Ekim 2026 ÇARŞAMBA</h1>"
+            "<p>ENGELLİ BİREYLERE YÖNELİK YÖNETMELİĞİ</p>"
+            "<p>Yönetmeliğin amacı ve kapsamı.</p></body></html>"
+        )
+        response = FakeResponse(
+            html,
+            url="https://www.resmigazete.gov.tr/eskiler/2026/11/20261110-2.htm",
+        )
+        with patch.object(ns._SESSION, "get", return_value=response):
+            article = ns._resmigazete_document_text(response.url)
+
+        self.assertIn("ÇARŞAMBA", article)
+        self.assertIn("ENGELLİ BİREYLERE", article)
+        self.assertIn("YÖNETMELİĞİ", article)
+        self.assertNotIn("ÇARÞAMBA", article)
 
 
 if __name__ == "__main__":
