@@ -1,0 +1,1000 @@
+{
+  "aciklama": "Her sözlük aday kaydının yüklenen kaynak JSON dosyasındaki ham izini saklar. Bu dosya nihai kavram doğrulaması yerine geçmez.",
+  "kayit_sayisi": 418,
+  "kayitlar": [
+    {
+      "kavram_id": "ek1_a_01_epilepsi_konvulsif_epilepsi__agir_001",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_001",
+      "kanit_metin": "1. Epilepsi – konvülsif epilepsi (Grand Mal)"
+    },
+    {
+      "kavram_id": "ek1_a_01_epilepsi_konvulsif_epilepsi__orta_002",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_001",
+      "kanit_metin": "1. Epilepsi – konvülsif epilepsi (Grand Mal)"
+    },
+    {
+      "kavram_id": "ek1_a_01_epilepsi_konvulsif_epilepsi__hafif_003",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_001",
+      "kanit_metin": "1. Epilepsi – konvülsif epilepsi (Grand Mal)"
+    },
+    {
+      "kavram_id": "ek1_a_02_epilepsi_kompleks_parsiyel_e_agir_004",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_001",
+      "kanit_metin": "2. Epilepsi –kompleks parsiyel epilepsi"
+    },
+    {
+      "kavram_id": "ek1_a_02_epilepsi_kompleks_parsiyel_e_orta_005",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_001",
+      "kanit_metin": "2. Epilepsi –kompleks parsiyel epilepsi"
+    },
+    {
+      "kavram_id": "ek1_a_02_epilepsi_kompleks_parsiyel_e_hafif_006",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_001",
+      "kanit_metin": "2. Epilepsi –kompleks parsiyel epilepsi"
+    },
+    {
+      "kavram_id": "ek1_a_03_epilepsi_basit_parsiyel_epil_agir_007",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_001",
+      "kanit_metin": "3. Epilepsi –basit parsiyel epilepsi"
+    },
+    {
+      "kavram_id": "ek1_a_03_epilepsi_basit_parsiyel_epil_orta_008",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_001",
+      "kanit_metin": "3. Epilepsi –basit parsiyel epilepsi"
+    },
+    {
+      "kavram_id": "ek1_a_03_epilepsi_basit_parsiyel_epil_hafif_009",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_001",
+      "kanit_metin": "3. Epilepsi –basit parsiyel epilepsi"
+    },
+    {
+      "kavram_id": "ek1_a_04_kognitif_bozukluklar_agir_010",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_001",
+      "kanit_metin": "4. Kognitif bozukluklar"
+    },
+    {
+      "kavram_id": "ek1_a_04_kognitif_bozukluklar_orta_011",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_001",
+      "kanit_metin": "4. Kognitif bozukluklar"
+    },
+    {
+      "kavram_id": "ek1_a_04_kognitif_bozukluklar_hafif_012",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_001",
+      "kanit_metin": "4. Kognitif bozukluklar"
+    },
+    {
+      "kavram_id": "ek1_a_05_parapleji_paraparezi_monople_agir_013",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_003",
+      "kanit_metin": "5. Parapleji/Paraparezi, Monopleji/Monoparezi, Hemipleji/Hemiparezi, Kuadripleji/Kuadraparezi vb. motor kaybı olanlar"
+    },
+    {
+      "kavram_id": "ek1_a_05_parapleji_paraparezi_monople_orta_014",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_003",
+      "kanit_metin": "5. Parapleji/Paraparezi, Monopleji/Monoparezi, Hemipleji/Hemiparezi, Kuadripleji/Kuadraparezi vb. motor kaybı olanlar"
+    },
+    {
+      "kavram_id": "ek1_a_05_parapleji_paraparezi_monople_hafif_015",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_003",
+      "kanit_metin": "5. Parapleji/Paraparezi, Monopleji/Monoparezi, Hemipleji/Hemiparezi, Kuadripleji/Kuadraparezi vb. motor kaybı olanlar"
+    },
+    {
+      "kavram_id": "ek1_a_06_parkinson_sendromu_agir_016",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_003",
+      "kanit_metin": "6. Parkinson sendromu"
+    },
+    {
+      "kavram_id": "ek1_a_06_parkinson_sendromu_orta_017",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_003",
+      "kanit_metin": "6. Parkinson sendromu"
+    },
+    {
+      "kavram_id": "ek1_a_06_parkinson_sendromu_hafif_018",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_003",
+      "kanit_metin": "6. Parkinson sendromu"
+    },
+    {
+      "kavram_id": "ek1_a_07_afaziler_agir_019",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_004",
+      "kanit_metin": "7. Afaziler"
+    },
+    {
+      "kavram_id": "ek1_a_07_afaziler_orta_020",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_004",
+      "kanit_metin": "7. Afaziler"
+    },
+    {
+      "kavram_id": "ek1_a_08_benign_beyin_tumorleri_agir_021",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_004",
+      "kanit_metin": "8. Benign beyin tümörleri"
+    },
+    {
+      "kavram_id": "ek1_a_08_benign_beyin_tumorleri_orta_022",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_004",
+      "kanit_metin": "8. Benign beyin tümörleri"
+    },
+    {
+      "kavram_id": "ek1_a_08_benign_beyin_tumorleri_hafif_023",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_004",
+      "kanit_metin": "8. Benign beyin tümörleri"
+    },
+    {
+      "kavram_id": "ek1_a_09_serebral_palsi_agir_024",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_004",
+      "kanit_metin": "9. Serebral palsi"
+    },
+    {
+      "kavram_id": "ek1_a_09_serebral_palsi_orta_025",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_004",
+      "kanit_metin": "9. Serebral palsi"
+    },
+    {
+      "kavram_id": "ek1_a_09_serebral_palsi_hafif_026",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_004",
+      "kanit_metin": "9. Serebral palsi"
+    },
+    {
+      "kavram_id": "ek1_a_10_spinal_kord_sinir_koku_lezyo_agir_027",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_005",
+      "kanit_metin": "10. Spinal kord; sinir kökü lezyonları, dejeneratif nörolojik hastalıklar veya herhangi bir nedene bağlı"
+    },
+    {
+      "kavram_id": "ek1_a_10_spinal_kord_sinir_koku_lezyo_orta_028",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_005",
+      "kanit_metin": "10. Spinal kord; sinir kökü lezyonları, dejeneratif nörolojik hastalıklar veya herhangi bir nedene bağlı"
+    },
+    {
+      "kavram_id": "ek1_a_10_spinal_kord_sinir_koku_lezyo_hafif_029",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_005",
+      "kanit_metin": "10. Spinal kord; sinir kökü lezyonları, dejeneratif nörolojik hastalıklar veya herhangi bir nedene bağlı"
+    },
+    {
+      "kavram_id": "ek1_a_11_multiple_skleroz_agir_030",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_005",
+      "kanit_metin": "11. Multiple skleroz"
+    },
+    {
+      "kavram_id": "ek1_a_11_multiple_skleroz_orta_031",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_005",
+      "kanit_metin": "11. Multiple skleroz"
+    },
+    {
+      "kavram_id": "ek1_a_11_multiple_skleroz_hafif_032",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_005",
+      "kanit_metin": "11. Multiple skleroz"
+    },
+    {
+      "kavram_id": "ek1_a_12_amyotrofik_lateral_skleroz_agir_033",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_005",
+      "kanit_metin": "12. Amyotrofik lateral skleroz"
+    },
+    {
+      "kavram_id": "ek1_a_13_poliomyelit_agir_034",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_005",
+      "kanit_metin": "13. Poliomyelit"
+    },
+    {
+      "kavram_id": "ek1_a_13_poliomyelit_orta_035",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_005",
+      "kanit_metin": "13. Poliomyelit"
+    },
+    {
+      "kavram_id": "ek1_a_13_poliomyelit_hafif_036",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_005",
+      "kanit_metin": "13. Poliomyelit"
+    },
+    {
+      "kavram_id": "ek1_a_14_myastenia_gravis_ile_birlikt_agir_037",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_006",
+      "kanit_metin": "14. Myastenia gravis ile birlikte"
+    },
+    {
+      "kavram_id": "ek1_a_15_muskuler_distrofi_ile_birlik_agir_038",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_006",
+      "kanit_metin": "15. Müsküler distrofi ile birlikte"
+    },
+    {
+      "kavram_id": "ek1_a_15_muskuler_distrofi_ile_birlik_orta_039",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_006",
+      "kanit_metin": "15. Müsküler distrofi ile birlikte"
+    },
+    {
+      "kavram_id": "ek1_a_15_muskuler_distrofi_ile_birlik_hafif_040",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_006",
+      "kanit_metin": "15. Müsküler distrofi ile birlikte"
+    },
+    {
+      "kavram_id": "ek1_a_16_periferal_noropatiler_ile_bi_agir_041",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_006",
+      "kanit_metin": "16. Periferal nöropatiler ile birlikte"
+    },
+    {
+      "kavram_id": "ek1_a_16_periferal_noropatiler_ile_bi_orta_042",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_006",
+      "kanit_metin": "16. Periferal nöropatiler ile birlikte"
+    },
+    {
+      "kavram_id": "ek1_a_16_periferal_noropatiler_ile_bi_hafif_043",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_006",
+      "kanit_metin": "16. Periferal nöropatiler ile birlikte"
+    },
+    {
+      "kavram_id": "ek1_a_17_tedaviye_ragmen_anlamli_duze_agir_044",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_006",
+      "kanit_metin": "17. Tedaviye rağmen anlamlı düzelme göstermeyen subakut kombine kord dejenerasyonu (Pernisiyöz anemi vb ile birlikte)"
+    },
+    {
+      "kavram_id": "ek1_a_17_tedaviye_ragmen_anlamli_duze_orta_045",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_006",
+      "kanit_metin": "17. Tedaviye rağmen anlamlı düzelme göstermeyen subakut kombine kord dejenerasyonu (Pernisiyöz anemi vb ile birlikte)"
+    },
+    {
+      "kavram_id": "ek1_a_17_tedaviye_ragmen_anlamli_duze_hafif_046",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_006",
+      "kanit_metin": "17. Tedaviye rağmen anlamlı düzelme göstermeyen subakut kombine kord dejenerasyonu (Pernisiyöz anemi vb ile birlikte)"
+    },
+    {
+      "kavram_id": "ek1_a_18_serebral_travma_agir_047",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_007",
+      "kanit_metin": "18. Serebral travma"
+    },
+    {
+      "kavram_id": "ek1_a_18_serebral_travma_orta_048",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_007",
+      "kanit_metin": "18. Serebral travma"
+    },
+    {
+      "kavram_id": "ek1_a_18_serebral_travma_hafif_049",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_007",
+      "kanit_metin": "18. Serebral travma"
+    },
+    {
+      "kavram_id": "ek1_a_19_huntington_koresi_syringomye_agir_050",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_007",
+      "kanit_metin": "19. Huntington Koresi, Syringomyeli, Friedrich ataksisi, Wilson hastalığı, Jeneralize distoni gibi dejeneratif ve akkiz/herediter hastalıklar, Spino-serebellar dejenerasyon veya Serebellar hastalıklar"
+    },
+    {
+      "kavram_id": "ek1_a_19_huntington_koresi_syringomye_orta_051",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_007",
+      "kanit_metin": "19. Huntington Koresi, Syringomyeli, Friedrich ataksisi, Wilson hastalığı, Jeneralize distoni gibi dejeneratif ve akkiz/herediter hastalıklar, Spino-serebellar dejenerasyon veya Serebellar hastalıklar"
+    },
+    {
+      "kavram_id": "ek1_a_19_huntington_koresi_syringomye_hafif_052",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_007",
+      "kanit_metin": "19. Huntington Koresi, Syringomyeli, Friedrich ataksisi, Wilson hastalığı, Jeneralize distoni gibi dejeneratif ve akkiz/herediter hastalıklar, Spino-serebellar dejenerasyon veya Serebellar hastalıklar"
+    },
+    {
+      "kavram_id": "ek1_b_01_zeka_gerilikleri_agir_053",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_008",
+      "kanit_metin": "1. Zeka gerilikleri"
+    },
+    {
+      "kavram_id": "ek1_b_01_zeka_gerilikleri_orta_054",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_008",
+      "kanit_metin": "1. Zeka gerilikleri"
+    },
+    {
+      "kavram_id": "ek1_b_02_sizofreni_ve_alt_tipleri_agir_055",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_008",
+      "kanit_metin": "2. Şizofreni ve alt tipleri"
+    },
+    {
+      "kavram_id": "ek1_b_02_sizofreni_ve_alt_tipleri_orta_056",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_008",
+      "kanit_metin": "2. Şizofreni ve alt tipleri"
+    },
+    {
+      "kavram_id": "ek1_b_03_sizoafektif_bozukluk_agir_057",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_009",
+      "kanit_metin": "3. Şizoafektif bozukluk"
+    },
+    {
+      "kavram_id": "ek1_b_03_sizoafektif_bozukluk_orta_058",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_009",
+      "kanit_metin": "3. Şizoafektif bozukluk"
+    },
+    {
+      "kavram_id": "ek1_b_04_sanrisal_bozukluklar_agir_059",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_009",
+      "kanit_metin": "4. Sanrısal bozukluklar"
+    },
+    {
+      "kavram_id": "ek1_b_04_sanrisal_bozukluklar_orta_060",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_009",
+      "kanit_metin": "4. Sanrısal bozukluklar"
+    },
+    {
+      "kavram_id": "ek1_b_05_atipik_veya_baska_turlu_sini_agir_061",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_009",
+      "kanit_metin": "5. Atipik veya başka türlü sınıflandırılamayan psikozlar"
+    },
+    {
+      "kavram_id": "ek1_b_05_atipik_veya_baska_turlu_sini_orta_062",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_009",
+      "kanit_metin": "5. Atipik veya başka türlü sınıflandırılamayan psikozlar"
+    },
+    {
+      "kavram_id": "ek1_b_06_bipolar_bozukluk_agir_063",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_009",
+      "kanit_metin": "6. Bipolar bozukluk"
+    },
+    {
+      "kavram_id": "ek1_b_06_bipolar_bozukluk_hafif_064",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_009",
+      "kanit_metin": "6. Bipolar bozukluk"
+    },
+    {
+      "kavram_id": "ek1_b_07_beyin_hasari_beyin_islev_boz_agir_065",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_009",
+      "kanit_metin": "7. Beyin hasarı, beyin işlev bozukluğuna bağlı davranış bozuklukları"
+    },
+    {
+      "kavram_id": "ek1_b_07_beyin_hasari_beyin_islev_boz_hafif_066",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_009",
+      "kanit_metin": "7. Beyin hasarı, beyin işlev bozukluğuna bağlı davranış bozuklukları"
+    },
+    {
+      "kavram_id": "ek1_b_08_siddeti_agir_ve_icgorunun_ka_agir_067",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_009",
+      "kanit_metin": "8. Şiddeti ağır ve içgörünün kaybolduğu kronik obsesif kompulsif bozukluk, kronik travma sonrası stres bozukluğu ve komorbiditesi, tedaviye dirençli unipolar depresyon"
+    },
+    {
+      "kavram_id": "ek1_b_09_beyin_hasari_beyin_islev_boz_agir_068",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_009",
+      "kanit_metin": "9. Beyin hasarı, beyin işlev bozukluğu ve bedensel hastalıklara bağlı ruhsal bozukluklar"
+    },
+    {
+      "kavram_id": "ek1_b_10_yaygin_gelisimsel_bozuklukla_agir_069",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_009",
+      "kanit_metin": "10. Yaygın gelişimsel bozukluklar"
+    },
+    {
+      "kavram_id": "ek1_c_01_gorme_azligi_agir_070",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_010",
+      "kanit_metin": "1. Görme azlığı"
+    },
+    {
+      "kavram_id": "ek1_c_01_gorme_azligi_orta_071",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_010",
+      "kanit_metin": "1. Görme azlığı"
+    },
+    {
+      "kavram_id": "ek1_c_01_gorme_azligi_hafif_072",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_010",
+      "kanit_metin": "1. Görme azlığı"
+    },
+    {
+      "kavram_id": "ek1_c_02_pitozis_agir_073",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_010",
+      "kanit_metin": "2. Pitozis"
+    },
+    {
+      "kavram_id": "ek1_c_03_diplopi_agir_074",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_010",
+      "kanit_metin": "3. Diplopi"
+    },
+    {
+      "kavram_id": "ek1_c_04_gorme_alani_patolojileri_agir_075",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_010",
+      "kanit_metin": "4. Görme alanı patolojileri"
+    },
+    {
+      "kavram_id": "ek1_d_01_komplikasyonlu_sagirlik_agir_076",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_010",
+      "kanit_metin": "1. Komplikasyonlu sağırlık"
+    },
+    {
+      "kavram_id": "ek1_d_01_komplikasyonlu_sagirlik_orta_077",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_010",
+      "kanit_metin": "1. Komplikasyonlu sağırlık"
+    },
+    {
+      "kavram_id": "ek1_d_01_komplikasyonlu_sagirlik_hafif_078",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_010",
+      "kanit_metin": "1. Komplikasyonlu sağırlık"
+    },
+    {
+      "kavram_id": "ek1_d_02_dil_agir_079",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_010",
+      "kanit_metin": "2. Dil"
+    },
+    {
+      "kavram_id": "ek1_d_03_larenks_agir_080",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_010",
+      "kanit_metin": "3. Larenks"
+    },
+    {
+      "kavram_id": "ek1_d_04_ses_organlari_agir_081",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_010",
+      "kanit_metin": "4. Ses organları"
+    },
+    {
+      "kavram_id": "ek1_d_04_ses_organlari_hafif_082",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_010",
+      "kanit_metin": "4. Ses organları"
+    },
+    {
+      "kavram_id": "ek1_d_05_burun_orta_083",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_011",
+      "kanit_metin": "5. Burun"
+    },
+    {
+      "kavram_id": "ek1_d_06_cene_agir_084",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_011",
+      "kanit_metin": "6. Çene"
+    },
+    {
+      "kavram_id": "ek1_d_06_cene_orta_085",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_011",
+      "kanit_metin": "6. Çene"
+    },
+    {
+      "kavram_id": "ek1_e_01_bas_ve_boyunun_yumusak_doku__agir_086",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_011",
+      "kanit_metin": "1. Baş ve boyunun yumuşak doku ve diğer malign tümörleri"
+    },
+    {
+      "kavram_id": "ek1_e_02_cilt_agir_087",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_011",
+      "kanit_metin": "2. Cilt"
+    },
+    {
+      "kavram_id": "ek1_e_03_yumusak_doku_sarkomu_agir_088",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_011",
+      "kanit_metin": "3. Yumuşak doku sarkomu"
+    },
+    {
+      "kavram_id": "ek1_e_04_tukruk_bezleri_agir_089",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_012",
+      "kanit_metin": "4. Tükrük bezleri"
+    },
+    {
+      "kavram_id": "ek1_e_05_tiroid_bezi_agir_090",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_012",
+      "kanit_metin": "5. Tiroid bezi"
+    },
+    {
+      "kavram_id": "ek1_e_06_meme_sarkoma_haric_agir_091",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_012",
+      "kanit_metin": "6. Meme (sarkoma hariç)"
+    },
+    {
+      "kavram_id": "ek1_e_07_iskelet_sistemi_sarkomu_agir_092",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_012",
+      "kanit_metin": "7. İskelet sistemi sarkomu"
+    },
+    {
+      "kavram_id": "ek1_e_08_maxilla_orbita_veya_temporal_agir_093",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_012",
+      "kanit_metin": "8. Maxilla, orbita veya temporal fossa"
+    },
+    {
+      "kavram_id": "ek1_e_09_sinir_sistemi_agir_094",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_012",
+      "kanit_metin": "9. Sinir sistemi"
+    },
+    {
+      "kavram_id": "ek1_e_10_akcigerler_agir_095",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_012",
+      "kanit_metin": "10. Akciğerler"
+    },
+    {
+      "kavram_id": "ek1_e_11_plevra_veya_mediasten_agir_096",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_013",
+      "kanit_metin": "11. Plevra veya mediasten"
+    },
+    {
+      "kavram_id": "ek1_e_12_ozefagus_veya_mide_agir_097",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_013",
+      "kanit_metin": "12. Özefagus veya mide"
+    },
+    {
+      "kavram_id": "ek1_e_13_ince_bagirsagin_karsinomu_sa_agir_098",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_013",
+      "kanit_metin": "13. İnce bağırsağın karsinomu, sarkomu veya karsinoid tümörleri"
+    },
+    {
+      "kavram_id": "ek1_e_14_kalin_bagirsak_ileocekal_val_agir_099",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_013",
+      "kanit_metin": "14. Kalın bağırsak (ileoçekal valvden itibaren, anal kanal dahil)"
+    },
+    {
+      "kavram_id": "ek1_e_15_karaciger_safra_kesesi_safra_agir_100",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_013",
+      "kanit_metin": "15. Karaciğer, safra kesesi, safra yolları"
+    },
+    {
+      "kavram_id": "ek1_e_16_pankreas_agir_101",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_013",
+      "kanit_metin": "16. Pankreas"
+    },
+    {
+      "kavram_id": "ek1_e_17_bobrekler_adrenal_bez_veya_u_agir_102",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_014",
+      "kanit_metin": "17. Böbrekler, adrenal bez veya üreterlerin karsinomu"
+    },
+    {
+      "kavram_id": "ek1_e_18_mesanenin_karsinomu_agir_103",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_014",
+      "kanit_metin": "18. Mesanenin karsinomu"
+    },
+    {
+      "kavram_id": "ek1_e_19_kadin_genital_yollarinin_kar_agir_104",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_014",
+      "kanit_metin": "19. Kadın genital yollarının karsinomu veya sarkomu"
+    },
+    {
+      "kavram_id": "ek1_e_20_prostat_bezinin_karsinomu_agir_105",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_014",
+      "kanit_metin": "20. Prostat bezinin karsinomu"
+    },
+    {
+      "kavram_id": "ek1_e_21_testis_agir_106",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_014",
+      "kanit_metin": "21. Testis"
+    },
+    {
+      "kavram_id": "ek1_e_22_penis_agir_107",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_014",
+      "kanit_metin": "22. Penis"
+    },
+    {
+      "kavram_id": "ek1_e_23_uygun_incelemeye_ragmen_prim_agir_108",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_014",
+      "kanit_metin": "23. Uygun incelemeye rağmen primer kaynağın bilinmediği durumlar"
+    },
+    {
+      "kavram_id": "ek1_f_01_anemiler_agir_109",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_015",
+      "kanit_metin": "1. Anemiler"
+    },
+    {
+      "kavram_id": "ek1_f_01_anemiler_orta_110",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_015",
+      "kanit_metin": "1. Anemiler"
+    },
+    {
+      "kavram_id": "ek1_f_01_anemiler_hafif_111",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_015",
+      "kanit_metin": "1. Anemiler"
+    },
+    {
+      "kavram_id": "ek1_f_02_malign_monoklonal_gammapatil_agir_112",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_016",
+      "kanit_metin": "2. Malign monoklonal gammapatiler (Plazma hücre diskrazileri)"
+    },
+    {
+      "kavram_id": "ek1_f_02_malign_monoklonal_gammapatil_orta_113",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_016",
+      "kanit_metin": "2. Malign monoklonal gammapatiler (Plazma hücre diskrazileri)"
+    },
+    {
+      "kavram_id": "ek1_f_03_primer_hemofagositik_sendrom_agir_114",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_016",
+      "kanit_metin": "3. Primer hemofagositik sendrom"
+    },
+    {
+      "kavram_id": "ek1_f_04_kronik_notropeniler_agir_115",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_016",
+      "kanit_metin": "4. Kronik nötropeniler"
+    },
+    {
+      "kavram_id": "ek1_f_05_kml_disi_miyeloproliferatif__agir_116",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_017",
+      "kanit_metin": "5. KML dışı miyeloproliferatif neoplaziler (polisitemia vera, esansiyel trombositoz, kronik eosinofilik lösemi, kronik nötrofilik lösemi, mastositoz, sınıflandırılamayan miyeloproliferatif neoplaziler)"
+    },
+    {
+      "kavram_id": "ek1_f_06_miyelodisplastik_miyeloproli_agir_117",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_017",
+      "kanit_metin": "6. Miyelodisplastik / Miyeloproliferatif neoplaziler (MDS/MPN) (kronik miyelomonositik lösemi, atipik kronik miyeloid lösemi, Juvenil miyelomonositik lösemi, MDS/MPN ring sideroblast ve trombositoz, MDS/MPN tanımlanamayan)"
+    },
+    {
+      "kavram_id": "ek1_f_07_hemostaz_bozukluklari_bir_yi_agir_118",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_017",
+      "kanit_metin": "7. Hemostaz bozuklukları (Bir yıl sonra kontrol)"
+    },
+    {
+      "kavram_id": "ek1_f_07_hemostaz_bozukluklari_bir_yi_hafif_119",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_017",
+      "kanit_metin": "7. Hemostaz bozuklukları (Bir yıl sonra kontrol)"
+    },
+    {
+      "kavram_id": "ek1_f_08_koagulasyon_defektleri_agir_120",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_017",
+      "kanit_metin": "8. Koagülasyon defektleri"
+    },
+    {
+      "kavram_id": "ek1_f_08_koagulasyon_defektleri_hafif_121",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_017",
+      "kanit_metin": "8. Koagülasyon defektleri"
+    },
+    {
+      "kavram_id": "ek1_f_09_trombotik_trombositopenik_pu_orta_122",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_017",
+      "kanit_metin": "9. Trombotik trombositopenik purpura"
+    },
+    {
+      "kavram_id": "ek1_f_10_hodgkin_lenfoma_non_hodgkin__agir_123",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_017",
+      "kanit_metin": "10. Hodgkin Lenfoma, Non-Hodgkin Lenfomalar, Histiyositik ve Dendritik hücreli Neoplaziler"
+    },
+    {
+      "kavram_id": "ek1_f_11_losemiler_agir_124",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_017",
+      "kanit_metin": "11. Lösemiler"
+    },
+    {
+      "kavram_id": "ek1_f_12_allojenik_kemik_iligi_kok_hu_agir_125",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_017",
+      "kanit_metin": "12. Allojenik kemik iliği/kök hücre nakli"
+    },
+    {
+      "kavram_id": "ek1_f_12_allojenik_kemik_iligi_kok_hu_hafif_126",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_017",
+      "kanit_metin": "12. Allojenik kemik iliği/kök hücre nakli"
+    },
+    {
+      "kavram_id": "ek1_f_13_otolog_kemik_iligi_kok_hucre_agir_127",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_018",
+      "kanit_metin": "13. Otolog kemik iliği/kök hücre nakli"
+    },
+    {
+      "kavram_id": "ek1_g_01_amputasyonlar_agir_128",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_018",
+      "kanit_metin": "1. Ampütasyonlar"
+    },
+    {
+      "kavram_id": "ek1_g_01_amputasyonlar_orta_129",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_018",
+      "kanit_metin": "1. Ampütasyonlar"
+    },
+    {
+      "kavram_id": "ek1_g_01_amputasyonlar_hafif_130",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_018",
+      "kanit_metin": "1. Ampütasyonlar"
+    },
+    {
+      "kavram_id": "ek1_g_04_eklemlerin_major_disfonksiyo_agir_131",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_019",
+      "kanit_metin": "4. Eklemlerin majör disfonksiyonları"
+    },
+    {
+      "kavram_id": "ek1_g_04_eklemlerin_major_disfonksiyo_orta_132",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_019",
+      "kanit_metin": "4. Eklemlerin majör disfonksiyonları"
+    },
+    {
+      "kavram_id": "ek1_g_04_eklemlerin_major_disfonksiyo_hafif_133",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_019",
+      "kanit_metin": "4. Eklemlerin majör disfonksiyonları"
+    },
+    {
+      "kavram_id": "ek1_g_05_skolyoz_kifoz_kifoskolyoz_vb_agir_134",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_019",
+      "kanit_metin": "5. Skolyoz, kifoz, kifoskolyoz vb"
+    },
+    {
+      "kavram_id": "ek1_h_01_sistemik_skleroz_skleroderma_agir_135",
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_020",
+      "kanit_metin": "1. Sistemik skleroz (skleroderma)"
+    },
+    {
+      "kavram_id": "ek1_h_01_sistemik_skleroz_skleroderma_orta_001",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_021",
+      "kanit_metin": "1. Sistemik skleroz (skleroderma)"
+    },
+    {
+      "kavram_id": "ek1_h_01_sistemik_skleroz_skleroderma_hafif_002",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_021",
+      "kanit_metin": "1. Sistemik skleroz (skleroderma)"
+    },
+    {
+      "kavram_id": "ek1_h_02_raynaud_fenomeni_agir_003",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_021",
+      "kanit_metin": "2. Raynaud fenomeni"
+    },
+    {
+      "kavram_id": "ek1_h_02_raynaud_fenomeni_orta_004",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_021",
+      "kanit_metin": "2. Raynaud fenomeni"
+    },
+    {
+      "kavram_id": "ek1_h_02_raynaud_fenomeni_hafif_005",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_021",
+      "kanit_metin": "2. Raynaud fenomeni"
+    },
+    {
+      "kavram_id": "ek1_h_03_polimiyozit_ve_dermatomiyozi_agir_006",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_021",
+      "kanit_metin": "3. Polimiyozit ve Dermatomiyozit"
+    },
+    {
+      "kavram_id": "ek1_h_03_polimiyozit_ve_dermatomiyozi_orta_007",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_021",
+      "kanit_metin": "3. Polimiyozit ve Dermatomiyozit"
+    },
+    {
+      "kavram_id": "ek1_h_03_polimiyozit_ve_dermatomiyozi_hafif_008",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_022",
+      "kanit_metin": "3. Polimiyozit ve Dermatomiyozit"
+    },
+    {
+      "kavram_id": "ek1_h_04_sistemik_lupus_eritematozus__agir_009",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_022",
+      "kanit_metin": "4. Sistemik Lupus Eritematozus, Sistemik Vaskülit, Sjögren Sendromu, Andifferansiye ve Mikst Bağ Doku Hastalığı vb"
+    },
+    {
+      "kavram_id": "ek1_h_04_sistemik_lupus_eritematozus__orta_010",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_022",
+      "kanit_metin": "4. Sistemik Lupus Eritematozus, Sistemik Vaskülit, Sjögren Sendromu, Andifferansiye ve Mikst Bağ Doku Hastalığı vb"
+    },
+    {
+      "kavram_id": "ek1_h_04_sistemik_lupus_eritematozus__hafif_011",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_022",
+      "kanit_metin": "4. Sistemik Lupus Eritematozus, Sistemik Vaskülit, Sjögren Sendromu, Andifferansiye ve Mikst Bağ Doku Hastalığı vb"
+    },
+    {
+      "kavram_id": "ek1_h_05_behcet_hastaligi_agir_012",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_022",
+      "kanit_metin": "5. Behçet hastalığı"
+    },
+    {
+      "kavram_id": "ek1_h_05_behcet_hastaligi_orta_013",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_023",
+      "kanit_metin": "5. Behçet hastalığı"
+    },
+    {
+      "kavram_id": "ek1_h_05_behcet_hastaligi_hafif_014",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_023",
+      "kanit_metin": "5. Behçet hastalığı"
+    },
+    {
+      "kavram_id": "ek1_h_06_inflamatuar_artritler_agir_015",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_023",
+      "kanit_metin": "6. İnflamatuar artritler"
+    },
+    {
+      "kavram_id": "ek1_h_06_inflamatuar_artritler_orta_016",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_023",
+      "kanit_metin": "6. İnflamatuar artritler"
+    },
+    {
+      "kavram_id": "ek1_h_06_inflamatuar_artritler_hafif_017",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_023",
+      "kanit_metin": "6. İnflamatuar artritler"
+    },
+    {
+      "kavram_id": "ek1_h_07_ankilozan_spondilit_veya_dig_agir_018",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_024",
+      "kanit_metin": "7. Ankilozan spondilit veya diğer spondiloartropatilerde (omurga tutulumunda):"
+    },
+    {
+      "kavram_id": "ek1_h_07_ankilozan_spondilit_veya_dig_orta_019",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_024",
+      "kanit_metin": "7. Ankilozan spondilit veya diğer spondiloartropatilerde (omurga tutulumunda):"
+    },
+    {
+      "kavram_id": "ek1_h_07_ankilozan_spondilit_veya_dig_hafif_020",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_024",
+      "kanit_metin": "7. Ankilozan spondilit veya diğer spondiloartropatilerde (omurga tutulumunda):"
+    },
+    {
+      "kavram_id": "ek1_i_01_portal_hipertansiyona_bagli__agir_021",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_025",
+      "kanit_metin": "1. Portal hipertansiyona bağlı gastrointestinal kanamalar"
+    },
+    {
+      "kavram_id": "ek1_i_01_portal_hipertansiyona_bagli__orta_022",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_026",
+      "kanit_metin": "1. Portal hipertansiyona bağlı gastrointestinal kanamalar"
+    },
+    {
+      "kavram_id": "ek1_i_02_karaciger_sirozu_agir_023",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_026",
+      "kanit_metin": "2. Karaciğer sirozu"
+    },
+    {
+      "kavram_id": "ek1_i_02_karaciger_sirozu_orta_024",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_026",
+      "kanit_metin": "2. Karaciğer sirozu"
+    },
+    {
+      "kavram_id": "ek1_i_02_karaciger_sirozu_hafif_025",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_026",
+      "kanit_metin": "2. Karaciğer sirozu"
+    },
+    {
+      "kavram_id": "ek1_i_03_karaciger_nakli_agir_026",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_026",
+      "kanit_metin": "3. Karaciğer nakli"
+    },
+    {
+      "kavram_id": "ek1_i_03_karaciger_nakli_hafif_027",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_026",
+      "kanit_metin": "3. Karaciğer nakli"
+    },
+    {
+      "kavram_id": "ek1_i_04_inflamatuar_bagirsak_hastali_agir_028",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_026",
+      "kanit_metin": "4. İnflamatuar bağırsak hastalıkları (İki yıl sonra kontrolü gerekir)"
+    },
+    {
+      "kavram_id": "ek1_i_04_inflamatuar_bagirsak_hastali_orta_029",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_027",
+      "kanit_metin": "4. İnflamatuar bağırsak hastalıkları (İki yıl sonra kontrolü gerekir)"
+    },
+    {
+      "kavram_id": "ek1_i_05_tanimlanmis_bir_gastrointest_agir_030",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_027",
+      "kanit_metin": "5. Tanımlanmış bir gastrointestinal hastalığa bağlı olarak Vücut Kitle İndeksi (VKİ) ile ilgili durumlar (İki yıl sonra kontrol gerekir)"
+    },
+    {
+      "kavram_id": "ek1_i_05_tanimlanmis_bir_gastrointest_orta_031",
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_027",
+      "kanit_metin": "5. Tanımlanmış bir gastrointestinal hastalığa bağlı olarak Vücut Kitle İndeksi (VKİ) ile ilgili durumlar (İki yıl sonra kontrol gerekir)"
+    },

@@ -1,0 +1,322 @@
+Önceki rapordaki sayım çelişkisini, `madde_etiketi` eleme hatasını ve `H90.3` varsayımını doğrudan yüklenen kaynak JSON dosyaları üzerinden yeniden denetledim. Hiçbir dosya değiştirilmedi ve Aşama 2 tamamlandı ilan edilmedi.
+
+**1. EK-1 Sayım Çelişkisi: 192 vs. 275 Kayıt (Kaynak Dosyalardan Birebir Hesaplama)**
+
+Önceki raporda `u1_ek1_001_020.json` için "104 kayıt", `u2_ek1_021_040.json` için "88 kayıt" ve genel toplam için "192 kayıt" yazılması **hatalı bir toplamdır**; oysa bölüm bazında tek tek sayılan derece kayıtlarının gerçek toplamı **275**'tir (`51+17+6+10+23+19+7+21+26+28+19+8+13+12+11+1+3 = 275`).
+
+Kaynak JSON dosyalarındaki `kayitlar` dizilerinin gerçek uzunlukları:
+
+* `u1_ek1_001_020.json`: **134 kayıt** (`A`–`G` bölümleri toplam 133 kayıt + `ek1_020` sayfasındaki `H/1` ağır kaydı).
+
+
+* `u2_ek1_021_040.json`: **141 kayıt** (`ek1_021` sayfasındaki `H/1` orta ve hafif kayıtlarından başlayıp `R/3` ortak hüküm kaydına kadar).
+
+
+* **Gerçek EK-1 Toplamı:** `134 + 141 = 275` derece kaydı (154 benzersiz sıra/madde numarası üzerinden).
+
+
+
+| Bölüm | `u1` Kayıt | `u2` Kayıt | Toplam Derece Kaydı | Benzersiz Madde (`sira_no`) | Açıklama |
+| --- | --- | --- | --- | --- | --- |
+| **A** | 51
+
+ | 0
+
+ | 51
+
+ | 19 (1–19)
+
+ | `ek1_001` – `ek1_007`
+
+ |
+| **B** | 17
+
+ | 0
+
+ | 17
+
+ | 10 (1–10)
+
+ | `ek1_008` – `ek1_009`
+
+ |
+| **C** | 6
+
+ | 0
+
+ | 6
+
+ | 4 (1–4)
+
+ | `ek1_010`
+
+ |
+| **D** | 10
+
+ | 0
+
+ | 10
+
+ | 6 (1–6)
+
+ | `ek1_010` – `ek1_011`
+
+ |
+| **E** | 23
+
+ | 0
+
+ | 23
+
+ | 23 (1–23)
+
+ | `ek1_011` – `ek1_014` (Sıra 24 kural maddesidir)
+
+ |
+| **F** | 19
+
+ | 0
+
+ | 19
+
+ | 13 (1–13)
+
+ | `ek1_015` – `ek1_018`
+
+ |
+| **G** | 7
+
+ | 0
+
+ | 7
+
+ | 3 (1, 4, 5)
+
+ | `ek1_018` – `ek1_019` (Sıra 2 ve 3 kural maddesidir)
+
+ |
+| **H** | 1
+
+ | 20
+
+ | 21
+
+ | 7 (1–7)
+
+ | `H/1` `agir` `u1`'de (`ek1_020`); kalan 20 kayıt `u2`'de (`ek1_021`–`024`)
+
+ |
+| **İ** | 0
+
+ | 26
+
+ | 26
+
+ | 17 (1–17)
+
+ | `ek1_025` – `ek1_028`
+
+ |
+| **J** | 0
+
+ | 28
+
+ | 28
+
+ | 18 (1–18)
+
+ | `ek1_028` – `ek1_030` (`sira_no: 1` a ve b alt kırılımlı: 4 kayıt)
+
+ |
+| **K** | 0
+
+ | 19
+
+ | 19
+
+ | 9 (1–9)
+
+ | `ek1_030` – `ek1_033`
+
+ |
+| **L** | 0
+
+ | 8
+
+ | 8
+
+ | 5 (1–5)
+
+ | `ek1_033`
+
+ |
+| **M** | 0
+
+ | 13
+
+ | 13
+
+ | 7 (1–7)
+
+ | `ek1_034` – `ek1_035`
+
+ |
+| **N** | 0
+
+ | 12
+
+ | 12
+
+ | 6 (1–6)
+
+ | `ek1_035` – `ek1_036`
+
+ |
+| **O** | 0
+
+ | 11
+
+ | 11
+
+ | 7 (1–7)
+
+ | `ek1_036` – `ek1_039` (Sıra 8 kural maddesidir)
+
+ |
+| **P** | 0
+
+ | 1
+
+ | 1
+
+ | 1 (1)
+
+ | `ek1_039`
+
+ |
+| **R** | 0
+
+ | 3
+
+ | 3
+
+ | 3 (1–3)
+
+ | `ek1_040` (`derece: "ortak_hukum"`)
+
+ |
+| **TOPLAM** | **134**
+
+ | **141**
+
+ | **275**
+
+ | **154**
+
+ | — |
+
+---
+
+**2. EK-2'de `madde_etiketi` Bulunmayan 49 Kaydı Kaybetmeden Temsil Etme Yolu**
+
+`u3b_ek2_003_024.json` içindeki 95 kaydın 46'sında doğrudan `madde_etiketi` alanı (`1.`, `a)`, `I-`, `A-` vb.) varken, 49 kayıtta bu alan yoktur. Bu 49 kaydı mevzuatta olmayan yapay bir numara (`"1"`, `"-"`, `"yok"`) uydurmadan ve veri kaybetmeden temsil etmek için iki seçenek mevcuttur:
+
+* **Yöntem A — Şema Sürümü Güncellemesi (`v1.0.1` / Önerilen Temiz Çözüm):** Aşama 1'de `alt_bolum` alanı kaynak kanıtıyla zorunlu olmaktan çıkarıldığı gibi (Karar 4 / T7f), EK-2'de doğrudan alt bölüm veya başlık altında madde numarası olmadan listelenen hastalıklar/tanımlar için `ek_2_baglantisi.required` dizisi `["bolum_adi", "tanim"]` olarak güncellenir (`madde_etiketi` opsiyonel yapılır). Böylece 49 kaydın tamamı sıfır uydurma etiketle doğrudan korunur.
+
+
+* **Yöntem B — Şemayı (`v1.0.0`) Değiştirmeden Kaynaktaki Üst Başlık Etiketini Kullanma:** 49 etiketsiz kaydın dağılımı incelendiğinde:
+1. **21 kayıt (`DERİ` altındaki alt hastalıklar, s. 20–24):** `alt_bolum` alanında basılı Romen/harf etiketi zaten mevcuttur (ör. `"alt_bolum": "X. İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI"`, `"VI. DERİ TÜMÖRLERİ"`, `"A.BENİGN NEOPLAZM VE HİPERPLAZİLER"`). Bu kayıtlarda mevzuatta zaten basılı olan üst bölümün Romen/harf etiketi (`"X."`, `"VI."`, `"A."`, `"XI."`, `"XII."`, `"XIII."`, `"XIV."`) `madde_etiketi` olarak miras alınabilir (ancak aynı bölüm altında birden fazla kayıt aynı `madde_etiketi` değerini paylaşır, `kavram_id` ise hastalık adıyla tekilleştirilir).
+
+
+2. **23 kayıt (`KULAK BURUN BOĞAZ` / `D-YÜZ`, s. 12–13):** Kaynak sayfada "Sınıf 1" .. "Sınıf 5" tablo blokları altında madde numarası olmadan sıralanan arızalardır. Eğer kaynak OCR/PNG'deki basılı `"Sınıf 1"`..`"Sınıf 5"` veya `"D"` harfi etiket kabul edilmezse, `v1.0.0` şeması altında uydurma etiket vermeden bu 23 kaydı (ve `B-KONUŞMA VE SES`, `C-DENGE`, `E-HAVA YOLU`, `F.KOKU VE TAT`, `G.ÇİĞNEME VE YUTMA`, `GEÇİCİ FONKSİYON... II-` altındaki 5 giriş/açıklama kaydını) geçirmek **mümkün değildir**.
+
+
+
+
+* **Sonuç:** Sıfır uydurma ilkesiyle 49 kaydın tamamını korumanın tek dürüst yolu, ya `ek_2_baglantisi.required` içinde `madde_etiketi` zorunluluğunu kaldırmak (Yöntem A) ya da mevcut `v1.0.0` şeması kilitli kalacaksa bu 49 kaydı uydurma etiketle zorlamayıp "şema kısıtı nedeniyle bekliyor" olarak tutmaktır.
+
+
+
+---
+
+**3. `H90.3` Kodunun `ek2_003` ("Kalıcı iki taraflı işitme engeli") ile Eşleşme Denetimi**
+
+* **WHO ICD-10 Kanıtı (`kanit/icd10_who.json`):** `H90.3` kodunun WHO etiketi `"Sensorineural hearing loss, bilateral"` (İki taraflı **sensörinöral** işitme kaybı) olarak kayıtlıdır.
+
+
+* **Kaynak Metin Kanıtı (`u3_ek2_003_024.json` / `u3b_ek2_003_024.json`):** `ek2_003` sayfasındaki `A-İŞİTME` / `2.` maddesinin kanonik adı `"Kalıcı iki taraflı işitme engeli"`, tanımı ise *"Kişinin günlük yaşam aktivitelerini yapmasına engel teşkil eden iki taraflı işitme kaybıdır."* şeklindedir.
+
+
+* **Bulgular:** Kaynak metinde işitme kaybının **sensörinöral** (sinirsel) olduğuna dair **hiçbir ifade veya kanıt yoktur**; tanım iletim tipi (`H90.0`), mikst tip (`H90.6`) ve sensörinöral (`H90.3`) tüm iki taraflı kalıcı işitme kayıplarını kapsayan üst/genel bir mevzuat kavramıdır.
+
+
+* **Karar (Kural 7 ve İ-3 gereği):** Aşama 1'de `T2` yapısal testi için sentetik örnek olarak kullanılmış olsa da, `asama1-icerik.md` (Madde 3.2 ve İ-3) raporunda açıkça belirtildiği üzere bu eşleşme daraltıcı bir alt kategori yorumudur. Eşleşmeden %100 emin olunmadığı ve kaynakta "sensörinöral" niteliği kanıtlanmadığı için **gerçek veri setinde `ek2_003` / Madde 2 kaydına `H90.3` kodu eklenmemelidir** (veya yalnızca daraltıcı eşleme olduğunu açıkça belirten `esleme_notu` onayıyla eklenebilir).
+
+
+
+---
+
+**4. EK-1 Derecesiz Kural Maddeleri (Hastalık Kayıtlarından Ayrı Liste — 4 Adet)**
+
+Bu 4 madde hastalık/kavram kaydı değildir; `u1` ve `u2` dosyalarında `derecesiz_maddeler` dizisi altında ayrı tutulmuştur:
+
+1. **`ek1_015` — Bölüm E, Sıra 24:** *"Diğer maddelerde maluliyet süresi belirtilmeyen (hematolojik maligniteler dahil) ve 'İyi diferansiye tiroid kanserleri ve derinin bazal hücreli kanserleri' dışındaki tüm malign hastalıklar (hematolojik maligniteler dahil) maluliyet talep tarihinden önceki bir yıl içinde tanı almak kaydıyla talebe istinaden düzenlenmiş sağlık kurulu raporu tarihinden itibaren 18 ay süresince malul kabul edilir ve bu süre sonunda hastalık durumuna göre maluliyet yönünden tekrar değerlendirilir."* (Ağır/Orta/Hafif blokları yok; genel maluliyet süresi kuralı).
+
+
+2. **`ek1_019` — Bölüm G, Sıra 2:** *"İki orta düzeyde çalışma gücü kaybına neden olan amputasyonlar, ağır düzeyde çalışma gücü kaybı olarak kabul edilir."* (Ağır/Orta/Hafif blokları yok; ampütasyon birleştirme kuralı).
+
+
+3. **`ek1_019` — Bölüm G, Sıra 3:** *"İki hafif düzeyde çalışma gücü kaybına neden olan amputasyonlar orta düzeyde çalışma gücü kaybı olarak kabul edilir."* (Ağır/Orta/Hafif blokları yok; ampütasyon birleştirme kuralı).
+
+
+4. **`ek1_039` — Bölüm O, Sıra 8:** *"Karar verilemeyen durumlar"* — Madde altında ağır/orta/hafif düzeyde çalışma gücü kaybı bloğu bulunmamakta; `a)` ve `b)` bentleri KPET sonucuna göre etkilenme oranı belirleyen değerlendirme kuralları içermektedir.
+
+
+
+---
+
+**5. Düzeltilmiş Sayım Tablosu ve Kalan Sorunlar**
+
+| Veri Kümesi / Kaynak | Ham Kayıt | `v1.0.0` Şemasıyla Geçerli | Şema / Kural Dışı | Durum |
+| --- | --- | --- | --- | --- |
+| **EK-1 Hastalık/Derece Kayıtları (`u1` + `u2`)** | 275
+
+ | **275** | 0 | 134 (`u1`) + 141 (`u2`) = 275 kayıt (154 madde).
+
+ |
+| **EK-1 Derecesiz Kural Maddeleri (`u1` + `u2`)** | 4
+
+ | — | 4
+
+ | Hastalık kaydı değildir (`E/24`, `G/2`, `G/3`, `O/8`).
+
+ |
+| **EK-2 s. 3–24 (`u3b` — `madde_etiketi` olanlar)** | 46
+
+ | **46** | 0 | Basılı madde etiketi mevcut (`ek2_003` `2,` → `2.` düzeltmesiyle).
+
+ |
+| **EK-2 s. 3–24 (`u3b` — `madde_etiketi` olmayanlar)** | 49
+
+ | **0** *(v1.0.0)* / **49** *(v1.0.1)* | 49 *(v1.0.0)*
+
+ | Etiket uydurulmadı; karar bekliyor. |
+| **EK-2 s. 25–172 (Kalan Sayfalar)** | — | **0** | — | Çıkarım henüz tamamlanmadı (`ek2_170.txt` 0 bayt).
+
+ |
+| **TOPLAM (Eldeki Kanıtlı Kavramlar)** | **370**
+
+ | **321** *(v1.0.0)* / **370** *(v1.0.1)* | **49** *(v1.0.0)* | Aşama 2 **henüz tamamlanmadı**. |
+
+**Kalan Sorunlar (Aşama 2 Kapanmadan Önce Çözülmesi Gerekenler):**
+
+1. **EK-2 s. 25–172 Çıkarımı:** `ek2_025`–`ek2_172` sayfalarının ayrıştırılması ve `ek2_170.png` görüntüsünün okunması tamamlanmalıdır.
+2. **EK-2 `madde_etiketi` Kararı:** Etiketsiz 49 (ve s. 25–172'den gelecek benzer) kaydı kaybetmemek için `sozluk_kavram` şemasında `madde_etiketi` alanının opsiyonel yapılıp yapılmayacağına (`v1.0.1`) karar verilmelidir.
+3. **`ek1_j_01` Kimlik Tekilleştirmesi:** EK-1 Bölüm J, Sıra 1 altında hem `a) Kutanöz T hücreli lenfomalar` hem de `b) MF dışı diğer kutanöz lenfomalar` aynı `sira_no: 1` ve aynı derecelerle (`agir`, `hafif`) yer aldığı için, D1 (`kavram_id` tekilliği) kuralını ihlal etmemek adına kimliklerde `_a` ve `_b` soneki (`ek1_j_01_a_agir`, `ek1_j_01_b_agir`) kullanılmalıdır.
+
+
+4. **ICD-10 Eşleşmeleri:** `H90.3` dahil 8 WHO kodunun hiçbirisi kanıtsız/varsayımsal olarak eklenmemeli; yalnız EK-2 metninde birebir karşılığı kanıtlanan kodlar `esleme_notu` ile bağlanmalıdır.
+
+
+
+Etiketsiz 49 EK-2 kaydı için şemada `madde_etiketi` alanını opsiyonel yapma (`v1.0.1`) seçeneğiyle mi ilerleyelim, yoksa `v1.0.0` şemasını sabit tutup yalnız basılı etiketi olanları mı alalım?

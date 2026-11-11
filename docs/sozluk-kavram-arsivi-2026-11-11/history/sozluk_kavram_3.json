@@ -1,0 +1,177 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Engelli.me Kavram Sözlüğü Şeması",
+  "type": "object",
+  "description": "EK-1 (maluliyet/çalışma gücü kaybı) ve EK-2 (engel oranı) çalışmaları için kavram kayıt şeması. Her kayıt tek bir mevzuatta bağıntılıdır; ortak kavramlar iki ayrı kayıt ile modellenir. ICD-10 sadece EK-2 kapsamında geçerlidir.",
+  "properties": {
+    "kavram_id": {
+      "type": "string",
+      "description": "Benzersiz kimlik. EK-1 için 'ek1_madde<num>' veya 'ek1_ortak_hukum<num>'; EK-2 için 'ek2_organ_<harf>_<tanim>' veya 'ek2_madde<num>' formatında olmalıdır."
+    },
+    "kanonik_ad": {
+      "type": "string",
+      "description": "Resmî mevzuatta kullanılan kanonik terim. Örnek: 'Epilepsi – Konvülsif epilepsi (Grand Mal)', 'İşitme Engel Alanı', 'Balthazard Formülü'"
+    },
+    "ek_1_baglantisi": {
+      "type": "object",
+      "description": "EK-1 mevzuat bağlantısı. EK-1'de tanımlı kavramlar için kullanılır. EK-2 kaydı için yanlış.",
+      "properties": {
+        "madde_no": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 22,
+          "description": "2021 Yönetmeliği maddesi numarası (1-22 arası)."
+        },
+        "derece": {
+          "type": "string",
+          "enum": [
+            "agir",
+            "orta",
+            "hafif",
+            "ortak_hukum"
+          ],
+          "description": "Ağır (>=%60), Orta (%50-59), Hafif (%40-49) veya Ortak Hüküm."
+        },
+        "hastalik_listesi_mi": {
+          "type": "boolean",
+          "description": "Bu madde hastalık listesini mi tanımlar?"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "madde_no"
+      ]
+    },
+    "ek_2_baglantisi": {
+      "type": "object",
+      "description": "EK-2 mevzuat bağlantısı. EK-2'de tanımlı kavramlar için kullanılır. ICD-10 kodu bu bağlantıda bulunur. EK-1 kaydı için yanlış.",
+      "properties": {
+        "madde_no": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 41,
+          "description": "2019 Yönetmeliği ekinde madde numarası (1-41 grup, organ sistemine göre). 1-15 aralığı órganosistemlerine, 16-41 gruplara aittir. Tek bir organdonon sadece bir madde numarası olabilir."
+        },
+        "tanim": {
+          "type": "string",
+          "description": "Engel Alanı tanımı veya Balthazard hesaplama tipi."
+        },
+        "icd10": {
+          "type": "string",
+          "pattern": "^[A-Z]\\d{2}([.,]\\d)?$",
+          "description": "ICD-10 tanı kodu. Sadece EK-2 kapsaminda geçerlidir. Doğrulayıcı: WHO ICD-10_SINIFLANDIRMA. Doğrulanmış örnekler: H54.1 (Binaural sensorineural hearing loss), H90.3 (Moderate sensorineural hearing loss, bilateral), H92.0 (Presbycusis - age-related hearing loss), H91.1 (Presbycusis, unilateral), H28.1 (Other disorders of auditory nerve). E70 lipid metabolism disorders olduğu için ISITME ORNEKLERINDE KULLANILMAZ. EK-1 kaydı için bu alan yok olmalı."
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "madde_no",
+        "tanim"
+      ]
+    },
+    "es_anlamli": {
+      "type": "array",
+      "description": "Eş anlamlı terim ve halk dili karşılıkları. En az bir tane olmalı.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "dil": {
+            "type": "string",
+            "enum": [
+              "tr",
+              "en",
+              "ku",
+              "az",
+              "kk",
+              "ba"
+            ],
+            "description": "Dil kodu (TR, EN vb.)."
+          },
+          "termin": {
+            "type": "string",
+            "description": "O o dilde kullanılan terim. Örn: 'Grand Mal' (EN), 'Büyük Daralma' (TR)."
+          },
+          "kaynak": {
+            "type": "string",
+            "description": "Bu eş anlamlıyi nereden aldığı: 'ek-1-ekrani', 'site-verisi', 'mevzuat-metni', 'kullanici-tanimı'."
+          }
+        }
+      },
+      "minItems": 1,
+      "maxItems": 20
+    },
+    "kaynak": {
+      "type": "object",
+      "description": "Kaynak metin referansları. Her kayıt hangi resmi kaynağa bağıntılıysa oyle belirtilmeli.",
+      "properties": {
+        "belge_adi": {
+          "type": "string",
+          "description": "Mevzuat belgesi adı. Örn: 'Erişkinler İçin Engellilik Değerlendirmesi Hakkında Yönetmelik', 'Maluliyet Tespiti İşlemleri Yönetmeliği'."
+        },
+        "mevzuat_no": {
+          "type": "integer",
+          "description": "Mevzuat Bilgi Sistemi numarası (örn: 31275, 31612)."
+        },
+        "resmî_gazete_tarihi": {
+          "type": "string",
+          "pattern": "^\\d{2}\\.\\d{2}\\.\\d{4}$",
+          "description": "Resmî Gazete tarihi (gg.aa.yyyy)."
+        },
+        "yönetmelik_tarihi": {
+          "type": "string",
+          "pattern": "^\\d{2}\\.\\d{2}\\.\\d{4}$",
+          "description": "Yönetmelik tarihini (gg.aa.yyyy formatı)."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Resmî kaynağın URL'si. Örn: https://www.resmigazete.gov.tr/eskiler/2019/02/20190220-2.htm"
+        },
+        "sayfa_no": {
+          "type": "integer",
+          "description": "Belge içindeki sayfa numarası. EK-1 için 1-40, EK-2 için 1-172 aralığı."
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "belge_adi",
+        "mevzuat_no",
+        "resmî_gazete_tarihi"
+      ]
+    },
+    "oluşturulma_tarihi": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Kayıt eklenme/tarihi (ISO 8601)."
+    }
+  },
+  "required": [
+    "kavram_id",
+    "kanonik_ad",
+    "es_anlamli",
+    "kaynak"
+  ],
+  "additionalProperties": false,
+  "oneOf": [
+    {
+      "required": [
+        "ek_1_baglantisi"
+      ],
+      "not": {
+        "required": [
+          "ek_2_baglantisi"
+        ]
+      }
+    },
+    {
+      "required": [
+        "ek_2_baglantisi"
+      ],
+      "not": {
+        "required": [
+          "ek_1_baglantisi"
+        ]
+      }
+    }
+  ]
+}

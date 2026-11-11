@@ -1,0 +1,1000 @@
+{
+ "birim": "EK-2 s.3-24",
+ "kayitlar": [
+  {
+   "sayfa": "ek2_003",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "A-İŞİTME",
+   "madde_etiketi": "1.",
+   "kanonik_ad": "Kalıcı işitme engeli",
+   "tanim": "Bireyin yaşına göre normal kabul edilen işitme seviyeleri dışında kalan azalmış duyma hassasiyetini ifade eder. İşitmenin değerIendirilmesi sırasında işitme cihazları ve protezler kullanılmamalıdır."
+  },
+  {
+   "sayfa": "ek2_003",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "A-İŞİTME",
+   "madde_etiketi": "2,",
+   "kanonik_ad": "Kalıcı iki taraflı işitme engeli",
+   "tanim": "Kişinin günlük yaşam aktivitelerini yapmasına engel teşkil eden iki taraflı işitme kaybıdır."
+  },
+  {
+   "sayfa": "ek2_008",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "B-KONUŞMA VE SES",
+   "kanonik_ad": "Dil, konuşma ve ses bozuklukları",
+   "tanim": "Dil, konuşma ve ses bozuklukları iletişim ve İlişkili alanlarda meydana gelen problemler sonucu ortaya çıkmaktadır. Bu problemler, fonemlerin yanlış kullanımından dili anlama ve kullanma yetersizliğine veya fonksiyonel konuşma için gerekli olan oral-motor mekanizmanın kullanım yetersizliğine kadar değişkenlik gösterebilir."
+  },
+  {
+   "sayfa": "ek2_008",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "B-KONUŞMA VE SES",
+   "madde_etiketi": "1.",
+   "kanonik_ad": "Afazi",
+   "tanim": "Afazi"
+  },
+  {
+   "sayfa": "ek2_008",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "B-KONUŞMA VE SES",
+   "madde_etiketi": "2.",
+   "kanonik_ad": "Dizartri",
+   "tanim": "Dizartrİ"
+  },
+  {
+   "sayfa": "ek2_008",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "B-KONUŞMA VE SES",
+   "madde_etiketi": "3.",
+   "kanonik_ad": "Apraksi",
+   "tanim": "Apraksi"
+  },
+  {
+   "sayfa": "ek2_008",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "B-KONUŞMA VE SES",
+   "madde_etiketi": "4.",
+   "kanonik_ad": "Akıcı konuşma bozuklukları (kekemelik ve çok hızlı konuşma-takefemi)",
+   "tanim": "Akıcı Konuşma Bozuklukları (kekemelik ve çok hızlı konuşma-takefemi)"
+  },
+  {
+   "sayfa": "ek2_008",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "B-KONUŞMA VE SES",
+   "madde_etiketi": "5.",
+   "kanonik_ad": "Larenjektomi",
+   "tanim": "Larenjektomi"
+  },
+  {
+   "sayfa": "ek2_008",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "B-KONUŞMA VE SES",
+   "madde_etiketi": "6.",
+   "kanonik_ad": "Kranyo-fasyal anomali",
+   "tanim": "Kranyo-fasyal anomali"
+  },
+  {
+   "sayfa": "ek2_008",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "B-KONUŞMA VE SES",
+   "madde_etiketi": "7.",
+   "kanonik_ad": "Artikülasyon/fonolojik bozukluk",
+   "tanim": "Artikülasyon/fonolojik bozukluk"
+  },
+  {
+   "sayfa": "ek2_008",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "B-KONUŞMA VE SES",
+   "madde_etiketi": "8.",
+   "kanonik_ad": "Otizm",
+   "tanim": "Otizm"
+  },
+  {
+   "sayfa": "ek2_008",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "B-KONUŞMA VE SES",
+   "madde_etiketi": "9.",
+   "kanonik_ad": "İşitme kaybı",
+   "tanim": "İşitme kaybı"
+  },
+  {
+   "sayfa": "ek2_008",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "B-KONUŞMA VE SES",
+   "madde_etiketi": "10.",
+   "kanonik_ad": "Mental retardasyon",
+   "tanim": "Mental retardasyon"
+  },
+  {
+   "sayfa": "ek2_008",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "B-KONUŞMA VE SES",
+   "madde_etiketi": "11.",
+   "kanonik_ad": "Serebral palsi",
+   "tanim": "Serebral palsİ"
+  },
+  {
+   "sayfa": "ek2_008",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "B-KONUŞMA VE SES",
+   "madde_etiketi": "12.",
+   "kanonik_ad": "Elektif mutizm",
+   "tanim": "Elektifmutizm"
+  },
+  {
+   "sayfa": "ek2_008",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "B-KONUŞMA VE SES",
+   "madde_etiketi": "13.",
+   "kanonik_ad": "Santral işitsel işlemleme bozukluğu",
+   "tanim": "Santral işitsel işlemleme bozukluğu"
+  },
+  {
+   "sayfa": "ek2_008",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "B-KONUŞMA VE SES",
+   "madde_etiketi": "14.",
+   "kanonik_ad": "Ses bozuklukları",
+   "tanim": "Ses bozuklukları, vs"
+  },
+  {
+   "sayfa": "ek2_011",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "C-DENGE",
+   "kanonik_ad": "Vestibüler bozukluklar",
+   "tanim": "Vestibüler bozukluklar hasta stabil olduktan sonra en az 6 ay süreyle takip edilip aşağıdaki kriterlere göre değerlendirilir. Vestibüler Bozukluğun Kriterleri."
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Edinsel nedenlerle fiziksel görünümü bozan burun eğriliği",
+   "tanim": "Edinsel nedenlerle fiziksel görünümü bozan burun eğriliği"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Dış kulağın tek taraflı kaybı veya şekil bozukluğu",
+   "tanim": "Dış kulağın tek taraflı kaybı veya şekil bozukluğu"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Frontal kemikte eğilme",
+   "tanim": "Frontal kemikte eğkme"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Yanakla beraber burun veya frontal kemikte çökme",
+   "tanim": "Yanakla beraber burun veya frontal kemikte çökme"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nın kısmi kaybı (medial duvar kaybı)",
+   "tanim": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nın kısmi kaybı (medial duvar kaybı)"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Tükürük bezi kanallarının yaralanması veya hastalıkları sonucu sürekli fistül",
+   "tanim": "Tükürük bezi kanallarının yaralanması veya hastalıkları sonucu sürekli fistül"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Orbital ve/veya intrakranial sekel bırakan komplikasyonlu sinüzitler",
+   "tanim": "Orbital ve/veya intrakranial sekel bırakan komplikasyonlu sinüzitler (fpnksiyon kaybı ilgili uzmanlık dalı tarafindan ayrıca değerlendirilecektir?)"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Dış kulağın çift taraflı kaybı veya şekil bozukluğu",
+   "tanim": "Dış kulağın çift taraflı kaybı veya şekil bozukluğp"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Burunun kozmetik deformiteye yol açan kısmi kaybı",
+   "tanim": "Burunun kozmetik deformiteye yol açan kısmi kaybı"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Cerrahi veya travma sonucu mandibula segmenter rezeksiyonu",
+   "tanim": "Cerrahi veya travma sonucu mandibula segmenter rezeksiyonu"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Doğumsal anomali, travma, kanser ve/veya kanser ameliyatına bağlı normal yüz anatomisinin aşırı bozukluğu",
+   "tanim": "Doğumsal anomali. travma, kanser ve/veya kanser ameliyatına bağlı olarak normal yüz anatomisinin aşırı bozukluğu"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nın kısmi kaybı (medial duvara ilaveten veya medial duvar dışında bir duvarının kaybı)",
+   "tanim": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nın kısmi kaybı (medial duvara İlaveten veya medial duvar dışında bir duvarının kaybı)"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Cerrahi veya travma sonucu hemimandibulektomi",
+   "tanim": "Cerrahi veya travma sonucu hemimandibulektomi"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Doku kaybı, skarlı fiksasyon veya felce bağlı dilin fonksiyon kaybı (hafif)",
+   "tanim": "Dok!! kaybı, skarll fiksasypn vgyg felce bağlı dilin fonksiygn kaybı (hafif)"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Primer atrofik rinit (ozena)",
+   "tanim": "Primer atrofik rinit (ozena)"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Travma, tümör veya ameliyat sonrası en az bir alveoler arktaki bütün kalıcı dişlerin kaybı",
+   "tanim": "Travma. tümör veya ameliyat sonrası en az bir alveoler arktaki bütün kalıcı dişlerin kaybı"
+  },
+  {
+   "sayfa": "ek2_012",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Tam fonksiyon bozukluğu yapan dudak arızaları",
+   "tanim": "Tam fonksiyon bozukluğu yapan dudak arızaları"
+  },
+  {
+   "sayfa": "ek2_013",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nın tam kaybı",
+   "tanim": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nm tam kaybı (fonksiyon kaybı ile birlikte alveoler çıkıntıda %50'den fazla kayıp)"
+  },
+  {
+   "sayfa": "ek2_013",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Burnun tam kaybı",
+   "tanim": "Burnun tam kaybı"
+  },
+  {
+   "sayfa": "ek2_013",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Her iki göz küresinin kaybı",
+   "tanim": "Her iki göz küresinin kaybı (fonksiyon kaybı ilgili uzmanlık dalı tarafmdan ayrıca değerlendirilecektir)"
+  },
+  {
+   "sayfa": "ek2_013",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Cerrahi veya travma sonucu mandibüla ön segmentinde %50'den fazla kayıp",
+   "tanim": "Cerrahi veya travma sonucu mandibüla ön segmentinde %50'den fazla kayıp"
+  },
+  {
+   "sayfa": "ek2_013",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Doku kaybı, skarlı fiksasyon veya felce bağlı dilin fonksiyon kaybı (tam dil yokluğu veya dilin en az 2/3'ünün alındığı dil harabiyeti veya bilateral hipoglossal sinir paralizisi)",
+   "tanim": "Doku kaybı. skarll fiksasyon veya felce bağlı dilin fonksion kaybı (Tam dil yokluğu veya konuşma ve yutmayı zorlaştıracak derecede dilin en az 2/3'sİnİn alındığı dil harabiyeti veya bilateral hipoglossal sinir paralizisi)"
+  },
+  {
+   "sayfa": "ek2_013",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "D-YÜZ",
+   "kanonik_ad": "Ameliyat edilemeyen burun, paranazal sinüsler, çene, ağız ve farinks tümörleri",
+   "tanim": "Ameliyat edilemeyen burun. paranazal sinüsler. çene. ağız ve farinks tümörleri"
+  },
+  {
+   "sayfa": "ek2_014",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "E-HAVA YOLU DEFEKTLERİ",
+   "kanonik_ad": "Hava yolu defektleri",
+   "tanim": "Respirasyon mekanizması akciğerleri ve diğer hava pasajlarını kapsar. Hava pasajları ise burun delikleri, nazal kaviteleri, ağız, farenks, larenks trakea ve bronşlar oluşturur. Hava yolunda görülen patolojiler hava yolunun kısmen (stenoz) ve tamamen (oklüzyon) kapanmasına sebep olabilir. Hava yolu defektlerinde dispne en önemli semptomdur. Dispne hastanın normal yaşantasını sürdürmesini engelleyebilir. Bu subjektif semptom, ilk önce egzersiz veya zorlanma sırasında görülür. Eğer istirahat hâlinde de dispne varsa bu durum patolojinin oldukça ciddi olduğunun bir belillisidir. Dispne tek başına veya diğer semptomlarla birlikte görülebilir. Hava yolu patolojileri nedeniyle oluşan kayıplar sınıflandırılırken, uyku apnesi bu sınıflandırmaya dahil edilmemiştir."
+  },
+  {
+   "sayfa": "ek2_014",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "F.KOKU VE TAT DUYUSU KAYBI",
+   "kanonik_ad": "Koku ve tat duyusu kaybı",
+   "tanim": "Koku ve tat duyusunun objektif olarak değerIendirilmesi mümkün olmadığından bu duyuları bilateral olarak bozabileceğine karar verilen hastalık ve arızaların (yaygın intrakranial, nazal veya oral tümörler, harici veya cerrahi travmalar, konjenital anomaliler ve sendromlar, nörolojik veya dahili hastalıklar) varlığı objektif olarak ortaya konulursa bu duyuların kaybolduğu kabul edilerek her biri için %3 Engel Oranı verilir. Bu değerlendirmenin yapılabilmesi için tat veya koku kaybına sebep olan hastalık veya durum için gerekli tedavi uygulanmış olmalıdır."
+  },
+  {
+   "sayfa": "ek2_014",
+   "bolum_adi": "KULAK BURUN BOĞAZ",
+   "alt_bolum": "G.ÇİĞNEME VE YUTMA",
+   "kanonik_ad": "Çiğneme ve yutma bozuklukları",
+   "tanim": "Çiğneme ve yutma bozuklukları gerekli rehabilitasyon uygulandıktan en az 6 ay sonra diyet alımındaki kısıtlamalara göre değerlendirilir."
+  },
+  {
+   "sayfa": "ek2_015",
+   "bolum_adi": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "madde_etiketi": "I-",
+   "kanonik_ad": "Zekâ işlev bozuklukları",
+   "tanim": "Zekâ İşlev bozuklukları Engel Oranı"
+  },
+  {
+   "sayfa": "ek2_015",
+   "bolum_adi": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "madde_etiketi": "II-",
+   "kanonik_ad": "Şizofreni",
+   "tanim": "Şizofreni"
+  },
+  {
+   "sayfa": "ek2_015",
+   "bolum_adi": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "madde_etiketi": "III-",
+   "kanonik_ad": "Şizoaffektif bozukluk (manik, depresif ve karışık tip)",
+   "tanim": "Şizoaffektif bozukluk (manik, depresif ve karışık tip)"
+  },
+  {
+   "sayfa": "ek2_015",
+   "bolum_adi": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "madde_etiketi": "IV-",
+   "kanonik_ad": "Sanrısal bozukluklar (paranoya, paranoid psikoz, parafreni tanılarını içerir)",
+   "tanim": "Sanrısal bozukluklar (paranoya, paranoid psikoz, parafreni tanılarını içerir)"
+  },
+  {
+   "sayfa": "ek2_015",
+   "bolum_adi": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "madde_etiketi": "V-",
+   "kanonik_ad": "Atipik veya başka türlü adlandırılamayan psikozlar",
+   "tanim": "Atipik veya başka türlü adlandırılamayan psikozlar"
+  },
+  {
+   "sayfa": "ek2_015",
+   "bolum_adi": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "madde_etiketi": "VI-",
+   "kanonik_ad": "Yaygın gelişimsel bozukluklar",
+   "tanim": "Yaygın gelişimsel bozukluklar"
+  },
+  {
+   "sayfa": "ek2_015",
+   "bolum_adi": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "madde_etiketi": "a)",
+   "kanonik_ad": "Asperger Sendromu",
+   "tanim": "Asperger Sendromu"
+  },
+  {
+   "sayfa": "ek2_015",
+   "bolum_adi": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "madde_etiketi": "b)",
+   "kanonik_ad": "Disintegratif psikoz",
+   "tanim": "Disintegratif psikoz"
+  },
+  {
+   "sayfa": "ek2_015",
+   "bolum_adi": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "madde_etiketi": "c)",
+   "kanonik_ad": "Rett Sendromu",
+   "tanim": "Rett Sendromu"
+  },
+  {
+   "sayfa": "ek2_015",
+   "bolum_adi": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "madde_etiketi": "d)",
+   "kanonik_ad": "Atipik otizm (başka türlü adlandırılamayan yaygın gelişimsel bozukluk)",
+   "tanim": "Atipik otizm (başka türlü adlandırılamayan yaygın gelişimsel bozukluk)"
+  },
+  {
+   "sayfa": "ek2_015",
+   "bolum_adi": "ZİHİNSEL, RUHSAL, DAVRANIŞSAL BOZUKLUKLAR",
+   "madde_etiketi": "d)",
+   "kanonik_ad": "Otizm",
+   "tanim": "Otizm*"
+  },
+  {
+   "sayfa": "ek2_016",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "madde_etiketi": "I-",
+   "kanonik_ad": "Beyin hasarı, beyin işlev bozukluğu ve bedensel hastalıklara bağlı ruhsal bozukluklar",
+   "tanim": "Beyin Hasarı, Beyin İşlev Bozukluğu ve Bedensel Hastalıklara Bağlı Ruhsal Bozukluklar"
+  },
+  {
+   "sayfa": "ek2_016",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "madde_etiketi": "a)",
+   "kanonik_ad": "Organik hâllusinozis, organik katatonik bozukluk, organik delüzyonel [şizofreni-benzeri] bozukluklar",
+   "tanim": "Organik hâllusinozis, Organik katatonik bozukluk, Organik delüzyonel [şizofreni-benzeri] bozukluklar:"
+  },
+  {
+   "sayfa": "ek2_016",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "madde_etiketi": "b)",
+   "kanonik_ad": "Organik duygu [affektivite] bozuklukları, organik anksiyete bozuklukları, organik disosiyatif bozukluk, organik duygusal labilite [astenik] bozukluk, hafif bilişsel bozukluk",
+   "tanim": "Organik duygu [affektivite] bozuklukları, Organik anksiyete bozuklukları, Organik disosiyatif bozukluk, Organik duygusal labilite [astenik] bozukluk, Hafif bilişsel bozukluk"
+  },
+  {
+   "sayfa": "ek2_016",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "madde_etiketi": "II-",
+   "kanonik_ad": "Beyin hasarı, beyin işlev bozukluğuna bağlı davranış bozuklukları",
+   "tanim": "Beyin Hasarı, Beyin İşlev Bozulduğuna Bağlı Davramş Bozuklukları"
+  },
+  {
+   "sayfa": "ek2_016",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "kanonik_ad": "Organik kişilik bozukluğu, frontal lob sendromu, beyin sarsılması sonrası postkontüzyonel sendrom",
+   "tanim": "(Organik kişilik bozukluğu, frontal lob sendromunu, beyin sarsılması sonrası postkontüzyonel sendrom içerir.)"
+  },
+  {
+   "sayfa": "ek2_016",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "madde_etiketi": "III-",
+   "kanonik_ad": "Duygudurum bozuklukları",
+   "tanim": "Duygudurum Bozuklukları"
+  },
+  {
+   "sayfa": "ek2_016",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "madde_etiketi": "a)",
+   "kanonik_ad": "Manik nöbet, bipolar duygudurum bozukluğu",
+   "tanim": "Manik nöbet, bipolar duygudurum bozukluğu"
+  },
+  {
+   "sayfa": "ek2_016",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "madde_etiketi": "b)",
+   "kanonik_ad": "Yineleyen depresif bozukluk",
+   "tanim": "Yineleyen depresif bozukluk"
+  },
+  {
+   "sayfa": "ek2_016",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "madde_etiketi": "c)",
+   "kanonik_ad": "Yineleyen depresif bozukluk, şimdiki nöbet psikotik belirtili olan, olmayan, ağır",
+   "tanim": "Yineleyen depresif bozukluk, şimdiki nöbet psikotik belirtili olan, olmayan, ağır"
+  },
+  {
+   "sayfa": "ek2_017",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "madde_etiketi": "IV-",
+   "kanonik_ad": "Anksiyete bozuklukları, obsesif-kompülsif bozukluklar, somatoform bozukluklar ve yeme bozuklukları",
+   "tanim": "Anksiyete bozuklukları( panik bozulduk, yaygm anksiyete bozulduğu, agorafobi), obsesif-kompülsif bozukluklar, somatoform bozulduklar ve yeme bozuklukları:"
+  },
+  {
+   "sayfa": "ek2_017",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "madde_etiketi": "a)",
+   "kanonik_ad": "Anksiyete bozuklukları (panik bozukluk, yaygın anksiyete bozukluğu, agorafobi) ve somatoform bozukluklar",
+   "tanim": "Anksiyete bozukluları( panik bozulduk, yaygın anksiyete bozukluğu, agorafobi) ve somatoform bozukluklar"
+  },
+  {
+   "sayfa": "ek2_017",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "madde_etiketi": "b)",
+   "kanonik_ad": "Obsesif-kompulsif bozukluk",
+   "tanim": "Obsesif-kompulsif bozukluk"
+  },
+  {
+   "sayfa": "ek2_017",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "madde_etiketi": "C)",
+   "kanonik_ad": "Travma sonrası stres bozukluğu",
+   "tanim": "Travma sonrası stres bozukluğu"
+  },
+  {
+   "sayfa": "ek2_017",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "madde_etiketi": "d)",
+   "kanonik_ad": "Yeme bozuklukları (anoreksia nervosa ve bulimia nervosa)",
+   "tanim": "Yeme bozuklukları (Anoreksia nervosa ve bulimia nervosa )"
+  },
+  {
+   "sayfa": "ek2_017",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "madde_etiketi": "V-",
+   "kanonik_ad": "Psikoaktif madde kullanımına bağlı ruhsal ve davranışsal bozukluklar",
+   "tanim": "Psikoaktif Madde Kullanımına Bağlı Ruhsal ve Davranışsal Bozukluklar (duygulanım bozukluğu, alkol ve madde kullanımına bağlı psikotik bozukluk -alkol hâlusinozisi, alkol paranoyası-)"
+  },
+  {
+   "sayfa": "ek2_017",
+   "bolum_adi": "GEÇİCİ FONKSİYON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR",
+   "madde_etiketi": "VI-",
+   "kanonik_ad": "Kişilik bozuklukları",
+   "tanim": "Kişilik bozuldukları"
+  },
+  {
+   "sayfa": "ek2_018",
+   "bolum_adi": "DERİ",
+   "madde_etiketi": "I.",
+   "kanonik_ad": "Sebase, ekrin ve apokrin gland hastalıkları",
+   "tanim": "SEBASE, EKRİN VE APOKRİN GLAND HASTALIKLARI"
+  },
+  {
+   "sayfa": "ek2_018",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "I. SEBASE, EKRİN VE APOKRİN GLAND HASTALIKLARI",
+   "madde_etiketi": "A-",
+   "kanonik_ad": "Rozasea",
+   "tanim": "Rozasea"
+  },
+  {
+   "sayfa": "ek2_018",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "I. SEBASE, EKRİN VE APOKRİN GLAND HASTALIKLARI",
+   "madde_etiketi": "B-",
+   "kanonik_ad": "Hidradenitis supurativa, akne konglobata ve folliküler oklüzyon triadı",
+   "tanim": "Hidradenitis supurativa, akne konglobata ve folliküler oklüzyon Triadl"
+  },
+  {
+   "sayfa": "ek2_019",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "I. SEBASE, EKRİN VE APOKRİN GLAND HASTALIKLARI",
+   "madde_etiketi": "C-",
+   "kanonik_ad": "Saçlı derinin diseke edici folliküliti",
+   "tanim": "Saçlı derinin diseke edici folliküliti"
+  },
+  {
+   "sayfa": "ek2_019",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "I. SEBASE, EKRİN VE APOKRİN GLAND HASTALIKLARI",
+   "madde_etiketi": "D-",
+   "kanonik_ad": "Hiperhidrosis",
+   "tanim": "Hiperhİdrosİs"
+  },
+  {
+   "sayfa": "ek2_019",
+   "bolum_adi": "DERİ",
+   "madde_etiketi": "II.",
+   "kanonik_ad": "Kıl follikülü ile ilgili hastalıklar",
+   "tanim": "KIL FOLLİKÜLÜ İLE İLGİLİ HASTALIKLAR"
+  },
+  {
+   "sayfa": "ek2_019",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "II. KIL FOLLİKÜLÜ İLE İLGİLİ HASTALIKLAR",
+   "madde_etiketi": "1-",
+   "kanonik_ad": "Alopesi totalis",
+   "tanim": "Alopesi totalis"
+  },
+  {
+   "sayfa": "ek2_019",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "II. KIL FOLLİKÜLÜ İLE İLGİLİ HASTALIKLAR",
+   "madde_etiketi": "2-",
+   "kanonik_ad": "Alopesi üniversalis",
+   "tanim": "AIopesi üniversalis"
+  },
+  {
+   "sayfa": "ek2_019",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "II. KIL FOLLİKÜLÜ İLE İLGİLİ HASTALIKLAR",
+   "madde_etiketi": "3-",
+   "kanonik_ad": "Hirsutizm",
+   "tanim": "Hirsutizm"
+  },
+  {
+   "sayfa": "ek2_019",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "II. KIL FOLLİKÜLÜ İLE İLGİLİ HASTALIKLAR",
+   "madde_etiketi": "4-",
+   "kanonik_ad": "Saç rengi ve saç gövdesi anormallikleri (moniletrix vb)",
+   "tanim": "Saç rengi ve saç gövdesi anormallikleri (moniletrix vb)"
+  },
+  {
+   "sayfa": "ek2_019",
+   "bolum_adi": "DERİ",
+   "madde_etiketi": "III.",
+   "kanonik_ad": "Ekzematöz dermatitler",
+   "tanim": "EKZEMATÖZ DERMATİTLER"
+  },
+  {
+   "sayfa": "ek2_019",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "III. EKZEMATÖZ DERMATİTLER",
+   "madde_etiketi": "A-",
+   "kanonik_ad": "Atopik dermatit",
+   "tanim": "Atopik dermatit"
+  },
+  {
+   "sayfa": "ek2_019",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "III. EKZEMATÖZ DERMATİTLER",
+   "madde_etiketi": "B-",
+   "kanonik_ad": "Dermatitler (kontakt dermatit, staz dermatit, dishidrotik ekzema)",
+   "tanim": "Dermatitler (Kontakt dermatit, staz dermatit, dishidrotik ekzema)"
+  },
+  {
+   "sayfa": "ek2_019",
+   "bolum_adi": "DERİ",
+   "madde_etiketi": "IV.",
+   "kanonik_ad": "Çeşitli inflamatuvar deri hastalıkları",
+   "tanim": "ÇEŞİTLİ İNFLAMATUVAR DERİ HASTALIKLARI"
+  },
+  {
+   "sayfa": "ek2_019",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "IV. ÇEŞİTLİ İNFLAMATUVAR DERİ HASTALIKLARI",
+   "madde_etiketi": "A-",
+   "kanonik_ad": "Psoriasis",
+   "tanim": "Psoriasis"
+  },
+  {
+   "sayfa": "ek2_019",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "IV. ÇEŞİTLİ İNFLAMATUVAR DERİ HASTALIKLARI",
+   "madde_etiketi": "B-",
+   "kanonik_ad": "Pitriasis rubra pilaris, liken planus",
+   "tanim": "Pitriasis rubra pilaris, liken planus"
+  },
+  {
+   "sayfa": "ek2_020",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "IV. ÇEŞİTLİ İNFLAMATUVAR DERİ HASTALIKLARI",
+   "madde_etiketi": "C-",
+   "kanonik_ad": "Perforan dermatozlar (Kryle hastalığı vb.)",
+   "tanim": "Perforan dermatozlar (Kryle Hastalığı vb.)"
+  },
+  {
+   "sayfa": "ek2_020",
+   "bolum_adi": "DERİ",
+   "madde_etiketi": "V.",
+   "kanonik_ad": "Psikiyatrik etyolojili deri hastalıkları",
+   "tanim": "PSİKİYATRİK ETYOLOJİLİ DERİ HASTALIKLARI"
+  },
+  {
+   "sayfa": "ek2_020",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "V. PSİKİYATRİK ETYOLOJİLİ DERİ HASTALIKLARI",
+   "kanonik_ad": "Psikiyatrik etyolojili deri hastalıkları (nörotik ekskoriasyon, faktisiyel dermatit vb.)",
+   "tanim": "Psikiatrik etyolojili deri hastalıkları (nörotik ekskoriasyon, faktisiyel dermatit, vb.)"
+  },
+  {
+   "sayfa": "ek2_020",
+   "bolum_adi": "DERİ",
+   "madde_etiketi": "VI.",
+   "kanonik_ad": "Deri tümörleri",
+   "tanim": "VI. DERİ TÜMÖRLERİ"
+  },
+  {
+   "sayfa": "ek2_020",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "VI. DERİ TÜMÖRLERİ",
+   "madde_etiketi": "A.",
+   "kanonik_ad": "Benign neoplazm ve hiperplaziler",
+   "tanim": "A.BENİGN NEOPLAZM VE HİPERPLAZİLER"
+  },
+  {
+   "sayfa": "ek2_020",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "A.BENİGN NEOPLAZM VE HİPERPLAZİLER",
+   "kanonik_ad": "Kongenital melanositik nevus",
+   "tanim": "Kongenital melanositik nevus:"
+  },
+  {
+   "sayfa": "ek2_020",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "A.BENİGN NEOPLAZM VE HİPERPLAZİLER",
+   "kanonik_ad": "Kan damarlarının benign neoplazm ve hiperplazileri",
+   "tanim": "Kan damarlarının benign neoplazm ve hiperplazileri: Kapiller anjiom, Kavernöz anjiom, Lenfanjiom, lenfohemanjiom, Anjiokeratom, KlippeI-Trenanuay-Weber, vb."
+  },
+  {
+   "sayfa": "ek2_020",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "A.BENİGN NEOPLAZM VE HİPERPLAZİLER",
+   "kanonik_ad": "Hipertrofik skar ve keloid",
+   "tanim": "Hipertrofik skar ve keloid"
+  },
+  {
+   "sayfa": "ek2_020",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "VI. DERİ TÜMÖRLERİ",
+   "madde_etiketi": "B",
+   "kanonik_ad": "Derinin premalign tümörleri",
+   "tanim": "B DERİNİN PREMALİGN TÜMÖRLERİ"
+  },
+  {
+   "sayfa": "ek2_020",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "VI. DERİ TÜMÖRLERİ",
+   "kanonik_ad": "Derinin premalign tümörlerine bağlı doku veya fonksiyon kayıpları",
+   "tanim": "Primer tümörün sebep olduğu veya bu tümöre yğnelik tedavi sonrasmda gelişen doku veya fonksiyon kayıpları"
+  },
+  {
+   "sayfa": "ek2_020",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "VI. DERİ TÜMÖRLERİ",
+   "madde_etiketi": "C.",
+   "kanonik_ad": "Derinin malign tümörleri",
+   "tanim": "C.DERİNİN MALİGN TÜMÖRLERİ:"
+  },
+  {
+   "sayfa": "ek2_020",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "VI. DERİ TÜMÖRLERİ",
+   "kanonik_ad": "Malign deri tümörlerinde doku veya fonksiyon kayıpları",
+   "tanim": "Çalışabilir durumda ve tedaviye cevap veren klinik evreli malign tümörü olan hastalar. primer tğmörün sebep olduğu veya bu tümöre yönelik tedavi sonrasında gelişen doku veya fonksiyon kayıpları"
+  },
+  {
+   "sayfa": "ek2_020",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "VI. DERİ TÜMÖRLERİ",
+   "kanonik_ad": "İleri klinik evreli, tedaviye cevap vermeyen malign deri tümörü",
+   "tanim": "İleri klinik evreli malign tümörü olan tedaviye cevap vermeyen çalışamayacak durumda olan hastalar"
+  },
+  {
+   "sayfa": "ek2_020",
+   "bolum_adi": "DERİ",
+   "madde_etiketi": "VII.",
+   "kanonik_ad": "Fotosensitivite ve güneş ışınları ile tetiklenen hastalıklar",
+   "tanim": "FOTOSENSİTİVİTE VE GÜNEŞ IŞINLARI İLE TETİKLENEN HASTALIKLAR"
+  },
+  {
+   "sayfa": "ek2_020",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "VII. FOTOSENSİTİVİTE VE GÜNEŞ IŞINLARI İLE TETİKLENEN HASTALIKLAR",
+   "madde_etiketi": "1-",
+   "kanonik_ad": "Solar ürtiker, aktinik retikuloid, persistan ışık reaksiyonu, polimorf ışık erüpsiyonu",
+   "tanim": "SoIar ürtiker, aktinik retikuloid, persistan Işık reaksiyonu, polimorf Işık erüpsiyonu klinik şiddete göre değerIendirilir."
+  },
+  {
+   "sayfa": "ek2_021",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "VII. FOTOSENSİTİVİTE VE GÜNEŞ IŞINLARI İLE TETİKLENEN HASTALIKLAR",
+   "madde_etiketi": "2-",
+   "kanonik_ad": "Porfirialar",
+   "tanim": "PorfiriaIar"
+  },
+  {
+   "sayfa": "ek2_021",
+   "bolum_adi": "DERİ",
+   "madde_etiketi": "VIII.",
+   "kanonik_ad": "Eritroderma",
+   "tanim": "ERİTRODERMA"
+  },
+  {
+   "sayfa": "ek2_021",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "VIII. ERİTRODERMA",
+   "kanonik_ad": "Eritroderma",
+   "tanim": "Altta yatan primer hastalık için ayrıca puan verilmez."
+  },
+  {
+   "sayfa": "ek2_021",
+   "bolum_adi": "DERİ",
+   "madde_etiketi": "IX.",
+   "kanonik_ad": "Pigment bozuklukları",
+   "tanim": "PİGMENT BOZUKLUKLARI"
+  },
+  {
+   "sayfa": "ek2_021",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "IX. PİGMENT BOZUKLUKLARI",
+   "kanonik_ad": "Pigment bozukluğu ile seyreden hastalıklar (vitiligo, depigmentasyon ve melanoderma yapan hastalıklar)",
+   "tanim": "Pigment bozukluğu ile (Vitiligo, depigmentasyon ve melanoderma yapan hastalıklar) seyreden hastalıklar"
+  },
+  {
+   "sayfa": "ek2_021",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "IX. PİGMENT BOZUKLUKLARI",
+   "madde_etiketi": "3-",
+   "kanonik_ad": "Albinizm",
+   "tanim": "Albİnİzm"
+  },
+  {
+   "sayfa": "ek2_021",
+   "bolum_adi": "DERİ",
+   "madde_etiketi": "X.",
+   "kanonik_ad": "İmmun, otoimmun ve sistemik hastalıkların deri bulguları",
+   "tanim": "İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI"
+  },
+  {
+   "sayfa": "ek2_021",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "X. İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI",
+   "kanonik_ad": "Vaskulitler",
+   "tanim": "Vaskulitler"
+  },
+  {
+   "sayfa": "ek2_021",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "X. İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI",
+   "kanonik_ad": "Kronik ve/veya tedaviye dirençli ürtiker ve anjioödem",
+   "tanim": "Kronik ve/veya tedaviye dirençli ürtiker ve anjioödem"
+  },
+  {
+   "sayfa": "ek2_021",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "X. İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI",
+   "kanonik_ad": "Pannikülitler",
+   "tanim": "Pannikülitler (Lezyon şiddetine göre değerlendirilir)"
+  },
+  {
+   "sayfa": "ek2_021",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "X. İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI",
+   "kanonik_ad": "Behçet hastalığı",
+   "tanim": "Behçet hastalığı"
+  },
+  {
+   "sayfa": "ek2_021",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "X. İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI",
+   "kanonik_ad": "Otoimmün büllü hastalıklar (pemfigus vulgaris, büllöz pemfigoid, dermatitis herpetiformis ve diğer otoimmün büllü hastalıklar)",
+   "tanim": "Otoimmün biillü hastalıklar (Pemfigus vulgaris, büllöz pemfigoid, dermatitis herpetiformis ve diğer otoimmün büllü hastalıklar)"
+  },
+  {
+   "sayfa": "ek2_021",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "X. İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI",
+   "kanonik_ad": "Kronik bağ doku hastalıkları",
+   "tanim": "Kronik bağ doku hastalıkları"
+  },
+  {
+   "sayfa": "ek2_022",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "X. İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI",
+   "kanonik_ad": "Reiter sendromu (sadece deri lezyonları için)",
+   "tanim": "Reiter sendromu: Sadece deri lezyonları için"
+  },
+  {
+   "sayfa": "ek2_022",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "X. İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI",
+   "kanonik_ad": "Pyoderma gangrenosum",
+   "tanim": "Pyoderma gangrenosum:"
+  },
+  {
+   "sayfa": "ek2_022",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "X. İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI",
+   "kanonik_ad": "Sarkoidozis",
+   "tanim": "Sarkoidozis"
+  },
+  {
+   "sayfa": "ek2_022",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "X. İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI",
+   "kanonik_ad": "Kronik graft versus host hastalığı",
+   "tanim": "Kronik Graft Versus Host Hastalığı"
+  },
+  {
+   "sayfa": "ek2_022",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "X. İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI",
+   "kanonik_ad": "Metabolik, endokrin bozukluklar, depolanma hastalıkları ve sistemik malignitelerin deri bulguları",
+   "tanim": "Metabolik, endokrin bozukluklar, depolanma hastalıkları ve sistemik malignitelerin deri bulguları: Sadece deri lezyonları için"
+  },
+  {
+   "sayfa": "ek2_022",
+   "bolum_adi": "DERİ",
+   "madde_etiketi": "XI.",
+   "kanonik_ad": "Genetik geçişli deri hastalıkları",
+   "tanim": "GENETİK GEÇİŞLİ DERİ HASTALIKLARI"
+  },
+  {
+   "sayfa": "ek2_022",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "XI. GENETİK GEÇİŞLİ DERİ HASTALIKLARI",
+   "kanonik_ad": "İktiyozis grubu hastalıklar",
+   "tanim": "İktiyozis grubu hastalıklar:"
+  },
+  {
+   "sayfa": "ek2_022",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "XI. GENETİK GEÇİŞLİ DERİ HASTALIKLARI",
+   "kanonik_ad": "Herediter palmoplanter keratodermiler, Unna Thost, Mal de Melada vb.",
+   "tanim": "Herediter palmoplanter keratodermiler, Unna Thost, Mal de Melada, vb."
+  },
+  {
+   "sayfa": "ek2_022",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "XI. GENETİK GEÇİŞLİ DERİ HASTALIKLARI",
+   "kanonik_ad": "Nörokutanöz hastalıklar (nörofibromatozis, tuberoz skleroz, psödoksantoma elastikum, telenjiektazi vb.)",
+   "tanim": "Nörokutanöz hastalıklar (Nörofibromatosis, Tuberoz skleroz, Psödoksantoma elastikum, telenjiektazi, vb.)"
+  },
+  {
+   "sayfa": "ek2_022",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "XI. GENETİK GEÇİŞLİ DERİ HASTALIKLARI",
+   "kanonik_ad": "Epidermolizis büllosa",
+   "tanim": "Epidermolizis büllosa"
+  },
+  {
+   "sayfa": "ek2_022",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "XI. GENETİK GEÇİŞLİ DERİ HASTALIKLARI",
+   "kanonik_ad": "Ataksi",
+   "tanim": "Ataksi"
+  },
+  {
+   "sayfa": "ek2_023",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "XI. GENETİK GEÇİŞLİ DERİ HASTALIKLARI",
+   "kanonik_ad": "Hailey Hailey hastalığı",
+   "tanim": "Hailey Hailey Hastalığı"
+  },
+  {
+   "sayfa": "ek2_023",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "XI. GENETİK GEÇİŞLİ DERİ HASTALIKLARI",
+   "kanonik_ad": "Kseroderma pigmentozum, Rothmund-Thompson sendromu, diskeratozis konjenita, Werner sendromu vb.",
+   "tanim": "Kseroderma pigmentozum, Rothmund-Thompson Send., Diskeratozis konjenita, Werner send. vb."
+  },
+  {
+   "sayfa": "ek2_023",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "XI. GENETİK GEÇİŞLİ DERİ HASTALIKLARI",
+   "kanonik_ad": "Anhidrotik/hipohidrotik ve hidrotik ektodermal displazi",
+   "tanim": "Anhidrotik/Hipohidrotik ve hidrotik ektodermal displazi:"
+  },
+  {
+   "sayfa": "ek2_023",
+   "bolum_adi": "DERİ",
+   "madde_etiketi": "XII.",
+   "kanonik_ad": "Vaskuler hastalıkların deri bulguları",
+   "tanim": "VASKULER HASTALIKLARIN DERİ BULGULARI"
+  },
+  {
+   "sayfa": "ek2_023",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "XII. VASKULER HASTALIKLARIN DERİ BULGULARI",
+   "kanonik_ad": "Kronik bacak ülserleri",
+   "tanim": "Kronik bacak ülserleri: (lezyon şiddetine göre)"
+  },
+  {
+   "sayfa": "ek2_023",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "XII. VASKULER HASTALIKLARIN DERİ BULGULARI",
+   "kanonik_ad": "Dekubitus ülseri",
+   "tanim": "Dekubitus ülseri: (lezyon şiddetine göre)"
+  },
+  {
+   "sayfa": "ek2_023",
+   "bolum_adi": "DERİ",
+   "madde_etiketi": "XIII.",
+   "kanonik_ad": "Kutanöz lenfoma, lösemi, histiyositozlar ve mastositozlar",
+   "tanim": "KUTANÖZ LENFOMA, LÖSEMİ, HİSTİYOSİTOZLAR VE MASTOSİTOZLAR"
+  },
+  {
+   "sayfa": "ek2_023",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "XIII. KUTANÖZ LENFOMA, LÖSEMİ, HİSTİYOSİTOZLAR VE MASTOSİTOZLAR",
+   "kanonik_ad": "Kütanöz T hücreli lenfoma",
+   "tanim": "Kütanöz T Hücreli Lenfoma"
+  },
+  {
+   "sayfa": "ek2_024",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "XIII. KUTANÖZ LENFOMA, LÖSEMİ, HİSTİYOSİTOZLAR VE MASTOSİTOZLAR",
+   "kanonik_ad": "MF dışı diğer kutanöz lenfomalar",
+   "tanim": "MF dışı diğer kutanöz lenfomalar"
+  },
+  {
+   "sayfa": "ek2_024",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "XIII. KUTANÖZ LENFOMA, LÖSEMİ, HİSTİYOSİTOZLAR VE MASTOSİTOZLAR",
+   "kanonik_ad": "Kutanöz (Langerhans hücreli) histiyositozlar",
+   "tanim": "Kutanöz (Langerhans hücreli) histiyosistozlar"
+  },
+  {
+   "sayfa": "ek2_024",
+   "bolum_adi": "DERİ",
+   "alt_bolum": "XIII. KUTANÖZ LENFOMA, LÖSEMİ, HİSTİYOSİTOZLAR VE MASTOSİTOZLAR",
+   "kanonik_ad": "Kutanöz mastositozis",
+   "tanim": "Kutanöz Mastositozis"
+  },
+  {
+   "sayfa": "ek2_024",
+   "bolum_adi": "DERİ",
+   "madde_etiketi": "XIV.",

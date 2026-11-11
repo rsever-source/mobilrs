@@ -1,0 +1,38 @@
+{
+  "aciklama": "EK-1'de derece bloğu olmayan dört kural maddesi. Hastalık/derece kavram sözlüğüne karıştırılmamıştır.",
+  "kayit_sayisi": 4,
+  "kayitlar": [
+    {
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_015",
+      "bolum_harfi": "E",
+      "sira_no": 24,
+      "baslik": "Diğer maddelerde maluliyet süresi belirtilmeyen (hematolojik maligniteler dahil) ve \"İyi diferansiye tiroid kanserleri ve derinin bazal hücreli kanserleri\" dışındaki tüm malign hastalıklar (hematolojik maligniteler dahil) maluliyet talep tarihinden önceki bir yıl içinde tanı almak kaydıyla talebe istinaden düzenlenmiş sağlık kurulu raporu tarihinden itibaren 18 ay süresince malul kabul edilir ve bu süre sonunda hastalık durumuna göre maluliyet yönünden tekrar değerlendirilir.",
+      "neden": "Ağır/Orta/Hafif blokları yok; tek paragraf halinde maluliyet süresi kuralı var"
+    },
+    {
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_019",
+      "bolum_harfi": "G",
+      "sira_no": 2,
+      "baslik": "İki orta düzeyde çalışma gücü kaybına neden olan amputasyonlar, ağır düzeyde çalışma gücü kaybı olarak kabul edilir.",
+      "neden": "Ağır/Orta/Hafif blokları yok; ampütasyonların birleştirilmesine ilişkin kural maddesi"
+    },
+    {
+      "kaynak_dosyasi": "u1_ek1_001_020.json",
+      "sayfa": "ek1_019",
+      "bolum_harfi": "G",
+      "sira_no": 3,
+      "baslik": "İki hafif düzeyde çalışma gücü kaybına neden olan amputasyonlar orta düzeyde çalışma gücü kaybı olarak kabul edilir.",
+      "neden": "Ağır/Orta/Hafif blokları yok; ampütasyonların birleştirilmesine ilişkin kural maddesi"
+    },
+    {
+      "kaynak_dosyasi": "u2_ek1_021_040.json",
+      "sayfa": "ek1_039",
+      "bolum_harfi": "O",
+      "sira_no": 8,
+      "baslik": "Karar verilemeyen durumlar",
+      "neden": "Madde altında ağır/orta/hafif düzeyde çalışma gücü kaybı bloğu yok; a) ve b) bentleri KPET sonucuna göre etkilenme oranı belirleyen değerlendirme kuralları içeriyor."
+    }
+  ]
+}

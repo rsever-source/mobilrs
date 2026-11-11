@@ -1,0 +1,143 @@
+{
+  "birim": "EK-2 s.3-24",
+  "kayitlar": [
+    {
+      "sayfa": "ek2_003",
+      "bolum_adi": "KULAK BURUN BOĞAZ",
+      "alt_bolum": "A-İŞİTME",
+      "madde_etiketi": "1.",
+      "kanonik_ad": "Kalıcı işitme engeli",
+      "tanim": "Bireyin yaşına göre normal kabul edilen işitme seviyeleri dışında kalan azalmış duyma hassasiyetini ifade eder."
+    },
+    {
+      "sayfa": "ek2_003",
+      "bolum_adi": "KULAK BURUN BOĞAZ",
+      "alt_bolum": "A-İŞİTME",
+      "madde_etiketi": "2.",
+      "kanonik_ad": "Kalıcı iki taraflı işitme engeli",
+      "tanim": "Kişinin günlük yaşam aktivitelerini yapmasına engel teşkil eden iki taraflı işitme kaybıdır."
+    },
+    {
+      "sayfa": "ek2_014",
+      "bolum_adi": "KULAK BURUN BOĞAZ",
+      "alt_bolum": "F.KOKU VE TAT DUYUSU KAYBI",
+      "kanonik_ad": "Koku ve tat duyusu kaybı",
+      "tanim": "Koku ve tat duyusunun objektif olarak değerIendirilmesi mümkün olmadığından bu duyuları bilateral olarak bozabileceğine karar verilen hastalık ve arızaların (yaygın intrakranial, nazal veya oral tümörler, harici veya cerrahi travmalar, konjenital anomaliler ve sendromlar, nörolojik veya dahili hastalıklar) varlığı objektif olarak ortaya konulursa bu duyuların kaybolduğu kabul edilerek her biri için %3 Engel Oranı verilir. Bu değerlendirmenin yapılabilmesi için tat veya koku kaybına sebep olan hastalık veya durum için gerekli tedavi uygulanmış olmalıdır."
+    },
+    {
+      "sayfa": "ek2_014",
+      "bolum_adi": "KULAK BURUN BOĞAZ",
+      "alt_bolum": "G.ÇİĞNEME VE YUTMA",
+      "kanonik_ad": "Çiğneme ve yutma bozuklukları",
+      "tanim": "Çiğneme ve yutma bozuklukları gerekli rehabilitasyon uygulandıktan en az 6 ay sonra diyet alımındaki kısıtlamalara göre değerlendirilir."
+    },
+    {
+      "sayfa": "ek2_018",
+      "bolum_adi": "DERİ",
+      "madde_etiketi": "1-",
+      "kanonik_ad": "Hafif",
+      "tanim": "a-Hastanın belirti ve semptomları sürekli veya aralıklı olarak mevcut. b-Günlük aktivitelerini kısıtlamıyor veya günlük aktivitenin birkaç aktivitesinde kısıtlama veya bazı maddelere maruz kalma ile kısıtlama geçici olarak artıyor. c-Tedavi gerektirmeyebilir veya aralıklı tedavi gerektirebilir."
+    },
+    {
+      "sayfa": "ek2_018",
+      "bolum_adi": "DERİ",
+      "madde_etiketi": "2-",
+      "kanonik_ad": "Orta",
+      "tanim": "a-Belirti ve bulgular sürekli veya aralıklı olarak mevcut, b-Günlük aktivitelerin bir kısmını kısıtlamakta. c-Ara11k11 veya sürekli tedavi gerektirmektedir,"
+    },
+    {
+      "sayfa": "ek2_018",
+      "bolum_adi": "DERİ",
+      "madde_etiketi": "3-",
+      "kanonik_ad": "Şiddetli",
+      "tanim": "a-Belirti ve bulgular sürekli olarak mevcut. b-GünIük aktivitelerinin bir çoğunu kısıtlamakta veya zaman zaman hastane veya evde yatılı olarak mahsur kalmakta. c-Aralıklı veya sürekli tedavi gerekmektedir."
+    },
+    {
+      "sayfa": "ek2_018",
+      "bolum_adi": "DERİ",
+      "madde_etiketi": "4-",
+      "kanonik_ad": "Çok şiddetli",
+      "tanim": "a-Beliıti ve bulgular sürekli olarak mevcut. b-Günlük aktivitelerin tüme yakınını etkilemekte veya hastane ya da evde uzun süreli mahsur kalmakta. c-AraIlk11 veya sürekli tedavi gerekmektedir."
+    }
+  ],
+  "belirsiz": [
+    {
+      "sayfa": "ek2_004",
+      "neden": "Sayfa 'İşitme engelinin belirlenmesinde kullanılan teknikler' başlığı altındaki 1-5 numaralı yöntem adımları ile a) ve b) alt maddelerinden oluşuyor; maddeler ölçüm prosedürü, terim adı ve tanım cümlesi yok."
+    },
+    {
+      "sayfa": "ek2_008",
+      "neden": "B-KONUŞMA VE SES bölümünde yalnız 'KONUŞMA BOZUKLUKLARINA YOL AÇAN NEDENLER' ad listesi (1-14) ve 'Muayene Yöntemi' kriterleri (a-e) var; maddelerin tanım cümlesi/terim tanımı bulunmadığı için kayıt üretilmedi."
+    }
+  ],
+  "kapsam_disi": [
+    {
+      "sayfa": "ek2_005",
+      "neden": "yalnız tablo (Tablo I-a Binaural işitme kaybı hesaplama tablosu)"
+    },
+    {
+      "sayfa": "ek2_006",
+      "neden": "yalnız tablo (Tablo I-b Binaural işitme kaybı hesaplama tablosu)"
+    },
+    {
+      "sayfa": "ek2_007",
+      "neden": "yalnız tablo (Tablo 2 engel oranı hesaplama, Tablo 3 tahmini işitme eşik toplamı)"
+    },
+    {
+      "sayfa": "ek2_009",
+      "neden": "yalnız okuma parçası (Jalenin Dünyası) ve Tablo 4-5'e yönlendiren uygulama metni; kavram tanımı yok"
+    },
+    {
+      "sayfa": "ek2_010",
+      "neden": "yalnız tablo (Tablo 4 konuşma engeli puanının hesaplanması)"
+    },
+    {
+      "sayfa": "ek2_011",
+      "neden": "yalnız tablo (Tablo 5 engel oranı hesaplama tablosu ve C-DENGE sınıf/engel oranı tablosu)"
+    },
+    {
+      "sayfa": "ek2_012",
+      "neden": "denge tablosunun devamı ve yüzde oran kataloğu (D-YÜZ sınıf listesi ve oranları)"
+    },
+    {
+      "sayfa": "ek2_013",
+      "neden": "yüzde oran kataloğu (D-YÜZ devamı, E-HAVA YOLU DEFEKTLERİ sınıf/engel oranı tablosu)"
+    },
+    {
+      "sayfa": "ek2_015",
+      "neden": "yüzde oran kataloğu (zihinsel/ruhsal bozukluklar madde listesi ve engel oranları)"
+    },
+    {
+      "sayfa": "ek2_016",
+      "neden": "yüzde oran kataloğu (geçici fonksiyon kaybına neden olan ruhsal hastalıklar listesi ve oranları)"
+    },
+    {
+      "sayfa": "ek2_017",
+      "neden": "yüzde oran kataloğu (anksiyete, madde kullanımı, kişilik bozuklukları listesi ve oranları)"
+    },
+    {
+      "sayfa": "ek2_019",
+      "neden": "yüzde oran kataloğu (deri hastalıkları alt grup listesi ve oranları)"
+    },
+    {
+      "sayfa": "ek2_020",
+      "neden": "yüzde oran kataloğu (deri tümörleri ve fotosensitivite listesi ve oranları)"
+    },
+    {
+      "sayfa": "ek2_021",
+      "neden": "yüzde oran kataloğu (pigment bozuklukları, immün/otoimmün deri bulguları listesi ve oranları)"
+    },
+    {
+      "sayfa": "ek2_022",
+      "neden": "yüzde oran kataloğu (otoimmün, genetik geçişli deri hastalıkları listesi ve oranları)"
+    },
+    {
+      "sayfa": "ek2_023",
+      "neden": "yüzde oran kataloğu (genetik deri hastalıkları, vasküler bulgular, kutanöz lenfoma listesi ve oranları)"
+    },
+    {
+      "sayfa": "ek2_024",
+      "neden": "yüzde oran kataloğu (kutanöz lenfoma/histiyositoz listesi, 'Diğer deri hastalıkları' şiddet listesi ve oranları)"
+    }
+  ]
+}

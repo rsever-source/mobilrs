@@ -1,0 +1,70 @@
+## test_sozluk_kavram_v1_0_3.py (exit=0)
+PASS Şema Draft-07 meta-şema kontrolü
+PASS EK-1 normal kayıt
+PASS EK-2 etiketli kayıt
+PASS EK-2 etiketsiz kayıt korunuyor
+PASS Boş eş anlamlı listesi geçerli
+PASS İki mevzuat bağlantısı reddediliyor
+PASS Bağlantısız kayıt reddediliyor
+PASS EK-1 / yanlış kimlik öneki reddediliyor
+PASS EK-2 / yanlış kimlik öneki reddediliyor
+PASS EK-1 yanlış RG sayısı reddediliyor
+PASS EK-2 yanlış RG tarihi reddediliyor
+PASS EK-2 yanlış MBS numarası reddediliyor
+PASS Virgüllü ICD kodu reddediliyor
+PASS Host içermeyen URL reddediliyor
+PASS Takvimsel olarak geçersiz date-time reddediliyor
+PASS Eksik eş anlamlı alanları reddediliyor
+PASS EK-2 yalnız kanonik ad + bölüm kaynağıyla geçerli (tanim/etiket yok)
+PASS EK-1 kaynak sayfası zorunlu
+PASS EK-2 kaynak sayfası zorunlu
+PASS ICD-10 eşlemesi gerekçeyle kabul ediliyor
+PASS Gerekçesiz ICD-10 eşlemesi reddediliyor
+PASS Temiz veri kümesi geçiyor
+PASS Tekrarlı kavram_id yakalanıyor
+PASS Farklı nesneyle yinelenen ICD kodu yakalanıyor
+PASS Aynı dil+terim farklı kaynaklarda yinelenirse yakalanıyor
+PASS Kaynak erişim tarihi takvim kontrolü
+PASS Resmî Gazete tarihi takvim kontrolü
+PASS ICD erişim tarihi takvim kontrolü
+PASS Farklı dilde eş anlamlılar kabul ediliyor
+PASS Uzun EK-1 kanonik adı korunuyor
+PASS Uzun basılı EK-2 alt bölüm başlığı korunuyor
+
+SONUÇ: 31/31 test PASS
+Not: Testler sentetik fixture kullanır; gerçek kaynak veri doğruluğunu kanıtlamaz.
+
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 718, in _warm_feature_flows
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 509, in _warm_drawing_and_image_flows
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/generated/interface/models.py", line 32861, in bring_to_front
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/rpc/remote.py", line 764, in __call__
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/rpc/client.py", line 175, in call
+artifact_tool.rpc.client.RemoteError: Element ordering requires an owning element collection.
+
+
+## test_gercek_veri_v1_0_3.py (exit=0)
+PASS T01 Draft-07 schema
+PASS T02 actual dataset schema
+PASS T03 total 418 candidate records
+PASS T04 EK-1 276 records
+PASS T05 EK-2 142 records
+PASS T06 unique kavram_id
+PASS T07 67 EK-2 records without printed label preserved
+PASS T08 four EK-1 degree-less rules kept separately
+
+SUMMARY 8/8 meta/data checks PASS; record schema errors=0; duplicate IDs=0
+
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 718, in _warm_feature_flows
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 509, in _warm_drawing_and_image_flows
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/generated/interface/models.py", line 32861, in bring_to_front
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/rpc/remote.py", line 764, in __call__
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/rpc/client.py", line 175, in call
+artifact_tool.rpc.client.RemoteError: Element ordering requires an owning element collection.

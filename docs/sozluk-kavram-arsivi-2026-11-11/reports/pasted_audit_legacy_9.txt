@@ -1,0 +1,136 @@
+Devir Raporu — Kavram Sözlüğü (sozluk_kavram)
+Tarih: 11.11.2026 · Kapsam: Bağımsız inceleme · Değişiklik: Hiçbir dosya oluşturulmadı, değiştirilmedi, silinmedi; Git'e dokunulmadı.
+Bu rapor, önceki raporları doğru kabul etmeden hazırlandı. ICD-10 bölümü bu oturumda WHO'nun resmî ICD-10 tarayıcısından yeniden çekildi.
+1. Çalışmanın amacını nasıl anladım
+Amaç, EK-1 (maluliyet / çalışma gücü kaybı — 28.09.2021/31612) ile EK-2 (engel oranı — 20.02.2019/30692) için, kullanıcının halk diliyle yazdığı terimi resmî mevzuat terimine bağlayan bir kavram sözlüğü kurmak. Sözlük bir "oran kataloğu" değil; oran, hesaplama ve kısıtlama üretmez, yalnızca terim → mevzuat maddesi köprüsü kurar.
+Bu nedenle:
+- EK-1 ve EK-2 iki ayrı kayıt evreni; ortak kavram iki ayrı kayıtla temsil edilir.
+- Her kayıt tek mevzuat bağlantısı taşır (oneOf / XOR).
+- ICD-10 yalnızca EK-2 tarafında bulunur (2019 md. 8/1-c bunu EK-2 muayene formuna bağlar).
+- Kaynakta olmayan tanım, oran, kısıtlama veya hesaplama eklenmez.
+- Balthazard ve 65 yaş eklemesi, dayanağı ayrıca incelenmeden sözlüğe alan olarak girmez; EK-1'de Balthazard zaten hukuken uygulanmıyor (2021 md. 5/4, 6/2).
+İş akışı şema-önce ilerliyor: Aşama 0 mevzuat doğrulama → Aşama 0.5 eksikler → Aşama 1 sozluk_kavram.json şeması → Aşama 2 sozluk_kavram_data.json (kayıt verisi) → sonraki doğrulama katmanları.
+2. İncelenen dosyalar ve içerikleri
+2.1 Bulunanlar
+Dosya	Yer	Boyut / tarih	İçerik
+sozluk_kavram.json	%TEMP%\opencode	6.387 B · 10.11.2026 10:56	JSON Schema Draft-07. Kullanıcının "esas" dediği dosya. SHA256 6b036d2d…f049
+sozluk_kavram_duzeltilmis.json	%TEMP%\opencode	6.399 B · 10.11.2026 11:00	Aynı şemanın kopyası; tek fark icd10 açıklaması. SHA256 4d14713d…d5bd
+asama0-mevzuat-dogrulama.md	%TEMP%\opencode	23.919 B	Aşama 0: RG/MBS künyeleri, 2021 md. 4/1 eşikleri, md. 5/4-6/2, 2019 md. 10/4-10/5, Geçici md. 2
+asama0.5-eksik-dogrulama.md	%TEMP%\opencode	10.261 B	EK-1 40 + EK-2 172 sayfa OCR özeti, H-1…H-12 durum tablosu
+asama0.5-update.md	%TEMP%\opencode	10.331 B	EK-2 bulguları: 51 sayfada Balthazard, %50 bağımlılık, 100 puanlı görme
+EK1-EK2-arastirma-raporu.md	%TEMP%\opencode	40.119 B	Engelliler.Biz araç çözümlemesi, A–G tasarım/uygulama planı
+o05\txt\ek1_001…040.txt	%TEMP%	40 dosya	EK-1 OCR çıktısı
+o05\txt\ek2_001…172.txt	%TEMP%	172 dosya	EK-2 OCR çıktısı — ek2_170.txt 0 bayt
+pdf\ek1_2021.pdf, pdf\ek2_2019_rg.pdf	%TEMP%	3,7 MB / 4,8 MB	Taranmış resmî ekler (40 ve 172 sayfa)
+mvz\maluliyet2021.txt, detay31275.txt, rg2019_ilk.txt	%TEMP%	—	Yönetmelik tam metinleri
+ebjs\maluliyet_veri.js, kilavuz_veri.js, kilavuz_arac.js, kilavuz_icd.js	%TEMP%	—	Engelliler.Biz site verisi/arama kodu
+o05\schema_v3_test2.py	%TEMP%	7.252 B	8 Draft-07 testini çalıştıran betik
+Bağımsız olarak saydığım veriler: maluliyet_veri.js içinde 178 "id" kaydı ve A–P arası 16 bölüm (İ dahil); kilavuz_veri.js içinde 15 üst bölüm ve 41 grup dizisi. Bu sayılar önceki raporlarla uyuşuyor.
+2.2 Bulunamayanlar (varmış gibi gösterilmedi)
+- sozluk_kavram_guncel* (JSON veya Markdown): hiçbir yerde yok. Ne proje ağacında, ne %TEMP% altında. Bu nedenle "sozluk_kavram.json ile sozluk_kavram_guncel karşılaştırması" yapılamaz; böyle bir dosya hiç üretilmemiş.
+- Proje deposunda sozluk_kavram* adlı hiçbir dosya yok. Tüm proje ağacında içerik aramasında da sozluk_kavram geçmiyor. Çalışma yalnızca %TEMP% altında, yani sürüm kontrolü dışında.
+- sozluk_kavram_data.json (Aşama 2 çıktısı) yok.
+- Ek şema/denetim raporu, "güncel" sürüm, değişiklik günlüğü yok.
+2.3 Depo durumu (benim ölçtüğüm)
+git status --porcelain  →  M tests/test_news_source_diagnostics.py   (kullanıcıya ait)
+git status -sb          →  ## HEAD (no branch)
+git log -1              →  898007fb  (HEAD, origin/diagnostics/gib-readtimeout-logging)
+Önemli: Çalışma kopyası feature/ek2-arac1-duzeltme dalında değil; detached HEAD durumunda ve origin/diagnostics/gib-readtimeout-logging commit'inde. AGENTS.md ve önceki raporlar burada dal olduğunu varsayıyor. Bu bir çelişki olarak kaydedildi (bkz. C-16); düzeltmek için talimat gerekir.
+3. Tamamlanan çalışmalar
+Gerçekten yapılmış ve benim de doğruladığım:
+1. Aşama 0 mevzuat doğrulaması — 2021 md. 4/1(a,k,e) düzey eşikleri (≥%60 / %50-59 / %40-49), md. 5/4 ve 6/2'de "en ağır sekel + Balthazard uygulanmaz" hükmü, 2019 md. 10/4 (Balthazard + 65 yaş +%10), md. 10/5 (katalog dışı → fonksiyon değerlendirmesi), Geçici md. 2/1. Bunları mvz\maluliyet2021.txt (satır 300-303, 354-355) ve mvz\detay31275.txt (satır 823-825) üzerinden bizzat teyit ettim.
+2. OCR — 40 + 172 sayfa; 171 sayfa metin üretti, ek2_170.txt boş.
+3. Şema — altı tur düzeltilmiş sozluk_kavram.json; oran alanları çıkarılmış, oneOf not/required biçimine çevrilmiş, aralıklar ve kaynak yapısı eklenmiş.
+4. Şema testi — jsonschema 4.26.0 + Draft7Validator ile 8 test gerçekten çalıştırıldı; 8/8 geçti (bu oturumda tekrar çalıştırdım, sonuç aynı).
+5. Künye düzeltmesi tespiti — 31275 MBS numarası, 30692 RG sayısı; katalog.json'daki "3.1.2019" hatalı.
+Yapılmış görünen ama kanıtlanmamış olan:
+- ICD-10 doğrulaması yapılmadı. Önceki iki rapor "WHO sınıflandırmasıyla doğrulandı" diyor; oysa bu oturumda resmî kaynaktan çektiğim etiketler bu iddiaların yanlış olduğunu gösteriyor (bkz. C-1). Yani Aşama 1'in içerik tarafı hiç kapanmamış.
+- "Aşama 1 onaylandı" ifadesi bir raporun kendi kendine verdiği onaydı; kullanıcı sonraki iki turda reddetti.
+4. Kesinleşmiş teknik kararlar
+#	Karar	Dayanak
+K-1	EK-1 ile EK-2 tamamen ayrı; ortak kavram = iki ayrı kayıt	Kullanıcı talimatı
+K-2	Her kayıt tek mevzuat bağlantısı; oneOf ile XOR	Kullanıcı talimatı + şema
+K-3	JSON Schema Draft-07	Kullanıcı talimatı
+K-4	EK-1 madde_no 1–22, EK-2 madde_no 1–41	Şema (anlam sorunu için C-7)
+K-5	ICD-10 yalnızca ek_2_baglantisi içinde; EK-1 kaydında bulunursa RED	Şema + 2019 md. 8/1-c
+K-6	Sözlükte oran/hesaplama alanı yok (yuzde_esigi, balthazard_istisna çıkarıldı)	Kullanıcı talimatı
+K-7	Balthazard yalnızca EK-2'de; EK-1'de mimari olarak imkânsız	2021 md. 5/4, 6/2
+K-8	EK-1 düzey eşikleri ≥%60 / %50-59 / %40-49	2021 md. 4/1(a,k,e)
+K-9	EK-2 dayanağı 20.02.2019 / RG 30692 / MBS 31275	RG künyesi + MBS
+K-10	EK-1 dayanağı 28.09.2021 / RG 31612	RG künyesi
+K-11	"178" ve "225" resmî sayı değil, derleme kapsamı	Aşama 0 §5
+K-12	sozluk_kavram.json esas; sozluk_kavram_duzeltilmis.json kullanılmayacak	Kullanıcı talimatı (çelişki: C-2)
+5. Çelişkiler ve hatalar
+Çelişkileri kendim çözmedim; olduğu gibi raporluyorum.
+A. ICD-10 içerik doğrulaması (bu oturumda WHO'dan çekildi)
+Kaynak: WHO ICD-10 (2019) resmî tarayıcısı.
+https://icd.who.int/browse10/2019/en#/H54.1 · API: https://icd.who.int/browse10/2019/en/JsonGetChildrenConcepts?ConceptId=H54&useHtml=false
+Kod	WHO resmî etiketi (birebir)	Üst kategori	sozluk_kavram.json ne diyor	..._duzeltilmis.json ne diyor	Sonuç
+H54.1	Severe visual impairment, binocular	H54 Visual impairment including blindness	"Binaural sensorineural hearing loss"	"görme kaybı kategorisinde"	s1 YANLIŞ; s2 doğru yönde ama tam etiket değil
+H90.3	Sensorineural hearing loss, bilateral	H90 Conductive and sensorineural hearing loss	"Moderate sensorineural hearing loss, bilateral"	"iki taraflı sensörinöral işitme kaybı"	s1'de kaynakta olmayan "moderate"; s2 doğru
+H91.1	Presbycusis	H91 Other hearing loss	"Presbycusis, unilateral"	"presbiakuzi/yaşa bağlı"	s1'de kaynaksız "unilateral"; s2 doğru
+H92.0	Otalgia	H92 Otalgia and effusion of ear	"Presbycusis – age-related hearing loss"	"otalji"	s1 YANLIŞ; s2 doğru
+H28.1	Cataract in other endocrine, nutritional and metabolic diseases	H28 Cataract and other disorders of lens in diseases classified elsewhere	"Other disorders of auditory nerve"	"kataraktla ilişkili"	s1 YANLIŞ; s2 doğru
+H93.3	Disorders of acoustic nerve	H93 Other disorders of ear, NEC	(yok)	"akustik sinir bozuklukları"	s2 doğru
+E70	Disorders of aromatic amino-acid metabolism	E70	"lipid metabolism disorders"	"metabolizma bozuklukları"	s1 YANLIŞ; s2 muğlak ama yanlış değil
+E78	Disorders of lipoprotein metabolism and other lipidaemias	E78	—	—	referans: lipid tablosu burada
+Doğrulanmış kodlar: H54.1, H90.3, H91.1, H92.0, H28.1, H93.3, E70, E78 — hepsi resmî kaynaktan birebir okundu. Belirsiz kod kalmadı; ancak "derece" ve "tek taraflılık" gibi resmî etikette olmayan nitelemeler hâlâ s1'de duruyor.
+B. Şema / yapı çelişkileri
+- C-1. sozluk_kavram.json — kullanıcının "esas" dediği dosya — beş kodda yanlış WHO açıklaması taşıyor. Önceki iki rapor bunları "doğrulandı" diye sundu.
+- C-2. Kullanılmayacak denilen sozluk_kavram_duzeltilmis.json, WHO'ya göre doğru açıklamaları taşıyan dosya. Karar ile içerik doğruluğu çelişiyor; çözüm sizin.
+- C-3. İki dosya birebir aynı; tek fark icd10.description (programatik olarak doğruladım). mtime sırası (10:56 → 11:00) s2'nin s1'den türetildiğini gösteriyor.
+- C-4. sozluk_kavram.json içindeki icd10 açıklaması "Doğrulanmış örnekler" diyor; bu ifade kaynağa dayanmıyordu. Ayrıca ne EK-1 ne EK-2 ekinde tek bir ICD kodu var (172 EK-2 sayfasında "ICD" geçmiyor; EK-1'de yalnız "ICD implantasyonu" ifadesi var). Yani icd10 alanı ekin kendi metninden gelen bir bilgi değil, proje düzeyinde üretilmiş bir eşleme.
+- C-5. madde_no alanı iki tarafta farklı şeyi gösteriyor: EK-1'de "2021 Yönetmeliği maddesi (1-22)", EK-2'de "ekteki grup numarası (1-41)". Aynı alan adı, iki ayrı referans uzayı. Sonuç: sözlük, EK-1'in 178 hastalık maddesinden hiçbirine işaret edemiyor. Aşama 2 için bloklayıcı.
+- C-6. kaynak.mevzuat_no açıklaması "Mevzuat Bilgi Sistemi numarası (örn: 31275, 31612)" diyor. 31275 MBS'dir (doğrulandı), 31612 ise RG sayısıdır. Test 1 de mevzuat_no: 31612 kullanıyor. Alanın tanımı kendi içinde tutarsız.
+- C-7. es_anlamli dizisinin öğelerinde required yok: es_anlamli: [{}] geçerli sayılıyor (test ettim). Yani yapısal PASS, anlamlı eş anlamlı olduğunu garanti etmiyor.
+- C-8. format: "uri" / "date-time" için FormatChecker kullanılmıyor; url: "bozuk-url" geçiyor (test ettim).
+- C-9. kanonik_ad örneğinde "Balthazard Formülü", tanim açıklamasında "Balthazard hesaplama tipi" geçiyor. Balthazard bir hesaplama kuralı; sözlüğe kavram olarak girmesi "sözlük ile oran kataloğu karışmasın" kuralıyla çelişiyor.
+- C-10. ek_1_baglantisi.derece zorunlu değil (yalnız madde_no zorunlu). Düzeyi olmayan bir EK-1 kaydı şemadan geçer — sözlüğün ana işlevi düzey eşlemesi olduğu hâlde.
+- C-11. Şema açıklamalarında bozuk kelimeler var: "órganosistemlerine", "organdonon", "bağıntılı", "eş anlamlıyi", "kapsaminda". Metin gözden geçirilmemiş.
+C. Test kanıtı hataları
+- C-12. Test 7-EK-2 geçersiz bir kanıt. Test "42>41 RED" diyor; oysa reddin gerçek mesajı Additional properties are not allowed ('icd10' was unexpected) — çünkü icd10 üst düzeye yazılmış. Yani test, sınırı değil, üst düzey yasak alanı test ediyor. (Sınırın kendisi sağlam: temiz bir örnekle denedim → 42 is greater than the maximum of 41.)
+- C-13. Test 8 yalnızca üst düzey icd10'u test ediyor; ek_1_baglantisi içine gömülü icd10 test edilmiyor. (Onu da denedim: Additional properties … ('icd10' was unexpected) → şema doğru çalışıyor.)
+- C-14. Test 3i "R. ORTAK HÜKÜMLER"i madde_no: 21, derece: "ortak_hukum" ile modelliyor; R bölümü ekte, 21. yönetmelik maddesinde değil. Test 3ii ise Balthazard'a icd10: "E88.8" veriyor — ilgisiz ve gerçek veride kullanılamayacak bir kurgu.
+- C-15. 8 testin tamamı validate(..., cls=Draft7Validator) ile gerçekten çalışıyor — bu kısım doğru. Ancak şema doğrulaması ≠ içerik doğrulaması: 8/8 PASS, ICD-10 veya tanım doğruluğunu kanıtlamaz (C-1 bunun kanıtı).
+D. Rapor / veri çelişkileri
+- C-16. Aşama 0 ve 0.5 "A..R harfli (16 Bölüm)" diyor. Site verisi A–P (16 bölüm, İ dahil) + R. ORTAK HÜKÜMLER. A..R aralığı 16 değil; ifade kendi içinde tutarsız. Ayrıca ekten yalnız A (s.1) ve R (s.40) görsel olarak doğrulanmış; aradaki harfler doğrulanmadı.
+- C-17. "212 sayfa işlendi" ifadesi tam doğru değil: ek2_170.txt 0 bayt. 171 sayfa metin üretti, 1 sayfa okunamadı.
+- C-18. Aşama 0.5 "alan kılavuzunda aksi belirtilmedikçe OCR'da bulunamadı → belirsiz" diyor. Oysa ifade yönetmelik metninde var: detay31275.txt satır 823-825 (Geçici md. 2/1). Karışıklık, ek OCR'ı ile yönetmelik metninin karıştırılmasından kaynaklanıyor. İfade hukuken doğrulanmış; ekin basılı sayfasında görsel olarak teyit edilmedi.
+- C-19. Aşama 0.5'teki "H-4 → Balthazard istisnası doğrulandı, balthazard_istisna alanı eklenmeli" kararı ile sözlük şemasındaki "oran/hesaplama alanı yok" kararı çelişiyor. İkisi farklı katmanlara ait olabilir, ama hiçbir yerde bu ayrım yazılı değil.
+- C-20. katalog.json künyesindeki "3.1.2019" hatası depoda hâlâ duruyor (dosyayı okudum). Düzeltme kararı verilmiş, uygulanmamış.
+E. Ortam
+- C-21. Çalışma kopyası detached HEAD (898007fb), feature/ek2-arac1-duzeltme değil (bkz. §2.3).
+- C-22. Tüm sözlük çalışması %TEMP% içinde ve sürüm kontrolü dışında. İki ayrı sürüm var, hangisinin hangi adımla üretildiğine dair kayıt yok. Temp temizliği dosyaları silebilir.
+6. Açık kalan işler
+1. ICD-10 içerik düzeltmesi — hangi dosyanın esas olduğu kararı ile içerik doğruluğu çelişiyor (C-1/C-2). Ayrıca "derece" ve "tek taraflılık" nitelemeleri kaldırılmalı.
+2. ICD-10'un kaynağını tanımlama — ekte ICD yok (C-4). Alanın "proje eşlemesi" olduğu ve hangi sürümün kullanıldığı yazılmalı; yoksa her kayıt "kaynaksız" sayılır.
+3. madde_no anlamının tekilleştirilmesi (C-5) — EK-1'de 178 ek maddesine işaret edecekse aralık ve alan adı değişmeli.
+4. kaynak.mevzuat_no tanımının düzeltilmesi (C-6).
+5. Testlerin onarılması — Test 7 ve Test 8 gerçek senaryoyu test etmiyor (C-12/C-13); es_anlamli ve format için ek testler gerekli (C-7/C-8).
+6. EK-1 bölüm harflerinin ve 178 maddenin OCR üzerinden tam sayımı (yalnız A ve R görsel doğrulandı).
+7. EK-2 170. sayfanın yeniden OCR'ı; istisna işaretlerinin görsel teyidi.
+8. 2024–2026 revizyon kontrolü (2021 md. 18) — yapılmadı.
+9. katalog.json künye düzeltmesi (C-20) — onay bekliyor.
+7. Önerilen aşamalı çalışma planı
+Aşama	Yapılacak işlem	Kaynak	Beklenen çıktı	Doğrulama yöntemi
+1-A	ICD-10 açıklamalarını resmî etiketlerle değiştir; kaynaksız nitelemeleri ("moderate", "unilateral") sil; icd10'un proje eşlemesi olduğunu yaz	WHO ICD-10 2019 tarayıcı/API (bu raporda listelenen 8 kod)	Tek bir esas şema dosyası + kod→etiket tablosu	Her kod için API etiketi ile birebir string karşılaştırması; kaynağı olmayan kod varsa alandan çıkarılması
+1-B	madde_no, mevzuat_no, derece zorunluluğu ve es_anlamli/format kurallarını netleştir	2021 md. 4/1, 2019 md. 8/1-c; mevcut şema	Düzeltilmiş şema (Draft-07)	Yeni negatif testler: es_anlamli:[{}] RED, bozuk URL RED, düzeyi olmayan EK-1 RED
+1-C	8 testi yeniden yaz: Test 7'de üst düzey icd10 kullanma; Test 8'i ek_1_baglantisi içi icd10 ile kur	jsonschema 4.26.0	Test raporu (her testin reddetme gerekçesi yazılı)	Reddetme mesajı beklenen alanı göstermeli; kütüphane yoksa test FAIL sayılır
+2-A	EK-1 178 madde + düzey + kriter metnini OCR'dan çıkar, sayfa/madde referansı ekle	o05\txt\ek1_*.txt, pdf\ek1_2021.pdf	ek1_hastalik_listesi.json taslağı	Rastgele 20 maddenin OCR metniyle birebir karşılaştırması; bölüm harflerinin tam listesi
+2-B	EK-2 kavram kayıtlarını (15 bölüm / 41 grup) üret; her kayda kaynak.sayfa_no	o05\txt\ek2_*.txt, kilavuz_veri.js	sozluk_kavram_data.json	her kayıt şemadan geçmeli + sayfa referansı dolu olmalı; ICD alanı yalnız EK-2'de
+2-C	Ortak kavramları iki ayrı kayda böl; oneOf ihlali olmadığını doğrula	Şema + 2019/2021 metinleri	Çift kayıt listesi	kavram_id benzersizliği + her kayıtta tek bağlantı
+3	İçerik denetimi: her tanım/kriter kaynak metinde var mı	RG metinleri + OCR	Denetim raporu (şema PASS'ından ayrı)	Kaynakta bulunamayan her alan "kaynaksız" işaretlenir ve veriye girmez
+4	2024–2026 revizyon kontrolü	resmigazete.gov.tr, mevzuat.gov.tr	Sürüm notu (mevzuat_surum, kaynak_tarih)	Yürürlükteki metin ile karşılaştırma
+8. Aşama 1'in mevcut durumu ve Aşama 2'ye geçiş koşulları
+Aşama 1 durumu: yapısal olarak büyük ölçüde sağlam, içerik olarak RED.
+- Yapısal: 8/8 Draft-07 testi gerçek validator ile geçiyor. Ancak iki test (7 ve 8) yanlış senaryoyu ölçüyor (C-12/C-13) ve iki kural boşluk bırakıyor (C-7/C-8). Yani "8/8 PASS" doğru ama kanıt gücü göründüğünden zayıf.
+- İçerik: sozluk_kavram.json içindeki ICD-10 açıklamaları beş kodda yanlış veya kaynaksız (C-1). Bu hâliyle şema, doğru olmayan bilgiyi "doğrulanmış" diye taşıyor.
+Aşama 2'ye geçiş için gereken koşullar (hepsi birlikte):
+1. Esas dosya kararı ile içerik doğruluğu çelişkisinin sizin tarafınızdan çözülmesi (C-1/C-2).
+2. ICD-10 açıklamalarının WHO etiketleriyle birebir hizalanması; kaynaksız nitelemelerin kaldırılması.
+3. icd10 alanının kaynağının (ekte ICD yok) açıkça tanımlanması.
+4. madde_no anlamının tekilleştirilmesi (EK-1'de 178 ek maddesine işaret edecek biçimde).
+5. Test 7 ve 8'in gerçek senaryoyla yeniden yazılması ve gerekçeli raporlanması.
+6. Şemanın sürüm kontrolüne alınması veya en azından tek bir dondurulmuş sürümünün (hash ile) işaretlenmesi.
+7. Yukarıdakiler tamamlanana kadar sozluk_kavram_data.json üretilmemesi.
+Bu rapor bir inceleme raporudur; uygulamaya geçmedim, Aşama 2'yi başlatmadım. Sıradaki adım için talimatınızı bekliyorum. En kritik karar tek: esas dosya sozluk_kavram.json kalsın mı, yoksa içeriği doğru olan sürüm mü esas alınsın — bu ikisi şu an aynı anda doğru olamıyor.

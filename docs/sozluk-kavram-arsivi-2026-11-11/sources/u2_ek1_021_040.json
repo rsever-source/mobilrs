@@ -1,0 +1,212 @@
+{
+  "birim": "EK-1 s.21-40",
+  "kayitlar": [
+    {"sayfa": "ek1_021", "bolum_harfi": "H", "sira_no": 1, "derece": "orta", "kanonik_ad": "Sistemik skleroz (skleroderma)", "kanit_metin": "1. Sistemik skleroz (skleroderma)"},
+    {"sayfa": "ek1_021", "bolum_harfi": "H", "sira_no": 1, "derece": "hafif", "kanonik_ad": "Sistemik skleroz (skleroderma)", "kanit_metin": "1. Sistemik skleroz (skleroderma)"},
+
+    {"sayfa": "ek1_021", "bolum_harfi": "H", "sira_no": 2, "derece": "agir", "kanonik_ad": "Raynaud fenomeni", "kanit_metin": "2. Raynaud fenomeni"},
+    {"sayfa": "ek1_021", "bolum_harfi": "H", "sira_no": 2, "derece": "orta", "kanonik_ad": "Raynaud fenomeni", "kanit_metin": "2. Raynaud fenomeni"},
+    {"sayfa": "ek1_021", "bolum_harfi": "H", "sira_no": 2, "derece": "hafif", "kanonik_ad": "Raynaud fenomeni", "kanit_metin": "2. Raynaud fenomeni"},
+
+    {"sayfa": "ek1_021", "bolum_harfi": "H", "sira_no": 3, "derece": "agir", "kanonik_ad": "Polimiyozit ve Dermatomiyozit", "kanit_metin": "3. Polimiyozit ve Dermatomiyozit"},
+    {"sayfa": "ek1_021", "bolum_harfi": "H", "sira_no": 3, "derece": "orta", "kanonik_ad": "Polimiyozit ve Dermatomiyozit", "kanit_metin": "3. Polimiyozit ve Dermatomiyozit"},
+    {"sayfa": "ek1_022", "bolum_harfi": "H", "sira_no": 3, "derece": "hafif", "kanonik_ad": "Polimiyozit ve Dermatomiyozit", "kanit_metin": "3. Polimiyozit ve Dermatomiyozit"},
+
+    {"sayfa": "ek1_022", "bolum_harfi": "H", "sira_no": 4, "derece": "agir", "kanonik_ad": "Sistemik Lupus Eritematozus, Sistemik Vaskülit, Sjögren Sendromu, Andifferansiye ve Mikst Bağ Doku Hastalığı vb", "kanit_metin": "4. Sistemik Lupus Eritematozus, Sistemik Vaskülit, Sjögren Sendromu, Andifferansiye ve Mikst Bağ Doku Hastalığı vb"},
+    {"sayfa": "ek1_022", "bolum_harfi": "H", "sira_no": 4, "derece": "orta", "kanonik_ad": "Sistemik Lupus Eritematozus, Sistemik Vaskülit, Sjögren Sendromu, Andifferansiye ve Mikst Bağ Doku Hastalığı vb", "kanit_metin": "4. Sistemik Lupus Eritematozus, Sistemik Vaskülit, Sjögren Sendromu, Andifferansiye ve Mikst Bağ Doku Hastalığı vb"},
+    {"sayfa": "ek1_022", "bolum_harfi": "H", "sira_no": 4, "derece": "hafif", "kanonik_ad": "Sistemik Lupus Eritematozus, Sistemik Vaskülit, Sjögren Sendromu, Andifferansiye ve Mikst Bağ Doku Hastalığı vb", "kanit_metin": "4. Sistemik Lupus Eritematozus, Sistemik Vaskülit, Sjögren Sendromu, Andifferansiye ve Mikst Bağ Doku Hastalığı vb"},
+
+    {"sayfa": "ek1_022", "bolum_harfi": "H", "sira_no": 5, "derece": "agir", "kanonik_ad": "Behçet hastalığı", "kanit_metin": "5. Behçet hastalığı"},
+    {"sayfa": "ek1_023", "bolum_harfi": "H", "sira_no": 5, "derece": "orta", "kanonik_ad": "Behçet hastalığı", "kanit_metin": "5. Behçet hastalığı"},
+    {"sayfa": "ek1_023", "bolum_harfi": "H", "sira_no": 5, "derece": "hafif", "kanonik_ad": "Behçet hastalığı", "kanit_metin": "5. Behçet hastalığı"},
+
+    {"sayfa": "ek1_023", "bolum_harfi": "H", "sira_no": 6, "derece": "agir", "kanonik_ad": "İnflamatuar artritler", "kanit_metin": "6. İnflamatuar artritler"},
+    {"sayfa": "ek1_023", "bolum_harfi": "H", "sira_no": 6, "derece": "orta", "kanonik_ad": "İnflamatuar artritler", "kanit_metin": "6. İnflamatuar artritler"},
+    {"sayfa": "ek1_023", "bolum_harfi": "H", "sira_no": 6, "derece": "hafif", "kanonik_ad": "İnflamatuar artritler", "kanit_metin": "6. İnflamatuar artritler"},
+
+    {"sayfa": "ek1_024", "bolum_harfi": "H", "sira_no": 7, "derece": "agir", "kanonik_ad": "Ankilozan spondilit veya diğer spondiloartropatilerde (omurga tutulumunda)", "kanit_metin": "7. Ankilozan spondilit veya diğer spondiloartropatilerde (omurga tutulumunda):"},
+    {"sayfa": "ek1_024", "bolum_harfi": "H", "sira_no": 7, "derece": "orta", "kanonik_ad": "Ankilozan spondilit veya diğer spondiloartropatilerde (omurga tutulumunda)", "kanit_metin": "7. Ankilozan spondilit veya diğer spondiloartropatilerde (omurga tutulumunda):"},
+    {"sayfa": "ek1_024", "bolum_harfi": "H", "sira_no": 7, "derece": "hafif", "kanonik_ad": "Ankilozan spondilit veya diğer spondiloartropatilerde (omurga tutulumunda)", "kanit_metin": "7. Ankilozan spondilit veya diğer spondiloartropatilerde (omurga tutulumunda):"},
+
+    {"sayfa": "ek1_025", "bolum_harfi": "İ", "sira_no": 1, "derece": "agir", "kanonik_ad": "Portal hipertansiyona bağlı gastrointestinal kanamalar", "kanit_metin": "1. Portal hipertansiyona bağlı gastrointestinal kanamalar"},
+    {"sayfa": "ek1_026", "bolum_harfi": "İ", "sira_no": 1, "derece": "orta", "kanonik_ad": "Portal hipertansiyona bağlı gastrointestinal kanamalar", "kanit_metin": "1. Portal hipertansiyona bağlı gastrointestinal kanamalar"},
+
+    {"sayfa": "ek1_026", "bolum_harfi": "İ", "sira_no": 2, "derece": "agir", "kanonik_ad": "Karaciğer sirozu", "kanit_metin": "2. Karaciğer sirozu"},
+    {"sayfa": "ek1_026", "bolum_harfi": "İ", "sira_no": 2, "derece": "orta", "kanonik_ad": "Karaciğer sirozu", "kanit_metin": "2. Karaciğer sirozu"},
+    {"sayfa": "ek1_026", "bolum_harfi": "İ", "sira_no": 2, "derece": "hafif", "kanonik_ad": "Karaciğer sirozu", "kanit_metin": "2. Karaciğer sirozu"},
+
+    {"sayfa": "ek1_026", "bolum_harfi": "İ", "sira_no": 3, "derece": "agir", "kanonik_ad": "Karaciğer nakli", "kanit_metin": "3. Karaciğer nakli"},
+    {"sayfa": "ek1_026", "bolum_harfi": "İ", "sira_no": 3, "derece": "hafif", "kanonik_ad": "Karaciğer nakli", "kanit_metin": "3. Karaciğer nakli"},
+
+    {"sayfa": "ek1_026", "bolum_harfi": "İ", "sira_no": 4, "derece": "agir", "kanonik_ad": "İnflamatuar bağırsak hastalıkları (İki yıl sonra kontrolü gerekir)", "kanit_metin": "4. İnflamatuar bağırsak hastalıkları (İki yıl sonra kontrolü gerekir)"},
+    {"sayfa": "ek1_027", "bolum_harfi": "İ", "sira_no": 4, "derece": "orta", "kanonik_ad": "İnflamatuar bağırsak hastalıkları (İki yıl sonra kontrolü gerekir)", "kanit_metin": "4. İnflamatuar bağırsak hastalıkları (İki yıl sonra kontrolü gerekir)"},
+
+    {"sayfa": "ek1_027", "bolum_harfi": "İ", "sira_no": 5, "derece": "agir", "kanonik_ad": "Tanımlanmış bir gastrointestinal hastalığa bağlı olarak Vücut Kitle İndeksi (VKİ) ile ilgili durumlar (İki yıl sonra kontrol gerekir)", "kanit_metin": "5. Tanımlanmış bir gastrointestinal hastalığa bağlı olarak Vücut Kitle İndeksi (VKİ) ile ilgili durumlar (İki yıl sonra kontrol gerekir)"},
+    {"sayfa": "ek1_027", "bolum_harfi": "İ", "sira_no": 5, "derece": "orta", "kanonik_ad": "Tanımlanmış bir gastrointestinal hastalığa bağlı olarak Vücut Kitle İndeksi (VKİ) ile ilgili durumlar (İki yıl sonra kontrol gerekir)", "kanit_metin": "5. Tanımlanmış bir gastrointestinal hastalığa bağlı olarak Vücut Kitle İndeksi (VKİ) ile ilgili durumlar (İki yıl sonra kontrol gerekir)"},
+
+    {"sayfa": "ek1_027", "bolum_harfi": "İ", "sira_no": 6, "derece": "agir", "kanonik_ad": "Malabsorbsiyonlarla seyreden GİS hastalıkları", "kanit_metin": "6. Malabsorbsiyonlarla seyreden GİS hastalıkları"},
+
+    {"sayfa": "ek1_027", "bolum_harfi": "İ", "sira_no": 7, "derece": "agir", "kanonik_ad": "Kısa bağırsak sendromu", "kanit_metin": "7. Kısa bağırsak sendromu"},
+    {"sayfa": "ek1_027", "bolum_harfi": "İ", "sira_no": 7, "derece": "orta", "kanonik_ad": "Kısa bağırsak sendromu", "kanit_metin": "7. Kısa bağırsak sendromu"},
+
+    {"sayfa": "ek1_027", "bolum_harfi": "İ", "sira_no": 8, "derece": "agir", "kanonik_ad": "Total proktokolektomi+ileal poş", "kanit_metin": "8. Total proktokolektomi+ileal poş"},
+
+    {"sayfa": "ek1_028", "bolum_harfi": "İ", "sira_no": 9, "derece": "agir", "kanonik_ad": "Anal inkontinans veya anal sfinkter yokluğu", "kanit_metin": "9. Anal inkontinans veya anal sfinkter yokluğu"},
+    {"sayfa": "ek1_028", "bolum_harfi": "İ", "sira_no": 9, "derece": "orta", "kanonik_ad": "Anal inkontinans veya anal sfinkter yokluğu", "kanit_metin": "9. Anal inkontinans veya anal sfinkter yokluğu"},
+
+    {"sayfa": "ek1_028", "bolum_harfi": "İ", "sira_no": 10, "derece": "agir", "kanonik_ad": "Kalıcı ileostomi veya kolostomiler", "kanit_metin": "10. Kalıcı ileostomi veya kolostomiler"},
+    {"sayfa": "ek1_028", "bolum_harfi": "İ", "sira_no": 11, "derece": "agir", "kanonik_ad": "Bağırsak transplantasyonu", "kanit_metin": "11. Bağırsak transplantasyonu"},
+    {"sayfa": "ek1_028", "bolum_harfi": "İ", "sira_no": 12, "derece": "agir", "kanonik_ad": "Total pankreatektomi", "kanit_metin": "12. Total pankreatektomi"},
+    {"sayfa": "ek1_028", "bolum_harfi": "İ", "sira_no": 13, "derece": "agir", "kanonik_ad": "Whipple operasyonu", "kanit_metin": "13. Whipple operasyonu"},
+
+    {"sayfa": "ek1_028", "bolum_harfi": "İ", "sira_no": 14, "derece": "agir", "kanonik_ad": "Özefagus", "kanit_metin": "14. Özefagus"},
+    {"sayfa": "ek1_028", "bolum_harfi": "İ", "sira_no": 14, "derece": "orta", "kanonik_ad": "Özefagus", "kanit_metin": "14. Özefagus"},
+    {"sayfa": "ek1_028", "bolum_harfi": "İ", "sira_no": 14, "derece": "hafif", "kanonik_ad": "Özefagus", "kanit_metin": "14. Özefagus"},
+
+    {"sayfa": "ek1_028", "bolum_harfi": "İ", "sira_no": 15, "derece": "orta", "kanonik_ad": "Mide hastalıkları", "kanit_metin": "15. Mide hastalıkları"},
+    {"sayfa": "ek1_028", "bolum_harfi": "İ", "sira_no": 16, "derece": "orta", "kanonik_ad": "Karaciğer hastalıkları", "kanit_metin": "16. Karaciğer hastalıkları"},
+    {"sayfa": "ek1_028", "bolum_harfi": "İ", "sira_no": 17, "derece": "orta", "kanonik_ad": "Safra yolları", "kanit_metin": "17. Safra yolları"},
+
+    {"sayfa": "ek1_028", "bolum_harfi": "J", "sira_no": 1, "derece": "agir", "kanonik_ad": "Kutanöz T hücreli lenfomalar", "kanit_metin": "1. Kütanöz lenfoma / a) Kutanöz T hücreli lenfomalar"},
+    {"sayfa": "ek1_028", "bolum_harfi": "J", "sira_no": 1, "derece": "hafif", "kanonik_ad": "Kutanöz T hücreli lenfomalar", "kanit_metin": "1. Kütanöz lenfoma / a) Kutanöz T hücreli lenfomalar"},
+    {"sayfa": "ek1_028", "bolum_harfi": "J", "sira_no": 1, "derece": "agir", "kanonik_ad": "MF dışı diğer kutanöz lenfomalar", "kanit_metin": "1. Kütanöz lenfoma / b) MF dışı diğer kutanöz lenfomalar"},
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 1, "derece": "hafif", "kanonik_ad": "MF dışı diğer kutanöz lenfomalar", "kanit_metin": "1. Kütanöz lenfoma / b) MF dışı diğer kutanöz lenfomalar"},
+
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 2, "derece": "agir", "kanonik_ad": "Porfirialar", "kanit_metin": "2. Porfirialar"},
+
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 3, "derece": "agir", "kanonik_ad": "Psoriyazis", "kanit_metin": "3. Psoriyazis"},
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 3, "derece": "hafif", "kanonik_ad": "Psoriyazis", "kanit_metin": "3. Psoriyazis"},
+
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 4, "derece": "agir", "kanonik_ad": "Pemfigus grubu, büllöz pemfigoid ve dermatitis herpetiformis v.b. otoimmün büllöz hastalıklar", "kanit_metin": "4. Pemfigus grubu, büllöz pemfigoid ve dermatitis herpetiformis v.b. otoimmün büllöz hastalıklar"},
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 4, "derece": "hafif", "kanonik_ad": "Pemfigus grubu, büllöz pemfigoid ve dermatitis herpetiformis v.b. otoimmün büllöz hastalıklar", "kanit_metin": "4. Pemfigus grubu, büllöz pemfigoid ve dermatitis herpetiformis v.b. otoimmün büllöz hastalıklar"},
+
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 5, "derece": "agir", "kanonik_ad": "İktiyozis grubu hastalıklar", "kanit_metin": "5. İktiyozis grubu hastalıklar"},
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 5, "derece": "hafif", "kanonik_ad": "İktiyozis grubu hastalıklar", "kanit_metin": "5. İktiyozis grubu hastalıklar"},
+
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 6, "derece": "hafif", "kanonik_ad": "Herediter palmoplanter keratodermiler, Unna Thost, Mal de Melada, vb.", "kanit_metin": "6. Herediter palmoplanter keratodermiler, Unna Thost, Mal de Melada, vb."},
+
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 7, "derece": "agir", "kanonik_ad": "Epidermolizis bülloza", "kanit_metin": "7. Epidermolizis bülloza"},
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 7, "derece": "orta", "kanonik_ad": "Epidermolizis bülloza", "kanit_metin": "7. Epidermolizis bülloza"},
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 7, "derece": "hafif", "kanonik_ad": "Epidermolizis bülloza", "kanit_metin": "7. Epidermolizis bülloza"},
+
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 8, "derece": "agir", "kanonik_ad": "Kseroderma pigmentozum, Rothmund-Thompson Sendromu, Diskeratozis konjenita, Werner Sendromu ve benzeri genetik geçişli hastalıklar", "kanit_metin": "8. Kseroderma pigmentozum, Rothmund-Thompson Sendromu, Diskeratozis konjenita, Werner Sendromu ve benzeri genetik geçişli hastalıklar"},
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 8, "derece": "orta", "kanonik_ad": "Kseroderma pigmentozum, Rothmund-Thompson Sendromu, Diskeratozis konjenita, Werner Sendromu ve benzeri genetik geçişli hastalıklar", "kanit_metin": "8. Kseroderma pigmentozum, Rothmund-Thompson Sendromu, Diskeratozis konjenita, Werner Sendromu ve benzeri genetik geçişli hastalıklar"},
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 8, "derece": "hafif", "kanonik_ad": "Kseroderma pigmentozum, Rothmund-Thompson Sendromu, Diskeratozis konjenita, Werner Sendromu ve benzeri genetik geçişli hastalıklar", "kanit_metin": "8. Kseroderma pigmentozum, Rothmund-Thompson Sendromu, Diskeratozis konjenita, Werner Sendromu ve benzeri genetik geçişli hastalıklar"},
+
+    {"sayfa": "ek1_029", "bolum_harfi": "J", "sira_no": 9, "derece": "hafif", "kanonik_ad": "Hidradenitis supurativa, akne konglobata ve folliküler oklüzyon triadi", "kanit_metin": "9. Hidradenitis supurativa, akne konglobata ve folliküler oklüzyon triadi"},
+
+    {"sayfa": "ek1_030", "bolum_harfi": "J", "sira_no": 10, "derece": "hafif", "kanonik_ad": "Kan damarlarının benign neoplazm ve hiperplazileri: Kapiller anjiom, Kavernöz anjiom, Lenfanjiom, lenfohemanjiom, Anjiokeratom, Klippel-Trenanuay-Weber, vb.", "kanit_metin": "10. Kan damarlarının benign neoplazm ve hiperplazileri: Kapiller anjiom, Kavernöz anjiom, Lenfanjiom, lenfohemanjiom, Anjiokeratom, Klippel-Trenanuay-Weber, vb."},
+
+    {"sayfa": "ek1_030", "bolum_harfi": "J", "sira_no": 11, "derece": "hafif", "kanonik_ad": "Hipertrofik skar ve keloid", "kanit_metin": "11. Hipertrofik skar ve keloid"},
+    {"sayfa": "ek1_030", "bolum_harfi": "J", "sira_no": 12, "derece": "hafif", "kanonik_ad": "Vaskulitler", "kanit_metin": "12. Vaskulitler"},
+    {"sayfa": "ek1_030", "bolum_harfi": "J", "sira_no": 13, "derece": "hafif", "kanonik_ad": "Pyoderma gangrenosum", "kanit_metin": "13. Pyoderma gangrenosum"},
+    {"sayfa": "ek1_030", "bolum_harfi": "J", "sira_no": 14, "derece": "hafif", "kanonik_ad": "Kronik Graft Versus Host Hastalığı", "kanit_metin": "14. Kronik Graft Versus Host Hastalığı"},
+    {"sayfa": "ek1_030", "bolum_harfi": "J", "sira_no": 15, "derece": "hafif", "kanonik_ad": "Anhidrotik/Hipohidrotik ve hidrotik ektodermal displazi", "kanit_metin": "15. Anhidrotik/Hipohidrotik ve hidrotik ektodermal displazi"},
+    {"sayfa": "ek1_030", "bolum_harfi": "J", "sira_no": 16, "derece": "hafif", "kanonik_ad": "Kronik bağ doku hastalıkları", "kanit_metin": "16. Kronik bağ doku hastalıkları"},
+    {"sayfa": "ek1_030", "bolum_harfi": "J", "sira_no": 17, "derece": "agir", "kanonik_ad": "Skleroderma", "kanit_metin": "17. Skleroderma"},
+    {"sayfa": "ek1_030", "bolum_harfi": "J", "sira_no": 18, "derece": "agir", "kanonik_ad": "Lepra", "kanit_metin": "18. Lepra"},
+
+    {"sayfa": "ek1_030", "bolum_harfi": "K", "sira_no": 1, "derece": "agir", "kanonik_ad": "Kardiyak aritmiler", "kanit_metin": "1. Kardiyak aritmiler"},
+    {"sayfa": "ek1_031", "bolum_harfi": "K", "sira_no": 1, "derece": "orta", "kanonik_ad": "Kardiyak aritmiler", "kanit_metin": "1. Kardiyak aritmiler"},
+    {"sayfa": "ek1_031", "bolum_harfi": "K", "sira_no": 1, "derece": "hafif", "kanonik_ad": "Kardiyak aritmiler", "kanit_metin": "1. Kardiyak aritmiler"},
+
+    {"sayfa": "ek1_031", "bolum_harfi": "K", "sira_no": 2, "derece": "agir", "kanonik_ad": "Pulmoner hipertansiyon", "kanit_metin": "2. Pulmoner hipertansiyon"},
+    {"sayfa": "ek1_031", "bolum_harfi": "K", "sira_no": 2, "derece": "orta", "kanonik_ad": "Pulmoner hipertansiyon", "kanit_metin": "2. Pulmoner hipertansiyon"},
+
+    {"sayfa": "ek1_031", "bolum_harfi": "K", "sira_no": 3, "derece": "agir", "kanonik_ad": "Konstriktif perikardit", "kanit_metin": "3. Konstriktif perikardit"},
+
+    {"sayfa": "ek1_031", "bolum_harfi": "K", "sira_no": 4, "derece": "agir", "kanonik_ad": "Hipertrofik ve restriktif kardiyomiyopati", "kanit_metin": "4. Hipertrofik ve restriktif kardiyomiyopati"},
+    {"sayfa": "ek1_031", "bolum_harfi": "K", "sira_no": 4, "derece": "orta", "kanonik_ad": "Hipertrofik ve restriktif kardiyomiyopati", "kanit_metin": "4. Hipertrofik ve restriktif kardiyomiyopati"},
+
+    {"sayfa": "ek1_031", "bolum_harfi": "K", "sira_no": 5, "derece": "agir", "kanonik_ad": "Kalp yetersizliği", "kanit_metin": "5. Kalp yetersizliği"},
+    {"sayfa": "ek1_032", "bolum_harfi": "K", "sira_no": 5, "derece": "orta", "kanonik_ad": "Kalp yetersizliği", "kanit_metin": "5. Kalp yetersizliği"},
+    {"sayfa": "ek1_032", "bolum_harfi": "K", "sira_no": 5, "derece": "hafif", "kanonik_ad": "Kalp yetersizliği", "kanit_metin": "5. Kalp yetersizliği"},
+
+    {"sayfa": "ek1_032", "bolum_harfi": "K", "sira_no": 6, "derece": "agir", "kanonik_ad": "Konjenital kalp hastalıkları", "kanit_metin": "6. Konjenital kalp hastalıkları"},
+    {"sayfa": "ek1_032", "bolum_harfi": "K", "sira_no": 6, "derece": "orta", "kanonik_ad": "Konjenital kalp hastalıkları", "kanit_metin": "6. Konjenital kalp hastalıkları"},
+
+    {"sayfa": "ek1_032", "bolum_harfi": "K", "sira_no": 7, "derece": "agir", "kanonik_ad": "Kalp kapak hastalıkları", "kanit_metin": "7. Kalp kapak hastalıkları"},
+    {"sayfa": "ek1_032", "bolum_harfi": "K", "sira_no": 7, "derece": "orta", "kanonik_ad": "Kalp kapak hastalıkları", "kanit_metin": "7. Kalp kapak hastalıkları"},
+
+    {"sayfa": "ek1_032", "bolum_harfi": "K", "sira_no": 8, "derece": "agir", "kanonik_ad": "Koroner Arter Hastalıkları", "kanit_metin": "8. Koroner Arter Hastalıkları"},
+    {"sayfa": "ek1_033", "bolum_harfi": "K", "sira_no": 8, "derece": "orta", "kanonik_ad": "Koroner Arter Hastalıkları", "kanit_metin": "8. Koroner Arter Hastalıkları"},
+
+    {"sayfa": "ek1_033", "bolum_harfi": "K", "sira_no": 9, "derece": "orta", "kanonik_ad": "Hipertansiyon", "kanit_metin": "9. Hipertansiyon"},
+
+    {"sayfa": "ek1_033", "bolum_harfi": "L", "sira_no": 1, "derece": "agir", "kanonik_ad": "Periferik arter hastalıkları", "kanit_metin": "1. Periferik arter hastalıkları"},
+    {"sayfa": "ek1_033", "bolum_harfi": "L", "sira_no": 1, "derece": "hafif", "kanonik_ad": "Periferik arter hastalıkları", "kanit_metin": "1. Periferik arter hastalıkları"},
+
+    {"sayfa": "ek1_033", "bolum_harfi": "L", "sira_no": 2, "derece": "hafif", "kanonik_ad": "Fonksiyonel damar hastalığı olanlar (Raynaud Fenomeni, Akrosiyanozis vs.)", "kanit_metin": "2. Fonksiyonel damar hastalığı olanlar (Raynaud Fenomeni, Akrosiyanozis vs.)"},
+
+    {"sayfa": "ek1_033", "bolum_harfi": "L", "sira_no": 3, "derece": "agir", "kanonik_ad": "Büyük arter hastalıkları", "kanit_metin": "3. Büyük arter hastalıkları"},
+
+    {"sayfa": "ek1_033", "bolum_harfi": "L", "sira_no": 4, "derece": "agir", "kanonik_ad": "Kronik venöz hastalıklar", "kanit_metin": "4. Kronik venöz hastalıklar"},
+    {"sayfa": "ek1_033", "bolum_harfi": "L", "sira_no": 4, "derece": "orta", "kanonik_ad": "Kronik venöz hastalıklar", "kanit_metin": "4. Kronik venöz hastalıklar"},
+
+    {"sayfa": "ek1_033", "bolum_harfi": "L", "sira_no": 5, "derece": "agir", "kanonik_ad": "Lenf sistemi hastalıkları", "kanit_metin": "5. Lenf sistemi hastalıkları"},
+    {"sayfa": "ek1_033", "bolum_harfi": "L", "sira_no": 5, "derece": "hafif", "kanonik_ad": "Lenf sistemi hastalıkları", "kanit_metin": "5. Lenf sistemi hastalıkları"},
+
+    {"sayfa": "ek1_034", "bolum_harfi": "M", "sira_no": 1, "derece": "agir", "kanonik_ad": "Böbrek fonksiyon bozukluğu", "kanit_metin": "1. Böbrek fonksiyon bozukluğu"},
+    {"sayfa": "ek1_034", "bolum_harfi": "M", "sira_no": 1, "derece": "orta", "kanonik_ad": "Böbrek fonksiyon bozukluğu", "kanit_metin": "1. Böbrek fonksiyon bozukluğu"},
+    {"sayfa": "ek1_034", "bolum_harfi": "M", "sira_no": 1, "derece": "hafif", "kanonik_ad": "Böbrek fonksiyon bozukluğu", "kanit_metin": "1. Böbrek fonksiyon bozukluğu"},
+
+    {"sayfa": "ek1_034", "bolum_harfi": "M", "sira_no": 2, "derece": "agir", "kanonik_ad": "Nefrotik sendrom", "kanit_metin": "2. Nefrotik sendrom"},
+    {"sayfa": "ek1_034", "bolum_harfi": "M", "sira_no": 2, "derece": "hafif", "kanonik_ad": "Nefrotik sendrom", "kanit_metin": "2. Nefrotik sendrom"},
+
+    {"sayfa": "ek1_034", "bolum_harfi": "M", "sira_no": 3, "derece": "agir", "kanonik_ad": "Üretra darlıkları", "kanit_metin": "3. Üretra darlıkları"},
+    {"sayfa": "ek1_034", "bolum_harfi": "M", "sira_no": 3, "derece": "orta", "kanonik_ad": "Üretra darlıkları", "kanit_metin": "3. Üretra darlıkları"},
+
+    {"sayfa": "ek1_035", "bolum_harfi": "M", "sira_no": 4, "derece": "agir", "kanonik_ad": "Üreterlerin cilde ağızlaştırılması", "kanit_metin": "4. Üreterlerin cilde ağızlaştırılması"},
+
+    {"sayfa": "ek1_035", "bolum_harfi": "M", "sira_no": 5, "derece": "agir", "kanonik_ad": "Yeni mesane yapılması", "kanit_metin": "5. Yeni mesane yapılması"},
+    {"sayfa": "ek1_035", "bolum_harfi": "M", "sira_no": 5, "derece": "orta", "kanonik_ad": "Yeni mesane yapılması", "kanit_metin": "5. Yeni mesane yapılması"},
+
+    {"sayfa": "ek1_035", "bolum_harfi": "M", "sira_no": 6, "derece": "agir", "kanonik_ad": "Üriner fistüller ve total inkontinans", "kanit_metin": "6. Üriner fistüller ve total inkontinans"},
+    {"sayfa": "ek1_035", "bolum_harfi": "M", "sira_no": 6, "derece": "orta", "kanonik_ad": "Üriner fistüller ve total inkontinans", "kanit_metin": "6. Üriner fistüller ve total inkontinans"},
+
+    {"sayfa": "ek1_035", "bolum_harfi": "M", "sira_no": 7, "derece": "orta", "kanonik_ad": "Nörojenik mesane", "kanit_metin": "7. Nörojenik mesane"},
+
+    {"sayfa": "ek1_035", "bolum_harfi": "N", "sira_no": 1, "derece": "agir", "kanonik_ad": "Hipofiz ve Hipotalamus Bez Hastalıkları", "kanit_metin": "1. Hipofiz ve Hipotalamus Bez Hastalıkları"},
+    {"sayfa": "ek1_035", "bolum_harfi": "N", "sira_no": 1, "derece": "orta", "kanonik_ad": "Hipofiz ve Hipotalamus Bez Hastalıkları", "kanit_metin": "1. Hipofiz ve Hipotalamus Bez Hastalıkları"},
+    {"sayfa": "ek1_035", "bolum_harfi": "N", "sira_no": 1, "derece": "hafif", "kanonik_ad": "Hipofiz ve Hipotalamus Bez Hastalıkları", "kanit_metin": "1. Hipofiz ve Hipotalamus Bez Hastalıkları"},
+
+    {"sayfa": "ek1_035", "bolum_harfi": "N", "sira_no": 2, "derece": "agir", "kanonik_ad": "Tiroid ve Paratiroid bez hastalıkları", "kanit_metin": "2. Tiroid ve Paratiroid bez hastalıkları"},
+
+    {"sayfa": "ek1_036", "bolum_harfi": "N", "sira_no": 3, "derece": "agir", "kanonik_ad": "Adrenal bez hastalıkları", "kanit_metin": "3. Adrenal bez hastalıkları"},
+    {"sayfa": "ek1_036", "bolum_harfi": "N", "sira_no": 3, "derece": "hafif", "kanonik_ad": "Adrenal bez hastalıkları", "kanit_metin": "3. Adrenal bez hastalıkları"},
+
+    {"sayfa": "ek1_036", "bolum_harfi": "N", "sira_no": 4, "derece": "agir", "kanonik_ad": "Pankreas kökenli nöroendokrin tümörler", "kanit_metin": "4. Pankreas kökenli nöroendokrin tümörler"},
+
+    {"sayfa": "ek1_036", "bolum_harfi": "N", "sira_no": 5, "derece": "agir", "kanonik_ad": "Diabetes Mellitus", "kanit_metin": "5. Diabetes Mellitus"},
+    {"sayfa": "ek1_036", "bolum_harfi": "N", "sira_no": 5, "derece": "orta", "kanonik_ad": "Diabetes Mellitus", "kanit_metin": "5. Diabetes Mellitus"},
+    {"sayfa": "ek1_036", "bolum_harfi": "N", "sira_no": 5, "derece": "hafif", "kanonik_ad": "Diabetes Mellitus", "kanit_metin": "5. Diabetes Mellitus"},
+
+    {"sayfa": "ek1_036", "bolum_harfi": "N", "sira_no": 6, "derece": "agir", "kanonik_ad": "Metabolizma hastalıkları", "kanit_metin": "6. Metabolizma hastalıkları"},
+    {"sayfa": "ek1_036", "bolum_harfi": "N", "sira_no": 6, "derece": "hafif", "kanonik_ad": "Metabolizma hastalıkları", "kanit_metin": "6. Metabolizma hastalıkları"},
+
+    {"sayfa": "ek1_036", "bolum_harfi": "O", "sira_no": 1, "derece": "agir", "kanonik_ad": "Kronik pulmoner yetmezlik", "kanit_metin": "1. Kronik pulmoner yetmezlik"},
+    {"sayfa": "ek1_037", "bolum_harfi": "O", "sira_no": 1, "derece": "orta", "kanonik_ad": "Kronik pulmoner yetmezlik", "kanit_metin": "1. Kronik pulmoner yetmezlik"},
+    {"sayfa": "ek1_037", "bolum_harfi": "O", "sira_no": 1, "derece": "hafif", "kanonik_ad": "Kronik pulmoner yetmezlik", "kanit_metin": "1. Kronik pulmoner yetmezlik"},
+
+    {"sayfa": "ek1_037", "bolum_harfi": "O", "sira_no": 2, "derece": "agir", "kanonik_ad": "Astım", "kanit_metin": "2. Astım"},
+    {"sayfa": "ek1_038", "bolum_harfi": "O", "sira_no": 2, "derece": "orta", "kanonik_ad": "Astım", "kanit_metin": "2. Astım"},
+    {"sayfa": "ek1_038", "bolum_harfi": "O", "sira_no": 2, "derece": "hafif", "kanonik_ad": "Astım", "kanit_metin": "2. Astım"},
+
+    {"sayfa": "ek1_038", "bolum_harfi": "O", "sira_no": 3, "derece": "agir", "kanonik_ad": "Uykuda solunum bozuklukları", "kanit_metin": "3. Uykuda solunum bozuklukları"},
+
+    {"sayfa": "ek1_039", "bolum_harfi": "O", "sira_no": 4, "derece": "agir", "kanonik_ad": "Tüberküloz", "kanit_metin": "4. Tüberküloz"},
+    {"sayfa": "ek1_039", "bolum_harfi": "O", "sira_no": 5, "derece": "agir", "kanonik_ad": "Bronşektazi", "kanit_metin": "5. Bronşektazi"},
+    {"sayfa": "ek1_039", "bolum_harfi": "O", "sira_no": 6, "derece": "agir", "kanonik_ad": "Kistik Fibrozis", "kanit_metin": "6. Kistik Fibrozis"},
+    {"sayfa": "ek1_039", "bolum_harfi": "O", "sira_no": 7, "derece": "agir", "kanonik_ad": "Akciğer Transplantasyonu", "kanit_metin": "7. Akciğer Transplantasyonu"},
+
+    {"sayfa": "ek1_039", "bolum_harfi": "P", "sira_no": 1, "derece": "agir", "kanonik_ad": "AIDS", "kanit_metin": "1. AIDS"},
+
+    {"sayfa": "ek1_040", "bolum_harfi": "R", "sira_no": 1, "derece": "ortak_hukum", "kanonik_ad": "Mevcut hastalık listelerinde tanımlanmayan ancak tedaviye rağmen çalışma olanağının bulunmadığı hastalıklar ağır düzeyde çalışma gücü kaybı olarak değerlendirilebilir.", "kanit_metin": "Mevcut hastalık listelerinde tanımlanmayan ancak tedaviye rağmen çalışma olanağının bulunmadığı hastalıklar ağır düzeyde çalışma gücü kaybı olarak değerlendirilebilir."},
+    {"sayfa": "ek1_040", "bolum_harfi": "R", "sira_no": 2, "derece": "ortak_hukum", "kanonik_ad": "Birden fazla hastalığın bir arada olduğu ve tedaviye rağmen çalışma olanağının bulunmadığı durumlar, ağır düzeyde çalışma gücü kaybı olarak değerlendirilebilir.", "kanit_metin": "Birden fazla hastalığın bir arada olduğu ve tedaviye rağmen çalışma olanağının bulunmadığı durumlar, ağır düzeyde çalışma gücü kaybı olarak değerlendirilebilir."},
+    {"sayfa": "ek1_040", "bolum_harfi": "R", "sira_no": 3, "derece": "ortak_hukum", "kanonik_ad": "Bu hastalık listesine göre birden fazla hafif düzeyde çalışma gücü kaybına neden olan durumlar, orta düzeyde çalışma gücü kaybı olarak değerlendirilebilir.", "kanit_metin": "Bu hastalık listesine göre birden fazla hafif düzeyde çalışma gücü kaybına neden olan durumlar, orta düzeyde çalışma gücü kaybı olarak değerlendirilebilir."}
+  ],
+  "derecesiz_maddeler": [
+    {"sayfa": "ek1_039", "bolum_harfi": "O", "sira_no": 8, "baslik": "Karar verilemeyen durumlar", "neden": "Madde altında ağır/orta/hafif düzeyde çalışma gücü kaybı bloğu yok; a) ve b) bentleri KPET sonucuna göre etkilenme oranı belirleyen değerlendirme kuralları içeriyor."}
+  ],
+  "belirsiz": []
+}

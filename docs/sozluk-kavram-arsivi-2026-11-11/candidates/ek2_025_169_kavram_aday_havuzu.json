@@ -1,0 +1,1000 @@
+{
+  "kaynak": "ek2_2019_rg.pdf",
+  "kapsam": "PDF sayfa 25-169",
+  "aday_sayisi": 555,
+  "onemli_not": "Bunlar OCR satır adaylarıdır; doğrulanmış kavram kaydı değildir. Yalnızca açıkça numaralı/harfli satırlardan çıkarılmıştır. Başlık, tanım, tablo satırı ve kavram hiyerarşisi insan denetimi gerektirir.",
+  "adaylar": [
+    {
+      "aday_id": "ek2_025_satir_004",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "A",
+      "kanonik_ad_adayi": "Aplastik Anemi (Akkiz ve konjenital, Fanconi ve vb.)",
+      "ham_satir": "A. Aplastik Anemi (Akkiz ve konjenital, Fanconi ve vb.)",
+      "onceki_satirlar": [
+        "manın —",
+        "I, ANEMILER"
+      ],
+      "sonraki_satirlar": [
+        "1- Ağır olmayan aplastik anemi 40",
+        "2- Ağır aplastik anemi (Nötrofil 200-500, trombosit 2000'in altı) 70"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_005",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "1",
+      "kanonik_ad_adayi": "Ağır olmayan aplastik anemi",
+      "ham_satir": "1- Ağır olmayan aplastik anemi 40",
+      "onceki_satirlar": [
+        "I, ANEMILER",
+        "A. Aplastik Anemi (Akkiz ve konjenital, Fanconi ve vb.)"
+      ],
+      "sonraki_satirlar": [
+        "2- Ağır aplastik anemi (Nötrofil 200-500, trombosit 2000'in altı) 70",
+        "3- Çokağır (nötrofil 200'ün altı 80"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_006",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "2",
+      "kanonik_ad_adayi": "Ağır aplastik anemi (Nötrofil 200-500, trombosit 2000'in altı)",
+      "ham_satir": "2- Ağır aplastik anemi (Nötrofil 200-500, trombosit 2000'in altı) 70",
+      "onceki_satirlar": [
+        "A. Aplastik Anemi (Akkiz ve konjenital, Fanconi ve vb.)",
+        "1- Ağır olmayan aplastik anemi 40"
+      ],
+      "sonraki_satirlar": [
+        "3- Çokağır (nötrofil 200'ün altı 80",
+        "4- Fankoni aplastik anemisi ve diğer konjenital aplastik anemiler"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_007",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "3",
+      "kanonik_ad_adayi": "Çokağır (nötrofil 200'ün altı",
+      "ham_satir": "3- Çokağır (nötrofil 200'ün altı 80",
+      "onceki_satirlar": [
+        "1- Ağır olmayan aplastik anemi 40",
+        "2- Ağır aplastik anemi (Nötrofil 200-500, trombosit 2000'in altı) 70"
+      ],
+      "sonraki_satirlar": [
+        "4- Fankoni aplastik anemisi ve diğer konjenital aplastik anemiler",
+        "Transfüzyon ihtiyacı olmayan. 40"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_008",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "4",
+      "kanonik_ad_adayi": "Fankoni aplastik anemisi ve diğer konjenital aplastik anemiler",
+      "ham_satir": "4- Fankoni aplastik anemisi ve diğer konjenital aplastik anemiler",
+      "onceki_satirlar": [
+        "2- Ağır aplastik anemi (Nötrofil 200-500, trombosit 2000'in altı) 70",
+        "3- Çokağır (nötrofil 200'ün altı 80"
+      ],
+      "sonraki_satirlar": [
+        "Transfüzyon ihtiyacı olmayan. 40",
+        "Transfüzyon ihtiyacı olan 80"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_011",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "B",
+      "kanonik_ad_adayi": "Diamond Blacfan Anemisi (Konjenital Hipoplastik Anemi)",
+      "ham_satir": "B. Diamond Blacfan Anemisi (Konjenital Hipoplastik Anemi)",
+      "onceki_satirlar": [
+        "Transfüzyon ihtiyacı olmayan. 40",
+        "Transfüzyon ihtiyacı olan 80"
+      ],
+      "sonraki_satirlar": [
+        "1-Steroid tedavisine yanıt verenler 30",
+        "2-Steroid tedavisine bağımlı olanlar 40"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_012",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "1",
+      "kanonik_ad_adayi": "Steroid tedavisine yanıt verenler",
+      "ham_satir": "1-Steroid tedavisine yanıt verenler 30",
+      "onceki_satirlar": [
+        "Transfüzyon ihtiyacı olan 80",
+        "B. Diamond Blacfan Anemisi (Konjenital Hipoplastik Anemi)"
+      ],
+      "sonraki_satirlar": [
+        "2-Steroid tedavisine bağımlı olanlar 40",
+        "3-Steroid tedavisine yanıt vermeyenler 70"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_013",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "2",
+      "kanonik_ad_adayi": "Steroid tedavisine bağımlı olanlar",
+      "ham_satir": "2-Steroid tedavisine bağımlı olanlar 40",
+      "onceki_satirlar": [
+        "B. Diamond Blacfan Anemisi (Konjenital Hipoplastik Anemi)",
+        "1-Steroid tedavisine yanıt verenler 30"
+      ],
+      "sonraki_satirlar": [
+        "3-Steroid tedavisine yanıt vermeyenler 70",
+        "C. Hemolitik Anemiler"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_014",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "3",
+      "kanonik_ad_adayi": "Steroid tedavisine yanıt vermeyenler",
+      "ham_satir": "3-Steroid tedavisine yanıt vermeyenler 70",
+      "onceki_satirlar": [
+        "1-Steroid tedavisine yanıt verenler 30",
+        "2-Steroid tedavisine bağımlı olanlar 40"
+      ],
+      "sonraki_satirlar": [
+        "C. Hemolitik Anemiler",
+        "a. Eritrosit enzim defektleri, membran defektleri"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_015",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "C",
+      "kanonik_ad_adayi": "Hemolitik Anemiler",
+      "ham_satir": "C. Hemolitik Anemiler",
+      "onceki_satirlar": [
+        "2-Steroid tedavisine bağımlı olanlar 40",
+        "3-Steroid tedavisine yanıt vermeyenler 70"
+      ],
+      "sonraki_satirlar": [
+        "a. Eritrosit enzim defektleri, membran defektleri",
+        "1-Hafif anemi (Hb: 10-12 g/dl 10"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_016",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "a",
+      "kanonik_ad_adayi": "Eritrosit enzim defektleri, membran defektleri",
+      "ham_satir": "a. Eritrosit enzim defektleri, membran defektleri",
+      "onceki_satirlar": [
+        "3-Steroid tedavisine yanıt vermeyenler 70",
+        "C. Hemolitik Anemiler"
+      ],
+      "sonraki_satirlar": [
+        "1-Hafif anemi (Hb: 10-12 g/dl 10",
+        "2-Orta dercede anemi ( Hb:8-10 g/dl 40"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_017",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "1",
+      "kanonik_ad_adayi": "Hafif anemi (Hb: 10-12 g/dl",
+      "ham_satir": "1-Hafif anemi (Hb: 10-12 g/dl 10",
+      "onceki_satirlar": [
+        "C. Hemolitik Anemiler",
+        "a. Eritrosit enzim defektleri, membran defektleri"
+      ],
+      "sonraki_satirlar": [
+        "2-Orta dercede anemi ( Hb:8-10 g/dl 40",
+        "3-Ağır anemi (Hb:<8 g/dl) 80"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_018",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "2",
+      "kanonik_ad_adayi": "Orta dercede anemi ( Hb:8-10 g/dl",
+      "ham_satir": "2-Orta dercede anemi ( Hb:8-10 g/dl 40",
+      "onceki_satirlar": [
+        "a. Eritrosit enzim defektleri, membran defektleri",
+        "1-Hafif anemi (Hb: 10-12 g/dl 10"
+      ],
+      "sonraki_satirlar": [
+        "3-Ağır anemi (Hb:<8 g/dl) 80",
+        "b. Paroksismal Nokturnal Hemoglobintiri"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_019",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "3",
+      "kanonik_ad_adayi": "Ağır anemi (Hb:<8 g/dl)",
+      "ham_satir": "3-Ağır anemi (Hb:<8 g/dl) 80",
+      "onceki_satirlar": [
+        "1-Hafif anemi (Hb: 10-12 g/dl 10",
+        "2-Orta dercede anemi ( Hb:8-10 g/dl 40"
+      ],
+      "sonraki_satirlar": [
+        "b. Paroksismal Nokturnal Hemoglobintiri",
+        "1-Hafif-orta 40"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_020",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "b",
+      "kanonik_ad_adayi": "Paroksismal Nokturnal Hemoglobintiri",
+      "ham_satir": "b. Paroksismal Nokturnal Hemoglobintiri",
+      "onceki_satirlar": [
+        "2-Orta dercede anemi ( Hb:8-10 g/dl 40",
+        "3-Ağır anemi (Hb:<8 g/dl) 80"
+      ],
+      "sonraki_satirlar": [
+        "1-Hafif-orta 40",
+        "2-Agir ve Terminal vakalar 80"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_022",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "2",
+      "kanonik_ad_adayi": "Agir ve Terminal vakalar",
+      "ham_satir": "2-Agir ve Terminal vakalar 80",
+      "onceki_satirlar": [
+        "b. Paroksismal Nokturnal Hemoglobintiri",
+        "1-Hafif-orta 40"
+      ],
+      "sonraki_satirlar": [
+        "c. Oto-immiin hemolitik anemiler (İdiyopatik ve sekonder otoimmün hemolitik anemiler)",
+        "1-Hafif-orta (Tedavi ile Hb 10-12 g/dl 20"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_023",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "c",
+      "kanonik_ad_adayi": "Oto-immiin hemolitik anemiler (İdiyopatik ve sekonder otoimmün hemolitik anemiler)",
+      "ham_satir": "c. Oto-immiin hemolitik anemiler (İdiyopatik ve sekonder otoimmün hemolitik anemiler)",
+      "onceki_satirlar": [
+        "1-Hafif-orta 40",
+        "2-Agir ve Terminal vakalar 80"
+      ],
+      "sonraki_satirlar": [
+        "1-Hafif-orta (Tedavi ile Hb 10-12 g/dl 20",
+        "2-Tedavi ile Hb 8-10 g/dl) 40"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_024",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "1",
+      "kanonik_ad_adayi": "Hafif-orta (Tedavi ile Hb 10-12 g/dl",
+      "ham_satir": "1-Hafif-orta (Tedavi ile Hb 10-12 g/dl 20",
+      "onceki_satirlar": [
+        "2-Agir ve Terminal vakalar 80",
+        "c. Oto-immiin hemolitik anemiler (İdiyopatik ve sekonder otoimmün hemolitik anemiler)"
+      ],
+      "sonraki_satirlar": [
+        "2-Tedavi ile Hb 8-10 g/dl) 40",
+        "3-Tedaviye yanıt vermeyenler (Hb <8 g/dl) 80"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_025",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "2",
+      "kanonik_ad_adayi": "Tedavi ile Hb 8-10 g/dl)",
+      "ham_satir": "2-Tedavi ile Hb 8-10 g/dl) 40",
+      "onceki_satirlar": [
+        "c. Oto-immiin hemolitik anemiler (İdiyopatik ve sekonder otoimmün hemolitik anemiler)",
+        "1-Hafif-orta (Tedavi ile Hb 10-12 g/dl 20"
+      ],
+      "sonraki_satirlar": [
+        "3-Tedaviye yanıt vermeyenler (Hb <8 g/dl) 80",
+        "D.Hemoglobinopatiler"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_026",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "3",
+      "kanonik_ad_adayi": "Tedaviye yanıt vermeyenler (Hb <8 g/dl)",
+      "ham_satir": "3-Tedaviye yanıt vermeyenler (Hb <8 g/dl) 80",
+      "onceki_satirlar": [
+        "1-Hafif-orta (Tedavi ile Hb 10-12 g/dl 20",
+        "2-Tedavi ile Hb 8-10 g/dl) 40"
+      ],
+      "sonraki_satirlar": [
+        "D.Hemoglobinopatiler",
+        "a, Orak hücreli anemi"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_027",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "D",
+      "kanonik_ad_adayi": "Hemoglobinopatiler",
+      "ham_satir": "D.Hemoglobinopatiler",
+      "onceki_satirlar": [
+        "2-Tedavi ile Hb 8-10 g/dl) 40",
+        "3-Tedaviye yanıt vermeyenler (Hb <8 g/dl) 80"
+      ],
+      "sonraki_satirlar": [
+        "a, Orak hücreli anemi",
+        "1-Yilda bir veya daha az oraklaşma krizi geçiren hafif- orta vakalar 40"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_029",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "1",
+      "kanonik_ad_adayi": "Yilda bir veya daha az oraklaşma krizi geçiren hafif- orta vakalar",
+      "ham_satir": "1-Yilda bir veya daha az oraklaşma krizi geçiren hafif- orta vakalar 40",
+      "onceki_satirlar": [
+        "D.Hemoglobinopatiler",
+        "a, Orak hücreli anemi"
+      ],
+      "sonraki_satirlar": [
+        "2- Yılda birden fazla oraklaşma krizi veya hayatında bir kez bile stroke veya akut göğüs",
+        "sendromu geçiren ağır ve terminal vakalar 80"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_030",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "2",
+      "kanonik_ad_adayi": "Yılda birden fazla oraklaşma krizi veya hayatında bir kez bile stroke veya akut göğüs",
+      "ham_satir": "2- Yılda birden fazla oraklaşma krizi veya hayatında bir kez bile stroke veya akut göğüs",
+      "onceki_satirlar": [
+        "a, Orak hücreli anemi",
+        "1-Yilda bir veya daha az oraklaşma krizi geçiren hafif- orta vakalar 40"
+      ],
+      "sonraki_satirlar": [
+        "sendromu geçiren ağır ve terminal vakalar 80",
+        "b. Thalassemi"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_032",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "b",
+      "kanonik_ad_adayi": "Thalassemi",
+      "ham_satir": "b. Thalassemi",
+      "onceki_satirlar": [
+        "2- Yılda birden fazla oraklaşma krizi veya hayatında bir kez bile stroke veya akut göğüs",
+        "sendromu geçiren ağır ve terminal vakalar 80"
+      ],
+      "sonraki_satirlar": [
+        "L.-Intermedia 40",
+        "2-Major. 70"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_033",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "L",
+      "kanonik_ad_adayi": "-Intermedia",
+      "ham_satir": "L.-Intermedia 40",
+      "onceki_satirlar": [
+        "sendromu geçiren ağır ve terminal vakalar 80",
+        "b. Thalassemi"
+      ],
+      "sonraki_satirlar": [
+        "2-Major. 70",
+        "3-Ağır veya terminal vakalar iO"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_034",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "2",
+      "kanonik_ad_adayi": "Major.",
+      "ham_satir": "2-Major. 70",
+      "onceki_satirlar": [
+        "b. Thalassemi",
+        "L.-Intermedia 40"
+      ],
+      "sonraki_satirlar": [
+        "3-Ağır veya terminal vakalar iO",
+        "©, Diğerleri (Anormal hemoglobinler)"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_035",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "3",
+      "kanonik_ad_adayi": "Ağır veya terminal vakalar iO",
+      "ham_satir": "3-Ağır veya terminal vakalar iO",
+      "onceki_satirlar": [
+        "L.-Intermedia 40",
+        "2-Major. 70"
+      ],
+      "sonraki_satirlar": [
+        "©, Diğerleri (Anormal hemoglobinler)",
+        "_1-Transftizyon bağımlı olmayanlar 20"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_025_satir_038",
+      "sayfa": "ek2_025",
+      "pdf_sayfasi": 25,
+      "resmi_gazete_sayfasi": 138,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I, ANEMILER"
+      ],
+      "madde_etiketi_adayi": "2",
+      "kanonik_ad_adayi": "Transfüzyon bağımlı Olanlar | >Ç|(<Ç(<(o0o0o000O0O 0",
+      "ham_satir": "2-Transfüzyon bağımlı Olanlar | >Ç|(<Ç(<(o0o0o000O0O 0 0",
+      "onceki_satirlar": [
+        "©, Diğerleri (Anormal hemoglobinler)",
+        "_1-Transftizyon bağımlı olmayanlar 20"
+      ],
+      "sonraki_satirlar": [],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_026_satir_002",
+      "sayfa": "ek2_026",
+      "pdf_sayfasi": 26,
+      "resmi_gazete_sayfasi": 139,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I. MİYELOFİBROZİS"
+      ],
+      "madde_etiketi_adayi": "I",
+      "kanonik_ad_adayi": "MİYELOFİBROZİS",
+      "ham_satir": "I. MİYELOFİBROZİS",
+      "onceki_satirlar": [
+        "20 Şubat 2019 — Sayı : 30692 RESMİ GAZETE Sayfa : 139"
+      ],
+      "sonraki_satirlar": [
+        "1-Hb <10 g/di, plt <100000/mm3 (Tedavi ile ilişkili olmayan) 80",
+        "2-Bunun dışındakiler. 40"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_026_satir_003",
+      "sayfa": "ek2_026",
+      "pdf_sayfasi": 26,
+      "resmi_gazete_sayfasi": 139,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I. MİYELOFİBROZİS"
+      ],
+      "madde_etiketi_adayi": "1",
+      "kanonik_ad_adayi": "Hb <10 g/di, plt <100000/mm3 (Tedavi ile ilişkili olmayan)",
+      "ham_satir": "1-Hb <10 g/di, plt <100000/mm3 (Tedavi ile ilişkili olmayan) 80",
+      "onceki_satirlar": [
+        "20 Şubat 2019 — Sayı : 30692 RESMİ GAZETE Sayfa : 139",
+        "I. MİYELOFİBROZİS"
+      ],
+      "sonraki_satirlar": [
+        "2-Bunun dışındakiler. 40",
+        "TI. MİYELODİSPLASTİK SENDROM"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_026_satir_004",
+      "sayfa": "ek2_026",
+      "pdf_sayfasi": 26,
+      "resmi_gazete_sayfasi": 139,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I. MİYELOFİBROZİS"
+      ],
+      "madde_etiketi_adayi": "2",
+      "kanonik_ad_adayi": "Bunun dışındakiler.",
+      "ham_satir": "2-Bunun dışındakiler. 40",
+      "onceki_satirlar": [
+        "I. MİYELOFİBROZİS",
+        "1-Hb <10 g/di, plt <100000/mm3 (Tedavi ile ilişkili olmayan) 80"
+      ],
+      "sonraki_satirlar": [
+        "TI. MİYELODİSPLASTİK SENDROM",
+        "LIPSS düşük ve orta | risk 40"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_026_satir_008",
+      "sayfa": "ek2_026",
+      "pdf_sayfasi": 26,
+      "resmi_gazete_sayfasi": 139,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I. MİYELOFİBROZİS",
+        "TI. MİYELODİSPLASTİK SENDROM"
+      ],
+      "madde_etiketi_adayi": "3",
+      "kanonik_ad_adayi": "Ağır ve terminal vakalar",
+      "ham_satir": "3.Ağır ve terminal vakalar 90",
+      "onceki_satirlar": [
+        "LIPSS düşük ve orta | risk 40",
+        "2 IPSS Orta-2 ve yüksek risk 80"
+      ],
+      "sonraki_satirlar": [
+        "IV. LÖSEMİLER",
+        "A. Akut Lösemiler"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_026_satir_009",
+      "sayfa": "ek2_026",
+      "pdf_sayfasi": 26,
+      "resmi_gazete_sayfasi": 139,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I. MİYELOFİBROZİS",
+        "TI. MİYELODİSPLASTİK SENDROM",
+        "IV. LÖSEMİLER"
+      ],
+      "madde_etiketi_adayi": "IV",
+      "kanonik_ad_adayi": "LÖSEMİLER",
+      "ham_satir": "IV. LÖSEMİLER",
+      "onceki_satirlar": [
+        "2 IPSS Orta-2 ve yüksek risk 80",
+        "3.Ağır ve terminal vakalar 90"
+      ],
+      "sonraki_satirlar": [
+        "A. Akut Lösemiler",
+        "1-Tam Remisyonda (Remisyon sonrası 5. yıla kadar) 60"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_026_satir_010",
+      "sayfa": "ek2_026",
+      "pdf_sayfasi": 26,
+      "resmi_gazete_sayfasi": 139,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I. MİYELOFİBROZİS",
+        "TI. MİYELODİSPLASTİK SENDROM",
+        "IV. LÖSEMİLER"
+      ],
+      "madde_etiketi_adayi": "A",
+      "kanonik_ad_adayi": "Akut Lösemiler",
+      "ham_satir": "A. Akut Lösemiler",
+      "onceki_satirlar": [
+        "3.Ağır ve terminal vakalar 90",
+        "IV. LÖSEMİLER"
+      ],
+      "sonraki_satirlar": [
+        "1-Tam Remisyonda (Remisyon sonrası 5. yıla kadar) 60",
+        "2-Tam Remisyonda (Remisyon sonrası 5. yıldan sonra) 40"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_026_satir_011",
+      "sayfa": "ek2_026",
+      "pdf_sayfasi": 26,
+      "resmi_gazete_sayfasi": 139,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I. MİYELOFİBROZİS",
+        "TI. MİYELODİSPLASTİK SENDROM",
+        "IV. LÖSEMİLER"
+      ],
+      "madde_etiketi_adayi": "1",
+      "kanonik_ad_adayi": "Tam Remisyonda (Remisyon sonrası 5. yıla kadar)",
+      "ham_satir": "1-Tam Remisyonda (Remisyon sonrası 5. yıla kadar) 60",
+      "onceki_satirlar": [
+        "IV. LÖSEMİLER",
+        "A. Akut Lösemiler"
+      ],
+      "sonraki_satirlar": [
+        "2-Tam Remisyonda (Remisyon sonrası 5. yıldan sonra) 40",
+        "3-Tedavisi devam eden olgular 70"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_026_satir_012",
+      "sayfa": "ek2_026",
+      "pdf_sayfasi": 26,
+      "resmi_gazete_sayfasi": 139,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I. MİYELOFİBROZİS",
+        "TI. MİYELODİSPLASTİK SENDROM",
+        "IV. LÖSEMİLER"
+      ],
+      "madde_etiketi_adayi": "2",
+      "kanonik_ad_adayi": "Tam Remisyonda (Remisyon sonrası 5. yıldan sonra)",
+      "ham_satir": "2-Tam Remisyonda (Remisyon sonrası 5. yıldan sonra) 40",
+      "onceki_satirlar": [
+        "A. Akut Lösemiler",
+        "1-Tam Remisyonda (Remisyon sonrası 5. yıla kadar) 60"
+      ],
+      "sonraki_satirlar": [
+        "3-Tedavisi devam eden olgular 70",
+        "4-Remisyona girmeyen 90"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_026_satir_013",
+      "sayfa": "ek2_026",
+      "pdf_sayfasi": 26,
+      "resmi_gazete_sayfasi": 139,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I. MİYELOFİBROZİS",
+        "TI. MİYELODİSPLASTİK SENDROM",
+        "IV. LÖSEMİLER"
+      ],
+      "madde_etiketi_adayi": "3",
+      "kanonik_ad_adayi": "Tedavisi devam eden olgular",
+      "ham_satir": "3-Tedavisi devam eden olgular 70",
+      "onceki_satirlar": [
+        "1-Tam Remisyonda (Remisyon sonrası 5. yıla kadar) 60",
+        "2-Tam Remisyonda (Remisyon sonrası 5. yıldan sonra) 40"
+      ],
+      "sonraki_satirlar": [
+        "4-Remisyona girmeyen 90",
+        "B. Kronik Lésemiler"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_026_satir_014",
+      "sayfa": "ek2_026",
+      "pdf_sayfasi": 26,
+      "resmi_gazete_sayfasi": 139,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I. MİYELOFİBROZİS",
+        "TI. MİYELODİSPLASTİK SENDROM",
+        "IV. LÖSEMİLER"
+      ],
+      "madde_etiketi_adayi": "4",
+      "kanonik_ad_adayi": "Remisyona girmeyen",
+      "ham_satir": "4-Remisyona girmeyen 90",
+      "onceki_satirlar": [
+        "2-Tam Remisyonda (Remisyon sonrası 5. yıldan sonra) 40",
+        "3-Tedavisi devam eden olgular 70"
+      ],
+      "sonraki_satirlar": [
+        "B. Kronik Lésemiler",
+        "a. Kronik Myelositik Lösemi"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_026_satir_015",
+      "sayfa": "ek2_026",
+      "pdf_sayfasi": 26,
+      "resmi_gazete_sayfasi": 139,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I. MİYELOFİBROZİS",
+        "TI. MİYELODİSPLASTİK SENDROM",
+        "IV. LÖSEMİLER"
+      ],
+      "madde_etiketi_adayi": "B",
+      "kanonik_ad_adayi": "Kronik Lésemiler",
+      "ham_satir": "B. Kronik Lésemiler",
+      "onceki_satirlar": [
+        "3-Tedavisi devam eden olgular 70",
+        "4-Remisyona girmeyen 90"
+      ],
+      "sonraki_satirlar": [
+        "a. Kronik Myelositik Lösemi",
+        "1-Kronik Faz (Tam sitogenetik yanıt varsa 30"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_026_satir_016",
+      "sayfa": "ek2_026",
+      "pdf_sayfasi": 26,
+      "resmi_gazete_sayfasi": 139,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I. MİYELOFİBROZİS",
+        "TI. MİYELODİSPLASTİK SENDROM",
+        "IV. LÖSEMİLER"
+      ],
+      "madde_etiketi_adayi": "a",
+      "kanonik_ad_adayi": "Kronik Myelositik Lösemi",
+      "ham_satir": "a. Kronik Myelositik Lösemi",
+      "onceki_satirlar": [
+        "4-Remisyona girmeyen 90",
+        "B. Kronik Lésemiler"
+      ],
+      "sonraki_satirlar": [
+        "1-Kronik Faz (Tam sitogenetik yanıt varsa 30",
+        "2-Kronik Faz (6. ayda major sitogenetik yanıt yoksa ) 60"
+      ],
+      "ocr_kaynagi": "_ek2_ocr_160",
+      "onay_durumu": "OCR_ADAYI_MANUEL_KONTROL_GEREKLI",
+      "not": "Bu satır nihai kavram kaydı değildir. Basılı PDF sayfasıyla doğrulanmadan sozluk_kavram_data.json dosyasına aktarılmamalıdır."
+    },
+    {
+      "aday_id": "ek2_026_satir_017",
+      "sayfa": "ek2_026",
+      "pdf_sayfasi": 26,
+      "resmi_gazete_sayfasi": 139,
+      "bolum_adi_adayi": "HEMATOLOJİK HASTALIKLAR",
+      "ust_basliklar_adayi": [
+        "I. MİYELOFİBROZİS",
+        "TI. MİYELODİSPLASTİK SENDROM",
+        "IV. LÖSEMİLER"
+      ],
+      "madde_etiketi_adayi": "1",
+      "kanonik_ad_adayi": "Kronik Faz (Tam sitogenetik yanıt varsa",
+      "ham_satir": "1-Kronik Faz (Tam sitogenetik yanıt varsa 30",
+      "onceki_satirlar": [
+        "B. Kronik Lésemiler",
+        "a. Kronik Myelositik Lösemi"
+      ],
+      "sonraki_satirlar": [
+        "2-Kronik Faz (6. ayda major sitogenetik yanıt yoksa ) 60",
+        "3- Akselere veya blastik faz. 90"

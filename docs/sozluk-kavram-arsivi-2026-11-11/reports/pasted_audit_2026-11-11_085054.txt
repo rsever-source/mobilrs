@@ -1,0 +1,177 @@
+Şimdi içerik raporunu yazıyorum.
+# Wrote~/AppData/Local/Temp/sozluk_kavram/raporlar/asama1-icerik.md
+# Aşama 1 — İçerik (Veri) Denetim Raporu
+
+**Kapsam:** WHO ICD-10 kanıt dosyası ve şemayla uygulanamayan veri kuralları
+**Tarih:** 11.11.2026
+**Çalışma alanı:** yalnızca `%TEMP%\sozluk_kavram\`
+**Sonuç:** İçerik testleri **12/12 PASS**. Kanıt dosyası **8/8 kod**, her biri **ayrı `JsonGetConcept`** ham yanıtıyla.
+
+> Bu rapor **şema denetimi değildir**. Yapısal sonuçlar ayrı raporda: `asama1-yapisal.md`.
+> Buradaki PASS'ler, "kuralın kusuru gerçekten yakaladığını" gösterir; **gerçek sözlük verisinin doğru olduğunu göstermez** — o veri henüz üretilmedi (Aşama 2 kapalı).
+
+---
+
+## 1. Kanıt dosyası — `kanit\icd10_who.json`
+
+Toplama yöntemi: `arac\fetch_kanit.py` her kod için **tek kavram** uç noktasını çağırır:
+
+```
+https://icd.who.int/browse10/2019/en/JsonGetConcept?ConceptId=<KOD>
+```
+
+- Sürüm: `ICD-10 Version:2019`
+- Erişim tarihi: `2026-11-11`
+- `secilen_etiket` **elle yazılmaz**; ham yanıtın HTML'inden (varlık çözümü + boşluk normalizasyonu sonrası) çıkarılır ve beklenen değerle birebir karşılaştırılır.
+- Her kayıt ayrıca `ham_yanit_sha256` taşır; D6 bu hash'i yeniden hesaplayıp doğrular.
+
+| # | Kod | WHO etiketi (birebir) | Ham yanıt (bayt) | `ham_yanit_sha256` (ilk 12) | Tür |
+|---|---|---|---|---|---|
+| 1 | H54.1 | Severe visual impairment, binocular | 273 | `629a389b274c` | tek kavram |
+| 2 | H90.3 | Sensorineural hearing loss, bilateral | 275 | `a6f5c4d364d9` | tek kavram |
+| 3 | H91.1 | Presbycusis | 249 | `75291f1dd565` | tek kavram |
+| 4 | H92.0 | Otalgia | 245 | `24a8531441f5` | tek kavram |
+| 5 | H28.1 | Cataract in other endocrine, nutritional and metabolic diseases | 301 | `bbe6ef3d9593` | tek kavram |
+| 6 | H93.3 | Disorders of acoustic nerve | 265 | `ea2992761bbc` | tek kavram |
+| 7 | E70 | Disorders of aromatic amino-acid metabolism | 276 | `7e84e1a70ebb` | tek kavram |
+| 8 | E78 | Disorders of lipoprotein metabolism and other lipidaemias | 290 | `2bd430930553` | tek kavram |
+
+**Düzeltme 5 karşılandı:** Önceki turda H91.1, H92.0, H28.1, H93.3 için yalnız kardeş listesi
+(`JsonGetChildrenConcepts`) yanıtı vardı. Bu dört kod için de **tek kavram** yanıtı çekildi ve
+dosyaya ayrı ayrı eklendi. Dosyada kardeş listesi yanıtı **hiç yok**; D6 `sorgu_turu` alanını
+`tek_kavram` olarak doğruluyor ve `sorgu_url`'de `JsonGetConcept` araması yapıyor.
+
+---
+
+## 2. Veri testleri — 12/12 PASS
+
+| Test | Kural | Yöntem | Sonuç |
+|---|---|---|---|
+| **D6** | Kanıt dosyası bütünlüğü | **Gerçek dosya** üzerinde: 8 kod, eksik/fazla kod, `sorgu_turu`, tam `sorgu_url`, `surum`, `erisim_tarihi`, ham yanıtın geçerli JSON olması, `ID` alanının kodla eşleşmesi, `secilen_etiket`'in ham HTML'de bulunması, sha256 eşleşmesi | PASS |
+| **D1** | `kavram_id` tekilliği | İki kayda aynı kimlik verilir; sözlük sayımı ihlali yakalar | PASS (regresyon) |
+| **D2** | Aynı kayıtta aynı `icd10.kod` | Farklı etiketle iki kez `H90.3`; kod listesi tekrarı yakalar | PASS (regresyon) |
+| **D3** | Takvim geçerliliği | `rg_tarihi` = `31.02.2021` ✅, `29.02.2021` (artık yıl değil) ✅, `kaynak.erisim_tarihi` = `2026-02-30` ✅, `icd10.erisim_tarihi` = `2026-13-01` ✅ | PASS (4/4 kusur) |
+| **D3b** | Geçerli tarihler temiz geçer | `28.09.2021`, `20.02.2019`, `2026-11-11` | PASS |
+| **D4** | Aynı `dil` + aynı `termin`, **farklı `kaynak`** | `{"tr","sağır","mevzuat"}` + `{"tr","sağır","site_verisi"}` → yakalanır | PASS (düzeltme 4) |
+| **D4b** | Farklı dil/termin tekrar sayılmaz | `tr/sağır` + `en/deaf` | PASS |
+| **D5** | `who_etiketi` ve `kaynak_url` kanıtla birebir | 8 kodun tamamı kanıt dosyasından okunan etiket + URL ile karşılaştırılır | PASS |
+| **D5b** | Uydurma WHO etiketi yakalanır | `"Uydurma etiket"` → uyuşmazlık | PASS (regresyon) |
+| **D6b** | Kanıttan bir kod eksiltilirse yakalanır | 8 → 7 kayıt | PASS (regresyon) |
+| **D7** | Bölüm başına madde sayımı altyapısı | `{A:12, B:7}` tutarlı sayım | PASS |
+| **D7b** | Sayım uyuşmazlığı yakalanır | beklenen 13, sayılan 12 | PASS (regresyon) |
+
+> **D7 hakkında dürüst not:** Gerçek OCR sayımı bu aşamada **yapılmadı**. Yalnızca sayım
+> fonksiyonunun çalıştığı ve uyuşmazlığı yakaladığı gösterildi. Gerçek bölüm-madde sayımı
+> Aşama 2-A'da OCR metinleri üzerinden yapılacak.
+
+---
+
+## 3. Bu raporun **kanıtlamadıkları** (önemli)
+
+1. **Gerçek sözlük verisi yok.** `sozluk_kavram_data.json` bu aşamada üretilmedi (talimat gereği). D1–D5 ve D7 sentetik kayıtlarla, yalnızca **kuralın çalıştığını** gösterir.
+2. **ICD kodlarının eklerde geçtiği iddia edilmiyor.** Bu 8 kod proje eşlemesidir; EK-2'nin 172 sayfasında "ICD" ifadesi geçmiyor, EK-1'de yalnız "ICD implantasyonu" var. Doğrulanan tek şey: bu kodların **WHO ICD-10 2019 tarayıcısındaki etiketleri**.
+3. **Tanım/kriter metinleri doğrulanmadı.** Eklerdeki tanım, tablo ve örnek metinleri OCR üzerinden Aşama 2'de aktarılacak.
+4. **178 / 225 gibi derleme sayıları resmî sayı değildir.** Bu raporda hiçbir yerde resmî toplam olarak kullanılmadı; şema da böyle bir alan dayatmıyor (`derleme_toplami` yalnız izlenebilirlik içindir ve "resmî değildir" açıklaması taşır).
+5. **EK-1 bölüm harfleri ve madde sayıları tek tek teyit edilmedi** (Aşama 2-A).
+6. **`ek2_170.txt` 0 bayt** (OCR başarısız). "212 sayfa işlendi" ifadesi tam doğru değil; 171 sayfada metin var. Bu, Aşama 2'de eksik sayfa olarak ele alınmalı.
+
+---
+
+## 4. Kalan sorunlar (içerik)
+
+| No | Sorun | Etki | Öneri |
+|---|---|---|---|
+| İ-1 | Gerçek sözlük verisi henüz yok | D1–D5, D7 gerçek veriyle koşmadı | Aşama 2'de `sozluk_kavram_data.json` üretilince aynı betikler doğrudan çalıştırılmalı |
+| İ-2 | `ek2_170.txt` boş (0 bayt) | Bir sayfa içerik denetimi dışında | OCR yeniden denenmeli veya sayfa elle okunmalı |
+| İ-3 | WHO etiketleri yalnız kod düzeyinde doğrulandı | Alt kategori/atıf eşlemesi (örn. H54.1 vs H54.0) yorum gerektirir | Aşama 2'de her eşleme için `esleme_notu` yazılmalı, gerekçe denetlenmeli |
+| İ-4 | `uniqueItems` aynı kodu farklı etiketle geçirebilir | Şema sınırı | D2 zorunlu olarak her koşumda çalıştırılmalı |
+| İ-5 | Kanıt dosyası canlı API'ye bağlı; WHO yanıtı değişirse hash'ler değişir | İzlenebilirlik | Kanıt dosyası sürüm + erişim tarihiyle donduruldu; yeni çekimde tarih güncellenmeli |
+
+---
+
+## 5. Özet
+
+- Kanıt dosyası **8/8** tamam; her kod için **ayrı `JsonGetConcept`** ham yanıtı, tam URL, sürüm ve erişim tarihi var.
+- Şemayla uygulanamayan 5 kural (D1, D2, D3, D4, D7) için çalışan ve **kusuru gerçekten yakalayan** testler yazıldı; her biri negatif örnekle doğrulandı.
+- İçerik tarafı **kapanmadı**: gerçek veri, ek metinleri ve bölüm sayımları Aşama 2'nin işi.
+
++Thought · 2.5s
+Son doğrulama koşumlarını yapıyorum.
+$ $env:PYTHONIOENCODING="utf-8"; python "%TEMP%\sozluk_kavram\testler\test_sozluk_kavram.py" 2>&1 | Select-Object -Last 6
+PASS  T26    SEMA SINIRI (bilincli): ayni icd10.kod iki kez semadan GECER -> T16 veri testi zorunlu
+PASS  T27    Format denetimi gercekten kosturuluyor (date-time/date/uri reddedildi)
+      kanit: date-time:'2026-13-45T99:99:99Z' varsayilan=GECER bizim=RED; date:'2026-02-30' varsayilan=RED bizim=RED; uri:'bozuk-url' varsayilan=GECER bizim=RED; uri:'https://' varsayilan=GECER bizim=RED; uri:'https://ornek.invalid/a b' varsayilan=GECER bizim=RED
+      not: varsayilan FormatChecker 'date-time' ve 'uri' icin denetleyici kayitli degil (rfc3339-validator / rfc3987 yok); bu yuzden kati denetleyici kaydedildi.
+
+== Asama 1 - Yapisal denetim: 46/46 PASS -> PASS
+$ $env:PYTHONIOENCODING="utf-8"; python "%TEMP%\sozluk_kavram\testler\veri_testleri.py" 2>&1 | Select-Object -Last 4
+PASS  D7b    Sayim uyusmazligi yakalaniyor (regresyon)
+      not: D7 gercek veriyle Aşama 2-A'da kosacak; bu asamada yalniz altyapi ve regresyon dogrulandi.
+
+== Asama 1 - Icerik (veri) denetimi: 12/12 PASS -> PASS
+$ $env:PYTHONIOENCODING="utf-8"; python "%TEMP%\sozluk_kavram\arac\mutasyon_testi.py" 2>&1 | Select-Object -Last 4
+YAKALANDI M6 icd10.erisim_tarihi zorunlu degil   beklenen=['T8d'] dusen=['T8d']
+YAKALANDI M7 olusturulma_tarihi format yok       beklenen=['T17', 'T17b', 'T17c'] dusen=['T17', 'T17b', 'T17c']
+
+== Mutasyon analizi: 7/7 yakalandi
+$ $env:PYTHONIOENCODING="utf-8"; python "%TEMP%\sozluk_kavram\arac\ozet.py" > "%TEMP%\sozluk_kavram\raporlar\hash_ciktisi.txt" 2>&1; Get-Content "%TEMP%\sozluk_kavram\raporlar\hash_ciktisi.txt" | Select-Object -First 20
+(14 earlier lines)
+f95809b05b7ec92c1dfa60976fa1166ae42c5d8ef0e2b7a2439ca64ed846717d    10273  sozluk_kavram.v1.0.0.json
+745476110a2b22383a7ca1efb1c46ad26e4070da84e9ef65003321bb757386b5     8835  testler/ortak.py
+d4b43a86ab434df2b4cf1cdea0f3fd89c8d30ab3f82fcd615c13d8d778bbdd77    14957  testler/test_sozluk_kavram.py
+1a06058d802442bd050b37a28f18aae3961e37239e9abf9e96cc63ce36b58433    15072  testler/veri_testleri.py
+
+=== SEMA KUNYESI ===
++Thought · 2.3s
+$ Remove-Item "%TEMP%\sozluk_kavram\raporlar\hash_ciktisi.txt"; $env:PYTHONIOENCODING="utf-8"; python "%TEMP%\sozluk_kavram\arac\ozet.py" > "%TEMP%\hash_son.txt" 2>&1; Get-Content "%TEMP%\hash_son.…
+(11 earlier lines)
+52a0cf4f5b839147ebffb0730334f5a984331fe044591c2cbf5345b766fac529     2253  raporlar/icerik_sonuc.json
+5d1c218805b5870c2efd103fc0f9c30b69984384bd68557892b54414899de910     7822  raporlar/yapisal_sonuc.json
+f95809b05b7ec92c1dfa60976fa1166ae42c5d8ef0e2b7a2439ca64ed846717d    10273  sozluk_kavram.v1.0.0.json
+745476110a2b22383a7ca1efb1c46ad26e4070da84e9ef65003321bb757386b5     8835  testler/ortak.py
+d4b43a86ab434df2b4cf1cdea0f3fd89c8d30ab3f82fcd615c13d8d778bbdd77    14957  testler/test_sozluk_kavram.py
+1a06058d802442bd050b37a28f18aae3961e37239e9abf9e96cc63ce36b58433    15072  testler/veri_testleri.py
++Thought · 2.5s
+$ cd "C:\Users\RIDVAN\Projects\Engelli.me\worktrees\ek2-arac1-duzeltme"; git status --porcelain; Test-Path "%TEMP%\sozluk_kavram\sozluk_kavram_data.json"; Get-ChildItem "%TEMP%\sozluk_kavram" -Recurse -File | Measure-Object | Select-Object -ExpandProper…
+M tests/test_news_source_diagnostics.py
+False
+26
++Thought · 13.7s
+Aşama 1 tamamlandı. Hiçbir dosya depoya yazılmadı, özgün şemalar değişmedi, sozluk_kavram_data.json üretilmedi, Aşama 2 kapalı.
+1. Üretilen dosyalar (yalnız %TEMP%\sozluk_kavram\)
+Dosya	Boyut	SHA256
+sozluk_kavram.v1.0.0.json	10273	f95809b05b7ec92c1dfa60976fa1166ae42c5d8ef0e2b7a2439ca64ed846717d
+kanit\icd10_who.json	6283	16a8cc560a8336766b6d5076a2fbea6ac01cef1a60b22bfded6f9a0753f5c731
+testler\ortak.py	8835	745476110a2b22383a7ca1efb1c46ad26e4070da84e9ef65003321bb757386b5
+testler\test_sozluk_kavram.py	14957	d4b43a86ab434df2b4cf1cdea0f3fd89c8d30ab3f82fcd615c13d8d778bbdd77
+testler\veri_testleri.py	15072	1a06058d802442bd050b37a28f18aae3961e37239e9abf9e96cc63ce36b58433
+arac\fetch_kanit.py	3344	3f92fdf11cf6fdd7378e69956e03ee0ceeea9b36a71206e89fff542ad746ae8d
+arac\mutasyon_testi.py	4540	fdc8189e98b86f259d8661f4608045f308eaa747b0f85c5dc91493e08b42c521
+arac\ozet.py	4148	b04ad8697f9daa8c3d696be4467568d6f58248c2c27d6f51fd620b02ffe92757
+raporlar\asama1-yapisal.md	14209	ffb6ad1aa41babf41f5f86610a64482de33cd38d93ad41d73a87b9b987d993b2
+raporlar\asama1-icerik.md	6946	f29f725cf7d17e15e20f724c9cebad23e7ee68d9d6d2e7944a6d155d6c7a8e2d
+raporlar\yapisal_sonuc.json	7822	5d1c218805b5870c2efd103fc0f9c30b69984384bd68557892b54414899de910
+raporlar\icerik_sonuc.json	2253	52a0cf4f5b839147ebffb0730334f5a984331fe044591c2cbf5345b766fac529
+raporlar\dosya_hashleri.json	5133	27e2293979b5bc27023ca39b0036961b07258d4bf571d0bd2e38e9ddaa974fbf
+Değişmezlik: özgün sozluk_kavram.json = 6b036d2d…f049 (aynı), sozluk_kavram_duzeltilmis.json = 4d14713d…d5bd (aynı, kullanılmadı). Depo: git status yalnız M tests/test_news_source_diagnostics.py (sizin değişikliğiniz), HEAD 898007f detached.
+2. Test sonuçları
+- Yapısal: 46/46 PASS — T0, T1–T27 (virgüllü ICD reddi T23/T23b, RG koşullu kuralı T21/T22/T22b, tarih formatları T24/T25, boş eş anlamlı T9b, alt_bolumsüz EK-2 T7f, önek eşleşmesi T7e/T7g, date-time T17/T17b/T17c dahil).
+- İçerik: 12/12 PASS — D6 gerçek kanıt dosyası üzerinde (8/8 kod, eksik/fazla kod, URL, sürüm, ham yanıt JSON'u, sha256), D1 tekillik, D2 aynı kod tekrarı, D3 takvim (31.02 / 29.02.2021 / 2026-02-30 / 2026-13-01), D4 aynı dil+termin farklı kaynak, D5 WHO etiket/URL birebir.
+- Mutasyon analizi: 7/7 — şema bilinçli bozulduğunda ilgili testlerin gerçekten düştüğü kanıtlandı (testler boş değil).
+- Her negatif test üçlü doğrulama yapıyor: mesaj alt dizisi + validator + json_path; oneOf/if-then hataları error.context üzerinden özyinelemeli toplanıyor. jsonschema yoksa betik durur, basit doğrulamaya düşmez.
+3. Kritik bulgu (B-3) — gizlenmedi
+İlk koşumda T17 FAIL verdi ve hiç hata üretmedi. Nedeni şema değil ortamdı: bu makinedeki jsonschema 4.26.0 için kayıtlı formatlar date, email, idn-email, idn-hostname, ipv4, ipv6, regex, time, uuid. date-time ve uri yok (isteğe bağlı rfc3339-validator / rfc3987 kurulu değil) ve FormatChecker bu iki biçimi hata vermeden atlıyor:
+- check("2026-13-45T99:99:99Z", "date-time") → geçer
+- check("bozuk-url", "uri") → geçer, check("https://", "uri") → geçer
+Yani "FormatChecker kullandım" tek başına yeterli değildi. testler\ortak.py içinde FormatChecker'ın belgelenmiş genişletme yoluyla (@fc.checks) iki katı denetleyici kaydedildi (yalnız yerleşik olan yoksa) ve T27 bunu her koşumda yeniden kanıtlıyor. date zaten gerçekti (2026-02-30 reddediliyor).
+4. Kalan sorunlar
+No	Konu	Durum
+İ-1	Gerçek sözlük verisi yok → D1–D5, D7 sentetik kusurlarla doğrulandı	Aşama 2'de aynı betikler gerçek veriyle koşmalı
+İ-2	ek2_170.txt 0 bayt (OCR başarısız)	Aşama 2'de elle/yeniden OCR
+İ-3	WHO etiketi yalnız kod düzeyinde doğru; alt kategori gerekçesi (esleme_notu) yazılmadı	Aşama 2
+R-2	Draft-07'de format bilgi amaçlıdır; tüketici FormatChecker açmazsa date/uri/date-time denetlenmez	Şemayı kullanan araç FormatChecker'ı açık tutmalı (paket kurulmadı)
+R-3	uniqueItems aynı kodu farklı etiketle geçirir (T26 bunu açıkça gösteriyor)	D2 zorunlu
+R-4	rg_sayisi = 31612 / 30692 sabitleri mevcut revizyona bağlı	Yeni revizyonda şema sürümü yükseltilmeli
+R-5	EK-1 bölüm harfi I/İ ve bölüm başına madde sayısı teyit edilmedi	Aşama 2-A
+—	$id yok (404 kanıtlı); şema dosya yoluyla kullanılır	Bilinçli
+Ayrıntılı gerekçeler: raporlar\asama1-yapisal.md ve raporlar\asama1-icerik.md. Yapısal PASS içerik doğruluğu sayılmadı; içerik tarafı Aşama 2'de kapanacak.

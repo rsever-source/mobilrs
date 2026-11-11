@@ -1,0 +1,321 @@
+İki noktayı kaynaktan doğruladım; ikisi de şemayı değiştiriyor.
+0. Kaynak doğrulaması (planı etkileyen iki bulgu)
+B-1 — $id adresi yayında değil. https://engelli.me/semalar/sozluk_kavram.schema.json → HTTP 404 (11.11.2026). Yayımlanmamış bir adresi $id olarak göstermek yanıltıcı olur. → $id tamamen kaldırıldı; yerine sürüm bilgisini taşıyan $comment kondu. Şemada $ref yok, dolayısıyla taban URI'ye ihtiyaç da yok.
+B-2 — alt_bolum_harfi EK-2'de her zaman yok. Kaynak (OCR) üç ayrı numaralandırma düzeni gösteriyor:
+Sayfa	Bölüm	Yapı
+ek2_003	KULAK BURUN BOĞAZ	A-İŞİTME, B-KONUŞMA VE SES, C-DENGE (büyük harf alt bölüm)
+ek2_017	Ruh Sağlığı	IV-, V-, VI- (Roma rakamı) + içinde a), b), C), d) (küçük harf alt madde)
+ek2_019	Deri	IV. …, V. … (Roma rakamıyla madde)
+Yani "harfli alt bölüm" bazı bölümlerde var, bazılarında yerini Roma rakamına veya küçük harfe bırakıyor. Zorunlu alan yapılamaz. Ayrıca sira_no tam sayı olarak da yetersiz: "IV" bir tamsayıya dönüştürülemez.
+→ EK-2'de üç alan: bolum_adi (zorunlu), alt_bolum (isteğe bağlı, basıldığı gibi), madde_etiketi (zorunlu, basıldığı gibi: "1", "IV", "a)"). Dönüştürme yapılmaz (O-2).
+1. Kararların plana işlenmesi
+Karar	Şemadaki karşılığı
+O-1 = A	icd10: nesne dizisi (kod, who_etiketi, kaynak_url, erisim_tarihi, esleme_notu)
+O-2 = B	Hiçbir alanda otomatik İ→I dönüşümü yok. bolum_harfi enum'una hem "I" hem "İ" eklendi; alt_bolum ve madde_etiketi serbest metin, basıldığı gibi
+O-3 = A	kaynak.url ve kaynak.erisim_tarihi zorunlu
+O-4 = B	Tüm çalışma %TEMP%\sozluk_kavram\ altında; depoya tek dosya bile yazılmaz
+1	Önek eşleşmesi oneOf dallarının içine gömüldü (şema düzeyinde zorunlu)
+2	es_anlamli zorunlu kaldı, minItems kaldırıldı → [] geçerli
+3	icd10.erisim_tarihi zorunlu; aynı kod tekrarı veri testiyle (T16)
+4	alt_bolum isteğe bağlı (B-2 kanıtı), alt_bolum_harfi kaldırıldı
+5	rg_sayisi zorunlu, mbs_no isteğe bağlı ve ayrı alan
+6	Kanıt dosyası 8 kodun tamamı için §4'teki yapıda
+7	Her testte üçlü doğrulama: mesaj + validator anahtarı + json_path
+8	olusturulma_tarihi → format: date-time + FormatChecker + T17
+9	$id kaldırıldı (B-1: 404)
+2. Nihai şema
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$comment": "Engelli.me Kavram Sözlüğü Şeması — sürüm 1.0.0 (2026-11-11). Yayımlanmış bir $id adresi YOKTUR; şema dosya yoluyla kullanılır.",
+  "title": "Engelli.me Kavram Sözlüğü Şeması",
+  "description": "EK-1 (maluliyet / çalışma gücü kaybı, 28.09.2021/31612) ve EK-2 (engel oranı, 20.02.2019/30692) için kavram kaydı. Her kayıt tek mevzuat bağlantısı taşır; ortak kavram iki ayrı kayıtla modellenir. ICD-10 yalnızca EK-2 bağlantısında ve yalnızca WHO ICD-10 etiketi + kaynak URL + erişim tarihi ile birlikte bulunur.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kavram_id", "kanonik_ad", "es_anlamli", "kaynak"],
+  "properties": {
+    "kavram_id": {
+      "type": "string",
+      "pattern": "^(ek1|ek2)_[a-z0-9_]{3,76}$",
+      "description": "Benzersiz kimlik. Önek bağlantıyla zorunlu olarak eşleşir: EK-1 kaydı 'ek1_', EK-2 kaydı 'ek2_' ile başlar."
+    },
+    "kanonik_ad": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 200,
+      "description": "Resmî metinde geçen terim, basıldığı gibi. Hesaplama kuralı adları (örn. Balthazard) bu alana yazılmaz."
+    },
+    "ek_1_baglantisi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bolum_harfi", "sira_no", "derece"],
+      "description": "2021 Yönetmeliği EK-1 hastalık listesi bağlantısı. Numaralandırma bölüm içinde yeniden başlar; resmî bir toplam madde sayısı yoktur.",
+      "properties": {
+        "bolum_harfi": {
+          "type": "string",
+          "enum": ["A","B","C","D","E","F","G","H","I","İ","J","K","L","M","N","O","P","R"],
+          "description": "EK-1 harfli bölümü. R = ORTAK HÜKÜMLER. 'I' ve 'İ' ayrı değerlerdir; otomatik dönüşüm yapılmaz. Basılı harfler Aşama 2-A'da tek tek teyit edilecek."
+        },
+        "sira_no": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Bölüm içindeki Arap rakamlı sıra numarası (bölüm başına yeniden başlar)."
+        },
+        "derece": {
+          "type": "string",
+          "enum": ["agir", "orta", "hafif", "ortak_hukum"],
+          "description": "Çalışma gücü kaybı düzeyi. R bölümünde yalnız 'ortak_hukum'."
+        }
+      },
+      "allOf": [
+        {
+          "if": { "required": ["bolum_harfi"], "properties": { "bolum_harfi": { "const": "R" } } },
+          "then": { "properties": { "derece": { "const": "ortak_hukum" }, "sira_no": { "maximum": 3 } } }
+        },
+        {
+          "if": { "required": ["bolum_harfi"], "properties": { "bolum_harfi": { "not": { "const": "R" } } } },
+          "then": { "properties": { "derece": { "enum": ["agir", "orta", "hafif"] } } }
+        }
+      ]
+    },
+    "ek_2_baglantisi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bolum_adi", "madde_etiketi", "tanim"],
+      "description": "2019 Yönetmeliği EK-2 engel alanları kılavuzu bağlantısı. Kılavuz organ sistemi → alt bölüm → madde → tanım/tablo/örnek yapısındadır; alt bölüm düzeni bölümden bölüme değişir.",
+      "properties": {
+        "bolum_adi": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 120,
+          "description": "Ekte basılı organ sistemi başlığı (örn. 'KULAK BURUN BOĞAZ')."
+        },
+        "alt_bolum": {
+          "type": "string",
+          "maxLength": 60,
+          "description": "Ekte basıldığı gibi alt bölüm etiketi (örn. 'A-İŞİTME', 'B-KONUŞMA VE SES', 'IV-'). Her bölüm alt bölüm kullanmadığı için isteğe bağlıdır; dönüştürme yapılmaz."
+        },
+        "madde_etiketi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20,
+          "description": "Ekte basıldığı gibi madde etiketi: '1', 'IV', 'a)', '2.1'. Roma rakamı ve küçük harf biçimleri aynen korunur."
+        },
+        "tanim": {
+          "type": "string",
+          "minLength": 5,
+          "description": "Ekteki tanım/kriter metni. Yorum veya hesaplama eklenmez."
+        },
+        "icd10": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10,
+          "uniqueItems": true,
+          "description": "WHO ICD-10 eşlemesi. Yalnız EK-2'de. Her kod kendi WHO etiketi, kaynak URL'si ve erişim tarihiyle gelir.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kod", "who_etiketi", "kaynak_url", "erisim_tarihi"],
+            "properties": {
+              "kod": {
+                "type": "string",
+                "pattern": "^[A-Z][0-9]{2}([.,][0-9])?$"
+              },
+              "who_etiketi": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 120,
+                "description": "WHO ICD-10 tarayıcısında görünen İngilizce etiket, birebir."
+              },
+              "kaynak_url": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://"
+              },
+              "erisim_tarihi": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              "esleme_notu": {
+                "type": "string",
+                "maxLength": 300,
+                "description": "Kodun bu kavrama neden bağlandığı. Etiket yerine geçmez."
+              }
+            }
+          }
+        }
+      }
+    },
+    "es_anlamli": {
+      "type": "array",
+      "maxItems": 20,
+      "uniqueItems": true,
+      "description": "Eş anlamlı / halk dili karşılıkları. Boş dizi geçerlidir; kayıt yine de bu alanı taşımak zorundadır.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["dil", "termin"],
+        "properties": {
+          "dil": { "type": "string", "enum": ["tr","en","ku","az","kk","ba"] },
+          "termin": { "type": "string", "minLength": 2, "maxLength": 120 },
+          "kaynak": { "type": "string", "minLength": 2, "maxLength": 200 },
+          "kaynak_turu": {
+            "type": "string",
+            "enum": ["mevzuat_metni","ek_1_ekrani","ek_2_ekrani","site_verisi","kullanici_tanimi"]
+          }
+        }
+      }
+    },
+    "derleme_referansi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kaynak", "kayit_no"],
+      "description": "Üçüncü taraf derleme indeksi. Resmî mevzuat numarası DEĞİLDİR; yalnız izlenebilirlik içindir.",
+      "properties": {
+        "kaynak": { "type": "string", "enum": ["engelliler_biz_derlemesi","engelli_me_katalogu"] },
+        "kayit_no": { "type": "integer", "minimum": 1 },
+        "derleme_toplami": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Derleme kaynağının bildirdiği toplam. Bağımsız doğrulanmamıştır; resmî sayı olarak kullanılamaz."
+        },
+        "not": { "type": "string", "maxLength": 300 }
+      }
+    },
+    "kaynak": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["belge_adi", "rg_tarihi", "rg_sayisi", "url", "erisim_tarihi"],
+      "properties": {
+        "belge_adi": { "type": "string", "minLength": 5, "maxLength": 200 },
+        "rg_tarihi": {
+          "type": "string",
+          "pattern": "^\\d{2}\\.\\d{2}\\.\\d{4}$",
+          "description": "Resmî Gazete tarihi (gg.aa.yyyy)."
+        },
+        "rg_sayisi": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Resmî Gazete sayısı (EK-1: 31612, EK-2: 30692). Zorunludur."
+        },
+        "mbs_no": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Mevzuat Bilgi Sistemi numarası (EK-2: 31275). Resmî Gazete sayısı değildir; ayrı tutulur."
+        },
+        "yonetmelik_maddesi": {
+          "type": "string",
+          "pattern": "^[0-9]{1,2}(/[0-9]{1,2})?(\\([a-zçğıöşü]\\))?$",
+          "description": "Hükmün dayandığı yönetmelik maddesi (örn. '4/1(g)', '5/4')."
+        },
+        "url": { "type": "string", "format": "uri", "pattern": "^https?://" },
+        "sayfa_no": { "type": "integer", "minimum": 1 },
+        "erisim_tarihi": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+      }
+    },
+    "olusturulma_tarihi": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 tarih-saat (örn. '2026-11-11T00:00:00Z'). FormatChecker ile denetlenir."
+    }
+  },
+  "oneOf": [
+    {
+      "required": ["ek_1_baglantisi"],
+      "not": { "required": ["ek_2_baglantisi"] },
+      "properties": { "kavram_id": { "pattern": "^ek1_" } }
+    },
+    {
+      "required": ["ek_2_baglantisi"],
+      "not": { "required": ["ek_1_baglantisi"] },
+      "properties": { "kavram_id": { "pattern": "^ek2_" } }
+    }
+  ]
+}
+Not (şema sınırları, dürüstçe): Draft-07 ile uygulanamayan üç kural veri testine taşındı: (a) aynı icd10.kod'un bir kayıtta tekrarı, (b) bölüm başına gerçek madde sayısı, (c) takvimde var olmayan tarih (31.02 gibi).
+3. Kanıt dosyası — kanit/icd10_who.json
+8 kodun tamamı; her kayıtta ham yanıt, tam URL, sürüm, erişim tarihi.
+{
+  "kaynak": "WHO ICD-10 Version 2019 — resmî tarayıcı API'si",
+  "surum": "ICD-10 Version:2019 (browse10/2019)",
+  "erisim_tarihi": "2026-11-11",
+  "kayitlar": [
+    {
+      "kod": "H54.1",
+      "sorgu_url": "https://icd.who.int/browse10/2019/en/JsonGetConcept?ConceptId=H54.1",
+      "sorgu_turu": "tek_kavram",
+      "ham_yanit": "{\"Suggested\":null,\"ID\":\"H54.1\",\"html\":\"...<span class=\\\"icode \\\">H54.1</span>\\nSevere visual impairment, binocular\\n...\",\"isLeaf\":true,\"isAdoptedChild\":false,\"averageDepth\":3.0}",
+      "secilen_etiket": "Severe visual impairment, binocular",
+      "ust_kategori": "H54 Visual impairment including blindness",
+      "sayfa_url": "https://icd.who.int/browse10/2019/en#/H54.1"
+    }
+  ]
+}
+Durum notu: Bu oturumda H54.1, H90.3, E70, E78 için tek-kavram yanıtı alındı; H91.1, H92.0, H28.1, H93.3 için kardeş listesi (JsonGetChildrenConcepts) yanıtı alındı ve etiketler birebir aynı. Uygulama adımında bu dördü için de JsonGetConcept yanıtı çekilip dosyaya eklenecek — eksik kayıt bırakılmayacak.
+4. Test planı
+Altyapı zorunlulukları:
+- jsonschema yoksa FAIL; basit kontrole düşülmez.
+- Draft7Validator(schema, format_checker=FormatChecker()) — format denetimi açık.
+- oneOf/if-then hataları iç içe geldiği için özyinelemeli toplayıcı: error.context üzerinden tüm (validator, json_path, message) üçlüleri toplanır.
+- Her test üç şeyi doğrular: mesaj alt dizisi + validator anahtarı + json_path.
+4.1 Geçerli kayıtlar
+ID	Senaryo	Beklenen
+T1	EK-1: ek1_…, A / 1 / agir, tam kaynak künyesi	0 hata
+T2	EK-2: ek2_…, KULAK BURUN BOĞAZ / A-İŞİTME / 1, icd10:[H90.3] tam kanıtla	0 hata
+T3	Aynı kavramın EK-1 ve EK-2 kaydı, ayrı ayrı	ikisi de 0 hata
+T3b	R bölümü: R / 1 / ortak_hukum	0 hata
+T9b	es_anlamli: []	0 hata (karar 2)
+T7f	EK-2 kaydı, alt_bolum yok	0 hata (karar 4 / B-2)
+4.2 Reddedilmesi gerekenler
+ID	Senaryo	validator	json_path	Mesaj (alt dizi)
+T4	EK-1 + EK-2 birlikte	oneOf	[]	is not valid under any of the given schemas
+T5	İkisi de yok	oneOf	[]	aynı
+T6	EK-1'de sira_no yok	required	["ek_1_baglantisi"]	'sira_no' is a required property
+T7a	bolum_harfi: "Z"	enum	["ek_1_baglantisi","bolum_harfi"]	'Z' is not one of
+T7b	sira_no: 0	minimum	["ek_1_baglantisi","sira_no"]	less than the minimum of 1
+T7c	R + derece: "agir"	const	["ek_1_baglantisi","derece"]	'agir' was expected
+T7d	R + sira_no: 4	maximum	["ek_1_baglantisi","sira_no"]	greater than the maximum of 3
+T7e	kavram_id: "ek2_x" + ek_1_baglantisi	pattern	["kavram_id"]	does not match '^ek1_' (karar 1)
+T7g	kavram_id: "ek1_x" + ek_2_baglantisi	pattern	["kavram_id"]	does not match '^ek2_' (karar 1)
+T8a	ek_1_baglantisi içinde icd10	additionalProperties	["ek_1_baglantisi"]	('icd10' was unexpected)
+T8b	Kök düzeyde icd10	additionalProperties	[]	('icd10' was unexpected)
+T8c	kod: "h54.1"	pattern	["ek_2_baglantisi","icd10",0,"kod"]	does not match
+T8d	icd10[0] içinde erisim_tarihi yok	required	["ek_2_baglantisi","icd10",0]	'erisim_tarihi' is a required property (karar 3)
+T9	es_anlamli: [{}]	required	["es_anlamli",0]	'dil' is a required property
+T10	url: "bozuk-url"	pattern (veya format)	["kaynak","url"]	does not match '^https?://'
+T11	rg_tarihi: "2021-09-28"	pattern	["kaynak","rg_tarihi"]	does not match
+T18	kaynak.rg_sayisi yok	required	["kaynak"]	'rg_sayisi' is a required property (karar 5)
+T19	Yalnız mbs_no var, rg_sayisi yok	required	["kaynak"]	'rg_sayisi' is a required property (karar 5: ayrı alan)
+T13	kaynak_url: "http://…"	pattern	[…,"kaynak_url"]	does not match '^https://'
+T14	İki özdeş es_anlamli öğesi	uniqueItems	["es_anlamli"]	is not unique
+T17	olusturulma_tarihi: "2026-13-45T99:99:99Z"	format	["olusturulma_tarihi"]	is not a 'date-time' (karar 8)
+T20	kavram_id: "EK1_x"	pattern	["kavram_id"]	does not match '^(ek1|ek2)_…'
+4.3 Veri testleri (şemayla uygulanamaz)
+ID	Kural	Yöntem
+T15	kavram_id tekilliği	Tüm kayıtlar üzerinde sözlük sayımı
+T16	Aynı icd10.kod bir kayıtta iki kez	kod listesinde tekrar araması (karar 3)
+T11b	Takvimde olmayan tarih (32.13.2021)	datetime.strptime
+T21	Bölüm başına madde sayısı	Aşama 2-A OCR sayımıyla; şemaya gömülmez
+4.4 Raporlama ayrımı
+- Yapısal: T1–T20 → raporlar/asama1-yapisal.md (yalnız şema sonuçları).
+- İçerik: T15, T16, T11b, T21 + WHO etiket eşleşmesi → raporlar/asama1-icerik.md. İçerik tarafı Aşama 2'de kapanır; yapısal PASS içerik doğruluğu sayılmaz.
+5. Dosya yerleşimi (yalnız %TEMP%)
+%TEMP%\sozluk_kavram\
+  sozluk_kavram.json                  ← şema (esas dosya, kopyası buraya)
+  kanit\icd10_who.json                ← 8 kodun ham API kanıtı
+  testler\test_sozluk_kavram.py       ← T1–T20 (Draft7 + FormatChecker)
+  testler\veri_testleri.py            ← T15, T16, T11b, T21
+  raporlar\asama1-yapisal.md
+  raporlar\asama1-icerik.md
+Depoya hiçbir şey yazılmaz. git status değişmez. Depoya taşıma ancak ayrı onayla ve Aşama 2 kapalıyken yapılmaz.
+6. Uygulama sırası (onay sonrası)
+1. Mevcut sozluk_kavram.json SHA256'sını kaydet (6b036d2d…f049) — karşılaştırma tabanı.
+2. Yeni şemayı %TEMP%\sozluk_kavram\sozluk_kavram.json olarak yaz.
+3. H91.1, H92.0, H28.1, H93.3 için JsonGetConcept yanıtlarını çek; kanıt dosyasını 8/8 tamamla.
+4. test_sozluk_kavram.py + veri_testleri.py yaz, çalıştır.
+5. İki ayrı rapor üret; yeni SHA256 ve test çıktısını ekle.
+6. Sonuçları sun — depoya yazma yok.
+7. Son onayınıza sunulan iki zorunlu sonuç
+Bu ikisi yeni karar değil; verdiğiniz kararların kaçınılmaz sonucu, ama açıkça görülmesini istiyorum:
+- S-1: EK-2'de sira_no (tamsayı) kaldırıldı, yerine madde_etiketi (metin) geldi. Nedeni: "IV" tamsayıya çevrilemez (B-2).
+- S-2: bolum_harfi enum'una "İ" eklendi; "I" de korundu. Nedeni O-2: dönüştürme yasak, ama ekin hangi biçimi bastığı henüz tek tek doğrulanmadı. Hangi bölümün hangi harfi kullandığı Aşama 2-A'da netleşecek; o zamana kadar iki biçim de geçerli sayılıyor.
+Durum: Plan güncellendi. Hiçbir dosya oluşturulmadı/değiştirilmedi, Git işlemi yapılmadı (M tests/test_news_source_diagnostics.py, detached HEAD aynen duruyor). Aşama 2 kapalı. Onayınızı bekliyorum.

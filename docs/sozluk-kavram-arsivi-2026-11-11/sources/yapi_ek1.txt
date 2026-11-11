@@ -1,0 +1,684 @@
+﻿========== EK-1 ==========
+
+-- ek1_001: bolum=['A. ├çALI┼ŞMA G├£C├£ KAYBINA NEDEN OLAN N├ûROLOJ─░K'] derece={'agir': 3, 'orta': 3, 'hafif': 3}
+     madde? 4. Ko bozukluklar
+
+-- ek1_002: bolum=[] derece={'agir': 1, 'orta': 1, 'hafif': 1}
+
+-- ek1_003: bolum=[] derece={'agir': 2, 'orta': 2, 'hafif': 2}
+     madde? 5. ParaplejiRaraparezi, Monopl├ğjVMonoparezi, Hemipleji[Hemiparezi,
+     madde? 6. Parkinson sendromu
+
+-- ek1_004: bolum=[] derece={'agir': 3, 'orta': 3, 'hafif': 1}
+     madde? 7. Afaziler
+     madde? 8. Benicn b 'in t├╝m├Ârleri
+     madde? 9. Serebral al┼şi
+
+-- ek1_005: bolum=[] derece={'agir': 4, 'orta': 2, 'hafif': 3}
+     madde? 10. Spinal kord; sinir k├Âk├╝ lezyonlar─▒, dejeneratif B├Âroloj─▒li hastal─▒klar veya
+     madde? 12. Am otrofik lateral skleroz
+     madde? 13. Poliom elit
+
+-- ek1_006: bolum=[] derece={'agir': 4, 'orta': 4, 'hafif': 4}
+     madde? 14. M astenia vis ile birlikte
+     madde? 15. M├╝sk├╝ler distro├╝ ile birlikte
+     madde? 16. Periferal n├Âro atiler ile birlikte
+     madde? 17. Tedaviye ra─şmen anlaml─▒- d├╝zelme g├Âstermeyen subakut kombine kord
+
+-- ek1_007: bolum=[] derece={'agir': 2, 'orta': 2, 'hafif': 2}
+     madde? 18. Serebral travma
+     madde? 19. Huntington Koresi, SyringomyeIi9 Friedrich ataksisi, Wilson hastal─▒─ş─▒,
+
+-- ek1_008: bolum=['B. ├çALI┼ŞMAG C├£ KAYBINA NEDEN OLAN PS─░K─░YATR─░K'] derece={'agir': 5, 'orta': 3, 'hafif': 2}
+
+-- ek1_009: bolum=[] derece={'agir': 8, 'orta': 3, 'hafif': 2}
+     madde? 9. Beyin hasan, beyin ─░┼şlev bozuklu─şu ve bedensel hastal─▒klara ba─şl─▒ ruhsal
+     madde? 10. Y in imsel bozukluklar
+
+-- ek1_010: bolum=['C. ├çALI┼ŞMA G C├£ KAYBINA NEDEN OLAN G├Âz', 'D. ├çALI┼ŞMA G├£C├£ KAYBINA NEDEN OLAN KULAK BURU'] derece={'agir': 7, 'orta': 2, 'hafif': 2}
+     madde? I. G├Ârme azl─▒─ş─▒
+     madde? 0.1 ve alt─▒nda olanlar
+     madde? 0.1 ├╝zeri - 0.16 (0.16 dahil) aras─▒nda olanlar
+     madde? 0.16 ├╝zeri- 0.2 0.2 dahil aras─▒nda olanlar
+     madde? 2. Pitozis
+     madde? 3. Diloi
+     madde? 4. G├Ârme alan─▒ atolo*ileri
+     madde? I. Kom lik onlu sa ─▒rl─▒k
+     madde? 3. Larenks
+     madde? 4. Ses o anlar─▒
+
+-- ek1_011: bolum=['E. ├çALI┼ŞMA G├£C├£ KAYBINA NEDEN OLAN ONKOLOJ─░K'] derece={'agir': 4, 'orta': 2, 'hafif': 1}
+     madde? 1. Geni┼ş eksizyon sonras─▒ metastaz yapm─▒┼ş (rekiir─▒tn hastal─▒k olarak kabul
+     madde? 2. Anrezektabl 2 veya daha fazla de─şi┼şik anatomik b├Âlgede lenf bezi
+     madde? 3. Anrezektabl ko
+     madde? 3. Yumu ak doku sarkomu
+
+-- ek1_012: bolum=[] derece={'agir': 6, 'orta': 0, 'hafif': 0}
+     madde? 4. T├╝kr├╝k bezleri
+     madde? l. Medulloblastom veya di─şer primitif n├Âroektodermal t├╝m├Ârler (PNET)
+     madde? 2. Antineoplastik tedaviyi takiben progres─░f olan veya rek├╝rrens g├Âsteren
+     madde? 1. Metastaz─▒ bulunan
+     madde? 2. Antineo Ias├╝k tedavi 'i takiben ro esif olan ve arek├╝rrens ├Âsteren
+
+-- ek1_013: bolum=[] derece={'agir': 7, 'orta': 0, 'hafif': 0}
+     madde? I. B├Âlgesel lenf nodlar─▒na veya daha uza─şa metastaz─▒ bulunan (germ h├╝cre
+     madde? 2. Ba┼şlang─▒├ğ antineoplastik tedaviyi takiben progresif olan veya rek├╝rrens
+     madde? 12. ├ûzefa s ve a mide
+     madde? I. ─░noperab17 anrezektabl, kom┼şu yap─▒lara uzan─▒m─▒ bulunan veya rek├╝rrens
+     madde? 2. Uzak organ ve uzak lenf nodlar─▒na metastaz─▒ bulunan
+     madde? 13. ─░nce ba ─▒rs n karsinomu, sarkomu ve a kirsinoid t├╝m├Ârleri
+     madde? 14. Kal─▒n bf├╝ rsak ile ekal valvden itibaren anal kanal dahil
+     madde? 15. Karaci"er, safra k
+     madde? 16. Pankreas
+
+-- ek1_014: bolum=[] derece={'agir': 6, 'orta': 0, 'hafif': 0}
+     madde? 17. B├Âbrekler adrenal bez v a ├╝reterletin karsinomu
+     madde? 19. Kad─▒n nit├ól onar─▒nm karsinomuv a sarkomu
+     madde? 1. Antineoplas├╝k tedavilere cevap ve─▒meyen ilerleyen lokal ileri hastal─▒k
+     madde? 2. Antineoplas├╝k tedaviyi takiben progesif olan veya rek├╝rrens g├Âsteren
+     madde? 1. Pelvik duvara, vajinan─▒n alt b├Âl├╝m├╝ne veya kom┼şu veya uzak organlara
+     madde? 2. Antineoplastik tedaviyi takiben progresif olan veya rek├╝rrens g├Âsteren
+     madde? 1. Kom┼şu organlara ─░nvazyon g├Âsteren,
+     madde? 2. B├Âlgesel lenf nodlar─▒na veya daha uza─şa metastaz─▒ bulunan,
+     madde? 3. Antineoplastik tedaviyi takiben progresifolan veya rek├╝rens g├Âsteren,
+     madde? I. A┼şa─ş─▒dakilerden en az bir tanesinin bulundu─şu germ h├╝creli t├╝m├Ârler
+     madde? 2. Germ h├╝creli t├╝m├Ârler; an├╝neoplastik tedaviyi takiben progresif /n├╝ks
+     madde? 20. Prostat bezinin karsinomu
+
+-- ek1_015: bolum=['F. ├çALI┼ŞMA G├£C├£ KAYBLNA NEDEN OLAN HEMATOLOJ─░'] derece={'agir': 6, 'orta': 1, 'hafif': 5}
+     madde? 24. Di─şer maddelerde maluliyet s├╝resi belirtilmeyen (hematolojik maligniteler
+     madde? 1. Anemiler
+
+-- ek1_016: bolum=[] derece={'agir': 8, 'orta': 3, 'hafif': 4}
+     madde? l. 5 ay boyunca en az 3 kez oldu─şu tespit edilen a─şr─▒l─▒ vazookIuz─░v krizler
+     madde? 2. 12 ay boyunca en az 3 kez uzam─▒┼ş hospitalizasyona (acil balamm
+     madde? 3. Htc seviyesinin %26 veya alt─▒nda seyretti─şi kronik ciddi anemi
+     madde? ─░) Miyelodisplastik sendrom
+     madde? 2. Maron monoklonal gamm atiler Plazma h├╝cre diskrazileri
+     madde? 3. Primer hemof ositik sendrom
+     madde? 4. Kronik n├Âtro eniler
+
+-- ek1_017: bolum=[] derece={'agir': 6, 'orta': 1, 'hafif': 2}
+     madde? 5. KMLd1┼ş1 miyeloprolifet├óiifneoplaziler (polisitemia vera, esans─░yeI trombosito
+     madde? 6. Miyelodisplastik ] Miyeloproliferatif neoplaziler (MDYMPN) (kronik
+     madde? 7. Hemostaz bozukluklar─▒ ir 11 sonra kontrol
+     madde? 8. Koa Ias on defektleri
+     madde? 9. Trombotik trombosito enik r ura
+     madde? 10. Hodgkin Lenfoma,.Non-Hodgkin Lenfomalar, Histiyositik ve Dendritik h├╝creli
+     madde? 11. L├Âsemiler
+     madde? 1. Tam tarihinden ─░tibaren en az 24 ay s├╝reyle malul kabul edilir.
+     madde? 2. N├╝ksidiren├ğli hastal─▒k
+     madde? l. H─▒zlanm─▒┼ş (akselere) veya blastfaz─▒; akut l├Âsemi gibi de─şerlendirilir.
+     madde? 2. Kronik faz; allojenik k├Âk h├╝cre nakline aday olmayan ve en az 2
+     madde? 12. AlloÔÇóen─░k kemik ili" ÔÇó ├Âkh├╝cre nakli
+
+-- ek1_018: bolum=['G. ├çALI┼ŞMA G├£C├£ KAYBINA NEDEN OLAN ORTOPED─░ V'] derece={'agir': 11, 'orta': 1, 'hafif': 2}
+     madde? 13. Otolo kemik ili" /k├Âk h├╝cre nakli
+     madde? I. Amp├╝tasyonlar
+     madde? I. Hemipelvektomi
+     madde? 2. Kal├ğa deza─▒lik├╝lasyonu (tek tarafl─▒)
+     madde? 3. Diz ├╝st├╝:
+
+-- ek1_019: bolum=[] derece={'agir': 4, 'orta': 3, 'hafif': 1}
+     madde? 5. Dizalt─▒
+     madde? 6. Ayak/Ayak bile─şi
+     madde? 2. orta d├╝zeyde├ğali┼şmag├╝c├╝ kayb─▒na neden olan amp├╝tasyonlar, a─ş─▒r d├╝zeyde
+     madde? 3. ─░ki hafif d├╝zeyde ├ğal─▒┼şma g├╝c├╝ kayb─▒na neded olan amp├╝tasyonlar orta d├╝zeyde
+     madde? 4. Eklemlerin ma'├Âr di─şfonksi onlar─▒
+     madde? 5. Sko o kifoz kifosko ozvb
+
+-- ek1_020: bolum=['H. ├çALI┼ŞMA G├£C├£ KAYBNA NEDEN OLAN ROMATOLOJ─░K'] derece={'agir': 3, 'orta': 2, 'hafif': 2}
+     madde? I. Sistemik skleroz skleroderma
+
+-- ek1_021: bolum=[] derece={'agir': 0, 'orta': 3, 'hafif': 2}
+     madde? 2. Ra aud fenomeni
+     madde? 3. PolimÔÇó ozit ve Dermatom' ozit
+
+-- ek1_022: bolum=[] derece={'agir': 1, 'orta': 1, 'hafif': 2}
+     madde? 5. Beh et hastal
+
+-- ek1_023: bolum=[] derece={'agir': 0, 'orta': 2, 'hafif': 2}
+     madde? 6. ─░nflamatuar artr─░tIer
+     madde? 1. A─ş─▒rl─▒k ta┼ş─▒yan maj├Âr periferal eklemlerin tutulumu ─░le a─ş─▒r d├╝zeyde
+     madde? 2. Her iki ├╝st ekstremitede maj├Âr periferai eklem tutulumu ile a─ş─▒r d├╝zeyde
+     madde? l. A─ş─▒rl─▒k ta┼ş─▒yan maj├Âr periferal eklemlerin tutulumu ile orta d├╝zeyde
+     madde? 2. Her iki ├╝st ekstremitedemaj├Ârperiferal eklem tutulumu ile orta d├╝zeyde
+     madde? l. A─ş─▒rl─▒k ta┼ş─▒yan maj├Âr periferal eklemlerin tutulumu ─░le hafif d├╝zeyde
+
+-- ek1_024: bolum=[] derece={'agir': 1, 'orta': 0, 'hafif': 1}
+     madde? 2. Her ─░ki ├╝st ekstremitede maj├Âr periferal eklem tutulumu ─░le hafif
+     madde? 7. Ankilozans ondilitve d' ers ondiloartro atilerde omu a tutulumunda :
+
+-- ek1_025: bolum=[] derece={'agir': 4, 'orta': 2, 'hafif': 2}
+     madde? ─░. ├çALI┼ŞMA G├£C├£ KAYBINA NEDEN OLAN
+     madde? I. Parasentez gerektiren asit,
+     madde? 2. Torasentez erektirenhe atik hidrotoraks,
+
+-- ek1_026: bolum=[] derece={'agir': 3, 'orta': 2, 'hafif': 2}
+     madde? 2. Karaci-er sirozu
+     madde? 3. Karaci%r nakli
+     madde? 4. Inflamatuar b├╝ rsak hastal─▒klar─▒ (─░ki' 11 sonrak├Ântr├Âl├╝gerekir)
+     madde? l. Orta ┼şiddetli aktivasyon g├Âsteren crohnhastall─şl, CDA1220 ─░la450 olan
+     madde? 2. Ciddi fulminan hastal─▒k; CDAI┬╗450 (CDH skorlamasma dair belgeler
+
+-- ek1_027: bolum=[] derece={'agir': 4, 'orta': 3, 'hafif': 0}
+     madde? 1. Cerah─░ olarak barsak rezeksiyonu gereksinimi olan hastalar
+     madde? 2. Opere olup postoperatifn├╝ks olanlar (Rutgeerts B ve ─░4)
+     madde? 3. Komplike aktif perianal fist├╝l ÔÇö perianal abses─░ olanlar veya
+     madde? 4. ─░nflamatuvar barsak hastal─▒─ş─▒ olup g├╝nl├╝k beslenme ihtiyac─▒n─▒n
+     madde? 5. K─▒sa Ba─ş─▒rsak Sendromu
+     madde? I. ─░nflamatuvar barsak hastal─▒─ş─▒ olup g├╝nl├╝k beslenme ─░htiyac─▒n─▒n
+     madde? 2. ├£lseratif kolit tan─▒s─▒ ahp yayg─▒n hastal─▒─ş─▒ olup etkin tedaviye yan─▒ts─▒z
+     madde? 6. MaiabsorbsÔÇó onlarla se eden GIS hastal─▒klar─▒
+     madde? 7. K─▒sa ba sak sendromu
+
+-- ek1_028: bolum=['J. ├çALI┼ŞMA G├£C├£ KAYBINA NEDEN OLAN DERMATOLOJ'] derece={'agir': 4, 'orta': 5, 'hafif': 2}
+     madde? 9. Anal inkontinans ve a anal sfinkter okli├╝
+     madde? 10. Kal─▒c─▒ ileostomi ve a kolostomiler
+     madde? 12. Total ankreatektom_i
+     madde? 13. Whi leo ras onu
+     madde? 14. Ozefa
+     madde? 15. Mide hastal─▒klar─▒
+     madde? 16. Karaci* er hastal─▒klar─▒
+     madde? 17. Safra ollar─▒
+     madde? I. K├╝tan├Âz lenfoma
+
+-- ek1_029: bolum=[] derece={'agir': 6, 'orta': 2, 'hafif': 8}
+     madde? 2. Porfirialar
+     madde? 3. Pso azis
+     madde? 4. Pemfigus grubu, b├╝ll├Âz pemfigoid ve- dermatitis herpetiformis v.b. otoimm├╝n
+     madde? 5. ─░kti ozis bu hastahldar
+     madde? 6. Herediter almo lanter ketatodermiler, Unna Tbost,.MaI de Melada, vb.
+     madde? 7. E idermolizis b├╝llosa
+     madde? 9. Hidradenitis su urativ akne kon lobata ve follik├╝ler okl├╝ on triadl
+
+-- ek1_030: bolum=['K. ├çALI┼ŞMA G├£C├£ KAVINA NEDEN OLAN KALP'] derece={'agir': 1, 'orta': 0, 'hafif': 7}
+     madde? 10. Kan damarlar─▒n─▒n benign neoplazm ve hiperplazileri: Kapillcr anjiom,
+     madde? 12. Vaskulitler
+     madde? 14. Kronik Graft Versus Host Hasta115
+     madde? 15. Anhidrotik/Hi ohidrotikve hidrotikektodermal dis lazi
+     madde? 16. Kronik doku hastal─▒klar─▒
+     madde? 17. Skleroderma
+     madde? I. Kardi ak aritmiler
+
+-- ek1_031: bolum=[] derece={'agir': 4, 'orta': 3, 'hafif': 1}
+     madde? 2. Pulmonerhi ertansÔÇó on
+     madde? 3. Konstriktif erikardit
+     madde? 4. Hi rtrofik ve restriktifkar om '0 ati
+
+-- ek1_032: bolum=[] derece={'agir': 3, 'orta': 3, 'hafif': 1}
+     madde? 6. KonÔÇóenital hastal─▒klar─▒
+     madde? 1. NYHA evre 3-4 konjestifkalp yetersizli─şi semptomlar─▒,
+     madde? 2. Siyanoz,
+     madde? 3. ├ûnemli sol-sa─ş ┼şanti devam eden (Qp/ Qs ┬╗:1), reoperasyon veya
+     madde? 4. Pulmoner vask├╝ler rezistans─▒ sistemik vask├╝ler rezistanstan b├╝y├╝k olan
+     madde? 7. Kal ka ak hastal─▒klar─▒
+     madde? 8. Koroner Arter Hastal─▒klar─▒
+
+-- ek1_033: bolum=['L. ├çALI┼ŞMA G├£C├£ KAYBINA NEDEN OLAN DAMAR'] derece={'agir': 4, 'orta': 3, 'hafif': 3}
+     madde? 9. Hi ertansi on
+     madde? I. Periferik arter hastal─▒klar─▒
+     madde? 2. Fonksi onel damar hastal─▒ olanlar e naud Fenomeni, ├ékrosÔÇó anozis vs.
+     madde? 3. B├╝ " arter hastal─▒klar─▒
+     madde? 4. Kronik ven├Âz hastal─▒klar
+     madde? 5. Lenf sistemi hastal─▒klar─▒
+
+-- ek1_034: bolum=['M. ├çALI┼ŞMA G├£C├£ KAYBINA NEDEN OLAN ├£R─░NER S─░S'] derece={'agir': 3, 'orta': 2, 'hafif': 2}
+     madde? I. B├Âbrek fon_ksi on bozuklu
+     madde? I. Patolojik k─▒r─▒klar
+     madde? 2. Kal─▒c─▒ motor ve duyusal n├Âropat─░ (EMG ─░le tespit edilen)
+     madde? 3. Kal─▒c─▒ a┼ş─▒r─▒ s─▒v─▒ y├╝klenmesi sendromu beraberinde:
+     madde? 4. Takip eden 6 ayl─▒k s├╝re├ğte en az 30 g├╝nl├╝k ara ─░le de─şerIendirme sonras─▒
+     madde? I. Proteinmi (l gr/g├╝n'den daha fazla) ─░le seyreden nefropatiler (12 (on ─░ki)
+     madde? 2. Diren├ğli HT varsa (en az biri di├╝retik olmak ┼şart─▒yla birlikte 3
+     madde? 2. Nefrotik sendrom
+
+-- ek1_035: bolum=['N. ├çALI┼ŞMA G├£C├£ KAYBINA NEDEN OLAN ENDOKR─░NOL'] derece={'agir': 5, 'orta': 4, 'hafif': 1}
+     madde? 5. Yeni mesane a ─▒lmas─▒
+     madde? 6. Uriner fist├╝ller ve total inkontinans
+     madde? 7. N├Âro'enik mesane
+     madde? I. Hi ofiz ve W otalamus Bez Hastal─▒klar─▒
+     madde? 2. Tiroid ve Parotiroid bez hastal─▒klar─▒
+
+-- ek1_036: bolum=['O. ├çALI┼ŞMA G├£C├£ KAYBINA NEDEN OLAN G├ûG├øS'] derece={'agir': 5, 'orta': 1, 'hafif': 3}
+     madde? 2. DLCO % 45 olmas─▒
+
+-- ek1_037: bolum=[] derece={'agir': 1, 'orta': 1, 'hafif': 1}
+     madde? l. ─░stirahat P02 de─şerinin 55 mmHg olmas─▒
+     madde? 2. ─░stirahat P02 de─şerinin 55-60 mmHg aras─▒nda oldu─şu durumlarda
+     madde? 2. DLCO
+     madde? 2. Ast─▒m
+     madde? I. Y├╝ksek doz ─░nhaler steroidle birlikte ─░kinci bir kontrol edici ─░la├ğ
+     madde? 2. Kontrol edilemeyen ast─▒m denildi─şinde a┼şa─ş─▒dakilerden herhangi
+     madde? 1. D├╝┼ş├╝k doz oral stero─░d
+     madde? 2. Omalizumab
+
+-- ek1_038: bolum=[] derece={'agir': 1, 'orta': 1, 'hafif': 1}
+     madde? 3. Mepaluzimab
+     madde? 4. T─░otropr─░um
+     madde? 3. U kuda solunum bozukluklar─▒
+     madde? l. Apne hipopne indeksi (AH─░) *0 olup uygulanan PAP (Pozitifhavayolu
+     madde? 2. Apne hipopne ─░ndeksi (AH─░) *O olup kronik nokt├╝mal hipoksemiye
+     madde? I. Uyku s─▒ras─▒nda PaC02' nin en az 10 dakika s├╝reyle 55 rnmHg'n─▒n
+
+-- ek1_039: bolum=['P. ├çALI┼ŞMA G├£C├£ KAYBINA NEDEN OLAN ENFEKS─░YON'] derece={'agir': 4, 'orta': 0, 'hafif': 0}
+     madde? 2. PAP tedavisine yeterli yan─▒t al─▒namamas─▒ (l. maddesinde yer alan
+     madde? 4. T├╝berk├╝loz
+     madde? 5. Bron ektazi
+     madde? 6. Kistik Fibrozis
+     madde? 7. Akci"er Trans lantas onu
+     madde? 8. Karar verile n 'durumlar
+     madde? l. V02maxd├╝zeyi 45 olan hastalar %60 ve ├╝zeri,
+     madde? 2. V02 max 15-21 aras─▒ olanlar ila 59,
+     madde? 3. V02max '22 olanlar %40 ila 49 etkilenme olarak kabul edilirler.
+     madde? 4. V02max olanlarda KPET sonucu maluliyet de─şerIendirilmesinde
+
+-- ek1_040: bolum=['R. ORTAK H├£K├£MLER'] derece={'agir': 0, 'orta': 0, 'hafif': 0}
+     madde? 1. Kaposi sarkomu
+     madde? 2. Her t├╝rl├╝ solid organ ve hematolojik maliniteler
+     madde? 3. Serviks kanseri (onkolojik kriterlere g├Âre de─şerIendirilir.)
+     madde? 4. Lenfoma
+     madde? l. HIV ensefelopatisi
+     madde? 2. Pro sif multifokal ensefelo ati
+     madde? I. Mevcut hastal─▒k listelerinde tan─▒mlanmayan ancak tedaviye ra─şmen ├ğal─▒┼şma
+     madde? 2. Birden fazla ba─ştah─ş─▒n bir arada oldu─şu ve tedaviye ra─şmen ├ğal─▒┼şma olana─ş─▒n─▒n
+     madde? 3. Bu hastal─▒k listesine g├Âre birden fazla hafif d├╝zeyde ├ğal─▒┼şmag├╝c├╝ kayb─▒na ned
+
+EK-1 toplam 'madde gorunumlu' satir: 207
+
+========== EK-2 ==========
+
+-- ek2_001 [metin d=0.00] organ=['.. HASTANES─░', 'SA─ŞLIK KURULU RAPORU', '111. ENGELE ─░L─░ K─░N'] alt=[] madde=1
+     madde? 11. M├£RACAT ┼ŞEKL─░:
+
+-- ek2_002 [metin d=0.00] organ=['ER─░┼ŞK─░NLER ─░├ç─░N ENGELL─░L─░K', 'SA─ŞLIK KURULU RAPORU'] alt=[] madde=2
+     madde? 2) "S├╝rekli olarak tekerlekli sandalye veya sedye kullanmas─▒ gerekir.ÔÇØ
+     madde? 3) Bu rapordan ├Ânceki raporlar s├╝resine bak─▒lmaks─▒z─▒n yap─▒lacak yeni b
+
+-- ek2_003 [metin d=0.00] organ=['ER─░┼ŞK─░NLER ─░├ç─░N', 'ENGELL─░ SA─ŞLIK KURULU RAPORLARI', 'ENGEL ORANLARI ALAN KILAVUZU'] alt=['A-─░┼Ş─░TME'] madde=0
+
+-- ek2_004 [metin d=0.00] organ=[] alt=[] madde=5
+     madde? 1. Her bir kula─şa ayr─▒ saf ses odyometrisi uygulay─▒p 500, 1000, 2000 v
+     madde? 2. Her bir kula─ş─▒n cihazs─▒z (i┼şitme cihaz─▒ ve implantlar) olarak ├Âl├ğ├╝l
+     madde? 3. ─░┼şitme kay─▒plar─▒n─▒n y├╝zdesini belirlemek i├ğin Tablo I kullan─▒l─▒r.
+     madde? 4. Ki┼şinin engel oran─▒n─▒ belirlemek i├ğin Tablo 2 kullan─▒l─▒r.
+     madde? 5. Saf ses i┼şitme e┼şikleri her bir frekans i├ğin belirlenemeyen hastala
+
+-- ek2_007 [metin d=0.31] organ=[] alt=[] madde=33
+     madde? 1.8-4.2
+     madde? 7.5-9.9
+     madde? 10.0-13.1
+     madde? 13.2-15.9
+     madde? 16.0-18.8
+     madde? 18.9-21.4
+
+-- ek2_008 [metin d=0.24] organ=['B-KONU┼ŞMA VE SES', 'KONU┼ŞMA BOZUKLUKLARINA YOL A├çAN NEDENLER'] alt=['B-KONU┼ŞMA VE SES'] madde=2
+     madde? 10. Mental retardasyon
+     madde? 12. Elektifmutizm
+
+-- ek2_009 [metin d=0.00] organ=['JALEN─░N D├£NYASI'] alt=[] madde=0
+
+-- ek2_010 [metin d=0.04] organ=['TABLO 4. KONU┼ŞMA ENGEL─░ PUANININ HESAPLA', 'BOZUKLU─ŞUNUN T', 'KONU┼ŞMANIN AKICILI─ŞI'] alt=[] madde=0
+
+-- ek2_011 [TABLO d=0.54] organ=['TABLO 5. KONU┼ŞMA ENGEL─░ PUANI KULLANILAR', 'ENGEL ORANI HESAPLAMA TABLOSU', 'KONU┼ŞMA ENGEL─░ PUANI'] alt=['C-DENGE'] madde=0
+
+-- ek2_012 [metin d=0.35] organ=[] alt=['D-Y├£Z'] madde=0
+
+-- ek2_013 [metin d=0.08] organ=['E-HAVA YOLU DEFEKTLER─░'] alt=['E-HAVA YOLU DEFEKTLER─░'] madde=0
+
+-- ek2_014 [metin d=0.04] organ=['F.KOKU VE TAT DUYUSU KAYBI', 'G.├ç─░─ŞNEME VE YUTMA'] alt=[] madde=0
+
+-- ek2_015 [metin d=0.38] organ=['Z─░H─░NSEL, RUHSAL, DAVRANI┼ŞSAL BOZUKLUKLA'] alt=['I- Zek├ó ─░┼şlev bozukluklar─▒ Engel Oran─▒', 'V- Atipik veya ba┼şka t├╝rl├╝ adland─▒r─▒lamayan psikozlar'] madde=0
+
+-- ek2_016 [metin d=0.32] organ=['GE├ç─░C─░ FONKS─░YON KAYBINA NEDEN OLAN RUHS'] alt=[] madde=6
+     madde? 2. Tedavi ─░le i┼şlevselli─şi k─▒smen d├╝zelen
+     madde? 3. Tedavi ─░le ─░┼şlevselli─şi d├╝zelmeyen
+     madde? 2. Tedavi ─░le ─░┼şlevselli─şi k─▒smen d├╝zelen
+     madde? 3. Tedavi ─░le ─░┼şlevselli─şi d├╝zelmeyen
+     madde? 2. Tedavi ile i┼şlevselli─şi k─▒smen d├╝zelen
+     madde? 3. Tedavi ile i┼şlevselli─şi d├╝zelmeyen
+
+-- ek2_017 [metin d=0.28] organ=[] alt=['I-Tedavi ile i┼şlevselli─şi tam d├╝zelen', 'I-Tedavi ile i┼şlevselli─şi tam d├╝zelen'] madde=8
+     madde? 2. Tedavi ile i┼şlevselli─şi k─▒smen d├╝zelen
+     madde? 3. Tedavi ile i┼şlevselli─şi d├╝zelmeyen
+     madde? 2. Tedavi ile i┼şlevselli─şi k─▒smen d├╝zelen
+     madde? 3. Tedavi ile i┼şlevselli─şi d├╝zelmeyen
+     madde? 2. Tedavi ile i┼şlevselli─şi k─▒smen d├╝zelen
+     madde? 3. Tedavi ile i┼şlevselli─şi d├╝zelmeyen
+
+-- ek2_018 [metin d=0.12] organ=[] alt=['A- Rozasea', 'I -├ç)rta'] madde=0
+
+-- ek2_019 [metin d=0.39] organ=['11. KIL FOLL─░K├£L├£ ─░LE ─░LG─░L─░ HASTALIKLAR', '111. EKZEMAT├ûZ DERMAT─░TLER', 'IV. ├çE┼Ş─░TL─░ ─░NFLAMATUVAR DER─░ HASTALIKLA'] alt=['C- Sa├ğl─▒ derinin diseke edici follik├╝liti', 'I -Ofta', 'D- Hiperh─░dros─░s'] madde=1
+     madde? 11. KIL FOLL─░K├£L├£ ─░LE ─░LG─░L─░ HASTALIKLAR
+
+-- ek2_020 [metin d=0.35] organ=['V. PS─░K─░YATR─░K ETYOLOJ─░L─░ DER─░ HASTALIKL', 'VI. DER─░ T├£M├ûRLER─░', 'A.BEN─░GN NEOPLAZM VE H─░PERPLAZ─░LER'] alt=['C- Perforan dermatozlar (Kryle Hastal─▒─ş─▒ vb.)', 'I -Orta', "I -Hafif (v├╝cut y├╝zeyinin %1-9' unu kaplayan)"] madde=0
+
+-- ek2_021 [metin d=0.39] organ=['VIII. ER─░TRODERMA', 'IX. P─░GMENT BOZUKLUKLARI', 'X. ─░MMUN, OTO─░MMUN VE S─░STEM─░K HASTALIKL'] alt=['I -V├╝cut gizeyinin sini kaplayan'] madde=0
+
+-- ek2_022 [metin d=0.41] organ=['XI. GENET─░K GE├ç─░┼ŞL─░ DER─░ HASTALIKLARI'] alt=['I -Hafif', 'I-Sadece deri lezyonlar─▒ i├ğin lokalize', 'I -Hafif'] madde=0
+
+-- ek2_023 [metin d=0.38] organ=['XII. VASKULER HASTALIKLARIN DER─░ BULGULA', 'XIII. KUTAN├ûZ LENFOMA, L├ûSEM─░, H─░ST─░YOS─░', 'MASTOS─░TOZLAR'] alt=['I -Orta', 'I-Hafif Qlgular', 'I -Sadece deri lezyonlar─▒ olan hafif olgular'] madde=0
+
+-- ek2_024 [metin d=0.36] organ=['XIV. M─░KROB─░AL AJANLARA BA─ŞLI DER─░ HASTA', 'D─░─ŞER DER─░ HASTALIKLARI'] alt=['I -Mastositoma'] madde=0
+
+-- ek2_025 [metin d=0.38] organ=['HEMATOLOJ─░K HASTALIKLAR'] alt=['I -Steroid tedavisine yan─▒t verenler', 'I -Hafif-orta', 'I-Hafif-orta (Tedavi ile Hb 10-12 g/dl)'] madde=0
+
+-- ek2_026 [metin d=0.38] organ=['11. M─░YELOF─░BROZ─░S', '111. M─░YELOD─░SPLAST─░K SENDROM', 'IV. L├ûSEM─░LER'] alt=['I -Kronik Faz (Tam sitogenetik yamt varsa )', 'I- Evre 1-11 (Tedavi gereksinimi olmayan)', 'I -Benign Gammapati ler'] madde=4
+     madde? 11. M─░YELOF─░BROZ─░S
+     madde? 2.Hasta11klar1 kontrol alt─▒nda olmayanlar
+     madde? 3. Hayat─▒ tehdit eden tromboz ve/veya kanamas─▒ olanlar
+     madde? 4. L├Âsemikd├Ân├╝┼ş├╝m g├Âsterenler
+
+-- ek2_027 [metin d=0.40] organ=['VII. LENFOMALAR', 'VIII. KRON─░K N├ûTROPEN─░LER', 'IX. ALLOJEN─░K KEM─░K ─░L─░─Ş─░/K├ûK H├£CRE NAKL'] alt=['I -A─ş─▒r (Kostmann Sendromu)'] madde=3
+     madde? 2. Hafif kanamalarla seyreden ve tedavi gerektiren vakalar
+     madde? 3. A─ş─▒r ve hayati kanamalar ile seyreden vakalar
+     madde? 2. Tekrarlayan ataklar
+
+-- ek2_028 [metin d=0.36] organ=[] alt=['I-Hastal─▒─ş─▒ remisyonda. komplikasyonu olmayan'] madde=0
+
+-- ek2_029 [metin d=0.23] organ=['KARD─░YOVASK├£LER S─░STEM', 'PULMONER H─░PERTANS─░YON'] alt=[] madde=4
+     madde? 1. ─░la├ğ tedavisi
+     madde? 2. Kal─▒c─▒ kalp pili
+     madde? 4) Cerrahi m├╝dahale
+     madde? 5) ─░CD implantasyonu
+
+-- ek2_030 [metin d=0.19] organ=['H─░PERTANS─░YON', 'PER─░KARD HASTALIKLARI', 'H─░PERTROF─░K KARD─░YOM─░YOPAT─░'] alt=[] madde=7
+     madde? 2. Hipenansif serebrovask├╝ler hastal─▒k
+     madde? 3) Hipertansif retinopati (Gunn belirtileri)
+     madde? 4) Sol ventrik├╝l hipertrofisi
+     madde? 2. Protein├╝ri ve b├Âbrek fonksiyon bozuklu─şu (serum kreatin ve BUN d├╝ze
+     madde? 3. Hipertansif serebrovask├╝ler hastal─▒k ve kal─▒c─▒ n├Ârolojik defisit
+     madde? 4. Sol ventrik├╝l hipertrofisi
+
+-- ek2_031 [metin d=0.17] organ=['DO─ŞU┼ŞTAN KALP HASTALIKLARI ( DKH )'] alt=['A-Grubu', 'B- Grubu', 'A-Grubu'] madde=0
+
+-- ek2_032 [metin d=0.16] organ=['KALP HASTALIKLARI'] alt=['A-Grubu', 'B- Grubu'] madde=0
+
+-- ek2_033 [metin d=0.16] organ=['DAMAR HASTALIKLARI'] alt=['I- T─▒kay─▒c─▒ damar hastal─▒─ş─▒ olanlar:', 'A- Arteriosklerozis obliterans (ASO)', 'I- T─▒bbi tedaviden istifade ediyor i┼şg'] madde=1
+     madde? 0.50 veya altmda de─şerde olanlarda
+
+-- ek2_034 [metin d=0.30] organ=[] alt=['B- Tromboangitis obliterans (Buerger):', 'I- Tek ekstremite'] madde=0
+
+-- ek2_035 [metin d=0.00] organ=['G├ûRME S─░STEM─░'] alt=[] madde=2
+     madde? 2.G├Ârme Alan─▒
+     madde? 3.Di─şerIer─░ :
+
+-- ek2_036 [metin d=0.20] organ=[] alt=[] madde=9
+     madde? 2. ─░┼şlevsel Keskinlik Puan─▒n─▒ (─░KP) belirlerken, her bir g├Âzdeki g├Ârme
+     madde? 3. G├Ârme alan─▒ muayenesi yap─▒l─▒r ve g├Ârme alan─▒ puan─▒ (GAP) belirlenir
+     madde? 4. Her g├Âz├╝n alan puanlar─▒ndan (GAP), tek bir ─░AP olu┼şturmak i├ğin,
+     madde? 5. ─░┼şlevsel Keskinlik Puan─▒ (─░KP) ve ─░┼şlevsel Alan Puan─▒(─░AP) birle┼şti
+     madde? 6. ─░┼şlevsel G├Ârme Puan─▒ndan (─░GP), diplopi, s├╝rekli g├Âz sulanmas─▒, kap
+     madde? 7. G├Ârme sisteminin yetersizlik oran─▒ndan da, engel oran─▒ hesaplan─▒r (
+
+-- ek2_038 [TABLO d=0.84] organ=[] alt=[] madde=7
+     madde? 0.025
+     madde? 0.020
+     madde? 0.016
+     madde? 0.013
+     madde? 0.010
+     madde? 0.008
+
+-- ek2_042 [metin d=0.00] organ=[] alt=[] madde=1
+     madde? 2. Fonksiyonel K├Ârl├╝k, Anatomik K├Ârl├╝k ve Tek G├Âzl├╝l├╝k Durumlar─▒
+
+-- ek2_051 [metin d=0.00] organ=['G├ûRME ALANI YETERS─░ZL─░─Ş─░'] alt=[] madde=0
+
+-- ek2_053 [TABLO d=0.53] organ=[] alt=[] madde=1
+     madde? 3). Bu a├ğ─▒lara ├ğizilen ├ğizgiler ├╝zerinde I-3-5-7-9 dereceler (┼Şekil 3)
+
+-- ek2_056 [metin d=0.00] organ=[] alt=[] madde=1
+     madde? 3) binok├╝ler g├Ârme alan─▒ skorunu belirlemede b├╝y├╝k kolayl─▒k sa─şlayacak
+
+-- ek2_065 [metin d=0.00] organ=['S─░ND─░R─░M S─░STEM─░'] alt=[] madde=0
+
+-- ek2_067 [metin d=0.00] organ=['3. KOLON, REKTUM VE AN├£S'] alt=[] madde=2
+     madde? 2. ├£ST S─░ND─░R─░M KANALI (├Âzefagus, mide ve duedonum, ince ba─ş─▒rsak, ve 
+     madde? 3. KOLON, REKTUM VE AN├£S
+
+-- ek2_069 [metin d=0.00] organ=['4. ENTEROK├£TAN F─░ST├£LLER'] alt=[] madde=1
+     madde? 4. ENTEROK├£TAN F─░ST├£LLER
+
+-- ek2_070 [metin d=0.07] organ=['OZEFAGOSTOM─░', '─░LEAL-PO┼Ş ANAL ANASTOMOZ', '5. KARAC─░─ŞER VE SAFRA YOLLARI'] alt=[] madde=1
+     madde? 5. KARAC─░─ŞER VE SAFRA YOLLARI
+
+-- ek2_071 [metin d=0.01] organ=['7. SPLENEKTOM─░'] alt=[] madde=2
+     madde? 6. HERN─░LER
+     madde? 7. SPLENEKTOM─░
+
+-- ek2_072 [metin d=0.15] organ=['KADIN HASTALIKLARI VE DO─ŞUM', 'A-VULVA VE VAG─░NA', 'B-SERV─░KS VE UTERUS'] alt=['A-VULVA VE VAG─░NA', 'I -Derece fonksiyonel/yap─▒sal kay─▒p:', 'B-SERV─░KS VE UTERUS'] madde=0
+
+-- ek2_073 [metin d=0.15] organ=['C-FALLOP─░AN T├£PLER VE OVERLER'] alt=['C-FALLOP─░AN T├£PLER VE OVERLER', 'I -Derece fonksiyonel/yaptsal kay─▒p:'] madde=0
+
+-- ek2_074 [metin d=0.36] organ=['├£ROGEN─░TAL S─░STEM'] alt=[] madde=0
+
+-- ek2_075 [metin d=0.32] organ=['├£ST ├£R─░NER S─░STEM', 'NEFREKTOM─░ (B─░LATERAL)'] alt=[] madde=0
+
+-- ek2_077 [metin d=0.33] organ=['TEST─░S, EP─░D─░D─░M, SPERMAT─░K KORD', 'PROSTAT VE VEZ─░KULOSEM─░NAL─░S'] alt=[] madde=0
+
+-- ek2_078 [metin d=0.40] organ=['─░)R─░NER ─░NKONT─░NANS', '├£R─░NER F─░ST├£LLER'] alt=[] madde=0
+
+-- ek2_079 [metin d=0.36] organ=['ENDOKR─░N S─░STEM'] alt=['I- Hipotalamik hastal─▒klar', 'I- Gigantizm ve Akromegali', 'I- Hi ofizer nanismus'] madde=0
+
+-- ek2_080 [metin d=0.38] organ=[] alt=['V- Adrenal hastal─▒klar─▒', 'I-Tedaviyle kontrol edilen', 'I- Posto eratif kontrol alt─▒nda'] madde=0
+
+-- ek2_081 [metin d=0.31] organ=[] alt=['I- Lesch-Nyhan Hastal─▒─ş─▒'] madde=0
+
+-- ek2_083 [metin d=0.15] organ=['G├û─Ş├£S HASTALIKLARI VE G├û─Ş├£S CERRAH─░S─░'] alt=[] madde=0
+
+-- ek2_084 [metin d=0.13] organ=['11- AKC─░─ŞER VE DAMAR S─░STEM─░N─░ ─░LG─░LEND─░', '111- KULAK-BURUN S─░STEM─░N─░ ─░LG─░LEND─░REN ', 'V- ├£ROGEN─░TAL S─░STEM─░ ─░LG─░LEND─░REN YANIK'] alt=['V- ├£ROGEN─░TAL S─░STEM─░ ─░LG─░LEND─░REN YANIK ARIZALARI'] madde=0
+
+-- ek2_085 [metin d=0.00] organ=['VII- HAREKET S─░STEM─░N─░ ─░LG─░LEND─░REN YANI', 'VIII- S─░N─░R S─░STEM─░N─░ ─░LG─░LEND─░REN YANIK'] alt=[] madde=0
+
+-- ek2_086 [metin d=0.19] organ=[] alt=[] madde=1
+     madde? 4) Operasyon sonras─▒nda 2 y─▒l s├╝reyle
+
+-- ek2_087 [metin d=0.21] organ=['S─░N─░R S─░STEM─░', 'Y├£KSEK KORT─░KAL FONKS─░YON BOZUKLUKLARI', 'B-SENS├ûR─░YEL'] alt=['A-MOTOR', 'B-SENS├ûR─░YEL', 'I -Hafif'] madde=0
+
+-- ek2_088 [metin d=0.28] organ=[] alt=[] madde=2
+     madde? 2. Uykuda solunum bozukluklar─▒ (Santral uyku apne sendromlar─▒, obstruk
+     madde? 3. Hipersomniler (Narkolepsi sendromlar─▒, rek├╝rren hipersomniler, idiy
+
+-- ek2_089 [metin d=0.22] organ=['N├ûROJEN─░K KAYNAKLI'] alt=['I -G├╝nl├╝k aktiviteyi k─▒smen etkileyen a─şr─▒'] madde=4
+     madde? 4. Sirkadiyen uyku-uyan─▒kl─▒k ritm bozukluklar─▒ (Ge├ğikmi┼ş uyku faz─▒ sen
+     madde? 5. Parasomniler (Konfijzyonel uyanma, uykuda y├╝r├╝me, gece ter├Âr├╝, uyku
+     madde? 6. Uykuda hareket bozukluklar─▒ (Huzursuz bacak sendromu, uykuda periyo
+     madde? 2. G├╝nl├╝k aktiviteyi orta derecede etkileyen a─şr─▒
+
+-- ek2_091 [metin d=0.17] organ=['KRAN─░AL S─░N─░R BOZUKLUKLARI', 'PER─░FER─░K FAS─░AL PARAL─░Z─░'] alt=['I- Hafif (minimum fonksiyon bozuklu─şu veya estetik kay─▒p)'] madde=0
+
+-- ek2_092 [metin d=0.12] organ=['D─░ZARTR─░ VE D─░SFAJ─░', 'HAREKET BOZUKLUKLARI'] alt=[] madde=1
+     madde? 4. I) kullan─▒lacakt─▒r.
+
+-- ek2_093 [metin d=0.00] organ=['KAS-─░SKELET S─░STEM─░', '1-1.1 YARALANMA MODEL─░ VEYA TANI ─░L─░┼ŞK─░L', 'DE─ŞERLEND─░RME'] alt=[] madde=0
+
+-- ek2_097 [metin d=0.00] organ=['1-1.2. EKLEM HAREKET A├çIKLI─ŞI MODEL─░'] alt=[] madde=1
+     madde? 1.2. I. Eklem hareket a├ğ─▒kl─▒─ş─▒na ba─şl─▒ engellili─şin hesaplanmas─▒
+
+-- ek2_102 [metin d=0.32] organ=['SPES─░F─░K OMURGA HASTALI─ŞI TANISINA BA─ŞLI'] alt=[] madde=0
+
+-- ek2_104 [metin d=0.30] organ=['SP─░NAL S─░N─░R KAYIPLARINA BA─ŞLI ENGELL─░L─░'] alt=[] madde=1
+     madde? 1.9 ve Tablo 1.10 birlikte kullan─▒lmal─▒d─▒r.
+
+-- ek2_108 [metin d=0.00] organ=['2. ├£ST EKSTREM─░TEYE A─░T SORUNLARDA ENGEL', '2.1 HAREKET KISITLILI─ŞININ DE─ŞERLEND─░R─░L'] alt=[] madde=2
+     madde? 2. ├£ST EKSTREM─░TEYE A─░T SORUNLARDA ENGELL─░L─░K ORANLARI
+     madde? 2.1 HAREKET KISITLILI─ŞININ DE─ŞERLEND─░R─░LMES─░
+
+-- ek2_109 [metin d=0.00] organ=[] alt=[] madde=2
+     madde? 2) Ba┼şparmakta engellilik y├╝zdesinin hesaplanmas─▒nda ise, hem tek ekle
+     madde? 3) Total el engellilik y├╝zdesinin hesaplanmas─▒ i├ğin, her parma─şa ait t
+
+-- ek2_111 [metin d=0.34] organ=[] alt=[] madde=2
+     madde? 4) Tablo 2.2 kullan─▒larak toplam el engellilik y├╝zdesi, ├╝st ekstremite
+     madde? 5) E─şer ki┼şide sadece "el"
+
+-- ek2_113 [metin d=0.31] organ=[] alt=[] madde=3
+     madde? 2) ├ûl├ğ├╝len fleksiyon ve ekstansiyon a├ğ─▒lar─▒ ┼şekil 2.1 kullan─▒larak, fl
+     madde? 3) ─░F eklemdeki hareket kayb─▒na ba─şl─▒ ba┼şparmak engellili─şinin belirle
+     madde? 4) E─şer ─░F eklem ankiloze ise, pozisyon a├ğ─▒s─▒ (V) ├Âl├ğ├╝l├╝r ve ┼şekil 2.1
+
+-- ek2_114 [metin d=0.00] organ=[] alt=[] madde=3
+     madde? 2) ├ûl├ğ├╝len fleks─░yon ve ekstansiyon a├ğ─▒lar─▒ (V), ┼şekil 2.2 kullan─▒lara
+     madde? 3) MKF eklemdeki hareket kayb─▒na ba─şl─▒ ba┼şparmak engellili─şin├╝n belirl
+     madde? 4) E─şer MKF eklem ankiloze ise, pozisyon a├ğ─▒s─▒ (V) ├Âl├ğ├╝l├╝r ve ┼şekil 2.
+
+-- ek2_116 [TABLO d=0.61] organ=[] alt=[] madde=2
+     madde? 2) Tablo 2.4 dikkate al─▒narak, adduksiyon kayb─▒ ya da ankiloza ba─şl─▒ b
+     madde? 2) Tablo 2.5 dikkate al─▒narak, radial abduksiyon kayb─▒ ya da ankiloza 
+
+-- ek2_117 [TABLO d=0.71] organ=[] alt=[] madde=1
+     madde? 2) Tablo 2.6 dikkate al─▒narak, opozisyon kayb─▒ ya da ankiloza ba─şl─▒ ba
+
+-- ek2_118 [metin d=0.00] organ=[] alt=[] madde=6
+     madde? 2) Ba┼şparmak hareket k─▒s─▒tl─▒l─▒─ş─▒na ba─şl─▒ engellili─şi tespit etmek i├ğin
+     madde? 2) Ba┼şparmak engellili─şini tespit etmek ─░├ğin, engellilik de─şerleri bil
+     madde? 3) Ba┼şparmak engellili─şini el, ├╝st ekstremite ve t├╝m v├╝cut engellili─şi
+     madde? 2.2 ve 2.3 kullan─▒l─▒r.
+     madde? 3) D─░F eklemdeki hareket kayb─▒na ba─şl─▒ parmak engellili─şinin belirlenm
+     madde? 4)E─şer D─░F eklem ankiloze ise, pozisyon a├ğ─▒s─▒ (V) ├Âl├ğ├╝l├╝r ve ┼şekil 2.3
+
+-- ek2_119 [metin d=0.09] organ=[] alt=[] madde=3
+     madde? 2) ├ûl├ğ├╝len fleksiyon ve ekstansiyon a├ğ─▒lar─▒ (V), ┼Şekil 2.4 kullan─▒lara
+     madde? 3) P─░F eklemdeki hareket kayb─▒na ba─şl─▒ parmak engellili─şinin belirlenm
+     madde? 4) E─şer P─░F eklem ankiloze ise, pozisyon a├ğ─▒s─▒ (V) ├Âl├ğ├╝l├╝r ve ┼şekil 2.
+
+-- ek2_120 [metin d=0.11] organ=[] alt=[] madde=2
+     madde? 2) ├ûl├ğ├╝len fleksiyon ve ekstansiyon a├ğ─▒lar─▒ (V), ┼Şekil 2.5 kullan─▒lara
+     madde? 3) P─░F eklemdeki hareket kayb─▒na ba─şl─▒ parmak engellili─şinin belirlenm
+
+-- ek2_121 [metin d=0.15] organ=[] alt=[] madde=4
+     madde? 4) E─şer P─░F eklem ankiloze ise, pozisyon a├ğ─▒s─▒ (V) ├Âl├ğ├╝l├╝r ve ┼şekil 2.
+     madde? 2) Bile┼şik de─şerler tablosu kullan─▒larak, eklem engellilik y├╝zdeleri k
+     madde? 3) Parmak engellili─şi el, ├╝st ekstremite ve t├╝m v├╝cut engellili─şi ile 
+     madde? 2.1, 2.2 ve 2,3).
+
+-- ek2_122 [metin d=0.00] organ=[] alt=[] madde=6
+     madde? 1)Parmak engellili─şine katk─▒da bulunan ve daha ├Ânce tan─▒mlanan amp├╝tas
+     madde? 2)Total ├╝st ekstremite engellilik de─şerini hesaplamak i├ğin bile┼şik de─ş
+     madde? 3) Parmak engellili─şini s─▒ras─▒yla el, ├╝st ekstremite ve t├╝m v├╝cut enge
+     madde? 2) Tablo 2.1 kullan─▒larak, her parma─şa kar┼ş─▒l─▒k gelen el engellilik y├╝
+     madde? 3) Total el engellili─şini hesaplamak i├ğin, tablo 2.1'de her parma─şa ka
+     madde? 4) El engellili─şini ├╝st ekstremite ve ki┼şinin engel oran─▒ ile ili┼şkile
+
+-- ek2_123 [metin d=0.16] organ=[] alt=[] madde=4
+     madde? 1)Fleksiyon ve ekstansiyon el bile─şi fonksiyonunun %70'ini, ├╝st ekstre
+     madde? 2)Radial ve ulnar deviasyon, el bile─şi fonksiyonunun %30'unu, ├╝st ekst
+     madde? 2) ┼Şekil 2.6 kullan─▒larak, ├Âl├ğ├╝len fleksiyon ve ekstansiyon a├ğ─▒lar─▒ (V
+     madde? 3) ├£st ekstremite engellilik y├╝zdesinin hesaplanmas─▒ i├ğin, fleksiyon v
+
+-- ek2_124 [metin d=0.21] organ=[] alt=[] madde=1
+     madde? 4) E─şer elbile─şi ankiloze ise, pozisyon a├ğ─▒s─▒ (V) ├Âl├ğ├╝l├╝r ve ┼şekil 2.6
+
+-- ek2_125 [metin d=0.00] organ=[] alt=[] madde=3
+     madde? 2) ├ûl├ğ├╝len radial ve ulnar deviasyon a├ğ─▒lar─▒ (V), ┼şekil 2.7 kullan─▒lar
+     madde? 3) ├£st ekstremite engellilik y├╝zdesinin hesaplanmas─▒ i├ğin, radial ve u
+     madde? 4) E─şer elbile─şi ankiloze ise, pozisyon a├ğ─▒s─▒ (V) ├Âl├ğ├╝l├╝r ve ┼şekil 2.7
+
+-- ek2_126 [metin d=0.23] organ=[] alt=[] madde=2
+     madde? 2) Engellilik tablolar─▒nda, el bile─şine ait her fonksiyonel ├╝nitenin g
+     madde? 3) Tablo 2.3 kullan─▒larak, ├╝st ekstremite engellili─şi, ki┼şinin engel o
+
+-- ek2_127 [metin d=0.00] organ=[] alt=[] madde=5
+     madde? 2)Pronasyon ve supinasyon, dirsek fonksiyonunun %40'─▒n1 olu┼şturur; ├╝st
+     madde? 1) Maksimum fleksiyon ve ekstansiyon gonyometrik olarak ├Âl├ğ├╝l├╝r. Norma
+     madde? 2) ├ûl├ğ├╝len fleksiyon ve ekstansiyon a├ğ─▒lar─▒ (V), ┼şekil 2.8 kullan─▒lara
+     madde? 3) ├£st ekstremite engellilik y├╝zdesinin hesaplanmas─▒ i├ğin, fleksiyon v
+     madde? 4) E─şer dirsek ankiloze ise, pozisyon a├ğ─▒s─▒ (V) ├Âl├ğ├╝l├╝r ve ┼şekil 2.8'd
+
+-- ek2_128 [metin d=0.17] organ=[] alt=[] madde=3
+     madde? 2) ├ûl├ğ├╝len pronasyon ve supinasyon a├ğ─▒lar─▒(V), ┼şekil 2.9 kullan─▒larak 
+     madde? 3) ├£st ekstremite engellilik y├╝zdesinin hesaplanmas─▒ i├ğin, supinasyon 
+     madde? 4) E─şer dirsek ankiloze ise, pozisyon a├ğ─▒s─▒ (V) ├Âl├ğ├╝l├╝r ve ┼şekil 2.9'd
+
+-- ek2_129 [metin d=0.20] organ=[] alt=[] madde=2
+     madde? 2) ├£st ekstremite engellili─şinin hesaplanmas─▒nda, her iki tip hareket 
+     madde? 3) ├£st ekstremite engellili─şinden ki┼şinin engel oran─▒n─▒n bulunmas─▒ i├ği
+
+-- ek2_130 [metin d=0.00] organ=[] alt=[] madde=3
+     madde? 2) ├ûl├ğ├╝len fleksiyon ve ekstansiyon a├ğ─▒lar─▒ (V), ┼şekil 2. I O'da a├ğ─▒la
+     madde? 3) ├£st ekstremite engellilik y├╝zdesinin hesaplanmas─▒ i├ğin, fleksiyon v
+     madde? 4) E─şer omuz ankiloze ise, pozisyon a├ğ─▒s─▒ (V) ├Âl├ğ├╝l├╝r ve ┼şekil 2.10'da
+
+-- ek2_131 [metin d=0.03] organ=[] alt=[] madde=3
+     madde? 2) ├ûl├ğ├╝len abduksiyon ve adduksiyon a├ğ─▒lar─▒ (V), ┼şekil 2.11'de a├ğ─▒lara
+     madde? 3) ├£st ekstremite engellilik y├╝zdesinin hesaplanmas─▒ ─░├ğin, abduksiyon 
+     madde? 4) ) E─şer omuz ankiloze ise, pozisyon a├ğ─▒s─▒ (V) ├Âl├ğ├╝l├╝r ve ┼şekil 2.11 
+
+-- ek2_132 [metin d=0.20] organ=[] alt=[] madde=1
+     madde? 2) ├ûl├ğ├╝len internal ve eksternal rotasyon a├ğ─▒lar─▒ (V), ┼şekil 2.12'de a
+
+-- ek2_133 [metin d=0.26] organ=[] alt=[] madde=2
+     madde? 3) ├£st ekstremite engellilik de─şerini hesaplamak i├ğin, internal ve eks
+     madde? 4) E─şer omuz ankiloze ise, pozisyon a├ğ─▒s─▒ (V) ├Âl├ğ├╝l├╝r ve ┼şekil 2.12'de
+
+-- ek2_134 [metin d=0.00] organ=[] alt=[] madde=2
+     madde? 2) ├£st ekstremite engellili─şinin hesaplanmas─▒nda, her bir omuz hareket
+     madde? 3) ├£st ekstremite engellili─şinin, t├╝m v├╝cut engellili─şine d├Ân├╝┼şt├╝r├╝lme
+
+-- ek2_135 [TABLO d=0.62] organ=['2.2 ├£ST EKSTREM─░TE AMPUTASYONLARI'] alt=[] madde=1
+     madde? 2.2 ├£ST EKSTREM─░TE AMPUTASYONLARI
+
+-- ek2_136 [metin d=0.46] organ=['2.3 ├£ST EKSTREM─░TE ARTROPLAST─░LER─░', '2.4. ├£ST EKSTREM─░TEN─░N D─░─ŞER SORUNLARI'] alt=[] madde=2
+     madde? 2.3 ├£ST EKSTREM─░TE ARTROPLAST─░LER─░
+     madde? 2.4. ├£ST EKSTREM─░TEN─░N D─░─ŞER SORUNLARI
+
+-- ek2_138 [metin d=0.12] organ=['2.5. PER─░FER─░K S─░N─░R LEZYONLARINA BA─ŞLI ', 'ENGELL─░L─░K ORANLARI'] alt=[] madde=3
+     madde? 2.5. PER─░FER─░K S─░N─░R LEZYONLARINA BA─ŞLI ├£ST EKSTREM─░TE
+     madde? 3. Etkilenen sinir yap─▒s─▒na g├Âre, duyusal ve motor kayb─▒n ├╝st ekstremi
+     madde? 4. Etkilenen her sinir yap─▒s─▒ i├ğin belirlenen engellilik y├╝zdesini duy
+
+-- ek2_141 [metin d=0.06] organ=['3. ALT EKSTREM─░TEYE A─░T SORUNLARDA ENGEL', 'KES─░┼ŞME NOKTALARI BO┼Ş OLAN Y├ûNTEMLER AYN', 'DE─ŞERLEND─░R─░LMES─░NDE KULLANILAMAZ.'] alt=[] madde=1
+     madde? 3. ALT EKSTREM─░TEYE A─░T SORUNLARDA ENGELL─░L─░K ORANLARI
+
+-- ek2_143 [TABLO d=0.57] organ=['3.1.ALT EKSTREM─░TE UZUNLUK FARKLILIKLARI'] alt=[] madde=1
+     madde? 3.1.ALT EKSTREM─░TE UZUNLUK FARKLILIKLARI
+
+-- ek2_144 [metin d=0.24] organ=['3.2. Y├£R├£Y├£┼Ş BOZUKLU─ŞU'] alt=[] madde=1
+     madde? 3.2. Y├£R├£Y├£┼Ş BOZUKLU─ŞU
+
+-- ek2_145 [metin d=0.05] organ=['3.3. KAS ATROF─░S─░ (UN─░LATERAL)'] alt=[] madde=1
+     madde? 3.3. KAS ATROF─░S─░ (UN─░LATERAL)
+
+-- ek2_146 [metin d=0.06] organ=['3.4. MANUEL KAS TESTLER─░'] alt=[] madde=1
+     madde? 3.4. MANUEL KAS TESTLER─░
+
+-- ek2_147 [metin d=0.07] organ=[] alt=[] madde=1
+     madde? 3.5. EKLEM HAREKET A├çIKLI─ŞI (bkz tablo 3.1)
+
+-- ek2_149 [metin d=0.20] organ=['3.6. EKLEM ANK─░LOZU'] alt=[] madde=1
+     madde? 3.6. EKLEM ANK─░LOZU
+
+-- ek2_150 [metin d=0.22] organ=[] alt=[] madde=1
+     madde? 3.15, 3, 16, 3.17 ve 3.18 numaral─▒ tablolardaki de─şerlere eklenir.
+
+-- ek2_151 [metin d=0.23] organ=[] alt=[] madde=1
+     madde? 3.28 'e bak─▒larak de─şerIendirilir.
+
+-- ek2_153 [metin d=0.17] organ=[] alt=[] madde=1
+     madde? 3.28.'e g├Âre de─şerlendirilir. T├╝m talar kemiklerin ankilozu ─░├ğin optim
+
+-- ek2_155 [metin d=0.02] organ=['3.7. AMPUTASYONLAR', '3.8. TANIYA DAYALI DE─ŞERLEND─░RMELER'] alt=[] madde=2
+     madde? 3.7. AMPUTASYONLAR
+     madde? 3.8. TANIYA DAYALI DE─ŞERLEND─░RMELER
+
+-- ek2_163 [metin d=0.00] organ=['3.9. DOKU KAYBI', '3.10. PER─░FER─░K S─░N─░R ZEDELENMES─░'] alt=[] madde=2
+     madde? 3.9. DOKU KAYBI
+     madde? 3.10. PER─░FER─░K S─░N─░R ZEDELENMES─░
+
+-- ek2_164 [metin d=0.02] organ=['3.11. VASK├£LER HASTALIKLAR'] alt=[] madde=1
+     madde? 3.11. VASK├£LER HASTALIKLAR
+
+-- ek2_165 [metin d=0.00] organ=['4. SANTRAL VE PER─░FER─░K S─░N─░R S─░STEM─░ HA', 'SEREBRAL BOZUKLUKLAR'] alt=[] madde=2
+     madde? 4. SANTRAL VE PER─░FER─░K S─░N─░R S─░STEM─░ HASTALIKLARINA BA─ŞLI
+     madde? 4.1. SINIFLAMA:
+
+-- ek2_166 [metin d=0.11] organ=['HASTALIKLARI'] alt=['I -Haf─▒f'] madde=0
+
+-- ek2_169 [metin d=0.00] organ=['S─░STEM─░K ROMAT─░ZMAL HASTALIKLAR'] alt=[] madde=0
+-- ek2_170: BOS SAYFA
+
+-- ek2_171 [metin d=0.00] organ=['ER─░┼ŞK─░NLER ─░├ç─░N TER├ûR, KAZA VE YARALANMA', 'DURUM B─░LD─░R─░R SA─ŞLIK KURULU RAPORU'] alt=[] madde=1
+     madde? 11. M├£RACAT EKL :
+
+-- ek2_172 [metin d=0.00] organ=['ER─░┼ŞK─░NLER ─░├ç─░N TER├ûR, KAZA VE YARALANMA', 'DURUM B─░LD─░R─░R SA─ŞLIK KURULU RAPORU'] alt=[] madde=1
+     madde? 2) Dallar─▒ d─▒┼ş─▒nda kalan bir dalda ise, engelli sa─şl─▒k kurulu raporu v
