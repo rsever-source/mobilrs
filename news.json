@@ -1,6 +1,16 @@
 {
-  "updated_at": "2026-11-11T09:37:35.951209+00:00",
+  "updated_at": "2026-11-11T17:57:16.199600+00:00",
   "items": [
+    {
+      "id": "2bf867aeb6b89dcaaa31",
+      "title": "SGK'dan Bedeli Ödenecek İlaçlar Listesi'nde Düzenleme",
+      "summary": "Sosyal Güvenlik Kurumu, Bedeli Ödenecek İlaçlar Listesi'nde yapılan düzenlemeleri içeren 2026/44 numaralı duyuruyu yayımladı. Genel Sağlık Sigortası Genel Müdürlüğü tarafından paylaşılan duyuruda güncel listeye dair ekler yer aldı. İlaç geri ödeme listesindeki değişiklikler genel sağlık hizmetleri kapsamında erişime sunuldu. Hak sahipleri ilgili duyuru metni ve ekli dosyalar üzerinden detaylara ulaşabilecek. Bu düzenleme ilaç temini ve geri ödeme süreçlerini yakından ilgilendiriyor.",
+      "detail_summary": "Sosyal Güvenlik Kurumu Genel Sağlık Sigortası Genel Müdürlüğü, 11 Kasım 2026 tarihinde yeni bir duyuru yayımladı. Bedeli Ödenecek İlaçlar Listesinde Yapılan Düzenlemeler Hakkında Duyuru 2026/44 başlığıyla paylaşılan metin kurumun resmi sitesinde yerini aldı. Duyuru kapsamında 12. madde düzenlemelerine dair bilgilendirme yapıldı. İlgili düzenlemeye ait PDF ve Excel formatındaki ek dosyalar internet sitesi üzerinden erişime açıldı. Bu tür listeleme güncellemeleri, ilaçların geri ödeme kapsamına alınması veya çıkarılması süreçlerinde önem taşıyor. Genel Sağlık Sigortası yararlanıcıları ve hastalar güncel listeleri inceleyerek ilaç temin koşullarını takip edebilir.",
+      "source": "Sosyal Güvenlik Kurumu – Duyurular",
+      "url": "https://www.sgk.gov.tr/duyuru/detay/Bedeli-Odenecek-Ilaclar-Listesinde-Yapilan-Duzenlemeler-Hakkinda-Duyuru-202644-2026-11-11-01-53-50",
+      "published_at": "2026-11-11T00:00:00+00:00",
+      "created_at": "2026-11-11T17:57:16.199600+00:00"
+    },
     {
       "id": "5f88c4d87fac4e5dc09f",
       "title": "Bakanlık COP31'de engelli bireyler, kadınlar ve çocukların iklim politikalarındaki rolünü gündeme taşıyacak",
@@ -110,16 +120,6 @@
       "url": "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanligindan-kimsesizler-icin-genelge/",
       "published_at": "2026-10-31T00:00:00+00:00",
       "created_at": "2026-10-31T12:51:23.062440+00:00"
-    },
-    {
-      "id": "f80c1eb54e39f67821c1",
-      "title": "Engellilere yönelik gündüzlü ve geçici bakım hizmetleri yaygınlaştırılacak",
-      "summary": "2027 Yılı Cumhurbaşkanlığı Yıllık Programı'na göre engellilere yönelik bakım hizmetleri geliştirilecek. Gündüzlü bakım merkezlerinin mevzuat altyapısı gelecek yıl tamamlanacak. Geçici ve misafir bakım hizmetleri ülke genelinde yaygınlaştırılacak. Toplum temelli bakım modeliyle gündüzlü aktif yaşam merkezlerinin sayısı artırılacak. Engelli bireylerin işgücü piyasasına katılımı için yeni destekler hayata geçirilecek. Kendi işini kurmak isteyen engellilere yönelik özel uygulamalar geliştirilecek.",
-      "detail_summary": "Engelli bireylerin bakım hizmetlerine daha kolay erişebilmesi için 2027 yılında kapsamlı adımlar atılacak. Cumhurbaşkanlığı Yıllık Programı çerçevesinde gündüzlü bakım merkezlerinin mevzuat altyapısı tamamlanacak. Ailelerin ve engelli bireylerin talepleri doğrultusunda geçici ve misafir bakım hizmetleri ülke genelinde yaygınlaştırılacak. Toplum temelli bakım hizmetlerine öncelik verilerek gündüzlü aktif yaşam merkezlerinin sayısı yükseltilecek. Çalışma hayatına katılmak isteyen engelli bireyler için yeni istihdam projeleri ve bilgilendirme çalışmaları yürütülecek. Kendi işini kurmak isteyen engellilere yönelik destekleyici uygulamalar hayata geçirilecek. Kamu kurumları arasındaki işbirliği güçlendirilerek engelli bireylerin toplumsal yaşama katılımı desteklenecek.",
-      "source": "Anadolu Ajansı – Engelli Yaşam",
-      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/engellilere-yonelik-gunduzlu-ve-gecici-bakim-hizmetleri-yayginlastirilacak/1832970",
-      "published_at": "2026-10-30T00:00:00+00:00",
-      "created_at": "2026-10-30T13:14:39.698886+00:00"
     }
   ],
   "pending": [],
@@ -137,6 +137,7 @@
     "https://www.sgk.gov.tr/duyuru/detay/5510-Sayili-Kanunun-Ek-23uncu-Maddesi-Kapsaminda-Hayatini-Kaybeden-Madencilerin-Yakinlarinin-Kurumumuz-Surekli-Isci-Kadrolarinda-Istihdam-2026-11-06-02-20-30": "2026-11-06T13:00:51.889942+00:00",
     "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/tihekten-down-sendromlu-cocugu-oyun-alanina-almayan-isletmeye-ceza/1833016": "2026-11-06T16:02:33.656253+00:00",
     "https://www.trthaber.com/haber/saglik/cop-tarihinde-bir-ilk-saglik-mustakil-eylem-alani-olarak-belirlendi-962586.html": "2026-11-08T16:44:07.521289+00:00",
-    "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanligi-cop31de-kadinlarin-guclenmesi-ve-cocuklarin-iklim-politikalarina-katilimini-gundeme-tasiyacak/": "2026-11-09T09:57:55.093411+00:00"
+    "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanligi-cop31de-kadinlarin-guclenmesi-ve-cocuklarin-iklim-politikalarina-katilimini-gundeme-tasiyacak/": "2026-11-09T09:57:55.093411+00:00",
+    "https://www.sgk.gov.tr/duyuru/detay/Bedeli-Odenecek-Ilaclar-Listesinde-Yapilan-Duzenlemeler-Hakkinda-Duyuru-202644-2026-11-11-01-53-50": "2026-11-11T17:57:16.199600+00:00"
   }
 }
