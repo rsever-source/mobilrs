@@ -2,246 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-11-04T09:31:51.827259+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "source_diagnostics": {
-        "Anadolu Ajansı – Engelli Yaşam": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 10,
-          "parsed_items": 10,
-          "errors": []
-        },
-        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
-          "stage": "html_list",
-          "anchors": 72,
-          "path_matches": 20,
-          "dated_from_title": 0,
-          "dated_from_context": 0,
-          "detail_attempts": 20,
-          "detail_successes": 20,
-          "parsed_items": 20,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "TRT Haber": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "TRT Haber – Sağlık": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
-          "stage": "html_list",
-          "anchors": 200,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
-          "stage": "html_list",
-          "anchors": 186,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
-          "stage": "html_list",
-          "anchors": 480,
-          "path_matches": 294,
-          "dated_from_title": 294,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 294,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Sosyal Güvenlik Kurumu – Duyurular": {
-          "stage": "html_list",
-          "anchors": 94,
-          "path_matches": 10,
-          "dated_from_title": 10,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 10,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
-          "stage": "tbb_mevzuat",
-          "anchors": 88,
-          "article_links": 12,
-          "keyword_matches": 0,
-          "detail_attempts": 0,
-          "detail_errors": 0,
-          "missing_dates": 0,
-          "parsed_items": 0,
-          "errors": []
-        },
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 10,
-          "keyword_eliminated": 20,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 0,
-          "in_7_day_window": 0,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "26 Eylül 2026 Tarihinde Yapılan Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavının Yazılı Bölüm Sonucu",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 506,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 18,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 10,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 474,
-          "accepted_as_candidate": 4
-        },
-        "examples": {},
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": [
-        {
-          "title": "Demokrat aday Abdul elSayed, ABD Senatosuna seçilen ilk Müslüman senatör oldu",
-          "source": "TRT Haber",
-          "url": "https://www.trthaber.com/haber/guncel/demokrat-aday-abdul-el-sayed-abd-senatosuna-secilen-ilk-musluman-senator-oldu-962189.html",
-          "published_at": "2026-11-04T07:19:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "Haber genel siyaset ve uluslararası seçim gündemiyle ilgili olup engelli bireylerin hakları, yaşamı veya hizmetleriyle doğrudan bir bağı bulunmamaktadır.",
-          "reject_label": "Genel siyaset",
-          "generated_title": "Demokrat aday Abdul el-Sayed, ABD Senatosuna seçilen ilk Müslüman senatör oldu",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "reject"
-        },
-        {
-          "title": "03.11.2026 Bakanımız Mahinur Özdemir Göktaş \"Kadınlar İçin Enerji Okulu\" sertifika töreninde konuştu: Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/bakanimiz-mahinur-ozdemir-goktas-kadinlar-icin-enerji-okulu-sertifika-toreninde-konustu/",
-          "published_at": "2026-11-03T00:00:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "Haber, kadınların enerji sektöründeki istihdamını ve eğitimini konu almakta olup engelli bireylerin hakları, bakımı veya erişilebilirliğiyle doğrudan bir ilgili değildir.",
-          "reject_label": "Kapsam dışı",
-          "generated_title": "Bakan Göktaş, Kadınlar İçin Enerji Okulu Sertifika Törenine Katıldı",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "reject"
-        },
-        {
-          "title": "03.11.2026 Bakanımız Mahinur Özdemir Göktaş, İSEDAK 42. Bakanlar Toplantısı'ndaki panelde konuştu: Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/bakanimiz-mahinur-ozdemir-goktas-isedak-42-bakanlar-toplantisindaki-panelde-konustu/",
-          "published_at": "2026-11-03T00:00:00+00:00",
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "",
-          "reject_label": "",
-          "generated_title": "Bakan Göktaş'tan İSEDAK Panelinde Dijital Güvenlik Vurgusu",
-          "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, İSEDAK 42. Bakanlar Toplantısı'nda dijital çağda ailenin korunması konulu bir panelde konuştu. Bakan Göktaş, dijital risklerin evlerin içine kadar girdiğini belirterek bilinçli birey ve güçlü aile vurgusu yaptı. 15 yaş altı çocuklara yönelik sosyal medya düzenlemesinin detaylarını paylaşan Göktaş, e-Devlet üzerinden yaş doğrulama sisteminin devreye alındığını açıkladı. Bakanlık olarak dijital farkındalığı artırmaya yönelik çalışmalar yürüttüklerini aktaran Göktaş, çocukların güvenliği için uluslararası iş birliği çağrısında bulundu.",
-          "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, İstanbul Kongre Merkezi'nde düzenlenen İSEDAK 42. Bakanlar Toplantısı'nın ikinci günündeki üst düzey panelde hitap etti. Bakan Göktaş, konuşmasında dijital dönüşümün evlerin içine kadar uzandığını ve ekranların çocuklar üzerinde ciddi riskler oluşturduğunu ifade etti. Aile ve Nüfus Yılı çerçevesinde aileyi güçlendirmenin sosyal politikaların merkezinde yer aldığını belirten Göktaş, dijital çağda en etkili güvenlik duvarının teknoloji değil bilinçli birey olduğunu söyledi. Bakanlık bünyesindeki \"Çocuklar Güvende\" uygulamasıyla ebeveynlere rehberlik ettiklerini ve zararlı içeriklere karşı önlem aldıklarını kaydetti. Türkiye'nin 15 yaş altındaki çocuklara yönelik öncü bir sosyal medya düzenlemesi hayata geçirdiğini hatırlatan Göktaş, nisan ayında başlayan sürecin ardından 1 Kasım itibarıyla yönetmeliğin uygulamaya girdiğini bildirdi. E-Devlet üzerinden yürütülecek yaş doğrulama sistemiyle kişisel verilerin üçüncü taraflarla paylaşılmayacağını vurgulayan Göktaş, uygulamanın 31 Mart 2027'ye kadar tüm hesapları kapsayacak şekilde yaygınlaşacağını açıkladı. İslam dünyasının dijital içerikleri tüketen değil üreten bir konuma gelmesi gerektiğini belirten Göktaş, çocukların güvenliği için uluslararası düzeyde ortak mekanizmalar kurulmasını önerdi.",
-          "decision": "publish"
-        },
-        {
-          "title": "02.11.2026 Bakanımız Göktaş, Tuzla Belediyesi Gündüz Bakımevi'nin açılışına katıldı Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/bakanimiz-goktas-tuzla-belediyesi-gunduz-bakimevinin-acilisina-katildi/",
-          "published_at": "2026-11-02T00:00:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "Haber, erken çocukluk ve kreş hizmetlerine ilişkin genel bir belediye açılışını konu almakta olup doğrudan engelli bireylere veya özel gereksinimli çocuklara yönelik somut bir bağl",
-          "reject_label": "Kapsam dışı",
-          "generated_title": "Bakan Göktaş, Tuzla Belediyesi Gündüz Bakımevi'nin açılışına katıldı",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "reject"
-        }
-      ]
-    },
-    {
       "run_at": "2026-11-04T18:06:14.274049+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -6282,6 +6042,198 @@
         "zero_candidates_is_not_an_error": true
       },
       "candidates": []
+    },
+    {
+      "run_at": "2026-11-11T17:57:16.199600+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [
+        {
+          "source": "Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
+          "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='www.tbb.gov.tr', port=443): Max retries exceeded with url: /tr/mevzuat-duyurulari (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1018)')))\"))",
+          "kind": "source_fetch_error"
+        }
+      ],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 6,
+          "parsed_items": 6,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 480,
+          "path_matches": 294,
+          "dated_from_title": 294,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 294,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Resmî Gazete – TBB Mevzuat Yedeği": {
+          "stage": "skipped",
+          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 7,
+          "keyword_eliminated": 23,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 499,
+        "pending_total": 0,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 18,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 8,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 472,
+          "accepted_as_candidate": 1
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "11 Kasım 2026 Bedeli Ödenecek İlaçlar Listesinde Yapılan Düzenlemeler Hakkında Duyuru 2026/44 GENEL SAĞLIK SİGORTASI GENEL MÜDÜRLÜĞÜ",
+          "source": "Sosyal Güvenlik Kurumu – Duyurular",
+          "url": "https://www.sgk.gov.tr/duyuru/detay/Bedeli-Odenecek-Ilaclar-Listesinde-Yapilan-Duzenlemeler-Hakkinda-Duyuru-202644-2026-11-11-01-53-50",
+          "published_at": "2026-11-11T00:00:00+00:00",
+          "content_origin": null,
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "SGK'dan Bedeli Ödenecek İlaçlar Listesi'nde Düzenleme",
+          "summary": "Sosyal Güvenlik Kurumu, Bedeli Ödenecek İlaçlar Listesi'nde yapılan düzenlemeleri içeren 2026/44 numaralı duyuruyu yayımladı. Genel Sağlık Sigortası Genel Müdürlüğü tarafından paylaşılan duyuruda güncel listeye dair ekler yer aldı. İlaç geri ödeme listesindeki değişiklikler genel sağlık hizmetleri kapsamında erişime sunuldu. Hak sahipleri ilgili duyuru metni ve ekli dosyalar üzerinden detaylara ulaşabilecek. Bu düzenleme ilaç temini ve geri ödeme süreçlerini yakından ilgilendiriyor.",
+          "detail_summary": "Sosyal Güvenlik Kurumu Genel Sağlık Sigortası Genel Müdürlüğü, 11 Kasım 2026 tarihinde yeni bir duyuru yayımladı. Bedeli Ödenecek İlaçlar Listesinde Yapılan Düzenlemeler Hakkında Duyuru 2026/44 başlığıyla paylaşılan metin kurumun resmi sitesinde yerini aldı. Duyuru kapsamında 12. madde düzenlemelerine dair bilgilendirme yapıldı. İlgili düzenlemeye ait PDF ve Excel formatındaki ek dosyalar internet sitesi üzerinden erişime açıldı. Bu tür listeleme güncellemeleri, ilaçların geri ödeme kapsamına alınması veya çıkarılması süreçlerinde önem taşıyor. Genel Sağlık Sigortası yararlanıcıları ve hastalar güncel listeleri inceleyerek ilaç temin koşullarını takip edebilir.",
+          "decision": "publish",
+          "site_published_at": "2026-11-11T17:57:16.199600+00:00"
+        }
+      ]
     }
   ],
   "system_incidents": [
@@ -6524,8 +6476,8 @@
       "first_seen": "2026-11-09T20:50:37.312511+00:00",
       "status": "reported",
       "details": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='www.tbb.gov.tr', port=443): Max retries exceeded with url: /tr/mevzuat-duyurulari (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1018)')))\"))",
-      "last_seen": "2026-11-11T09:38:03.842023+00:00",
-      "occurrences": 5,
+      "last_seen": "2026-11-11T17:58:00.944991+00:00",
+      "occurrences": 6,
       "reported_at": "2026-11-10T20:55:47.950675+00:00"
     },
     {
