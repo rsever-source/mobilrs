@@ -207,3 +207,11 @@ Tüm dosyaların SHA-256 özeti. Üretim tarihi: 12.11.2026.
 | `testler/ortak.py` | 8846 | `9c2d08877e92714d079bf1a7aecaadc44f4524e208580c1ab7227d6c8b8a3b1f` |
 | `testler/test_sozluk_kavram.py` | 14957 | `d4b43a86ab434df2b4cf1cdea0f3fd89c8d30ab3f82fcd615c13d8d778bbdd77` |
 | `testler/veri_testleri.py` | 15072 | `1a06058d802442bd050b37a28f18aae3961e37239e9abf9e96cc63ce36b58433` |
+
+
+## Bağımsız inceleme ekleri (12.11.2026)
+
+| Dosya | Bayt | SHA-256 |
+| --- | ---: | --- |
+| `arac/ek2_kavram_kanit_kontrol.py` | 4823 | `e46b15ad1d3a91dc38b7dfc32792d1b7555ffc4ccb8c41218a2d9b244c20fab0` |
+| `raporlar/bagimsiz_inceleme_2026-11-12.md` | 4879 | `84dfb31c917b9d09731233c2ef4c737d0cf11b62d6be2c4119fb43466b99bb49` |
