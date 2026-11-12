@@ -200,7 +200,6 @@ Tüm dosyaların SHA-256 özeti. Üretim tarihi: 12.11.2026.
 | `raporlar/asama2_devam_denetim_raporu.md` | 12058 | `097e4796766ee5159e0614d1e74f258bd3190d4eae9c63ba39ff6a8fc7b4ae46` |
 | `raporlar/asama2_yapisal_sonuc.json` | 259 | `5da95453083912bc4c9194ab6d16f7509c7d7aeb44d09a0acc168d171f293e14` |
 | `raporlar/icerik_sonuc.json` | 2172 | `1622f8c57f919f1f91e9599aff16f0a83d3371a18f1ffee0b5483005bf28d813` |
-| `raporlar/manifest_sha256.md` | 21710 | `8a631c3d138f1f33971a30cb09f3ee75b6981cd350cab545c2bfde2af215f294` |
 | `raporlar/test_sonuclari.txt` | 7771 | `4e7c55466a80ea418c7bf47283459c9918d316c363c345b3b41096fcf64c6908` |
 | `raporlar/yapisal_sonuc.json` | 7532 | `fe7c697570b2e2217db22b897cd35f4685b68c34deee6c5283b91066ce5caa82` |
 | `schema/sozluk_kavram.v1.0.0.json` | 10273 | `f95809b05b7ec92c1dfa60976fa1166ae42c5d8ef0e2b7a2439ca64ed846717d` |
