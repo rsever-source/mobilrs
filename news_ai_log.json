@@ -2,228 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-11-05T16:35:30.975508+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "source_diagnostics": {
-        "Anadolu Ajansı – Engelli Yaşam": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 11,
-          "parsed_items": 11,
-          "errors": []
-        },
-        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
-          "stage": "html_list",
-          "anchors": 72,
-          "path_matches": 20,
-          "dated_from_title": 0,
-          "dated_from_context": 0,
-          "detail_attempts": 20,
-          "detail_successes": 20,
-          "parsed_items": 20,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "TRT Haber": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "TRT Haber – Sağlık": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
-          "stage": "html_list",
-          "anchors": 200,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
-          "stage": "html_list",
-          "anchors": 186,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
-          "stage": "html_list",
-          "anchors": 480,
-          "path_matches": 294,
-          "dated_from_title": 294,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 294,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Sosyal Güvenlik Kurumu – Duyurular": {
-          "stage": "html_list",
-          "anchors": 94,
-          "path_matches": 10,
-          "dated_from_title": 10,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 10,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
-          "stage": "tbb_mevzuat",
-          "anchors": 88,
-          "article_links": 12,
-          "keyword_matches": 0,
-          "detail_attempts": 0,
-          "detail_errors": 0,
-          "missing_dates": 0,
-          "parsed_items": 0,
-          "errors": []
-        },
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 10,
-          "keyword_eliminated": 20,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 0,
-          "in_7_day_window": 0,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 507,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 17,
-          "duplicate_in_this_run": 1,
-          "url_seen_within_7_days": 14,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 471,
-          "accepted_as_candidate": 4
-        },
-        "examples": {},
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": [
-        {
-          "title": "Engelli adaylar ile işverenler 21. Engelsiz Kariyer Günleri'nde buluştu",
-          "source": "Anadolu Ajansı – Engelli Yaşam",
-          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/engelli-adaylar-ile-isverenler-21-engelsiz-kariyer-gunlerinde-bulustu/1833009",
-          "published_at": "2026-11-05T00:00:00+00:00",
-          "status": "not_processed",
-          "error": "HTTPError('503 Server Error: Service Unavailable for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent')"
-        },
-        {
-          "title": "Brüksel'e giden uçak bomba ihbarı üzerine Brüksel Havalimanı'na güvenli iniş yaptı",
-          "source": "TRT Haber",
-          "url": "https://www.trthaber.com/haber/guncel/bruksele-giden-ucak-bomba-ihbari-uzerine-bruksel-havalimanina-guvenli-inis-yapti-962333.html",
-          "published_at": "2026-11-05T10:09:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "Haber, engelli bireylerin hakları, sosyal yardımları veya yaşam koşullarıyla doğrudan ilgili olmayıp genel güvenlik gündemini konu almaktadır.",
-          "reject_label": "Genel gündem",
-          "generated_title": "Brüksel'e giden uçak bomba ihbarı üzerine güvenli iniş yaptı",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "reject"
-        },
-        {
-          "title": "05.11.2026 Kasım ayı yaşlı ve engelli aylıkları hesaplara yatırılmaya başlandı Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/kasim-ayi-yasli-ve-engelli-ayliklari-hesaplara-yatirilmaya-baslandi/",
-          "published_at": "2026-11-05T00:00:00+00:00",
-          "status": "not_processed",
-          "error": "HTTPError('503 Server Error: Service Unavailable for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent')"
-        },
-        {
-          "title": "5 Kasım 2026 Türkiye - Almanya Danışma Günleri, Adana, 01-02-03 Aralık 2026 EMEKLİLİK HİZMETLERİ GENEL MÜDÜRLÜĞÜ",
-          "source": "Sosyal Güvenlik Kurumu – Duyurular",
-          "url": "https://www.sgk.gov.tr/duyuru/detay/Turkiye---Almanya-Danisma-Gunleri-Adana-01-02-03-Aralik-2026-2026-11-05-02-38-24",
-          "published_at": "2026-11-05T00:00:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "Bu duyuru genel nitelikli uluslararası emeklilik danışmanlığı etkinliğine ilişkin olup engelli bireylere yönelik özel bir düzenleme içermemektedir.",
-          "reject_label": "Genel emeklilik",
-          "generated_title": "Adana'da Türkiye-Almanya Danışma Günleri Düzenlenecek",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "reject"
-        }
-      ]
-    },
-    {
       "run_at": "2026-11-05T23:44:25.555913+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -6205,6 +5983,225 @@
         "zero_candidates_is_not_an_error": true
       },
       "candidates": []
+    },
+    {
+      "run_at": "2026-11-12T18:27:52.483871+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [
+        {
+          "source": "Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
+          "error": "Detay sayfası doğrulanamadı (https://www.tbb.gov.tr/tr/mevzuat-duyurulari/yesil-mutabakat-eylem-plani-2026-2030-ile-ilgili-202612-sayili-cumhurbaskanligi-genelgesi): ValueError: TBB detay sayfasında güvenilir duyuru yayın tarihi bulunamadı",
+          "kind": "source_parse_error"
+        }
+      ],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 7,
+          "parsed_items": 7,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 480,
+          "path_matches": 294,
+          "dated_from_title": 294,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 294,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "tls_verified": true,
+          "list_read": true,
+          "anchors": 88,
+          "article_links": 12,
+          "keyword_matches": 0,
+          "health_probe": true,
+          "detail_attempts": 1,
+          "detail_successes": 0,
+          "parsed_items": 0,
+          "validated": false,
+          "errors": [
+            "Detay sayfası doğrulanamadı (https://www.tbb.gov.tr/tr/mevzuat-duyurulari/yesil-mutabakat-eylem-plani-2026-2030-ile-ilgili-202612-sayili-cumhurbaskanligi-genelgesi): ValueError: TBB detay sayfasında güvenilir duyuru yayın tarihi bulunamadı"
+          ]
+        },
+        "Resmî Gazete – TBB Mevzuat Yedeği": {
+          "stage": "skipped",
+          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 7,
+          "keyword_eliminated": 23,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 500,
+        "pending_total": 0,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 18,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 4,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 478,
+          "accepted_as_candidate": 0
+        },
+        "examples": {
+          "already_published": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Kırklareli'nde tıp öğrencilerinden engelli bireylere evlerinde mini konser"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "TİHEK'ten Down sendromlu çocuğu oyun alanına almayan işletmeye ceza"
+            }
+          ],
+          "older_than_7_days": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Engellilere yönelik gündüzlü ve geçici bakım hizmetleri yaygınlaştırılacak"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+              "title": "Engellilere yönelik gündüzlü ve geçici bakım hizmetleri yaygınlaştırılacak"
+            }
+          ],
+          "url_seen_within_7_days": [
+            {
+              "source": "TRT Haber – Sağlık",
+              "title": "COP tarihinde bir ilk: Sağlık, müstakil eylem alanı olarak belirlendi"
+            },
+            {
+              "source": "TRT Haber – Sağlık",
+              "title": "Yerli kanser ilacı yolunda önemli adım"
+            }
+          ]
+        },
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": []
     }
   ],
   "system_incidents": [
@@ -6447,8 +6444,8 @@
       "first_seen": "2026-11-09T20:50:37.312511+00:00",
       "status": "reported",
       "details": "Detay sayfası doğrulanamadı (https://www.tbb.gov.tr/tr/mevzuat-duyurulari/yesil-mutabakat-eylem-plani-2026-2030-ile-ilgili-202612-sayili-cumhurbaskanligi-genelgesi): ValueError: TBB detay sayfasında güvenilir duyuru yayın tarihi bulunamadı",
-      "last_seen": "2026-11-12T18:24:24.428844+00:00",
-      "occurrences": 10,
+      "last_seen": "2026-11-12T18:28:43.782251+00:00",
+      "occurrences": 11,
       "reported_at": "2026-11-10T20:55:47.950675+00:00"
     },
     {
