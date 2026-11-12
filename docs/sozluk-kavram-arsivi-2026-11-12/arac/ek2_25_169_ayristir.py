@@ -181,14 +181,16 @@ def main():
             )
             i = j
 
-    (ARAC / "ek2_25_169_kayitlar.json").write_text(json.dumps(kayitlar, ensure_ascii=False, indent=1), encoding="utf-8")
+    (ARAC / "ek2_25_169_kayitlar.json").write_text(
+        json.dumps(kayitlar, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n"
+    )
 
     inceleme = ["# EK-2 s.25-169 terim cikarimi (inceleme)", "", f"Kayit: {len(kayitlar)}", ""]
     for k in kayitlar:
         inceleme.append(f"- `{k['sayfa']}` | {k['bolum_adi']} | alt={k['alt_bolum'] or '-'} | `{k['madde_etiketi']}` | **{k['kanonik_ad']}**")
         if k["tanim"]:
             inceleme.append(f"  - tanım: {k['tanim'][:200]}")
-    (ARAC / "ek2_25_169_inceleme.md").write_text("\n".join(inceleme), encoding="utf-8")
+    (ARAC / "ek2_25_169_inceleme.md").write_text("\n".join(inceleme), encoding="utf-8", newline="\n")
 
     print(f"kayit: {len(kayitlar)}")
     dagilim = {}

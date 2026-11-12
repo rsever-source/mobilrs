@@ -324,11 +324,11 @@ def main():
         )
 
     (ARAC / "ek2_kaynak_eslesme.json").write_text(
-        json.dumps(eslesme, ensure_ascii=False, indent=1), encoding="utf-8"
+        json.dumps(eslesme, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n"
     )
 
     hedef = KOK / "data" / "sozluk_kavram_data.json"
-    hedef.write_text(json.dumps(cikti, ensure_ascii=False, indent=2), encoding="utf-8")
+    hedef.write_text(json.dumps(cikti, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
     ek1 = sum(1 for r in cikti if "ek_1_baglantisi" in r)
     ek2 = sum(1 for r in cikti if "ek_2_baglantisi" in r)
     print(f"toplam: {len(cikti)}  EK-1: {ek1}  EK-2: {ek2}")

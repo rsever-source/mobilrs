@@ -126,7 +126,9 @@ def main():
         eslesme["ek2_yok"] += 1
         print(f"ESLESMEDI {skor:.2f} s{sayfa} {k['kanonik_ad'][:70]}")
 
-    (K / "data" / "sozluk_kavram_kaynak_izleri.json").write_text(json.dumps(izler, ensure_ascii=False, indent=1), encoding="utf-8")
+    (K / "data" / "sozluk_kavram_kaynak_izleri.json").write_text(
+        json.dumps(izler, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n"
+    )
     print(dict(eslesme))
     print("toplam iz:", len(izler))
 

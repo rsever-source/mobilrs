@@ -6,7 +6,7 @@ raporlarını **tekrar üretilebilir** biçimde içerir.
 
 **Dal:** `archive/sozluk-kavram-asama2-devam-2026-11-12`
 **Veri:** `data/sozluk_kavram_data.json` — 745 kayıt (EK-1 276 + EK-2 469)
-**Boyut / SHA-256:** 509.283 bayt · `710f86b20806910475c4c733404237c38cd117a780be7b0e9cb2dbf6ec003702`
+**Boyut / SHA-256:** 495.010 bayt · `0a632be756532ce7e89ca87193ff85759efb65e08d61c9a3c9fb9a36f76e74a5`
 
 > Bu arşiv **arşivdir**: uygulama kodu değildir, canlı hizmette kullanılmaz.
 > `main`, `cloud-run-migration` ve canlı servis bu çalışmayla değiştirilmemiştir.
@@ -51,7 +51,7 @@ Beklenen sonuç:
 | Ölçüt | Değer |
 | --- | --- |
 | Kayıt | 745 (EK-1 276 + EK-2 469) |
-| Veri boyutu / SHA-256 | 509.283 bayt · `710f86b2…003702` |
+| Veri boyutu / SHA-256 | 495.010 bayt · `0a632be7…6e74a5` |
 | Şema v1.0.3 | 745/745 PASS |
 | Şema v1.0.0 | 275/745 PASS (şema farkı) |
 | XOR / kimlik / künye / sayfa hatası | 0 / 0 / 0 / 0 |

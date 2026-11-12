@@ -122,7 +122,7 @@ def main():
         "icd_kodu": icd_sayisi,
     }
     (KOK / "raporlar" / "asama2_yapisal_sonuc.json").write_text(
-        json.dumps(rapor, ensure_ascii=False, indent=2), encoding="utf-8"
+        json.dumps(rapor, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n"
     )
 
 

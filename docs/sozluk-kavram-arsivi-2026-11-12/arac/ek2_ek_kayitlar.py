@@ -489,7 +489,7 @@ def main():
             }
         )
     hedef = ARAC / "ek2_ek_kayitlar.json"
-    hedef.write_text(json.dumps(kayitlar, ensure_ascii=False, indent=1), encoding="utf-8")
+    hedef.write_text(json.dumps(kayitlar, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     print(f"kayit: {len(kayitlar)}  dosya: {hedef}")
 
 

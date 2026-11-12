@@ -2,8 +2,8 @@
 
 **Üretim tarihi:** 12.11.2026
 **Çıktı:** `sozluk_kavram_data.json`
-**Boyut:** 509.283 bayt
-**SHA-256:** `710f86b20806910475c4c733404237c38cd117a780be7b0e9cb2dbf6ec003702`
+**Boyut:** 495.010 bayt
+**SHA-256:** `0a632be756532ce7e89ca87193ff85759efb65e08d61c9a3c9fb9a36f76e74a5`
 **Kayıt:** **745** (EK-1: 276, EK-2: 469) — önceki aşamanın 486 kaydının üzerine
 **259 yeni EK-2 kaydı** eklendi.
 **Dal:** `archive/sozluk-kavram-asama2-devam-2026-11-12`
@@ -42,12 +42,17 @@ madde etiketi yazılmamıştır.
 | Dosya | Bayt | SHA-256 |
 | --- | --- | --- |
 | `ek2_2019_rg.pdf` (172 sayfa, OCR kaynağı) | 4.853.292 | `b630f6adfc12144d22b9ce36f1ac7e660650b4f13e9dfd8d207ba21501d9ad28` |
-| `ek2_025_169_kaynak_adaylari.json` (aşama 2 aday havuzu) | 60.914 | `6889e7ffbb192ae05e49fe8d934546c165750b9479bcd050f001ac13ed72e60a` |
-| `ek2_ek_kayitlar.json` (yeni kayıt kaynağı, 259 kayıt) | 68.641 | `c0df33eb9c0ca1b95e8304e0e9858e09a377f22c1971e2ebfb8a8cfa604cdb02` |
-| `u1_ek1_001_020.json` (135) | 28.363 | `73ac0e18d7fc48242936d8f529abc8b94cb03c9d2cd696f8564dfed287a14d86` |
-| `u2_ek1_021_040.json` (141) | 28.209 | `0216ab14584b97cf5c63964571494e5a62fd3296ba3eb96a582f3d429d471773` |
-| `u3b_ek2_003_024.json` (142) | 42.017 | `7046a3a66ded03411ba715a503abee5055f93d209f4fa70440c9b763c5ebe3dd` |
-| `sozluk_kavram.v1.0.3_taslak.json` (bağlayıcı şema) | 11.762 | `e5e3f409bd78371e1e6e341c689a7964c532868bcc1e39aa550bcfc410db49d2` |
+| `arac/ek2_25_169_kayitlar.json` (aşama 2 aday havuzu, 136 aday) | 59.553 | `3db957c736062a82e26a0be2598eeab82145d6d8758d76b3d168e1ec967d8197` |
+| `arac/ek2_ek_kayitlar.json` (yeni kayıt kaynağı, 259 kayıt) | 66.568 | `fe2a8cc028e8a6cf30d4c12ccb55b653e5464283a6e5c60cde89f62544743e73` |
+| `arac/parca/u1_ek1_001_020.json` (135) | 28.363 | `73ac0e18d7fc48242936d8f529abc8b94cb03c9d2cd696f8564dfed287a14d86` |
+| `arac/parca/u2_ek1_021_040.json` (141) | 28.209 | `0216ab14584b97cf5c63964571494e5a62fd3296ba3eb96a582f3d429d471773` |
+| `arac/parca/u3b_ek2_003_024.json` (142) | 42.017 | `7046a3a66ded03411ba715a503abee5055f93d209f4fa70440c9b763c5ebe3dd` |
+| `schema/sozluk_kavram.v1.0.3_taslak.json` (bağlayıcı şema) | 11.762 | `e5e3f409bd78371e1e6e341c689a7964c532868bcc1e39aa550bcfc410db49d2` |
+| `data/sozluk_kavram_kaynak_izleri.json` (745 kanıt izi) | 111.251 | `ba69836aa7dd99994652ca35f3339c563be56508c8ace0c5ee68d2e10d550b91` |
+
+Özetler ve boyutlar **depoda saklanan (LF satır sonlu) içeriğin** değerleridir;
+arşiv betikleri de çıktıyı LF olarak üretir (`newline="\n"`), böylece Windows ve
+Linux'ta aynı hash elde edilir.
 
 EK-2 PDF'inin metin katmanı 172 sayfanın tamamında **0 karakterdir**; bu yüzden
 EK-2 tarafındaki bütün ad/etiket/sayfa bilgisi OCR çıktısına dayanır ve PDF
@@ -243,8 +248,8 @@ python -X utf8 testler\test_sozluk_kavram.py
 python -X utf8 testler\veri_testleri.py
 ```
 
-Beklenen sonuç: **745 kayıt, 509.283 bayt, SHA-256
-`710f86b20806910475c4c733404237c38cd117a780be7b0e9cb2dbf6ec003702`,
+Beklenen sonuç: **745 kayıt, 495.010 bayt, SHA-256
+`0a632be756532ce7e89ca87193ff85759efb65e08d61c9a3c9fb9a36f76e74a5`,
 v1.0.3 745/745 PASS, testler 46/46 + 12/12 PASS.**
 
 Not: `birlestir_nihai.py` her koşuda `arac\ek2_kaynak_eslesme.json` dosyasını

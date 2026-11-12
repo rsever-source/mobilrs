@@ -1,8 +1,8 @@
-﻿# Test ve denetim sonuclari - 12.11.2026
+# Test ve denetim sonuclari - 12.11.2026
 
 ## 1) arac/nihai_denetim.py (sema / XOR / kimlik / kunye / sayfa)
 ``
-dosya: sozluk_kavram_data.json boyut=509283 kayit=745
+dosya: sozluk_kavram_data.json boyut=495010 kayit=745
 v1.0.0: 275/745 PASS
   #116 ek1_f_06_miyelodisplastik_miyeloproliferatif_ne_agir: [maxLength] kanonik_ad :: 'Miyelodisplastik / Miyeloproliferatif neoplaziler (MDS/MPN) (kronik miyelomonositik l├Âsemi, atipik kronik miyeloid l├Âsemi, Juvenil miyelomonositik l├Âsemi, MDS/MPN ring sideroblast ve trombosito
   #276 ek2_s003_kalici_isitme_engeli: [required] ek_2_baglantisi :: 'tanim' is a required property
@@ -128,4 +128,3 @@ PASS  D7b    Sayim uyusmazligi yakalaniyor (regresyon)
 yeni kayit: 259
 hata: 0
 ```
-
