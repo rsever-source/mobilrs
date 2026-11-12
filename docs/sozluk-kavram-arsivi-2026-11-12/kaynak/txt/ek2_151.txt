@@ -1,0 +1,40 @@
+Tablo 3.20- Dizin valgus pozisyonunda ankilozuna bağlı engellilik.
+Valgusda ankiloz(0)
+10-19
+20-29
+30+
+Kişinin (alt ekstremite) engellilik oranı (%)
+6
+13
+17
+(12)
+(25)
+(33)
+Tablo 3.21- Dizin fleksiyon pozisyonunda anldlozuna bağlı engellilik.
+Fleksiyonda ankiloz(0)
+20-29
+30-39
+40+
+Kişinin (alt ekstremite) engellilik oranı (%)
+6
+13
+17
+(12)
+(25)
+(33)
+Tablo 3.22- Dizin iç veya dış malrotasyonda ankilozuna bağlı engellilik.
+nternal veya eksternal Kişinin (alt ekstremite) engellilik oranı (%)
+malrotasyonda ankiloz(0)
+10-19
+20-29
+30+
+6
+13
+17
+(12)
+(25)
+(33)
+Ayak Bileği: Ayak bileğinin optimal ankiloz pozisyonu, fleksiyon, ekstansiyon, varus veya
+valgusa gitmeden nötralde kalmasıdır. Nötral pozisyonda ankiloz ayakta %14, alt ekstremitede
+%10 ve kişide %5 oranında engelliliğe neden olur. Nötral pozisyonların varyasyonları Tablo 3.24 —
+3.28 'e bakılarak değerIendirilir.

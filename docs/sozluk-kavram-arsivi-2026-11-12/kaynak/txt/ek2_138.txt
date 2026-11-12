@@ -1,0 +1,48 @@
+2.5. PERİFERİK SİNİR LEZYONLARINA BAĞLI ÜST EKSTREMİTE
+ENGELLİLİK ORANLARI
+Periferik sinir lezyonuna bağlı engelliliğin belirlenmesinde izlenecek basamaklar:
+l. Duyu kaybı, ağrı, motor kayıp ve/veya kuvvet kaybı mevcutsa hangi periferik sinirle ilişkili
+olduğunu belirleyin.
+2, Duyu kaybının ve ağrının ciddiyetini Tablo 2.10'a, motor kaybı Tablo 2.11 'e göre
+derecelendirin.
+3. Etkilenen sinir yapısına göre, duyusal ve motor kaybın üst ekstremitede neden olduğu maksimum
+engelliliği spinal sinirler için Tablo 2.12'ye, brakiyal pleksus için Tablo 2.13'e ve periferik sinirler
+için Tablo 2.14'e göre belirleyin.
+4. Etkilenen her sinir yapısı için belirlenen engellilik yüzdesini duyu velveya motor kayıp derecesi
+ile (3. basamak) çarparak engellilik yüzdesini belirleyin.
+Birleşik motor ve duyu lifleri içeren sinirlerin lezyonunda her bir fonksiyon için 1-4. basamaklar ayrı
+ayrı uygulanır, bulunan motor ve duyu kaybına bağlı engellilik oranları Balthazard formülü ile
+toplanarak üst ekstremite için toplam engellilik yüzdesi hesaplanır.
+Birden fazla sinirin etkilendiği durumlarda yine ayrı ayrı neden oldukları engellilik oranları bulunup
+Balthazard formülü ile toplam engellilik yüzdesi hesaplanır.
+Üst ekstremite için bulunan engellilik yüzdesi Tablo 2.3 kullanılarak tüm vücut engellilik yüzdesine
+çevirilir. Üst ekstremite ile ilgili engelliliğe yol açan başka nedenler ve/veya bilateral tutulum varsa,
+her bir durum için ayrı ayrı engellilik oranları saptanıp Balthazard formülü ile toplam engellilik
+yüzdesi hesaplanır.
+Tablo 2.10- Periferik sinir lezyonu sonucu ortaya çıkan ağrı veya duyu kaybına bağlı üst
+ekstremite yetersizliğinin tesbiti.
+Derece
+5
+4
+3
+2
+o
+Duyu Kaybı Veya Ağrının Tanımı
+Duyu kaybı, anormal duyu veya ağrı yok
+Aktivite esnasında unutulan bozulmuş yüzeyel duyu (azalmış hafif dokunma)
+veya ağrı ile birlikte olan veya olmayan hafifduyu kaybı
+Bazı aktiviteleri etkileyen, anormal duyunun (öm. disestezi) veya hafif
+ağrının eşlik ettiği bozulmuş yüzeyel duyu (azalmış hafif dokunma ve iki nokta
+ayırımı)
+Bazı aktiviteleri engelleyen, anormal duyunun (örn. disestezi) veya orta
+derecede ağrının eşlik ettiği azalmış yüzeyel ve taktil duyu
+Birçok aktiviteyi engelleyen, anormal duyunun (örn. dişestezi) veya ciddi
+derecede ağrının eşlik ettiği, yüzeyel ve taktil duyu kaybı (derin duyu korunmuş)
+Aktiviteyi tam engelleyen anormal duyu, ciddi ağrı ve tam duyu kaybı
+Duyu Kaybı %
+0
+1-25
+26-60
+61-80
+81-99
+100

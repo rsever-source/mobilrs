@@ -1,0 +1,95 @@
+Tablo 3.23- Ayak bileğinin plantar fleksiyon-dorsofleksiyonda ankilozuna bağlı engellilik.
+Pozisyon
+200 + dorsofleksiyon
+10-190 dorsofleksiyon
+10-190 plantar fleksiyon
+20-290 plantar fleksiyon
+300 + plantar fleksiyon
+Kişinin (alt ekstremite) [ayak] engellilik oranı (%)
+19
+9
+9
+19
+26
+(37)
+(17)
+(17)
+(37)
+(52)
+[53]
+[24]
+[24]
+[53]
+[74]
+Tablo 3.24- Ayak bileğinin varus pozisyonunda ankilozuna bağlı engellilik.
+Varus pozisyonu C)
+5-9
+10-19
+20-29
+30+
+Kişinin (alt ekstremite) [ayak] engellilik oranı (%)
+13
+19
+22
+26
+(25)
+(37)
+(43)
+(52)
+[35]
+[53]
+[61]
+[74]
+Tablo 3.25- Ayak bileğinin valgus pozisyonunda ankilozuna bağlı engellilik.
+Valgus pozisyonu(0)
+10-19
+20-29
+30+
+Kişinin (alt ekstremite) [ayak] engellilik oranı (%)
+13
+19
+26
+(25)
+(37)
+(52)
+[35]
+[53]
+[74]
+Tablo 3.26- Ayak bileğinin internal malrotasyonda ankilozuna bağlı engellilik.
+Internal malrotasyon (0)
+0-9
+10-19
+20-29
+30+
+Kişinin (alt ekstremite) [ayak] engellilik oranı (%)
+6
+13
+19
+26
+(12)
+(25)
+(37)
+(52)
+[17]
+[35]
+[53]
+[74]
+Tablo 3.27- Ayak bileğinin eksternal malrotasyonda ankilozuna bağlı engellilik.
+Eksternal malrotasyon (0)
+15-19
+20-29
+30-39
+40+
+Kişinin (alt ekstremite) [ayakl engellilik oranı (%)
+6
+13
+19
+26
+(12)
+(25)
+(37)
+(52)
+[17]
+[35]
+[53]
+[74]

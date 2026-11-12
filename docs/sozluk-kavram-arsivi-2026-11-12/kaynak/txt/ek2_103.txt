@@ -1,0 +1,40 @@
+Spondilolizis veya grade 1-11 spondilolistezis ile birlikt
+ibbi olarak tesbit edilmiş yaralanma, ağrı, rijidite (ka
+pazmı var veya yok)
+Grade III veya IV spondilolistezis ile birlikte tıbbi olara
+esbit edilmiş yaralanma, ağrı, rijidite (kas spazmı va
+eya yok)
+6
+8
+meliyatlı Spinal Stenoz, Segmental İnstabilite, Kırık, Dislokasyon
+Spinal füzyonsuz kalıcı bulgu ve semptom olmaksızın
+ek seviyeli dekompresyon
+Kalıcı bulgu ve semptomla beraber tek seviyeli
+dekompresyon
+Tek seviyeli spinal füzyon (dekompresyon var vey
+ok), kalıcı bulgu ve semptom yok
+Tek seviyeli spinal füzyon (dekompresyon var veya
+yok), kalıcı bulgu ve semptom var
+Çok seviyeli operasyon, tıbbi olarak tesbit edilmiş ağrı,
+rijidite (kas spazmı var veya yok )
+İkinci operasyon
+Üçüncü veya sonraki operasyonlar
+7
+9
+8
+10
+3
+4
+4
+5
+4
+5
+7
+9
+8
+10
+9
+12
+Her seviye için %1 ilave edilir
+%2 ilave edilir
+Her operasyon için %1 ilave edilir

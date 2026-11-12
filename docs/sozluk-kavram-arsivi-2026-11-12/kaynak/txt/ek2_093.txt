@@ -1,0 +1,25 @@
+KAS-İSKELET SİSTEMİ
+Bu bölümde Fiziksel Tıp ve Rehabilitasyon, Oftopedi, Nöroloji ve Romatoloji uzman hekimleri
+tarafindan tanı ve tedavisi yürütülen onopedik, nörolojik, romatizmal hastalıkların hareket sisteminde
+neden oldukları bozukluklara ait engellilik yüzdeleri yer almaktadır. Engellilik yüzdeleri belirlenirken
+hastalık tanısı değil, ortaya çıkan bozukluğun vücutta neden olduğu fonksiyon kaybı öncelikle dikkate
+alınır. Fonksiyon kaybına yol açan birden fazla durumun varlığında, İlgili bölümde farklı bir
+uygulama önerilmediği sürece, her bir durumun yol açtığı engellilik oranları ayrı ayrı belirlendikten
+sonra Balthazard Formülü ile toplanır veya Ek.3 deki Balthazard Hesaplama Tablosu kullanılarak
+kişinin engel oranı hesaplanır. Kas iskelet sistemi bölümünde yer almayan bozukluklar için sinir
+sistemindeki değerIendirme ve tablolara bakılması gerekir. Bu bölümde hesaplanan değerlerde
+virgülden sonraki sayı 0,5 ve üzerinde ise bir üst tam sayıya, altında İse bir alt tam sayıya yuvarlanır.
+ı. OMURGAYA AİT SORUNLARDA ENGELLİLİK
+Omurganın sorunlarında engelliliği belirlemede iki ayrı değerIendirme yöntemi vardır:
+I. I. Yaralanma Modeli veya Tanı İlişkili DeğerIendirme
+I .2. Eklem Hareket Genişliği Modeli veya Fonksiyonel Model
+1-1.1 YARALANMA MODELİ VEYA TANI İLİŞKİLİ
+DEĞERLENDİRME
+Travma durumlarında İlk tercih edilecek yöntemdir. Eğer bir yaralanma yok ise, bu yöntem
+yetersiz kalıyor ise veya yaralanma aynı omurga bölgesinde birden fazla segmenti etkiliyor ise eklem
+hareket genişliği modeli kullanılır. Yaralanma modeli nörolojik kayıp varlığına, kırık, dislokasyon ve
+hareket segmentİ bütünlüğüne dayamr. Birden fazla omurga bölgesi etkilenmiş İse her biri ayrı ayrı
+değerIendirilir, kişinin engel oranını hesaplamak İçin Balthazard Hesaplama Tablosundan yararlanılır
+(Ek.3). Yaralanma bulgularına kortikospinal yol bulguları da eşlik ediyor ise spinal kord
+lezyonları ile ilgili tablolar kullanılır (Bölüm 4). Bu değerIendirme için engel kalıcı ve stabil olmalı,
+son 12 ayda değişiklik olmamalıdır.

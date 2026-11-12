@@ -1,0 +1,89 @@
+{
+  "kaynak": "WHO ICD-10 Version 2019 - resmi tarayici API'si (JsonGetConcept)",
+  "surum": "ICD-10 Version:2019",
+  "api_taban": "https://icd.who.int/browse10/2019/en/JsonGetConcept?ConceptId=",
+  "erisim_tarihi": "2026-11-11",
+  "kayit_sayisi": 8,
+  "kayitlar": [
+    {
+      "kod": "H54.1",
+      "sorgu_turu": "tek_kavram",
+      "sorgu_url": "https://icd.who.int/browse10/2019/en/JsonGetConcept?ConceptId=H54.1",
+      "ham_yanit": "{\"Suggested\":null,\"ID\":\"H54.1\",\"html\":\"\\n\\n\\n<a \\n   class=\\\"ygtvlabel  \\\" \\n      data-id=\\\"H54.1\\\">\\n\\n    \\n\\n        <span class=\\\"icode \\\">H54.1</span>\\nSevere visual impairment, binocular\\n\\n\\n\\n</a>&nbsp;\\n\\n\",\"isLeaf\":true,\"isAdoptedChild\":false,\"averageDepth\":3.0}",
+      "ham_yanit_sha256": "629a389b274cd04489a1b8f5ba61aa44386100e5a533b09a979f8b8635e7e254",
+      "secilen_etiket": "Severe visual impairment, binocular",
+      "isLeaf": true,
+      "sayfa_url": "https://icd.who.int/browse10/2019/en#/H54.1"
+    },
+    {
+      "kod": "H90.3",
+      "sorgu_turu": "tek_kavram",
+      "sorgu_url": "https://icd.who.int/browse10/2019/en/JsonGetConcept?ConceptId=H90.3",
+      "ham_yanit": "{\"Suggested\":null,\"ID\":\"H90.3\",\"html\":\"\\n\\n\\n<a \\n   class=\\\"ygtvlabel  \\\" \\n      data-id=\\\"H90.3\\\">\\n\\n    \\n\\n        <span class=\\\"icode \\\">H90.3</span>\\nSensorineural hearing loss, bilateral\\n\\n\\n\\n</a>&nbsp;\\n\\n\",\"isLeaf\":true,\"isAdoptedChild\":false,\"averageDepth\":3.0}",
+      "ham_yanit_sha256": "a6f5c4d364d93874bb441f9c65cf5653505659a5a65ade321209bd6742a78d89",
+      "secilen_etiket": "Sensorineural hearing loss, bilateral",
+      "isLeaf": true,
+      "sayfa_url": "https://icd.who.int/browse10/2019/en#/H90.3"
+    },
+    {
+      "kod": "H91.1",
+      "sorgu_turu": "tek_kavram",
+      "sorgu_url": "https://icd.who.int/browse10/2019/en/JsonGetConcept?ConceptId=H91.1",
+      "ham_yanit": "{\"Suggested\":null,\"ID\":\"H91.1\",\"html\":\"\\n\\n\\n<a \\n   class=\\\"ygtvlabel  \\\" \\n      data-id=\\\"H91.1\\\">\\n\\n    \\n\\n        <span class=\\\"icode \\\">H91.1</span>\\nPresbycusis\\n\\n\\n\\n</a>&nbsp;\\n\\n\",\"isLeaf\":true,\"isAdoptedChild\":false,\"averageDepth\":3.0}",
+      "ham_yanit_sha256": "75291f1dd565ebbd8d9b1542d880ec0c20c217c79e6c6eb55feda3ba8e37157b",
+      "secilen_etiket": "Presbycusis",
+      "isLeaf": true,
+      "sayfa_url": "https://icd.who.int/browse10/2019/en#/H91.1"
+    },
+    {
+      "kod": "H92.0",
+      "sorgu_turu": "tek_kavram",
+      "sorgu_url": "https://icd.who.int/browse10/2019/en/JsonGetConcept?ConceptId=H92.0",
+      "ham_yanit": "{\"Suggested\":null,\"ID\":\"H92.0\",\"html\":\"\\n\\n\\n<a \\n   class=\\\"ygtvlabel  \\\" \\n      data-id=\\\"H92.0\\\">\\n\\n    \\n\\n        <span class=\\\"icode \\\">H92.0</span>\\nOtalgia\\n\\n\\n\\n</a>&nbsp;\\n\\n\",\"isLeaf\":true,\"isAdoptedChild\":false,\"averageDepth\":3.0}",
+      "ham_yanit_sha256": "24a8531441f5f8010615bba6d5b3e74ff4d5479cea4d4dd528e8232ae9666a88",
+      "secilen_etiket": "Otalgia",
+      "isLeaf": true,
+      "sayfa_url": "https://icd.who.int/browse10/2019/en#/H92.0"
+    },
+    {
+      "kod": "H28.1",
+      "sorgu_turu": "tek_kavram",
+      "sorgu_url": "https://icd.who.int/browse10/2019/en/JsonGetConcept?ConceptId=H28.1",
+      "ham_yanit": "{\"Suggested\":null,\"ID\":\"H28.1\",\"html\":\"\\n\\n\\n<a \\n   class=\\\"ygtvlabel  \\\" \\n      data-id=\\\"H28.1\\\">\\n\\n    \\n\\n        <span class=\\\"icode \\\">H28.1</span>\\nCataract in other endocrine, nutritional and metabolic diseases\\n\\n\\n\\n</a>&nbsp;\\n\\n\",\"isLeaf\":true,\"isAdoptedChild\":false,\"averageDepth\":3.0}",
+      "ham_yanit_sha256": "bbe6ef3d95934bb31e2703dc41a7dbe232b1bc6bf3d08c7696dac5025883a51a",
+      "secilen_etiket": "Cataract in other endocrine, nutritional and metabolic diseases",
+      "isLeaf": true,
+      "sayfa_url": "https://icd.who.int/browse10/2019/en#/H28.1"
+    },
+    {
+      "kod": "H93.3",
+      "sorgu_turu": "tek_kavram",
+      "sorgu_url": "https://icd.who.int/browse10/2019/en/JsonGetConcept?ConceptId=H93.3",
+      "ham_yanit": "{\"Suggested\":null,\"ID\":\"H93.3\",\"html\":\"\\n\\n\\n<a \\n   class=\\\"ygtvlabel  \\\" \\n      data-id=\\\"H93.3\\\">\\n\\n    \\n\\n        <span class=\\\"icode \\\">H93.3</span>\\nDisorders of acoustic nerve\\n\\n\\n\\n</a>&nbsp;\\n\\n\",\"isLeaf\":true,\"isAdoptedChild\":false,\"averageDepth\":3.0}",
+      "ham_yanit_sha256": "ea2992761bbc37dc8b1ed428ec02494ebf5c1294386cb4bf99e00721ae3ad6ad",
+      "secilen_etiket": "Disorders of acoustic nerve",
+      "isLeaf": true,
+      "sayfa_url": "https://icd.who.int/browse10/2019/en#/H93.3"
+    },
+    {
+      "kod": "E70",
+      "sorgu_turu": "tek_kavram",
+      "sorgu_url": "https://icd.who.int/browse10/2019/en/JsonGetConcept?ConceptId=E70",
+      "ham_yanit": "{\"Suggested\":null,\"ID\":\"E70\",\"html\":\"\\n\\n\\n<a \\n   class=\\\"ygtvlabel  \\\" \\n      data-id=\\\"E70\\\">\\n\\n    \\n\\n        <span class=\\\"icode \\\">E70</span>\\nDisorders of aromatic amino-acid metabolism\\n\\n\\n\\n</a>&nbsp;\\n\\n\",\"isLeaf\":false,\"isAdoptedChild\":false,\"averageDepth\":2.0}",
+      "ham_yanit_sha256": "7e84e1a70ebb59909b31cf671239c9cc062d41573622e0d1ea17e09abb904e4c",
+      "secilen_etiket": "Disorders of aromatic amino-acid metabolism",
+      "isLeaf": false,
+      "sayfa_url": "https://icd.who.int/browse10/2019/en#/E70"
+    },
+    {
+      "kod": "E78",
+      "sorgu_turu": "tek_kavram",
+      "sorgu_url": "https://icd.who.int/browse10/2019/en/JsonGetConcept?ConceptId=E78",
+      "ham_yanit": "{\"Suggested\":null,\"ID\":\"E78\",\"html\":\"\\n\\n\\n<a \\n   class=\\\"ygtvlabel  \\\" \\n      data-id=\\\"E78\\\">\\n\\n    \\n\\n        <span class=\\\"icode \\\">E78</span>\\nDisorders of lipoprotein metabolism and other lipidaemias\\n\\n\\n\\n</a>&nbsp;\\n\\n\",\"isLeaf\":false,\"isAdoptedChild\":false,\"averageDepth\":2.0}",
+      "ham_yanit_sha256": "2bd4309305530d7dd0405dcf035745a93a67716041cad5fe81b626d99b7215f7",
+      "secilen_etiket": "Disorders of lipoprotein metabolism and other lipidaemias",
+      "isLeaf": false,
+      "sayfa_url": "https://icd.who.int/browse10/2019/en#/E78"
+    }
+  ]
+}

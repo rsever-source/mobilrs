@@ -1,0 +1,52 @@
+KARDİYOVASKÜLER SİSTEM
+ARİTMİLER
+Klas ı:
+l-Kişi günlük aktiviteleri esnasında asemptomatiktir. EKG veya Holter'de aritmisi gösterilmiştir
+10
+2-Kişiye aritmi nedeniyle ablasyon veya cerrahi işlem yapılmıştır ve günlük aktivite sırasında
+gsemptomatiktjr
+10
+Klas 2:
+Kişi günlük aktiviteleri esnasında asemptomatiktir, EKG veya Holter'de aritmisi gösterilmiştir ve
+aşağıdakilerden birisi varsa (fonksiyonel kapasite I veya 2);
+a) i14Ç tedavisi veya kalıcı kalp pili ile semptomları giderilmiştir
+b) aritmi devam etmektedir ve organik bir kalp hastalığı vardır
+c) aritmi nedeniyle İCD İmplante edilmiştir
+Klas 3:
+20
+20
+30
+l-Kişinin ilaç tedavisi veya kalıcı kalp piline rağmen semptomları sürmektedir ve EKG veya
+Holter'de aritmi gösterilmiştir (fonksiyonel kapasite 3)
+40
+2-Kişinin aritmisini düzeltmek amacıyla ablasyon veya cerrahi işlem veya İCD implantasyonu
+uygulanmıştır. fakat semptomları devam etmektedir (fonksiyonel kapasite 3)
+50
+Klas 4:
+Kişinin aritmisini düzeltmek amacıyla aşağıdakilerden birisi uygulanmıştır fakat aritmiye bağlı
+semptomları devamlıdır ve hastanın günlük aktivitelerini engellemektedir (fonksiyonel kapasite 3
+veya 4)
+1. İlaç tedavisi
+2. Kalıcı kalp pili
+3 , Kateter ile ablasyon
+100
+4) Cerrahi müdahale
+5) İCD implantasyonu
+PULMONER HİPERTANSİYON
+Klas ı:
+Asemptomatik; Fizik muayene ve EKO veya sağ kateter ile Pulmoner arter sistolik basıncı (PASB)
+30-40 mmHg saptanan ve Pulmoner Hipertansiyon tanısı konmuş hastalar
+10
+Klas 2:
+Günlük fiziksel aktivitede hafif kısıtlaması olan ( NYHA 2). EKO veya sağ kateter'de PASB: 40-
+50 mmHg saptanan hastalar
+25
+Klas 3:
+Günlük fiziksel aktivitede ağır kısıtlaması olan (NYHA 3). EKO veya sağ kateter'de PASB: 50-70
+mmHg saptanan hastalar
+50
+Klas 4:
+İstirahatte dispne. göğüs ağrısı ve presenkopu olan veya en küçük aktivitelerde semptomları Oltaya
+çıkan (NYHA 4) velveya istirahatte sağ ventrikül yetmezliği belidi ve bulguları olan
+PASB: 70 mmHg üzeri hastalar
+100

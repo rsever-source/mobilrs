@@ -1,0 +1,30 @@
+ÖRNEK 111
+Hasta: 55 yaş, E
+Anamnez: Evde bir mobilyayı kaldırmayı takiben bel ağrısı ve sağ siyatalji gelişmiş. Hernie lomber
+disk nedeniyle cerrahi olarak tedavi edilmiş. Ağrı tama yakın iyileşmiş. Postoperatif 15. ayda
+çalışırken belini tekrar yaralamış. MRI ile aynı seviyede rekürrent disk hernisi tespit edilmiş. İkinci
+bir disk hernisi operasyonuna gitmiş ancak bel ağrısı bu kez geçmemiş.
+Şikayeti: Bel ve tek taraflı yayılım gösteren, aylardır değişmeyen sağ bacak ağrısı
+Fizik muayene: Belde skar İzi. Düz bacak kaldırma, bacağın lateralinde ve ayakta 300'de ağrıya neden
+oluyor. Sağda aşil refleksi alınmıyor. Sağ si dermatomuna uyan bölgede parestezi mevcut. Lomber
+ekstansiyon 200, lomber fleksiyon 300, sol lateral fleksiyon 250, sağ lateral fleksiyon 200.
+Sİ kökündeki duysal kaybın tanımı 4. derece olarak tespit edildi. si kökünde motor değer 4 olarak
+tespit edildi.
+Tam: Radikülopati ile birlikte rekürrent diskopati
+Engellilik yüzdesi; %24
+Yorum:
+Tablo 1.7'ye göre kalıcı ağrı ve rijidite ile opere edilmiş disk lezyonundan %10 engellilik alır,
+ikinci operasyon olması nedeniyle %2 ilave edilir. Birinci basamak olarak Tablo 1.7'ye göre toplam
+Engellilik oranı %12 olur.
+Tablo 1.6'ya göre ekstansiyon için %3 engellilik, fleksiyon için %4 engellilik, sağ lateral
+fleksiyon için %1 engellilik alır. Bunlar toplanır, İkinci basamak olarak hareket açıklığına göre
+engellilik oranı %8 bulunur.
+Tablo 1.8'e göre duyusal kayıp yetersizlik yüzdesi %25 ile Tablo 1.11 'de si kökü maksimum
+değeri olan 5 ile çarpılır (25 x 5 / 100 1,25 ). Sonuç tama yuvarlanarak %1 'lik bir engel tesbit edilir.
+Tablo 1.9'a göre motor kayba bağlı yetersizlik yüzdesi %25 ile Tablo 1.11 'de Sİ kökü maksimum
+motor kayıp değeri 20 çarpılır. Bu çarpımdan %5'Iik bir engel tesbit edilir. Motor kayıp ile duyusal
+kayıptan tesbit edilen engellilik oranları Balthazard yöntemiyle hesaplandığında; üçüncü basamak
+olarak İlk bir engel oranı bulunur.
+Tüm vücut engellilik oranı için birinci basamak, ikinci basamak ve üçüncü basamaktan elde
+edilen değerler (%12, %8, %6), Balthazard formülüyle hesaplanarak (veya Ek.3'te bulunan
+Balthazard Hesaplama Tablosu ile birleştirilerek) sonuç %24 bulunur.

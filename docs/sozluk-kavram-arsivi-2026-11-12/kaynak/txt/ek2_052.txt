@@ -1,0 +1,26 @@
+HER İKİ Göz içiN GÖRME ALANI SKORUNUN BELİRLENMESİ:
+Goldmann perimetrisi ile değerlendirme yapılırken, 111-4e uyaram İle yapılan görme alanı
+muayene kağıdı ile hazırlanan diyagramlar örtüştürülür (Şekil 2 ve 3).
+Humphrey otomatik perimetrisindeki 10 dB'lik uyaran karşılığı olacak uyaranlar görme alanı
+muayenesi için, aynı diyagramlar (şekil 2 ve 3) kullanılmalıdır. Görme alanı muayenesinde hem
+santral hem de periferik görme değerlendirilir. Bu tür bir tarama İçin 120 poİnt full fıeld screening test
+(120 nokta tam saha tarama testi), 10 db eşik seviyeyi kullandığı İçin en pratik İlk testtir. Tüm görme
+alanının 10 db uyaranla tarandığı bu testte, santral 10 derece yarıçaplı görme alanını ilgilendiren kayıp
+varlığında, ek olarak santral 10 dereceyi İnceleyen diğer testler (30-2, 24-2, 10-22) istenerek, görme
+alanının geri kalan parasantral alanı (10-60 derece arası) kadar değerli bu bölge hassas bir şekilde
+değerIendirilebilir.
+Eğer ilk olarak Humphrey 30-2 (veya eşdeğeri) türünde bir görme alanı testi yapılmış ve
+santral 20 dereceden daha az bir görme alam görülmüşse (çerçeve, pupilla büyüklüğü ve ptozis gibi
+artefakt yapacak unsurlar elendikten sonra), periferik görme alanında kayıp olduğu düşünülerek yalnız
+santral 30-2 görme alam değerIendirilir. Ancak santral Humphrey 30-2 görme alanı normalse,
+periferik kayıp aranmalı ve Humphrey 60-4 (veya eş değeri) ile periferik görme alanı için de bir
+değerlendirme yapılmalıdır.
+Her iki gözde görme alanı muayenesi eşik değerin sayısal olarak belirlenebildiği, tercihen kısa
+süreli bir program yapılmalıdır. Humphrey çıktısında tarama testleri (screening test) için siyah
+noktalar, eşik (threshold) test stratejileri için ise puanlandırmaları 10 dB ve altındaki olan alanlar
+skotom bölgesi olarak işaretlenir. Goldmann perimetrisinde benzer bir izopter oluşturulur. Görme
+alanı ile şekil 2 ve 3'ye gösterilen diyagramlar örtüştürülür ve hastanın gördüğü / görmediği
+noktaların toplamı belirlenir.
+Görme alanı çıktılarının skorlandırılmasından önce, "Donanım" başlığında ikinci madde
+olarak yer verilen "Görme Alanı" İle İlgili paragrafta açıklanan "Güvenilirlik Kriterleri"
+konusundaki uyarılar dikkate alınmalıdır.

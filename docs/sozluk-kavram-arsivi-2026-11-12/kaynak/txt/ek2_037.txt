@@ -1,0 +1,5 @@
+ETDRS, Bailey-Lovie, PERK gibi logaritmik düzende hazırlanmış modern eşellerin yokluğu
+durumunda, görme keskinliğinin Snellen eşelleri ile alınması, 0.1 'den düşük görme keskinliği
+düzeylerinde de kaç metreden parmak sayıldığının her bir metre için özen gösterilerek
+belirlenmesi, ölçülen değerlerin görme keskinliği puanlarının karşılıklarının aşağıda
+gösterilen eşdeğerlik tablosundan bulunması yoluna gidilmelidir.

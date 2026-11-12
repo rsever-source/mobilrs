@@ -1,0 +1,69 @@
+Tablo 4.2.b- Her iki üst ekstremite bozuldukları.
+ı-Hafif
+-Hafif
+rta
+-Ağır
+rta
+-Ağır
+Her İki st Ekstremite
+Bozukluğu
+Kişi her İki ekstremiteyi kendine bakım, kavrama ve tutmada kullanabiliyor,
+fakat parmak hareketleri ince becerisinde zorluk yaşıyor
+Kişi her İki ekstremiteyi zorlukla kendine bakım için kullanabiliyor, eşy
+kavrayabiliyor ve tutabiliyor fakat parmak hareketlerinde İnce beceri yok
+Kişi her iki ekstremiteyi kullanabiliyor fakat kendine bakım aktivitelerind
+zorlanıyor
+işi her iki ekstremiteyi kendine bakım veya günlük aktivitelerinde kullanamıyo
+Engel Oranı
+20
+40
+80
+90
+Tablo 4.3 Santral Sinir Sistemi, Periferik Sinir Sistemi ve Spinal Kord ile ilgili bozukluklar
+(Bu tablodan elde edilen değer Tablo 4.1 ve Tablo 4.2 değeri ile Balthazard yöntemi ile toplanır.)
+Anorektal Sistem
+Nörolojik Bozuklukları
+Üriner Sistem/Mesane
+Fonksiyon Bozukluğu
+Solunumda Nörolojik
+Bozukluklar
+Cinsel Fonksiyon
+Bozukluğu
+Bozukluk
+Anorektal refleks regülasyonu var, volanter kontrol sınırlı
+Anorektal refleks regülasyonu var, istemli kontrol yok
+Anorektal refleks regülasyonu veya istemli kontrolü yok
+Belli oranda istemli kontrol var, 'urgency' veya ara kaçırm
+iuyor
+Mesane refleks aktivitesi iyi, kapasite limitli, istemli kontrol
+Imaksızın intermittan/ara boşalma
+Mesane refleks aktivitesi bozuk, intermittan damlam
+luyor, istemli kontrol yok,
+Mesanenin refleks veya istemli kontrolü yok
+Spontan solunum var fakat efor gerektiren aktivitelerd
+olunum sıkıntısı var
+Spontan solunum var ancak solunum sıkıntısı nedeniyl
+turma, ayakta durma veya kısa yürüme İle kısıtlı
+Spontan solunum var ancak solunum sıkıntısı nedeniyl
+atağa bağımlı
+Spontan solunum yok
+Cinsel fonksiyon mümkün fakat; erkekte ereksiyon ve
+jekülasyon zorluğu veya her iki cinste lubrikasyon, uyarılm
+eya genital duyu/farkındalık eksikliği
+Refleks cinsel fonksiyon mümkün fakat genital duyu yok
+Cinsel fonksiyon yok
+Engel Oranı
+20
+40
+50
+10
+25
+40
+60
+20
+50
+90
+95
+10
+20
+25

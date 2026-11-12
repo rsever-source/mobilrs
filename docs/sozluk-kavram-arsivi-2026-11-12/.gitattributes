@@ -1,0 +1,4 @@
+# Arşiv dosyaları LF satır sonu ile saklanır; böylece
+# raporlar/manifest_sha256.md içindeki SHA-256 özetleri çalışma ağacında
+# doğrulanabilir kalır (Windows'ta CRLF dönüşümü hash'i bozardı).
+* text eol=lf

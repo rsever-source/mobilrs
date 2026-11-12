@@ -1,0 +1,29 @@
+%16 + %7— %23 el bileği hareket kısıtlılığına bağlı üst ekstremite engellilik yüzdesi. Bu değer, %14
+oranında kişi engel oranına karşılık gelir (Tablo 2.3).
+DİRSEK
+Dirsekte hareket kısıtlılığı
+Dirsek fonksiyonel ünitesi, üst ekstremite fonksiyonunun, %70'İnİ temsil etmektedir. Dirsek eklemi,
+herbiri fonksiyona nisbi katkıda bulunan, iki fonksiyonel üniteye sahiptir. Dirsek hareket
+engellilikleri, üst ekstremite engelliliklerine dönüştürülürken %70 ile çarpılır.
+l)Fleksiyon ve ekstansiyon, dirsek fonksiyonunun %60'ın1 oluşturur; üst ekstremite fonksiyonunun
+İse %42' sini oluşturur (%60 x 70 %42).
+2)Pronasyon ve supinasyon, dirsek fonksiyonunun %40'ın1 oluşturur; üst ekstremite fonksiyonunun
+ise %28'ini oluşturur (%40 x %70 %28).
+Dirsekte Fleksiyon ve Ekstansiyon
+1) Maksimum fleksiyon ve ekstansiyon gonyometrik olarak ölçülür. Normal hareket açıklığı, 1400
+fleksİyon, 00 ekstansiyondur. Fonksiyonel pozisyon ise 800 fleksİyon pozisyonudur,
+2) Ölçülen fleksiyon ve ekstansiyon açıları (V), şekil 2.8 kullanılarak açılara karşılık gelen fleksiyon
+(%KF) ve ekstansiyon (%KE) engellilik yüzdeleri ile eşleştirilir.
+3) Üst ekstremite engellilik yüzdesinin hesaplanması için, fleksiyon ve ekstansiyon engellilik
+yüzdeleri toplanır.
+4) Eğer dirsek ankiloze ise, pozisyon açısı (V) ölçülür ve şekil 2.8'de ölçülen açıya karşılık gelen
+ankiloz engellilik yüzdesi (YOKA) bulunur. Fonksiyonel pozisyondaki ankiloz (800 fleksiyon) en düşük
+ankiloz engellilik değerini alır, bu da üst ekstremitede %21 oranında engelliliğe eşittir.
+00 ekstansiyonda ya da 1400 fleksiyonda ankiloz gelişimi, dirsek fleksiyon ve ekstansiyonunun
+%100 kaybını gösterir. Bu kayıp, dirsek fonksiyonunda %60, üst ekstremitede ise %42 engelliliğe
+eşittir.
+Örnek: Bir hastanın dirseğinde -400 ekstansiyon kaybı ve 700 fleksiyon açıklığı vardır.
+2/0KEZ %4 ekstansiyon kaybına bağlı üst ekstremite engelliliği,
+fleksİyon kaybına bağlı üst ekstremite engelliliği,
+%4 + %15 %19 ekstansiyon ve fleksiyon kaybına bağlı üst ekstremite engelliliği
+Şekil 28: Dirsek fleksiyon ve ekstansiyon kısıtlılığına bağlı üst ekstremite engellilik yüzdeleri

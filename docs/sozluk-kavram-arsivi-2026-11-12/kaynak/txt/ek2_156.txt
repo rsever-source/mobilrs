@@ -1,0 +1,80 @@
+Tablo 3.31- Kalça replasmanı sonrasında engellilikle ilişkili puanlama.*
+a. Ağrı
+Yok
+Hafif
+Orta, nadiren
+Orta
+iddetli
+b. Fonksiyon
+Topallama (limb)
+Yok
+Hafif
+Ofla
+Şiddetli
+Yardımcı cihaz
+Yok
+Uzun yürüyüşlerde kanedyen
+Bir kanedyen
+Bir koltuk değneği
+İki kanedyen
+İki koltuk değneği
+Yürüyüş mesafesi
+Limitsiz
+Altı blok
+Üç blok
+Ev içinde
+Yatağa / sandalyeye bağımlı
+c. Aktiviteler
+Merdiven Çıkma
+Normal
+Trabzanlara dayanarak
+Kolayca çıkamıyor
+Çıkamıyor
+Ayakkabı ve çorap giyme
+Kolayca
+Zorlanarak
+Yapamıyor
+Oturma
+Herhangi bir sandalyede
+Yüksek sandalyede
+Rahatça oturamıyor
+Toplu taşıma araçları
+Kullanabiliyor
+Kullanamı or
+d. Deformite
+Adduksiyonda fikse
+K 100
+2100
+İnternal rotasyonda fikse
+2100
+Eksternal rotasyonda fikse
+4100
+2100
+Fleksi on kontraktürü
+I saat
+Puan
+44
+40
+30
+20
+10
+11
+8
+5
+11
+7
+5
+3
+2
+11
+8
+5
+2
+4
+2
+4
+2
+4
+2
+1
+o

@@ -1,0 +1,28 @@
+Örnek: Bir hastanın PİF eklemi 400 fleksiyonda ankilozedir. Bu durumda;
+% KAZ % 50 Parmak engelliliği mevcuttur,
+Şekil 2.4: PİF Eklemin hareket kısıtlılığına bağlı parmak engellilik yüzdeleri
+60-0-60—0
+Parmak piF
+20
+11
+574 ; 0
+80 90 ICOD*V
+18 1
+56/ 36
+12
+/ 47 1
+60 518 66 8Y%KE
+7 ğ 75 80
+% Kız —Fleksiyon kaybına bağlı yüzde
+% KEZEkstansiyon kaybına bağlı yüzde
+% KAZAnkiloza bağlı yüzde
+V Ölçülen açılar
+* z Fonksiyonel pozisyon
+Metakarpofalangial (MKF) eklem: Fleksiyon ve Ekstansiyon
+I)Maksimum fleksiyon ve ekstansiyon gonyometrik olarak ölçülür. Normal fleksiyon 900'dir.
+Fonksiyonel pozisyon İse 300 fleksİyon pozisyonudur.
+2) Ölçülen fleksiyon ve ekstansiyon açıları (V), Şekil 2.5 kullanılarak, fleksiyon (%KF) ve
+ekstansiyon (%KE) engellilik yüzdelerine dönüştürülür. Hiperekstansiyon pozisyonları için engellilik
+yüzdelerinin tespitinde, 00 nötral poziyonun üzerindeki değerler okunur.
+3) PİF eklemdeki hareket kaybına bağlı parmak engelliliğinin belirlenmesi için, fleksiyon ve
+ekstansiyon engellilik yüzdeleri toplanır.

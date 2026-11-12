@@ -1,0 +1,54 @@
+Görme Alanı - Santral 10 Derece
+Toplam 50 Puan
+Toplam Kayıp Alan 35 puan
+Görme Alanı- Santral 10 Derece
+Toplam 50 Puan
+Toplam Kayıp Alan 30 puan
+Üst Sol Kadran
+10 nokta 10 puan
+"l” ile işaretli
+kayıp alan— 5 puan
+Alt Sol Kadran
+15 nokta 15 puan
+İle İşaretli
+kayıp alan— 15 puan
+1
+OD (Sağ Göz)
+Üst Sağ Kadran
+10 nokta z 10 puan
+Alt Sağ Kadran
+15 nokta z 15 puan
+"I” ile işaretli
+kayıp alan— 15 puan
+Üst Sol Kadran
+10 nokta 10 puan
+Alt Sol Kadran
+15 nokta 15 puan
+"l” ile işaretli
+kayıp alan— 15 puan
+C
+Üst Sağ Kadran
+10 nokta 10 puan
+Alt Sağ Kadran
+15 nokta 15 puan
+ile işaretli
+kayıp alan— 15 puan
+OS (Sol Göz)
+Görme Alanı - Santral 10 Derece
+Toplam 50 Puan
+Toplam Kayıp Alan z 30 puan
+Üst Sol Kadran
+10 nokta 10 puan
+Alt Sol Kadran
+15 nokta 15 puan
+İki göz ile de görülemeyen
+"X" ile işaretli Kayıp Alan— 15 puan
+Üst Sağ Kadran
+10 nokta 10 puan
+Alt Sağ Kadran
+15 nokta 15 puan
+İki göz ile de görülemeyen
+"X" ile işaretli Kayıp Alan— 15 puan
+OU (Binoküler)
+Şekil 8- Görme alan skorları ve işlevsel alan puanı belirlenecek olan travmatik optik nöropatili örnek hastanın santral görme alanı
+diyagramları

@@ -1,0 +1,37 @@
+GÖRME SİSTEMİ
+Sürekli görsel işlev veya yapı bozukluğu, zeminde yatan tıbbi durumun, mümkün olabildiğince
+düzeltilmesinden sonra kalan, sürekli görme kaybı olarak tanımlanır. Ölçülmesinde, işlevsel
+görmenin, sayısal değerIendirilmesi esastır.
+İşlevsel görmenin bileşenleri:
+l.Görme Keskinliği
+2.Görme Alanı
+* Kontrast duyarlık ve glare (kamaşma) kusuru * Diplopi
+3.DiğerIerİ :
+Çizelge I- Görme işlev bozukluğu de rlendirme prensipleri.
+Ölcülen Görsel İşlevler
+Görme Keskinliği Puanı (GKP)
+Görme Alanı Puanı (GAP)—»
+İşlevsel görme puanı (İGP)
+Hesaplanan Görsel Yetenekler
+İşlevsel keskinlik puanı (İKP)
+(% 60 binoküIer+%20 sağ+%20 sol)
+göz görme keskinliği puam
+İşlevsel Alan Puanı (İN)
+(% 60 binoküIe1+%20 sağ+%20 sol)
+göz görme alan puam
+Genel görme yeteneğinin hesabı
+iKP X İAP /100
+(diğer kayıplar dikkate alınabilir)
+Varsa. diğer görsel yapı ve fonksiyon kayıpları İGP'den düşülür. Sonuç İGP hesaplanır.
+Görme sistemi yetersizlik oranı (GSYO)
+Görme yeteneği kaybının hesabı
+GSYO 100-iGP
+Kişinin engel oram , GSYO'nının 50 puana kadar olduğu durumlarda GSYO ile aym değerde,
+GSYO'nun 50 puandan daha fazla olduğu durumlarda Tablo 3'te İşaret edilen karşılığı olarak
+belirlenir.
+Hem görme hem de görme alanı değerIendirilmesinde temaruz şüphesi varsa similasyon eşeli,
+pattern ERG, multifokal ERG ,VEP, Sweep VEP ile ölçümlerin yapılması gerekmektedir.
+Görme Sistemi Yetersizlik Oranı (GSYO) Hesaplama Yöntemi:
+I. Görme keskinliği ölçülür. Ölçülen keskinlik değeri, Tablo I kullanılarak görme keskinliği
+puanına (GKP) çevrilir. GKP 100'ün üzerinde olabilir, ancak yeti kaybı görme keskinliği TAM (1,0
+veya 20/20) den az olduğu zaman hesaplanır.

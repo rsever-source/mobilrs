@@ -1,0 +1,65 @@
+C- Perforan dermatozlar (Kryle Hastalığı vb.)
+5
+1 -Orta
+10
+2-Şiddetli
+20
+3-Çok şiddetli
+V. PSİKİYATRİK ETYOLOJİLİ DERİ HASTALIKLARI
+Psikiatrik etyolojili deri hastalıkları (nörotik ekskoriasyon, faktisiyel dermatit, vb.)
+5
+I -Orta
+10
+2-ŞiddetIi
+20
+3-Çok şiddetli
+VI. DERİ TÜMÖRLERİ
+A.BENİGN NEOPLAZM VE HİPERPLAZİLER
+Kongenital melanositik nevus:
+5
+l-1.5-20 cm arasında olanlar
+20
+2-20 cm'den büyük
+Kan damarlarının benign neoplazm ve hiperplazileri: Kapiller anjiom, Kavernöz anjiom, Lenfanjiom,
+lenfohemanjiom, Anjiokeratom, KlippeI-Trenanuay-Weber, vb.
+5
+1-Hafif: Vücudun %10-19'unu kaplayan
+10
+2-0rta: Vücudun %20-49'unu kaplayan
+20
+3-ŞiddetIi: Vücudun %50-79'unu kaplayan
+30
+4-Çok şiddetli: Vücudun %80-100'unu kaplayan
+15
+5-Ayrıca saçlı deri ve Eğz bölümünün yarısından fazlasını kaplarsa
+Hipertrofik skar ve keloid
+5
+I -Hafif (vücut yüzeyinin %1-9' unu kaplayan)
+10
+2-0rta (vücut yüzeyinin 19'unu kaplayan)
+20
+3-Şiddetli (vücut yüzeyinin %20-49'unu kaplayan)
+40
+4-Çok şiddetli: Vücudun %50-100'unu kaplayan
+5-Ayrıca saçlı deri ve yüz bölümünün yarısında fazlasını kaplarsa
+15
+B DERİNİN PREMALİGN TÜMÖRLERİ
+Primer tümörün sebep olduğu veya bu tümöre yğnelik tedavi sonrasmda gelişen doku veya fonksiyon
+5
+kayıpları
+C.DERİNİN MALİGN TÜMÖRLERİ:
+Çalışabilir durumda ve tedaviye cevap veren klinik evreli malign tümörü olan hastalar. primer
+tğmörün sebep olduğu veya bu tümöre yönelik tedavi sonrasında gelişen doku veya fonksiyon
+kayıpları
+İleri klinik evreli malign tümörü olan tedaviye cevap vermeyen çalışamayacak durumda
+olan hastalar
+VII. FOTOSENSİTİVİTE VE GÜNEŞ IŞINLARI İLE TETİKLENEN
+HASTALIKLAR
+10
+80
+I-SoIar ürtiker, aktinik retikuloid, persistan Işık reaksiyonu, polimorf Işık erüpsiyonu klinik şiddete
+göre değerIendirilir.
+I -Ofta
+2-Şiddetli
+5
+10

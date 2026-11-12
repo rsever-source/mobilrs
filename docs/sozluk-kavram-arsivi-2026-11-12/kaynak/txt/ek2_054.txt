@@ -1,0 +1,18 @@
+Görme Alanı
+Parasantral 10-60 Derece
+Toplam 50 puan
+Üst Sol Kadran
+10 nokta z 10 puan
+60
+o
+Alt Sol Kadran
+15 nokta 15 puan
+o
+Üst Sağ Kadran
+10 nokta z 10 puan
+60
+Alt Sağ Kadran
+15 nokta z 15 puan
+60
+Şekil 2- Test diyagramının parasantral 10-60 derece arasında (150, 250, 350, 450, 550 kuşağında)
+yer alan ve her biri I (bir) puan değerindeki noktalar

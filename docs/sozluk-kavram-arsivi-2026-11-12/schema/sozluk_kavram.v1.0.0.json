@@ -1,0 +1,256 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$comment": "Engelli.me Kavram Sozlugu Semasi - surum 1.0.0 (2026-11-11). Yayimlanmis bir $id adresi YOKTUR (engelli.me/semalar/... 404); sema dosya yoluyla kullanilir. RG sayisi kosullari bu surumde sabittir: EK-1=31612, EK-2=30692. Yeni bir resmi revizyon yayimlanirsa sema surumu yukseltilmelidir.",
+  "title": "Engelli.me Kavram Sözlüğü Şeması",
+  "description": "EK-1 (maluliyet / çalışma gücü kaybı, 28.09.2021/31612) ve EK-2 (engel oranı, 20.02.2019/30692) için kavram kaydı. Her kayıt tek mevzuat bağlantısı taşır; ortak kavram iki ayrı kayıtla modellenir. ICD-10 yalnızca EK-2 bağlantısında ve yalnızca WHO ICD-10 etiketi + kaynak URL + erişim tarihi ile birlikte bulunur.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kavram_id", "kanonik_ad", "es_anlamli", "kaynak"],
+  "properties": {
+    "kavram_id": {
+      "type": "string",
+      "pattern": "^(ek1|ek2)_[a-z0-9_]{3,76}$",
+      "description": "Benzersiz kimlik. Önek bağlantıyla zorunlu olarak eşleşir: EK-1 kaydı 'ek1_', EK-2 kaydı 'ek2_' ile başlar."
+    },
+    "kanonik_ad": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 200,
+      "description": "Resmî metinde geçen terim, basıldığı gibi. Hesaplama kuralı adları (örn. Balthazard) bu alana yazılmaz."
+    },
+    "ek_1_baglantisi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bolum_harfi", "sira_no", "derece"],
+      "description": "2021 Yönetmeliği EK-1 hastalık listesi bağlantısı. Numaralandırma bölüm içinde yeniden başlar; resmî bir toplam madde sayısı yoktur.",
+      "properties": {
+        "bolum_harfi": {
+          "type": "string",
+          "enum": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "İ", "J", "K", "L", "M", "N", "O", "P", "R"],
+          "description": "EK-1 harfli bölümü. R = ORTAK HÜKÜMLER. 'I' ve 'İ' ayrı değerlerdir; otomatik dönüşüm yapılmaz. Basılı harfler Aşama 2-A'da tek tek teyit edilecek."
+        },
+        "sira_no": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Bölüm içindeki Arap rakamlı sıra numarası (bölüm başına yeniden başlar)."
+        },
+        "derece": {
+          "type": "string",
+          "enum": ["agir", "orta", "hafif", "ortak_hukum"],
+          "description": "Çalışma gücü kaybı düzeyi. R bölümünde yalnız 'ortak_hukum'."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["bolum_harfi"],
+            "properties": { "bolum_harfi": { "const": "R" } }
+          },
+          "then": {
+            "properties": {
+              "derece": { "const": "ortak_hukum" },
+              "sira_no": { "maximum": 3 }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["bolum_harfi"],
+            "properties": { "bolum_harfi": { "not": { "const": "R" } } }
+          },
+          "then": {
+            "properties": {
+              "derece": { "enum": ["agir", "orta", "hafif"] }
+            }
+          }
+        }
+      ]
+    },
+    "ek_2_baglantisi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bolum_adi", "madde_etiketi", "tanim"],
+      "description": "2019 Yönetmeliği EK-2 engel alanları kılavuzu bağlantısı. Kılavuz organ sistemi -> alt bölüm -> madde -> tanım/tablo/örnek yapısındadır; alt bölüm düzeni bölümden bölüme değişir.",
+      "properties": {
+        "bolum_adi": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 120,
+          "description": "Ekte basılı organ sistemi başlığı (örn. 'KULAK BURUN BOĞAZ')."
+        },
+        "alt_bolum": {
+          "type": "string",
+          "maxLength": 60,
+          "description": "Ekte basıldığı gibi alt bölüm etiketi (örn. 'A-İŞİTME', 'B-KONUŞMA VE SES', 'IV-'). Her bölüm alt bölüm kullanmadığı için isteğe bağlıdır; dönüştürme yapılmaz."
+        },
+        "madde_etiketi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20,
+          "description": "Ekte basıldığı gibi madde etiketi: '1', 'IV', 'a)', '2.1'. Roma rakamı ve küçük harf biçimleri aynen korunur."
+        },
+        "tanim": {
+          "type": "string",
+          "minLength": 5,
+          "description": "Ekteki tanım/kriter metni. Yorum veya hesaplama eklenmez."
+        },
+        "icd10": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10,
+          "uniqueItems": true,
+          "description": "WHO ICD-10 eşlemesi. Yalnız EK-2'de. Her kod kendi WHO etiketi, kaynak URL'si ve erişim tarihiyle gelir.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kod", "who_etiketi", "kaynak_url", "erisim_tarihi"],
+            "properties": {
+              "kod": {
+                "type": "string",
+                "pattern": "^[A-Z][0-9]{2}(\\.[0-9])?$",
+                "description": "WHO ICD-10 kodu. Yalnızca nokta ayırıcı kabul edilir; virgül geçersizdir."
+              },
+              "who_etiketi": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 120,
+                "description": "WHO ICD-10 tarayıcısında görünen İngilizce etiket, birebir."
+              },
+              "kaynak_url": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://"
+              },
+              "erisim_tarihi": {
+                "type": "string",
+                "format": "date",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "ISO 8601 tarih. Takvim geçerliliği FormatChecker ile denetlenir."
+              },
+              "esleme_notu": {
+                "type": "string",
+                "maxLength": 300,
+                "description": "Kodun bu kavrama neden bağlandığı. Etiket yerine geçmez."
+              }
+            }
+          }
+        }
+      }
+    },
+    "es_anlamli": {
+      "type": "array",
+      "maxItems": 20,
+      "uniqueItems": true,
+      "description": "Eş anlamlı / halk dili karşılıkları. Boş dizi geçerlidir; kayıt yine de bu alanı taşımak zorundadır.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["dil", "termin"],
+        "properties": {
+          "dil": { "type": "string", "enum": ["tr", "en", "ku", "az", "kk", "ba"] },
+          "termin": { "type": "string", "minLength": 2, "maxLength": 120 },
+          "kaynak": { "type": "string", "minLength": 2, "maxLength": 200 },
+          "kaynak_turu": {
+            "type": "string",
+            "enum": ["mevzuat_metni", "ek_1_ekrani", "ek_2_ekrani", "site_verisi", "kullanici_tanimi"]
+          }
+        }
+      }
+    },
+    "derleme_referansi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kaynak", "kayit_no"],
+      "description": "Üçüncü taraf derleme indeksi. Resmî mevzuat numarası DEĞİLDİR; yalnız izlenebilirlik içindir.",
+      "properties": {
+        "kaynak": { "type": "string", "enum": ["engelliler_biz_derlemesi", "engelli_me_katalogu"] },
+        "kayit_no": { "type": "integer", "minimum": 1 },
+        "derleme_toplami": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Derleme kaynağının bildirdiği toplam. Bağımsız doğrulanmamıştır; resmî sayı olarak kullanılamaz."
+        },
+        "not": { "type": "string", "maxLength": 300 }
+      }
+    },
+    "kaynak": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["belge_adi", "rg_tarihi", "rg_sayisi", "url", "erisim_tarihi"],
+      "properties": {
+        "belge_adi": { "type": "string", "minLength": 5, "maxLength": 200 },
+        "rg_tarihi": {
+          "type": "string",
+          "pattern": "^\\d{2}\\.\\d{2}\\.\\d{4}$",
+          "description": "Resmî Gazete tarihi (gg.aa.yyyy). Takvim geçerliliği veri testiyle denetlenir."
+        },
+        "rg_sayisi": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Resmî Gazete sayısı. Zorunludur ve bağlantıya göre sabittir: EK-1=31612, EK-2=30692 (koşullu kural)."
+        },
+        "mbs_no": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Mevzuat Bilgi Sistemi numarası (EK-2: 31275). Resmî Gazete sayısı değildir; ayrı tutulur."
+        },
+        "yonetmelik_maddesi": {
+          "type": "string",
+          "pattern": "^[0-9]{1,2}(/[0-9]{1,2})?(\\([a-zçğıöşü]\\))?$",
+          "description": "Hükmün dayandığı yönetmelik maddesi (örn. '4/1(g)', '5/4')."
+        },
+        "url": { "type": "string", "format": "uri", "pattern": "^https?://" },
+        "sayfa_no": { "type": "integer", "minimum": 1 },
+        "erisim_tarihi": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "ISO 8601 tarih. Takvim geçerliliği FormatChecker ile denetlenir."
+        }
+      }
+    },
+    "olusturulma_tarihi": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 tarih-saat (örn. '2026-11-11T00:00:00Z'). FormatChecker ile denetlenir."
+    }
+  },
+  "oneOf": [
+    {
+      "required": ["ek_1_baglantisi"],
+      "not": { "required": ["ek_2_baglantisi"] },
+      "properties": { "kavram_id": { "pattern": "^ek1_" } }
+    },
+    {
+      "required": ["ek_2_baglantisi"],
+      "not": { "required": ["ek_1_baglantisi"] },
+      "properties": { "kavram_id": { "pattern": "^ek2_" } }
+    }
+  ],
+  "allOf": [
+    {
+      "if": { "required": ["ek_1_baglantisi"] },
+      "then": {
+        "properties": {
+          "kaynak": {
+            "properties": {
+              "rg_sayisi": { "const": 31612 }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "required": ["ek_2_baglantisi"] },
+      "then": {
+        "properties": {
+          "kaynak": {
+            "properties": {
+              "rg_sayisi": { "const": 30692 }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

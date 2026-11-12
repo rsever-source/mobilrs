@@ -1,0 +1,47 @@
+Tablo 1.9- Motor kayba bağlı yetersizlik yüzdesinin belirlenmesi.
+Derece
+5
+4
+3
+2
+ı
+o
+Kas kuvvetinin değerlendirilmesi
+Maksimum dirence karşı aktif hareket var
+Kısmi dirence karşı aktif hareket var
+Yerçekimine karşı aktif hareket var
+Yerçekimi ortadan kaldırıldığı zaman aktif hareket var
+Hafif kontraksiyon, hareket yok
+Kontraksiyon ve hareket yok
+Tablo 1.10- İlişkili sinir kökünün maksimum değeri.
+Spinal sinir
+Ti
+13
+14
+15
+sı
+Duyu kaybı veya ağrıya bağlı (%)
+5
+8
+5
+5
+5
+5
+8
+5
+5
+Motor kayıp (%)
+25
+50
+75
+90
+100
+Motor kayba bağlı (%)
+30
+35
+35
+45
+20
+20
+34
+20

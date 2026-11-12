@@ -1,0 +1,40 @@
+EPİLEPSİ (Uygun ve yeterli tedavi altında)
+l-Nöbeti olmayan ancak nöbet geçirme riski olanlar
+2-Günlük aktiviteleri engellemeyen ancak gerçekleştirilmesini güçleştiren nöbetler
+3-Bazı günlük aktiviteleri engelleyen nöbetler
+a) Seyrek
+b) Sık
+5
+15
+20
+40
+4-Günlük aktivitelerin korunma tedbirleri veya başkasının yardımıyla gerçekleştirilmesine izin
+veren sıklık ve sayıda nöbetler
+70
+5-Günlük aktiviteleri tamamen engelleyen şiddet ve sıklıkta kontrol edilemeyen nöbetler 90
+UYKU İLE İLİŞKİLİ BOZUKLUKLAR*
+ı-Hafif
+2-011a
+3-Ağır
+5
+10
+35
+*Bu başlık; uykuyu başlatma ve sürdürme ya da uyuyamama, uykuyla indüklenen solunum
+yetmezliği de dahil olmak üzere, aşırı uyuma bozukluğu, uyku-uyanıklık döngüsü bozuklukları ve
+uyku, uyku evreleri bozuklukları ile parasomnileri kapsar.
+Dikkat, konsantrasyon, diğer bilişsel yetilerin bozuklukları, depresyon, irritabilite gibi
+mental ve davranışsal faktörler; kardiyovasküler sistem, sistemik ve pulmoner hipertansiyon
+kardiyomegali, konjestif kalp yetmezliği veya aritmiler, polistemi gibi hematopoetik sistem
+bozuklukları ilgili bölümlerde ele alınır, bu başlık altında ayrıca puanlanmaz.
+Uyku Bozuklukları- Uluslarası Uyku Bozuklukları Sınıflaması
+I. İnsomniler (Uyarlanmış insomni, psikofizyolojik insomni, paradoksal insomni,
+İdiyopatik İnsomnİ, mental bozukluğa bağlı İnsomnİ, yetersiz uyku hijyenine bağlı
+insomnİ, çocukluk çağının davranışsal insomnisi)
+10
+2. Uykuda solunum bozuklukları (Santral uyku apne sendromları, obstruktif uyku apne
+sendromları, Uykuda hipoventilasyon ve hipoksemik sendromlar). Bu grup
+hastalıkların tanısı için polisomnografi tetkiki yapılmalıdır.
+35
+3. Hipersomniler (Narkolepsi sendromları, rekürren hipersomniler, idiyopatik
+hipersomniler). Bu grup hastalıkların tanısı için polisomnografi tetkiki yapılmalıdır.
+35

@@ -1,0 +1,131 @@
+﻿# Test ve denetim sonuclari - 12.11.2026
+
+## 1) arac/nihai_denetim.py (sema / XOR / kimlik / kunye / sayfa)
+``
+dosya: sozluk_kavram_data.json boyut=509283 kayit=745
+v1.0.0: 275/745 PASS
+  #116 ek1_f_06_miyelodisplastik_miyeloproliferatif_ne_agir: [maxLength] kanonik_ad :: 'Miyelodisplastik / Miyeloproliferatif neoplaziler (MDS/MPN) (kronik miyelomonositik l├Âsemi, atipik kronik miyeloid l├Âsemi, Juvenil miyelomonositik l├Âsemi, MDS/MPN ring sideroblast ve trombosito
+  #276 ek2_s003_kalici_isitme_engeli: [required] ek_2_baglantisi :: 'tanim' is a required property
+  #277 ek2_s003_kalici_iki_tarafli_isitme_engeli: [required] ek_2_baglantisi :: 'tanim' is a required property
+  #278 ek2_s008_dil_konusma_ve_ses_bozukluklari: [required] ek_2_baglantisi :: 'madde_etiketi' is a required property; [required] ek_2_baglantisi :: 'tanim' is a required property
+  #279 ek2_s008_afazi: [required] ek_2_baglantisi :: 'tanim' is a required property
+  #280 ek2_s008_dizartri: [required] ek_2_baglantisi :: 'tanim' is a required property
+  #281 ek2_s008_apraksi: [required] ek_2_baglantisi :: 'tanim' is a required property
+  #282 ek2_s008_akici_konusma_bozukluklari_kekemelik_v: [required] ek_2_baglantisi :: 'tanim' is a required property
+  #283 ek2_s008_larenjektomi: [required] ek_2_baglantisi :: 'tanim' is a required property
+  #284 ek2_s008_kranyo_fasyal_anomali: [required] ek_2_baglantisi :: 'tanim' is a required property
+  ... toplam hatali 470
+v1.0.3: 745/745 PASS
+benzersiz kavram_id: 745/745
+ek1_ onekli: 276
+ek2_ onekli: 469
+farkli onek: []
+XOR/onek hatasi: 0 []
+RG kunye hatasi: 0 []
+sayfa_no aralik hatasi: 0 []
+EK-1'de ICD: 0; EK-2 ICD kodu toplam: 0
+
+EK-1 276, EK-2 469
+EK-1 derece: {'agir': 139, 'orta': 68, 'hafif': 66, 'ortak_hukum': 3}
+EK-1 bolum: {'A': 52, 'B': 17, 'C': 6, 'D': 10, 'E': 23, 'F': 19, 'G': 7, 'H': 21, 'J': 28, 'K': 18, 'L': 8, 'M': 13, 'N': 12, 'O': 11, 'P': 1, 'R': 3, '─░': 27}
+EK-2 bolum:
+     98  KAS-─░SKELET S─░STEM─░
+     70  DER─░
+     44  KULAK BURUN BO─ŞAZ
+     35  ENDOKR─░N S─░STEM
+     31  ├£R─░NER S─░STEM VE ERKEK GEN─░TAL S─░STEM
+     29  S─░N─░R S─░STEM─░
+     28  G├ûRME S─░STEM─░
+     26  KARD─░YOVASK├£LER S─░STEM
+     26  S─░ND─░R─░M S─░STEM─░
+     25  HEMATOLOJ─░K HASTALIKLAR
+     16  GE├ç─░C─░ FONKS─░YON KAYBINA NEDEN OLAN RUHSAL HASTALIKLAR
+     11  Z─░H─░NSEL, RUHSAL, DAVRANI┼ŞSAL BOZUKLUKLAR
+      8  YANIKLAR
+      8  ├£ROGEN─░TAL S─░STEM
+      7  G├û─Ş├£S HASTALIKLARI VE G├û─Ş├£S CERRAH─░S─░
+      4  KADIN HASTALIKLARI VE DO─ŞUM
+      3  ONKOLOJ─░
+EK-2 sayfa araligi: 3 - 169
+EK-2 tanimli: 0
+EK-2 madde_etiketi: 194
+es_anlamli dolu: 0
+EK-1 bolum+sira+derece tekrari: [('J', 1, 'agir'), ('J', 1, 'hafif')]
+```
+## 2) testler/test_sozluk_kavram.py (yapisal, 46 test)
+``
+PASS  T0     Sema gecerli bir Draft-07 belgesi (check_schema)
+PASS  T1     EK-1 kaydi (A/1/agir, tam kaynak kunyesi)
+PASS  T2     EK-2 kaydi (KULAK BURUN BOGAZ/A-ISITME/1 + icd10 H90.3)
+PASS  T3     Ayni kavramin EK-1 ve EK-2 kaydi ayri ayri
+PASS  T3b    EK-1 R bolumu (R/1/ortak_hukum) gecerli
+PASS  T3c    EK-1 'I' ve 'I' (noktali) ayri degerler olarak gecerli (O-2)
+PASS  T9b    es_anlamli: [] gecerli (karar 2)
+PASS  T7f    EK-2 kaydi alt_bolum OLMADAN gecerli (karar 4 / kaynak kaniti)
+PASS  T7h    EK-2 Roma rakamli madde etiketi ('IV') metin olarak gecerli
+PASS  T3d    olusturulma_tarihi gecerli ISO 8601 date-time
+PASS  T4     EK-1 + EK-2 baglantisi birlikte -> oneOf (XOR)
+PASS  T5     Iki baglanti da yok -> oneOf
+PASS  T6     EK-1'de sira_no yok -> required
+PASS  T7a    bolum_harfi 'Z' -> enum
+PASS  T7b    sira_no 0 -> minimum
+PASS  T7c    R bolumunde derece 'agir' -> const ortak_hukum
+PASS  T7d    R bolumunde sira_no 4 -> maximum 3
+PASS  T7e    kavram_id 'ek2_' onekli ama ek_1_baglantisi -> pattern (karar 1)
+PASS  T7g    kavram_id 'ek1_' onekli ama ek_2_baglantisi -> pattern (karar 1)
+PASS  T8a    ek_1_baglantisi icinde icd10 -> additionalProperties
+PASS  T8b    Kok duzeyde icd10 -> additionalProperties
+PASS  T8c    kod 'h54.1' (kucuk harf) -> pattern
+PASS  T8d    icd10[0] icinde erisim_tarihi yok -> required (karar 3)
+PASS  T9     es_anlamli: [{}] -> required dil
+PASS  T10    kaynak.url 'bozuk-url' -> pattern (ve format uri)
+PASS  T11    rg_tarihi ISO biciminde -> pattern gg.aa.yyyy
+PASS  T10b   kaynak.url 'https://' -> pattern GECER ama format uri REDDEDER (O-3)
+PASS  T10c   kaynak.url 'https://ornek.invalid/a b' (bosluk) -> format uri REDDEDER
+PASS  T11b2  rg_tarihi '2021-09-28' bicim hatasi -> pattern (takvim ayri: D3)
+PASS  T18    kaynak.rg_sayisi yok -> required (karar 5)
+PASS  T19    Yalniz mbs_no var, rg_sayisi yok -> required (karar 5: ayri alan)
+PASS  T13    icd10 kaynak_url 'http://' -> pattern ^https://
+PASS  T14    Iki ozdes es_anlamli ogesi -> uniqueItems
+PASS  T17    olusturulma_tarihi '2026-13-45T99:99:99Z' -> format date-time (karar 8)
+PASS  T17b   olusturulma_tarihi '2026-02-30T10:00:00Z' -> format date-time (takvim gecersiz)
+PASS  T17c   olusturulma_tarihi '11.11.2026T00:00:00Z' -> format date-time (bicim bozuk)
+PASS  T20    kavram_id 'EK1_x' (buyuk harf onek) -> pattern
+PASS  T23    ICD kodu 'H54,1' (virgul) REDDEDILIR, yalniz nokta gecerli (duzeltme 1)
+PASS  T23b   ICD kodu 'H54.12' (iki haneli alt ayrim) REDDEDILIR -> pattern
+PASS  T24    kaynak.erisim_tarihi '2026-02-30' -> format date (duzeltme 3)
+PASS  T25    icd10.erisim_tarihi '2026-02-30' -> format date (duzeltme 3)
+PASS  T21    EK-1 kaydinda rg_sayisi 30692 -> const 31612 (duzeltme 2)
+PASS  T22    EK-2 kaydinda rg_sayisi 31612 -> const 30692 (duzeltme 2)
+PASS  T22b   EK-1 kaydinda mbs_no bulunmasi semayi bozmaz, ama rg_sayisi 30692 ise yine RED
+PASS  T26    SEMA SINIRI (bilincli): ayni icd10.kod iki kez semadan GECER -> T16 veri testi zorunlu
+PASS  T27    Format denetimi gercekten kosturuluyor (date-time/date/uri reddedildi)
+      kanit: date-time:'2026-13-45T99:99:99Z' varsayilan=GECER bizim=RED; date:'2026-02-30' varsayilan=RED bizim=RED; uri:'bozuk-url' varsayilan=GECER bizim=RED; uri:'https://' varsayilan=GECER bizim=RED; uri:'https://ornek.invalid/a b' varsayilan=GECER bizim=RED
+      not: varsayilan FormatChecker 'date-time' ve 'uri' icin denetleyici kayitli degil (rfc3339-validator / rfc3987 yok); bu yuzden kati denetleyici kaydedildi.
+
+== Asama 1 - Yapisal denetim: 46/46 PASS -> PASS
+```
+## 3) testler/veri_testleri.py (icerik, 12 test)
+``
+PASS  D6     Kanit dosyasi butunlugu: 8/8 kod, her biri ayri JsonGetConcept ham yaniti + tam URL + surum + erisim tarihi
+PASS  D1     kavram_id tekilligi ihlali yakalaniyor (regresyon)
+PASS  D2     Ayni kayitta ayni icd10.kod tekrari yakalaniyor (regresyon)
+PASS  D3     Takvim gecerliligi: rg_tarihi + kaynak.erisim_tarihi + icd10.erisim_tarihi kusurlari yakalaniyor (31.02, 29.02.2021, 2026-02-30, 2026-13-01)
+PASS  D3b    Gecerli tarihli kayitlar (28.09.2021 / 20.02.2019 / erisim) temiz gecer
+PASS  D4     Ayni dil + ayni termin farkli kaynakla tekrarlanirsa yakalaniyor (duzeltme 4)
+PASS  D4b    Farkli dil + farkli termin tekrar sayilmiyor
+PASS  D5     8 kodun tamami kanit dosyasindaki etiket ve URL ile birebir uyumlu
+PASS  D5b    Uydurma WHO etiketi yakalaniyor (regresyon)
+PASS  D6b    Kanit dosyasindan bir kod eksiltilirse yakalaniyor (regresyon)
+PASS  D7     Bolum basina madde sayimi altyapisi calisiyor (tutarl─▒ sayim)
+PASS  D7b    Sayim uyusmazligi yakalaniyor (regresyon)
+      not: D7 gercek veriyle A┼şama 2-A'da kosacak; bu asamada yalniz altyapi ve regresyon dogrulandi.
+
+== Asama 1 - Icerik (veri) denetimi: 12/12 PASS -> PASS
+```
+## 4) arac/ek2_ek_dogrula.py (yeni 259 kaydin dogrulamasi)
+``
+yeni kayit: 259
+hata: 0
+```
+

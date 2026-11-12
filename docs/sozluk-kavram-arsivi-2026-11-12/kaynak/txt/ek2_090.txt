@@ -1,0 +1,156 @@
+Tablo- I Klinik Demans Skoru (KDS)
+Klinik Demans Skoru (KDS)
+Kategori
+Hafıza (H)
+Oryantasyon
+(0)
+Yargılama
+ve problem
+çöme
+(YPÇ)
+Toplumsal
+İlişkiler
+(Ti)
+Ev ve
+Hobiler
+Özbakım
+0.0
+Hafıza kaybı yok veya
+kalıcı olmayan, hafif
+hafıza kaybı
+Tam oryante
+Günlük hayat, İş ve
+finansal konulardaki
+problemleri çözer,
+geçmişteki
+performansıyla İlişkili
+olarak yargılama
+İyidir.
+Sosyal gruplar, istemli
+aktiviteler, alışveriş ve
+mesleğinde rutin
+düzeydeki işlerde
+bağımsız olarak
+fonksiyon görebilir.
+Ev yaşamını,
+hobilerini ve
+entelektüel ilgisini
+sürdürebilmekte
+0.5
+Kalıcı hafif
+unutkanlık; olayları
+kısmen hatırlar,
+benign unutkanlık
+Zaman
+oryantasyonunda
+hafif zorluk dışında
+tam oryante
+Problem çözmede,
+benzerlik ve
+farklılıkları
+belirlemede hafif
+bozukluk
+Bu aktivitelerde
+hafif bozukluk
+Ev yaşamı hobileri
+ve entelektüel
+İlgisinde hafif
+bozulma
+Özbakımını tam olarak Özbakımını tam
+olarak yapabiliyor.
+yapabiliyor.
+1.0
+Orta derecede hafıza kaybı;
+yeni olaylarda daha
+belirgin; defekt günlük
+aktivitelerde karışıklıklara
+neden oluyor
+Zaman oryantasyonunda
+orta dercccdc zorluk;
+muayene ortamına oryante
+olsa da başka ortamlarda
+mekâna dezoryante olabilir
+Problem çözmede,
+benzerlik ve farklılıkları
+belirlemede Olta dcrcccdc
+bozukluk; sosyal yargılama
+genellikle sürdürülebilir.
+Bu aktivitelerin bazılarında
+başarılı olsa da bağımsız
+olarak fonksiyon göremez.
+Yüzeyel muayenede normal
+görünür.
+Ev içi faaliyetlerinde orta
+derecede ama mutlak
+bozulma, daha zor ev işleri,
+komplike hobiler ve ilgi
+alanları terk edilir,
+Özbakım için destek,
+cesaret ve hatırlatmaya
+İhtiyacı vardır.
+2.0
+Şiddetli hafiza kaybı; sadece
+İyi öğrenilen materyal
+hafızada tutulmakta yenileri
+çabucak hafizadan silinmekte
+Zaman oryantasyonunda
+şiddetli bozukluk; genellikle
+zamana sıklıkla mekâna
+demryante
+Problem çözmede, benzerlik
+ve farklılıklarda şiddetli
+bozukluk; sosyal yargılama
+genellikle bozulmuştur.
+Evinin dışında bağımsız
+hareket edemez. Sinema
+tiyatro vb sosyal aktivitelere
+refakatli olarak katılacak
+derecede iyi görünür.
+Sadece basit ev işlerini
+yapabilir ilgi alanları çok
+kısıtlanmıştır, zorlukla
+sürdürebilir.
+Giyinme, hijyen ve bireysel
+İlişkiler İçin bile yardıma
+ihtiyacı vardır.
+3.0
+Şiddetli hafıza
+kaybı sadece
+fragmanlar kalır
+Sadece şahıs
+oıyantasyonu
+kalmış
+Yargılama
+yapamaz ve
+problemleri
+çözemez
+Evinin dışında
+bağımsız hareket
+edemez Sinema
+tiyatro vb sosyal
+aktivitelere
+refakatli olarak bile
+katılamayacak
+derecede hasta
+görünür,
+Evde belirgin
+olarak fonksiyonel
+değildir
+zbakımı için daha
+fazla yardıma
+gereksinimi vardır.
+Sık inkontinans.
+Tablo-I de dikey sütunda 6 kategori yer alır. Bunlar;
+Hafıza
+Oryantasyon
+(H) 0-3
+(0) 0-3
+Yargılama ve Problem Çözme (YPÇ) 0-3
+Toplumsal İlişkiler
+Ev ve Hobiler
+Özbakım
+İTİ) 0-3
+(EH) 0-3
+(ö) 0-3
+Hastanm Klinik Demans Skoru (KDS) ile aşağıdaki tablo 2 (Mental Duruma Göre Engellilik
+Oranları) kullanılarak engel oranı bulunur.

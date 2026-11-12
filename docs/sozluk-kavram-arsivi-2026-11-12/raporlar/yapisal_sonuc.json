@@ -1,0 +1,291 @@
+{
+  "baslik": "Asama 1 - Yapisal denetim",
+  "toplam": 46,
+  "gecen": 46,
+  "kalan": 0,
+  "sonuc": "PASS",
+  "format_denetleyici_notlari": [
+    "date-time: yerlesik denetleyici yoktu (rfc3339-validator kurulu degil), kati denetleyici kaydedildi",
+    "uri: yerlesik denetleyici yoktu (rfc3987 kurulu degil), kati denetleyici kaydedildi",
+    "date-time: yerlesik denetleyici yoktu (rfc3339-validator kurulu degil), kati denetleyici kaydedildi",
+    "uri: yerlesik denetleyici yoktu (rfc3987 kurulu degil), kati denetleyici kaydedildi"
+  ],
+  "testler": [
+    {
+      "test": "T0",
+      "durum": "PASS",
+      "aciklama": "Sema gecerli bir Draft-07 belgesi (check_schema)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T1",
+      "durum": "PASS",
+      "aciklama": "EK-1 kaydi (A/1/agir, tam kaynak kunyesi)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T2",
+      "durum": "PASS",
+      "aciklama": "EK-2 kaydi (KULAK BURUN BOGAZ/A-ISITME/1 + icd10 H90.3)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T3",
+      "durum": "PASS",
+      "aciklama": "Ayni kavramin EK-1 ve EK-2 kaydi ayri ayri",
+      "ayrinti": ""
+    },
+    {
+      "test": "T3b",
+      "durum": "PASS",
+      "aciklama": "EK-1 R bolumu (R/1/ortak_hukum) gecerli",
+      "ayrinti": ""
+    },
+    {
+      "test": "T3c",
+      "durum": "PASS",
+      "aciklama": "EK-1 'I' ve 'I' (noktali) ayri degerler olarak gecerli (O-2)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T9b",
+      "durum": "PASS",
+      "aciklama": "es_anlamli: [] gecerli (karar 2)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T7f",
+      "durum": "PASS",
+      "aciklama": "EK-2 kaydi alt_bolum OLMADAN gecerli (karar 4 / kaynak kaniti)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T7h",
+      "durum": "PASS",
+      "aciklama": "EK-2 Roma rakamli madde etiketi ('IV') metin olarak gecerli",
+      "ayrinti": ""
+    },
+    {
+      "test": "T3d",
+      "durum": "PASS",
+      "aciklama": "olusturulma_tarihi gecerli ISO 8601 date-time",
+      "ayrinti": ""
+    },
+    {
+      "test": "T4",
+      "durum": "PASS",
+      "aciklama": "EK-1 + EK-2 baglantisi birlikte -> oneOf (XOR)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T5",
+      "durum": "PASS",
+      "aciklama": "Iki baglanti da yok -> oneOf",
+      "ayrinti": ""
+    },
+    {
+      "test": "T6",
+      "durum": "PASS",
+      "aciklama": "EK-1'de sira_no yok -> required",
+      "ayrinti": ""
+    },
+    {
+      "test": "T7a",
+      "durum": "PASS",
+      "aciklama": "bolum_harfi 'Z' -> enum",
+      "ayrinti": ""
+    },
+    {
+      "test": "T7b",
+      "durum": "PASS",
+      "aciklama": "sira_no 0 -> minimum",
+      "ayrinti": ""
+    },
+    {
+      "test": "T7c",
+      "durum": "PASS",
+      "aciklama": "R bolumunde derece 'agir' -> const ortak_hukum",
+      "ayrinti": ""
+    },
+    {
+      "test": "T7d",
+      "durum": "PASS",
+      "aciklama": "R bolumunde sira_no 4 -> maximum 3",
+      "ayrinti": ""
+    },
+    {
+      "test": "T7e",
+      "durum": "PASS",
+      "aciklama": "kavram_id 'ek2_' onekli ama ek_1_baglantisi -> pattern (karar 1)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T7g",
+      "durum": "PASS",
+      "aciklama": "kavram_id 'ek1_' onekli ama ek_2_baglantisi -> pattern (karar 1)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T8a",
+      "durum": "PASS",
+      "aciklama": "ek_1_baglantisi icinde icd10 -> additionalProperties",
+      "ayrinti": ""
+    },
+    {
+      "test": "T8b",
+      "durum": "PASS",
+      "aciklama": "Kok duzeyde icd10 -> additionalProperties",
+      "ayrinti": ""
+    },
+    {
+      "test": "T8c",
+      "durum": "PASS",
+      "aciklama": "kod 'h54.1' (kucuk harf) -> pattern",
+      "ayrinti": ""
+    },
+    {
+      "test": "T8d",
+      "durum": "PASS",
+      "aciklama": "icd10[0] icinde erisim_tarihi yok -> required (karar 3)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T9",
+      "durum": "PASS",
+      "aciklama": "es_anlamli: [{}] -> required dil",
+      "ayrinti": ""
+    },
+    {
+      "test": "T10",
+      "durum": "PASS",
+      "aciklama": "kaynak.url 'bozuk-url' -> pattern (ve format uri)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T11",
+      "durum": "PASS",
+      "aciklama": "rg_tarihi ISO biciminde -> pattern gg.aa.yyyy",
+      "ayrinti": ""
+    },
+    {
+      "test": "T10b",
+      "durum": "PASS",
+      "aciklama": "kaynak.url 'https://' -> pattern GECER ama format uri REDDEDER (O-3)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T10c",
+      "durum": "PASS",
+      "aciklama": "kaynak.url 'https://ornek.invalid/a b' (bosluk) -> format uri REDDEDER",
+      "ayrinti": ""
+    },
+    {
+      "test": "T11b2",
+      "durum": "PASS",
+      "aciklama": "rg_tarihi '2021-09-28' bicim hatasi -> pattern (takvim ayri: D3)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T18",
+      "durum": "PASS",
+      "aciklama": "kaynak.rg_sayisi yok -> required (karar 5)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T19",
+      "durum": "PASS",
+      "aciklama": "Yalniz mbs_no var, rg_sayisi yok -> required (karar 5: ayri alan)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T13",
+      "durum": "PASS",
+      "aciklama": "icd10 kaynak_url 'http://' -> pattern ^https://",
+      "ayrinti": ""
+    },
+    {
+      "test": "T14",
+      "durum": "PASS",
+      "aciklama": "Iki ozdes es_anlamli ogesi -> uniqueItems",
+      "ayrinti": ""
+    },
+    {
+      "test": "T17",
+      "durum": "PASS",
+      "aciklama": "olusturulma_tarihi '2026-13-45T99:99:99Z' -> format date-time (karar 8)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T17b",
+      "durum": "PASS",
+      "aciklama": "olusturulma_tarihi '2026-02-30T10:00:00Z' -> format date-time (takvim gecersiz)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T17c",
+      "durum": "PASS",
+      "aciklama": "olusturulma_tarihi '11.11.2026T00:00:00Z' -> format date-time (bicim bozuk)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T20",
+      "durum": "PASS",
+      "aciklama": "kavram_id 'EK1_x' (buyuk harf onek) -> pattern",
+      "ayrinti": ""
+    },
+    {
+      "test": "T23",
+      "durum": "PASS",
+      "aciklama": "ICD kodu 'H54,1' (virgul) REDDEDILIR, yalniz nokta gecerli (duzeltme 1)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T23b",
+      "durum": "PASS",
+      "aciklama": "ICD kodu 'H54.12' (iki haneli alt ayrim) REDDEDILIR -> pattern",
+      "ayrinti": ""
+    },
+    {
+      "test": "T24",
+      "durum": "PASS",
+      "aciklama": "kaynak.erisim_tarihi '2026-02-30' -> format date (duzeltme 3)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T25",
+      "durum": "PASS",
+      "aciklama": "icd10.erisim_tarihi '2026-02-30' -> format date (duzeltme 3)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T21",
+      "durum": "PASS",
+      "aciklama": "EK-1 kaydinda rg_sayisi 30692 -> const 31612 (duzeltme 2)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T22",
+      "durum": "PASS",
+      "aciklama": "EK-2 kaydinda rg_sayisi 31612 -> const 30692 (duzeltme 2)",
+      "ayrinti": ""
+    },
+    {
+      "test": "T22b",
+      "durum": "PASS",
+      "aciklama": "EK-1 kaydinda mbs_no bulunmasi semayi bozmaz, ama rg_sayisi 30692 ise yine RED",
+      "ayrinti": ""
+    },
+    {
+      "test": "T26",
+      "durum": "PASS",
+      "aciklama": "SEMA SINIRI (bilincli): ayni icd10.kod iki kez semadan GECER -> T16 veri testi zorunlu",
+      "ayrinti": ""
+    },
+    {
+      "test": "T27",
+      "durum": "PASS",
+      "aciklama": "Format denetimi gercekten kosturuluyor (date-time/date/uri reddedildi)",
+      "ayrinti": ""
+    }
+  ]
+}

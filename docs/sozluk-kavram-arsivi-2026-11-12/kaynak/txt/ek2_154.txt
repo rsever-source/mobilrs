@@ -1,0 +1,38 @@
+Tablo 3.29- Ayak parmaklarının ankilozuna bağlı engellilik.
+Parmaklar ( p )
+Baş Parmak
+Baş Parmak, 2p
+Başparmak, 2, 3p
+Başparmak, 2, 4p
+Başparmak, 2, 5p
+Başparmak, 2, 3, 4p
+Başparmak, 2, 3, 5p
+Başparmak, 2, 4, 5p
+Başparmak, 2, 3, 4, 5p
+Başparmak, 3p
+Başparmak, 3, 4p
+Başparmak, 3, 5p
+Başparmak, 3, 4, 5p
+Başparmak, 4p
+Başparmak, 4, 5p
+Başparmak, 5p
+2p , 3p
+2,4p
+2,5p
+3p
+3,5p
+4p
+4,5p
+5p
+Kişinin (Alt Ekstremite) [Ayakl Engellilik Oranı (%)
+am Ekstansiyon
+2(4)[6]
+Ankiloz
+onksiyonel Pozisyon
+2(3)[ 4]
+2(3)[ 4]
+2(4)[6]
+2(3)[ 4]
+2(3)[ 4]
+Tam Fleksiyon
+2(4)[6]

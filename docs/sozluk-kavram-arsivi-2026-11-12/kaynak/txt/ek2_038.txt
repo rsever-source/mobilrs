@@ -1,0 +1,131 @@
+Tablo I: Görme keskinliği puanı eşdeğerlik tablosu
+Görme Keskinliği
+Test Basamakları (1,2)
+metreden parmak sayma
+5 metreden parmak sayma
+4 metreden parmak sayma
+metreden parmak sayma
+.5 metreden parmak sayma
+metreden parmak sayma
+150 cm'den parmak sayma
+120 cm'den parmak sayma
+I metreden parmak sayma
+80 cm'den parmak sayma
+60 cm'den parmak sayma
+O santimetreden parmak sayma
+50 santimetreden el hareketleri
+Ondalık
+1.00
+0.90
+0.80
+0.70
+0.63
+0.60
+0.50
+0.40
+0.32
+0.30
+0.25
+0.20
+0.16
+0.13
+0.10
+0.08
+0.06
+0.05
+0.04
+0.03
+0.025
+0.020
+0.016
+0.013
+0.010
+0.008
+0.001
+20
+20
+20
+20
+20
+20
+Snellcn
+20
+22.2
+25
+28.5
+32
+33.3
+40
+50
+63
+66.6
+80
+100
+125
+160
+200
+250
+320
+400
+500
+640
+800
+1000
+1250
+1600
+2000
+2500
+25000
+LogMAR
+0.00
+0.05
+0.10
+0.15
+0.20
+0.22
+0.30
+0.40
+0.50
+0.52
+0.60
+0.70
+0.80
+0.90
+1.00
+1.10
+1.20
+1.30
+1.40
+1.51
+1.60
+1.70
+1.80
+1.90
+2.00
+2.10
+3.10
+Görme Keskinlik
+Puanı
+100
+98
+95
+93
+90
+88
+85
+80
+75
+73
+70
+65
+60
+55
+50
+45
+40
+35
+30
+25
+20
+15
+0

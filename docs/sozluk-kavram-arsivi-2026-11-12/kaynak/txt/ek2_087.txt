@@ -1,0 +1,29 @@
+SİNİR SİSTEMİ
+Bu bölümde Nöroloji, Fiziksel Tıp ve Rehabilitasyon, Oltopedi, Romatoloji ve onkoloji uzman
+hekimleri tarafından tanı ve tedavisi yürütülebilen nörolojik, ortopedik, romatizmal ve onkolojik
+hastalıkların sinir sisteminde neden oldukları bozukluklara ait engellilik yüzdeleri yer almaktadır.
+Engellilik yüzdeleri belirlenirken hastalık tanısı değil, ortaya çıkan bozukluğun vücutta neden olduğu
+fonksiyon kaybı öncelikle dikkate alınır. Fonksiyon kaybına yol açan birden fazla durumun
+varlığında, ilgili bölümde farklı bir uygulama önerilmediği sürece, her bir durumun yol açtığı
+engellilik oranları ayrı ayrı belirlendikten sonra Balthazard Formülü veya Ek.3 deki Balthazard
+Hesaplama Tablosu kullanılarak toplam engellilik hesaplanır. Sinir sistemi bölümünde yer almayan
+bozukluklar için Kas iskelet sistemi bölümünde bulunan değerlendirme ve tablolara bakılması gerekir.
+YÜKSEK KORTİKAL FONKSİYON BOZUKLUKLARI
+AFAZİLER
+A-MOTOR
+ı-Hafif
+2-ona
+3-Ağır
+B-SENSÖRİYEL
+I -Hafif
+2-0rta
+3-Ağır
+10
+25
+45
+20
+40
+60
+Motor ve Sensöriyel afazisi olanlarda Balthazard formülüne göre değerlendirme
+yapılır. Agnozi, diskonneksiyon sendromları gibi diğer Yüksek Kortikal Fonksiyon
+bozuklukları Sensöriyel Afazi gibi değerIendirilir.

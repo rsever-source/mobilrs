@@ -1,0 +1,13 @@
+V Ölçülen açılar
+* Fonksiyonel pozisyon
+Başparmak Metakarpofalangial (MKF) eklem: Fleksiyon ve Ekstansiyon
+I) Maksimum fleksiyon ve ekstansiyon gonyometrik olarak ölçülür. Normal fleksiyon 600 'dir.
+Fonksiyonel pozisyon ise 200 fleksiyon pozisyonudur.
+2) Ölçülen fleksİyon ve ekstansiyon açıları (V), şekil 2.2 kullanılarak fleksİyon (% KF) ve ekstansiyon
+(%KE) engellilik yüzdelerine dönüştürülür. Hiperekstansiyon pozisyonları İçin engellilik yüzdelerinin
+tespitinde, 00 nötral poziyonun üzerindeki değerler okunur.
+3) MKF eklemdeki hareket kaybına bağlı başparmak engelliliğinün belirlenmesi için, fleksiyon ve
+ekstansiyon engellilik yüzdeleri toplanır.
+4) Eğer MKF eklem ankiloze ise, pozisyon açısı (V) ölçülür ve şekil 2.2'de yer alan uygun ankiloz
+engellilik yüzdesi (% KA) ile eşleştirilir. Ankiloza bağlı en düşük engellilik değeri (% 5), fonksiyonel
+pozisyondaki (200 fleksiyon) ankiloz için verilmiştir,

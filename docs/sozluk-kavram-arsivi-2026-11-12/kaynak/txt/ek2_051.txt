@@ -1,0 +1,28 @@
+GÖRME ALANI YETERSİZLİĞİ
+Görme alanındaki patolojiler kişilerin oryantasyon—hareketlilik konusunda sorun yaşamasına
+neden olur ve çevredeki engel ve tehlikeleri fark edemeyebilir. Görme alanı muayenesi için, hasta
+tarafindan ifade edilen şikâyet olmadıkça ve anormallikten şüphelenmedikçe konfrontasyon görme
+alanı uygulanabilir. Diğer tüm durumlarda eğitimli bir personel tarafindan resmi görme alanı
+muayenesi yapılmalıdır.
+Konfrontasyon Metodu: Periferik görme alanı muayenesi için muayene eden kişi, hastanın
+önüne oturur ve ellerini periferden santrale doğru hareket ettirir. Bu test yalnız, hastanın görme alanı
+kaybı şikayeti ya da şüpheli bir durum yoksa kabul edilir.
+Tanjant Screen muayenesinin standardize edilmesi güçtür ve kalıcı yetersizlik
+belirlenebilmesi için, kabul edilebilir bir test olmadığı düşünülmektedir.
+Goldmann perimetrisi: Kinetik bir görme alam muayene yöntemidir. Goldmann'ın 111-4e İle
+yapılan İzopter, yetersizlik muayenesi için kullanılır.
+Otomatik perimetri: Görme alanının yetersizlik (İmpairment) belirlenmesi muayenesinde 60
+derece periferik görmenin test edilmesi gereklidir. Eğer görme alanı 20 derece ve daha az kalmış ise,
+Humphrey 30-2 (veya eş değeri) kullanılabilir. Goldmann perimetrisinin 111-4e izopterine, Humphrey
+otomatik perimetrisinde, 10 dB'Iik uyaranın karşılık geldiği kabul edilir.
+Binoküler Görme Alanı: Fonksiyonel görme alanı değerIendirmesi binoküler görme alanı,
+monoküler görme alanından daha önemlidir. Binoküler görme alanı yapmanın problemleri
+(perimetrede konverjans miktarı ve fiksasyon moniterizasyonu yapılamadığı için) nedeni İle her gözün
+ayrı ayrı görme alam ölçümü yapılır, bu İki görme alanını üst üste koyarak binoküler görme alam elde
+edilir, Humphrey Görme Alanı cihazının Esterman Binoküler Görme Alanı test seçeneği bulunmakta
+olup, her bir gözün görme alanı sonuçlarının şablon İle üst üste getirilip binoküler görme alanının
+tahminen elde edilmesi yerine, bu ölçüm seçeneği de kullanılabilir. Ancak bu yaklaşım her bir gözü
+ayrı ayrı değerIendirmenin yanında bir de binoküler ölçüm yapılmasını gerektirdiğinden, üçüncü kez
+hastaya görme alam testi yapılması dolayısıyla iş yükünü artıracaktır. Bu nedenle aşağıda detaylıca
+anlatılacak olan, monoküler görme alam diyagramından, binoküler görme alanı diyagramını elde etme
+ve puanlandırma İşlemini yapma seçeneği önerilmektedir.

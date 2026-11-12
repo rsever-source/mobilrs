@@ -1,0 +1,38 @@
+Şekil 22: MKF eklemin hareket kısıtlılığına bağlı başparmak engellilik yüzdeleri
+YOKA
+10
+9
+9
+8-
++30
+-8
+2
+7-0-7
+• Başparmak MKF
+2
+30
+5
+40
+3
+6/
+2 50
+/ 600
+5
+7
+9
+10
+10
+% KA Ankiloza bağlı yüzde
+Ekstansiyon kaybına bağlı yüzde
+Fleksiyon kaybına bağlı yüzde
+V Ölçülen açılar
+* Fonksiyonel pozisyon
+Örnek: Bir başparmak MKF ekleminde 100 hiperekstansiyon ve 400 fleksiyon açıklığı vardır.
+O; 0/0 KF-O/02
+% 0+ % 2 % 2 başparmak engellilik yüzdesi.
+Başparmak İF ve MKF eklemlerin Tutulumu
+Başparmaktaki fleksİyon ve ekstansiyon engelliliğini tespit etmek için, İF eklem ve MKF eklemdeki
+engellilik yüzdeleri toplanır. Ankiloza ait engellilik değerleri de benzer şekilde toplanır.
+Örnek: İF eklemde hareket kaybına bağlı başparmak engelliliği % 2, MKF eklemde de % 2 ise; %2
++ % 2— % 4 başparmak engelliliği vardır.
+Başparmak Adduksiyon

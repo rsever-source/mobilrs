@@ -1,0 +1,51 @@
+Ortalama olarak normal göz 100 değerlik skor elde eder. Merkezi 10 derece yarıçaplı görme
+alanı primer görme korteksinin, yaklaşık %50'sini oluşturur. Yarıçapı 10 derecelik merkez alandaki
+görme alan kaybı, 20/200 (0. l)'lik görme keskinliği derecesinin, görme fonksiyonuna karşılık gelir.
+Yani 0.1 görme keskinliğinin oluşturduğuna denk yetiyitimi oluşturur.
+Ölçüm meridyenlerinin, yatay ve dikey meridyen dışında, kadranlarda bulunması
+hemianopiler İçin özel kurallar oluşturma gereğini omdan kaldırdığı için tercih edilmişlerdir. Tam
+homonim hemianopi %50'lik görme alan kaybı oluşturur.
+Alt görme alanı üst alana göre %50 daha fazla ağırlık taşır. Bunun nedeni alt görme alanının
+kişinin oryantasyon ve hareketliliğinin sağlanmasmda daha önemli olmasıdır.
+Santral skotom için ayrı bir kurala daha ihtiyaç vardır. Santral skotomlar görme keskinliğini
+de olumsuz etkiler. Temel formül kullanılırsa bir patoloji iki kez hesaplanmış olur. Bu nedenle görme
+keskinliği skorundaki her bir 10 puanlık kayıp için, santral bölgede grid üzerinde bir halka üzerindeki
+10 nokta çıkarılır. Bu ayarlama her iki göz için ayrı olarak yapılmalıdır.
+Bu işlemlerden sonra, İşlevsel görme alan skoru aşağıdaki formül ile belirlenir.
+Tablo 4- Santral skotom için düzeltme tablosu.
+Görme Keskinliği Skoru
+Yani: GKS Kaybı
+Veya Görme Keskinliği
+Santral Skotomu hmal
+Etme Miktarı
+100-90
+0-10
+220/30
+89-90
+11-20
+220/50
+2 derece
+79-70
+21-30
+220/80
+4 derece
+69-60
+31-40
+220/125
+6 derece
+59-50
+41-50
+220/200
+8 derece
+49 ve az
+20/200
+10 derece
+*** Görme alanı skorunun belirlenmesi, diğer görme sistemi fonksiyon kayıpları ile birlikte Türk
+Oftalmoloji Derneği ya da Sağlık Bakanlığı internet sitelerinde bulunan bilgisayar programı ile de
+yapılabilir.
+BİNOKÜLER GÖRME ALAN SKORU: Her bir gözdeki görme alanı kayıpları, diğer gözün
+sağlıklı alanları tarafından kapatılabilir. Binoküler görme alam muayenesinin otomatik perimetri ve
+Goldman perimetrisinde uygulanması güçtür. Bu nedenle, her iki göz görme alan muayene sonucu üst
+üste konarak binoküler görme alanı değerIendirilerek skor bulunmalıdır. Bunun için tercihen saydam
+bir sayfaya (örmeğin asetata) basılmış dört adet görme alanı diyagramı (iki adet şekil 2, iki adet şekil
+3) binoküler görme alanı skorunu belirlemede büyük kolaylık sağlayacaktır.

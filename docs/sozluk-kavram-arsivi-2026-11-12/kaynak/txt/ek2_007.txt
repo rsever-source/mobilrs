@@ -1,0 +1,106 @@
+Tablo 2- İşitme engeli yüzdelerine göre engel oranları hesaplama tablosu.
+İşitme Engeli
+0-1.7
+1.8-4.2
+4,3-7.4
+7.5-9.9
+10.0-13.1
+13.2-15.9
+16.0-18.8
+18.9-21.4
+21.5-24.5
+24.6-27.1
+27.2-30.0
+30.1-32.8
+32.9-35.9
+36.0-38.5
+38.6-41.7
+41.8-44.2
+47.5-49.9
+Engel Oranı %
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+30
+31
+32
+33
+İşitme Engeli
+50.0-53.1
+53.2-55.7
+55.8-58.8
+58.9-61.4
+61.5-64.5
+64.6-67.1
+67.2-70.0
+70.1-72.8
+72.9-75.9
+76.0-78.5
+78.6-81.7
+81.8-84.2
+84.3-87.4
+87.5-89.9
+90.0-93.1
+93.2-95.7
+95.8-98.8
+98.9-100.0
+Engel Oranı %
+35
+36
+37
+38
+39
+40
+41
+43
+44
+45
+46
+47
+48
+49
+50
+52
+Tablo 3- İşitme kaybının derecesine göre döll frekans için tahmini işitme eşik toplamı.
+İşitme kaybı derecesi
+çok Hafif
+Hafif
+Orta
+Orta-lleri
+İleri
+Çok ileri
+Dört frekans için tahmini işitme eşik toplamı
+ÇOCUK
+ERİŞKİN
+(16-25 dBHL)
+(26-40 dBHL)
+(41-55dBHL)
+(56-70dBHL)
+(71-90 dBHL)
+64-100
+104-160
+164-220
+224-280
+284-360
+(21-35 dBHL)
+(36-45 dBHL)
+(46-55 dBHL)
+(56-70 dBHL)
+(71-90 dBHL)
+84-140
+144-180
+184-220
+224-280
+284-360
+(91 dBHLveüstü) 364
+(91 dBHLveüstü) 364

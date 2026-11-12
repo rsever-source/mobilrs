@@ -1,0 +1,16 @@
+% KFEkstansiyon kaybına bağlı yüzde
+% KAZAnkiIoza bağlı yüzde
+V Ölçülen açılar
+* Fonksiyonel pozisyon
+Omuz Ekleminin Hareket Kısıtlılığına Bağlı Engelliliklerin Belirlenmesi
+l) Omuzda hareket kısıtlılığına bağlı (fleksiyon ve ekstansiyon, abduksiyon ve adduksiyon, İnternal
+ve eksternal rotasyon) bağlı üst ekstremite engelliliği, daha önceki bölümlerde tanımlanan yöntemler
+kullanılarak belirlenir.
+2) Üst ekstremite engelliliğinin hesaplanmasında, her bir omuz hareket kaybı için verilen engellilik
+değerleri toplanır.
+3) Üst ekstremite engelliliğinin, tüm vücut engelliliğine dönüştürülmesi için, tablo 2.3 kullanılır.
+Örnek:
+Bir hastada omuz fleksiyon ve ekstansiyon kaybına bağlı % 9, abduksiyon ve adduksiyon kaybına
+bağlı % 5, internal ve eksternal rotasyon kaybına bağlı % 2 oranında engellilik mevcuttur; %9 + %5 +
+%2 %16, omuz ekleminin hareket kısıtlılığına bağlı üst ekstremite engellilik yüzdesidir. Bu
+durumda kişinin engel oranı % 10 olur (Tablo 2.3).

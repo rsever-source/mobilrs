@@ -1,0 +1,32 @@
+'%KE
+45
+0 42
+36-0-36-0
+33-2-31—210
+ramak DtF
+30-4
+—12 40
+33 15/ 50
+20 16
+i 700
+35 25 5 / -v
+35 af p
+/ 45
+42
+45
+% KFZFIeksiyon kaybına bağlı yüzde
+% KEzEkstansiyon kaybına bağlı yüzde
+% KAZAnkiloza bağlı yüzde
+V Ölçülen açılar
+* Fonksiyonel pozisyon
+Proksimal İnterfalangial (PİF) eklem: Fleksiyon ve Ekstansiyon
+I) Maksimum fleksİyon ve ekstansiyon gonyometrik olarak ölçülür. Normal fleksiyon 1000'dir.
+Fonksiyonel pozisyon ise 400 fleksiyon pozisyonudur.
+2) Ölçülen fleksiyon ve ekstansiyon açıları (V), Şekil 2.4 kullanılarak, fleksiyon (% KF) ve
+ekstansiyon (% KE) engellilik yüzdelerine dönüştürülür. Hiperekstansiyon pozisyonları için engellilik
+yüzdelerinin tespitinde, 00 nötral poziyonun üzerindeki değerler okunur.
+3) PİF eklemdeki hareket kaybına bağlı parmak engelliliğinin belirlenmesi İçin, fleksİyon ve
+ekstansiyon engellilik yüzdeleri toplanır.
+4) Eğer PİF eklem ankiloze ise, pozisyon açısı (V) ölçülür ve şekil 2.4'de yer alan uygun ankiloz
+engellilik yüzdesi (% KA) ile eşleştirilir. Ankiloza bağlı en düşük engellilik değeri (%50), fonksiyonel
+pozisyondaki (400 fleksiyon) ankiloz için verilmiştir.

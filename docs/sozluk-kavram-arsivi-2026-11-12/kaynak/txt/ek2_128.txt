@@ -1,0 +1,29 @@
+42
+37 0 v
+hl
+34
+32-
+11
+27-21-6
+19
+ifltk5iş011
+Dilşek
+30 20
+10
+3/ 74
+35 11
+% KFFIeksiyon kaybına bağlı yüzde
+% KEZEkstansiyon kaybına bağlı yüzde
+% KAZAnkiIoza bağlı yüzde
+V Ölçülen açılar
+* Fonksiyonel pozisyon
+Dirsekte Pronasyon ve supinasyon
+I) Maksimum pronasyon ve supinasyon gonyometrik olarak ölçülür. Normal hareket açıklığı, 800
+supinasyon ve 80 pronasyondur. Fonksiyonel pozisyon ise 200 pronasyon pozisyonudur.
+2) Ölçülen pronasyon ve supinasyon açıları(V), şekil 2.9 kullanılarak açılara karşılık gelen pronasyon
+(%Kp) ve supinasyon (%Ks) engellilik yüzdeleri ile eşleştirilir.
+3) Üst ekstremite engellilik yüzdesinin hesaplanması için, supinasyon ve pronasyon engellilik
+yüzdeleri toplanır.
+4) Eğer dirsek ankiloze ise, pozisyon açısı (V) ölçülür ve şekil 2.9'da, ölçülen açıya karşılık gelen
+ankiloz engellilik yüzdesi (YOKA ) bulunur. Fonksiyonel pozisyondaki ankiloz (200 pronasyon) en
+düşük ankiloz engellilik değerini alır, bu da üst ekstremitede %8 oranında engelliliğe eşittir.

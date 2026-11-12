@@ -1,0 +1,30 @@
+Bu ve benzeri gibi durumlarda, değerlendirme gerçek yaşam koşullarında elde edilen
+ölçümlere dayandırılmalıdır.
+Birden fazla engeli bulunan bireyler test edilirken, görme yetersizliği ile cevap verme
+yetersizliği arasında ayrım yapılmalıdır.
+İşlevsel görme puanı-İGP :
+iGPz İKPXİAP / 100 formülü ile hesaplanır.
+örneğin iKP 80 ise (%20 yeti kaybı) ve iAP 75 ise 25 yeti kaybı )
+İGPz %80 X %75 % 60 (%40 yeti kaybı) olarak hesaplanır.
+Bu hesaplama, rezidüel yeti skorlarına dayanarak yapılmalıdır. Yeti kaybı oram toplayarak
+veya çarparak yapılan hesaplar yanlış sonuç verir.
+İlave Kurallar:
+I. Eğer görme alanı ile ilgili bir veri yoksa ve alan kaybını düşündürecek bir klinik neden
+bulunmuyorsa, İAP 100 olarak kabul edilir. Böyle bir olguda İGP, İKP ile aynıdır ve görsel sistemin
+işlev bozukluğu oranı, keskinlik kaybına bağlı işlev bozukluğu oranı ile aynıdır.
+2. Fonksiyonel Körlük, Anatomik Körlük ve Tek Gözlülük Durumları
+Bir gözde görme keskinliğinin 0.02 (—20/1000)'den az, diğer bir ifadeyle I metreden
+parmak sayma veya daha düşük olması durumunda, tama yakın körlük seviyesine ulaşmış bu göz
+için "fonksiyonel körlük”ten bahsedilir. Göz yuvarlağının yokluğunda da "anatomik körlük” söz
+konusudur. Gözlerden birinde anatomik veya fonksiyonel körlük varlığında "tek gözlülük durumu”
+(monokülarite) diyeceğimiz özel bir durum ortaya çıkar. Tek gözlülük durumu için işlevsel görme
+puanı hesaplanışı farklılık arz eder. Tek gözlü (monoküler) kişilerde görsel sistemin işlevsel keskinlik
+puanı (İKP), gören gözün İşlevsel keskinlik puanının % 80'i (İKP x 0.8) kadar kabul edilir. Görsel
+sistemin işlevsel alan puanı (LAP) ise, gören gözün görme alanı puanının 15 eksiği (GAP -15)
+sayılacaktır. Sonuç olarak;
+İşlevsel Görme Puanı (İGP), İşlevsel Keskinlik Puam (İKİ)), Görme Alanı Puanı (GAP) olmak üzere;
+Tek Gözlülükte İGP (İyi gören gözün İKP değeri x 0.8) x (İyi Gören Gözün GAP değeri - 15) / 100
+Görme sistemi yetersizlik oranı (GSYO)— 100 - İGP
+Gözlerin ikisinde de körlük (anatomik veya fonksiyonel) bulunuyor olması durumunda, görme
+sisteminin işlev bozukluğu için herhangi bir hesaplama yoluna gidilmez ve görme sistemi yetersizlik
+oranı 100 (yüz) puan kabul edilir.

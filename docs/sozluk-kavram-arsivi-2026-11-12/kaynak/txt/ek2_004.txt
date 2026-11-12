@@ -1,0 +1,28 @@
+1. Her bir kulağa ayrı saf ses odyometrisi uygulayıp 500, 1000, 2000 ve 4000 Hertzdeki işitme
+seviyeleri kaydedilmelidir. Her frekans için işitme seviyelerinin her hastada belirlenmesi önemlidir.
+Aşağıdaki kurallar uç değerler için geçerlidir:
+a) Bir frekans için işitme seviyesi 100 desibelden (dB) fazla ise seviye 100 dB olarak kabul
+edilmelidir.
+b) İşitme seviyesi normalden daha iyiyse, seviye 0 dB olarak kabul edilmelidir.
+2. Her bir kulağın cihazsız (işitme cihazı ve implantlar) olarak ölçülen dört frekanstaki hava
+yolu işitme seviyeleri desibel olarak toplanır.
+3. İşitme kayıplarının yüzdesini belirlemek için Tablo I kullanılır.
+a) Çift taraflı işitme kayıplarında her bir kulak için dört frekanstaki işitme eşik toplamları
+Tablo I deki yatay ve dikey sütunlardan kesiştirilerek bulunur.
+b) Tek taraflı işitme kayıpları için normal işiten kulak % 0 olarak kabul edilerek işitme kayıp
+yüzdesi belirlenir (saf ses ortalaması çocuklarda 15 dB'in, erişkinlerde 20 dB'in altında olduğu zaman
+normal işittiği kabul edilir).
+4. Kişinin engel oranını belirlemek için Tablo 2 kullanılır.
+5. Saf ses işitme eşikleri her bir frekans için belirlenemeyen hastalarda (çocuklar, mental retarde
+kişiler vb) objektif testler, beyin sapı odyometrİsİ (ABR), Auditory Steady State Response (ASSR),
+otoakustik emisyon (OAE) ve immitansmetrik bulgularla Tablo: 3 kullanılarak işitme engeli yüzdesi
+her bir kulak için belirlenir (tahmini işitme eşiği dört ile çarpılarak dört frekans tahmini eşik
+toplamı elde edilmiştir). Bu değer kullanılarak Tablo l'den işitme engellilik yüzdesi hesaplanır.
+Tablo:2 kullanılarak da engel oranı yüzdesi bulunur.
+— Tablo I değerlendirilirken; 500, 1000, 2000, ve 4000 Hz'deki işitme düzeylerinin
+toplamları; az İşiten kulak İçin dikey, daha İyi İşiten kulak İçin yatay eksende okunur ve bu değerlerin
+kesişme noktası kişinin işitme kaybı yüzdesini belirler.
+İşitme kaybına eşlik eden konuşma bozuldukları için engel oranı tablo 5'den
+yararlanarak belirlenir. İşitme kaybına eşlik eden konuşma bozukluklarına ait engel oranı, işitme
+engeline ait engel oranına Balthazard Formülü veya Ek-3'te bulunan Balthazard Hesaplama
+Tablosu'ndan yararlanılarak belirlenir

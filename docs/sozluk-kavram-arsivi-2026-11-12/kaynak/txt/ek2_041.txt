@@ -1,0 +1,52 @@
+Her iki gözde anlamlı kontrast duyarlık-kamaşma kusuru varlığı nedeniyle işlevsel görme puanı % 20
+azaltılacaktır.
+Bu durumda İşlevsel Görme Puam Th4 — (71.4 *0.2) 57.12
+Görme sistemi yetersizlik oram: 100 — 57 % 43
+Görme Keskinliği:
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+Uzak görme keskinliği belirlenmesi esastır. Yakm görme keskinliği opsiyoneldir.
+Görme keskinliği ölçümleri normal oda aydınlatmasında yapılmalıdır.
+Normal oda aydınlatması, refraksiyon kusuru bulunmayan veya kusuru düzeltilmiş bir kişinin
+standart bir kitap sayfasını, ek aydınlatmaya İhtiyaç duymadan rahatça okuyabildiği ortam
+aydınlığı olup, Işık-ölçerler ile ayarlanabilme olanağı varsa, 80 İla 110 mum/m2 aralığında
+aydınlık hedeflenmelidir.
+Eğer uzak ve yakın görme keskinliği arasında bir tutarsızlık varsa nedeni araştırılıp,
+açıklanmak koşuluyla yakın görme keskinliği de değerIendirmeye ilave edilebilir.
+Ölçüm mümkünse, uluslararası standartlara uygun logaritmik eşellerle (ETDRS, Bailey-
+Lovie, PERK vb) yapılmalı, bu donanım yoksa Snellen eşeli ile ölçülen görme keskinliği
+değerlerinin tablo I 'deki karşılıkları kullanılmalıdır.
+Kırma kusurunun düzeltilmesi: Görme yetersizliğinin hesaplanması, en iyi düzeltilmiş görme
+keskinliğine göre yapılmalıdır. Muayenede düzeltilmemiş ve düzeltilmiş görme keskinlikleri
+ayrı ayrı belirtilmelidir. Eğer düzeltilmemiş ve uygun bir şekilde düzeltilmiş görme keskinliği
+aym ise bu bilgi açık olarak not edilmelidir.
+Binoküler görüş, günlük yaşamda en sık kullanılan görüşü temsil ettiği için, binokuler görüş
+mutlaka ölçülmelidir ve işlevsel keskinlik puanının hesaplanmasmda esastır.
+İşlev bozukluğunun hesaplanması, hastanın direkt muayenesine dayandırılmalıdır. Ancak,
+zorunlu hâllerde kayıtlar üzerinde hesaplama yapılması gerekirse; binoküler keskinlik kaydı
+yoksa, iyi gören gözün görme keskinliği binokuler keskinlik olarak hesaplanabilir. Ancak
+istisnai durumlar unutulmamalıdır. Latent nistagmuslu hastalarda, binoküler bakışta keskinlik
+daha iyi olabilir. DiplopiIİ veya distorsiyonlu bazı hastalarda, zayıf göz kapatıldığı zaman,
+diğer göz daha iyi görebilir.
+Cerrahi tedaviler ile görme düzeylerinin önemli oranda değişeceği beklenen olgularda 2 (iki)
+yıl "süreyle sınırlı rapor" düzenlenir. Raporların geçerlilikleri, bu sürelerin bitimiyle sona
+erer. Hasta Engellilik kuruluna tekrar başvurursa, yeni ve güncel muayene bulgularına göre
+yeni rapor düzenlenir.
+Ameliyat olmuş veya ameliyatla görme artışı beklentisi kalmamış-bulunmayan olgularda
+görsel artış beklenmiyor olmasının gerekçesi açıklanarak süre kısıtlamasız rapor düzenlenir.
+Gerçekci Koşulların Kullanımı:
+Görme sistemi işlevlerinin değerIendirilmesi, optimal koşullar altındaki performansa
+dayandırılmalıdır. Günlük yaşamda, bu koşullar sağlanmadığı zaman, bir istisna yapılabilir. Örneğin
+en iyi kontakt lensle görebilen ancak lensi tolere edemeyen bir hasta, kırma kusuru açısından gözler
+arası farkı çok olan ve iki gözün tam düzeltmesini tolere edemeyen bir hastamn en iyi düzeltilmiş
+görme düzeyi değil, tolere edebildiği ve günlük hayatında kullandığı düzeltme düzeyi ele alınabilir.
+Kontakt lens ile görme keskinliği ve görme alanı artırılabilen hastalar, kontakt lens
+düzeltmesini kullanabiliyorlarsa, kontakt lensli durumlarına göre, eğer kontakt lens düzeltmesini
+kullanamıyorlarsa, gözlüklü durumlarına göre değerlendirilmelidir.

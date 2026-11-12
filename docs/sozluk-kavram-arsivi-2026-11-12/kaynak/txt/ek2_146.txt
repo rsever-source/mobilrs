@@ -1,0 +1,99 @@
+3.4. MANUEL KAS TESTLERİ
+Tablo 3.6- Alt Ekstremitenin Kas Kuvvetinin DeğerIendirilmesi
+Derece
+5
+4
+3
+2
+1
+o
+Kas kuvvetinin değerIendirilmesi
+Yer çekimine karşı maksimum dirençle engellenemeyen aktif hareket
+Kısmi direnç ve yerçekimine karşı aktif hareket
+Sadece yerçekimine karşı aktif hareket
+Yerçekimi ortadan kaldırıldığı zaman aktif hareket
+Hafif kontraksiyon, hareket yok
+Kontraksiyon ve hareket yok
+Motor kayıp %
+ı -25
+26-50
+51-75
+76-99
+100
+Tablo 3.7- Alt ekstremite kas kuvvetinde kayba bağlı engellilik yüzdeleri. (bkz tablo 3,1)
+Ekstremitenin aynı bölgesinde farklı bozukluklar varsa (örn, kalçada fleksiyon, ekstensiyon ve
+abduksiyonda motor kayıp varsa) önce Balthazard yöntemi ile ekstremite engel oranı hesaplanır daha
+sonra kişinin engellilik oranına dönüştürülür.
+Kişinin (alt ekstremitenin) ve [ayağın] engellilik oranı (%)
+Kas grubu
+Kalça
+Fleksiyon
+Ekstansiyon
+Abdüksiyon
+Diz
+Fleksİyon
+Ekstansiyon
+Ayak bileği
+Fleksiyon
+Ekstansiyon
+İnversiyon
+Eversiyon
+Ayak
+Başparmağı
+Ekstansiyon
+Fleksiyon
+Derece O
+8 (15)
+19 (37)
+ı (62)
+13 (25)
+13 (25)
+19 (37) [53]
+13 (25) [35]
+(12) [17]
+(12) [17]
+(7) [10]
+6 (12) [17]
+Derece I
+8 (15)
+19 (37)
+ı (62)
+13 (25)
+13 (25)
+19 (37) [53]
+13 (25) [35]
+(12) [17]
+(12) [17]
+(7) [10]
+(12) [17]
+Derece 2
+8 (15)
+19 (37)
+ı (62)
+13 (25)
+13 (25)
+19 (37) [53]
+13 (25) [35]
+(12) [17]
+(12) [17]
+(7) [10]
+(12) [17]
+Derece 3
+(10)
+14 (27)
+19 (37)
+(17)
+(17)
+13 (25) [35]
+13 (25) [35]
+(12) [17]
+(12) [17]
+(12) [17]
+Derece 4
+(5)
+9 (17)
+13 (25)
+6 (12)
+6 (12)
+9 (17) [24]
+6 (12) [17]

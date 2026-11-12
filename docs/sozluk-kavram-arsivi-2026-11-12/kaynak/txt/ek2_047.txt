@@ -1,0 +1,38 @@
+Yorum: Görme keskinliğine göre sağ göz normal. Sol gözde görme yok. Bu olguda gözlerden
+birinde "anatomik körlük" söz konusudur. Bir gözde körlük bulunması durumunda tek gözlülük
+(monokülarite) söz konudur ve ilave kurallar bölümündeki 2 numaralı kurala göre hareket
+edilmelidir. Sağlam olan sağ gözün işlevsel keskinlik puanının % 80'i görsel sistemin işlevsel
+keskinlik puam sayılacaktır. Burada (Yukarıdaki örnekte, işlevsel keskinlik
+puam hesaplanırken, kişi iki gözü de gören biri gibi ele alındığı hâlde RP yine de 80 bulunmuştur.
+Çünkü tek gözlü kişilerde, işlevsel keskinlik puanının hesaplanmasında, sağlam gözün keskinlik
+puanının % 80 'nin işlevsel keskinlik puam sayılması gerektiği kuralı, iki gözü sağlam olan kişilerde
+yapılan işlevsel keskinlik puamyla aym matematiksel temele dayanmaktadır.)
+İşlevsel alan puam (İAP) da, "tek gözlülük" durumunda kullanılması gereken 3 numaralı ilave
+kurala göre, sağlam olan sağ gözün görme alanı puanının (GAP) 15 eksiği olacaktır. Sağ gözün görme
+alanına ait herhangi bir eksiklik bildirilmediğinden, bu gözün görme alanı puanının (GAP) 100 olduğu
+ve işlevsel görme alanı (İAP) puanının bundan 15 eksik olacağından hareketle,
+bulunur.
+İşlevsel Görme Puam (İGP) z: Görme sistemi yetersizlik
+oranı GSYO'nın 50 veya daha az olduğu olgularda Engel Oranı,
+GSYO'na denktir.
+Bu olguda enükleasyon sonrası kontrol altına alınmış (çocukluğunda alınmış retinoblastomlu
+gözün, 45 yaşına geldiği hâlde herhangi bir metastazı olmayışından kontrol altına alınmış olduğu
+sonucunu çıkarıyoruz) bir malign tümör mevcuttur. Bu nedenle Engel Oranına net % 10 ilave
+yapılacaktır. Toplam Engel Oranı —32 + 10— 42 çıkar.
+35 yaşında erkek.
+Anamnez: Çiftçi, birkaç yıl önce sol gözüne dal çarpmış.
+Şikayeti: Çiftçilik işlerini rahat yapabiliyor. Okuma ve bir sanat dalı ile ilgilenmiyor.
+Fizik Muayene: Sol gözde yoğun kornea skarı.
+Tam: Kornea opasİtesİne bağlı görme kaybı.
+Klinik :
+iKP
+Binoküler G.K.
+: 20 / 40
+Sağ G K.: 20 / 40 (düzeltilmiş)
+GKP
+85
+85
+35
+sol G.K.
+85
+: 201400

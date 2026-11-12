@@ -1,0 +1,38 @@
+Aydınlatılmış bir odada, aydınlatılmış bir kart tercih edilir, çünkü bu şekilde, normal görüş
+koşulları, yarı karanlık bir odada bir projektör kartından çok daha iyi temsil edilir. Bununla birlikte,
+arkadan aydınlatmalı eşel veya projeksiyon eşeli yokluğunda, normal aydınlığa sahip bir odada
+aydınlatmasız duvar eşelleri de görme keskinliği ölçümü için kullanılabilir. Ancak aydınlatmasız
+eşellerle kamaşma-kontrast duyarlık kaybı test edilemez.
+Görme alanı donanımı: Görme alanında bir kısıtlanma, iddia ediliyor veya şüpheleniliyorsa,
+formal görme alanı testi için standardize donanım gerekir. Görme alanı kısıtlanması iddia edilmiyorsa
+ve hekim görme alam defektinden şüphelenmiyor İse alan kısıtlanmasının olmadığını onaylamak İçin
+bir konfrontasyon görme alam yeterli kabul edilebilir. Görme alam kaybından şüphelenilen hastaya
+standart yaklaşım, önce 120 derecelik tüm alanın 10 db Işık uyaranıyla taranması (120 poİnt full field
+screening test), merkezi görme alanın değerlendirilmesi için 30-2, 24-2 veya 10-2 testleri
+kullanılabilir. Görme alam testlerinin değerIendirmeye alınmasında, testin güvenilirlik açısından
+standart kriterleri karşılaması esastır. Bu standart, fiksasyon kaybı, sahte olumsuz (false negative) ve
+sahte olumlu (fulse positive) yanıtlardan herhangi birinin % 20'yİ aşmamasıdır. Test gerekirse
+tekrarlanmalı, güvenilirlik kriterlerini karşılamayan testler ek kanıt yokluğunda değerIendirmeye
+alınmamalıdır. Bariz muayene bulguları (optik disk solukluğu, ciddi glokomatöz çanaklaşma, belirgin
+makulopati gibi) varlığında ya da elektrofizyolojik testlerle doğrulanan optik sinir-retina fonksiyon
+bozuklukları söz konusu olduğunda, görme alanı güvenilirlik kriterleri hastalığın doğası gereği yüksek
+çıkabileceğinden, bu durum rapora not edilerek ("test güvenilirlik kriteri % 20'yi aşmakla birlikte,
+skotom alanları ile muayene ve ek tetkik bulguları uyumlu bulunmuştur” biçiminde. ) görme alanı
+skoru hesaplanabilir.
+Diğerleri
+(a) Kontrast duyarlık, kamaşma (glare) kusuru hastaların ortam aydınlığının
+değişiminden çok fazla etkilendiğini beyan etmesi durumunda değerlendirilmelidir. Bu testlere ilişkin
+dünya standardı bulunmadığından, yalnızca mevcut kontrast duyarlık kaybı — kamaşma (glare)
+kusurunun klinik olarak anlamlı düzeyde olup olmadığına bakılacaktır. Bunun için şu şekilde hareket
+edilmelidir:
+Görme keskinliği puanının belirlenmesine esas olan ölçüm, aydınlatılmış bir odada, arkadan
+aydınlatmalı eşel veya projeksiyon eşeli ile saptanan değerdir.
+Bu görme keskinliği değerinin onam aydınlatmasının azaltılması İle ne kadar arttığı ölçülmelidir.
+Onam aydınlığının azaltılması kamaşmayı azaltacak, zemin ile arkadan aydınlatmalı eşel veya
+projeksiyon eşelindeki test harfleri arasındaki kontrastı artıracak, büyüyen pupilla ile parasantral
+görüş İmkanı yaratacaktır.
+Bu artış ondalık sisteme göre (Snellen) iki kat veya daha fazla ise klinik açıdan anlamlıdır (örneğin,
+görme keskinliği normal oda aydınlatmasında 0.2 iken, oda ışığı kapatıldığında 0.4 veya daha üst
+seviyeye çıkması; 0.3 seviyesinde iken 0,6 veya daha üst seviyeye çıkması gibi), Snellen eşellerine ve
+ondalık sisteme göre ifade edilen bu iki kat fark, ETDRS ve Bailey-Lovie eşellerine göre 3 tam sıra
+anlamına gelir. Görme Keskinliği Puanı Eşdeğerlik Tablosunda da (Tablo l) 15 puanlık farka eşittir.

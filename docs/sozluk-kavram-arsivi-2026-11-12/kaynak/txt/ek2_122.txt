@@ -1,0 +1,30 @@
+Örnek: Bir hastanın orta parmak DİF ekleminde %12 engellilik, PİF ekleminde %31 ve MKF
+ekleminde İse %27 engellilik mevcuttur. Bu durumda önce DİF eklem ve PİF eklem engellilik
+yüzdeleri kombine edilir. Daha sonra çıkan sonuç, MKF eklem engellilik yüzdesi ile kombine edilir.
+% 12, %31 ile kombine edilirse %39 bulunur (Balthazard hesaplama tablosu). %39, %27 ile
+kombine edilirse %50 bulunur (Balthazard hesaplama tablosu). % 50 ona parmağın hareket kaybına
+bağlı engellilik yüzdesidir.
+Parmak ampütasyonu, duyu kaybı ve hareket kısıtlılığı engelliliklerinin kombinasyonu
+1)Parmak engelliliğine katkıda bulunan ve daha önce tanımlanan ampütasyon, duyu kaybı ve hareket
+kısıtlılığına bağlı engellilik yüzdeleri belirlenir.
+2)Total üst ekstremite engellilik değerini hesaplamak için bileşik değerler tablosu kullanılarak,
+engellilik yüzdeleri kombine edilir.
+3) Parmak engelliliğini sırasıyla el, üst ekstremite ve tüm vücut engelliliği ile İlişkilendirmek için
+tablo 2.1, 2.2 ve 2.3 kullanılır,
+Örnek: Bir hastada orta parmakta ampütasyona bağlı %20 engellilik, duyu kaybına bağlı % 10
+engellilik ve hareket kısıtlılığına bağlı % 10 engellilik bulunmaktadır. Bu durumda ikişer ikişer
+kombinasyon yapılır. Önce %20 ile %10 kombine edilir ve %28 bulunur (Balthazard). Sonra % 28 ile
+% 10 kombine edilir ve % 35 bulunur (Balthazard). % 35 orta parmağa ait engellilik yüzdesidir.
+Parmakta görülen % 35'lik engellilik, tablo 2.1, 2.2 ve 2.3 kullanıldığında, elde % 7, üst ekstremitede
+%6 ve tüm vücutta % 4 engelliliğe karşılık gelmektedir.
+Birden fazla parmağa ait engelliliklerin belirlenmesi
+l) Bir elde 2 ya da daha fazla parmak etkilenmiş İse her biri ayrı ayrı değerIendirilir ve her parmak
+için engellilik yüzdesi hesaplanır.
+2) Tablo 2.1 kullanılarak, her parmağa karşılık gelen el engellilik yüzdesi bulunur.
+3) Total el engelliliğini hesaplamak için, tablo 2.1'de her parmağa karşılık gelen el engellilik
+yüzdeleri toplanır.
+4) El engelliliğini üst ekstremite ve kişinin engel oranı ile ilişkilendirmek için tablo 2.2 ve tablo 2.3
+kullanılır.
+Örnek:
+Parmak engelliliği
+El engellilik yüzdesi

@@ -1,0 +1,32 @@
+2) Ölçülen fleksiyon ve ekstansiyon açıları şekil 2.1 kullanılarak, fleksiyon (% KF) ve ekstansiyon (%
+KE) engellilik yüzdelerine dönüştürülür. Hiperekstansiyon pozisyonları için engellilik yüzdelerinin
+tespitinde, 00 nötral poziyonun üzerindeki değerler okunur.
+3) İF eklemdeki hareket kaybına bağlı başparmak engelliliğinin belirlenmesi için, fleksiyon ve
+ekstansiyon engellilik yüzdeleri toplanır.
+4) Eğer İF eklem ankiloze ise, pozisyon açısı (V) ölçülür ve şekil 2.1 'de yer alan uygun ankiloz
+engellilik yüzdesi (% KA) ile eşleştirilir. Ankiloza bağlı en düşük engellilik değeri (% 7), fonksiyonel
+pozisyondaki (200 fleksiyon) ankiloz için verilmiştir.
+Örnek: Bir başparmakta -100 ekstansiyon ve 500 fleksiyon vardır;
+KEZ
+% 2 + % 2 % 4 başparmak engelliliği mevcuttur.
+Şekil 2.1: Başparmak İF eklemin hareket kısıtlılığına bağlı başparmak engellilik yüzdeleri
+TOKE
+15x/
+Başparmak İF
+30
+4
+40
+9
+3 50
+60
+/ 70
+10
+1
+14 (1
+11
+15
+14 ]
+15
+% KA Ankiloza bağlı yüzde
+Ekstansiyon kaybına bağlı yüzde
+% KF z Fleksiyon kaybına bağlı yüzde

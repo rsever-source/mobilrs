@@ -1,0 +1,82 @@
+{
+  "baslik": "Asama 1 - Icerik (veri) denetimi",
+  "toplam": 12,
+  "gecen": 12,
+  "kalan": 0,
+  "sonuc": "PASS",
+  "format_denetleyici_notlari": [],
+  "testler": [
+    {
+      "test": "D6",
+      "durum": "PASS",
+      "aciklama": "Kanit dosyasi butunlugu: 8/8 kod, her biri ayri JsonGetConcept ham yaniti + tam URL + surum + erisim tarihi",
+      "ayrinti": ""
+    },
+    {
+      "test": "D1",
+      "durum": "PASS",
+      "aciklama": "kavram_id tekilligi ihlali yakalaniyor (regresyon)",
+      "ayrinti": ""
+    },
+    {
+      "test": "D2",
+      "durum": "PASS",
+      "aciklama": "Ayni kayitta ayni icd10.kod tekrari yakalaniyor (regresyon)",
+      "ayrinti": ""
+    },
+    {
+      "test": "D3",
+      "durum": "PASS",
+      "aciklama": "Takvim gecerliligi: rg_tarihi + kaynak.erisim_tarihi + icd10.erisim_tarihi kusurlari yakalaniyor (31.02, 29.02.2021, 2026-02-30, 2026-13-01)",
+      "ayrinti": ""
+    },
+    {
+      "test": "D3b",
+      "durum": "PASS",
+      "aciklama": "Gecerli tarihli kayitlar (28.09.2021 / 20.02.2019 / erisim) temiz gecer",
+      "ayrinti": ""
+    },
+    {
+      "test": "D4",
+      "durum": "PASS",
+      "aciklama": "Ayni dil + ayni termin farkli kaynakla tekrarlanirsa yakalaniyor (duzeltme 4)",
+      "ayrinti": ""
+    },
+    {
+      "test": "D4b",
+      "durum": "PASS",
+      "aciklama": "Farkli dil + farkli termin tekrar sayilmiyor",
+      "ayrinti": ""
+    },
+    {
+      "test": "D5",
+      "durum": "PASS",
+      "aciklama": "8 kodun tamami kanit dosyasindaki etiket ve URL ile birebir uyumlu",
+      "ayrinti": ""
+    },
+    {
+      "test": "D5b",
+      "durum": "PASS",
+      "aciklama": "Uydurma WHO etiketi yakalaniyor (regresyon)",
+      "ayrinti": ""
+    },
+    {
+      "test": "D6b",
+      "durum": "PASS",
+      "aciklama": "Kanit dosyasindan bir kod eksiltilirse yakalaniyor (regresyon)",
+      "ayrinti": ""
+    },
+    {
+      "test": "D7",
+      "durum": "PASS",
+      "aciklama": "Bolum basina madde sayimi altyapisi calisiyor (tutarlı sayim)",
+      "ayrinti": ""
+    },
+    {
+      "test": "D7b",
+      "durum": "PASS",
+      "aciklama": "Sayim uyusmazligi yakalaniyor (regresyon)",
+      "ayrinti": ""
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+Tablo 4.2.a- Üst ekstremite bozuklukları
+(santral sinir sistemi veya spinal kord lezyonlarına eşlik eden)
+ı-Hafif
+Tek Üst Ekstremite
+Bozulduğu
+Kişi etkilenmiş ekstremiteyi kendin
+bakım, günlük aktivitelerinde ve tutmad
+kullanabiliyor, fakat parmak hareketleri
+İnce becerisinde zorluk yaşıyor.
+2-Hafif Orta Kişi etkilenmiş ekstremiteyi zorlukl
+endine bakım için kullanabiliyor, eşy
+vrayabİIİyor ve tutabiliyor fakat parm
+areketlerinde İnce beceri yok.
+3-AğırOrta KİŞİ etkilenmiş ekstremi teyi
+4-Ağır
+kullanabiliyor fakat kendine bakı
+aktivitelerinde zorlanıyor.
+Kişi etkilenmiş ekstremiteyi kendin
+akım veya günlük aktivitelerind
+uflanamıyor.
+Engel Oranı
+(Dominant Ekstremite)
+10
+25
+40
+60
+Engel Oranı
+(Non-Domİnant
+Ekstremite)
+5
+15
+30
+45

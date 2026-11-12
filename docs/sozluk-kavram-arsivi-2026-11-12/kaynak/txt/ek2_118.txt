@@ -1,0 +1,30 @@
+Başparmakta iki ya da fazla eklemde hareket kısıtlılığı
+l) Fleksiyon-ekstansiyon, adduksiyon, radial abduksiyon ve opozisyon yönündeki başparmak
+engellilikleri daha önce tanımlandığı gibi ölçülür ve kaydedilir.
+2) Başparmak hareket kısıtlılığına bağlı engelliliği tespit etmek için bu değerler toplanır.
+Başparmak Engelliliklerinin Kombinasyonu
+I)Amputasyon (Bkz. Tablo 2.7), duyu kaybı ve hareket kısıtlılığına bağlı engellilik ayrı ayrı ölçülür
+ve kaydedilir. Eğer ampütasyon hareket kaybı ölçümünü etkiliyorsa, yalmzca ampütasyona ait
+engellilik dikkate alınır.
+2) Başparmak engelliliğini tespit etmek İçin, engellilik değerleri bileşik değerler tablosu kullanılarak
+kombine edilir.
+3) Başparmak engelliliğini el, üst ekstremite ve tüm vücut engelliliğine dönüştürmek için tablo 2. l,
+2.2 ve 2.3 kullanılır.
+PARMAKLAR
+Distal ve proksimal eklemler nötral pozisyonda iken değerlendirilir.
+Distal İnterfalangial (DİF) eklem: Fleksiyon ve Ekstansiyon
+I)Maksimum fleksiyon ve ekstansiyon gonyometrik olarak ölçülür. Normal fleksiyon 700 'dir.
+Fonksiyonel pozisyon ise 200 fleksiyon pozisyonudur.
+2 ) Ölçülen fleksiyon ve ekstansiyon açıları (V), şekil 2.3 kullanılarak, fleksiyon (% KF) ve
+ekstansiyon (% KE) engellilik yüzdelerine dönüştürülür. Hiperekstansiyon pozisyonları için engellilik
+yüzdelerinin tesbitinde, 00 nötral poziyonun üzerindeki değerler okunur.
+3) DİF eklemdeki hareket kaybına bağlı parmak engelliliğinin belirlenmesi İçin, fleksİyon ve
+ekstansiyon engellilik yüzdeleri toplanır.
+4)Eğer DİF eklem ankiloze ise, pozisyon açısı (V) ölçülür ve şekil 2.3'de yer alan uygun ankiloz
+engellilik yüzdesi (% KA) ile eşleştirilir. Ankiloza bağlı en düşük engellilik değeri (%30), fonksiyonel
+pozisyondaki (200 fleksiyon) ankiloz için verilmiştir.
+Örnek: Bir orta parmak DİF ekleminde -100 ekstansiyon kaybı ve 500 fleksiyon açıklığı vardır. Bu
+durumda;
+0/0 KEZ % 2, O/OKFZO/OIO
+% 2+% I O— % 12 orta parmak engellilik yüzdesi.
+Şekil 2.3: DİF Eklemin hareket kısıtlılığına bağlı parmak engellilik yüzdeleri

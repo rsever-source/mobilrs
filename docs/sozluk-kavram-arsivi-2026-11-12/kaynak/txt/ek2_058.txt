@@ -1,0 +1,31 @@
+120
+210
+240
+sağ Göz
+90
+270
+60
+300
+sol Göz
+90
+120
+240
+270
+50
+Harrington DO, Drake MV: The Visual Fields.
+Text and Atlas Of Clinical Perimetry. Sixth Edition.
+St Louise, 1990. The CV Mosby co.
+Şekil 4- Görme alan skoru ve işlevsel alan puanının belirlenmesi için örnek olarak seçilmiş
+retinoskizisli bir hastanın görme alanı testi.
+Sağ göz için, santral 10 derece yarıçaplı alana ait 50 puanlık skorda hiçbir kayıp yoktur.
+Parasantral 10-60 derecelik alanın İse üst sağ kadranında, 30 derecenin periferinde ve üst sol
+kadranında 50-60 derece arasındaki kuşağın orta hatta yakın alanının skotom alanı olduğu görülmekte.
+Bu alandaki yuvarlak noktalar, sağa yatık kesme işareti / ile işaretlenince (şekil 5A), üst sol
+kadranda I puan, üst sağ kadranda 5 puan olmak üzere toplam 6 puanlık kayıp olduğu görülmektedir.
+Bu durumda sağ gözün görme alam skoru 100 — 6 94 puandır.
+Sol göz için de santral 10 derece yarıçaplı alana ait 50 puanlık skorda hiçbir kayıp yoktur.
+Parasantral 10-60 derecelik alanın ise üst nazal kadranında 40 derecenin periferi, üst temporal
+kadranında ise 50-60 derece arasındaki kuşağm orta hatta yakın yarısı skotom alanıdır. Bu alanlardaki
+yuvarlak noktalar sola yatık kesme işareti ile İşaretlenince (şekil 5B), üst sol kadranda 4 puan,
+üst sağ kadranda I puan olmak üzere toplam 5 puanlık kayıp olduğu görülmektedir, Bu durumda sol
+gözün görme alanı skoru 100 — 5 95 puandır.

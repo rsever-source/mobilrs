@@ -1,0 +1,21 @@
+Tek tek her iki gözün görme alanı skoru bu yöntemle belirlenir. Her bir göze ait alan kayıpları,
+karşılık gelen diyagram noktalarına ayrı ayrı işaretlenir. Bu işaretleme sırasında sağ göz için
+diyagramdaki yuvarlak alanlara sağa yatık kesme işareti ” / sol göz için sola yatık kesme işareti ” ”
+konulacak olursa, binoküler görme alanı skoru belirlenirken bu diyagramlar üst üste getirildiğinde, iki
+gözün de göremediği alanlar kesme işaretlerinin çakışması nedeniyle "X” ile işaretli gibi görünecek,
+monoküler kayıplar ise tek kesme işareti ile işaretli kalacaktır. Bir gözle görülemeyip binoküler
+durumda diğer gözle görülebilen alanlar normal kabul edilebilecek şekilde binoküler görme alanı
+skoru belirlenir.
+Görme Alanı Skoru (GAS) hesaplanması;
+HemİanopsİIerİn hesaplanmasına İlişkin pratik bilgi:
+Homonim henıinaopsilerde her iki göz görme alanının aym yarıları kaybedildiğinden binoküler
+görme alanında da aynı kayıp söz konusudur. İşlevsel alan puanı pratik olarak 50 olarak
+hesaplanır.
+Bitemporal hemianopislerde ise her bir gözün farklı yarılarında kayıp olduğu İçin binoküler görme
+alanı tam çıkacak, kayıplar binoküler görme alanına yansımayacaktır. Bu durumda işlevsel alan
+puanı bitemporal hemianopsilerde 80 olarak hesaplanır.
+Periferik Görme Alam Defekti
+Şekil 4'te görme alanı gösterilen retinoskizisli hastanın, santral 10 derece yarıçaplı merkezi görme
+alanını ilgilendiren herhangi bir kaybı yoktur. Bu nedenle santral görmeye ilişkin 50 puanlık skorunda
+hiçbir eksik olmayacaktır. Ancak parasantral 10-60 derecelik alana ait 50 puanlık skorunun üst nazal
+kadram ilgilendiren skotomlar nedeniyle ne kadar eksildiğini belirlemek gerekmektedir.

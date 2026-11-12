@@ -1,0 +1,39 @@
+Penektomi
+20
+Not: Ürogenital sisteme ait onkolojik hastalıkların değerIendirilmesinde onkoloji bölümündeki
+ilgili maddelere bakınız.
+TESTİS, EPİDİDİM, SPERMATİK KORD
+Tedaviyle düzeltilebilen tekrarlayan testis, epididim hastalığı
+a-UnilateraI
+b-Bilateral
+Sık tekrarlayan ve tedaviyle kısmi kür sağlanabilen testis, epididim hastalığı
+a-UniIateraI
+b-Bilateral
+Uygun tedaviye rağmen yeterli kür sağlanamayan testis, epididim patolojisi
+a-UniIateraI
+b-BiIateraI
+Orşiektomi
+a-UnİlateraI
+b-Bilateral
+İnfertilite
+10
+10
+15
+15
+20
+10
+20
+10
+Not: Ürogenital sisteme ait onkolojik hastalıkların değerIendirilmesinde onkoloji bölümündeki
+ilgili maddelere bakınız
+PROSTAT VE VEZİKULOSEMİNALİS
+Tedaviyle düzeltilebilen tekrarlayan prostat. vezikuloseminalis hastalığı
+Sık tekrarlayan ve tedaviyle kısmi kür sağlanabilen prostata vezikuIo-semİnaIİs hastalığı
+Uygun tedaviye rağmen yeterli kür sağlanamayan prostat. vezikulo-seminalis hastalığı
+Prostatektomi. V , Seminalis Eksizyonu
+5
+10
+15
+20
+Not: Ürogenital sisteme ait onkolojik hastalıkların değerlendirilmesinde onkoloji bölümündeki
+ilgili maddelere bakınız.

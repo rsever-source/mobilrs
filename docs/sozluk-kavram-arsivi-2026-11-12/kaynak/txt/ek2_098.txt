@@ -1,0 +1,8 @@
+Eğer her iki ekstremitede de nörolojik kayıp var ise, her ekstremite için ayrı ayrı bulunan
+değerler Balthazard yöntemiyle birleştirilerek tek bir değer elde edilir. Birinci, ikinci ve üçüncü
+basamaktan elde edilen engellilik oranları Balthazard yöntemi kullanılarak birleştirilir ve bu modele
+göre tek bir değer elde edilir. Eğer birden fazla omurga bölgesinde kayıp var ise, her bir bölge için
+yukarıdaki basamaklar ayrı ayrı uygulanır. Her bölge için elde edilen son değerler Balthazard
+yöntemiyle birleştirilir.
+Skolyoz için kardiovasküler sistem ve göğüs hastalıkları ilgili tabloları ile eklem hareket
+açıklığı modelinden elde edilen değerler Balthazard yöntemi kullanılarak birleştirilir.

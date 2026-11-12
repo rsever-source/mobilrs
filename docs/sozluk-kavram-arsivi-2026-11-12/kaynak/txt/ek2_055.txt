@@ -1,0 +1,42 @@
+Görme Alanı
+Santral 10 Derece
+Toplam 50 Puan
+Üst Sol Kadran
+10 nokta 10 puan
+Alt Sol Kadran
+15 nokta 15 puan
+o
+o
+o
+o
+o
+O
+o
+o
+o
+o
+Üst Sağ Kadran
+10 nokta 10 puan
+Alt Sağ Kadran
+15 nokta 15 puan
+Şekil 3- Test diyagramının santral 10 derecelik görme alanı bölgesinde (10, 30, 70 50 90
+kuşağında) yer alan ve her biri I (bir) puan değerindeki noktalar
+GÖRME ALANI SKORU (GAS): Görme alanı yetersizlik oranını ölçmek amacıyla kullanılır.
+Toplam nokta ve puan sayısı 100'dür. Bu hesaplamaları kolaylaştırmak için, her ikisi de 50 noktadan
+oluşan ve 50 puan değerinde olan, birisi santral 10 dereceyi, diğeri parasantral 10-60 derece
+arasındaki görme alanı bölgesini temsil eden iki adet diyagram düzenlenmiştir. Hastanın yalnızca
+santral 10 derecede skotomu veya yalnızca periferik skotomu varsa, diyagramlardan biri kullanılır,
+diğerinin üzerinde işlem yapmaya gerek kalmaz. Her bir göz için, görme alanı test çıktısında karşılık
+gelen alanda skotom varsa, bu diyagramlar üzerindeki yuvarlak noktalara işaret konur.
+H.
+i.
+K.
+Görme alanındaki kayıp ile diyagramdaki yuvarlak noktanın yerleşimi örtüşmelidir.
+Fizyolojik kör noktalar, patolojik genişleme-birleşme göstermedikçe, diyagramda İhmal
+edilmelidir.
+İşaretlenen her nokta bir puanlık kayıp anlamına gelir.
+Bilgisayarlı görme alam testinde test noktaları arasındaki mesafeler genelde 6 derece aralıklı
+olduğundan, diyagramdaki yuvarlak noktalarla aynı sayıda ve aynı yerde olmayacaktır.
+Skotomun yerleşimi ve boyutuna en uygun olacak şekilde karşılık gelen yuvarlak noktalara
+işaretlenmesi beklenmektedir. Bu noktaların sayısı aynı zamanda puan anlamına geldiği için
+artırılamaz,

@@ -1,0 +1,108 @@
+Görme sisteminin yetersizlik oranı (GSYO) 50 olduğu durumlarda engel oranı GSYO'na eşit olarak
+kabul edilir. GSYO 50 ise Engel Oranı (GSYO -50) x 0.8 + 50 formülü ile hesaplanır. Bu
+durumlarda aşağıdaki tablo da kullanılabilir.
+Tablo 3: GSYO 50 olduğu durumlarda Engel Oranı Tablosu
+Görme Sistemi
+Yetersizlik Oranı
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+Engel Oranı % Görme Sistemi
+50,8
+51,6
+52,4
+53,2
+54
+54,8
+55,6
+56,4
+57,2
+58
+58,8
+59.6
+60,4
+61,2
+62
+62,8
+63,6
+64,4
+65,2
+66
+66,8
+67,6
+68,4
+69,2
+70
+Yetersizlik Oranı
+76
+77
+78
+79
+80
+81
+82
+83
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+Engel Oram %
+70,8
+71,6
+72,4
+73,2
+74
+74,8
+75,6
+76,4
+77,2
+78
+78,8
+79,6
+80,4
+81,2
+82
+82,8
+83,6
+85,2
+86
+86,8
+87,6
+88,4
+89,2
+90
+Not: Tablodaki küsuratlı rakamlar bir üst tam sayıya tamamlanır.

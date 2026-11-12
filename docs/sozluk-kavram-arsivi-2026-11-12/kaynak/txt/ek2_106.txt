@@ -1,0 +1,24 @@
+ÖRNEKLER
+ÖRNEK ı
+Hasta: 55 yaş, erkek
+Anamnez: Israr eden bel ağrısı, son bir yılda kötüleşmiş, spesifik bir yaralanma tarif etmiyor
+Şikayeti: I saatten fazla ayakta durma ve yürüme ile artan bel ağrısı
+Fizik muayene: Sol lateral fleksiyon açısı 200
+Tam: Kronik bel ağrısı
+Engellilik yüzdesi: %1 (tablo 1,6)
+ÖRNEK 11
+Hasta: 40 yaş, erkek
+Anamnez: Merdivenden düşme sonrası L3- L4 vertebralarda sol tarafa kamalaşan kırık
+Şikayeti: Ağır kaldırma sonrası bel ağrısı, ağrı dize yayılıyor
+Fizik muayene: Sola doğru eğik postürde, nötral pozisyona doğrulamıyor. Hastanın sola lateral
+fleksİyon ölçümünde başlangıç pozisyonu 200, en fazla 300 ye kadar sola lateral fleksiyonu devam
+ettirebiliyor. Nörolojik defisiti yok. Bu durumda nötral pozisyona en yakın açı; 200 olup ankiloz
+bölümü kullanılır.
+Radyoloji: L3' te %20, L4' te %30 kompresyon
+Tanı: L3 ve L4'te kamalaşma İle kompresyon kırığı
+Engellilik yüzdesi: %23
+Yorum: Engellilik oranı için tablo 1.6'ya bakılır. 200 ankiloz için %15'lik bir engel oranı saptanır. L3
+ve L4 kompresyon kırıkları için tablo 1,7'den engellilik oram L3 ve L4 için %5 ve %7 olarak saptanır.
+Balthazard yöntemi ile kombine edilerek (%5+%7z:%11,65) %12'lik bir değer L3 ve L4 kompresyon
+kırığı için bulunur. Bu değer ankilozdan elde edilen engellilik oram ile Balthazard yöntemi ile
+birleştirilerek %25 'lik (%25,2) bir engel oranı bulunur.

@@ -1,0 +1,11 @@
+3-İIeri derecede komplikasyonu olan ve/veya ağır-terminal olgular
+X.OTOLOG KEMİK İLİĞİ [KÖK HÜCRE NAKLİ
+I-Hastalığı remisyonda. komplikasyonu olmayan
+2-Hafif-orta derecede komplikasyonu olan
+3-İleri derecede komplikasyonu olan ağır-terminal olgular
+80
+40
+60
+90
+İki yıldan daha kısa süre içinde hastalığın aktivasyonunda İlerleme veya gerileme İhtimali
+olan hastalarda raporun geçerlilik süresi belirtilmelidir.

@@ -1,0 +1,33 @@
+SPİNAL SİNİR KAYIPLARINA BAĞLI ENGELLİLİK
+Spinal sinir kayıplarına bağlı engellilik hesaplanırken öncelikle eklem hareket açıklığı modeli
+açıklamasının üçüncü basamağı okunmalıdır. Bu durumların değerlendirilmesinde Tablo 1.8, Tablo
+1.9 ve Tablo 1.10 birlikte kullanılmalıdır.
+Tablo 1.8- Duyusal kayba bağlı yetersizlik yüzdesinin belirlenmesi.
+Derece
+5
+4
+3
+2
+1
+o
+Duyu kaybı veya ağrının tanımı
+Duyu kaybı, anormal duyu veya ağrı yok
+Aktivite esnasında unutulan bozulmuş yüzeyel duyu (azalmış hafif
+dokunma) veya ağrı ile birlikte olan veya olmayan hafif duyu kaybı
+Bazı aktiviteleri etkileyen, anormal duyunun (örn. disestezi) veya hafif
+ağrının eşlik ettiği bozulmuş yüzeyel duyu (azalmış hafif dokunma ve iki
+nokta ayırımı)
+Bazı aktiviteleri engelleyen, anormal duyunun (örn. disestezi) veya orta
+derecede ağrının eşlik ettiği azalmış yüzeyel ve taktil duyu
+Birçok aktiviteyi engelleyen, anormal duyunun (örn. disestezi) veya ciddi
+derecede ağrının eşlik ettiği, yüzeyel ve taktil duyu kaybı (derin duyu
+korunmuş)
+Aktiviteyi tam engelleyen anormal duyu, ciddi ağrı ve tam duyu kaybı
+Duyu kaybı (%)
+25
+60
+80
+90
+100
+OT. Her bir kutanöz innervasyon alanı veya dermatom ayrı ayrı değerlendirilir ve Balthazard
+yöntemiyle hesaplanarak kişinin engel oranı belirlenir.

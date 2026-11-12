@@ -1,0 +1,42 @@
+Oda aydınlatması kapatılarak, yalnızca arkadan aydınlatmalı eşel veya projeksiyon eşelinin
+aydınlatmasıyla odanın aydınlandığı ortamda yapılan ölçümde görme keskinliği puanı 15 puan veya
+daha fazla değişen bir kişinin güneşli açık ortamda ya da gece araç ışıklarının göze doğru gelmesi
+durumunda, görme keskinliğinin muayene odasında ölçtüğümüz düzeyin çok altına düşeceği sonucu
+çıkar. Gerçek yaşam koşullarını dikkate almak gerektiğinden, bu durum aşağıdaki miktarda kusur
+olarak ele alınacaktır:
+Klinik olarak anlamlı kontrast duyarlık — kamaşma (glare) kusuru varlığında (normal oda
+aydınlatması ile, karanlık odada yalnızca arkadan aydınlatmalı eşel veya projeksiyon eşelinin
+aydınlattığı ortama ait ölçümler arasında görme keskinliği puanını 15 puan veya daha fazla
+değiştiren, diğer bir ifadeyle ondalık (Snellen) görme keskinliği düzeyini iki kat değiştiren) )
+(Tedavi ile düzelmesi mümkünse süreli rapor düzenlenir) işlevsel görme puanı
+o Tek gözde mevcut ise
+o İki gözde mevcut ise
+% 20 azaltılır.
+(b) Görme Sisteminin Diğer Fonksiyonel Kayıpları:
+Çift görme, sürekli göz yaşarması, göz kapağının hasar ve görme fonksiyonu kaybı yaratan
+bozuklukları, cerrahi olarak tedavi edilebilir olmaları durumunda "iki (2) yıl süreyle sınırlı raporlar”
+düzenlenerek ele alınır. Tedavi olamayacak sekel hâlde kayıplar olmaları durumunda ise tedavi
+olasılığının bulunmadığı gerekçesiyle bildirilerek süre kısıtlamasız rapor düzenlenir.
+Cerrahi gerekmeksizin tıbbi tedaviyle veya kendiliğinden düzelebilecek fonksiyon
+kayıplarında, iyileşme sürecine göre daha kısa sürelerle sınırlandırılmış raporlar düzenlenebilir.
+ÖRNEK:
+Hasta: 40 yaşında erkek
+Öykü: Gençliğinde alerjik konjonktivit nedeniyle, kontrolsüz şekilde steroid içeren göz damlaları
+kullanmış
+Yakınma: Güneşli ortamda ve araç kullanırken far Işıkları karşısında görmesinin çok düşmesi
+Biomikroskopik bakı: Her iki gözde arka subkapsüler lens kesafeti
+Gözdibi: Normal, Görme alam: Normal, Göz adneksleri: Normal
+Tanı: Steroide bağlı erken katarakt
+Görme keskinliği: Normal oda aydınlatması altında projeksiyon eşeli kullanılarak ölçüldüğünde her
+sağ gözde 0,2, sol gözde 0.3 düzeyinde. Odanın aydınlatması kapatılıp, projeksiyon eşeliyle karanlık
+ortamda yapılan görme keskinliği ölçümü sağ gözde 0.5; sol gözde 0.6 seviyesine çıkıyor.
+Görme Keskinliği Düzeyleri:
+Sağ Görme Keskinliği: 0.2 (Normal oda aydınlatması ile yapılan ölçümde elde edilen düzey)
+Sol Görme Keskinliği: 0.3 (Normal oda aydınlatması ile yapılan ölçümde elde edilen düzey)
+Binoküler Görme keskinliği: 0.3 (Normal oda aydınlatması ile yapılan ölçümde elde edilen düzey)
+Görme keskinliği oda Işıkları kapatılarak karanlık ortamda ölçüldüğünde her iki gözde de 2 kat veya
+daha fazla artmaktadır. Bu nedenle her iki göz için de klinik olarak anlamlı düzeyde kontrast duyarlı-
+kamaşma kusuru söz konusudur.
+Görme keskinlik puanı:
+Sağ göz için 65; Sol göz için 73; Binoküler görme için: 73 olduğundan
+İşlevsel keskinlikpuam: [65 + 73 + (3*73)] /

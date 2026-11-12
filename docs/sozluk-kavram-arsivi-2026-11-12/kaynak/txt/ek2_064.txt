@@ -1,0 +1,19 @@
+GÖRME SİSTEMİ YETERSİZLİK ORANI (GSYO):
+Bu bölümdeki yetersizlik oranları belirli şekillerde görme fonksiyon kayıplarının günlük
+yaşam etkinlikleri üzerindeki etkisini tahmin etmek üzere oluşturulmuştur. Görme sisteminin
+yetersizlik oranı 100 - işlevsel görsel skor, formülü ile belirlenir. Görme sisteminin yetersizlik oranı
+şu şekilde hesaplanır. Her iki göz için ayrı olarak görme keskinliği skoru ve görme alanı skoru
+belirlenir. İki göz açık hâlde iken yani binoküler durumda yine bu İki skor belirlenir.
+Daha sonra (%60 0U + %20 OD + OS) formülü ile İŞLEVSEL GÖRME KESKİNLİĞİ
+SKORU (iGK) ve İŞLEVSEL GÖRME ALAN (iGA) SKORU belirlenir.
+Bu iki skor belirlendiğinde İŞLEVSEL GÖRME SKORU (iGS) iGK x İGA/IOO formülü ile
+bulunur.
+Görme sisteminin yetersizlik oranı (GSYO) ise 100-İGS formülü İle belirlenir. Görme
+sisteminin yetersizlik oram diğer yetersizlikler ve kişinin durumu da göz önüne alınarak belirlenir.
+Bu şekilde yapılan hesaplama, kişilerin görme kaybına karşı geliştirdiği dengeleme
+mekanizmalarını dikkate almamaktadır. Fakat bu yöntem dengeleme mekanizmaları ile yaşamım
+kolaylaştıran kişilerin hak kaybına da neden olmamaktadır.
+Hesaplanan yetersizlik oranı kişisel rehabilitasyon planları için ölçü olmamalıdır. Çünkü
+görme yetersizliği olan her kişinin beklentileri ve dengeleme mekanizmaları aynı değildir.
+Bir gözü görmediği için % 32 engel alan kişinin istihdam değerlendirmesinde
+çalıştırılamayacağı işlerin belirtilmesi yararlı olacaktır.

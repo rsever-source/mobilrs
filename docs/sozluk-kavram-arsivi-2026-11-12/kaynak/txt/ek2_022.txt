@@ -1,0 +1,69 @@
+3-Şiddetli
+4-Çok şiddetli
+Reiter sendromu: Sadece deri lezyonları için
+Pyoderma gangrenosum:
+I -Hafif
+2 -Orta
+3-Şiddetli
+4-Çok şiddetli
+Sarkoidozis
+I-Sadece deri lezyonları için lokalize
+2-Yaygın
+Kronik Graft Versus Host Hastalığı
+ı -Hafif
+2-0rta
+3-ŞİddetIİ
+4-Çok şiddetli
+20
+30
+5
+5
+10
+20
+40
+5
+10
+5
+10
+20
+30
+Metabolik, endokrin bozukluklar, depolanma hastalıkları ve sistemik malignitelerin deri bulguları:
+Sadece deri lezyonları için
+XI. GENETİK GEÇİŞLİ DERİ HASTALIKLARI
+İktiyozis grubu hastalıklar:
+ı -Hafif
+2-0rta
+3-Şiddetli
+4-Çok şiddetli
+5
+5
+10
+30
+60
+Bu grup hastalıklarda hastalığın alt grupları (tipleri) göz önüne alınmaksızın, lezyonların
+şiddeti tüm hastalık grubu bir bütün olarak düşünülüp değerlendirilecektir.
+Herediter palmoplanter keratodermiler, Unna Thost, Mal de Melada, vb.
+I -Hafif
+2-Orta
+3-Şiddetli
+4-Çok şiddetli
+Nörokutanöz hastalıklar (Nörofibromatosis, Tuberoz skleroz, Psödoksantoma elastikum,
+telenjiektazi, vb.)
+I -Sistem bulgusu olmayan. az sayıda deri lezyonları olan olgular
+2-Yaygın deri lezyonları olan olgular
+Epidermolizis büllosa
+I -Hafif
+2-Orta
+3-ŞİddetIİ
+4-Çok şiddetli
+5
+10
+20
+40
+Ataksi
+5
+10
+20
+40
+60
+80

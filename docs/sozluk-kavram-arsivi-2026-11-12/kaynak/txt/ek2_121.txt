@@ -1,0 +1,33 @@
+4) Eğer PİF eklem ankiloze ise, pozisyon açısı (V) ölçülür ve şekil 2.5'de yer alan uygun ankiloz
+engellilik yüzdesi (YOKA) ile eşleştirilir. Ankiloza bağlı en düşük engellilik değeri (%45), fonksiyonel
+pozisyondaki (300 fleksiyon) ankiloz için verilmiştir.
+Şekil 2.5: MKF eklemin hareket kısıtlılığına bağlı parmak engellilik yüzdeleri
+YOKA
++2
+57—3-54-+1
+Parmak MKF
+10
+40
+12
+45' 27
+27 2
+30
+41 14
+54'
+65 ş6 11 6
+75 71
+85 | 0+%KE
+84
+91 100 YOKA
+% KFZFleksiyon kaybına bağlı yüzde
+% KEZEkstansiyon kaybına bağlı yüzde
+% KAZAnkiIoza bağlı yüzde
+V Ölçülen açılar
+* z Fonksiyonel pozisyon
+Birden Fazla Parmak Ekleminde Hareket Kısıtlılığı
+I) Daha önceki sayfalarda tammlanan her bir parmak eklemine (DİF, PİF ve MKF eklem) ait
+fleksiyon ve ekstansiyon engellilikleri belirlenir.
+2) Bileşik değerler tablosu kullanılarak, eklem engellilik yüzdeleri kombine edilir. Böylece ilgili
+parmağa ait engellilik yüzdesi hesaplamr.
+3) Parmak engelliliği el, üst ekstremite ve tüm vücut engelliliği ile ilişkilendirilerek ifade edilir (Tablo
+2.1, 2.2 ve 2,3).

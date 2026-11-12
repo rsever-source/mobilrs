@@ -1,0 +1,24 @@
+1 50
+180
+210
+240
+Sağ Göz
+90
+270
+300
+240
+Sol Göz
+90
+3 ard
+270
+300
+Şekil 6: Travmatik optik nöropatili hastanın görme alanı testi
+Bu olgu için İşlevsel Alan Puanı (İAP) z [30 + 40 4 (3x40)]/5 38'dir. Bilindiği gibi, görme
+alanının alt yarısındaki kayıplar daha yüksek kusur sayılmaktadır. Bundan da önemlisi, her iki gözde
+de aynı bölgeye denk gelen kusurlar arttıkça binoküler görme alanı kaybının da artıyor olması ve
+kusur puanının çarpıcı düzeye ulaşmasıdır. Söz gelimi bu hastada görme keskinliği düzeyleri, her iki
+gözde 10/10 dahi olsa, yalnızca görme alanı alt yarısındaki bu kayıplar nedeniyle "İşlevsel Görme
+Puanı: İşlevsel Keskinlik Puanı x İşlevsel Alan Puanı / 100 " formülünden hareketle 100x38/100z 38
+çıkacaktır. Bu durumda Görme Sistemi Yetersizlik Oranı z 100 — 38 z 62 çıkacak, "GSYO 50 olduğu
+durumlarda Engel Oranı Tablosu"na (Tablo 3) göre Engel Oranı "59,6'ya denk gelecektir. Küsuratlı
+sayılar bir üst tam sayıya yuvarlandığından, hastanın Engel Oranı % 60 olarak tespit edilir.

@@ -1,0 +1,54 @@
+HİPERTANSİYON
+Klas ı:
+Antihipertansiftedavi kullanan ve komplikasyonu olamayan kişiler
+Klas 2:
+Kişi antihipertansif tedavi alıyor ve aşağıdakilerden birisi varsa
+10
+20
+I. Proteinüri
+2. Hipenansif serebrovasküler hastalık
+Klas 3:
+3) Hipertansif retinopati (Gunn belirtileri)
+4) Sol ventrikül hipertrofisi
+Kişi antihipertansif tedavi alıyor ve aşağıdakilerden iki veya daha fazlası varsa
+I. Diyastolik kan basıncı 120mmHg (maksimal tedaviye rağmen)
+2. Proteinüri ve böbrek fonksiyon bozukluğu (serum kreatin ve BUN düzeylerinde artış veya
+kreatin klerensi 4/050 olması)
+3. Hipertansif serebrovasküler hastalık ve kalıcı nörolojik defisit
+4. Sol ventrikül hipertrofisi
+5. Hipertansif retinopati (evre 3-4)
+PERİKARD HASTALIKLARI
+EVRE ı:
+Fizik muayene ve ekokardiyografi ile perikard hastalığı tanısı konulan, fonksiyonel kapasite
+10
+NYHA sınıf-I ve konstriksiyon bulgusu olmayanlar
+EVRE 11:
+Fizik muayene ve ekokardiyografi ile perikard hastalığı tanısı konulan. iki veya daha fazla
+perikardit atağı geçiren fonksiyonel kapasite NYHA sınıf-I ve konstriksiyon bulgusu olmayanlar
+20
+EVRE 111:
+Fizik muayene ve ekokardiyografi ile konstruktif perikardit tamsı konulan veya perikardiektomi
+30
+yapılan, fonksiyonel kapasite NYHA sınıf-II olanlar
+EVRE w:
+Konstriktif perikard haştalığı tanısı nedeniyle opere edilmesine rağmen bulguları devam eden.
+80
+NYHA sınıf III-IV hastalar
+HİPERTROFİK KARDİYOMİYOPATİ
+EVRE ı:
+Fizik muayene ve laboratuar sonuçlarıyla hipertrofik kardiyomiyopati tanısı konulan ye
+50
+asemptomatik olan hastalar
+EVRE 11:
+Fizik muayene ve laboratuar sonuçlarıyla hipertrofik kardiyomiyopati tanısı konulan ve tedaviye
+100
+rağmen semptomatik olan hastalar
+KALP YETMEZLİĞİ
+EVRE ı:
+Fizik muayene ve ekokardiyografi ile hafif kalp yetmezliği tanısı konulan ve NYHA sınıf—l
+10
+hastalar
+EVRE 11:
+Fizik muayene ve ekokardiyografi ile kalp yetmezliği tanısı konulan, ejeksiyon fraksiyonu %50-
+30
+60 olan ve tedaviye rağmen N Y HA sınıf—ll hastalar

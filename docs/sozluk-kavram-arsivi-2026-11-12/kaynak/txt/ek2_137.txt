@@ -1,0 +1,36 @@
+Ağır: 300 den fazla
+Eklemin kalıcı subluksasyonu veya dislokasyonu
+Hafif: manuel olarak tamamen redükte edilebilir
+Orta: manuel olarak kısmen redükte edilebilir
+Ağır: redükte edilemez
+Eklem instabilitesi
+Hafif: 100den az
+Orta: 10-200
+Ağır: 200den fazla
+Dirsek ve elbileğinde radial-ulnar deviasyon
+Hafif: 200den az
+Orta: 20-300
+Ağır: 300den fazla
+Tenosinovit
+Hafif: aktif hareket sırasında ara sıra takılma
+Orta: aktif hareket sırasında sürekli takılma
+Ağır: pasif hareket sırasında sürekli takılma
+30
+Eklemdeki engellilik yüzdesi (%)
+20
+40
+60
+Eklemdeki engellilik yüzdesi (%)
+20
+40
+60
+Eklemdeki engellilik yüzdesi (%)
+10
+20
+30
+Parmaktaki engellilik yüzdesi (%)
+20
+40
+60
+OT. Yukarıdaki sorunların var olduğu durumlarda kişinin engellilik oranının bulunması için
+ilgili tablolar ile metin açıklamalarını okuyunuz.

@@ -1,0 +1,79 @@
+2. İşlevsel Keskinlik Puanını (İKP) belirlerken, her bir gözdeki görme keskinliği puamm
+birleştirmek için
+3 x GKP binoküler +
+ı x GKP sol +
+I x GKP sağ / 5 formülü kullanılır.
+Eğer görme alanı normalse ve bireysel bir düzeltme yapılması gerekmiyorsa, görme
+sisteminin işlev bozukluğu oranı, görme keskinliği ile ilişkili bozukluk oranına eşittir (100-İKP). Bu
+hâllerde direkt Tablo 2 kullanılabilir.
+3. Görme alanı muayenesi yapılır ve görme alanı puanı (GAP) belirlenir (Görme alanı ile ilgili
+metne bakınız). Ölçülen alan puanlarının her biri İşlevsel Alan Puanına (İAP) çevrilir.
+4. Her gözün alan puanlarından (GAP), tek bir İAP oluşturmak için,
+3 x GAP binoküler +
+ı x GAP sol +
+5 formülü kullanılır.
+ı xGAPsağ /
+5. İşlevsel Keskinlik Puanı (İKP) ve İşlevsel Alan Puanı(İAP) birleştirilerek İşlevsel görme
+puanı (İGP) hesaplanır.
+iKP X iAP 1100 iGP
+6. İşlevsel Görme Puanından (İGP), diplopi, sürekli göz sulanması, kapak fonksiyon
+bozuklukları bulunması durumunda, sonraki sayfalarda, "Diğer Yapısal ve Fonksiyonel Kayıplar” alt
+başlığında açıklanan miktarlar Balthazard formülü ile düşülürken, tümör varlığında ise açıklandığı
+şekilde net puan düşüşleri yapılır. Elde edilen yeni İGP'ye göre, görsel sistemin yetersizlik oranı
+(GSYO) oranını belirlemek İçin GSYO: 100 — İGP işlemi yapılır.
+7. Görme sisteminin yetersizlik oranından da, engel oranı hesaplanır (bakınız tablo 3).
+DONANIM:
+Standart oftalmolojik değerlendirme için gerekli donanıma ilaveten, fonksiyonel
+değerIendirme için aşağıdaki araçlar gereklidir.
+Standardize edilmiş, uzak görme keskinliği harf kartı
+Görme Keskinliği Muayenesi için, ideal olan test eşeli, her sırada 5 harf bulunan, orantısal
+aralıklı ve harf boyutunda geometrik progresyonu olan logaritmik kartlardır (ETDRS, Bailey-
+Lovie, PERK vb). Çünkü, özellikle görme keskinliğinin 0.2 (onda iki) veya altında olduğu
+durumlarda, test basamakları arasındaki fark logaritmik eşellerde standart kalırken, ondalık
+Snellen tipi eşellerde artmaktadır. Bu nedenle hastanelerimizin bu tür eşellerden birini edinme
+amacı taşıması yerinde olacaktır. Ancak günlük pratiğimizde en çok kullanılan ondalık
+Snellen eşelleri de görme keskinliğinin orta ve iyi düzeyde olduğu durumlarda son derece
+kullanışlıdır. Hatta görme keskinliğinin 0.5 ve üzerinde olduğu basamaklarda, test sıraları
+arasındaki geçişler ETDRS eşellerinden daha hassastır (Şekil I)
+Logaritmik
+20/16
+20/10
+20/160 20/100 20/63
+20/40
+20/25
+Görme Keskinliği 20/400 20/250
+Test Sıraları
+20/200 20/125 20/80 20/50
+20/320
+Standart Test (ETDRS) " "l"
+Sıra Numaraları
+6
+5
+9
+8
+7
+4
+13
+12 11
+10
+3
+Ondalık Kart
+Test Sıraları
+0.05
+20/20 20/12.5
+20/32
+o
+-2
+-3
+2
+1
+-ı
+0.8 1.0 1.2 2.0
+0.6
+0.1
+0.7 0.9
+0.2
+0.3
+0.4 0.5
+Şekil I: Logaritmik düzende hazırlanmış görme keskinliği eşellerinin (ETDRS, BaiIey-Lovie, PERK)
+test sıraları ile ondalık düzende hazırlanmış Snellen eşellerinin test sıralarının karşılaştırıldığı skala.

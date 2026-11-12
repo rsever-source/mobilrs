@@ -1,0 +1,40 @@
+azaltılır.
+G. Manifest şaşılıkta tedavi sonrası kalan miktar için %5 ilave engel oranı verilmelidir.
+Göz Ve Adnekslerinde Tümör Varlığında Engel Oranının DeğerIendirilmesi
+Göz ve adnekslerinde malign dönüşüm gösteren benign tümör varlığında %5
+Göz ve adnekslerinde tedavi ile kontrol altına alınmış malign tümör varlığında % 10
+net olarak artırılır.
+Göz ve adnekslerinde tedavi ile kontrol altına alınamayan malign tümör varlığında engel oranı
+% 80 olarak kabul edilir.
+Görme Keskinliği Kaybının Hesaplanması İçin Örnekler:
+Bu örneklerde görme keskinliği kaybının tek eksiklik olduğu, görme alanı ve diğer görsel
+fonksiyonların normal olduğu kabul edilmiştir.
+17 yaşında öğrenci tahtayı görmek için sınıfın ön sırasında oturuyor. Sürücü
+eğitmeni, öğrencinin görme keskinliğinin az olduğundan şüphelenmiş.
+Şu andaki semptomu: Uzak yol tabelalarını görmekte zorluk çekiyor.
+Fiziksel muayene: Oküler bir anormallik yok.
+Tanı: Açıklanmayan amliyopi, muhtemelen konjenital.
+x3 255
+XI -85
+XI z 85
+Klinik: Binoküler Görme Keskinliği
+Sağ Göz Görme Keskinliği
+Sol göz Görme Keskinliği
+: 20/40
+20/40
+• 20/40
+( Düzeltilmiş )
+Görme alanı normal (her 2 gözde), görsel fonksiyonlarda başka bir kayıp yok.
+Tablo 2 'yi kullanarak İKP'nl hesapla
+Binoküler
+Sağ göz
+Sol göz
+Görme Keskinliği
+20/40
+20/40
+20/40
+Keskinlik Puanı
+85
+85
+85
+425

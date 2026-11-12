@@ -1,0 +1,40 @@
+"V” sembolü, açıyı temsil eder. Ölçülen ekstansiyon açısı Ve ile, ölçülen fleksiyon açısı ise Vf ile
+gösterilir. Normal olarak 00 ekstansiyon - 900 fleksiyon hareket açıklığına sahip bir eklemde, ölçülen
+Ve 00 ve Vf 900 olduğu farz edilirse, hareket kaybı yok demektir. Eklem fleksiyonu azaldığında,
+F (fleksiyon derecesi kaybı) teorik olarak F (Maksimum Vf) — (ölçülen Vf)'dir. Eklem ekstansiyonu
+azaldığında, E (ekstansiyon derecesi kaybı) ise;
+E (Ölçülen Ve) — (teorik olarak en küçük Ve) şeklindedir. Örneğin; bir eklem normalde 00
+ekstansiyona sahipse ve ölçülen Ve z -200 ise, E 200 - 00: 200'Iik ekstansiyon kaybı vardır.
+Ankiloz ise, potansiyel hareket açıklığının tam kaybıdır. Fleksiyon kaybı (F) ile birlikte ya
+da fleksiyon kaybı olmaksızın ekstansiyon kaybı (E) ya da ankiloz (A) parmak fonksiyonunda
+engelliliğe yol açabilir. Kısıtlanmış hareket engellilik yüzdeleri sırasıyla % KF, % KE ve % KA olarak
+isimlendirilir.
+Engellilik değerlerinin kombinasyonu
+Bir parmakta ampütasyon, duyu kaybı ve hareket kısıtlılığı gibi birden fazla engellilik olduğu zaman,
+bir sonraki daha büyük üniteye (burada o ünite eldir) dönüştürülmeden önce, engellilikler kombine
+edilmelidir. İki ya da daha fazla sayıda engellilik yüzdesinin kombinasyonu için Balthazard
+Hesaplama tablosu (Ek 3) kullanılabilir.
+I) 2, 3, 4 ve 5. parmaklarda, her parmağa ait tek eklem düzeyinde fleksiyon-ekstansiyon (eklem
+hareket açıklığı) yönünde görülen kayıplara bağlı engellilik yüzdeleri toplanır. Ancak bir parmakta
+birden fazla eklemde hareket kaybı varsa, bu kayıplara bağlı engellilik yüzdeleri kombine edilir. Bu
+kombinasyon ikişer ikişer yapılır. Örneğin; Bir parmakta DİF, PİF ve MKF eklem hareketlerinde
+kayıplara bağlı engellilik varsa, önce % DİF ve % PİF kombine edilir, çıkan sonuç ile % MKF
+kombine edilir.
+2) Başparmakta engellilik yüzdesinin hesaplanmasında ise, hem tek eklem düzeyinde, hem de birden
+fazla eklemde görülen hareket kaybına bağlı engellilik yüzdeleri toplanır.
+3) Total el engellilik yüzdesinin hesaplanması için, her parmağa ait toplam engellilik yüzdesi (bu
+yüzdenin tespiti için, parmaktaki tüm patolojilere [ampütasyon, duyu kaybı, hareket kısıtlılığı ve diğer
+bozukluklar] bağlı engellilik yüzdeleri kombine edilir) Tablo 2.1 'de yer alan değerlere bakılarak "el
+engellilik yüzdesine” dönüştürülür. Tüm parmaklara ait el engellilik yüzdeleri toplanarak "toplam el
+engellilik yüzdesi” bulunur.
+Tablo 2.1. Parmak engellilik yüzdelerinin el engelliliğine dönüştürülmesi
+Engellilik yüzdesi (%)
+Başparmak
+El
+Engellilik yüzdesi (%)
+İşaret ya da
+rta parmak
+Engellilik yüzdesi (%)
+üzük ya da
+El
+Küçük parmak

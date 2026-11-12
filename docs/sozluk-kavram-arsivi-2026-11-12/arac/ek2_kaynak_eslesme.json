@@ -1,0 +1,1642 @@
+[
+ {
+  "kavram_id": "ek2_s025_anemiler",
+  "ham_satir": "ı. ANEMİLER",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s025_aplastik_anemi_akkiz_ve_konjenital_fan",
+  "ham_satir": "A. Aplastik Anemi (Akkiz ve konjenital, Fanconi ve vb.)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s025_diamond_blacfan_anemisi_konjenital_hip",
+  "ham_satir": "B. Diamond Blacfan Anemisi (Konjenital Hipoplastik Anemi)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s025_hemolitik_anemiler",
+  "ham_satir": "C. Hemolitik Anemiler",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s025_eritrosit_enzim_defektleri_membran_def",
+  "ham_satir": "a. Eritrosit enzim defektleri, membran defektleri",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s025_paroksismal_nokturnal_hemoglobinuri",
+  "ham_satir": "b. Paroksismal Nokturnal Hemoglobinüri",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s025_oto_immun_hemolitik_anemiler_idiyopati",
+  "ham_satir": "c. Oto-immün hemolitik anemiler (İdiyopatik ve sekonder otoimmün hemolitik anemiler)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s025_hemoglobinopatiler",
+  "ham_satir": "D.Hemoglobinopatiler",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s025_orak_hucreli_anemi",
+  "ham_satir": "a. Orak hücreli anemi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s025_thalassemi",
+  "ham_satir": "b. Thalassemi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s026_miyelofibrozis",
+  "ham_satir": "11. MİYELOFİBROZİS",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s026_akut_losemiler",
+  "ham_satir": "A. Akut Lösemiler",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s026_kronik_losemiler",
+  "ham_satir": "B. Kronik Lösemiler",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s026_kronik_myelositik_losemi",
+  "ham_satir": "a. Kronik Myelositik Lösemi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s026_kronik_lenfositik_losemi",
+  "ham_satir": "b. Kronik Lenfositik Lösemi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s026_monoklonal_gammapatiler",
+  "ham_satir": "c. Monoklonal Gammapatiler",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s026_hemofagositik_sendrom",
+  "ham_satir": "C.Hemofagositik Sendrom",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s026_hemorajik_diatezler",
+  "ham_satir": "A. Hemorajik Diatezler",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s027_koagulopatiler_hemofili_a_b_c_ve_diger",
+  "ham_satir": "b. Koagülopatiler (Hemofili A, B, C ve diğer faktör eksiklikleri, Von Willebrand Hastalığı Tip III)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s027_hipofibrinojenemi_aflbrinojenemi_ve_di",
+  "ham_satir": "c. Hipofibrinojenemi, Aflbrinojenemi ve disfibrinojenemi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s027_akkiz_ve_herediter_trombotik_durumlar",
+  "ham_satir": "B. Akkiz ve herediter trombotik durumlar",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s027_trombotik_trombositopenik_purpura_ttp",
+  "ham_satir": "C. Trombotik Trombositopenik Purpura (TTP)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s027_dissemine_intravaskuler_koagulopati_kr",
+  "ham_satir": "D. Dissemine İntravasküler Koagülopati (kronik)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s027_hodgkin_lenfoma",
+  "ham_satir": "a. Hodgkin Lenfoma",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s027_non_hodgkin_lenfoma",
+  "ham_satir": "b. Non-Hodgkin Lenfoma",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s032_kapak_hastaliklari",
+  "ham_satir": "A. Kapak hastalıkları",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s032_koroner_arter_hastaligi",
+  "ham_satir": "B. Koroner arter hastalığı",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s030_hipertansif_retinopati_gunn_belirtiler",
+  "ham_satir": "3) Hipertansif retinopati (Gunn belirtileri)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s067_kolon_rektum_ve_anus",
+  "ham_satir": "3. KOLON, REKTUM VE ANÜS",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s069_enterokutan_fistuller",
+  "ham_satir": "4. ENTEROKÜTAN FİSTÜLLER",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s070_karaciger_ve_safra_yollari",
+  "ham_satir": "5. KARACİĞER VE SAFRA YOLLARI",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s071_herniler",
+  "ham_satir": "6. HERNİLER",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s071_splenektomi",
+  "ham_satir": "7. SPLENEKTOMİ",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s079_hipotalamik_hastaliklar",
+  "ham_satir": "I- Hipotalamik hastalıklar",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s079_hipofizer_hastaliklar_tibbi_ve_cerrahi",
+  "ham_satir": "II- Hipofizer hastalıklar (tıbbi ve cerrahi tedaviyle sonuç alınmamış)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s079_hipofiz_bezinin_hiperfonksiyonu",
+  "ham_satir": "a) Hipofiz Bezinin Hiperfonksiyonu",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s079_gigantizm_ve_akromegali",
+  "ham_satir": "I- Gigantizm ve Akromegali",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s079_hipofiz_bezinin_hipofonksiyonu",
+  "ham_satir": "b) Hipofiz Bezinin Hipofonksiyonu",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s079_tiroid_hastaliklari",
+  "ham_satir": "III- Tiroid hastalıkları",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s079_guatrlar_noduler_diffiiz_multinoduler",
+  "ham_satir": "a)Guatrlar (Nodüler, diffiiz, multinodüler, toksikve toksik olmayan) subakut tiroiditler",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s079_kretinizm",
+  "ham_satir": "b) Kretinizm",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s079_dogustan_iyot_eksikligi_sendromu",
+  "ham_satir": "c) Doğuştan iyot eksikliği sendromu",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s079_tirotoksikoz_komplikasyonsuz",
+  "ham_satir": "g)Tirotoksikoz (komplikasyonsuz)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s079_paratiroid_hastaliklari",
+  "ham_satir": "IV- Paratiroid Hastalıkları",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s079_hipoparatiroidi",
+  "ham_satir": "b) Hipoparatiroidi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s079_idiopatik_primer_hipoparatiroidi_repla",
+  "ham_satir": "I- İdiopatik Primer Hipoparatiroidi (Replasmanla Kompanse)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s080_adrenal_hastaliklari",
+  "ham_satir": "V- Adrenal hastalıkları",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s080_iki_tarafli_hiperplazi_hipofizer_adeno",
+  "ham_satir": "a) İki taraflı hiperplazi (Hipofizer Adenoma bağlı)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s080_adrenal_korteks_yetersizligi_addison_h",
+  "ham_satir": "b) Adrenal korteks yetersizliği (Addison hastalığı)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s080_hiperaldosteronizm",
+  "ham_satir": "c) Hiperaldosteronizm",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s080_feokromasitomalar",
+  "ham_satir": "d) Feokromasitomalar",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s080_adrenogenital_bozukluklar",
+  "ham_satir": "e)Adrenogenital bozukluklar",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s080_ergenlik_bozukluklari_puberte",
+  "ham_satir": "a) Ergenlik bozuklukları (puberte)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s080_cogul_bez_poligulanduler_islev_bozuklu",
+  "ham_satir": "b) Çoğul bez (poligülandüler) işlev bozukluğu",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s080_timus_hastaliklari",
+  "ham_satir": "c) Timus hastalıkları",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s080_diabetes_mellitus",
+  "ham_satir": "a) Diabetes mellitus",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s081_metabolizma_hastaliklari",
+  "ham_satir": "VIII- Metabolizma Hastalıkları",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s081_diffuz_primer_osteoporoz_radyolojik_de",
+  "ham_satir": "a) Difftiz primer osteoporoz (radyolojik dekalsiflkasyonla birlikte spontan kırıklar. şekil",
+  "durum": "duzeltilmis"
+ },
+ {
+  "kavram_id": "ek2_s081_osteomalazi_tibbi_tedaviye_cevap_verme",
+  "ham_satir": "b) Osteomalazi (Tıbbi tedaviye cevap vermeyen)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s081_lesch_nyhan_hastaligi",
+  "ham_satir": "I- Lesch-Nyhan Hastalığı",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s081_ciddi_obezite_vucut_kitle_indeksi_40_5",
+  "ham_satir": "I- Ciddi Obezite (Vücut Kitle indeksi 40-50kg/m2 arasında olanlar)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s084_vucut_yuzeyinin_10_unu_kaplayan_ve_ame",
+  "ham_satir": "a) Vücut yüzeyinin % 10'unu kaplayan ve ameliyatla giderilemeyen keloid hipertrofi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s084_yanik_zemininde_gelisen_marjolin_ulser",
+  "ham_satir": "e) Yanık zemininde gelişen MarjoIİn ülseri ve skuamöz kanserler İlgili branş tarafından",
+  "durum": "duzeltilmis"
+ },
+ {
+  "kavram_id": "ek2_s088_insomniler_uyarlanmis_insomni_psikofiz",
+  "ham_satir": "I. İnsomniler (Uyarlanmış insomni, psikofizyolojik insomni, paradoksal insomni,",
+  "durum": "duzeltilmis"
+ },
+ {
+  "kavram_id": "ek2_s088_uykuda_solunum_bozukluklari_santral_uy",
+  "ham_satir": "2. Uykuda solunum bozuklukları (Santral uyku apne sendromları, obstruktif uyku apne",
+  "durum": "duzeltilmis"
+ },
+ {
+  "kavram_id": "ek2_s088_hipersomniler_narkolepsi_sendromlari_r",
+  "ham_satir": "3. Hipersomniler (Narkolepsi sendromları, rekürren hipersomniler, idiyopatik",
+  "durum": "duzeltilmis"
+ },
+ {
+  "kavram_id": "ek2_s089_sirkadiyen_uyku_uyaniklik_ritm_bozuklu",
+  "ham_satir": "4. Sirkadiyen uyku-uyanıklık ritm bozuklukları (Geçikmiş uyku fazı sendromu, erken",
+  "durum": "duzeltilmis"
+ },
+ {
+  "kavram_id": "ek2_s089_parasomniler_konfuzyonel_uyanma_uykuda",
+  "ham_satir": "5. Parasomniler (Konfijzyonel uyanma, uykuda yürüme, gece terörü, uyku paralizisi,",
+  "durum": "duzeltilmis"
+ },
+ {
+  "kavram_id": "ek2_s089_uykuda_hareket_bozukluklari_huzursuz_b",
+  "ham_satir": "6. Uykuda hareket bozuklukları (Huzursuz bacak sendromu, uykuda periyodik hareket",
+  "durum": "duzeltilmis"
+ },
+ {
+  "kavram_id": "ek2_s029_aritmiler",
+  "ham_satir": "ARİTMİLER",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s029_pulmoner_hipertansiyon",
+  "ham_satir": "PULMONER HİPERTANSİYON",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s030_hipertansiyon",
+  "ham_satir": "HİPERTANSİYON",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s030_hipertansif_serebrovaskuler_hastalik",
+  "ham_satir": "2. Hipenansif serebrovasküler hastalık",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s030_sol_ventrikul_hipertrofisi",
+  "ham_satir": "4) Sol ventrikül hipertrofisi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s030_proteinuri",
+  "ham_satir": "I. Proteinüri",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s030_perikard_hastaliklari",
+  "ham_satir": "PERİKARD HASTALIKLARI",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s030_konstruktif_perikardit",
+  "ham_satir": "Fizik muayene ve ekokardiyografi ile konstruktif perikardit tamsı konulan veya perikardiektomi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s030_hipertrofik_kardiyomiyopati",
+  "ham_satir": "HİPERTROFİK KARDİYOMİYOPATİ",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s030_kalp_yetmezligi",
+  "ham_satir": "KALP YETMEZLİĞİ",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s031_dogustan_kalp_hastaliklari",
+  "ham_satir": "DOĞUŞTAN KALP HASTALIKLARI ( DKH )",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s033_kalp_transplantasyonu",
+  "ham_satir": "Kalp transplantasyonu olan kişilerin Engel Oram % 70 olup, transplante kalbin",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s033_miyokard_infarktusu",
+  "ham_satir": "Miyokard infarktüsü geçiren veya daha önceden koroner aner hastalığı tanısı alan veya girişimsel-",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s033_damar_hastaliklari",
+  "ham_satir": "DAMAR HASTALIKLARI",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s033_arteriosklerozis_obliterans_aso",
+  "ham_satir": "A- Arteriosklerozis obliterans (ASO)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s034_tromboangitis_obliterans_buerger",
+  "ham_satir": "B- Tromboangitis obliterans (Buerger):",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s034_fonksiyonel_damar_hastaliklari",
+  "ham_satir": "2- Fonksiyonel damar hastalığı olanlar (Reynaud Fenomeni, Akrosiyanozis vs.)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s034_raynaud_fenomeni",
+  "ham_satir": "2- Fonksiyonel damar hastalığı olanlar (Reynaud Fenomeni, Akrosiyanozis vs.)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s034_akrosiyanozis",
+  "ham_satir": "2- Fonksiyonel damar hastalığı olanlar (Reynaud Fenomeni, Akrosiyanozis vs.)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s034_travmatik_damar_hastaligi",
+  "ham_satir": "3- Travmatik damar hastalığı olanlar",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s034_derin_ven_trombozu",
+  "ham_satir": "4- Venöz sistem hastalıkları: İnvaziv ve noninvaziv tetkiklerle tespit edilmiş derin ven",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s034_staz_ulseri",
+  "ham_satir": "a- Staz ülseri bulunmayanlar",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s034_lenfodem",
+  "ham_satir": "5- Lenf sistemi hastalıkları: (İster konjenital, ister akkiz lenfödemi olanlar)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s035_diplopi",
+  "ham_satir": "Kontrast duyarlık ve glare (kamaşma) kusuru * Diplopi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s040_kontrast_duyarlik_ve_kamasma_glare_kus",
+  "ham_satir": "o Tek gözde mevcut ise",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s042_fonksiyonel_korluk",
+  "ham_satir": "için \"fonksiyonel körlük”ten bahsedilir. Göz yuvarlağının yokluğunda da \"anatomik körlük” söz",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s042_anatomik_korluk",
+  "ham_satir": "için \"fonksiyonel körlük”ten bahsedilir. Göz yuvarlağının yokluğunda da \"anatomik körlük” söz",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s042_tek_gozluluk_monokularite",
+  "ham_satir": "\"tek gözlülük durumu” (monokülarite) diyeceğimiz özel bir durum ortaya çıkar.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s043_goz_ekzanterasyonu",
+  "ham_satir": "Ekzanterasyon ameliyatı geçirmiş veya travmatik nedenle aynı derecede kayıp gerçekleşmiş, tek göz",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s044_nistagmus",
+  "ham_satir": "Nistagmusu olan hastalarda en iyi görme keskinliğinin tespit edildiği sıfır noktası (null point)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s044_lagoftalmi",
+  "ham_satir": "Kalıcı tarsorafi yapılmış kapak kapanma kusurlarında (Lagoftalmi, yanık skarı vb)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s044_entropion",
+  "ham_satir": "Sekel hâlde, epifora ve/veya kornea hasarına neden olan entropion, ektropion durumlarında",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s044_ektropion",
+  "ham_satir": "Sekel hâlde, epifora ve/veya kornea hasarına neden olan entropion, ektropion durumlarında",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s044_epifora",
+  "ham_satir": "Sekel hâlde, epifora ve/veya kornea hasarına neden olan entropion, ektropion durumlarında",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s044_lakrimal_kanal_tikanikligi",
+  "ham_satir": "Sürekli göz sulanmasına neden olan lakrimal kanal tıkanmalarında (tedavi ile düzelmesi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s044_pitozis",
+  "ham_satir": "F. Ağır pitozise bağlı primer pozisyonda pupilla açıklığı yarıdan fazla örtülen, sürekli alın kasını",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s045_goz_ve_adneksleri_tumoru",
+  "ham_satir": "Göz Ve Adnekslerinde Tümör Varlığında Engel Oranının DeğerIendirilmesi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s045_ambliyopi",
+  "ham_satir": "Tanı: Açıklanmayan amliyopi, muhtemelen konjenital.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s046_retinoblastom",
+  "ham_satir": "Tanı: Retinoblastom hikayesi.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s047_kornea_opasitesi",
+  "ham_satir": "Tam: Kornea opasİtesİne bağlı görme kaybı.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s043_glokom",
+  "ham_satir": "60 yaşında bayan hasta. Glokom tanısı ile izleniyor, 2 yıl önce sol gözün görmesini tümüyle",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s043_absolu_glokom",
+  "ham_satir": "Fizik muayene: Sağ absolu glokom, sol ileri derecede glokomatöz optik sinir çukurlaşması mevcut.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s048_katarakt",
+  "ham_satir": "Tanı: Katarakta bağlı görme kaybı.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s048_yaslilik_katarakti",
+  "ham_satir": "Yaşlılık kataraktı veya görsel artış beklentisi olan kataraktlar nedeniyle düştüğü belirlenen",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s049_stargardt_juvenil_makulopati",
+  "ham_satir": "Tam: Stargardtjuvenil makulopati.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s051_gorme_alani_yetersizligi",
+  "ham_satir": "GÖRME ALANI YETERSİZLİĞİ",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s056_santral_skotom",
+  "ham_satir": "Santral skotom için ayrı bir kurala daha ihtiyaç vardır. Santral skotomlar görme keskinliğini",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s056_homonim_hemianopi",
+  "ham_satir": "Tam homonim hemianopi %50'lik görme alan kaybı oluşturur.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s057_bitemporal_hemianopsi",
+  "ham_satir": "Bitemporal hemianopislerde ise her bir gözün farklı yarılarında kayıp olduğu İçin binoküler görme",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s057_periferik_gorme_alani_defekti",
+  "ham_satir": "Periferik Görme Alam Defekti",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s058_retinoskizis",
+  "ham_satir": "retinoskizisli bir hastanın görme alanı testi.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s065_ozefagus_bozukluklari",
+  "ham_satir": "Özefagus bozukluğunu işaret eden semptomlar disfaji, pirozis, retrosternal ağrı,",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s065_mide_duodenum_bozukluklari",
+  "ham_satir": "Mide-duedonum bozukluğuna ait semptom ve İşaretler bulantı-kusma, ağrı, kanama,",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s065_ince_bagirsak_bozukluklari",
+  "ham_satir": "bozukluğuna ait semptomlar karın ağrısı, ishal, steatore, kanama, tıkanıklık ve kilo kaybım içerir.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s065_pankreas_fonksiyon_bozuklugu",
+  "ham_satir": "Pankreas fonksiyon bozukluğuna ait semptom ve belirtiler karın ağrısı, bulantı-kusma, ishal, steatore,",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s065_portal_hipertansiyon",
+  "ham_satir": "hemorajiye yol açan portal hipertansiyon, hepatik ensefalopati ve böbrek bozukluğuna yol açan",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s065_hepatik_ensefalopati",
+  "ham_satir": "hemorajiye yol açan portal hipertansiyon, hepatik ensefalopati ve böbrek bozukluğuna yol açan",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s065_ozefagus_varisi",
+  "ham_satir": "İlerleyen karaciğer rahatsızlığının komplikasyonları ödem, generalize asit, özefagus varisi ve",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s067_ust_sindirim_kanali_bozukluklari",
+  "ham_satir": "2. ÜST SİNDİRİM KANALI (özefagus, mide ve duedonum, ince bağırsak, ve pankreas)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s067_pankreas_transplantasyonu",
+  "ham_satir": "Pankreas transplantasyonunda engel oranı % 70 olup, aşağıdaki tabloya göre",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s069_cerrahi_olarak_olusturulan_stomalar",
+  "ham_satir": "Kalıcı cerrahi olarak oluşturulan stomalar, genellikle anatomik kaybı kompanse",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s070_ozefagostomi",
+  "ham_satir": "OZEFAGOSTOMİ",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s070_gastrostomi",
+  "ham_satir": "GASTROSTOMİ",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s070_jejunostomi",
+  "ham_satir": "JEJUNOSTOMİ",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s070_ileostomi",
+  "ham_satir": "LEOSTOMİ",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s070_ileal_pos_anal_anastomoz",
+  "ham_satir": "İLEAL-POŞ ANAL ANASTOMOZ",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s070_kolostomi",
+  "ham_satir": "KOLOSTO",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s070_karaciger_hastaliklari",
+  "ham_satir": "a) Karaciğer Hastalıklarına Bağlı Oluşan Kalıcı Bozulduk Sınıflama Kriterleri",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s070_karaciger_transplantasyonu",
+  "ham_satir": "Karaciğer transplantasyonlu hastalarda Engel Oranı %70 oranına Tablo 7'de",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s071_safra_yollari_hastaliklari",
+  "ham_satir": "b) Safra Yolları Hastalıklarına Bağlı Oluşan Kalıcı Bozulduk Sınıflama Kriterleri:",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s071_kolanjit",
+  "ham_satir": "Tekrarlayan kolanjİt İle seyreden ve",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s071_koledok_obstruksiyonu",
+  "ham_satir": "Kalıcı sarılık; Oltak safra kanalı (koledok)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s072_vulva_ve_vajina_hastaliklari",
+  "ham_satir": "Vulva ve Vagina'nın Kalıcı Bozulduklarının DeğerIendirilmesinde Kriterler",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s072_serviks_ve_uterus_hastaliklari",
+  "ham_satir": "Serviks Ve Uterus'un Kalıcı Bozukluklarının DeğerIendirilmesinde Kriterler",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s072_servikal_darlik",
+  "ham_satir": "b-Tedavi gerektirmeyen servikal darhk var veya",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s073_fallopian_tup_ve_over_hastaliklari",
+  "ham_satir": "Fallopian Tüp Ve Overlerin Kalıcı Bozulduklarının",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s074_nonnefrotik_proteinuri_ile_seyreden_ne",
+  "ham_satir": "Nonnefrotik proteinüri (mikroalbüminüri) ile seyreden nefropatiler, 6 ay süren tedaviye",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s074_nefrotik_duzeyde_proteinuri_ile_seyred",
+  "ham_satir": "Nefrotik düzeyde proteinüri (»3.5 gr/gün) ile seyreden nefropatiler, 6 ay süren tedaviye",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s074_kronik_bobrek_hastaligi",
+  "ham_satir": "Kronik böbrek hastalı I",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s074_renal_replasman_tedavisi",
+  "ham_satir": "Renal re Iasman tedavisi hemodi aliz, eriton di alizİ erektiren kronik böbrek hastalı\"",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s074_bobrek_nakli",
+  "ham_satir": "Böbrek nakli",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s074_nefrektomi",
+  "ham_satir": "Nefrektomi - bilateral",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s074_fanconi_sendromu",
+  "ham_satir": "Fanconi sendromu, Hafif-ofta kalıcı renal tübüler hastalığa bağlı bozukluklar, 6 ay süren",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s074_renal_tubuler_hastalik",
+  "ham_satir": "İleri kalıcı renal tübüler hastalığa eşlik eden, en az 6 aylık tedavi altında ve 3 ölçümde serum",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s075_ust_uriner_sistem_hastaligi",
+  "ham_satir": "Intermitan semptom veren ve devamlı tedavi gerektirmeyen üst üriner sistem hastalığı",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s075_soliter_bobrek",
+  "ham_satir": "Soliter Böbrek (diğer böbreğin renal fonksiyonları da (kreatinin klirensi değerlerine göre)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s075_uriner_diversiyon",
+  "ham_satir": "ÜRİNER DİVERSİYON (Kalıcı)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s075_ureterointestinal_diversiyon_coffey",
+  "ham_satir": "Üreterointestinal (coffey)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_ureterokutanostomi_ileal_loop",
+  "ham_satir": "Üreterokütanostomi. ileal loop",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_ortotopik_mesane",
+  "ham_satir": "Ortotopik mesane",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_nefrostomi",
+  "ham_satir": "Nefrostomi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_sistostomi",
+  "ham_satir": "Sistostomi Üretrostomi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_uretrostomi",
+  "ham_satir": "Sistostomi Üretrostomi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_asiri_aktif_mesane",
+  "ham_satir": "Devamlı tedavi gerektiren sistitizm semptomları da Qşırı aktif mesane",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_mesane_hastaligi",
+  "ham_satir": "Tedavi ile tam olarak kontrol altına alınamayan mesane hastalığı",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_sistektomi",
+  "ham_satir": "Sistektomi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_mesane_augmentasyonu",
+  "ham_satir": "Mesane Augmentasyonu",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_ekstrofi_vezika",
+  "ham_satir": "Ekstrofi Vezika",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_norojen_mesane",
+  "ham_satir": "*Nörojen mesane için kas-iskelet sistemi bölümü sayfa 189'daki tablo 4,3 'e bakınız.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_uretra_hastaligi",
+  "ham_satir": "Tedaviyle düzeltilebilen tekrarlayan üretra hastalığı",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_uretra_darligi",
+  "ham_satir": "Sık tekrarlayan ve tedaviyle kür sağlanabilen üretra darlığı",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_uretrektomi",
+  "ham_satir": "Üretrektomi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_erektil_disfonksiyon",
+  "ham_satir": "Medikal tedaviyle kısmi kür sağlanabilen erektil disfonksiyon",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s076_penis_hastaligi",
+  "ham_satir": "Tedaviye yeterli kür sağlanamayan penis hastalığı",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s077_penektomi",
+  "ham_satir": "Penektomi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s077_testis_ve_epididim_hastaligi",
+  "ham_satir": "Tedaviyle düzeltilebilen tekrarlayan testis, epididim hastalığı",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s077_orsiektomi",
+  "ham_satir": "Orşiektomi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s077_infertilite",
+  "ham_satir": "İnfertilite",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s077_prostat_ve_vezikuloseminalis_hastaligi",
+  "ham_satir": "Tedaviyle düzeltilebilen tekrarlayan prostat. vezikuloseminalis hastalığı",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s077_prostatektomi",
+  "ham_satir": "Prostatektomi. V , Seminalis Eksizyonu",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s078_uriner_inkontinans",
+  "ham_satir": "İ)RİNER İNKONTİNANS",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s078_urge_inkontinans",
+  "ham_satir": "Tedaviye kısmi yanıt veren urge inkontinans",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s078_stress_inkontinans",
+  "ham_satir": "Tedaviye kısmi yanıt veren şiddetli stress inkontinans veya urge inkontinans",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s078_skrotum_hastaligi",
+  "ham_satir": "Tedaviye kısmi yanıt veren rekürren skrotum hastalığı",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s078_uriner_fistul",
+  "ham_satir": "Aralıklı hafif-orta derecede drenaja yol açan üriner fistül veya abse",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s082_glikozaminoglikan_metabolizmasi_bozukl",
+  "ham_satir": "Glikozaminoglikan metabolizması bozuklukları (organ disfonksiyonu yapmış)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s082_glikoprotein_metabolizmasi_bozukluklar",
+  "ham_satir": "Glikoprotein metabolizması bozuklukları (organ disfonksiyonu yapmış)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s082_kistik_fibrozis",
+  "ham_satir": "Kistik fibrozis (organ disfonksiyonu yapmış)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s082_iskelet_displazileri",
+  "ham_satir": "İskelet displazileri",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s082_akondroplazi",
+  "ham_satir": "Akondroplazi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s082_akondroplazi_disi_iskelet_displazileri",
+  "ham_satir": "Akondroplazi dışı iskelet displazileri",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s082_ailevi_akdeniz_atesi",
+  "ham_satir": "Ailevi Akdeniz Ateşi:",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s083_akciger_plevra_ve_gogus_kafesi_hastali",
+  "ham_satir": "l-Doğuştan veya kazanılmış akciğer, plevra ve göğüs kafesi hastalıkları veya akciğeri tutan",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s083_kronik_kor_pulmonale",
+  "ham_satir": "c- Ağır derecede etkilenme varsa veya kronik kor pulmonqle gelişmişse",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s083_akciger_ve_veya_plevra_tuberkulozu",
+  "ham_satir": "2-Akciğer ve/veya plevra tüberkülozunda verilecek karar tedavi sonunda ve I. maddedeki",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s083_ilaca_direncli_kronik_tuberkuloz",
+  "ham_satir": "*İlaca dirençli kronik tüberkülozlu olgular aym şekilde uygun tedavi süresinin bitiminden",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s083_ekstrapulmoner_tuberkuloz",
+  "ham_satir": "* *Ekstra pulmoner tüberkülozlu olgularda ise tedavi sonunda ilgili branş tarafindan engel",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s083_tek_tarafli_pnomonektomi",
+  "ham_satir": "4- Tek taraflı pnömonektomi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s083_akciger_transplantasyonu",
+  "ham_satir": "5- Akciğer transplantasyonu",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s084_curling_ulseri",
+  "ham_satir": "a)Curling ülseri perforasyonu sonucu opere edilen vakalar ilgili branş tarafindan değerIendirilir.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s084_yaniga_bagli_ozefagus_darligi",
+  "ham_satir": "b)Yamğa bağlı özefagus darlıkları ilgili branş tarafından değerlendirilir.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s085_sindaktili",
+  "ham_satir": "b)Yanık sebebiyle kalmış sindaktililer ilgili branş tarafından değerlendirilir.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s085_kostal_kondrit",
+  "ham_satir": "d)Yamk sonrası kostal kondritis ve heterotopik periartiküler kemik oluşması ilgili branş tarafından",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s085_heterotopik_periartikuler_kemik_olusum",
+  "ham_satir": "d)Yamk sonrası kostal kondritis ve heterotopik periartiküler kemik oluşması ilgili branş tarafından",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s085_yanik_sonrasi_periferik_sinir_lezyonu",
+  "ham_satir": "a)Yamk sonrası oluşan merkezi ve periferik sinir lezyonları ilgili branş tarafından değerlendirilir.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s086_malign_tumor",
+  "ham_satir": "4- İleri klinik evreli (Evre III ve IV) malign tümörü olan remisyona girmeyen veya tedavi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s086_malign_transformasyon_gosteren_benign",
+  "ham_satir": "Malign transformasyon gösteren benign tümörlerde primer tümörün sebep olduğu veya bu tümöre",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s086_glioblastoma_multiforme",
+  "ham_satir": "6-Yüksek dereli opere beyin tümörleri: (örn G4 glioblastomi multiforme)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s087_yuksek_kortikal_fonksiyon_bozukluklari",
+  "ham_satir": "YÜKSEK KORTİKAL FONKSİYON BOZUKLUKLARI",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s087_motor_afazi",
+  "ham_satir": "A-MOTOR",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s087_sensoriyel_afazi",
+  "ham_satir": "B-SENSÖRİYEL",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s087_agnozi",
+  "ham_satir": "Agnozi, diskonneksiyon sendromları gibi diğer Yüksek Kortikal Fonksiyon",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s087_diskonneksiyon_sendromlari",
+  "ham_satir": "Agnozi, diskonneksiyon sendromları gibi diğer Yüksek Kortikal Fonksiyon",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s088_epilepsi",
+  "ham_satir": "EPİLEPSİ (Uygun ve yeterli tedavi altında)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s088_uyku_ile_iliskili_bozukluklar",
+  "ham_satir": "UYKU İLE İLİŞKİLİ BOZUKLUKLAR*",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s089_norojenik_kaynakli_agri",
+  "ham_satir": "NÖROJENİK KAYNAKLI",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s089_primer_bas_agrilari",
+  "ham_satir": "*Primer baş ağrıları; nevraljiler, santral veya periferik kaynaklı nöropatik ağrılar (ağrının",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s089_nevralji",
+  "ham_satir": "*Primer baş ağrıları; nevraljiler, santral veya periferik kaynaklı nöropatik ağrılar (ağrının",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s089_noropatik_agri",
+  "ham_satir": "*Primer baş ağrıları; nevraljiler, santral veya periferik kaynaklı nöropatik ağrılar (ağrının",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s089_demans",
+  "ham_satir": "DEMANS",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s091_kranial_sinir_bozukluklari",
+  "ham_satir": "KRANİAL SİNİR BOZUKLUKLARI",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s091_trigeminal_nevralji",
+  "ham_satir": "Trigeminal Nevralji",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s091_periferik_fasiyal_paralizi",
+  "ham_satir": "PERİFERİK FASİAL PARALİZİ",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s092_disfaji",
+  "ham_satir": "Hafif derecede dizartri, distoni veya",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s092_hareket_bozukluklari",
+  "ham_satir": "HAREKET BOZUKLUKLARI",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s092_tremor",
+  "ham_satir": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s092_kore",
+  "ham_satir": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s092_athetozis",
+  "ham_satir": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s092_hemiballismus",
+  "ham_satir": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s092_distoni",
+  "ham_satir": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s092_dizartri_ve_disfaji",
+  "ham_satir": "DİZARTRİ VE DİSFAJİ",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s093_omurgaya_ait_sorunlar",
+  "ham_satir": "ı. OMURGAYA AİT SORUNLARDA ENGELLİLİK",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s098_skolyoz",
+  "ham_satir": "Skolyoz için kardiovasküler sistem ve göğüs hastalıkları ilgili tabloları ile eklem hareket",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s099_servikal_omurga_hareket_kisitliligi",
+  "ham_satir": "Tablo 1.4- Servikal omurgada hareket kısıtlılığına bağlı engellilik oranları (Eklem Hareket Açıklığı",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s099_torakal_omurga_hareket_kisitliligi",
+  "ham_satir": "Tablo 1.5- Torakal omurgada hareket kısıtlılığına bağlı engellilik oranları.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s101_lomber_omurga_hareket_kisitliligi",
+  "ham_satir": "Tablo 1.6- Lomber omurgada hareket kısıtlılığına bağlı engellilik oranları.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s097_omurga_ankilozu",
+  "ham_satir": "Eğer omurgada bir miktar hareket olmasına rağmen aynı zamanda ankiloz var ise, nötral pozisyona en yakın hareket derecesi ankiloz derecesi olarak kabul edilir ve",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s102_vertebra_kompresyon_kirigi",
+  "ham_satir": "Bir vertebra cisminin kompresyonu",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s102_posterior_eleman_kirigi",
+  "ham_satir": "Posterior eleman kırığı (Pedikül-lamina-artiküle",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s102_vertebranin_redukte_dislokasyonu",
+  "ham_satir": "Bir vertebranın redükte dislokasyonu",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s102_intervertebral_disk_lezyonu",
+  "ham_satir": "İntervertebral disk veya diğer yumuşak doku lezyonu",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s102_spondilolizis_ve_spondilolistezis",
+  "ham_satir": "meliyat Edilmemiş Spondilolizis ve Spondilolistezis",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s103_spinal_stenoz",
+  "ham_satir": "meliyatlı Spinal Stenoz, Segmental İnstabilite, Kırık, Dislokasyon",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s103_segmental_instabilite",
+  "ham_satir": "meliyatlı Spinal Stenoz, Segmental İnstabilite, Kırık, Dislokasyon",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s104_spinal_sinir_kayiplari",
+  "ham_satir": "SPİNAL SİNİR KAYIPLARINA BAĞLI ENGELLİLİK",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s107_radikulopati",
+  "ham_satir": "Tam: Radikülopati ile birlikte rekürrent diskopati",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s108_ust_ekstremite_sorunlari",
+  "ham_satir": "2. ÜST EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s135_ust_ekstremite_amputasyonlari",
+  "ham_satir": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s135_skapulotorasik_amputasyon",
+  "ham_satir": "-Skapulotorasik",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s135_omuz_dezartikulasyonu",
+  "ham_satir": "-Omuz dezanikülasyonu",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s135_metakarpofalangeal_amputasyon",
+  "ham_satir": "smetakarpofalangiyal eklem",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s135_basparmak_amputasyonu",
+  "ham_satir": "-Başparmak:",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s135_parmak_amputasyonu",
+  "ham_satir": "Parmak",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s136_ust_ekstremite_artroplastileri",
+  "ham_satir": "2.3 ÜST EKSTREMİTE ARTROPLASTİLERİ",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s136_tum_omuz_artroplastisi",
+  "ham_satir": "Tüm omuz",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s136_tum_dirsek_artroplastisi",
+  "ham_satir": "Tüm dirsek",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s136_tum_el_bilegi_artroplastisi",
+  "ham_satir": "Tüm el bileği",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s137_tenosinovit",
+  "ham_satir": "Tenosinovit",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s138_periferik_sinir_lezyonu",
+  "ham_satir": "Tablo 2.10- Periferik sinir lezyonu sonucu ortaya çıkan ağrı veya duyu kaybına bağlı üst",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s139_spinal_sinir_lezyonu",
+  "ham_satir": "Tablo 2.12- Spinal sinirlerin unilateral duyu, motor veya birleşik kayıplarının üst",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s139_brakial_pleksus_lezyonu",
+  "ham_satir": "Tablo 2.13- Brakial pleksusun motor, duyu veya birleşik kayıplarının üst ekstremitede neden",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s141_alt_ekstremite_sorunlari",
+  "ham_satir": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s143_alt_ekstremite_uzunluk_farkliliklari",
+  "ham_satir": "Tablo 3.3- Alt ekstremitenin uzunluk farklılıklarından kaynaklanan engellilik. (bkz tablo",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s144_yuruyus_bozuklugu",
+  "ham_satir": "Tablo 3.4- Yürüyüş bozulduğuna göre engellilik oranları. (bkz tablo 3.1)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s145_bacak_kaslarindaki_atrofi",
+  "ham_satir": "Tablo 3.5- Bacak kaslarındaki atrofiye bağlı engellilik yüzdeleri. (bkz tablo 3.1)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s146_alt_ekstremite_kas_kuvveti_kaybi",
+  "ham_satir": "Tablo 3.7- Alt ekstremite kas kuvvetinde kayba bağlı engellilik yüzdeleri. (bkz tablo 3,1)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s147_kalca_eklemi_hareket_kisitliligi",
+  "ham_satir": "Tablo 3.8b-KaI a eklemi hareket kısıtlı ı iddetine ba 11 en ellili",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s148_diz_eklemi_hareket_kisitliligi",
+  "ham_satir": "Tablo 3.9- Diz eklemi hareket kısıtlılığına bağlı engellilik.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s148_ayak_bilegi_eklemi_hareket_kisitliligi",
+  "ham_satir": "Tablo 3.10- Ayak bileği eklemi hareket kısıtlılığına bağlı engellilik.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s148_topuk_hareket_kisitliligi",
+  "ham_satir": "Tablo 3.11- Topuk hareket kısıtlılığına bağlı engellilik.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s148_ayak_bilegi_veya_topuk_deformitesi",
+  "ham_satir": "Tablo 3.12- Ayak bileği veya topuk deformite bozuldukları.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s149_ayak_basparmak_bozukluklari",
+  "ham_satir": "Tablo 3.13- Ayak başparmak bozuklukları *",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s149_kalca_ankilozu",
+  "ham_satir": "Tablo 3.14- Kalçanın fleksiyon pozisyonunda ankilozuna bağlı engellilik oranlan. (*)(bkz tablo",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s150_diz_ankilozu",
+  "ham_satir": "Tablo 3.19- Dizin varus pozisyonunda ankilozuna bağlı engellilik.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s152_ayak_bilegi_ankilozu",
+  "ham_satir": "Tablo 3.23- Ayak bileğinin plantar fleksiyon-dorsofleksiyonda ankilozuna bağlı engellilik.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s153_ayak_ankilozu",
+  "ham_satir": "Ayak (Arkaayak, Ortaayak, Önayak): Ayağın subtalar parçası İçin optimal ankiloz pozisyonu,",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s154_ayak_parmaklarinin_ankilozu",
+  "ham_satir": "Tablo 3.29- Ayak parmaklarının ankilozuna bağlı engellilik.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s155_alt_ekstremite_amputasyonlari",
+  "ham_satir": "3.7. AMPUTASYONLAR",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s155_hemipelvektomi",
+  "ham_satir": "-Hemipelvektomi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s155_kalca_dezartikulasyonu",
+  "ham_satir": "-Kalça dezartikulasyonu",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s155_diz_ustu_amputasyon",
+  "ham_satir": "-Diz üstü",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s155_diz_dezartikulasyonu",
+  "ham_satir": "-Diz dezartikülasyonu",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s155_diz_alti_amputasyon",
+  "ham_satir": "-Diz altı",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s155_syme_amputasyonu",
+  "ham_satir": "-Syme (ayak)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s155_chopart_amputasyonu",
+  "ham_satir": "-Chopart (orta ayak)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s155_transmetatarsal_amputasyon",
+  "ham_satir": "-Transmetatarsal",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s156_kalca_replasmani",
+  "ham_satir": "Tablo 3.31- Kalça replasmanı sonrasında engellilikle ilişkili puanlama.*",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s158_diz_artroplastisi",
+  "ham_satir": "Tablo 3.32- Diz artroplastisi sonrası engellilikle ilişkili puanlama. *",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s159_girdlestone_artroplastisi",
+  "ham_satir": "Girdlestone artroplasti",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s159_pelvis_kirigi",
+  "ham_satir": "Pelvis Kırıkları",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s159_asetebular_kirik",
+  "ham_satir": "Asetebular kırık",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s159_sakroiliak_eklem_kirigi",
+  "ham_satir": "Sakroiliak eklem kırığı (yer değiştirme göz",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s159_iskial_bursit",
+  "ham_satir": "İskial bursit (basıncın sık sık azaltılmasını",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s159_trokanterik_bursit",
+  "ham_satir": "Trokanterik bursit: (kronik) yürüme bozukluğuna",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s159_femoral_boyun_kirigi",
+  "ham_satir": "Femoral boyun kırığı:",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s159_femoral_saft_kirigi",
+  "ham_satir": "Femoral şaft kırığı",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s160_patellar_kirik",
+  "ham_satir": "Patellar kırık",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s160_patellektomi",
+  "ham_satir": "Patellektomi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s160_menisektomi",
+  "ham_satir": "Menisektomi, medial veya lateral",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s160_krusiat_veya_kollateral_ligament_laksi",
+  "ham_satir": "Krusiat veya kollateral ligament laksitesi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s160_plato_kirigi",
+  "ham_satir": "Plato kırığı",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s160_suprakonduler_veya_interkonduler_kirik",
+  "ham_satir": "Suprakondüler veya interkondüler kırık",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s160_unikonduler_replasman",
+  "ham_satir": "Unikondüler",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s160_proksimal_osteotomi",
+  "ham_satir": "Proksimal Osteotomi",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s160_tibia_saft_kirigi",
+  "ham_satir": "Tibia şaft kırığı (dizilim bozulduğu)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s161_ayak_bilegi_ligamentoz_instabilitesi",
+  "ham_satir": "Ligamentöz instabilite (stres röntgenleri ile)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s161_ayak_bilegi_kirigi",
+  "ham_satir": "Kırık",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s161_kalkaneal_kirik",
+  "ham_satir": "Ekstra-artikü ler (kalkaneal)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s161_subtalar_kemik_kirigi",
+  "ham_satir": "Subtalar kemik",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s161_talonavikuler_kemik_kirigi",
+  "ham_satir": "Talonaviküler kemik",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s161_kalkaneokuboid_kemik_kirigi",
+  "ham_satir": "Kalkaneoküboid kemik",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s162_cavus",
+  "ham_satir": "Cavus",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s162_rocker_bottom",
+  "ham_satir": "Rocker Bottom",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s162_talusun_avaskuler_nekrozu",
+  "ham_satir": "Talusun avasküler nekrozu",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s162_metatarsal_kirik",
+  "ham_satir": "kırık",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s162_metatarsalji",
+  "ham_satir": "Metatarsalji ve plantar",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s163_alt_ekstremitede_doku_kaybi",
+  "ham_satir": "3.9. DOKU KAYBI",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s163_kronik_osteomiyelit",
+  "ham_satir": "Kronik osteomiyelit de bu yöntem kullanılarak değerlendirilir.",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s164_periferal_vaskuler_hastalik",
+  "ham_satir": "Tablo 3.36- Alt ekstremitenin periferik vasküler hastalığına bağlı engellilik. (bkz tablo 3. I)",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s165_serebral_bozukluklar",
+  "ham_satir": "SEREBRAL BOZUKLUKLAR",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s166_spinal_kord_ve_ilgili_bozukluklar",
+  "ham_satir": "SPİNAL KORD ve İLGİLİ BOZUKLUKLAR",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s166_periferik_sinir_sistemi_noromuskuler_b",
+  "ham_satir": "PERİFERİK SİNİR SİSTEMİ, NÖROMUSKÜLER BİLEŞKE ve KAS SİSTEMİ",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s166_ayakta_durabilme_yurume_ve_hareket_boz",
+  "ham_satir": "Tablo 4.1- Ayakta durabilme, yürüme ve hareket bozuklukları (santral sinir sistemi veya",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s167_ust_ekstremite_bozukluklari_santral",
+  "ham_satir": "Tablo 4.2.a- Üst ekstremite bozuklukları",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s168_anorektal_sistem_norolojik_bozukluklar",
+  "ham_satir": "Anorektal Sistem",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s168_uriner_sistem_ve_mesane_fonksiyon_bozu",
+  "ham_satir": "Üriner Sistem/Mesane",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s168_solunumda_norolojik_bozukluklar",
+  "ham_satir": "Solunumda Nörolojik",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s168_cinsel_fonksiyon_bozuklugu",
+  "ham_satir": "Cinsel Fonksiyon",
+  "durum": "birebir"
+ },
+ {
+  "kavram_id": "ek2_s169_sistemik_romatizmal_hastaliklar",
+  "ham_satir": "SİSTEMİK ROMATİZMAL HASTALIKLAR",
+  "durum": "birebir"
+ }
+]

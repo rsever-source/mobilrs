@@ -1,0 +1,70 @@
+Tablo 1.4- Servikal omurgada hareket kısıtlılığına bağlı engellilik oranları (Eklem Hareket Açıklığı
+Modelindeki açıklamayı okuyunuz).
+00 - 140
+150 - 290
+300 - 490
+00 - 190
+200 - 390
+400 - 590
+00-24
+250-44
+Servikal Omurga Hareket Açıklığı
+Fleksiyon
+Ekstansiyon
+Lateral Fleksiyon-Ekstansiycn
+Rotasyon
+Fleksiyon
+Ekstansiyon
+Lateral Fleksiyon
+Rotasyon
+Ankiloz
+00-39
+400-79
+'800
+0 (nötral Pozisyon)
+15
+30
+50
+0 (nötral pozisyon)
+20
+40
+60
+O (nötral pozisyon)
+15
+30
+45
+O (nötral pozisyon)
+20
+40
+60
+80
+Engel Oranı %
+5
+4
+2
+o
+6
+4
+2
+4
+2
+6
+3
+12
+20
+30
+40
+12
+20
+30
+40
+8
+20
+30
+40
+12
+20
+30
+40
+50
+Tablo 1.5- Torakal omurgada hareket kısıtlılığına bağlı engellilik oranları.

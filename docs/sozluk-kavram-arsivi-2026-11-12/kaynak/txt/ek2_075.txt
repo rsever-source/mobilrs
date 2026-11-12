@@ -1,0 +1,37 @@
+ÜRİNER SİSTEM ve ERKEK GENİTAL SİSTEM
+ÜST ÜRİNER SİSTEM
+Intermitan semptom veren ve devamlı tedavi gerektirmeyen üst üriner sistem hastalığı
+a-Tek Böbrekte
+b-İki Böbrekte
+Devamlı takip ve sık tedavi gerektiren üst üriner sistem hastalığı
+a-Tek Böbrekte
+b-İki Böbrekte
+Cerrahi ya da medikal tedavi yeterli tedavi sağlanamayan üst tiriner sistem hastalığı
+a-Tek Böbrekte
+b-İki Böbrekte
+5
+10
+10
+20
+15
+30
+Not: Ürogenital sisteme ait onkolojik hastalıkların değerIendirilmesinde onkoloji bölümündeki
+ilgili maddelere bakınız.
+NEFREKTOMİ
+Soliter Böbrek (diğer böbreğin renal fonksiyonları da (kreatinin klirensi değerlerine göre)
+değerlendirilecek ve eklenecektir).
+Diğer böbrek tamamen normal
+Diğer böbrek tamamen normal. potansiyel hastalık mevcut (örnek: Aş hastalığı)
+Diğer böbrekte intermitan semptom veren ve devamlı tedavi gerektirmeyen üst ürinçr
+sistem hastalığı
+Diğer böbrekte devamlı takip vç sık tedavi gerektiren üst üriner sistem hastalığı
+10
+15
+20
+25
+Diğer böbrekte cerrahi ya da medikal tedavi yeterli tedavi sağlanamayan üst üriner sistem hastalığı
+NEFREKTOMİ (BİLATERAL)
+ÜRİNER DİVERSİYON (Kalıcı)
+Üreterointestinal (coffey)
+90
+20

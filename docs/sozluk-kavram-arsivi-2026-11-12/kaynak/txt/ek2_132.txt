@@ -1,0 +1,35 @@
+ı %KADD
+%KABD
+sıq 1
+170 1
+15
+110
+18-12-4— m
+16-12-4—gc
+70
+11
+Omuz
+Addık"voıı
+%KABD
+%KADD
+iş 2Ş'5
+9
+1 17
+1
+16
+12 14 15
+% KF —Fleksiyon kaybına bağlı yüzde
+% KEZEkstansiyon kaybına bağlı yüzde
+% KAZAnkiIoza bağlı yüzde
+V Ölçülen açılar
+* Fonksiyonel pozisyon
+Örnek: Bir hastanın omuzunda 1000 abduksiyon ve 00 adduksiyon açıklığı vardır.
+YOKABD %4, abduksiyon kaybına üst ekstremite engellilik yüzdesi
+0/0KADD %2, adduksiyon kaybına üst ekstremite engellilik yüzdesi.
+%4 + %2 %6 ise abduksiyon ve adduksiyon kaybına bağlı üst ekstremite engellilik yüzdesidir.
+Omuzun İnternal ve Eksternal Rotasyonu
+I) Maksimum internal ve eksternal rotasyon gonyometrik olarak ölçülür. Normal hareket açıklığı 900
+eksternal rotasyon ve 900 İnternal rotasyondur. Fonksiyonel pozisyon 300 internal rotasyondan 500
+internal rotasyona kadar olan pozisyondur,
+2) Ölçülen internal ve eksternal rotasyon açıları (V), şekil 2.12'de açılara karşılık gelen internal
+rotasyon (%KIR) ve eksternal rotasyon (%KER) engellilik yüzdeleri ile eşleştirilir.

@@ -1,0 +1,17 @@
+GÖRME ALANI YETERSİZLİĞİNİN BELİRLENME YÖNTEMİ:
+GÖRME ALANI TEST DİYAGRAMI: Görme alanı muayenesi çıktısında 25, 65, 115, 155, 195,
+225, 255, 285, 315 ve 345'inci derecelerde birer çizgi oluşturacak şekilde bir diyagram (plot) çizilir.
+Bu diyagramda yarıçapı 10 derece olan merkezi alan, görme alanı skorunun %50' sini oluşturur (Şekil-
+3). Bu açılara çizilen çizgiler üzerinde I-3-5-7-9 dereceler (Şekil 3) ve 15-25-35-45-55-65 derecelere
+karşılık gelen noktalar (Şekil 2) diyagram çizgileri üzerinde İşaretlenir. İşaretlenen noktalar toplamda
+50 + 50— 100 adettir.
+10
+5
+10
+5
+5
+15
+5
+5
+15
+Şekil I- Görme alanı test diyagramı

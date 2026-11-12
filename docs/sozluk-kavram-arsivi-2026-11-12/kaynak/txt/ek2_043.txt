@@ -1,0 +1,32 @@
+Ekzanterasyon ameliyatı geçirmiş veya travmatik nedenle aynı derecede kayıp gerçekleşmiş, tek göz
+ve çevresine ait doku eksiklerinde yukarıdaki işlevsel kayıplara ek olarak engel oranına Balthazard
+formülüyle % 15 eklenir.
+Her iki gözün ekzanterasyon nedeniyle yokluğu veya travmatik nedenle aynı derecede kayıp
+gerçekleşmiş olması durumunda hesaplama yapılmaz, engel oranı % 92 olarak kabul edilir.
+Örnek (glokom):
+60 yaşında bayan hasta. Glokom tanısı ile izleniyor, 2 yıl önce sol gözün görmesini tümüyle
+kaybetmiş. Sağ gözü ile çevreyi görmekte güçlük çekiyor.
+Fizik muayene: Sağ absolu glokom, sol ileri derecede glokomatöz optik sinir çukurlaşması mevcut.
+Klinik: Binoküler görme keskinliği: 20/20
+Sağ Göz Görme Keskinliği: Işık hissi yokluğu (0)
+Sol Göz Görme Keskinliği: 20/20
+Sol göz görme alanı puanı: 70 (Görme alanı santral 30 dereceye dayanmış.
+x-3-300
+xızo
+XI 100
+IKP'm hesaplama:
+Binoküler
+Sağ göz
+Sol göz
+Görme Keskinliği
+20/20
+o
+20/20
+Keskinlik Puanı
+100
+100
+400
+Tek Gözlülükte İGP (İyi gören gözün İKP değeri x 0.8) x (İyi Gören Gözün GAP değeri - 15) / 100
+Tek Gözlülükte iGP (100 x 0.8) x (70-15) 44
+DİĞER YAPISAL VE FONKSİYONEL KUSURLAR:
+İşlevsel Görme Puanınınm Balthazard Formülüyle Azaltılacağı Yapısal ve Fonksiyonel Kusurlar

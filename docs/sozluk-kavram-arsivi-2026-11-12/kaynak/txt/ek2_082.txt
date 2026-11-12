@@ -1,0 +1,24 @@
+I)
+m)
+n)
+o)
+p)
+ı-
+2-
+r)
+Glikozaminoglikan metabolizması bozuklukları (organ disfonksiyonu yapmış)
+Glikoprotein metabolizması bozuklukları (organ disfonksiyonu yapmış)
+Kistik fibrozis (organ disfonksiyonu yapmış)
+Diğer metabolik bozukluklar (organ disfonksiyonu yapmış)
+İskelet displazileri
+Akondroplazi
+Akondroplazi dışı iskelet displazileri
+Ailevi Akdeniz Ateşi:
+60
+60
+40
+40
+40
+60
+20
+Komplikasyon varlığında ilgili sistemdeki fonksiyon kaybı için ayrıca engel oranı İlave edilir.

@@ -1,0 +1,34 @@
+3) Üst ekstremite engellilik değerini hesaplamak için, internal ve eksternal rotasyon kaybına bağlı
+engellilik değerleri toplanır.
+4) Eğer omuz ankiloze ise, pozisyon açısı (V) ölçülür ve şekil 2.12'de, ölçülen açıya karşılık gelen
+ankiloz engellilik yüzdesi (YOKA) bulunur. Fonksiyonel pozisyonlarda ankilozlar (300 internal
+rotasyondan, 500 internal rotasyona kadar olan pozisyonlar) en düşük ankiloz engellilik (OKKA)
+değerini alır, bu değer üst ekstremitede %6 oranında engelliliğe eşittir.
+900 internal rotasyon ya da eksternal rotasyonda oluşan ankiloz, omuz rotasyon fonksiyonunun %100
+kaybını gösterir. Bu durum, omuz fonksiyonunda %20 kayba, üst ekstremitede ise (%20 x %60) %12
+engelliliğe eşittir,
+Örnek: Bir hastada 400 internal rotasyon ve 500 eksternal rotasyon açıklığı vardır.
+0/0KlRZ rotasyon kaybına bağlı üst ekstremite engellilik derecesi
+0/0KERZ %1, eksternal rotasyon kaybına bağlı üst ekstremite engellilik derecesi
+%3 + 0/01— %4, internal ve eksternal rotasyon kaybına bağlı üst ekstremite engellilik derecesidir.
+Şekil 2.12: Omuz internal rotasyon ve eksternal rotasyon kısıtlılığına bağlı üst ekstremite
+engellilik yüzdeleri
+10
+7 10
+3
+112*
+%KER
+6
+20
+İç
+Omuz
+40
+8 60
+ı/ O/ 70
+9
+11
+10
+11
+%KER
+II
+% KFzFleksiyon kaybına bağlı yüzde
