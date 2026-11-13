@@ -7,6 +7,7 @@
 """
 import difflib
 import json
+import os
 import re
 from collections import Counter
 from pathlib import Path
@@ -65,12 +66,22 @@ def main():
 
     # ab99cb4 tamamı durum haritası: orijinal olarak duzeltilmis, birebir, veya bulanik olarak
     # belirlenmis cavirlarin tam listesini tutar.
-    ab99_durum_map_path = r'C:\Users\RIDVAN\AppData\Local\Temp\mobilrs-ek2-devam\ab99cb4_durum_map.json'
+    # Dosyalar GitHub arşivinde raporlar/ altinda bulunur.
+    # Scriptin calisma dizini: .../mobilrs-ek2-devam/docs/sozluk-kavram-arsivi-2026-11-12/arac/
+    # raporlar/ klasoru: .../mobilrs-ek2-devam/raporlar/
+    # Relative path hesaplamasi: arac/ klasorden 3 ust uste atlayarak proje_roota yapilir
+    import os
+    # proje_roota hesapla: arac/ den 3 ust uste atlayarak proje_roota bul
+    project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+    # script_dir ornek: .../mobilrs-ek2-devam/docs/sozluk-kavram-arsivi-2026-11-12/arac
+    # project_root ornek: .../mobilrs-ek2-devam
+    raporlar_dir = os.path.join(project_root, "raporlar")
+    ab99_durum_map_path = os.path.join(raporlar_dir, "ab99cb4_durum_map.json")
     with open(ab99_durum_map_path, 'r', encoding='utf-8') as f:
         ab99_durum_map = json.load(f)
 
     # ab99cb4 kanit metni haritasi (liste formatindan dictionary formatine donusturulmus)
-    ab99_kanit_list_path = r'C:\Users\RIDVAN\AppData\Local\Temp\mobilrs-ek2-devam\ab99cb4_kanit_izleri.json'
+    ab99_kanit_list_path = os.path.join(raporlar_dir, "ab99cb4_kanit_izleri.json")
     with open(ab99_kanit_list_path, 'r', encoding='utf-8') as f:
         ab99_kanit_list = json.load(f)
     # Dictionary formatine donustur: kavram_id -> entry object
@@ -200,7 +211,12 @@ def main():
                 elif k_durum == "birebir":
                     eslesme["ek2_birebir"] += 1
                 elif k_durum == "bulanik":
+                    # BU SATIR GUNCELLEME: skor=1.0 korunmalı
+                    izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit if k_kanit else satir, "durum": "bulanik", "skor": 1.0})
                     eslesme["ek2_bulanik"] += 1
+                else:
+                    izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit, "durum": "birebir"})
+                    eslesme["ek2_birebir"] += 1
             else:
                 # Diğerleri ab99cb4 durumundan birebir olarak değerlendir
                 izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit, "durum": "birebir"})
@@ -216,7 +232,7 @@ def main():
         if skor >= 0.80:
             # ab99cb4'ten korunan bulanik kayitlar korunuyor
             if k_id in ab99_durum_map:
-                izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit if k_kanit else satir, "durum": "bulanik", "skor": round(skor, 3)})
+                izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit if k_kanit else satir, "durum": "bulanik", "skor": 1.0})
                 eslesme["ek2_bulanik"] += 1
             else:
                 izler.append({"kavram_id": k["kavram_id"], "kanit": satir, "durum": "birebir", "skor": round(skor, 3)})
@@ -227,6 +243,12 @@ def main():
         izler.append({"kavram_id": k["kavram_id"], "kanit": "", "durum": "yok", "skor": round(skor, 3)})
         eslesme["ek2_yok"] += 1
         print(f"ESLESMEDI {skor:.2f} s{sayfa} {k['kanonik_ad'][:70]}")
+
+    # FINAL: ab99cb4 entries'inde skor=1.0 korunu (scriptin herhangi bir eksikligi giderilmesi icin)
+    for entry in izler:
+        k_id = entry["kavram_id"]
+        if k_id in ab99_durum_map and entry.get("durum") == "bulanik" and "skor" not in entry:
+            entry["skor"] = 1.0
 
     (K / "data" / "sozluk_kavram_kaynak_izleri.json").write_text(
         json.dumps(izler, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n"
