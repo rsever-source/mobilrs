@@ -2,195 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-11-06T16:02:33.656253+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "source_diagnostics": {
-        "Anadolu Ajansı – Engelli Yaşam": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 10,
-          "parsed_items": 10,
-          "errors": []
-        },
-        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
-          "stage": "html_list",
-          "anchors": 72,
-          "path_matches": 20,
-          "dated_from_title": 0,
-          "dated_from_context": 0,
-          "detail_attempts": 20,
-          "detail_successes": 20,
-          "parsed_items": 20,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "TRT Haber": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "TRT Haber – Sağlık": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
-          "stage": "html_list",
-          "anchors": 200,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
-          "stage": "html_list",
-          "anchors": 186,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
-          "stage": "html_list",
-          "anchors": 480,
-          "path_matches": 294,
-          "dated_from_title": 294,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 294,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Sosyal Güvenlik Kurumu – Duyurular": {
-          "stage": "html_list",
-          "anchors": 94,
-          "path_matches": 10,
-          "dated_from_title": 10,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 10,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
-          "stage": "tbb_mevzuat",
-          "anchors": 88,
-          "article_links": 12,
-          "keyword_matches": 0,
-          "detail_attempts": 0,
-          "detail_errors": 0,
-          "missing_dates": 0,
-          "parsed_items": 0,
-          "errors": []
-        },
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 10,
-          "keyword_eliminated": 20,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 0,
-          "in_7_day_window": 0,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 506,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 17,
-          "duplicate_in_this_run": 1,
-          "url_seen_within_7_days": 18,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 469,
-          "accepted_as_candidate": 1
-        },
-        "examples": {},
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": [
-        {
-          "title": "TİHEK'ten Down sendromlu çocuğu oyun alanına almayan işletmeye ceza",
-          "source": "Anadolu Ajansı – Engelli Yaşam",
-          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/tihekten-down-sendromlu-cocugu-oyun-alanina-almayan-isletmeye-ceza/1833016",
-          "published_at": "2026-11-06T00:00:00+00:00",
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "",
-          "reject_label": "",
-          "generated_title": "TİHEK'ten Down sendromlu çocuğu oyun alanına almayan işletmeye ceza",
-          "summary": "Türkiye İnsan Hakları ve Eşitlik Kurumu, Down sendromlu bir çocuğu oyun alanına almayan işletmeye para cezası uyguladı. Emekli astsubay baba, kızının özel çocuklar gerekçesiyle içeri alınmadığını belirterek hukuki yollara başvurdu. Ankara Batı 10'uncu Asliye Ceza Mahkemesi'nde yargılanan mesul müdüre hapis cezası verildi. Kurumun yaptığı inceleme sonucunda işletmeye ayrımcılık yasağını ihlal ettiği gerekçesiyle ceza kesildi. Şirket vekili iddiaları reddetse de TİHEK kararından geri adım atmadı. Benzer bir olay nedeniyle aynı işletmeye daha önce de idari para cezası verilmişti.",
-          "detail_summary": "Türkiye İnsan Hakları ve Eşitlik Kurumu, Down sendromlu bir kız çocuğunu alışveriş merkezindeki oyun alanına almayan işletmeye ayrımcılık yasağı ihlali gerekçesiyle para cezası verdi. Olay, emekli astsubay Feridun Baltacı'nın Down sendromlu kızı Melek Baltacı'nın oyun parkı görevlileri tarafından özel çocukların alınmadığı söylenerek içeri alınmaması üzerine yaşandı. Geçen yıl meydana gelen olayla ilgili adli süreçte Ankara Batı 10'uncu Asliye Ceza Mahkemesi, işletmenin mesul müdürüne kişiler arasında ayrımcılık yapma suçundan hapis cezası verip hükmün açıklanmasını geri bıraktı. Bu yargılama kararının ardından aile TİHEK'e de başvuru yaparak şikayette bulundu. Şirket vekili savunmasında iddiaları destekleyen delil bulunmadığını, başvurunun bir yıl sonra yapılmasının soru işaretleri oluşturduğunu ve çalışanların olumsuz tutum sergilemediğini savundu. Yapılan incelemeler sonucunda TİHEK, işletmeye 256 bin 357 Türk Lirası idari para cezası uyguladı. Ayrıca aynı işletmeye daha önce de benzer bir olay sonrasında yine aynı ihlalden dolayı 204 bin 285 Türk Lirası ceza kesildiği öğrenildi.",
-          "decision": "publish"
-        }
-      ]
-    },
-    {
       "run_at": "2026-11-06T21:39:30.948725+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -6294,6 +6105,217 @@
           "site_published_at": "2026-11-13T09:14:33.845966+00:00"
         }
       ]
+    },
+    {
+      "run_at": "2026-11-13T09:46:29.577707+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 7,
+          "parsed_items": 7,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 480,
+          "path_matches": 294,
+          "dated_from_title": 294,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 294,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "tls_verified": true,
+          "list_read": true,
+          "anchors": 88,
+          "article_links": 12,
+          "keyword_matches": 0,
+          "health_probe": true,
+          "detail_attempts": 1,
+          "detail_successes": 1,
+          "parsed_items": 0,
+          "validated": true,
+          "errors": []
+        },
+        "Resmî Gazete – TBB Mevzuat Yedeği": {
+          "stage": "skipped",
+          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 7,
+          "keyword_eliminated": 23,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 500,
+        "pending_total": 0,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 17,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 5,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 478,
+          "accepted_as_candidate": 0
+        },
+        "examples": {
+          "already_published": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Kırklareli'nde tıp öğrencilerinden engelli bireylere evlerinde mini konser"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "TİHEK'ten Down sendromlu çocuğu oyun alanına almayan işletmeye ceza"
+            }
+          ],
+          "older_than_7_days": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Yağmurdan kaçan öğrencilerin arasından engelli arkadaşının yardımına koştu"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Engellilere yönelik gündüzlü ve geçici bakım hizmetleri yaygınlaştırılacak"
+            }
+          ],
+          "url_seen_within_7_days": [
+            {
+              "source": "TRT Haber",
+              "title": "İtalya'da bomba ihbarları okullarda yeni tahliyelere yol açtı"
+            },
+            {
+              "source": "TRT Haber – Sağlık",
+              "title": "COP tarihinde bir ilk: Sağlık, müstakil eylem alanı olarak belirlendi"
+            }
+          ]
+        },
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": []
     }
   ],
   "system_incidents": [
