@@ -2,212 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-11-06T13:00:51.889942+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "source_diagnostics": {
-        "Anadolu Ajansı – Engelli Yaşam": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 9,
-          "parsed_items": 9,
-          "errors": []
-        },
-        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
-          "stage": "html_list",
-          "anchors": 72,
-          "path_matches": 20,
-          "dated_from_title": 0,
-          "dated_from_context": 0,
-          "detail_attempts": 20,
-          "detail_successes": 20,
-          "parsed_items": 20,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "TRT Haber": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "TRT Haber – Sağlık": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
-          "stage": "html_list",
-          "anchors": 200,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
-          "stage": "html_list",
-          "anchors": 186,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
-          "stage": "html_list",
-          "anchors": 480,
-          "path_matches": 294,
-          "dated_from_title": 294,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 294,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Sosyal Güvenlik Kurumu – Duyurular": {
-          "stage": "html_list",
-          "anchors": 94,
-          "path_matches": 10,
-          "dated_from_title": 10,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 10,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
-          "stage": "tbb_mevzuat",
-          "anchors": 88,
-          "article_links": 12,
-          "keyword_matches": 0,
-          "detail_attempts": 0,
-          "detail_errors": 0,
-          "missing_dates": 0,
-          "parsed_items": 0,
-          "errors": []
-        },
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 10,
-          "keyword_eliminated": 20,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 0,
-          "in_7_day_window": 0,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 505,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 17,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 17,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 469,
-          "accepted_as_candidate": 2
-        },
-        "examples": {},
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": [
-        {
-          "title": "Yerli kanser ilacı yolunda önemli adım",
-          "source": "TRT Haber – Sağlık",
-          "url": "https://www.trthaber.com/haber/saglik/yerli-kanser-ilaci-yolunda-onemli-adim-962421.html",
-          "published_at": "2026-11-06T07:48:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "Haber genel sağlık ve ilaç geliştirme alanında olduğu için engelli bireylere yönelik doğrudan bir bağlam taşımamaktadır.",
-          "reject_label": "Genel sağlık",
-          "generated_title": "Yerli Kanser İlacı Çalışmasında Çifte Patent Aldı",
-          "summary": "Türk bilim insanları kanser tedavisinde kullanılmak üzere yeni ilaç adayı moleküller geliştirdi. Zonguldak Bülent Ecevit Üniversitesi ve İstanbul Medipol Üniversitesi akademisyenleri ortak bir çalışma yürüttü. Sentezlenen moleküllerin meme prostat ve akciğer kanseri hücreleri üzerinde etkili olduğu görüldü. Laboratuvar testleri ve bilgisayar destekli analizlerle moleküllerin biyolojik aktiviteleri incelendi. Geliştirilen buluş Türk Patent ve Marka Kurumu tarafından tescillendi. Çalışmanın Avrupa patent başvurusu da tescile uygun bulundu. Elde edilen çifte patent ile yerli ve milli ilaç üretimi yolunda önemli bir adım atıldı.",
-          "detail_summary": "Türk bilim insanları kanser tedavisinde değerlendirilmek üzere yeni ilaç adayı moleküller geliştirdi. Zonguldak Bülent Ecevit Üniversitesi Fen Fakültesi Kimya Bölümü Öğretim Üyesi Prof. Dr. Zuhal Gerçek ile İstanbul Medipol Üniversitesi Eczacılık Fakültesi Öğretim Üyesi Prof. Dr. Mustafa Güzel ve araştırmacı Betül Yeşil projede görev aldı. Çalışma kapsamında Yeni Tirozin Kinaz İnhibitörlerinin Sentezi ve Biyolojik Aktivitelerinin Araştırılması başlıklı bir araştırma gerçekleştirildi. Sentezlenen moleküllerin meme prostat ve akciğer kanseri hücreleri üzerindeki biyolojik etkileri laboratuvar ortamında detaylıca test edildi. Moleküllerin farklı kanser türleri üzerindeki etkileri aynı zamanda bilgisayar destekli teorik analizlerle de araştırıldı. Buluş 2024 yılında Türk Patent ve Marka Kurumu tarafından tescil edilerek koruma altına alındı. Yürütülen süreç sonucunda Avrupa patent başvurusu da tescile uygun bulundu. Araştırmacılar elde edilen ulusal ve uluslararası patentlerle yerli ve milli ilaç üretimine katkı sunduklarını ifade etti.",
-          "decision": "reject"
-        },
-        {
-          "title": "6 Kasım 2026 5510 Sayılı Kanun’un Ek 23’üncü Maddesi Kapsamında Hayatını Kaybeden Madencilerin Yakınlarının Kurumumuz Sürekli İşçi Kadrolarında İstihdam Edilenlerin Atama İşlemlerinde İstenen Belgelere İlişkin Duyuru PERSONEL DAİRE BAŞKANLIĞI",
-          "source": "Sosyal Güvenlik Kurumu – Duyurular",
-          "url": "https://www.sgk.gov.tr/duyuru/detay/5510-Sayili-Kanunun-Ek-23uncu-Maddesi-Kapsaminda-Hayatini-Kaybeden-Madencilerin-Yakinlarinin-Kurumumuz-Surekli-Isci-Kadrolarinda-Istihdam-2026-11-06-02-20-30",
-          "published_at": "2026-11-06T00:00:00+00:00",
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "Bu duyuru genel personel alımı ve madenci yakınlarının atama işlemlerini kapsamakta olup engelli bireylere yönelik doğrudan bir düzenleme içermemektedir.",
-          "reject_label": "Genel personel",
-          "generated_title": "SGK'dan madenci yakınlarının atama işlemlerine ilişkin duyuru",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "reject"
-        }
-      ]
-    },
-    {
       "run_at": "2026-11-06T16:02:33.656253+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -6245,6 +6039,261 @@
         "zero_candidates_is_not_an_error": true
       },
       "candidates": []
+    },
+    {
+      "run_at": "2026-11-13T09:14:33.845966+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 7,
+          "parsed_items": 7,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 480,
+          "path_matches": 294,
+          "dated_from_title": 294,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 294,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "tls_verified": true,
+          "list_read": true,
+          "anchors": 88,
+          "article_links": 12,
+          "keyword_matches": 0,
+          "health_probe": true,
+          "detail_attempts": 1,
+          "detail_successes": 1,
+          "parsed_items": 0,
+          "validated": true,
+          "errors": []
+        },
+        "Resmî Gazete – TBB Mevzuat Yedeği": {
+          "stage": "skipped",
+          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 7,
+          "keyword_eliminated": 23,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 500,
+        "pending_total": 0,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 18,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 3,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 475,
+          "accepted_as_candidate": 4
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "İtalya'da bomba ihbarları okullarda yeni tahliyelere yol açtı",
+          "source": "TRT Haber",
+          "url": "https://www.trthaber.com/haber/guncel/italyada-bomba-ihbarlari-okullarda-yeni-tahliyelere-yol-acti-963126.html",
+          "published_at": "2026-11-13T03:25:00+00:00",
+          "content_origin": null,
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "Haber, genel gündem ve uluslararası güvenlik olaylarıyla ilgili olup engelli bireylerin hakları, yaşamı veya hizmetleriyle doğrudan bir ilgisi bulunmamaktadır.",
+          "reject_label": "Genel gündem",
+          "generated_title": "",
+          "summary": "",
+          "detail_summary": "",
+          "decision": "reject"
+        },
+        {
+          "title": "11.11.2026 Bakanımız Göktaş, TBMM Plan ve Bütçe Komisyonunda Bakanlığın 2027 Yılı Bütçesinin Sunumunu Yaptı Haberin Detayı",
+          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri",
+          "url": "https://www.aile.gov.tr/eyhgm/haberler/bakanimiz-goktas-tbmm-plan-ve-butce-komisyonunda-bakanligin-2027-yili-butcesinin-sunumunu-yapti/",
+          "published_at": "2026-11-11T00:00:00+00:00",
+          "content_origin": null,
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "Bakan Göktaş, TBMM Plan ve Bütçe Komisyonunda Bakanlığın 2027 Yılı Bütçesini Sundu",
+          "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, TBMM Plan ve Bütçe Komisyonunda bakanlığının 2027 yılı bütçe sunumunu gerçekleştirdi. Bakan Göktaş, engelli vatandaşların nitelikli kadrolarda istihdamı için EKPSS ücretlerine bu yıl yaklaşık 111 milyon lira ayrıldığını açıkladı. Evde Bakım Yardımı kapsamında 492 bin 572 aileye aylık 15 bin 755 lira destek sağlandığını belirten Göktaş, bu yıl yaklaşık 66 milyar lira ödeme yapıldığını kaydetti. Yaşlılar ve engelliler için 51 yeni merkezin hizmete açıldığı bilgisini veren Göktaş, sosyal hizmet ağının her geçen gün genişletildiğini vurguladı. Konuşmasında ayrıca kreşlerin kamu ve özel sektör eliyle yaygınlaştırılması için yeni bir teşvik paketinin devreye alındığını müjdeledi. 2027 yılı bütçe teklifinin 677 milyar 303 milyon 514 bin lira olarak belirlendiğini ifade eden Bakan Göktaş, sosyal politikaların kararlılıkla sürdürüleceğini belirtti.",
+          "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, TBMM Plan ve Bütçe Komisyonunda bakanlığın 2027 yılı bütçesine ilişkin kapsamlı bir sunum yaptı. Bakan Göktaş, engelli vatandaşların uygun kadrolarda görev alabilmesi amacıyla bu yıl EKPSS ücretlerine yaklaşık 111 milyon lira kaynak ayrıldığını ve kamudaki engelli çalışan sayısının 15 kat artırıldığını bildirdi. Evde Bakım Yardımı uygulaması kapsamında halen 492 bin 572 aileye düzenli olarak aylık 15 bin 755 lira ödeme aktarıldığını belirten Göktaş, sadece bu yıl evde bakım hizmetleri için yaklaşık 66 milyar liralık harcama yapıldığını kaydetti. Yaşlı ve engelli bireylere yönelik hizmet ağını güçlendirmek amacıyla ülke genelinde 51 yeni merkezin açıldığını ifade eden Bakan Göktaş, YADES ve Ulusal Vefa Programı ile binlerce vatandaşın temel ve kişisel bakım ihtiyaçlarının evlerinde karşılandığını aktardı. Toplantıda çocuk hizmetlerine de geniş yer veren Göktaş, 2027 yılında kreşlerin kamu ve özel sektör eliyle yaygınlaştırılması amacıyla ilk kez bir teşvik paketinin devreye sokulacağını müjdeledi. Bakanlığın güçlü teşkilat yapısıyla 86 milyon vatandaşa hizmet ulaştırdığını belirten Göktaş, 2027 yılı bütçe teklifinin 677 milyar 303 milyon 514 bin lira olduğunu açıkladı.",
+          "decision": "publish",
+          "site_published_at": "2026-11-13T09:14:33.845966+00:00"
+        },
+        {
+          "title": "12.11.2026 Bakanımız Göktaş, COP31’de \"İklim Politikası Çerçevelerinde Ayrıştırılmış Demografik Veri Kullanımının Hızlandırılması\" etkinliğinde konuştu: Haberin Detayı",
+          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
+          "url": "https://www.aile.gov.tr/haberler/bakanimiz-goktas-cop31-de-iklim-politikasi-cercevelerinde-ayristirilmis-demografik-veri-kullaniminin-hizlandirilmasi-etkinliginde-konustu/",
+          "published_at": "2026-11-12T00:00:00+00:00",
+          "content_origin": null,
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "Haber, genel iklim politikaları ve demografik veri kullanımına odaklandığı ve engelli bireyler üzerinde doğrudan somut bir etki içermediği için kapsam dışıdır.",
+          "reject_label": "Kapsam dışı",
+          "generated_title": "Bakan Göktaş COP31'de Demografik Veri ve İklim Politikalarına Değindi",
+          "summary": "",
+          "detail_summary": "",
+          "decision": "reject"
+        },
+        {
+          "title": "11.11.2026 Bakanımız Göktaş, TBMM Plan ve Bütçe Komisyonunda Bakanlığın 2027 Yılı Bütçesinin Sunumunu Yaptı Haberin Detayı",
+          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
+          "url": "https://www.aile.gov.tr/haberler/bakanimiz-goktas-tbmm-plan-ve-butce-komisyonunda-bakanligin-2027-yili-butcesinin-sunumunu-yapti/",
+          "published_at": "2026-11-11T00:00:00+00:00",
+          "content_origin": null,
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "Bakan Göktaş, TBMM Plan ve Bütçe Komisyonunda Bakanlığın 2027 Yılı Bütçesini Sundu",
+          "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, TBMM Plan ve Bütçe Komisyonunda bakanlığının 2027 yılı bütçe sunumunu gerçekleştirdi. Bakan Göktaş, engelli bireylerin nitelikli kadrolarda istihdamı amacıyla EKPSS ücretlerine bu yıl yaklaşık 111 milyon lira ayrıldığını açıkladı. Evde Bakım Yardımı kapsamında 492 bin 572 aileye aylık 15 bin 755 lira destek sağlandığını belirten Göktaş, yıl boyunca yaklaşık 66 milyar lira ödeme yapıldığını kaydetti. Yaşlılar ve engelliler için 51 yeni merkezin hizmete açıldığını ifade eden Göktaş, sosyal hizmet ağının her geçen gün genişletildiğini vurguladı. Ayrıca 2027 yılında kreşlerin kamu ve özel sektör eliyle yaygınlaştırılması için yeni bir teşvik paketinin devreye alınacağı müjdelendi. Bakanlığın 2027 yılı bütçe teklifinin 677 milyar 303 milyon 514 bin lira olarak belirlendiği açıklandı.",
+          "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, TBMM Plan ve Bütçe Komisyonunda bakanlığın 2027 yılı bütçe sunumunu gerçekleştirdi. Bakan Göktaş, engelli vatandaşların niteliklerine uygun kadrolarda görev almaları için bu yıl EKPSS ücretlerine yaklaşık 111 milyon lira kaynak ayrıldığını bildirdi. Kamuda çalışan engelli birey sayısının geçmiş yıllara göre 15 kat artırıldığı ifade edildi. Evde Bakım Yardımı kapsamında halihazırda 492 bin 572 aileye aylık 15 bin 755 lira destek sağlandığı ve sadece bu yıl yaklaşık 66 milyar liralık ödeme gerçekleştirildiği aktarıldı. Yaşlı ve engelli bireylere yönelik hizmet ağını genişletmek amacıyla 51 yeni merkezin açıldığı bilgisi paylaşıldı. Bakanlık bütçesinin 2027 yılı teklifinin 677 milyar 303 milyon 514 bin lira olduğu açıklandı. Ayrıca 2027 yılında kreş hizmetlerinin kamu ve özel sektör eliyle yaygınlaştırılması amacıyla ilk defa yeni bir teşvik paketinin devreye sokulacağı duyuruldu.",
+          "decision": "publish",
+          "site_published_at": "2026-11-13T09:14:33.845966+00:00"
+        }
+      ]
     }
   ],
   "system_incidents": [
