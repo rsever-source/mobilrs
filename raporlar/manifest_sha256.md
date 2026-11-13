@@ -8,8 +8,8 @@
 - **Açıklama**: Bulanık skorların sabit 1.0 ataması kaldırıldı, skorlar referans dosyasından okunuyor ve korunuyor. Frontal kemik ve Glare istisnaları korunuyor.
 
 ### 2. data/sozluk_kavram_kaynak_izleri.json
-- **SHA-256**: 00e95690313814698dfca175f138b7e8bfa504df7b715a785ea0d99bbc747ccd
-- **Boyut**: 121726 bytes
+- **SHA-256**: 6d5db20cfbb313e664eaa489c2d0422b717c04de230463d9eea39fd19e93d41e
+- **Boyut**: 121339 bytes
 - **Açıklama**: 606+1 girişten `skor: null` alanları çıkarıldı, 137 bulanık kaydın skoru (115 with skor=1.0, 22 with orijinal değerler) korunuyor, frontal ve glare istisnası korunuyor. Non-bulanik kayıtlarda skor anahtarı tamamen kaldırıldı.
 
 ### 3. raporlar/ab99cb4_durum_map.json (Yeni Eklenen)
@@ -26,7 +26,7 @@
 - 745 kayıt, 745 benzersiz ID.
 - EK-1: 276, EK-2: 469.
 - Durum dağılımı: 595 birebir, 137 bulanik, 13 duzeltilmis.
-- 137 bulanık kaydın skorlarının: 115'i 1.0, 22'si referanstaki özgün skorlar (0.802-0.994).
+- 137 bulanık kaydın skorlarının: 115'i 1.0, 22'si referansteki özgün skorlar.
 - Frontal kemik ve Glare istisnaları doğru.
 - 743 kaydın bütün alanları ab99cb4 ile birebir aynı (0 mismatch).
 - İki betik çalıştırıldığında sonuç değişmiyor (idempotent).
