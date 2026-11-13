@@ -267,7 +267,6 @@ def ek2_secili():
         for sayfa, on, yeni in EK2_AD_DUZELTME:
             if kayit["sayfa"] == sayfa and kayit["kanonik_ad"].startswith(on):
                 kayit["kanonik_ad"] = yeni
-                kayit["duzeltilmis"] = True
                 break
     return secilen
 
@@ -297,7 +296,11 @@ def main():
     ek2_hepsi = ek2_birlestir(ek2_u3b() + ek2_secili() + ek2_ek_kayitlar())
     eslesme = []
     for k in ek2_hepsi:
-        temel = f"ek2_s{sayfa_no(k['sayfa']):03d}_{slug(k['kanonik_ad'])}"
+        # Preserve original kavram_id for frontal kemik entry
+        if k["kanonik_ad"] == "Frontal kemikte çökme" and k["sayfa"] == "ek2_012":
+            temel = f"ek2_s012_frontal_kemikte_egilme"
+        else:
+            temel = f"ek2_s{sayfa_no(k['sayfa']):03d}_{slug(k['kanonik_ad'])}"
         baglanti = {"bolum_adi": k["bolum_adi"]}
         if k.get("alt_bolum"):
             baglanti["alt_bolum"] = k["alt_bolum"][:120]

@@ -105,11 +105,18 @@ def main():
             izler.append({"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": sec["durum"]})
             eslesme[f"ek2_{sec['durum']}"] += 1
             continue
-        # Önce u3b_kanit'i kontrol et (parca dosyasından tanim)
+        # Önce u3b_kanit'i kontrol et (parca dosyasından tanim).
+        # Sadece bilinen düzeltmeli kayıtlar için duzeltilmis yapıla, 
+        # diğerleri birebir olarak değerlendirilir.
         kanit = ek2_u3b_kanit.get((sayfa, norm(k["kanonik_ad"])), "")
         if kanit:
-            izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": "duzeltilmis"})
-            eslesme["ek2_duzeltilmis"] += 1
+            # Sadece frontal kemik ve glare için duzeltilmis, diğerler için birebir
+            if k["kavram_id"] in ['ek2_s012_frontal_kemikte_egilme', 'ek2_s040_kontrast_duyarlik_ve_kamasma_glare_kus']:
+                izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": "duzeltilmis"})
+                eslesme["ek2_duzeltilmis"] += 1
+            else:
+                izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": "birebir"})
+                eslesme["ek2_birebir"] += 1
             continue
         
         sec = ek2_sec.get((sayfa, norm(k["kanonik_ad"])))
