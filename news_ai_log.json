@@ -6485,11 +6485,13 @@
     {
       "component": "news-source:Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
       "first_seen": "2026-11-09T20:50:37.312511+00:00",
-      "status": "reported",
+      "status": "resolved",
       "details": "Detay sayfası doğrulanamadı (https://www.tbb.gov.tr/tr/mevzuat-duyurulari/yesil-mutabakat-eylem-plani-2026-2030-ile-ilgili-202612-sayili-cumhurbaskanligi-genelgesi): ValueError: TBB detay sayfasında güvenilir duyuru yayın tarihi bulunamadı",
       "last_seen": "2026-11-13T01:15:25.184515+00:00",
       "occurrences": 13,
-      "reported_at": "2026-11-10T20:55:47.950675+00:00"
+      "reported_at": "2026-11-10T20:55:47.950675+00:00",
+      "resolved_at": "2026-11-13T09:14:58.395023+00:00",
+      "recovery_details": "TBB TLS doğrulaması açıkken liste ve 1 detay sayfası başlık, yayın tarihi, içerik ve bağlantı yönünden doğrulandı."
     },
     {
       "component": "news-workflow-stale",
