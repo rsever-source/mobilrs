@@ -1,0 +1,264 @@
+name: TBB TLS certificate diagnostic (temporary)
+
+# SALT TEŞHİS: yalnızca www.tbb.gov.tr TLS sertifika zincirini inceler.
+# Haber tarama, Gemini, Cloud Run deploy veya üretim ayarlarına dokunmaz.
+# Bu dosya geçicidir; teşhis tamamlanınca silinmelidir.
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - diag/tbb-tls-cert
+    paths:
+      - ".github/workflows/tbb-tls-cert-diagnostic.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tbb-tls-cert-diagnostic
+  cancel-in-progress: true
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Prepare DNS and CA inventory
+        shell: bash
+        run: |
+          set -uo pipefail
+          echo "### RUNNER INFO"
+          echo "runner_os=${RUNNER_OS}"
+          echo "runner_arch=${RUNNER_ARCH}"
+          echo "date_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "openssl_version=$(openssl version)"
+          echo "python3_version=$(python3 --version 2>&1)"
+          echo "system_ca_bundle=/etc/ssl/certs/ca-certificates.crt"
+          ls -l /etc/ssl/certs/ca-certificates.crt 2>/dev/null || echo "system_ca_bundle: <yok>"
+
+          echo "### DNS www.tbb.gov.tr"
+          echo "--- getent ahostsv4 www.tbb.gov.tr"
+          getent ahostsv4 www.tbb.gov.tr || echo "(getent ahostsv4: sonuc yok)"
+          echo "--- getent ahostsv6 www.tbb.gov.tr"
+          getent ahostsv6 www.tbb.gov.tr || echo "(getent ahostsv6: sonuc yok)"
+          echo "--- getent hosts www.tbb.gov.tr"
+          getent hosts www.tbb.gov.tr || echo "(getent hosts: sonuc yok)"
+          if command -v dig >/dev/null 2>&1; then
+            echo "--- dig +short A www.tbb.gov.tr"; dig +short A www.tbb.gov.tr || true
+            echo "--- dig +short AAAA www.tbb.gov.tr"; dig +short AAAA www.tbb.gov.tr || true
+          else
+            echo "--- dig: bu runner imajinda yok, atlandi"
+          fi
+
+          echo "### DNS tbb.gov.tr (karsilastirma)"
+          echo "--- getent ahostsv4 tbb.gov.tr"
+          getent ahostsv4 tbb.gov.tr || echo "(getent ahostsv4: sonuc yok)"
+          if command -v dig >/dev/null 2>&1; then
+            echo "--- dig +short A tbb.gov.tr"; dig +short A tbb.gov.tr || true
+          fi
+
+          # Test edilecek IP listesi: Python socket (en guvenilir) + getent fallback.
+          python3 - <<'PY' > /tmp/tbb_ips.txt
+          import socket
+          ips = []
+          for host in ("www.tbb.gov.tr",):
+              try:
+                  for family, _t, _p, _c, sockaddr in socket.getaddrinfo(host, 443, type=socket.SOCK_STREAM):
+                      addr = sockaddr[0]
+                      if addr not in ips:
+                          ips.append(addr)
+              except Exception as exc:
+                  import sys
+                  print(f"# getaddrinfo failed for {host}: {exc}", file=sys.stderr, flush=True)
+          for ip in ips:
+              print(ip)
+          PY
+          echo "### TARGET IPS"
+          cat /tmp/tbb_ips.txt
+          if [ ! -s /tmp/tbb_ips.txt ]; then
+            echo "socket sonucu bos; getent ile tekrar deneniyor"
+            getent ahostsv4 www.tbb.gov.tr | awk '{print $1}' | sort -u > /tmp/tbb_ips.txt
+            cat /tmp/tbb_ips.txt
+          fi
+          echo "### TARGET IP COUNT: $(grep -cE '^[0-9A-Fa-f:.]+$' /tmp/tbb_ips.txt || true)"
+
+          echo "### SYSTEM CA STORE - SSL.com TLS RSA Root CA 2022 kontrolu"
+          if [ -f /etc/ssl/certs/ca-certificates.crt ]; then
+            if grep -q "SSL.com TLS RSA Root CA 2022" /etc/ssl/certs/ca-certificates.crt; then
+              echo "SYSTEM_CA_HAS[SSL.com TLS RSA Root CA 2022] = True"
+            else
+              echo "SYSTEM_CA_HAS[SSL.com TLS RSA Root CA 2022] = False"
+            fi
+            if grep -q "E-Tugra TLS RSA SubCA 2" /etc/ssl/certs/ca-certificates.crt; then
+              echo "SYSTEM_CA_HAS[E-Tugra TLS RSA SubCA 2] = True"
+            else
+              echo "SYSTEM_CA_HAS[E-Tugra TLS RSA SubCA 2] = False"
+            fi
+            echo "system_ca_sslcom_lines:"
+            grep -n "SSL.com" /etc/ssl/certs/ca-certificates.crt | head -40 || echo "(yok)"
+          fi
+
+      - name: Prepare certifi environment
+        shell: bash
+        run: |
+          set -uo pipefail
+          # Ubuntu 26.04 runner imajinda sistem Python PEP 668 ile korumali olabilir;
+          # bu yuzden izole bir venv kullanilir.
+          python3 -m venv /tmp/tbbvenv
+          /tmp/tbbvenv/bin/python -m pip install --quiet --disable-pip-version-check --upgrade pip
+          /tmp/tbbvenv/bin/python -m pip install --quiet --disable-pip-version-check certifi cryptography
+          CERTIFI_PEM="$(/tmp/tbbvenv/bin/python -c 'import certifi; print(certifi.where())')"
+          CERTIFI_VERSION="$(/tmp/tbbvenv/bin/python -c 'import importlib.metadata as m; print(m.version("certifi"))')"
+          echo "certifi_version=${CERTIFI_VERSION}"
+          echo "certifi_path=${CERTIFI_PEM}"
+          echo "$CERTIFI_PEM" > /tmp/certifi_pem.txt
+          echo "$CERTIFI_VERSION" > /tmp/certifi_version.txt
+          ls -l "$CERTIFI_PEM"
+
+          echo "### CERTIFI STORE CONTENT CHECK"
+          /tmp/tbbvenv/bin/python - <<'PY'
+          import pathlib, certifi
+          path = pathlib.Path(certifi.where())
+          text = path.read_text(encoding="utf-8", errors="replace")
+          print("certifi_bundle:", path)
+          print("bundle_bytes:", path.stat().st_size)
+          labels = [
+              "SSL.com TLS RSA Root CA 2022",
+              "SSL.com TLS ECC Root CA 2022",
+              "SSL.com Root Certification Authority RSA",
+              "E-Tugra TLS RSA SubCA 2",
+              "E-Tugra TLS RSA SubCA R1",
+              "E-Tugra TLS RSA CA R1",
+              "E-Tugra TLS ECC SubCA 2",
+              "SecureTrust CA",
+          ]
+          for label in labels:
+              print(f"CERTIFI_HAS[{label}] = {label in text}")
+          print("certifi_sslcom_lines:")
+          for line in text.splitlines():
+              if "SSL.com" in line:
+                  print("  ", line)
+          print("certifi_etugra_lines:")
+          for line in text.splitlines():
+              if "Tugra" in line or "E-TUGRA" in line:
+                  print("  ", line)
+          PY
+
+      - name: Test A - OpenSSL s_client with system CA store (per IP, with SNI)
+        shell: bash
+        run: |
+          set -uo pipefail
+          mapfile -t IPS < <(grep -E '^[0-9A-Fa-f:.]+$' /tmp/tbb_ips.txt | grep -v '^#' | sort -u)
+          if [ "${#IPS[@]}" -eq 0 ]; then IPS=("www.tbb.gov.tr"); fi
+          echo "test_edilen_ip_sayisi=${#IPS[@]}"
+          for ip in "${IPS[@]}"; do
+            echo "########## TEST_A SYSTEM_CA ip=${ip} sni=www.tbb.gov.tr"
+            out="/tmp/testA_${ip//:/_}.txt"
+            timeout 30 openssl s_client -connect "${ip}:443" -servername "www.tbb.gov.tr" \
+              -showcerts </dev/null >"$out" 2>&1 || echo "openssl_exit=$?"
+            echo "SERVER_CERTIFICATE_COUNT: $(grep -c -- '-----BEGIN CERTIFICATE-----' "$out")"
+            echo "--- chain:"
+            grep -E '^(depth=| *[0-9]+ s:| *i:|verify error:|Verification:|Verify return code:|CONNECTED)' "$out" || true
+            echo "--- verify_return_code:"
+            grep -E '^Verify return code:' "$out" || echo "Verify return code: <yok>"
+            grep -E 'Server public key is|^(New,|Protocol|Cipher|Peer signing digest|Server Temp Key)' "$out" || true
+          done
+
+      - name: Test B - OpenSSL s_client with certifi CA file (per IP, with SNI)
+        shell: bash
+        run: |
+          set -uo pipefail
+          CERTIFI_PEM="$(cat /tmp/certifi_pem.txt)"
+          echo "using_certifi_ca_file=${CERTIFI_PEM}"
+          mapfile -t IPS < <(grep -E '^[0-9A-Fa-f:.]+$' /tmp/tbb_ips.txt | grep -v '^#' | sort -u)
+          if [ "${#IPS[@]}" -eq 0 ]; then IPS=("www.tbb.gov.tr"); fi
+          echo "test_edilen_ip_sayisi=${#IPS[@]}"
+          for ip in "${IPS[@]}"; do
+            echo "########## TEST_B CERTIFI_CA ip=${ip} sni=www.tbb.gov.tr"
+            out="/tmp/testB_${ip//:/_}.txt"
+            timeout 30 openssl s_client -connect "${ip}:443" -servername "www.tbb.gov.tr" \
+              -showcerts -CAfile "${CERTIFI_PEM}" </dev/null >"$out" 2>&1 || echo "openssl_exit=$?"
+            echo "SERVER_CERTIFICATE_COUNT: $(grep -c -- '-----BEGIN CERTIFICATE-----' "$out")"
+            echo "--- chain:"
+            grep -E '^(depth=| *[0-9]+ s:| *i:|verify error:|Verification:|Verify return code:|CONNECTED)' "$out" || true
+            echo "--- verify_return_code:"
+            grep -E '^Verify return code:' "$out" || echo "Verify return code: <yok>"
+          done
+
+      - name: Test C - Python ssl with certifi CA (per IP, with SNI)
+        shell: bash
+        run: |
+          set -uo pipefail
+          /tmp/tbbvenv/bin/python - <<'PY'
+          import pathlib, socket, ssl
+          from cryptography import x509
+
+          ca = pathlib.Path("/tmp/certifi_pem.txt").read_text().strip()
+          print("CERTIFI_CA_FILE:", ca)
+          ips = [l.strip() for l in pathlib.Path("/tmp/tbb_ips.txt").read_text().splitlines()
+                 if l.strip() and not l.startswith("#")]
+          if not ips:
+              ips = ["www.tbb.gov.tr"]
+
+          def dump(der_list):
+              for index, der in enumerate(der_list):
+                  cert = x509.load_der_x509_certificate(der)
+                  print(f"  CERT[{index}] subject={cert.subject.rfc4514_string()}")
+                  print(f"  CERT[{index}] issuer ={cert.issuer.rfc4514_string()}")
+                  print(f"  CERT[{index}] notAfter={cert.not_valid_after_utc} serial={cert.serial_number}")
+
+          for ip in ips:
+              print(f"########## TEST_C PYTHON_CERTIFI ip={ip} sni=www.tbb.gov.tr")
+              ctx = ssl.create_default_context(cafile=ca)
+              try:
+                  with socket.create_connection((ip, 443), timeout=20) as raw:
+                      with ctx.wrap_socket(raw, server_hostname="www.tbb.gov.tr") as tls:
+                          chain = tls.get_unverified_chain()
+                          print("PY_CHAIN_LENGTH:", len(chain))
+                          print("PY_TLS_VERSION:", tls.version())
+                          dump(chain)
+                          print("PY_VERIFY: OK")
+              except Exception as exc:
+                  print("PY_VERIFY_ERROR:", type(exc).__name__, str(exc)[:400])
+
+          print("PY_DEFAULT_VERIFY_PATHS:", ssl.get_default_verify_paths())
+          PY
+
+      - name: Test D - Python ssl with system CA store (per IP, with SNI)
+        shell: bash
+        run: |
+          set -uo pipefail
+          python3 - <<'PY'
+          import pathlib, socket, ssl
+
+          ips = [l.strip() for l in pathlib.Path("/tmp/tbb_ips.txt").read_text().splitlines()
+                 if l.strip() and not l.startswith("#")]
+          if not ips:
+              ips = ["www.tbb.gov.tr"]
+          for ip in ips:
+              print(f"########## TEST_D PYTHON_SYSTEM_CA ip={ip} sni=www.tbb.gov.tr")
+              ctx = ssl.create_default_context()
+              try:
+                  with socket.create_connection((ip, 443), timeout=20) as raw:
+                      with ctx.wrap_socket(raw, server_hostname="www.tbb.gov.tr") as tls:
+                          print("PY_SYSTEM_CHAIN_LENGTH:", len(tls.get_unverified_chain()))
+                          print("PY_SYSTEM_VERIFY: OK")
+              except Exception as exc:
+                  print("PY_SYSTEM_VERIFY_ERROR:", type(exc).__name__, str(exc)[:400])
+          PY
+
+      - name: Summary
+        shell: bash
+        run: |
+          set -uo pipefail
+          echo "### SUMMARY"
+          echo "certifi_version: $(cat /tmp/certifi_version.txt 2>/dev/null || echo bilinmiyor)"
+          echo "certifi_path: $(cat /tmp/certifi_pem.txt 2>/dev/null || echo bilinmiyor)"
+          for f in /tmp/testA_*.txt /tmp/testB_*.txt; do
+            [ -f "$f" ] || continue
+            echo "FILE: ${f}"
+            echo "  certificate_count: $(grep -c -- '-----BEGIN CERTIFICATE-----' "$f")"
+            grep -E '^Verify return code:' "$f" | sed 's/^/  /' || echo "  Verify return code: <yok>"
+            grep -E 'verify error:' "$f" | sed 's/^/  /' || true
+          done
