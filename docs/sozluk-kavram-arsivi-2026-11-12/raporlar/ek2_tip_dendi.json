@@ -1,0 +1,3727 @@
+[
+  {
+    "kavram_id": "ek1_a_01_epilepsi_konvulsif_epilepsi_grand_mal_agir",
+    "kanonik_ad": "Epilepsi – konvülsif epilepsi (Grand Mal)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_01_epilepsi_konvulsif_epilepsi_grand_mal_orta",
+    "kanonik_ad": "Epilepsi – konvülsif epilepsi (Grand Mal)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_01_epilepsi_konvulsif_epilepsi_grand_mal_hafif",
+    "kanonik_ad": "Epilepsi – konvülsif epilepsi (Grand Mal)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_02_epilepsi_kompleks_parsiyel_epilepsi_agir",
+    "kanonik_ad": "Epilepsi –kompleks parsiyel epilepsi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_02_epilepsi_kompleks_parsiyel_epilepsi_orta",
+    "kanonik_ad": "Epilepsi –kompleks parsiyel epilepsi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_02_epilepsi_kompleks_parsiyel_epilepsi_hafif",
+    "kanonik_ad": "Epilepsi –kompleks parsiyel epilepsi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_03_epilepsi_basit_parsiyel_epilepsi_agir",
+    "kanonik_ad": "Epilepsi –basit parsiyel epilepsi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_03_epilepsi_basit_parsiyel_epilepsi_orta",
+    "kanonik_ad": "Epilepsi –basit parsiyel epilepsi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_03_epilepsi_basit_parsiyel_epilepsi_hafif",
+    "kanonik_ad": "Epilepsi –basit parsiyel epilepsi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_04_kognitif_bozukluklar_agir",
+    "kanonik_ad": "Kognitif bozukluklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_04_kognitif_bozukluklar_orta",
+    "kanonik_ad": "Kognitif bozukluklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_04_kognitif_bozukluklar_hafif",
+    "kanonik_ad": "Kognitif bozukluklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_05_parapleji_paraparezi_monopleji_monopar_agir",
+    "kanonik_ad": "Parapleji/Paraparezi, Monopleji/Monoparezi, Hemipleji/Hemiparezi, Kuadripleji/Kuadraparezi vb. motor kaybı olanlar",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek1_a_05_parapleji_paraparezi_monopleji_monopar_orta",
+    "kanonik_ad": "Parapleji/Paraparezi, Monopleji/Monoparezi, Hemipleji/Hemiparezi, Kuadripleji/Kuadraparezi vb. motor kaybı olanlar",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek1_a_05_parapleji_paraparezi_monopleji_monopar_hafif",
+    "kanonik_ad": "Parapleji/Paraparezi, Monopleji/Monoparezi, Hemipleji/Hemiparezi, Kuadripleji/Kuadraparezi vb. motor kaybı olanlar",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek1_a_06_parkinson_sendromu_agir",
+    "kanonik_ad": "Parkinson sendromu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_06_parkinson_sendromu_orta",
+    "kanonik_ad": "Parkinson sendromu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_06_parkinson_sendromu_hafif",
+    "kanonik_ad": "Parkinson sendromu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_07_afaziler_agir",
+    "kanonik_ad": "Afaziler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_07_afaziler_orta",
+    "kanonik_ad": "Afaziler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_08_benign_beyin_tumorleri_agir",
+    "kanonik_ad": "Benign beyin tümörleri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_a_08_benign_beyin_tumorleri_orta",
+    "kanonik_ad": "Benign beyin tümörleri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_a_08_benign_beyin_tumorleri_hafif",
+    "kanonik_ad": "Benign beyin tümörleri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_a_09_serebral_palsi_agir",
+    "kanonik_ad": "Serebral palsi",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_a_09_serebral_palsi_orta",
+    "kanonik_ad": "Serebral palsi",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_a_09_serebral_palsi_hafif",
+    "kanonik_ad": "Serebral palsi",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_a_10_spinal_kord_sinir_koku_lezyonlari_deje_agir",
+    "kanonik_ad": "Spinal kord; sinir kökü lezyonları, dejeneratif nörolojik hastalıklar veya herhangi bir nedene bağlı",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_a_10_spinal_kord_sinir_koku_lezyonlari_deje_orta",
+    "kanonik_ad": "Spinal kord; sinir kökü lezyonları, dejeneratif nörolojik hastalıklar veya herhangi bir nedene bağlı",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_a_10_spinal_kord_sinir_koku_lezyonlari_deje_hafif",
+    "kanonik_ad": "Spinal kord; sinir kökü lezyonları, dejeneratif nörolojik hastalıklar veya herhangi bir nedene bağlı",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_a_11_multiple_skleroz_agir",
+    "kanonik_ad": "Multiple skleroz",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_11_multiple_skleroz_orta",
+    "kanonik_ad": "Multiple skleroz",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_11_multiple_skleroz_hafif",
+    "kanonik_ad": "Multiple skleroz",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_12_amyotrofik_lateral_skleroz_agir",
+    "kanonik_ad": "Amyotrofik lateral skleroz",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_13_poliomyelit_agir",
+    "kanonik_ad": "Poliomyelit",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_13_poliomyelit_orta",
+    "kanonik_ad": "Poliomyelit",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_13_poliomyelit_hafif",
+    "kanonik_ad": "Poliomyelit",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_14_myastenia_gravis_ile_birlikte_agir",
+    "kanonik_ad": "Myastenia gravis ile birlikte",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_15_muskuler_distrofi_ile_birlikte_agir",
+    "kanonik_ad": "Müsküler distrofi ile birlikte",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_15_muskuler_distrofi_ile_birlikte_orta",
+    "kanonik_ad": "Müsküler distrofi ile birlikte",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_15_muskuler_distrofi_ile_birlikte_hafif",
+    "kanonik_ad": "Müsküler distrofi ile birlikte",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_16_periferal_noropatiler_ile_birlikte_agir",
+    "kanonik_ad": "Periferal nöropatiler ile birlikte",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_16_periferal_noropatiler_ile_birlikte_orta",
+    "kanonik_ad": "Periferal nöropatiler ile birlikte",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_16_periferal_noropatiler_ile_birlikte_hafif",
+    "kanonik_ad": "Periferal nöropatiler ile birlikte",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_17_tedaviye_ragmen_anlamli_duzelme_goster_agir",
+    "kanonik_ad": "Tedaviye rağmen anlamlı düzelme göstermeyen subakut kombine kord dejenerasyonu (Pernisiyöz anemi vb ile birlikte)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_17_tedaviye_ragmen_anlamli_duzelme_goster_orta",
+    "kanonik_ad": "Tedaviye rağmen anlamlı düzelme göstermeyen subakut kombine kord dejenerasyonu (Pernisiyöz anemi vb ile birlikte)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_17_tedaviye_ragmen_anlamli_duzelme_goster_hafif",
+    "kanonik_ad": "Tedaviye rağmen anlamlı düzelme göstermeyen subakut kombine kord dejenerasyonu (Pernisiyöz anemi vb ile birlikte)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_a_18_serebral_travma_agir",
+    "kanonik_ad": "Serebral travma",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_a_18_serebral_travma_orta",
+    "kanonik_ad": "Serebral travma",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_a_18_serebral_travma_hafif",
+    "kanonik_ad": "Serebral travma",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_a_19_huntington_koresi_syringomyeli_friedri_agir",
+    "kanonik_ad": "Huntington Koresi, Syringomyeli, Friedrich ataksisi, Wilson hastalığı, Jeneralize distoni gibi dejeneratif ve akkiz/herediter hastalıklar, Spino-serebellar dejenerasyon veya Serebellar hastalıklar",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek1_a_19_huntington_koresi_syringomyeli_friedri_orta",
+    "kanonik_ad": "Huntington Koresi, Syringomyeli, Friedrich ataksisi, Wilson hastalığı, Jeneralize distoni gibi dejeneratif ve akkiz/herediter hastalıklar, Spino-serebellar dejenerasyon veya Serebellar hastalıklar",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek1_a_19_huntington_koresi_syringomyeli_friedri_hafif",
+    "kanonik_ad": "Huntington Koresi, Syringomyeli, Friedrich ataksisi, Wilson hastalığı, Jeneralize distoni gibi dejeneratif ve akkiz/herediter hastalıklar, Spino-serebellar dejenerasyon veya Serebellar hastalıklar",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek1_b_01_zeka_gerilikleri_agir",
+    "kanonik_ad": "Zeka gerilikleri",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_b_01_zeka_gerilikleri_orta",
+    "kanonik_ad": "Zeka gerilikleri",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_b_02_sizofreni_ve_alt_tipleri_agir",
+    "kanonik_ad": "Şizofreni ve alt tipleri",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_b_02_sizofreni_ve_alt_tipleri_orta",
+    "kanonik_ad": "Şizofreni ve alt tipleri",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_b_03_sizoafektif_bozukluk_agir",
+    "kanonik_ad": "Şizoafektif bozukluk",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek1_b_03_sizoafektif_bozukluk_orta",
+    "kanonik_ad": "Şizoafektif bozukluk",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek1_b_04_sanrisal_bozukluklar_agir",
+    "kanonik_ad": "Sanrısal bozukluklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_b_04_sanrisal_bozukluklar_orta",
+    "kanonik_ad": "Sanrısal bozukluklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_b_05_atipik_veya_baska_turlu_siniflandirila_agir",
+    "kanonik_ad": "Atipik veya başka türlü sınıflandırılamayan psikozlar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_b_05_atipik_veya_baska_turlu_siniflandirila_orta",
+    "kanonik_ad": "Atipik veya başka türlü sınıflandırılamayan psikozlar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_b_06_bipolar_bozukluk_agir",
+    "kanonik_ad": "Bipolar bozukluk",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek1_b_06_bipolar_bozukluk_hafif",
+    "kanonik_ad": "Bipolar bozukluk",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek1_b_07_beyin_hasari_beyin_islev_bozukluguna_b_agir",
+    "kanonik_ad": "Beyin hasarı, beyin işlev bozukluğuna bağlı davranış bozuklukları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_b_07_beyin_hasari_beyin_islev_bozukluguna_b_hafif",
+    "kanonik_ad": "Beyin hasarı, beyin işlev bozukluğuna bağlı davranış bozuklukları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_b_08_siddeti_agir_ve_icgorunun_kayboldugu_k_agir",
+    "kanonik_ad": "Şiddeti ağır ve içgörünün kaybolduğu kronik obsesif kompulsif bozukluk, kronik travma sonrası stres bozukluğu ve komorbiditesi, tedaviye dirençli unipolar depresyon",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek1_b_09_beyin_hasari_beyin_islev_bozuklugu_ve_agir",
+    "kanonik_ad": "Beyin hasarı, beyin işlev bozukluğu ve bedensel hastalıklara bağlı ruhsal bozukluklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_b_10_yaygin_gelisimsel_bozukluklar_agir",
+    "kanonik_ad": "Yaygın gelişimsel bozukluklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_c_01_gorme_azligi_agir",
+    "kanonik_ad": "Görme azlığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_c_01_gorme_azligi_orta",
+    "kanonik_ad": "Görme azlığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_c_01_gorme_azligi_hafif",
+    "kanonik_ad": "Görme azlığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_c_02_pitozis_agir",
+    "kanonik_ad": "Pitozis",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_c_03_diplopi_agir",
+    "kanonik_ad": "Diplopi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_c_04_gorme_alani_patolojileri_agir",
+    "kanonik_ad": "Görme alanı patolojileri",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_d_01_komplikasyonlu_sagirlik_agir",
+    "kanonik_ad": "Komplikasyonlu sağırlık",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_d_01_komplikasyonlu_sagirlik_orta",
+    "kanonik_ad": "Komplikasyonlu sağırlık",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_d_01_komplikasyonlu_sagirlik_hafif",
+    "kanonik_ad": "Komplikasyonlu sağırlık",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_d_02_dil_agir",
+    "kanonik_ad": "Dil",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_d_03_larenks_agir",
+    "kanonik_ad": "Larenks",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_d_04_ses_organlari_agir",
+    "kanonik_ad": "Ses organları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_d_04_ses_organlari_hafif",
+    "kanonik_ad": "Ses organları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_d_05_burun_orta",
+    "kanonik_ad": "Burun",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_d_06_cene_agir",
+    "kanonik_ad": "Çene",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_d_06_cene_orta",
+    "kanonik_ad": "Çene",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_01_bas_ve_boyunun_yumusak_doku_ve_diger_m_agir",
+    "kanonik_ad": "Baş ve boyunun yumuşak doku ve diğer malign tümörleri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_e_02_cilt_agir",
+    "kanonik_ad": "Cilt",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_03_yumusak_doku_sarkomu_agir",
+    "kanonik_ad": "Yumuşak doku sarkomu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_04_tukruk_bezleri_agir",
+    "kanonik_ad": "Tükrük bezleri",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_05_tiroid_bezi_agir",
+    "kanonik_ad": "Tiroid bezi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_06_meme_sarkoma_haric_agir",
+    "kanonik_ad": "Meme (sarkoma hariç)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_07_iskelet_sistemi_sarkomu_agir",
+    "kanonik_ad": "İskelet sistemi sarkomu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_08_maxilla_orbita_veya_temporal_fossa_agir",
+    "kanonik_ad": "Maxilla, orbita veya temporal fossa",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_09_sinir_sistemi_agir",
+    "kanonik_ad": "Sinir sistemi",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_e_10_akcigerler_agir",
+    "kanonik_ad": "Akciğerler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_11_plevra_veya_mediasten_agir",
+    "kanonik_ad": "Plevra veya mediasten",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_12_ozefagus_veya_mide_agir",
+    "kanonik_ad": "Özefagus veya mide",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_13_ince_bagirsagin_karsinomu_sarkomu_veya_agir",
+    "kanonik_ad": "İnce bağırsağın karsinomu, sarkomu veya karsinoid tümörleri",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_14_kalin_bagirsak_ileocekal_valvden_itiba_agir",
+    "kanonik_ad": "Kalın bağırsak (ileoçekal valvden itibaren, anal kanal dahil)",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek1_e_15_karaciger_safra_kesesi_safra_yollari_agir",
+    "kanonik_ad": "Karaciğer, safra kesesi, safra yolları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_16_pankreas_agir",
+    "kanonik_ad": "Pankreas",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_17_bobrekler_adrenal_bez_veya_ureterlerin_agir",
+    "kanonik_ad": "Böbrekler, adrenal bez veya üreterlerin karsinomu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_18_mesanenin_karsinomu_agir",
+    "kanonik_ad": "Mesanenin karsinomu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_19_kadin_genital_yollarinin_karsinomu_vey_agir",
+    "kanonik_ad": "Kadın genital yollarının karsinomu veya sarkomu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_20_prostat_bezinin_karsinomu_agir",
+    "kanonik_ad": "Prostat bezinin karsinomu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_21_testis_agir",
+    "kanonik_ad": "Testis",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_22_penis_agir",
+    "kanonik_ad": "Penis",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_e_23_uygun_incelemeye_ragmen_primer_kaynagi_agir",
+    "kanonik_ad": "Uygun incelemeye rağmen primer kaynağın bilinmediği durumlar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_f_01_anemiler_agir",
+    "kanonik_ad": "Anemiler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_f_01_anemiler_orta",
+    "kanonik_ad": "Anemiler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_f_01_anemiler_hafif",
+    "kanonik_ad": "Anemiler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_f_02_malign_monoklonal_gammapatiler_plazma_agir",
+    "kanonik_ad": "Malign monoklonal gammapatiler (Plazma hücre diskrazileri)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_f_02_malign_monoklonal_gammapatiler_plazma_orta",
+    "kanonik_ad": "Malign monoklonal gammapatiler (Plazma hücre diskrazileri)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_f_03_primer_hemofagositik_sendrom_agir",
+    "kanonik_ad": "Primer hemofagositik sendrom",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_f_04_kronik_notropeniler_agir",
+    "kanonik_ad": "Kronik nötropeniler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_f_05_kml_disi_miyeloproliferatif_neoplazile_agir",
+    "kanonik_ad": "KML dışı miyeloproliferatif neoplaziler (polisitemia vera, esansiyel trombositoz, kronik eosinofilik lösemi, kronik nötrofilik lösemi, mastositoz, sınıflandırılamayan miyeloproliferatif neoplaziler)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_f_06_miyelodisplastik_miyeloproliferatif_ne_agir",
+    "kanonik_ad": "Miyelodisplastik / Miyeloproliferatif neoplaziler (MDS/MPN) (kronik miyelomonositik lösemi, atipik kronik miyeloid lösemi, Juvenil miyelomonositik lösemi, MDS/MPN ring sideroblast ve trombositoz, MDS/MPN tanımlanamayan)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_f_07_hemostaz_bozukluklari_bir_yil_sonra_ko_agir",
+    "kanonik_ad": "Hemostaz bozuklukları (Bir yıl sonra kontrol)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_f_07_hemostaz_bozukluklari_bir_yil_sonra_ko_hafif",
+    "kanonik_ad": "Hemostaz bozuklukları (Bir yıl sonra kontrol)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_f_08_koagulasyon_defektleri_agir",
+    "kanonik_ad": "Koagülasyon defektleri",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_f_08_koagulasyon_defektleri_hafif",
+    "kanonik_ad": "Koagülasyon defektleri",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_f_09_trombotik_trombositopenik_purpura_orta",
+    "kanonik_ad": "Trombotik trombositopenik purpura",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_f_10_hodgkin_lenfoma_non_hodgkin_lenfomalar_agir",
+    "kanonik_ad": "Hodgkin Lenfoma, Non-Hodgkin Lenfomalar, Histiyositik ve Dendritik hücreli Neoplaziler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_f_11_losemiler_agir",
+    "kanonik_ad": "Lösemiler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_f_12_allojenik_kemik_iligi_kok_hucre_nakli_agir",
+    "kanonik_ad": "Allojenik kemik iliği/kök hücre nakli",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_f_12_allojenik_kemik_iligi_kok_hucre_nakli_hafif",
+    "kanonik_ad": "Allojenik kemik iliği/kök hücre nakli",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_f_13_otolog_kemik_iligi_kok_hucre_nakli_agir",
+    "kanonik_ad": "Otolog kemik iliği/kök hücre nakli",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_g_01_amputasyonlar_agir",
+    "kanonik_ad": "Ampütasyonlar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_g_01_amputasyonlar_orta",
+    "kanonik_ad": "Ampütasyonlar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_g_01_amputasyonlar_hafif",
+    "kanonik_ad": "Ampütasyonlar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_g_04_eklemlerin_major_disfonksiyonlari_agir",
+    "kanonik_ad": "Eklemlerin majör disfonksiyonları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_g_04_eklemlerin_major_disfonksiyonlari_orta",
+    "kanonik_ad": "Eklemlerin majör disfonksiyonları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_g_04_eklemlerin_major_disfonksiyonlari_hafif",
+    "kanonik_ad": "Eklemlerin majör disfonksiyonları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_g_05_skolyoz_kifoz_kifoskolyoz_vb_agir",
+    "kanonik_ad": "Skolyoz, kifoz, kifoskolyoz vb",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_01_sistemik_skleroz_skleroderma_agir",
+    "kanonik_ad": "Sistemik skleroz (skleroderma)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_01_sistemik_skleroz_skleroderma_orta",
+    "kanonik_ad": "Sistemik skleroz (skleroderma)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_01_sistemik_skleroz_skleroderma_hafif",
+    "kanonik_ad": "Sistemik skleroz (skleroderma)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_02_raynaud_fenomeni_agir",
+    "kanonik_ad": "Raynaud fenomeni",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_02_raynaud_fenomeni_orta",
+    "kanonik_ad": "Raynaud fenomeni",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_02_raynaud_fenomeni_hafif",
+    "kanonik_ad": "Raynaud fenomeni",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_03_polimiyozit_ve_dermatomiyozit_agir",
+    "kanonik_ad": "Polimiyozit ve Dermatomiyozit",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_03_polimiyozit_ve_dermatomiyozit_orta",
+    "kanonik_ad": "Polimiyozit ve Dermatomiyozit",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_03_polimiyozit_ve_dermatomiyozit_hafif",
+    "kanonik_ad": "Polimiyozit ve Dermatomiyozit",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_04_sistemik_lupus_eritematozus_sistemik_v_agir",
+    "kanonik_ad": "Sistemik Lupus Eritematozus, Sistemik Vaskülit, Sjögren Sendromu, Andifferansiye ve Mikst Bağ Doku Hastalığı vb",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_04_sistemik_lupus_eritematozus_sistemik_v_orta",
+    "kanonik_ad": "Sistemik Lupus Eritematozus, Sistemik Vaskülit, Sjögren Sendromu, Andifferansiye ve Mikst Bağ Doku Hastalığı vb",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_04_sistemik_lupus_eritematozus_sistemik_v_hafif",
+    "kanonik_ad": "Sistemik Lupus Eritematozus, Sistemik Vaskülit, Sjögren Sendromu, Andifferansiye ve Mikst Bağ Doku Hastalığı vb",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_05_behcet_hastaligi_agir",
+    "kanonik_ad": "Behçet hastalığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_05_behcet_hastaligi_orta",
+    "kanonik_ad": "Behçet hastalığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_05_behcet_hastaligi_hafif",
+    "kanonik_ad": "Behçet hastalığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_06_inflamatuar_artritler_agir",
+    "kanonik_ad": "İnflamatuar artritler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_06_inflamatuar_artritler_orta",
+    "kanonik_ad": "İnflamatuar artritler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_06_inflamatuar_artritler_hafif",
+    "kanonik_ad": "İnflamatuar artritler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_h_07_ankilozan_spondilit_veya_diger_spondil_agir",
+    "kanonik_ad": "Ankilozan spondilit veya diğer spondiloartropatilerde (omurga tutulumunda)",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_h_07_ankilozan_spondilit_veya_diger_spondil_orta",
+    "kanonik_ad": "Ankilozan spondilit veya diğer spondiloartropatilerde (omurga tutulumunda)",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_h_07_ankilozan_spondilit_veya_diger_spondil_hafif",
+    "kanonik_ad": "Ankilozan spondilit veya diğer spondiloartropatilerde (omurga tutulumunda)",
+    "tip": "anatomik terim"
+  },
+  {
+    "kavram_id": "ek1_i_01_portal_hipertansiyona_bagli_gastrointe_agir",
+    "kanonik_ad": "Portal hipertansiyona bağlı gastrointestinal kanamalar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_01_portal_hipertansiyona_bagli_gastrointe_orta",
+    "kanonik_ad": "Portal hipertansiyona bağlı gastrointestinal kanamalar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_02_karaciger_sirozu_agir",
+    "kanonik_ad": "Karaciğer sirozu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_02_karaciger_sirozu_orta",
+    "kanonik_ad": "Karaciğer sirozu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_02_karaciger_sirozu_hafif",
+    "kanonik_ad": "Karaciğer sirozu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_03_karaciger_nakli_agir",
+    "kanonik_ad": "Karaciğer nakli",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_03_karaciger_nakli_hafif",
+    "kanonik_ad": "Karaciğer nakli",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_04_inflamatuar_bagirsak_hastaliklari_iki_agir",
+    "kanonik_ad": "İnflamatuar bağırsak hastalıkları (İki yıl sonra kontrolü gerekir)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_04_inflamatuar_bagirsak_hastaliklari_iki_orta",
+    "kanonik_ad": "İnflamatuar bağırsak hastalıkları (İki yıl sonra kontrolü gerekir)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_05_tanimlanmis_bir_gastrointestinal_hasta_agir",
+    "kanonik_ad": "Tanımlanmış bir gastrointestinal hastalığa bağlı olarak Vücut Kitle İndeksi (VKİ) ile ilgili durumlar (İki yıl sonra kontrol gerekir)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_05_tanimlanmis_bir_gastrointestinal_hasta_orta",
+    "kanonik_ad": "Tanımlanmış bir gastrointestinal hastalığa bağlı olarak Vücut Kitle İndeksi (VKİ) ile ilgili durumlar (İki yıl sonra kontrol gerekir)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_06_malabsorbsiyonlarla_seyreden_gis_hasta_agir",
+    "kanonik_ad": "Malabsorbsiyonlarla seyreden GİS hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_07_kisa_bagirsak_sendromu_agir",
+    "kanonik_ad": "Kısa bağırsak sendromu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_07_kisa_bagirsak_sendromu_orta",
+    "kanonik_ad": "Kısa bağırsak sendromu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_08_total_proktokolektomi_ileal_pos_agir",
+    "kanonik_ad": "Total proktokolektomi+ileal poş",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_09_anal_inkontinans_veya_anal_sfinkter_yo_agir",
+    "kanonik_ad": "Anal inkontinans veya anal sfinkter yokluğu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_09_anal_inkontinans_veya_anal_sfinkter_yo_orta",
+    "kanonik_ad": "Anal inkontinans veya anal sfinkter yokluğu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_10_kalici_ileostomi_veya_kolostomiler_agir",
+    "kanonik_ad": "Kalıcı ileostomi veya kolostomiler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_11_bagirsak_transplantasyonu_agir",
+    "kanonik_ad": "Bağırsak transplantasyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_12_total_pankreatektomi_agir",
+    "kanonik_ad": "Total pankreatektomi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_13_whipple_operasyonu_agir",
+    "kanonik_ad": "Whipple operasyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_14_ozefagus_agir",
+    "kanonik_ad": "Özefagus",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_14_ozefagus_orta",
+    "kanonik_ad": "Özefagus",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_14_ozefagus_hafif",
+    "kanonik_ad": "Özefagus",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_15_mide_hastaliklari_orta",
+    "kanonik_ad": "Mide hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_16_karaciger_hastaliklari_orta",
+    "kanonik_ad": "Karaciğer hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_i_17_safra_yollari_orta",
+    "kanonik_ad": "Safra yolları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_01_kutanoz_t_hucreli_lenfomalar_agir",
+    "kanonik_ad": "Kutanöz T hücreli lenfomalar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_01_kutanoz_t_hucreli_lenfomalar_hafif",
+    "kanonik_ad": "Kutanöz T hücreli lenfomalar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_01_mf_disi_diger_kutanoz_lenfomalar_agir",
+    "kanonik_ad": "MF dışı diğer kutanöz lenfomalar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_01_mf_disi_diger_kutanoz_lenfomalar_hafif",
+    "kanonik_ad": "MF dışı diğer kutanöz lenfomalar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_02_porfirialar_agir",
+    "kanonik_ad": "Porfirialar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_03_psoriyazis_agir",
+    "kanonik_ad": "Psoriyazis",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_03_psoriyazis_hafif",
+    "kanonik_ad": "Psoriyazis",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_04_pemfigus_grubu_bulloz_pemfigoid_ve_der_agir",
+    "kanonik_ad": "Pemfigus grubu, büllöz pemfigoid ve dermatitis herpetiformis v.b. otoimmün büllöz hastalıklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_04_pemfigus_grubu_bulloz_pemfigoid_ve_der_hafif",
+    "kanonik_ad": "Pemfigus grubu, büllöz pemfigoid ve dermatitis herpetiformis v.b. otoimmün büllöz hastalıklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_05_iktiyozis_grubu_hastaliklar_agir",
+    "kanonik_ad": "İktiyozis grubu hastalıklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_05_iktiyozis_grubu_hastaliklar_hafif",
+    "kanonik_ad": "İktiyozis grubu hastalıklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_06_herediter_palmoplanter_keratodermiler_hafif",
+    "kanonik_ad": "Herediter palmoplanter keratodermiler, Unna Thost, Mal de Melada, vb.",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_07_epidermolizis_bulloza_agir",
+    "kanonik_ad": "Epidermolizis bülloza",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_07_epidermolizis_bulloza_orta",
+    "kanonik_ad": "Epidermolizis bülloza",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_07_epidermolizis_bulloza_hafif",
+    "kanonik_ad": "Epidermolizis bülloza",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_08_kseroderma_pigmentozum_rothmund_thomps_agir",
+    "kanonik_ad": "Kseroderma pigmentozum, Rothmund-Thompson Sendromu, Diskeratozis konjenita, Werner Sendromu ve benzeri genetik geçişli hastalıklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_08_kseroderma_pigmentozum_rothmund_thomps_orta",
+    "kanonik_ad": "Kseroderma pigmentozum, Rothmund-Thompson Sendromu, Diskeratozis konjenita, Werner Sendromu ve benzeri genetik geçişli hastalıklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_08_kseroderma_pigmentozum_rothmund_thomps_hafif",
+    "kanonik_ad": "Kseroderma pigmentozum, Rothmund-Thompson Sendromu, Diskeratozis konjenita, Werner Sendromu ve benzeri genetik geçişli hastalıklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_09_hidradenitis_supurativa_akne_konglobat_hafif",
+    "kanonik_ad": "Hidradenitis supurativa, akne konglobata ve folliküler oklüzyon triadi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_10_kan_damarlarinin_benign_neoplazm_ve_hi_hafif",
+    "kanonik_ad": "Kan damarlarının benign neoplazm ve hiperplazileri: Kapiller anjiom, Kavernöz anjiom, Lenfanjiom, lenfohemanjiom, Anjiokeratom, Klippel-Trenanuay-Weber, vb.",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_j_11_hipertrofik_skar_ve_keloid_hafif",
+    "kanonik_ad": "Hipertrofik skar ve keloid",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_12_vaskulitler_hafif",
+    "kanonik_ad": "Vaskulitler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_13_pyoderma_gangrenosum_hafif",
+    "kanonik_ad": "Pyoderma gangrenosum",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_14_kronik_graft_versus_host_hastaligi_hafif",
+    "kanonik_ad": "Kronik Graft Versus Host Hastalığı",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek1_j_15_anhidrotik_hipohidrotik_ve_hidrotik_ek_hafif",
+    "kanonik_ad": "Anhidrotik/Hipohidrotik ve hidrotik ektodermal displazi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_16_kronik_bag_doku_hastaliklari_hafif",
+    "kanonik_ad": "Kronik bağ doku hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_17_skleroderma_agir",
+    "kanonik_ad": "Skleroderma",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_j_18_lepra_agir",
+    "kanonik_ad": "Lepra",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_01_kardiyak_aritmiler_agir",
+    "kanonik_ad": "Kardiyak aritmiler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_01_kardiyak_aritmiler_orta",
+    "kanonik_ad": "Kardiyak aritmiler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_01_kardiyak_aritmiler_hafif",
+    "kanonik_ad": "Kardiyak aritmiler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_02_pulmoner_hipertansiyon_agir",
+    "kanonik_ad": "Pulmoner hipertansiyon",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_k_02_pulmoner_hipertansiyon_orta",
+    "kanonik_ad": "Pulmoner hipertansiyon",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_k_03_konstriktif_perikardit_agir",
+    "kanonik_ad": "Konstriktif perikardit",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_04_hipertrofik_ve_restriktif_kardiyomiyop_agir",
+    "kanonik_ad": "Hipertrofik ve restriktif kardiyomiyopati",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_04_hipertrofik_ve_restriktif_kardiyomiyop_orta",
+    "kanonik_ad": "Hipertrofik ve restriktif kardiyomiyopati",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_05_kalp_yetersizligi_agir",
+    "kanonik_ad": "Kalp yetersizliği",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_05_kalp_yetersizligi_orta",
+    "kanonik_ad": "Kalp yetersizliği",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_05_kalp_yetersizligi_hafif",
+    "kanonik_ad": "Kalp yetersizliği",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_06_konjenital_kalp_hastaliklari_agir",
+    "kanonik_ad": "Konjenital kalp hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_06_konjenital_kalp_hastaliklari_orta",
+    "kanonik_ad": "Konjenital kalp hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_07_kalp_kapak_hastaliklari_agir",
+    "kanonik_ad": "Kalp kapak hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_07_kalp_kapak_hastaliklari_orta",
+    "kanonik_ad": "Kalp kapak hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_08_koroner_arter_hastaliklari_agir",
+    "kanonik_ad": "Koroner Arter Hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_08_koroner_arter_hastaliklari_orta",
+    "kanonik_ad": "Koroner Arter Hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_k_09_hipertansiyon_orta",
+    "kanonik_ad": "Hipertansiyon",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_l_01_periferik_arter_hastaliklari_agir",
+    "kanonik_ad": "Periferik arter hastalıkları",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek1_l_01_periferik_arter_hastaliklari_hafif",
+    "kanonik_ad": "Periferik arter hastalıkları",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek1_l_02_fonksiyonel_damar_hastaligi_olanlar_ra_hafif",
+    "kanonik_ad": "Fonksiyonel damar hastalığı olanlar (Raynaud Fenomeni, Akrosiyanozis vs.)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_l_03_buyuk_arter_hastaliklari_agir",
+    "kanonik_ad": "Büyük arter hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_l_04_kronik_venoz_hastaliklar_agir",
+    "kanonik_ad": "Kronik venöz hastalıklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_l_04_kronik_venoz_hastaliklar_orta",
+    "kanonik_ad": "Kronik venöz hastalıklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_l_05_lenf_sistemi_hastaliklari_agir",
+    "kanonik_ad": "Lenf sistemi hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_l_05_lenf_sistemi_hastaliklari_hafif",
+    "kanonik_ad": "Lenf sistemi hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_m_01_bobrek_fonksiyon_bozuklugu_agir",
+    "kanonik_ad": "Böbrek fonksiyon bozukluğu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_m_01_bobrek_fonksiyon_bozuklugu_orta",
+    "kanonik_ad": "Böbrek fonksiyon bozukluğu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_m_01_bobrek_fonksiyon_bozuklugu_hafif",
+    "kanonik_ad": "Böbrek fonksiyon bozukluğu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_m_02_nefrotik_sendrom_agir",
+    "kanonik_ad": "Nefrotik sendrom",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_m_02_nefrotik_sendrom_hafif",
+    "kanonik_ad": "Nefrotik sendrom",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_m_03_uretra_darliklari_agir",
+    "kanonik_ad": "Üretra darlıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_m_03_uretra_darliklari_orta",
+    "kanonik_ad": "Üretra darlıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_m_04_ureterlerin_cilde_agizlastirilmasi_agir",
+    "kanonik_ad": "Üreterlerin cilde ağızlaştırılması",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_m_05_yeni_mesane_yapilmasi_agir",
+    "kanonik_ad": "Yeni mesane yapılması",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_m_05_yeni_mesane_yapilmasi_orta",
+    "kanonik_ad": "Yeni mesane yapılması",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_m_06_uriner_fistuller_ve_total_inkontinans_agir",
+    "kanonik_ad": "Üriner fistüller ve total inkontinans",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_m_06_uriner_fistuller_ve_total_inkontinans_orta",
+    "kanonik_ad": "Üriner fistüller ve total inkontinans",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_m_07_norojenik_mesane_orta",
+    "kanonik_ad": "Nörojenik mesane",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_n_01_hipofiz_ve_hipotalamus_bez_hastaliklar_agir",
+    "kanonik_ad": "Hipofiz ve Hipotalamus Bez Hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_n_01_hipofiz_ve_hipotalamus_bez_hastaliklar_orta",
+    "kanonik_ad": "Hipofiz ve Hipotalamus Bez Hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_n_01_hipofiz_ve_hipotalamus_bez_hastaliklar_hafif",
+    "kanonik_ad": "Hipofiz ve Hipotalamus Bez Hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_n_02_tiroid_ve_paratiroid_bez_hastaliklari_agir",
+    "kanonik_ad": "Tiroid ve Paratiroid bez hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_n_03_adrenal_bez_hastaliklari_agir",
+    "kanonik_ad": "Adrenal bez hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_n_03_adrenal_bez_hastaliklari_hafif",
+    "kanonik_ad": "Adrenal bez hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_n_04_pankreas_kokenli_noroendokrin_tumorler_agir",
+    "kanonik_ad": "Pankreas kökenli nöroendokrin tümörler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_n_05_diabetes_mellitus_agir",
+    "kanonik_ad": "Diabetes Mellitus",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_n_05_diabetes_mellitus_orta",
+    "kanonik_ad": "Diabetes Mellitus",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_n_05_diabetes_mellitus_hafif",
+    "kanonik_ad": "Diabetes Mellitus",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_n_06_metabolizma_hastaliklari_agir",
+    "kanonik_ad": "Metabolizma hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_n_06_metabolizma_hastaliklari_hafif",
+    "kanonik_ad": "Metabolizma hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_o_01_kronik_pulmoner_yetmezlik_agir",
+    "kanonik_ad": "Kronik pulmoner yetmezlik",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_o_01_kronik_pulmoner_yetmezlik_orta",
+    "kanonik_ad": "Kronik pulmoner yetmezlik",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_o_01_kronik_pulmoner_yetmezlik_hafif",
+    "kanonik_ad": "Kronik pulmoner yetmezlik",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_o_02_astim_agir",
+    "kanonik_ad": "Astım",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_o_02_astim_orta",
+    "kanonik_ad": "Astım",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_o_02_astim_hafif",
+    "kanonik_ad": "Astım",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_o_03_uykuda_solunum_bozukluklari_agir",
+    "kanonik_ad": "Uykuda solunum bozuklukları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_o_04_tuberkuloz_agir",
+    "kanonik_ad": "Tüberküloz",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_o_05_bronsektazi_agir",
+    "kanonik_ad": "Bronşektazi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_o_06_kistik_fibrozis_agir",
+    "kanonik_ad": "Kistik Fibrozis",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_o_07_akciger_transplantasyonu_agir",
+    "kanonik_ad": "Akciğer Transplantasyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_p_01_aids_agir",
+    "kanonik_ad": "AIDS",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek1_r_01_mevcut_hastalik_listelerinde_tanimlanm_ortak_hukum",
+    "kanonik_ad": "Mevcut hastalık listelerinde tanımlanmayan ancak tedaviye rağmen çalışma olanağının bulunmadığı hastalıklar ağır düzeyde çalışma gücü kaybı olarak değerlendirilebilir.",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek1_r_02_birden_fazla_hastaligin_bir_arada_oldu_ortak_hukum",
+    "kanonik_ad": "Birden fazla hastalığın bir arada olduğu ve tedaviye rağmen çalışma olanağının bulunmadığı durumlar, ağır düzeyde çalışma gücü kaybı olarak değerlendirilebilir.",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek1_r_03_bu_hastalik_listesine_gore_birden_fazl_ortak_hukum",
+    "kanonik_ad": "Bu hastalık listesine göre birden fazla hafif düzeyde çalışma gücü kaybına neden olan durumlar, orta düzeyde çalışma gücü kaybı olarak değerlendirilebilir.",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s003_kalici_isitme_engeli",
+    "kanonik_ad": "Kalıcı işitme engeli",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s003_kalici_iki_tarafli_isitme_engeli",
+    "kanonik_ad": "Kalıcı iki taraflı işitme engeli",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s008_dil_konusma_ve_ses_bozukluklari",
+    "kanonik_ad": "Dil, konuşma ve ses bozuklukları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s008_afazi",
+    "kanonik_ad": "Afazi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s008_dizartri",
+    "kanonik_ad": "Dizartri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s008_apraksi",
+    "kanonik_ad": "Apraksi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s008_akici_konusma_bozukluklari_kekemelik_v",
+    "kanonik_ad": "Akıcı konuşma bozuklukları (kekemelik ve çok hızlı konuşma-takefemi)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s008_larenjektomi",
+    "kanonik_ad": "Larenjektomi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s008_kranyo_fasyal_anomali",
+    "kanonik_ad": "Kranyo-fasyal anomali",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s008_artikulasyon_fonolojik_bozukluk",
+    "kanonik_ad": "Artikülasyon/fonolojik bozukluk",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s008_otizm",
+    "kanonik_ad": "Otizm",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s008_isitme_kaybi",
+    "kanonik_ad": "İşitme kaybı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s008_mental_retardasyon",
+    "kanonik_ad": "Mental retardasyon",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s008_serebral_palsi",
+    "kanonik_ad": "Serebral palsi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s008_elektif_mutizm",
+    "kanonik_ad": "Elektif mutizm",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s008_santral_isitsel_islemleme_bozuklugu",
+    "kanonik_ad": "Santral işitsel işlemleme bozukluğu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s008_ses_bozukluklari",
+    "kanonik_ad": "Ses bozuklukları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s011_vestibuler_bozukluklar",
+    "kanonik_ad": "Vestibüler bozukluklar",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_edinsel_nedenlerle_fiziksel_gorunumu_b",
+    "kanonik_ad": "Edinsel nedenlerle fiziksel görünümü bozan burun eğriliği",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_dis_kulagin_tek_tarafli_kaybi_veya_sek",
+    "kanonik_ad": "Dış kulağın tek taraflı kaybı veya şekil bozukluğu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_frontal_kemikte_egilme",
+    "kanonik_ad": "Frontal kemikte çökme",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_yanakla_beraber_burun_veya_frontal_kem",
+    "kanonik_ad": "Yanakla beraber burun veya frontal kemikte çökme",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_burun_ve_sinus_bosluguna_acilma_ile_bi",
+    "kanonik_ad": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nın kısmi kaybı (medial duvar kaybı)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_tukuruk_bezi_kanallarinin_yaralanmasi",
+    "kanonik_ad": "Tükürük bezi kanallarının yaralanması veya hastalıkları sonucu sürekli fistül",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_orbital_ve_veya_intrakranial_sekel_bir",
+    "kanonik_ad": "Orbital ve/veya intrakranial sekel bırakan komplikasyonlu sinüzitler",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_dis_kulagin_cift_tarafli_kaybi_veya_se",
+    "kanonik_ad": "Dış kulağın çift taraflı kaybı veya şekil bozukluğu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_burunun_kozmetik_deformiteye_yol_acan",
+    "kanonik_ad": "Burunun kozmetik deformiteye yol açan kısmi kaybı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_cerrahi_veya_travma_sonucu_mandibula_s",
+    "kanonik_ad": "Cerrahi veya travma sonucu mandibula segmenter rezeksiyonu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_dogumsal_anomali_travma_kanser_ve_veya",
+    "kanonik_ad": "Doğumsal anomali, travma, kanser ve/veya kanser ameliyatına bağlı normal yüz anatomisinin aşırı bozukluğu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_burun_ve_sinus_bosluguna_acilma_ile_bi_2",
+    "kanonik_ad": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nın kısmi kaybı (medial duvara ilaveten veya medial duvar dışında bir duvarının kaybı)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_cerrahi_veya_travma_sonucu_hemimandibu",
+    "kanonik_ad": "Cerrahi veya travma sonucu hemimandibulektomi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_doku_kaybi_skarli_fiksasyon_veya_felce",
+    "kanonik_ad": "Doku kaybı, skarlı fiksasyon veya felce bağlı dilin fonksiyon kaybı (hafif)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_primer_atrofik_rinit_ozena",
+    "kanonik_ad": "Primer atrofik rinit (ozena)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_travma_tumor_veya_ameliyat_sonrasi_en",
+    "kanonik_ad": "Travma, tümör veya ameliyat sonrası en az bir alveoler arktaki bütün kalıcı dişlerin kaybı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s012_tam_fonksiyon_bozuklugu_yapan_dudak_ar",
+    "kanonik_ad": "Tam fonksiyon bozukluğu yapan dudak arızaları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s013_burun_ve_sinus_bosluguna_acilma_ile_bi",
+    "kanonik_ad": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nın tam kaybı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s013_burnun_tam_kaybi",
+    "kanonik_ad": "Burnun tam kaybı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s013_her_iki_goz_kuresinin_kaybi",
+    "kanonik_ad": "Her iki göz küresinin kaybı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s013_cerrahi_veya_travma_sonucu_mandibula_o",
+    "kanonik_ad": "Cerrahi veya travma sonucu mandibüla ön segmentinde %50'den fazla kayıp",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s013_doku_kaybi_skarli_fiksasyon_veya_felce",
+    "kanonik_ad": "Doku kaybı, skarlı fiksasyon veya felce bağlı dilin fonksiyon kaybı (tam dil yokluğu veya dilin en az 2/3'ünün alındığı dil harabiyeti veya bilateral hipoglossal sinir paralizisi)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s013_ameliyat_edilemeyen_burun_paranazal_si",
+    "kanonik_ad": "Ameliyat edilemeyen burun, paranazal sinüsler, çene, ağız ve farinks tümörleri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s014_hava_yolu_defektleri",
+    "kanonik_ad": "Hava yolu defektleri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s014_koku_ve_tat_duyusu_kaybi",
+    "kanonik_ad": "Koku ve tat duyusu kaybı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s014_cigneme_ve_yutma_bozukluklari",
+    "kanonik_ad": "Çiğneme ve yutma bozuklukları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s015_zeka_islev_bozukluklari",
+    "kanonik_ad": "Zekâ işlev bozuklukları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s015_sizofreni",
+    "kanonik_ad": "Şizofreni",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s015_sizoaffektif_bozukluk_manik_depresif_v",
+    "kanonik_ad": "Şizoaffektif bozukluk (manik, depresif ve karışık tip)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s015_sanrisal_bozukluklar_paranoya_paranoid",
+    "kanonik_ad": "Sanrısal bozukluklar (paranoya, paranoid psikoz, parafreni tanılarını içerir)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s015_atipik_veya_baska_turlu_adlandirilamay",
+    "kanonik_ad": "Atipik veya başka türlü adlandırılamayan psikozlar",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s015_yaygin_gelisimsel_bozukluklar",
+    "kanonik_ad": "Yaygın gelişimsel bozukluklar",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s015_asperger_sendromu",
+    "kanonik_ad": "Asperger Sendromu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s015_disintegratif_psikoz",
+    "kanonik_ad": "Disintegratif psikoz",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s015_rett_sendromu",
+    "kanonik_ad": "Rett Sendromu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s015_atipik_otizm_baska_turlu_adlandirilama",
+    "kanonik_ad": "Atipik otizm (başka türlü adlandırılamayan yaygın gelişimsel bozukluk)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s015_otizm",
+    "kanonik_ad": "Otizm",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s016_beyin_hasari_beyin_islev_bozuklugu_ve",
+    "kanonik_ad": "Beyin hasarı, beyin işlev bozukluğu ve bedensel hastalıklara bağlı ruhsal bozukluklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s016_organik_hallusinozis_organik_katatonik",
+    "kanonik_ad": "Organik hâllusinozis, organik katatonik bozukluk, organik delüzyonel [şizofreni-benzeri] bozukluklar",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek2_s016_organik_duygu_affektivite_bozukluklari",
+    "kanonik_ad": "Organik duygu [affektivite] bozuklukları, organik anksiyete bozuklukları, organik disosiyatif bozukluk, organik duygusal labilite [astenik] bozukluk, hafif bilişsel bozukluk",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek2_s016_beyin_hasari_beyin_islev_bozukluguna_b",
+    "kanonik_ad": "Beyin hasarı, beyin işlev bozukluğuna bağlı davranış bozuklukları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s016_organik_kisilik_bozuklugu_frontal_lob",
+    "kanonik_ad": "Organik kişilik bozukluğu, frontal lob sendromu, beyin sarsılması sonrası postkontüzyonel sendrom",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s016_duygudurum_bozukluklari",
+    "kanonik_ad": "Duygudurum bozuklukları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s016_manik_nobet_bipolar_duygudurum_bozuklu",
+    "kanonik_ad": "Manik nöbet, bipolar duygudurum bozukluğu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s016_yineleyen_depresif_bozukluk",
+    "kanonik_ad": "Yineleyen depresif bozukluk",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek2_s016_yineleyen_depresif_bozukluk_simdiki_no",
+    "kanonik_ad": "Yineleyen depresif bozukluk, şimdiki nöbet psikotik belirtili olan, olmayan, ağır",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek2_s017_anksiyete_bozukluklari_obsesif_kompuls",
+    "kanonik_ad": "Anksiyete bozuklukları, obsesif-kompülsif bozukluklar, somatoform bozukluklar ve yeme bozuklukları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s017_anksiyete_bozukluklari_panik_bozukluk",
+    "kanonik_ad": "Anksiyete bozuklukları (panik bozukluk, yaygın anksiyete bozukluğu, agorafobi) ve somatoform bozukluklar",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek2_s017_obsesif_kompulsif_bozukluk",
+    "kanonik_ad": "Obsesif-kompulsif bozukluk",
+    "tip": "klinik bulgu/belirti"
+  },
+  {
+    "kavram_id": "ek2_s017_travma_sonrasi_stres_bozuklugu",
+    "kanonik_ad": "Travma sonrası stres bozukluğu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s017_yeme_bozukluklari_anoreksia_nervosa_ve",
+    "kanonik_ad": "Yeme bozuklukları (anoreksia nervosa ve bulimia nervosa)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s017_psikoaktif_madde_kullanimina_bagli_ruh",
+    "kanonik_ad": "Psikoaktif madde kullanımına bağlı ruhsal ve davranışsal bozukluklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s017_kisilik_bozukluklari",
+    "kanonik_ad": "Kişilik bozuklukları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s018_sebase_ekrin_ve_apokrin_gland_hastalik",
+    "kanonik_ad": "Sebase, ekrin ve apokrin gland hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s018_rozasea",
+    "kanonik_ad": "Rozasea",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s018_hidradenitis_supurativa_akne_konglobat",
+    "kanonik_ad": "Hidradenitis supurativa, akne konglobata ve folliküler oklüzyon triadı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s019_sacli_derinin_diseke_edici_follikuliti",
+    "kanonik_ad": "Saçlı derinin diseke edici folliküliti",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s019_hiperhidrosis",
+    "kanonik_ad": "Hiperhidrosis",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s019_kil_follikulu_ile_ilgili_hastaliklar",
+    "kanonik_ad": "Kıl follikülü ile ilgili hastalıklar",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s019_alopesi_totalis",
+    "kanonik_ad": "Alopesi totalis",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s019_alopesi_universalis",
+    "kanonik_ad": "Alopesi üniversalis",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s019_hirsutizm",
+    "kanonik_ad": "Hirsutizm",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s019_sac_rengi_ve_sac_govdesi_anormallikler",
+    "kanonik_ad": "Saç rengi ve saç gövdesi anormallikleri (moniletrix vb)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s019_ekzematoz_dermatitler",
+    "kanonik_ad": "Ekzematöz dermatitler",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s019_atopik_dermatit",
+    "kanonik_ad": "Atopik dermatit",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s019_dermatitler_kontakt_dermatit_staz_derm",
+    "kanonik_ad": "Dermatitler (kontakt dermatit, staz dermatit, dishidrotik ekzema)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s019_cesitli_inflamatuvar_deri_hastaliklari",
+    "kanonik_ad": "Çeşitli inflamatuvar deri hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s019_psoriasis",
+    "kanonik_ad": "Psoriasis",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s019_pitriasis_rubra_pilaris_liken_planus",
+    "kanonik_ad": "Pitriasis rubra pilaris, liken planus",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s020_perforan_dermatozlar_kryle_hastaligi_v",
+    "kanonik_ad": "Perforan dermatozlar (Kryle hastalığı vb.)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s020_psikiyatrik_etyolojili_deri_hastalikla",
+    "kanonik_ad": "Psikiyatrik etyolojili deri hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s020_psikiyatrik_etyolojili_deri_hastalikla_2",
+    "kanonik_ad": "Psikiyatrik etyolojili deri hastalıkları (nörotik ekskoriasyon, faktisiyel dermatit vb.)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s020_deri_tumorleri",
+    "kanonik_ad": "Deri tümörleri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s020_benign_neoplazm_ve_hiperplaziler",
+    "kanonik_ad": "Benign neoplazm ve hiperplaziler",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s020_kongenital_melanositik_nevus",
+    "kanonik_ad": "Kongenital melanositik nevus",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s020_kan_damarlarinin_benign_neoplazm_ve_hi",
+    "kanonik_ad": "Kan damarlarının benign neoplazm ve hiperplazileri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s020_hipertrofik_skar_ve_keloid",
+    "kanonik_ad": "Hipertrofik skar ve keloid",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s020_derinin_premalign_tumorleri",
+    "kanonik_ad": "Derinin premalign tümörleri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s020_derinin_premalign_tumorlerine_bagli_do",
+    "kanonik_ad": "Derinin premalign tümörlerine bağlı doku veya fonksiyon kayıpları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s020_derinin_malign_tumorleri",
+    "kanonik_ad": "Derinin malign tümörleri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s020_malign_deri_tumorlerinde_doku_veya_fon",
+    "kanonik_ad": "Malign deri tümörlerinde doku veya fonksiyon kayıpları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s020_ileri_klinik_evreli_tedaviye_cevap_ver",
+    "kanonik_ad": "İleri klinik evreli, tedaviye cevap vermeyen malign deri tümörü",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s020_fotosensitivite_ve_gunes_isinlari_ile",
+    "kanonik_ad": "Fotosensitivite ve güneş ışınları ile tetiklenen hastalıklar",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s020_solar_urtiker_aktinik_retikuloid_persi",
+    "kanonik_ad": "Solar ürtiker, aktinik retikuloid, persistan ışık reaksiyonu, polimorf ışık erüpsiyonu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s021_porfirialar",
+    "kanonik_ad": "Porfirialar",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s021_eritroderma",
+    "kanonik_ad": "Eritroderma",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s021_pigment_bozukluklari",
+    "kanonik_ad": "Pigment bozuklukları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s021_pigment_bozuklugu_ile_seyreden_hastali",
+    "kanonik_ad": "Pigment bozukluğu ile seyreden hastalıklar (vitiligo, depigmentasyon ve melanoderma yapan hastalıklar)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s021_albinizm",
+    "kanonik_ad": "Albinizm",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s021_immun_otoimmun_ve_sistemik_hastaliklar",
+    "kanonik_ad": "İmmun, otoimmun ve sistemik hastalıkların deri bulguları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s021_vaskulitler",
+    "kanonik_ad": "Vaskulitler",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s021_kronik_ve_veya_tedaviye_direncli_urtik",
+    "kanonik_ad": "Kronik ve/veya tedaviye dirençli ürtiker ve anjioödem",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s021_pannikulitler",
+    "kanonik_ad": "Pannikülitler",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s021_behcet_hastaligi",
+    "kanonik_ad": "Behçet hastalığı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s021_otoimmun_bullu_hastaliklar_pemfigus_vu",
+    "kanonik_ad": "Otoimmün büllü hastalıklar (pemfigus vulgaris, büllöz pemfigoid, dermatitis herpetiformis ve diğer otoimmün büllü hastalıklar)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s021_kronik_bag_doku_hastaliklari",
+    "kanonik_ad": "Kronik bağ doku hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s022_reiter_sendromu_sadece_deri_lezyonlari",
+    "kanonik_ad": "Reiter sendromu (sadece deri lezyonları için)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s022_pyoderma_gangrenosum",
+    "kanonik_ad": "Pyoderma gangrenosum",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s022_sarkoidozis",
+    "kanonik_ad": "Sarkoidozis",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s022_kronik_graft_versus_host_hastaligi",
+    "kanonik_ad": "Kronik graft versus host hastalığı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s022_metabolik_endokrin_bozukluklar_depolan",
+    "kanonik_ad": "Metabolik, endokrin bozukluklar, depolanma hastalıkları ve sistemik malignitelerin deri bulguları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s022_genetik_gecisli_deri_hastaliklari",
+    "kanonik_ad": "Genetik geçişli deri hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s022_iktiyozis_grubu_hastaliklar",
+    "kanonik_ad": "İktiyozis grubu hastalıklar",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s022_herediter_palmoplanter_keratodermiler",
+    "kanonik_ad": "Herediter palmoplanter keratodermiler, Unna Thost, Mal de Melada vb.",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s022_norokutanoz_hastaliklar_norofibromatoz",
+    "kanonik_ad": "Nörokutanöz hastalıklar (nörofibromatozis, tuberoz skleroz, psödoksantoma elastikum, telenjiektazi vb.)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s022_epidermolizis_bullosa",
+    "kanonik_ad": "Epidermolizis büllosa",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s022_ataksi",
+    "kanonik_ad": "Ataksi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s023_hailey_hailey_hastaligi",
+    "kanonik_ad": "Hailey Hailey hastalığı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s023_kseroderma_pigmentozum_rothmund_thomps",
+    "kanonik_ad": "Kseroderma pigmentozum, Rothmund-Thompson sendromu, diskeratozis konjenita, Werner sendromu vb.",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s023_anhidrotik_hipohidrotik_ve_hidrotik_ek",
+    "kanonik_ad": "Anhidrotik/hipohidrotik ve hidrotik ektodermal displazi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s023_vaskuler_hastaliklarin_deri_bulgulari",
+    "kanonik_ad": "Vaskuler hastalıkların deri bulguları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s023_kronik_bacak_ulserleri",
+    "kanonik_ad": "Kronik bacak ülserleri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s023_dekubitus_ulseri",
+    "kanonik_ad": "Dekubitus ülseri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s023_kutanoz_lenfoma_losemi_histiyositozlar",
+    "kanonik_ad": "Kutanöz lenfoma, lösemi, histiyositozlar ve mastositozlar",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s023_kutanoz_t_hucreli_lenfoma",
+    "kanonik_ad": "Kütanöz T hücreli lenfoma",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s024_mf_disi_diger_kutanoz_lenfomalar",
+    "kanonik_ad": "MF dışı diğer kutanöz lenfomalar",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s024_kutanoz_langerhans_hucreli_histiyosito",
+    "kanonik_ad": "Kutanöz (Langerhans hücreli) histiyositozlar",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s024_kutanoz_mastositozis",
+    "kanonik_ad": "Kutanöz mastositozis",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s024_mikrobial_ajanlara_bagli_deri_hastalik",
+    "kanonik_ad": "Mikrobial ajanlara bağlı deri hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s024_lepra_kutanoz_tuberkulozlar_sistemik_f",
+    "kanonik_ad": "Lepra, kutanöz tüberkülozlar, sistemik fungal infeksiyonlar, mukokütanöz layşmanyazis",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s024_konjenital_ve_gec_sifiliz_sonucunda_ge",
+    "kanonik_ad": "Konjenital ve geç sifiliz sonucunda gelişen sekeller",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s024_diger_deri_hastaliklari",
+    "kanonik_ad": "Diğer deri hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s024_listede_yer_almayan_deri_hastaliklari",
+    "kanonik_ad": "Listede yer almayan deri hastalıkları ve sekelleri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s025_anemiler",
+    "kanonik_ad": "ANEMİLER",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s025_aplastik_anemi_akkiz_ve_konjenital_fan",
+    "kanonik_ad": "Aplastik Anemi (Akkiz ve konjenital, Fanconi ve vb.)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s025_diamond_blacfan_anemisi_konjenital_hip",
+    "kanonik_ad": "Diamond Blacfan Anemisi (Konjenital Hipoplastik Anemi)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s025_hemolitik_anemiler",
+    "kanonik_ad": "Hemolitik Anemiler",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s025_eritrosit_enzim_defektleri_membran_def",
+    "kanonik_ad": "Eritrosit enzim defektleri, membran defektleri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s025_paroksismal_nokturnal_hemoglobinuri",
+    "kanonik_ad": "Paroksismal Nokturnal Hemoglobinüri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s025_oto_immun_hemolitik_anemiler_idiyopati",
+    "kanonik_ad": "Oto-immün hemolitik anemiler (İdiyopatik ve sekonder otoimmün hemolitik anemiler)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s025_hemoglobinopatiler",
+    "kanonik_ad": "Hemoglobinopatiler",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s025_orak_hucreli_anemi",
+    "kanonik_ad": "Orak hücreli anemi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s025_thalassemi",
+    "kanonik_ad": "Thalassemi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s026_miyelofibrozis",
+    "kanonik_ad": "MİYELOFİBROZİS",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s026_akut_losemiler",
+    "kanonik_ad": "Akut Lösemiler",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s026_kronik_losemiler",
+    "kanonik_ad": "Kronik Lösemiler",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s026_kronik_myelositik_losemi",
+    "kanonik_ad": "Kronik Myelositik Lösemi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s026_kronik_lenfositik_losemi",
+    "kanonik_ad": "Kronik Lenfositik Lösemi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s026_monoklonal_gammapatiler",
+    "kanonik_ad": "Monoklonal Gammapatiler",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s026_hemofagositik_sendrom",
+    "kanonik_ad": "Hemofagositik Sendrom",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s026_hemorajik_diatezler",
+    "kanonik_ad": "Hemorajik Diatezler",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s027_koagulopatiler_hemofili_a_b_c_ve_diger",
+    "kanonik_ad": "Koagülopatiler (Hemofili A, B, C ve diğer faktör eksiklikleri, Von Willebrand Hastalığı Tip III)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s027_hipofibrinojenemi_aflbrinojenemi_ve_di",
+    "kanonik_ad": "Hipofibrinojenemi, Aflbrinojenemi ve disfibrinojenemi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s027_akkiz_ve_herediter_trombotik_durumlar",
+    "kanonik_ad": "Akkiz ve herediter trombotik durumlar",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s027_trombotik_trombositopenik_purpura_ttp",
+    "kanonik_ad": "Trombotik Trombositopenik Purpura (TTP)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s027_dissemine_intravaskuler_koagulopati_kr",
+    "kanonik_ad": "Dissemine İntravasküler Koagülopati (kronik)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s027_hodgkin_lenfoma",
+    "kanonik_ad": "Hodgkin Lenfoma",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s027_non_hodgkin_lenfoma",
+    "kanonik_ad": "Non-Hodgkin Lenfoma",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s032_kapak_hastaliklari",
+    "kanonik_ad": "Kapak hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s032_koroner_arter_hastaligi",
+    "kanonik_ad": "Koroner arter hastalığı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s030_hipertansif_retinopati_gunn_belirtiler",
+    "kanonik_ad": "Hipertansif retinopati (Gunn belirtileri)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s067_kolon_rektum_ve_anus",
+    "kanonik_ad": "KOLON, REKTUM VE ANÜS",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s069_enterokutan_fistuller",
+    "kanonik_ad": "ENTEROKÜTAN FİSTÜLLER",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s070_karaciger_ve_safra_yollari",
+    "kanonik_ad": "KARACİĞER VE SAFRA YOLLARI",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s071_herniler",
+    "kanonik_ad": "HERNİLER",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s071_splenektomi",
+    "kanonik_ad": "SPLENEKTOMİ",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s079_hipotalamik_hastaliklar",
+    "kanonik_ad": "Hipotalamik hastalıklar",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s079_hipofizer_hastaliklar_tibbi_ve_cerrahi",
+    "kanonik_ad": "Hipofizer hastalıklar (tıbbi ve cerrahi tedaviyle sonuç alınmamış)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s079_hipofiz_bezinin_hiperfonksiyonu",
+    "kanonik_ad": "Hipofiz Bezinin Hiperfonksiyonu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s079_gigantizm_ve_akromegali",
+    "kanonik_ad": "Gigantizm ve Akromegali",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s079_hipofiz_bezinin_hipofonksiyonu",
+    "kanonik_ad": "Hipofiz Bezinin Hipofonksiyonu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s079_tiroid_hastaliklari",
+    "kanonik_ad": "Tiroid hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s079_guatrlar_noduler_diffiiz_multinoduler",
+    "kanonik_ad": "Guatrlar (Nodüler, diffiiz, multinodüler, toksikve toksik olmayan) subakut tiroiditler",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s079_kretinizm",
+    "kanonik_ad": "Kretinizm",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s079_dogustan_iyot_eksikligi_sendromu",
+    "kanonik_ad": "Doğuştan iyot eksikliği sendromu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s079_tirotoksikoz_komplikasyonsuz",
+    "kanonik_ad": "Tirotoksikoz (komplikasyonsuz)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s079_paratiroid_hastaliklari",
+    "kanonik_ad": "Paratiroid Hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s079_hipoparatiroidi",
+    "kanonik_ad": "Hipoparatiroidi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s079_idiopatik_primer_hipoparatiroidi_repla",
+    "kanonik_ad": "İdiopatik Primer Hipoparatiroidi (Replasmanla Kompanse)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s080_adrenal_hastaliklari",
+    "kanonik_ad": "Adrenal hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s080_iki_tarafli_hiperplazi_hipofizer_adeno",
+    "kanonik_ad": "İki taraflı hiperplazi (Hipofizer Adenoma bağlı)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s080_adrenal_korteks_yetersizligi_addison_h",
+    "kanonik_ad": "Adrenal korteks yetersizliği (Addison hastalığı)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s080_hiperaldosteronizm",
+    "kanonik_ad": "Hiperaldosteronizm",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s080_feokromasitomalar",
+    "kanonik_ad": "Feokromasitomalar",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s080_adrenogenital_bozukluklar",
+    "kanonik_ad": "Adrenogenital bozukluklar",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s080_ergenlik_bozukluklari_puberte",
+    "kanonik_ad": "Ergenlik bozuklukları (puberte)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s080_cogul_bez_poligulanduler_islev_bozuklu",
+    "kanonik_ad": "Çoğul bez (poligülandüler) işlev bozukluğu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s080_timus_hastaliklari",
+    "kanonik_ad": "Timus hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s080_diabetes_mellitus",
+    "kanonik_ad": "Diabetes mellitus",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s081_metabolizma_hastaliklari",
+    "kanonik_ad": "Metabolizma Hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s081_diffuz_primer_osteoporoz_radyolojik_de",
+    "kanonik_ad": "Diffüz primer osteoporoz (radyolojik dekalsifikasyonla birlikte spontan kırıklar, şekil bozuklukları yapan)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s081_osteomalazi_tibbi_tedaviye_cevap_verme",
+    "kanonik_ad": "Osteomalazi (Tıbbi tedaviye cevap vermeyen)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s081_lesch_nyhan_hastaligi",
+    "kanonik_ad": "Lesch-Nyhan Hastalığı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s081_ciddi_obezite_vucut_kitle_indeksi_40_5",
+    "kanonik_ad": "Ciddi Obezite (Vücut Kitle indeksi 40-50kg/m2 arasında olanlar)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s084_vucut_yuzeyinin_10_unu_kaplayan_ve_ame",
+    "kanonik_ad": "Vücut yüzeyinin % 10'unu kaplayan ve ameliyatla giderilemeyen keloid hipertrofi",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s084_yanik_zemininde_gelisen_marjolin_ulser",
+    "kanonik_ad": "Yanık zemininde gelişen Marjolin ülseri ve skuamöz kanserler",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s088_insomniler_uyarlanmis_insomni_psikofiz",
+    "kanonik_ad": "İnsomniler (Uyarlanmış insomni, psikofizyolojik insomni, paradoksal insomni, idiyopatik insomni, mental bozukluğa bağlı insomni, yetersiz uyku hijyenine bağlı insomni, çocukluk çağının davranışsal insomnisi)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s088_uykuda_solunum_bozukluklari_santral_uy",
+    "kanonik_ad": "Uykuda solunum bozuklukları (Santral uyku apne sendromları, obstruktif uyku apne sendromları, uykuda hipoventilasyon ve hipoksemik sendromlar)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s088_hipersomniler_narkolepsi_sendromlari_r",
+    "kanonik_ad": "Hipersomniler (Narkolepsi sendromları, rekürren hipersomniler, idiyopatik hipersomniler)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s089_sirkadiyen_uyku_uyaniklik_ritm_bozuklu",
+    "kanonik_ad": "Sirkadiyen uyku-uyanıklık ritm bozuklukları (Geçikmiş uyku fazı sendromu, erken uyku fazı sendromu, düzensiz uyku-uyanıklık ritmi, serbest ritm bozukluğu, jet-lag, vardiyalı çalışmaya bağlı ritm bozukluğu)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s089_parasomniler_konfuzyonel_uyanma_uykuda",
+    "kanonik_ad": "Parasomniler (Konfüzyonel uyanma, uykuda yürüme, gece terörü, uyku paralizisi, kâbus bozukluğu, uykuda dissosiyatif bozukluk, enürezis, inleme, patlayan baş sendromu, hipnagojik veya hipnopompik hallüsinasyon, uykuda yeme-içme sendromu)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s089_uykuda_hareket_bozukluklari_huzursuz_b",
+    "kanonik_ad": "Uykuda hareket bozuklukları (Huzursuz bacak sendromu, uykuda periyodik hareket bozukluğu, uyku ile ilişkili bacak krampları, bruksizm, uykuda ritmik hareket bozukluğu)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s029_aritmiler",
+    "kanonik_ad": "Aritmiler",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s029_pulmoner_hipertansiyon",
+    "kanonik_ad": "Pulmoner hipertansiyon",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s030_hipertansiyon",
+    "kanonik_ad": "Hipertansiyon",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s030_hipertansif_serebrovaskuler_hastalik",
+    "kanonik_ad": "Hipertansif serebrovasküler hastalık",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s030_sol_ventrikul_hipertrofisi",
+    "kanonik_ad": "Sol ventrikül hipertrofisi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s030_proteinuri",
+    "kanonik_ad": "Proteinüri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s030_perikard_hastaliklari",
+    "kanonik_ad": "Perikard hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s030_konstruktif_perikardit",
+    "kanonik_ad": "Konstrüktif perikardit",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s030_hipertrofik_kardiyomiyopati",
+    "kanonik_ad": "Hipertrofik kardiyomiyopati",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s030_kalp_yetmezligi",
+    "kanonik_ad": "Kalp yetmezliği",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s031_dogustan_kalp_hastaliklari",
+    "kanonik_ad": "Doğuştan kalp hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s033_kalp_transplantasyonu",
+    "kanonik_ad": "Kalp transplantasyonu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s033_miyokard_infarktusu",
+    "kanonik_ad": "Miyokard infarktüsü",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s033_damar_hastaliklari",
+    "kanonik_ad": "Damar hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s033_arteriosklerozis_obliterans_aso",
+    "kanonik_ad": "Arteriosklerozis obliterans (ASO)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s034_tromboangitis_obliterans_buerger",
+    "kanonik_ad": "Tromboangitis obliterans (Buerger)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s034_fonksiyonel_damar_hastaliklari",
+    "kanonik_ad": "Fonksiyonel damar hastalıkları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s034_raynaud_fenomeni",
+    "kanonik_ad": "Raynaud fenomeni",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s034_akrosiyanozis",
+    "kanonik_ad": "Akrosiyanozis",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s034_travmatik_damar_hastaligi",
+    "kanonik_ad": "Travmatik damar hastalığı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s034_derin_ven_trombozu",
+    "kanonik_ad": "Derin ven trombozu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s034_staz_ulseri",
+    "kanonik_ad": "Staz ülseri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s034_lenfodem",
+    "kanonik_ad": "Lenfödem",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s035_diplopi",
+    "kanonik_ad": "Diplopi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s040_kontrast_duyarlik_ve_kamasma_glare_kus",
+    "kanonik_ad": "Kontrast duyarlık ve kamaşma (glare) kusuru",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s042_fonksiyonel_korluk",
+    "kanonik_ad": "Fonksiyonel körlük",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s042_anatomik_korluk",
+    "kanonik_ad": "Anatomik körlük",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s042_tek_gozluluk_monokularite",
+    "kanonik_ad": "Tek gözlülük (monokülarite)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s043_goz_ekzanterasyonu",
+    "kanonik_ad": "Göz ekzanterasyonu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s044_nistagmus",
+    "kanonik_ad": "Nistagmus",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s044_lagoftalmi",
+    "kanonik_ad": "Lagoftalmi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s044_entropion",
+    "kanonik_ad": "Entropion",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s044_ektropion",
+    "kanonik_ad": "Ektropion",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s044_epifora",
+    "kanonik_ad": "Epifora",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s044_lakrimal_kanal_tikanikligi",
+    "kanonik_ad": "Lakrimal kanal tıkanıklığı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s044_pitozis",
+    "kanonik_ad": "Pitozis",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s045_goz_ve_adneksleri_tumoru",
+    "kanonik_ad": "Göz ve adneksleri tümörü",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s045_ambliyopi",
+    "kanonik_ad": "Ambliyopi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s046_retinoblastom",
+    "kanonik_ad": "Retinoblastom",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s047_kornea_opasitesi",
+    "kanonik_ad": "Kornea opasitesi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s043_glokom",
+    "kanonik_ad": "Glokom",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s043_absolu_glokom",
+    "kanonik_ad": "Absolü glokom",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s048_katarakt",
+    "kanonik_ad": "Katarakt",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s048_yaslilik_katarakti",
+    "kanonik_ad": "Yaşlılık kataraktı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s049_stargardt_juvenil_makulopati",
+    "kanonik_ad": "Stargardt juvenil makulopati",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s051_gorme_alani_yetersizligi",
+    "kanonik_ad": "Görme alanı yetersizliği",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s056_santral_skotom",
+    "kanonik_ad": "Santral skotom",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s056_homonim_hemianopi",
+    "kanonik_ad": "Homonim hemianopi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s057_bitemporal_hemianopsi",
+    "kanonik_ad": "Bitemporal hemianopsi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s057_periferik_gorme_alani_defekti",
+    "kanonik_ad": "Periferik görme alanı defekti",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s058_retinoskizis",
+    "kanonik_ad": "Retinoskizis",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s065_ozefagus_bozukluklari",
+    "kanonik_ad": "Özefagus bozuklukları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s065_mide_duodenum_bozukluklari",
+    "kanonik_ad": "Mide-duodenum bozuklukları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s065_ince_bagirsak_bozukluklari",
+    "kanonik_ad": "İnce bağırsak bozuklukları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s065_pankreas_fonksiyon_bozuklugu",
+    "kanonik_ad": "Pankreas fonksiyon bozukluğu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s065_portal_hipertansiyon",
+    "kanonik_ad": "Portal hipertansiyon",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s065_hepatik_ensefalopati",
+    "kanonik_ad": "Hepatik ensefalopati",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s065_ozefagus_varisi",
+    "kanonik_ad": "Özefagus varisi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s067_ust_sindirim_kanali_bozukluklari",
+    "kanonik_ad": "Üst sindirim kanalı bozuklukları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s067_pankreas_transplantasyonu",
+    "kanonik_ad": "Pankreas transplantasyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s069_cerrahi_olarak_olusturulan_stomalar",
+    "kanonik_ad": "Cerrahi olarak oluşturulan stomalar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s070_ozefagostomi",
+    "kanonik_ad": "Özefagostomi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s070_gastrostomi",
+    "kanonik_ad": "Gastrostomi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s070_jejunostomi",
+    "kanonik_ad": "Jejunostomi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s070_ileostomi",
+    "kanonik_ad": "İleostomi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s070_ileal_pos_anal_anastomoz",
+    "kanonik_ad": "İleal-poş anal anastomoz",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s070_kolostomi",
+    "kanonik_ad": "Kolostomi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s070_karaciger_hastaliklari",
+    "kanonik_ad": "Karaciğer hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s070_karaciger_transplantasyonu",
+    "kanonik_ad": "Karaciğer transplantasyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s071_safra_yollari_hastaliklari",
+    "kanonik_ad": "Safra yolları hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s071_kolanjit",
+    "kanonik_ad": "Kolanjit",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s071_koledok_obstruksiyonu",
+    "kanonik_ad": "Koledok obstrüksiyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s072_vulva_ve_vajina_hastaliklari",
+    "kanonik_ad": "Vulva ve vajina hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s072_serviks_ve_uterus_hastaliklari",
+    "kanonik_ad": "Serviks ve uterus hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s072_servikal_darlik",
+    "kanonik_ad": "Servikal darlık",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s073_fallopian_tup_ve_over_hastaliklari",
+    "kanonik_ad": "Fallopian tüp ve over hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s074_nonnefrotik_proteinuri_ile_seyreden_ne",
+    "kanonik_ad": "Nonnefrotik proteinüri ile seyreden nefropatiler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s074_nefrotik_duzeyde_proteinuri_ile_seyred",
+    "kanonik_ad": "Nefrotik düzeyde proteinüri ile seyreden nefropatiler",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s074_kronik_bobrek_hastaligi",
+    "kanonik_ad": "Kronik böbrek hastalığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s074_renal_replasman_tedavisi",
+    "kanonik_ad": "Renal replasman tedavisi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s074_bobrek_nakli",
+    "kanonik_ad": "Böbrek nakli",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s074_nefrektomi",
+    "kanonik_ad": "Nefrektomi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s074_fanconi_sendromu",
+    "kanonik_ad": "Fanconi sendromu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s074_renal_tubuler_hastalik",
+    "kanonik_ad": "Renal tübüler hastalık",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s075_ust_uriner_sistem_hastaligi",
+    "kanonik_ad": "Üst üriner sistem hastalığı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s075_soliter_bobrek",
+    "kanonik_ad": "Soliter böbrek",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s075_uriner_diversiyon",
+    "kanonik_ad": "Üriner diversiyon",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s075_ureterointestinal_diversiyon_coffey",
+    "kanonik_ad": "Üreterointestinal diversiyon (Coffey)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_ureterokutanostomi_ileal_loop",
+    "kanonik_ad": "Üreterokütanostomi (ileal loop)",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_ortotopik_mesane",
+    "kanonik_ad": "Ortotopik mesane",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_nefrostomi",
+    "kanonik_ad": "Nefrostomi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_sistostomi",
+    "kanonik_ad": "Sistostomi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_uretrostomi",
+    "kanonik_ad": "Üretrostomi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_asiri_aktif_mesane",
+    "kanonik_ad": "Aşırı aktif mesane",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_mesane_hastaligi",
+    "kanonik_ad": "Mesane hastalığı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_sistektomi",
+    "kanonik_ad": "Sistektomi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_mesane_augmentasyonu",
+    "kanonik_ad": "Mesane augmentasyonu",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_ekstrofi_vezika",
+    "kanonik_ad": "Ekstrofi vezika",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_norojen_mesane",
+    "kanonik_ad": "Nörojen mesane",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_uretra_hastaligi",
+    "kanonik_ad": "Üretra hastalığı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_uretra_darligi",
+    "kanonik_ad": "Üretra darlığı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_uretrektomi",
+    "kanonik_ad": "Üretrektomi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_erektil_disfonksiyon",
+    "kanonik_ad": "Erektil disfonksiyon",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s076_penis_hastaligi",
+    "kanonik_ad": "Penis hastalığı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s077_penektomi",
+    "kanonik_ad": "Penektomi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s077_testis_ve_epididim_hastaligi",
+    "kanonik_ad": "Testis ve epididim hastalığı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s077_orsiektomi",
+    "kanonik_ad": "Orşiektomi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s077_infertilite",
+    "kanonik_ad": "İnfertilite",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s077_prostat_ve_vezikuloseminalis_hastaligi",
+    "kanonik_ad": "Prostat ve veziküloseminalis hastalığı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s077_prostatektomi",
+    "kanonik_ad": "Prostatektomi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s078_uriner_inkontinans",
+    "kanonik_ad": "Üriner inkontinans",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s078_urge_inkontinans",
+    "kanonik_ad": "Urge inkontinans",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s078_stress_inkontinans",
+    "kanonik_ad": "Stress inkontinans",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s078_skrotum_hastaligi",
+    "kanonik_ad": "Skrotum hastalığı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s078_uriner_fistul",
+    "kanonik_ad": "Üriner fistül",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s082_glikozaminoglikan_metabolizmasi_bozukl",
+    "kanonik_ad": "Glikozaminoglikan metabolizması bozuklukları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s082_glikoprotein_metabolizmasi_bozukluklar",
+    "kanonik_ad": "Glikoprotein metabolizması bozuklukları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s082_kistik_fibrozis",
+    "kanonik_ad": "Kistik fibrozis",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s082_iskelet_displazileri",
+    "kanonik_ad": "İskelet displazileri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s082_akondroplazi",
+    "kanonik_ad": "Akondroplazi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s082_akondroplazi_disi_iskelet_displazileri",
+    "kanonik_ad": "Akondroplazi dışı iskelet displazileri",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s082_ailevi_akdeniz_atesi",
+    "kanonik_ad": "Ailevi Akdeniz Ateşi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s083_akciger_plevra_ve_gogus_kafesi_hastali",
+    "kanonik_ad": "Akciğer, plevra ve göğüs kafesi hastalıkları",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s083_kronik_kor_pulmonale",
+    "kanonik_ad": "Kronik kor pulmonale",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s083_akciger_ve_veya_plevra_tuberkulozu",
+    "kanonik_ad": "Akciğer ve/veya plevra tüberkülozu",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s083_ilaca_direncli_kronik_tuberkuloz",
+    "kanonik_ad": "İlaca dirençli kronik tüberküloz",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s083_ekstrapulmoner_tuberkuloz",
+    "kanonik_ad": "Ekstrapulmoner tüberküloz",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s083_tek_tarafli_pnomonektomi",
+    "kanonik_ad": "Tek taraflı pnömonektomi",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s083_akciger_transplantasyonu",
+    "kanonik_ad": "Akciğer transplantasyonu",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s084_curling_ulseri",
+    "kanonik_ad": "Curling ülseri",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s084_yaniga_bagli_ozefagus_darligi",
+    "kanonik_ad": "Yanığa bağlı özefagus darlığı",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s085_sindaktili",
+    "kanonik_ad": "Sindaktili",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s085_kostal_kondrit",
+    "kanonik_ad": "Kostal kondrit",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s085_heterotopik_periartikuler_kemik_olusum",
+    "kanonik_ad": "Heterotopik periartiküler kemik oluşumu",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s085_yanik_sonrasi_periferik_sinir_lezyonu",
+    "kanonik_ad": "Yanık sonrası periferik sinir lezyonu",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s086_malign_tumor",
+    "kanonik_ad": "Malign tümör",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s086_malign_transformasyon_gosteren_benign",
+    "kanonik_ad": "Malign transformasyon gösteren benign tümör",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s086_glioblastoma_multiforme",
+    "kanonik_ad": "Glioblastoma multiforme",
+    "tip": "cerrahi islem/durum"
+  },
+  {
+    "kavram_id": "ek2_s087_yuksek_kortikal_fonksiyon_bozukluklari",
+    "kanonik_ad": "Yüksek kortikal fonksiyon bozuklukları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s087_motor_afazi",
+    "kanonik_ad": "Motor afazi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s087_sensoriyel_afazi",
+    "kanonik_ad": "Sensöriyel afazi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s087_agnozi",
+    "kanonik_ad": "Agnozi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s087_diskonneksiyon_sendromlari",
+    "kanonik_ad": "Diskonneksiyon sendromları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s088_epilepsi",
+    "kanonik_ad": "Epilepsi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s088_uyku_ile_iliskili_bozukluklar",
+    "kanonik_ad": "Uyku ile ilişkili bozukluklar",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s089_norojenik_kaynakli_agri",
+    "kanonik_ad": "Nörojenik kaynaklı ağrı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s089_primer_bas_agrilari",
+    "kanonik_ad": "Primer baş ağrıları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s089_nevralji",
+    "kanonik_ad": "Nevralji",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s089_noropatik_agri",
+    "kanonik_ad": "Nöropatik ağrı",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s089_demans",
+    "kanonik_ad": "Demans",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s091_kranial_sinir_bozukluklari",
+    "kanonik_ad": "Kranial sinir bozuklukları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s091_trigeminal_nevralji",
+    "kanonik_ad": "Trigeminal nevralji",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s091_periferik_fasiyal_paralizi",
+    "kanonik_ad": "Periferik fasiyal paralizi",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s092_disfaji",
+    "kanonik_ad": "Disfaji",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s092_hareket_bozukluklari",
+    "kanonik_ad": "Hareket bozuklukları",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s092_tremor",
+    "kanonik_ad": "Tremor",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s092_kore",
+    "kanonik_ad": "Kore",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s092_athetozis",
+    "kanonik_ad": "Athetozis",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s092_hemiballismus",
+    "kanonik_ad": "Hemiballismus",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s092_distoni",
+    "kanonik_ad": "Distoni",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s092_dizartri_ve_disfaji",
+    "kanonik_ad": "Dizartri ve disfaji",
+    "tip": "hastalık"
+  },
+  {
+    "kavram_id": "ek2_s093_omurgaya_ait_sorunlar",
+    "kanonik_ad": "Omurgaya ait sorunlar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s098_skolyoz",
+    "kanonik_ad": "Skolyoz",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s099_servikal_omurga_hareket_kisitliligi",
+    "kanonik_ad": "Servikal omurga hareket kısıtlılığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s099_torakal_omurga_hareket_kisitliligi",
+    "kanonik_ad": "Torakal omurga hareket kısıtlılığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s101_lomber_omurga_hareket_kisitliligi",
+    "kanonik_ad": "Lomber omurga hareket kısıtlılığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s097_omurga_ankilozu",
+    "kanonik_ad": "Omurga ankilozu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s102_vertebra_kompresyon_kirigi",
+    "kanonik_ad": "Vertebra kompresyon kırığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s102_posterior_eleman_kirigi",
+    "kanonik_ad": "Posterior eleman kırığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s102_vertebranin_redukte_dislokasyonu",
+    "kanonik_ad": "Vertebranın redükte dislokasyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s102_intervertebral_disk_lezyonu",
+    "kanonik_ad": "İntervertebral disk lezyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s102_spondilolizis_ve_spondilolistezis",
+    "kanonik_ad": "Spondilolizis ve spondilolistezis",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s103_spinal_stenoz",
+    "kanonik_ad": "Spinal stenoz",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s103_segmental_instabilite",
+    "kanonik_ad": "Segmental instabilite",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s104_spinal_sinir_kayiplari",
+    "kanonik_ad": "Spinal sinir kayıpları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s107_radikulopati",
+    "kanonik_ad": "Radikülopati",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s108_ust_ekstremite_sorunlari",
+    "kanonik_ad": "Üst ekstremite sorunları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s135_ust_ekstremite_amputasyonlari",
+    "kanonik_ad": "Üst ekstremite ampütasyonları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s135_skapulotorasik_amputasyon",
+    "kanonik_ad": "Skapulotorasik ampütasyon",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s135_omuz_dezartikulasyonu",
+    "kanonik_ad": "Omuz dezartikülasyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s135_metakarpofalangeal_amputasyon",
+    "kanonik_ad": "Metakarpofalangeal ampütasyon",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s135_basparmak_amputasyonu",
+    "kanonik_ad": "Başparmak ampütasyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s135_parmak_amputasyonu",
+    "kanonik_ad": "Parmak ampütasyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s136_ust_ekstremite_artroplastileri",
+    "kanonik_ad": "Üst ekstremite artroplastileri",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s136_tum_omuz_artroplastisi",
+    "kanonik_ad": "Tüm omuz artroplastisi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s136_tum_dirsek_artroplastisi",
+    "kanonik_ad": "Tüm dirsek artroplastisi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s136_tum_el_bilegi_artroplastisi",
+    "kanonik_ad": "Tüm el bileği artroplastisi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s137_tenosinovit",
+    "kanonik_ad": "Tenosinovit",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s138_periferik_sinir_lezyonu",
+    "kanonik_ad": "Periferik sinir lezyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s139_spinal_sinir_lezyonu",
+    "kanonik_ad": "Spinal sinir lezyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s139_brakial_pleksus_lezyonu",
+    "kanonik_ad": "Brakial pleksus lezyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s141_alt_ekstremite_sorunlari",
+    "kanonik_ad": "Alt ekstremite sorunları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s143_alt_ekstremite_uzunluk_farkliliklari",
+    "kanonik_ad": "Alt ekstremite uzunluk farklılıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s144_yuruyus_bozuklugu",
+    "kanonik_ad": "Yürüyüş bozukluğu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s145_bacak_kaslarindaki_atrofi",
+    "kanonik_ad": "Bacak kaslarındaki atrofi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s146_alt_ekstremite_kas_kuvveti_kaybi",
+    "kanonik_ad": "Alt ekstremite kas kuvveti kaybı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s147_kalca_eklemi_hareket_kisitliligi",
+    "kanonik_ad": "Kalça eklemi hareket kısıtlılığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s148_diz_eklemi_hareket_kisitliligi",
+    "kanonik_ad": "Diz eklemi hareket kısıtlılığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s148_ayak_bilegi_eklemi_hareket_kisitliligi",
+    "kanonik_ad": "Ayak bileği eklemi hareket kısıtlılığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s148_topuk_hareket_kisitliligi",
+    "kanonik_ad": "Topuk hareket kısıtlılığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s148_ayak_bilegi_veya_topuk_deformitesi",
+    "kanonik_ad": "Ayak bileği veya topuk deformitesi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s149_ayak_basparmak_bozukluklari",
+    "kanonik_ad": "Ayak başparmak bozuklukları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s149_kalca_ankilozu",
+    "kanonik_ad": "Kalça ankilozu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s150_diz_ankilozu",
+    "kanonik_ad": "Diz ankilozu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s152_ayak_bilegi_ankilozu",
+    "kanonik_ad": "Ayak bileği ankilozu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s153_ayak_ankilozu",
+    "kanonik_ad": "Ayak ankilozu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s154_ayak_parmaklarinin_ankilozu",
+    "kanonik_ad": "Ayak parmaklarının ankilozu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s155_alt_ekstremite_amputasyonlari",
+    "kanonik_ad": "Alt ekstremite ampütasyonları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s155_hemipelvektomi",
+    "kanonik_ad": "Hemipelvektomi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s155_kalca_dezartikulasyonu",
+    "kanonik_ad": "Kalça dezartikülasyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s155_diz_ustu_amputasyon",
+    "kanonik_ad": "Diz üstü ampütasyon",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s155_diz_dezartikulasyonu",
+    "kanonik_ad": "Diz dezartikülasyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s155_diz_alti_amputasyon",
+    "kanonik_ad": "Diz altı ampütasyon",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s155_syme_amputasyonu",
+    "kanonik_ad": "Syme ampütasyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s155_chopart_amputasyonu",
+    "kanonik_ad": "Chopart ampütasyonu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s155_transmetatarsal_amputasyon",
+    "kanonik_ad": "Transmetatarsal ampütasyon",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s156_kalca_replasmani",
+    "kanonik_ad": "Kalça replasmanı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s158_diz_artroplastisi",
+    "kanonik_ad": "Diz artroplastisi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s159_girdlestone_artroplastisi",
+    "kanonik_ad": "Girdlestone artroplastisi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s159_pelvis_kirigi",
+    "kanonik_ad": "Pelvis kırığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s159_asetebular_kirik",
+    "kanonik_ad": "Asetebular kırık",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s159_sakroiliak_eklem_kirigi",
+    "kanonik_ad": "Sakroiliak eklem kırığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s159_iskial_bursit",
+    "kanonik_ad": "İskial bursit",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s159_trokanterik_bursit",
+    "kanonik_ad": "Trokanterik bursit",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s159_femoral_boyun_kirigi",
+    "kanonik_ad": "Femoral boyun kırığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s159_femoral_saft_kirigi",
+    "kanonik_ad": "Femoral şaft kırığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s160_patellar_kirik",
+    "kanonik_ad": "Patellar kırık",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s160_patellektomi",
+    "kanonik_ad": "Patellektomi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s160_menisektomi",
+    "kanonik_ad": "Menisektomi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s160_krusiat_veya_kollateral_ligament_laksi",
+    "kanonik_ad": "Krusiat veya kollateral ligament laksitesi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s160_plato_kirigi",
+    "kanonik_ad": "Plato kırığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s160_suprakonduler_veya_interkonduler_kirik",
+    "kanonik_ad": "Suprakondüler veya interkondüler kırık",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s160_unikonduler_replasman",
+    "kanonik_ad": "Unikondüler replasman",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s160_proksimal_osteotomi",
+    "kanonik_ad": "Proksimal osteotomi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s160_tibia_saft_kirigi",
+    "kanonik_ad": "Tibia şaft kırığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s161_ayak_bilegi_ligamentoz_instabilitesi",
+    "kanonik_ad": "Ayak bileği ligamentöz instabilitesi",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s161_ayak_bilegi_kirigi",
+    "kanonik_ad": "Ayak bileği kırığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s161_kalkaneal_kirik",
+    "kanonik_ad": "Kalkaneal kırık",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s161_subtalar_kemik_kirigi",
+    "kanonik_ad": "Subtalar kemik kırığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s161_talonavikuler_kemik_kirigi",
+    "kanonik_ad": "Talonaviküler kemik kırığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s161_kalkaneokuboid_kemik_kirigi",
+    "kanonik_ad": "Kalkaneoküboid kemik kırığı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s162_cavus",
+    "kanonik_ad": "Cavus",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s162_rocker_bottom",
+    "kanonik_ad": "Rocker bottom",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s162_talusun_avaskuler_nekrozu",
+    "kanonik_ad": "Talusun avasküler nekrozu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s162_metatarsal_kirik",
+    "kanonik_ad": "Metatarsal kırık",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s162_metatarsalji",
+    "kanonik_ad": "Metatarsalji",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s163_alt_ekstremitede_doku_kaybi",
+    "kanonik_ad": "Alt ekstremitede doku kaybı",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s163_kronik_osteomiyelit",
+    "kanonik_ad": "Kronik osteomiyelit",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s164_periferal_vaskuler_hastalik",
+    "kanonik_ad": "Periferal vasküler hastalık",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s165_serebral_bozukluklar",
+    "kanonik_ad": "Serebral bozukluklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s166_spinal_kord_ve_ilgili_bozukluklar",
+    "kanonik_ad": "Spinal kord ve ilgili bozukluklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s166_periferik_sinir_sistemi_noromuskuler_b",
+    "kanonik_ad": "Periferik sinir sistemi, nöromüsküler bileşke ve kas sistemi hastalıkları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s166_ayakta_durabilme_yurume_ve_hareket_boz",
+    "kanonik_ad": "Ayakta durabilme, yürüme ve hareket bozuklukları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s167_ust_ekstremite_bozukluklari_santral",
+    "kanonik_ad": "Üst ekstremite bozuklukları (santral)",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s168_anorektal_sistem_norolojik_bozukluklar",
+    "kanonik_ad": "Anorektal sistem nörolojik bozuklukları",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s168_uriner_sistem_ve_mesane_fonksiyon_bozu",
+    "kanonik_ad": "Üriner sistem ve mesane fonksiyon bozukluğu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s168_solunumda_norolojik_bozukluklar",
+    "kanonik_ad": "Solunumda nörolojik bozukluklar",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s168_cinsel_fonksiyon_bozuklugu",
+    "kanonik_ad": "Cinsel fonksiyon bozukluğu",
+    "tip": "fonksiyon kaybi"
+  },
+  {
+    "kavram_id": "ek2_s169_sistemik_romatizmal_hastaliklar",
+    "kanonik_ad": "Sistemik romatizmal hastalıklar",
+    "tip": "fonksiyon kaybi"
+  }
+]
