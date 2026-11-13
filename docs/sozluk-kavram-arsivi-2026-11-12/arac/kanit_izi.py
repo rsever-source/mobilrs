@@ -147,10 +147,16 @@ def main():
             if "ek_1_baglantisi" in k:
                 b = k["ek_1_baglantisi"]
                 kanit = ek1_kanit.get((b["bolum_harfi"], b["sira_no"], b["derece"], k["kanonik_ad"]), k_kanit)
-                izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": k_durum, "skor": k_skor})
+                entry = {"kavram_id": k["kavram_id"], "kanit": kanit, "durum": k_durum}
+                if k_skor is not None:
+                    entry["skor"] = k_skor
+                izler.append(entry)
                 eslesme["ek1_birebir" if kanit else "ek1_yok"] += 1
             elif "ek_2_baglantisi" in k:
-                izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit, "durum": k_durum, "skor": k_skor})
+                entry = {"kavram_id": k["kavram_id"], "kanit": k_kanit, "durum": k_durum}
+                if k_skor is not None:
+                    entry["skor"] = k_skor
+                izler.append(entry)
                 if k_durum == "duzeltilmis":
                     eslesme["ek2_duzeltilmis"] += 1
                 elif k_durum == "birebir":
@@ -163,11 +169,17 @@ def main():
                 sayfa = k["kaynak"]["sayfa_no"]
                 sec = ek2_eslesme.get(k_id)
                 if sec:
-                    izler.append({"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": k_durum, "skor": k_skor})
+                    entry2 = {"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": k_durum}
+                    if k_skor is not None:
+                        entry2["skor"] = k_skor
+                    izler.append(entry2)
                     eslesme[f"ek2_{sec['durum']}"] += 1
                 else:
                     kanit = k_kanit if k_kanit else ek2_u3b_kanit.get((sayfa, norm(k["kanonik_ad"])), "")
-                    izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": k_durum, "skor": k_skor})
+                    entry3 = {"kavram_id": k["kavram_id"], "kanit": kanit, "durum": k_durum}
+                    if k_skor is not None:
+                        entry3["skor"] = k_skor
+                    izler.append(entry3)
                     if kanit:
                         if k_durum == "duzeltilmis":
                             eslesme["ek2_duzeltilmis"] += 1
@@ -196,7 +208,10 @@ def main():
         sayfa = k["kaynak"]["sayfa_no"]
         sec = ek2_eslesme.get(k_id)
         if sec:
-            izler.append({"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": sec["durum"], "skor": sec.get("skor")})
+            entry_sec = {"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": sec["durum"]}
+            if sec.get("skor") is not None:
+                entry_sec["skor"] = sec["skor"]
+            izler.append(entry_sec)
             eslesme[f"ek2_{sec['durum']}"] += 1
             continue
         # Önce u3b_kanit'i kontrol et (parca dosyasından tanim).
@@ -209,7 +224,10 @@ def main():
                 eslesme["ek2_duzeltilmis"] += 1
             elif k_id in ab99_durum_map:
                 # ab99cb4'ten korunmus durumla kayit - kanit zaten k_kanit olarak ayarlandi
-                izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit, "durum": k_durum, "skor": k_skor})
+                entry4 = {"kavram_id": k["kavram_id"], "kanit": k_kanit, "durum": k_durum}
+                if k_skor is not None:
+                    entry4["skor"] = k_skor
+                izler.append(entry4)
                 if k_durum == "duzeltilmis":
                     eslesme["ek2_duzeltilmis"] += 1
                 elif k_durum == "birebir":
@@ -225,7 +243,10 @@ def main():
         
         sec = ek2_sec.get((sayfa, norm(k["kanonik_ad"])))
         if sec and sec.get("ham_satir"):
-            izler.append({"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": "birebir", "skor": sec.get("skor")})
+            entry_sec = {"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": "birebir"}
+            if sec.get("skor") is not None:
+                entry_sec["skor"] = sec["skor"]
+            izler.append(entry_sec)
             eslesme["ek2_birebir"] += 1
             continue
         satir, skor = en_iyi_satir(k["kanonik_ad"], sayfa_metni(sayfa))
