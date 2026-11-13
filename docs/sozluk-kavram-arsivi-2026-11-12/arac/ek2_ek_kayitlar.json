@@ -1,2074 +1,2075 @@
 [
- {
-  "sayfa": "ek2_029",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "ARİTMİLER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Aritmiler",
-  "ham_satir": "ARİTMİLER"
- },
- {
-  "sayfa": "ek2_029",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "PULMONER HİPERTANSİYON",
-  "madde_etiketi": "",
-  "kanonik_ad": "Pulmoner hipertansiyon",
-  "ham_satir": "PULMONER HİPERTANSİYON"
- },
- {
-  "sayfa": "ek2_030",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "HİPERTANSİYON",
-  "madde_etiketi": "",
-  "kanonik_ad": "Hipertansiyon",
-  "ham_satir": "HİPERTANSİYON"
- },
- {
-  "sayfa": "ek2_030",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "HİPERTANSİYON",
-  "madde_etiketi": "2.",
-  "kanonik_ad": "Hipertansif serebrovasküler hastalık",
-  "ham_satir": "2. Hipenansif serebrovasküler hastalık"
- },
- {
-  "sayfa": "ek2_030",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "HİPERTANSİYON",
-  "madde_etiketi": "4)",
-  "kanonik_ad": "Sol ventrikül hipertrofisi",
-  "ham_satir": "4) Sol ventrikül hipertrofisi"
- },
- {
-  "sayfa": "ek2_030",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "HİPERTANSİYON",
-  "madde_etiketi": "1.",
-  "kanonik_ad": "Proteinüri",
-  "ham_satir": "I. Proteinüri"
- },
- {
-  "sayfa": "ek2_030",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "PERİKARD HASTALIKLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Perikard hastalıkları",
-  "ham_satir": "PERİKARD HASTALIKLARI"
- },
- {
-  "sayfa": "ek2_030",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "PERİKARD HASTALIKLARI",
-  "madde_etiketi": "EVRE 111:",
-  "kanonik_ad": "Konstrüktif perikardit",
-  "ham_satir": "Fizik muayene ve ekokardiyografi ile konstruktif perikardit tamsı konulan veya perikardiektomi"
- },
- {
-  "sayfa": "ek2_030",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "HİPERTROFİK KARDİYOMİYOPATİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Hipertrofik kardiyomiyopati",
-  "ham_satir": "HİPERTROFİK KARDİYOMİYOPATİ"
- },
- {
-  "sayfa": "ek2_030",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "KALP YETMEZLİĞİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kalp yetmezliği",
-  "ham_satir": "KALP YETMEZLİĞİ"
- },
- {
-  "sayfa": "ek2_031",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "DOĞUŞTAN KALP HASTALIKLARI ( DKH )",
-  "madde_etiketi": "",
-  "kanonik_ad": "Doğuştan kalp hastalıkları",
-  "ham_satir": "DOĞUŞTAN KALP HASTALIKLARI ( DKH )"
- },
- {
-  "sayfa": "ek2_033",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "KALP HASTALIKLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kalp transplantasyonu",
-  "ham_satir": "Kalp transplantasyonu olan kişilerin Engel Oram % 70 olup, transplante kalbin"
- },
- {
-  "sayfa": "ek2_033",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "KALP HASTALIKLARI",
-  "madde_etiketi": "B.",
-  "kanonik_ad": "Miyokard infarktüsü",
-  "ham_satir": "Miyokard infarktüsü geçiren veya daha önceden koroner aner hastalığı tanısı alan veya girişimsel-"
- },
- {
-  "sayfa": "ek2_033",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "DAMAR HASTALIKLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Damar hastalıkları",
-  "ham_satir": "DAMAR HASTALIKLARI"
- },
- {
-  "sayfa": "ek2_033",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "DAMAR HASTALIKLARI",
-  "madde_etiketi": "A-",
-  "kanonik_ad": "Arteriosklerozis obliterans (ASO)",
-  "ham_satir": "A- Arteriosklerozis obliterans (ASO)"
- },
- {
-  "sayfa": "ek2_034",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "DAMAR HASTALIKLARI",
-  "madde_etiketi": "B-",
-  "kanonik_ad": "Tromboangitis obliterans (Buerger)",
-  "ham_satir": "B- Tromboangitis obliterans (Buerger):"
- },
- {
-  "sayfa": "ek2_034",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "DAMAR HASTALIKLARI",
-  "madde_etiketi": "2-",
-  "kanonik_ad": "Fonksiyonel damar hastalıkları",
-  "ham_satir": "2- Fonksiyonel damar hastalığı olanlar (Reynaud Fenomeni, Akrosiyanozis vs.)"
- },
- {
-  "sayfa": "ek2_034",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "DAMAR HASTALIKLARI",
-  "madde_etiketi": "2-",
-  "kanonik_ad": "Raynaud fenomeni",
-  "ham_satir": "2- Fonksiyonel damar hastalığı olanlar (Reynaud Fenomeni, Akrosiyanozis vs.)"
- },
- {
-  "sayfa": "ek2_034",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "DAMAR HASTALIKLARI",
-  "madde_etiketi": "2-",
-  "kanonik_ad": "Akrosiyanozis",
-  "ham_satir": "2- Fonksiyonel damar hastalığı olanlar (Reynaud Fenomeni, Akrosiyanozis vs.)"
- },
- {
-  "sayfa": "ek2_034",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "DAMAR HASTALIKLARI",
-  "madde_etiketi": "3-",
-  "kanonik_ad": "Travmatik damar hastalığı",
-  "ham_satir": "3- Travmatik damar hastalığı olanlar"
- },
- {
-  "sayfa": "ek2_034",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "DAMAR HASTALIKLARI",
-  "madde_etiketi": "4-",
-  "kanonik_ad": "Derin ven trombozu",
-  "ham_satir": "4- Venöz sistem hastalıkları: İnvaziv ve noninvaziv tetkiklerle tespit edilmiş derin ven"
- },
- {
-  "sayfa": "ek2_034",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "DAMAR HASTALIKLARI",
-  "madde_etiketi": "4-",
-  "kanonik_ad": "Staz ülseri",
-  "ham_satir": "a- Staz ülseri bulunmayanlar"
- },
- {
-  "sayfa": "ek2_034",
-  "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
-  "alt_bolum": "DAMAR HASTALIKLARI",
-  "madde_etiketi": "5-",
-  "kanonik_ad": "Lenfödem",
-  "ham_satir": "5- Lenf sistemi hastalıkları: (İster konjenital, ister akkiz lenfödemi olanlar)"
- },
- {
-  "sayfa": "ek2_035",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Diplopi",
-  "ham_satir": "Kontrast duyarlık ve glare (kamaşma) kusuru * Diplopi"
- },
- {
-  "sayfa": "ek2_040",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kontrast duyarlık ve kamaşma (glare) kusuru",
-  "ham_satir": "o Tek gözde mevcut ise"
- },
- {
-  "sayfa": "ek2_042",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "2.",
-  "kanonik_ad": "Fonksiyonel körlük",
-  "ham_satir": "için \"fonksiyonel körlük”ten bahsedilir. Göz yuvarlağının yokluğunda da \"anatomik körlük” söz"
- },
- {
-  "sayfa": "ek2_042",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "2.",
-  "kanonik_ad": "Anatomik körlük",
-  "ham_satir": "için \"fonksiyonel körlük”ten bahsedilir. Göz yuvarlağının yokluğunda da \"anatomik körlük” söz"
- },
- {
-  "sayfa": "ek2_042",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "2.",
-  "kanonik_ad": "Tek gözlülük (monokülarite)",
-  "ham_satir": "\"tek gözlülük durumu” (monokülarite) diyeceğimiz özel bir durum ortaya çıkar."
- },
- {
-  "sayfa": "ek2_043",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Göz ekzanterasyonu",
-  "ham_satir": "Ekzanterasyon ameliyatı geçirmiş veya travmatik nedenle aynı derecede kayıp gerçekleşmiş, tek göz"
- },
- {
-  "sayfa": "ek2_044",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
-  "madde_etiketi": "A.",
-  "kanonik_ad": "Nistagmus",
-  "ham_satir": "Nistagmusu olan hastalarda en iyi görme keskinliğinin tespit edildiği sıfır noktası (null point)"
- },
- {
-  "sayfa": "ek2_044",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
-  "madde_etiketi": "B.",
-  "kanonik_ad": "Lagoftalmi",
-  "ham_satir": "Kalıcı tarsorafi yapılmış kapak kapanma kusurlarında (Lagoftalmi, yanık skarı vb)"
- },
- {
-  "sayfa": "ek2_044",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
-  "madde_etiketi": "C.",
-  "kanonik_ad": "Entropion",
-  "ham_satir": "Sekel hâlde, epifora ve/veya kornea hasarına neden olan entropion, ektropion durumlarında"
- },
- {
-  "sayfa": "ek2_044",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
-  "madde_etiketi": "C.",
-  "kanonik_ad": "Ektropion",
-  "ham_satir": "Sekel hâlde, epifora ve/veya kornea hasarına neden olan entropion, ektropion durumlarında"
- },
- {
-  "sayfa": "ek2_044",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
-  "madde_etiketi": "C.",
-  "kanonik_ad": "Epifora",
-  "ham_satir": "Sekel hâlde, epifora ve/veya kornea hasarına neden olan entropion, ektropion durumlarında"
- },
- {
-  "sayfa": "ek2_044",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
-  "madde_etiketi": "D.",
-  "kanonik_ad": "Lakrimal kanal tıkanıklığı",
-  "ham_satir": "Sürekli göz sulanmasına neden olan lakrimal kanal tıkanmalarında (tedavi ile düzelmesi"
- },
- {
-  "sayfa": "ek2_044",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
-  "madde_etiketi": "F.",
-  "kanonik_ad": "Pitozis",
-  "ham_satir": "F. Ağır pitozise bağlı primer pozisyonda pupilla açıklığı yarıdan fazla örtülen, sürekli alın kasını"
- },
- {
-  "sayfa": "ek2_045",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Göz ve adneksleri tümörü",
-  "ham_satir": "Göz Ve Adnekslerinde Tümör Varlığında Engel Oranının DeğerIendirilmesi"
- },
- {
-  "sayfa": "ek2_045",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "",
-  "kanonik_ad": "Ambliyopi",
-  "ham_satir": "Tanı: Açıklanmayan amliyopi, muhtemelen konjenital."
- },
- {
-  "sayfa": "ek2_046",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "",
-  "kanonik_ad": "Retinoblastom",
-  "ham_satir": "Tanı: Retinoblastom hikayesi."
- },
- {
-  "sayfa": "ek2_047",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kornea opasitesi",
-  "ham_satir": "Tam: Kornea opasİtesİne bağlı görme kaybı."
- },
- {
-  "sayfa": "ek2_043",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "",
-  "kanonik_ad": "Glokom",
-  "ham_satir": "60 yaşında bayan hasta. Glokom tanısı ile izleniyor, 2 yıl önce sol gözün görmesini tümüyle"
- },
- {
-  "sayfa": "ek2_043",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "",
-  "kanonik_ad": "Absolü glokom",
-  "ham_satir": "Fizik muayene: Sağ absolu glokom, sol ileri derecede glokomatöz optik sinir çukurlaşması mevcut."
- },
- {
-  "sayfa": "ek2_048",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "",
-  "kanonik_ad": "Katarakt",
-  "ham_satir": "Tanı: Katarakta bağlı görme kaybı."
- },
- {
-  "sayfa": "ek2_048",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "",
-  "kanonik_ad": "Yaşlılık kataraktı",
-  "ham_satir": "Yaşlılık kataraktı veya görsel artış beklentisi olan kataraktlar nedeniyle düştüğü belirlenen"
- },
- {
-  "sayfa": "ek2_049",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "",
-  "kanonik_ad": "Stargardt juvenil makulopati",
-  "ham_satir": "Tam: Stargardtjuvenil makulopati."
- },
- {
-  "sayfa": "ek2_051",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "GÖRME ALANI YETERSİZLİĞİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Görme alanı yetersizliği",
-  "ham_satir": "GÖRME ALANI YETERSİZLİĞİ"
- },
- {
-  "sayfa": "ek2_056",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "",
-  "kanonik_ad": "Santral skotom",
-  "ham_satir": "Santral skotom için ayrı bir kurala daha ihtiyaç vardır. Santral skotomlar görme keskinliğini"
- },
- {
-  "sayfa": "ek2_056",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "",
-  "kanonik_ad": "Homonim hemianopi",
-  "ham_satir": "Tam homonim hemianopi %50'lik görme alan kaybı oluşturur."
- },
- {
-  "sayfa": "ek2_057",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "",
-  "kanonik_ad": "Bitemporal hemianopsi",
-  "ham_satir": "Bitemporal hemianopislerde ise her bir gözün farklı yarılarında kayıp olduğu İçin binoküler görme"
- },
- {
-  "sayfa": "ek2_057",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "",
-  "kanonik_ad": "Periferik görme alanı defekti",
-  "ham_satir": "Periferik Görme Alam Defekti"
- },
- {
-  "sayfa": "ek2_058",
-  "bolum_adi": "GÖRME SİSTEMİ",
-  "alt_bolum": "",
-  "madde_etiketi": "",
-  "kanonik_ad": "Retinoskizis",
-  "ham_satir": "retinoskizisli bir hastanın görme alanı testi."
- },
- {
-  "sayfa": "ek2_065",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "ı. ANA DEĞERLENDİRME",
-  "madde_etiketi": "",
-  "kanonik_ad": "Özefagus bozuklukları",
-  "ham_satir": "Özefagus bozukluğunu işaret eden semptomlar disfaji, pirozis, retrosternal ağrı,"
- },
- {
-  "sayfa": "ek2_065",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "ı. ANA DEĞERLENDİRME",
-  "madde_etiketi": "",
-  "kanonik_ad": "Mide-duodenum bozuklukları",
-  "ham_satir": "Mide-duedonum bozukluğuna ait semptom ve İşaretler bulantı-kusma, ağrı, kanama,"
- },
- {
-  "sayfa": "ek2_065",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "ı. ANA DEĞERLENDİRME",
-  "madde_etiketi": "",
-  "kanonik_ad": "İnce bağırsak bozuklukları",
-  "ham_satir": "bozukluğuna ait semptomlar karın ağrısı, ishal, steatore, kanama, tıkanıklık ve kilo kaybım içerir."
- },
- {
-  "sayfa": "ek2_065",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "ı. ANA DEĞERLENDİRME",
-  "madde_etiketi": "",
-  "kanonik_ad": "Pankreas fonksiyon bozukluğu",
-  "ham_satir": "Pankreas fonksiyon bozukluğuna ait semptom ve belirtiler karın ağrısı, bulantı-kusma, ishal, steatore,"
- },
- {
-  "sayfa": "ek2_065",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "ı. ANA DEĞERLENDİRME",
-  "madde_etiketi": "",
-  "kanonik_ad": "Portal hipertansiyon",
-  "ham_satir": "hemorajiye yol açan portal hipertansiyon, hepatik ensefalopati ve böbrek bozukluğuna yol açan"
- },
- {
-  "sayfa": "ek2_065",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "ı. ANA DEĞERLENDİRME",
-  "madde_etiketi": "",
-  "kanonik_ad": "Hepatik ensefalopati",
-  "ham_satir": "hemorajiye yol açan portal hipertansiyon, hepatik ensefalopati ve böbrek bozukluğuna yol açan"
- },
- {
-  "sayfa": "ek2_065",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "ı. ANA DEĞERLENDİRME",
-  "madde_etiketi": "",
-  "kanonik_ad": "Özefagus varisi",
-  "ham_satir": "İlerleyen karaciğer rahatsızlığının komplikasyonları ödem, generalize asit, özefagus varisi ve"
- },
- {
-  "sayfa": "ek2_067",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "2. ÜST SİNDİRİM KANALI",
-  "madde_etiketi": "2.",
-  "kanonik_ad": "Üst sindirim kanalı bozuklukları",
-  "ham_satir": "2. ÜST SİNDİRİM KANALI (özefagus, mide ve duedonum, ince bağırsak, ve pankreas)"
- },
- {
-  "sayfa": "ek2_067",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "2. ÜST SİNDİRİM KANALI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Pankreas transplantasyonu",
-  "ham_satir": "Pankreas transplantasyonunda engel oranı % 70 olup, aşağıdaki tabloya göre"
- },
- {
-  "sayfa": "ek2_069",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "4. ENTEROKÜTAN FİSTÜLLER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Cerrahi olarak oluşturulan stomalar",
-  "ham_satir": "Kalıcı cerrahi olarak oluşturulan stomalar, genellikle anatomik kaybı kompanse"
- },
- {
-  "sayfa": "ek2_070",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "4. ENTEROKÜTAN FİSTÜLLER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Özefagostomi",
-  "ham_satir": "OZEFAGOSTOMİ"
- },
- {
-  "sayfa": "ek2_070",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "4. ENTEROKÜTAN FİSTÜLLER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Gastrostomi",
-  "ham_satir": "GASTROSTOMİ"
- },
- {
-  "sayfa": "ek2_070",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "4. ENTEROKÜTAN FİSTÜLLER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Jejunostomi",
-  "ham_satir": "JEJUNOSTOMİ"
- },
- {
-  "sayfa": "ek2_070",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "4. ENTEROKÜTAN FİSTÜLLER",
-  "madde_etiketi": "",
-  "kanonik_ad": "İleostomi",
-  "ham_satir": "LEOSTOMİ"
- },
- {
-  "sayfa": "ek2_070",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "4. ENTEROKÜTAN FİSTÜLLER",
-  "madde_etiketi": "",
-  "kanonik_ad": "İleal-poş anal anastomoz",
-  "ham_satir": "İLEAL-POŞ ANAL ANASTOMOZ"
- },
- {
-  "sayfa": "ek2_070",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "4. ENTEROKÜTAN FİSTÜLLER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kolostomi",
-  "ham_satir": "KOLOSTO"
- },
- {
-  "sayfa": "ek2_070",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "5. KARACİĞER VE SAFRA YOLLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Karaciğer hastalıkları",
-  "ham_satir": "a) Karaciğer Hastalıklarına Bağlı Oluşan Kalıcı Bozulduk Sınıflama Kriterleri"
- },
- {
-  "sayfa": "ek2_070",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "5. KARACİĞER VE SAFRA YOLLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Karaciğer transplantasyonu",
-  "ham_satir": "Karaciğer transplantasyonlu hastalarda Engel Oranı %70 oranına Tablo 7'de"
- },
- {
-  "sayfa": "ek2_071",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "5. KARACİĞER VE SAFRA YOLLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Safra yolları hastalıkları",
-  "ham_satir": "b) Safra Yolları Hastalıklarına Bağlı Oluşan Kalıcı Bozulduk Sınıflama Kriterleri:"
- },
- {
-  "sayfa": "ek2_071",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "5. KARACİĞER VE SAFRA YOLLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kolanjit",
-  "ham_satir": "Tekrarlayan kolanjİt İle seyreden ve"
- },
- {
-  "sayfa": "ek2_071",
-  "bolum_adi": "SİNDİRİM SİSTEMİ",
-  "alt_bolum": "5. KARACİĞER VE SAFRA YOLLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Koledok obstrüksiyonu",
-  "ham_satir": "Kalıcı sarılık; Oltak safra kanalı (koledok)"
- },
- {
-  "sayfa": "ek2_072",
-  "bolum_adi": "KADIN HASTALIKLARI VE DOĞUM",
-  "alt_bolum": "A-VULVA VE VAGİNA",
-  "madde_etiketi": "",
-  "kanonik_ad": "Vulva ve vajina hastalıkları",
-  "ham_satir": "Vulva ve Vagina'nın Kalıcı Bozulduklarının DeğerIendirilmesinde Kriterler"
- },
- {
-  "sayfa": "ek2_072",
-  "bolum_adi": "KADIN HASTALIKLARI VE DOĞUM",
-  "alt_bolum": "B-SERVİKS VE UTERUS",
-  "madde_etiketi": "",
-  "kanonik_ad": "Serviks ve uterus hastalıkları",
-  "ham_satir": "Serviks Ve Uterus'un Kalıcı Bozukluklarının DeğerIendirilmesinde Kriterler"
- },
- {
-  "sayfa": "ek2_072",
-  "bolum_adi": "KADIN HASTALIKLARI VE DOĞUM",
-  "alt_bolum": "B-SERVİKS VE UTERUS",
-  "madde_etiketi": "",
-  "kanonik_ad": "Servikal darlık",
-  "ham_satir": "b-Tedavi gerektirmeyen servikal darhk var veya"
- },
- {
-  "sayfa": "ek2_073",
-  "bolum_adi": "KADIN HASTALIKLARI VE DOĞUM",
-  "alt_bolum": "C-FALLOPİAN TÜPLER VE OVERLER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Fallopian tüp ve over hastalıkları",
-  "ham_satir": "Fallopian Tüp Ve Overlerin Kalıcı Bozulduklarının"
- },
- {
-  "sayfa": "ek2_074",
-  "bolum_adi": "ÜROGENİTAL SİSTEM",
-  "alt_bolum": "NEFROLOJİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Nonnefrotik proteinüri ile seyreden nefropatiler",
-  "ham_satir": "Nonnefrotik proteinüri (mikroalbüminüri) ile seyreden nefropatiler, 6 ay süren tedaviye"
- },
- {
-  "sayfa": "ek2_074",
-  "bolum_adi": "ÜROGENİTAL SİSTEM",
-  "alt_bolum": "NEFROLOJİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Nefrotik düzeyde proteinüri ile seyreden nefropatiler",
-  "ham_satir": "Nefrotik düzeyde proteinüri (»3.5 gr/gün) ile seyreden nefropatiler, 6 ay süren tedaviye"
- },
- {
-  "sayfa": "ek2_074",
-  "bolum_adi": "ÜROGENİTAL SİSTEM",
-  "alt_bolum": "NEFROLOJİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kronik böbrek hastalığı",
-  "ham_satir": "Kronik böbrek hastalı I"
- },
- {
-  "sayfa": "ek2_074",
-  "bolum_adi": "ÜROGENİTAL SİSTEM",
-  "alt_bolum": "NEFROLOJİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Renal replasman tedavisi",
-  "ham_satir": "Renal re Iasman tedavisi hemodi aliz, eriton di alizİ erektiren kronik böbrek hastalı\""
- },
- {
-  "sayfa": "ek2_074",
-  "bolum_adi": "ÜROGENİTAL SİSTEM",
-  "alt_bolum": "NEFROLOJİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Böbrek nakli",
-  "ham_satir": "Böbrek nakli"
- },
- {
-  "sayfa": "ek2_074",
-  "bolum_adi": "ÜROGENİTAL SİSTEM",
-  "alt_bolum": "NEFROLOJİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Nefrektomi",
-  "ham_satir": "Nefrektomi - bilateral"
- },
- {
-  "sayfa": "ek2_074",
-  "bolum_adi": "ÜROGENİTAL SİSTEM",
-  "alt_bolum": "NEFROLOJİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Fanconi sendromu",
-  "ham_satir": "Fanconi sendromu, Hafif-ofta kalıcı renal tübüler hastalığa bağlı bozukluklar, 6 ay süren"
- },
- {
-  "sayfa": "ek2_074",
-  "bolum_adi": "ÜROGENİTAL SİSTEM",
-  "alt_bolum": "NEFROLOJİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Renal tübüler hastalık",
-  "ham_satir": "İleri kalıcı renal tübüler hastalığa eşlik eden, en az 6 aylık tedavi altında ve 3 ölçümde serum"
- },
- {
-  "sayfa": "ek2_075",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "ÜST ÜRİNER SİSTEM",
-  "madde_etiketi": "",
-  "kanonik_ad": "Üst üriner sistem hastalığı",
-  "ham_satir": "Intermitan semptom veren ve devamlı tedavi gerektirmeyen üst üriner sistem hastalığı"
- },
- {
-  "sayfa": "ek2_075",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "NEFREKTOMİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Soliter böbrek",
-  "ham_satir": "Soliter Böbrek (diğer böbreğin renal fonksiyonları da (kreatinin klirensi değerlerine göre)"
- },
- {
-  "sayfa": "ek2_075",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "ÜRİNER DİVERSİYON",
-  "madde_etiketi": "",
-  "kanonik_ad": "Üriner diversiyon",
-  "ham_satir": "ÜRİNER DİVERSİYON (Kalıcı)"
- },
- {
-  "sayfa": "ek2_075",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "ÜRİNER DİVERSİYON",
-  "madde_etiketi": "",
-  "kanonik_ad": "Üreterointestinal diversiyon (Coffey)",
-  "ham_satir": "Üreterointestinal (coffey)"
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "ÜRİNER DİVERSİYON",
-  "madde_etiketi": "",
-  "kanonik_ad": "Üreterokütanostomi (ileal loop)",
-  "ham_satir": "Üreterokütanostomi. ileal loop"
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "ÜRİNER DİVERSİYON",
-  "madde_etiketi": "",
-  "kanonik_ad": "Ortotopik mesane",
-  "ham_satir": "Ortotopik mesane"
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "ÜRİNER DİVERSİYON",
-  "madde_etiketi": "",
-  "kanonik_ad": "Nefrostomi",
-  "ham_satir": "Nefrostomi"
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "ÜRİNER DİVERSİYON",
-  "madde_etiketi": "",
-  "kanonik_ad": "Sistostomi",
-  "ham_satir": "Sistostomi Üretrostomi"
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "ÜRİNER DİVERSİYON",
-  "madde_etiketi": "",
-  "kanonik_ad": "Üretrostomi",
-  "ham_satir": "Sistostomi Üretrostomi"
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "MESANE",
-  "madde_etiketi": "",
-  "kanonik_ad": "Aşırı aktif mesane",
-  "ham_satir": "Devamlı tedavi gerektiren sistitizm semptomları da Qşırı aktif mesane"
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "MESANE",
-  "madde_etiketi": "",
-  "kanonik_ad": "Mesane hastalığı",
-  "ham_satir": "Tedavi ile tam olarak kontrol altına alınamayan mesane hastalığı"
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "MESANE",
-  "madde_etiketi": "",
-  "kanonik_ad": "Sistektomi",
-  "ham_satir": "Sistektomi"
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "MESANE",
-  "madde_etiketi": "",
-  "kanonik_ad": "Mesane augmentasyonu",
-  "ham_satir": "Mesane Augmentasyonu"
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "MESANE",
-  "madde_etiketi": "",
-  "kanonik_ad": "Ekstrofi vezika",
-  "ham_satir": "Ekstrofi Vezika"
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "MESANE",
-  "madde_etiketi": "",
-  "kanonik_ad": "Nörojen mesane",
-  "ham_satir": "*Nörojen mesane için kas-iskelet sistemi bölümü sayfa 189'daki tablo 4,3 'e bakınız."
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "ÜRETRA",
-  "madde_etiketi": "",
-  "kanonik_ad": "Üretra hastalığı",
-  "ham_satir": "Tedaviyle düzeltilebilen tekrarlayan üretra hastalığı"
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "ÜRETRA",
-  "madde_etiketi": "",
-  "kanonik_ad": "Üretra darlığı",
-  "ham_satir": "Sık tekrarlayan ve tedaviyle kür sağlanabilen üretra darlığı"
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "ÜRETRA",
-  "madde_etiketi": "",
-  "kanonik_ad": "Üretrektomi",
-  "ham_satir": "Üretrektomi"
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "PENİS",
-  "madde_etiketi": "",
-  "kanonik_ad": "Erektil disfonksiyon",
-  "ham_satir": "Medikal tedaviyle kısmi kür sağlanabilen erektil disfonksiyon"
- },
- {
-  "sayfa": "ek2_076",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "PENİS",
-  "madde_etiketi": "",
-  "kanonik_ad": "Penis hastalığı",
-  "ham_satir": "Tedaviye yeterli kür sağlanamayan penis hastalığı"
- },
- {
-  "sayfa": "ek2_077",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "PENİS",
-  "madde_etiketi": "",
-  "kanonik_ad": "Penektomi",
-  "ham_satir": "Penektomi"
- },
- {
-  "sayfa": "ek2_077",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "TESTİS, EPİDİDİM, SPERMATİK KORD",
-  "madde_etiketi": "",
-  "kanonik_ad": "Testis ve epididim hastalığı",
-  "ham_satir": "Tedaviyle düzeltilebilen tekrarlayan testis, epididim hastalığı"
- },
- {
-  "sayfa": "ek2_077",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "TESTİS, EPİDİDİM, SPERMATİK KORD",
-  "madde_etiketi": "",
-  "kanonik_ad": "Orşiektomi",
-  "ham_satir": "Orşiektomi"
- },
- {
-  "sayfa": "ek2_077",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "TESTİS, EPİDİDİM, SPERMATİK KORD",
-  "madde_etiketi": "",
-  "kanonik_ad": "İnfertilite",
-  "ham_satir": "İnfertilite"
- },
- {
-  "sayfa": "ek2_077",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "PROSTAT VE VEZİKULOSEMİNALİS",
-  "madde_etiketi": "",
-  "kanonik_ad": "Prostat ve veziküloseminalis hastalığı",
-  "ham_satir": "Tedaviyle düzeltilebilen tekrarlayan prostat. vezikuloseminalis hastalığı"
- },
- {
-  "sayfa": "ek2_077",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "PROSTAT VE VEZİKULOSEMİNALİS",
-  "madde_etiketi": "",
-  "kanonik_ad": "Prostatektomi",
-  "ham_satir": "Prostatektomi. V , Seminalis Eksizyonu"
- },
- {
-  "sayfa": "ek2_078",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "İ)RİNER İNKONTİNANS",
-  "madde_etiketi": "",
-  "kanonik_ad": "Üriner inkontinans",
-  "ham_satir": "İ)RİNER İNKONTİNANS"
- },
- {
-  "sayfa": "ek2_078",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "İ)RİNER İNKONTİNANS",
-  "madde_etiketi": "",
-  "kanonik_ad": "Urge inkontinans",
-  "ham_satir": "Tedaviye kısmi yanıt veren urge inkontinans"
- },
- {
-  "sayfa": "ek2_078",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "İ)RİNER İNKONTİNANS",
-  "madde_etiketi": "",
-  "kanonik_ad": "Stress inkontinans",
-  "ham_satir": "Tedaviye kısmi yanıt veren şiddetli stress inkontinans veya urge inkontinans"
- },
- {
-  "sayfa": "ek2_078",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "SKROTUM",
-  "madde_etiketi": "",
-  "kanonik_ad": "Skrotum hastalığı",
-  "ham_satir": "Tedaviye kısmi yanıt veren rekürren skrotum hastalığı"
- },
- {
-  "sayfa": "ek2_078",
-  "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
-  "alt_bolum": "ÜRİNER FİSTÜLLER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Üriner fistül",
-  "ham_satir": "Aralıklı hafif-orta derecede drenaja yol açan üriner fistül veya abse"
- },
- {
-  "sayfa": "ek2_082",
-  "bolum_adi": "ENDOKRİN SİSTEM",
-  "alt_bolum": "Metabolizma Hastalıkları",
-  "madde_etiketi": "ı)",
-  "kanonik_ad": "Glikozaminoglikan metabolizması bozuklukları",
-  "ham_satir": "Glikozaminoglikan metabolizması bozuklukları (organ disfonksiyonu yapmış)"
- },
- {
-  "sayfa": "ek2_082",
-  "bolum_adi": "ENDOKRİN SİSTEM",
-  "alt_bolum": "Metabolizma Hastalıkları",
-  "madde_etiketi": "m)",
-  "kanonik_ad": "Glikoprotein metabolizması bozuklukları",
-  "ham_satir": "Glikoprotein metabolizması bozuklukları (organ disfonksiyonu yapmış)"
- },
- {
-  "sayfa": "ek2_082",
-  "bolum_adi": "ENDOKRİN SİSTEM",
-  "alt_bolum": "Metabolizma Hastalıkları",
-  "madde_etiketi": "n)",
-  "kanonik_ad": "Kistik fibrozis",
-  "ham_satir": "Kistik fibrozis (organ disfonksiyonu yapmış)"
- },
- {
-  "sayfa": "ek2_082",
-  "bolum_adi": "ENDOKRİN SİSTEM",
-  "alt_bolum": "Metabolizma Hastalıkları",
-  "madde_etiketi": "o)",
-  "kanonik_ad": "İskelet displazileri",
-  "ham_satir": "İskelet displazileri"
- },
- {
-  "sayfa": "ek2_082",
-  "bolum_adi": "ENDOKRİN SİSTEM",
-  "alt_bolum": "Metabolizma Hastalıkları",
-  "madde_etiketi": "p)",
-  "kanonik_ad": "Akondroplazi",
-  "ham_satir": "Akondroplazi"
- },
- {
-  "sayfa": "ek2_082",
-  "bolum_adi": "ENDOKRİN SİSTEM",
-  "alt_bolum": "Metabolizma Hastalıkları",
-  "madde_etiketi": "ı-",
-  "kanonik_ad": "Akondroplazi dışı iskelet displazileri",
-  "ham_satir": "Akondroplazi dışı iskelet displazileri"
- },
- {
-  "sayfa": "ek2_082",
-  "bolum_adi": "ENDOKRİN SİSTEM",
-  "alt_bolum": "Metabolizma Hastalıkları",
-  "madde_etiketi": "r)",
-  "kanonik_ad": "Ailevi Akdeniz Ateşi",
-  "ham_satir": "Ailevi Akdeniz Ateşi:"
- },
- {
-  "sayfa": "ek2_083",
-  "bolum_adi": "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
-  "alt_bolum": "",
-  "madde_etiketi": "1-",
-  "kanonik_ad": "Akciğer, plevra ve göğüs kafesi hastalıkları",
-  "ham_satir": "l-Doğuştan veya kazanılmış akciğer, plevra ve göğüs kafesi hastalıkları veya akciğeri tutan"
- },
- {
-  "sayfa": "ek2_083",
-  "bolum_adi": "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
-  "alt_bolum": "",
-  "madde_etiketi": "1-",
-  "kanonik_ad": "Kronik kor pulmonale",
-  "ham_satir": "c- Ağır derecede etkilenme varsa veya kronik kor pulmonqle gelişmişse"
- },
- {
-  "sayfa": "ek2_083",
-  "bolum_adi": "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
-  "alt_bolum": "",
-  "madde_etiketi": "2-",
-  "kanonik_ad": "Akciğer ve/veya plevra tüberkülozu",
-  "ham_satir": "2-Akciğer ve/veya plevra tüberkülozunda verilecek karar tedavi sonunda ve I. maddedeki"
- },
- {
-  "sayfa": "ek2_083",
-  "bolum_adi": "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
-  "alt_bolum": "",
-  "madde_etiketi": "2-",
-  "kanonik_ad": "İlaca dirençli kronik tüberküloz",
-  "ham_satir": "*İlaca dirençli kronik tüberkülozlu olgular aym şekilde uygun tedavi süresinin bitiminden"
- },
- {
-  "sayfa": "ek2_083",
-  "bolum_adi": "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
-  "alt_bolum": "",
-  "madde_etiketi": "2-",
-  "kanonik_ad": "Ekstrapulmoner tüberküloz",
-  "ham_satir": "* *Ekstra pulmoner tüberkülozlu olgularda ise tedavi sonunda ilgili branş tarafindan engel"
- },
- {
-  "sayfa": "ek2_083",
-  "bolum_adi": "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
-  "alt_bolum": "",
-  "madde_etiketi": "4-",
-  "kanonik_ad": "Tek taraflı pnömonektomi",
-  "ham_satir": "4- Tek taraflı pnömonektomi"
- },
- {
-  "sayfa": "ek2_083",
-  "bolum_adi": "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
-  "alt_bolum": "",
-  "madde_etiketi": "5-",
-  "kanonik_ad": "Akciğer transplantasyonu",
-  "ham_satir": "5- Akciğer transplantasyonu"
- },
- {
-  "sayfa": "ek2_084",
-  "bolum_adi": "YANIKLAR",
-  "alt_bolum": "VI- SİNDİRİM SİSTEMİNİ İLGİLENDİREN YANIK ARIZALARI",
-  "madde_etiketi": "a)",
-  "kanonik_ad": "Curling ülseri",
-  "ham_satir": "a)Curling ülseri perforasyonu sonucu opere edilen vakalar ilgili branş tarafindan değerIendirilir."
- },
- {
-  "sayfa": "ek2_084",
-  "bolum_adi": "YANIKLAR",
-  "alt_bolum": "VI- SİNDİRİM SİSTEMİNİ İLGİLENDİREN YANIK ARIZALARI",
-  "madde_etiketi": "b)",
-  "kanonik_ad": "Yanığa bağlı özefagus darlığı",
-  "ham_satir": "b)Yamğa bağlı özefagus darlıkları ilgili branş tarafından değerlendirilir."
- },
- {
-  "sayfa": "ek2_085",
-  "bolum_adi": "YANIKLAR",
-  "alt_bolum": "VII- HAREKET SİSTEMİNİ İLGİLENDİREN YANIK ARIZALARI",
-  "madde_etiketi": "b)",
-  "kanonik_ad": "Sindaktili",
-  "ham_satir": "b)Yanık sebebiyle kalmış sindaktililer ilgili branş tarafından değerlendirilir."
- },
- {
-  "sayfa": "ek2_085",
-  "bolum_adi": "YANIKLAR",
-  "alt_bolum": "VII- HAREKET SİSTEMİNİ İLGİLENDİREN YANIK ARIZALARI",
-  "madde_etiketi": "d)",
-  "kanonik_ad": "Kostal kondrit",
-  "ham_satir": "d)Yamk sonrası kostal kondritis ve heterotopik periartiküler kemik oluşması ilgili branş tarafından"
- },
- {
-  "sayfa": "ek2_085",
-  "bolum_adi": "YANIKLAR",
-  "alt_bolum": "VII- HAREKET SİSTEMİNİ İLGİLENDİREN YANIK ARIZALARI",
-  "madde_etiketi": "d)",
-  "kanonik_ad": "Heterotopik periartiküler kemik oluşumu",
-  "ham_satir": "d)Yamk sonrası kostal kondritis ve heterotopik periartiküler kemik oluşması ilgili branş tarafından"
- },
- {
-  "sayfa": "ek2_085",
-  "bolum_adi": "YANIKLAR",
-  "alt_bolum": "VIII- SİNİR SİSTEMİNİ İLGİLENDİREN YANIK ARAZILARI",
-  "madde_etiketi": "a)",
-  "kanonik_ad": "Yanık sonrası periferik sinir lezyonu",
-  "ham_satir": "a)Yamk sonrası oluşan merkezi ve periferik sinir lezyonları ilgili branş tarafından değerlendirilir."
- },
- {
-  "sayfa": "ek2_086",
-  "bolum_adi": "ONKOLOJİ",
-  "alt_bolum": "Tümörlerin Sınıflaması",
-  "madde_etiketi": "4-",
-  "kanonik_ad": "Malign tümör",
-  "ham_satir": "4- İleri klinik evreli (Evre III ve IV) malign tümörü olan remisyona girmeyen veya tedavi"
- },
- {
-  "sayfa": "ek2_086",
-  "bolum_adi": "ONKOLOJİ",
-  "alt_bolum": "Tümörlerin Sınıflaması",
-  "madde_etiketi": "",
-  "kanonik_ad": "Malign transformasyon gösteren benign tümör",
-  "ham_satir": "Malign transformasyon gösteren benign tümörlerde primer tümörün sebep olduğu veya bu tümöre"
- },
- {
-  "sayfa": "ek2_086",
-  "bolum_adi": "ONKOLOJİ",
-  "alt_bolum": "Tümörlerin Sınıflaması",
-  "madde_etiketi": "6-",
-  "kanonik_ad": "Glioblastoma multiforme",
-  "ham_satir": "6-Yüksek dereli opere beyin tümörleri: (örn G4 glioblastomi multiforme)"
- },
- {
-  "sayfa": "ek2_087",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "YÜKSEK KORTİKAL FONKSİYON BOZUKLUKLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Yüksek kortikal fonksiyon bozuklukları",
-  "ham_satir": "YÜKSEK KORTİKAL FONKSİYON BOZUKLUKLARI"
- },
- {
-  "sayfa": "ek2_087",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "AFAZİLER",
-  "madde_etiketi": "A-",
-  "kanonik_ad": "Motor afazi",
-  "ham_satir": "A-MOTOR"
- },
- {
-  "sayfa": "ek2_087",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "AFAZİLER",
-  "madde_etiketi": "B-",
-  "kanonik_ad": "Sensöriyel afazi",
-  "ham_satir": "B-SENSÖRİYEL"
- },
- {
-  "sayfa": "ek2_087",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "AFAZİLER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Agnozi",
-  "ham_satir": "Agnozi, diskonneksiyon sendromları gibi diğer Yüksek Kortikal Fonksiyon"
- },
- {
-  "sayfa": "ek2_087",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "AFAZİLER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Diskonneksiyon sendromları",
-  "ham_satir": "Agnozi, diskonneksiyon sendromları gibi diğer Yüksek Kortikal Fonksiyon"
- },
- {
-  "sayfa": "ek2_088",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "EPİLEPSİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Epilepsi",
-  "ham_satir": "EPİLEPSİ (Uygun ve yeterli tedavi altında)"
- },
- {
-  "sayfa": "ek2_088",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "UYKU İLE İLİŞKİLİ BOZUKLUKLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Uyku ile ilişkili bozukluklar",
-  "ham_satir": "UYKU İLE İLİŞKİLİ BOZUKLUKLAR*"
- },
- {
-  "sayfa": "ek2_089",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "NÖROJENİK KAYNAKLI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Nörojenik kaynaklı ağrı",
-  "ham_satir": "NÖROJENİK KAYNAKLI"
- },
- {
-  "sayfa": "ek2_089",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "NÖROJENİK KAYNAKLI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Primer baş ağrıları",
-  "ham_satir": "*Primer baş ağrıları; nevraljiler, santral veya periferik kaynaklı nöropatik ağrılar (ağrının"
- },
- {
-  "sayfa": "ek2_089",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "NÖROJENİK KAYNAKLI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Nevralji",
-  "ham_satir": "*Primer baş ağrıları; nevraljiler, santral veya periferik kaynaklı nöropatik ağrılar (ağrının"
- },
- {
-  "sayfa": "ek2_089",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "NÖROJENİK KAYNAKLI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Nöropatik ağrı",
-  "ham_satir": "*Primer baş ağrıları; nevraljiler, santral veya periferik kaynaklı nöropatik ağrılar (ağrının"
- },
- {
-  "sayfa": "ek2_089",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "DEMANS",
-  "madde_etiketi": "",
-  "kanonik_ad": "Demans",
-  "ham_satir": "DEMANS"
- },
- {
-  "sayfa": "ek2_091",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "KRANİAL SİNİR BOZUKLUKLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kranial sinir bozuklukları",
-  "ham_satir": "KRANİAL SİNİR BOZUKLUKLARI"
- },
- {
-  "sayfa": "ek2_091",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "KRANİAL SİNİR BOZUKLUKLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Trigeminal nevralji",
-  "ham_satir": "Trigeminal Nevralji"
- },
- {
-  "sayfa": "ek2_091",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "KRANİAL SİNİR BOZUKLUKLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Periferik fasiyal paralizi",
-  "ham_satir": "PERİFERİK FASİAL PARALİZİ"
- },
- {
-  "sayfa": "ek2_092",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "DİZARTRİ VE DİSFAJİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Disfaji",
-  "ham_satir": "Hafif derecede dizartri, distoni veya"
- },
- {
-  "sayfa": "ek2_092",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "HAREKET BOZUKLUKLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Hareket bozuklukları",
-  "ham_satir": "HAREKET BOZUKLUKLARI"
- },
- {
-  "sayfa": "ek2_092",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "HAREKET BOZUKLUKLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Tremor",
-  "ham_satir": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını"
- },
- {
-  "sayfa": "ek2_092",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "HAREKET BOZUKLUKLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kore",
-  "ham_satir": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını"
- },
- {
-  "sayfa": "ek2_092",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "HAREKET BOZUKLUKLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Athetozis",
-  "ham_satir": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını"
- },
- {
-  "sayfa": "ek2_092",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "HAREKET BOZUKLUKLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Hemiballismus",
-  "ham_satir": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını"
- },
- {
-  "sayfa": "ek2_092",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "HAREKET BOZUKLUKLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Distoni",
-  "ham_satir": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını"
- },
- {
-  "sayfa": "ek2_092",
-  "bolum_adi": "SİNİR SİSTEMİ",
-  "alt_bolum": "DİZARTRİ VE DİSFAJİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Dizartri ve disfaji",
-  "ham_satir": "DİZARTRİ VE DİSFAJİ"
- },
- {
-  "sayfa": "ek2_093",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "I. OMURGAYA AİT SORUNLARDA ENGELLİLİK",
-  "madde_etiketi": "",
-  "kanonik_ad": "Omurgaya ait sorunlar",
-  "ham_satir": "ı. OMURGAYA AİT SORUNLARDA ENGELLİLİK"
- },
- {
-  "sayfa": "ek2_098",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "I. OMURGAYA AİT SORUNLARDA ENGELLİLİK",
-  "madde_etiketi": "",
-  "kanonik_ad": "Skolyoz",
-  "ham_satir": "Skolyoz için kardiovasküler sistem ve göğüs hastalıkları ilgili tabloları ile eklem hareket"
- },
- {
-  "sayfa": "ek2_099",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "1.1.2. EKLEM HAREKET AÇIKLIĞI MODELİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Servikal omurga hareket kısıtlılığı",
-  "ham_satir": "Tablo 1.4- Servikal omurgada hareket kısıtlılığına bağlı engellilik oranları (Eklem Hareket Açıklığı"
- },
- {
-  "sayfa": "ek2_099",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "1.1.2. EKLEM HAREKET AÇIKLIĞI MODELİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Torakal omurga hareket kısıtlılığı",
-  "ham_satir": "Tablo 1.5- Torakal omurgada hareket kısıtlılığına bağlı engellilik oranları."
- },
- {
-  "sayfa": "ek2_101",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "1.1.2. EKLEM HAREKET AÇIKLIĞI MODELİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Lomber omurga hareket kısıtlılığı",
-  "ham_satir": "Tablo 1.6- Lomber omurgada hareket kısıtlılığına bağlı engellilik oranları."
- },
- {
-  "sayfa": "ek2_097",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "1.1.2. EKLEM HAREKET AÇIKLIĞI MODELİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Omurga ankilozu",
-  "ham_satir": "Eğer omurgada bir miktar hareket olmasına rağmen aynı zamanda ankiloz var ise, nötral pozisyona en yakın hareket derecesi ankiloz derecesi olarak kabul edilir ve"
- },
- {
-  "sayfa": "ek2_102",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "SPESİFİK OMURGA HASTALIĞI TANISINA BAĞLI ENGELLİLİK",
-  "madde_etiketi": "",
-  "kanonik_ad": "Vertebra kompresyon kırığı",
-  "ham_satir": "Bir vertebra cisminin kompresyonu"
- },
- {
-  "sayfa": "ek2_102",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "SPESİFİK OMURGA HASTALIĞI TANISINA BAĞLI ENGELLİLİK",
-  "madde_etiketi": "",
-  "kanonik_ad": "Posterior eleman kırığı",
-  "ham_satir": "Posterior eleman kırığı (Pedikül-lamina-artiküle"
- },
- {
-  "sayfa": "ek2_102",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "SPESİFİK OMURGA HASTALIĞI TANISINA BAĞLI ENGELLİLİK",
-  "madde_etiketi": "",
-  "kanonik_ad": "Vertebranın redükte dislokasyonu",
-  "ham_satir": "Bir vertebranın redükte dislokasyonu"
- },
- {
-  "sayfa": "ek2_102",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "SPESİFİK OMURGA HASTALIĞI TANISINA BAĞLI ENGELLİLİK",
-  "madde_etiketi": "",
-  "kanonik_ad": "İntervertebral disk lezyonu",
-  "ham_satir": "İntervertebral disk veya diğer yumuşak doku lezyonu"
- },
- {
-  "sayfa": "ek2_102",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "SPESİFİK OMURGA HASTALIĞI TANISINA BAĞLI ENGELLİLİK",
-  "madde_etiketi": "",
-  "kanonik_ad": "Spondilolizis ve spondilolistezis",
-  "ham_satir": "meliyat Edilmemiş Spondilolizis ve Spondilolistezis"
- },
- {
-  "sayfa": "ek2_103",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "SPESİFİK OMURGA HASTALIĞI TANISINA BAĞLI ENGELLİLİK",
-  "madde_etiketi": "",
-  "kanonik_ad": "Spinal stenoz",
-  "ham_satir": "meliyatlı Spinal Stenoz, Segmental İnstabilite, Kırık, Dislokasyon"
- },
- {
-  "sayfa": "ek2_103",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "SPESİFİK OMURGA HASTALIĞI TANISINA BAĞLI ENGELLİLİK",
-  "madde_etiketi": "",
-  "kanonik_ad": "Segmental instabilite",
-  "ham_satir": "meliyatlı Spinal Stenoz, Segmental İnstabilite, Kırık, Dislokasyon"
- },
- {
-  "sayfa": "ek2_104",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "SPİNAL SİNİR KAYIPLARINA BAĞLI ENGELLİLİK",
-  "madde_etiketi": "",
-  "kanonik_ad": "Spinal sinir kayıpları",
-  "ham_satir": "SPİNAL SİNİR KAYIPLARINA BAĞLI ENGELLİLİK"
- },
- {
-  "sayfa": "ek2_107",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "SPİNAL SİNİR KAYIPLARINA BAĞLI ENGELLİLİK",
-  "madde_etiketi": "",
-  "kanonik_ad": "Radikülopati",
-  "ham_satir": "Tam: Radikülopati ile birlikte rekürrent diskopati"
- },
- {
-  "sayfa": "ek2_108",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "2. ÜST EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Üst ekstremite sorunları",
-  "ham_satir": "2. ÜST EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI"
- },
- {
-  "sayfa": "ek2_135",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Üst ekstremite ampütasyonları",
-  "ham_satir": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI"
- },
- {
-  "sayfa": "ek2_135",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Skapulotorasik ampütasyon",
-  "ham_satir": "-Skapulotorasik"
- },
- {
-  "sayfa": "ek2_135",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Omuz dezartikülasyonu",
-  "ham_satir": "-Omuz dezanikülasyonu"
- },
- {
-  "sayfa": "ek2_135",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Metakarpofalangeal ampütasyon",
-  "ham_satir": "smetakarpofalangiyal eklem"
- },
- {
-  "sayfa": "ek2_135",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Başparmak ampütasyonu",
-  "ham_satir": "-Başparmak:"
- },
- {
-  "sayfa": "ek2_135",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Parmak ampütasyonu",
-  "ham_satir": "Parmak"
- },
- {
-  "sayfa": "ek2_136",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "2.3 ÜST EKSTREMİTE ARTROPLASTİLERİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Üst ekstremite artroplastileri",
-  "ham_satir": "2.3 ÜST EKSTREMİTE ARTROPLASTİLERİ"
- },
- {
-  "sayfa": "ek2_136",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "2.3 ÜST EKSTREMİTE ARTROPLASTİLERİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Tüm omuz artroplastisi",
-  "ham_satir": "Tüm omuz"
- },
- {
-  "sayfa": "ek2_136",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "2.3 ÜST EKSTREMİTE ARTROPLASTİLERİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Tüm dirsek artroplastisi",
-  "ham_satir": "Tüm dirsek"
- },
- {
-  "sayfa": "ek2_136",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "2.3 ÜST EKSTREMİTE ARTROPLASTİLERİ",
-  "madde_etiketi": "",
-  "kanonik_ad": "Tüm el bileği artroplastisi",
-  "ham_satir": "Tüm el bileği"
- },
- {
-  "sayfa": "ek2_137",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "2.4. ÜST EKSTREMİTENİN DİĞER SORUNLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Tenosinovit",
-  "ham_satir": "Tenosinovit"
- },
- {
-  "sayfa": "ek2_138",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "2.5 PERİFERİK SİNİR KAYIPLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Periferik sinir lezyonu",
-  "ham_satir": "Tablo 2.10- Periferik sinir lezyonu sonucu ortaya çıkan ağrı veya duyu kaybına bağlı üst"
- },
- {
-  "sayfa": "ek2_139",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "2.5 PERİFERİK SİNİR KAYIPLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Spinal sinir lezyonu",
-  "ham_satir": "Tablo 2.12- Spinal sinirlerin unilateral duyu, motor veya birleşik kayıplarının üst"
- },
- {
-  "sayfa": "ek2_139",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "2.5 PERİFERİK SİNİR KAYIPLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Brakial pleksus lezyonu",
-  "ham_satir": "Tablo 2.13- Brakial pleksusun motor, duyu veya birleşik kayıplarının üst ekstremitede neden"
- },
- {
-  "sayfa": "ek2_141",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Alt ekstremite sorunları",
-  "ham_satir": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI"
- },
- {
-  "sayfa": "ek2_143",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Alt ekstremite uzunluk farklılıkları",
-  "ham_satir": "Tablo 3.3- Alt ekstremitenin uzunluk farklılıklarından kaynaklanan engellilik. (bkz tablo"
- },
- {
-  "sayfa": "ek2_144",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Yürüyüş bozukluğu",
-  "ham_satir": "Tablo 3.4- Yürüyüş bozulduğuna göre engellilik oranları. (bkz tablo 3.1)"
- },
- {
-  "sayfa": "ek2_145",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Bacak kaslarındaki atrofi",
-  "ham_satir": "Tablo 3.5- Bacak kaslarındaki atrofiye bağlı engellilik yüzdeleri. (bkz tablo 3.1)"
- },
- {
-  "sayfa": "ek2_146",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Alt ekstremite kas kuvveti kaybı",
-  "ham_satir": "Tablo 3.7- Alt ekstremite kas kuvvetinde kayba bağlı engellilik yüzdeleri. (bkz tablo 3,1)"
- },
- {
-  "sayfa": "ek2_147",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kalça eklemi hareket kısıtlılığı",
-  "ham_satir": "Tablo 3.8b-KaI a eklemi hareket kısıtlı ı iddetine ba 11 en ellili"
- },
- {
-  "sayfa": "ek2_148",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Diz eklemi hareket kısıtlılığı",
-  "ham_satir": "Tablo 3.9- Diz eklemi hareket kısıtlılığına bağlı engellilik."
- },
- {
-  "sayfa": "ek2_148",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Ayak bileği eklemi hareket kısıtlılığı",
-  "ham_satir": "Tablo 3.10- Ayak bileği eklemi hareket kısıtlılığına bağlı engellilik."
- },
- {
-  "sayfa": "ek2_148",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Topuk hareket kısıtlılığı",
-  "ham_satir": "Tablo 3.11- Topuk hareket kısıtlılığına bağlı engellilik."
- },
- {
-  "sayfa": "ek2_148",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Ayak bileği veya topuk deformitesi",
-  "ham_satir": "Tablo 3.12- Ayak bileği veya topuk deformite bozuldukları."
- },
- {
-  "sayfa": "ek2_149",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Ayak başparmak bozuklukları",
-  "ham_satir": "Tablo 3.13- Ayak başparmak bozuklukları *"
- },
- {
-  "sayfa": "ek2_149",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.6 ANKİLOZLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kalça ankilozu",
-  "ham_satir": "Tablo 3.14- Kalçanın fleksiyon pozisyonunda ankilozuna bağlı engellilik oranlan. (*)(bkz tablo"
- },
- {
-  "sayfa": "ek2_150",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.6 ANKİLOZLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Diz ankilozu",
-  "ham_satir": "Tablo 3.19- Dizin varus pozisyonunda ankilozuna bağlı engellilik."
- },
- {
-  "sayfa": "ek2_152",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.6 ANKİLOZLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Ayak bileği ankilozu",
-  "ham_satir": "Tablo 3.23- Ayak bileğinin plantar fleksiyon-dorsofleksiyonda ankilozuna bağlı engellilik."
- },
- {
-  "sayfa": "ek2_153",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.6 ANKİLOZLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Ayak ankilozu",
-  "ham_satir": "Ayak (Arkaayak, Ortaayak, Önayak): Ayağın subtalar parçası İçin optimal ankiloz pozisyonu,"
- },
- {
-  "sayfa": "ek2_154",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.6 ANKİLOZLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Ayak parmaklarının ankilozu",
-  "ham_satir": "Tablo 3.29- Ayak parmaklarının ankilozuna bağlı engellilik."
- },
- {
-  "sayfa": "ek2_155",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.7. AMPUTASYONLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Alt ekstremite ampütasyonları",
-  "ham_satir": "3.7. AMPUTASYONLAR"
- },
- {
-  "sayfa": "ek2_155",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.7. AMPUTASYONLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Hemipelvektomi",
-  "ham_satir": "-Hemipelvektomi"
- },
- {
-  "sayfa": "ek2_155",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.7. AMPUTASYONLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kalça dezartikülasyonu",
-  "ham_satir": "-Kalça dezartikulasyonu"
- },
- {
-  "sayfa": "ek2_155",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.7. AMPUTASYONLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Diz üstü ampütasyon",
-  "ham_satir": "-Diz üstü"
- },
- {
-  "sayfa": "ek2_155",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.7. AMPUTASYONLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Diz dezartikülasyonu",
-  "ham_satir": "-Diz dezartikülasyonu"
- },
- {
-  "sayfa": "ek2_155",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.7. AMPUTASYONLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Diz altı ampütasyon",
-  "ham_satir": "-Diz altı"
- },
- {
-  "sayfa": "ek2_155",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.7. AMPUTASYONLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Syme ampütasyonu",
-  "ham_satir": "-Syme (ayak)"
- },
- {
-  "sayfa": "ek2_155",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.7. AMPUTASYONLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Chopart ampütasyonu",
-  "ham_satir": "-Chopart (orta ayak)"
- },
- {
-  "sayfa": "ek2_155",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.7. AMPUTASYONLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Transmetatarsal ampütasyon",
-  "ham_satir": "-Transmetatarsal"
- },
- {
-  "sayfa": "ek2_156",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kalça replasmanı",
-  "ham_satir": "Tablo 3.31- Kalça replasmanı sonrasında engellilikle ilişkili puanlama.*"
- },
- {
-  "sayfa": "ek2_158",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Diz artroplastisi",
-  "ham_satir": "Tablo 3.32- Diz artroplastisi sonrası engellilikle ilişkili puanlama. *"
- },
- {
-  "sayfa": "ek2_159",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Girdlestone artroplastisi",
-  "ham_satir": "Girdlestone artroplasti"
- },
- {
-  "sayfa": "ek2_159",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Pelvis kırığı",
-  "ham_satir": "Pelvis Kırıkları"
- },
- {
-  "sayfa": "ek2_159",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Asetebular kırık",
-  "ham_satir": "Asetebular kırık"
- },
- {
-  "sayfa": "ek2_159",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Sakroiliak eklem kırığı",
-  "ham_satir": "Sakroiliak eklem kırığı (yer değiştirme göz"
- },
- {
-  "sayfa": "ek2_159",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "İskial bursit",
-  "ham_satir": "İskial bursit (basıncın sık sık azaltılmasını"
- },
- {
-  "sayfa": "ek2_159",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Trokanterik bursit",
-  "ham_satir": "Trokanterik bursit: (kronik) yürüme bozukluğuna"
- },
- {
-  "sayfa": "ek2_159",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Femoral boyun kırığı",
-  "ham_satir": "Femoral boyun kırığı:"
- },
- {
-  "sayfa": "ek2_159",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Femoral şaft kırığı",
-  "ham_satir": "Femoral şaft kırığı"
- },
- {
-  "sayfa": "ek2_160",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Patellar kırık",
-  "ham_satir": "Patellar kırık"
- },
- {
-  "sayfa": "ek2_160",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Patellektomi",
-  "ham_satir": "Patellektomi"
- },
- {
-  "sayfa": "ek2_160",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Menisektomi",
-  "ham_satir": "Menisektomi, medial veya lateral"
- },
- {
-  "sayfa": "ek2_160",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Krusiat veya kollateral ligament laksitesi",
-  "ham_satir": "Krusiat veya kollateral ligament laksitesi"
- },
- {
-  "sayfa": "ek2_160",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Plato kırığı",
-  "ham_satir": "Plato kırığı"
- },
- {
-  "sayfa": "ek2_160",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Suprakondüler veya interkondüler kırık",
-  "ham_satir": "Suprakondüler veya interkondüler kırık"
- },
- {
-  "sayfa": "ek2_160",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Unikondüler replasman",
-  "ham_satir": "Unikondüler"
- },
- {
-  "sayfa": "ek2_160",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Proksimal osteotomi",
-  "ham_satir": "Proksimal Osteotomi"
- },
- {
-  "sayfa": "ek2_160",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Tibia şaft kırığı",
-  "ham_satir": "Tibia şaft kırığı (dizilim bozulduğu)"
- },
- {
-  "sayfa": "ek2_161",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Ayak bileği ligamentöz instabilitesi",
-  "ham_satir": "Ligamentöz instabilite (stres röntgenleri ile)"
- },
- {
-  "sayfa": "ek2_161",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Ayak bileği kırığı",
-  "ham_satir": "Kırık"
- },
- {
-  "sayfa": "ek2_161",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kalkaneal kırık",
-  "ham_satir": "Ekstra-artikü ler (kalkaneal)"
- },
- {
-  "sayfa": "ek2_161",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Subtalar kemik kırığı",
-  "ham_satir": "Subtalar kemik"
- },
- {
-  "sayfa": "ek2_161",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Talonaviküler kemik kırığı",
-  "ham_satir": "Talonaviküler kemik"
- },
- {
-  "sayfa": "ek2_161",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kalkaneoküboid kemik kırığı",
-  "ham_satir": "Kalkaneoküboid kemik"
- },
- {
-  "sayfa": "ek2_162",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Cavus",
-  "ham_satir": "Cavus"
- },
- {
-  "sayfa": "ek2_162",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Rocker bottom",
-  "ham_satir": "Rocker Bottom"
- },
- {
-  "sayfa": "ek2_162",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Talusun avasküler nekrozu",
-  "ham_satir": "Talusun avasküler nekrozu"
- },
- {
-  "sayfa": "ek2_162",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Metatarsal kırık",
-  "ham_satir": "kırık"
- },
- {
-  "sayfa": "ek2_162",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
-  "madde_etiketi": "",
-  "kanonik_ad": "Metatarsalji",
-  "ham_satir": "Metatarsalji ve plantar"
- },
- {
-  "sayfa": "ek2_163",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.9. DOKU KAYBI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Alt ekstremitede doku kaybı",
-  "ham_satir": "3.9. DOKU KAYBI"
- },
- {
-  "sayfa": "ek2_163",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.9. DOKU KAYBI",
-  "madde_etiketi": "",
-  "kanonik_ad": "Kronik osteomiyelit",
-  "ham_satir": "Kronik osteomiyelit de bu yöntem kullanılarak değerlendirilir."
- },
- {
-  "sayfa": "ek2_164",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "3.11. VASKÜLER HASTALIKLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Periferal vasküler hastalık",
-  "ham_satir": "Tablo 3.36- Alt ekstremitenin periferik vasküler hastalığına bağlı engellilik. (bkz tablo 3. I)"
- },
- {
-  "sayfa": "ek2_165",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
-  "madde_etiketi": "4.1.",
-  "kanonik_ad": "Serebral bozukluklar",
-  "ham_satir": "SEREBRAL BOZUKLUKLAR"
- },
- {
-  "sayfa": "ek2_166",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Spinal kord ve ilgili bozukluklar",
-  "ham_satir": "SPİNAL KORD ve İLGİLİ BOZUKLUKLAR"
- },
- {
-  "sayfa": "ek2_166",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Periferik sinir sistemi, nöromüsküler bileşke ve kas sistemi hastalıkları",
-  "ham_satir": "PERİFERİK SİNİR SİSTEMİ, NÖROMUSKÜLER BİLEŞKE ve KAS SİSTEMİ"
- },
- {
-  "sayfa": "ek2_166",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Ayakta durabilme, yürüme ve hareket bozuklukları",
-  "ham_satir": "Tablo 4.1- Ayakta durabilme, yürüme ve hareket bozuklukları (santral sinir sistemi veya"
- },
- {
-  "sayfa": "ek2_167",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Üst ekstremite bozuklukları (santral)",
-  "ham_satir": "Tablo 4.2.a- Üst ekstremite bozuklukları"
- },
- {
-  "sayfa": "ek2_168",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Anorektal sistem nörolojik bozuklukları",
-  "ham_satir": "Anorektal Sistem"
- },
- {
-  "sayfa": "ek2_168",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Üriner sistem ve mesane fonksiyon bozukluğu",
-  "ham_satir": "Üriner Sistem/Mesane"
- },
- {
-  "sayfa": "ek2_168",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Solunumda nörolojik bozukluklar",
-  "ham_satir": "Solunumda Nörolojik"
- },
- {
-  "sayfa": "ek2_168",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Cinsel fonksiyon bozukluğu",
-  "ham_satir": "Cinsel Fonksiyon"
- },
- {
-  "sayfa": "ek2_169",
-  "bolum_adi": "KAS-İSKELET SİSTEMİ",
-  "alt_bolum": "SİSTEMİK ROMATİZMAL HASTALIKLAR",
-  "madde_etiketi": "",
-  "kanonik_ad": "Sistemik romatizmal hastalıklar",
-  "ham_satir": "SİSTEMİK ROMATİZMAL HASTALIKLAR"
- }
+  {
+    "sayfa": "ek2_029",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "ARİTMİLER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Aritmiler",
+    "ham_satir": "ARİTMİLER"
+  },
+  {
+    "sayfa": "ek2_029",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "PULMONER HİPERTANSİYON",
+    "madde_etiketi": "",
+    "kanonik_ad": "Pulmoner hipertansiyon",
+    "ham_satir": "PULMONER HİPERTANSİYON"
+  },
+  {
+    "sayfa": "ek2_030",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "HİPERTANSİYON",
+    "madde_etiketi": "",
+    "kanonik_ad": "Hipertansiyon",
+    "ham_satir": "HİPERTANSİYON"
+  },
+  {
+    "sayfa": "ek2_030",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "HİPERTANSİYON",
+    "madde_etiketi": "2.",
+    "kanonik_ad": "Hipertansif serebrovasküler hastalık",
+    "ham_satir": "2. Hipenansif serebrovasküler hastalık"
+  },
+  {
+    "sayfa": "ek2_030",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "HİPERTANSİYON",
+    "madde_etiketi": "4)",
+    "kanonik_ad": "Sol ventrikül hipertrofisi",
+    "ham_satir": "4) Sol ventrikül hipertrofisi"
+  },
+  {
+    "sayfa": "ek2_030",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "HİPERTANSİYON",
+    "madde_etiketi": "1.",
+    "kanonik_ad": "Proteinüri",
+    "ham_satir": "I. Proteinüri"
+  },
+  {
+    "sayfa": "ek2_030",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "PERİKARD HASTALIKLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Perikard hastalıkları",
+    "ham_satir": "PERİKARD HASTALIKLARI"
+  },
+  {
+    "sayfa": "ek2_030",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "PERİKARD HASTALIKLARI",
+    "madde_etiketi": "EVRE 111:",
+    "kanonik_ad": "Konstrüktif perikardit",
+    "ham_satir": "Fizik muayene ve ekokardiyografi ile konstruktif perikardit tamsı konulan veya perikardiektomi"
+  },
+  {
+    "sayfa": "ek2_030",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "HİPERTROFİK KARDİYOMİYOPATİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Hipertrofik kardiyomiyopati",
+    "ham_satir": "HİPERTROFİK KARDİYOMİYOPATİ"
+  },
+  {
+    "sayfa": "ek2_030",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "KALP YETMEZLİĞİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kalp yetmezliği",
+    "ham_satir": "KALP YETMEZLİĞİ"
+  },
+  {
+    "sayfa": "ek2_031",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "DOĞUŞTAN KALP HASTALIKLARI ( DKH )",
+    "madde_etiketi": "",
+    "kanonik_ad": "Doğuştan kalp hastalıkları",
+    "ham_satir": "DOĞUŞTAN KALP HASTALIKLARI ( DKH )"
+  },
+  {
+    "sayfa": "ek2_033",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "KALP HASTALIKLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kalp transplantasyonu",
+    "ham_satir": "Kalp transplantasyonu olan kişilerin Engel Oram % 70 olup, transplante kalbin"
+  },
+  {
+    "sayfa": "ek2_033",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "KALP HASTALIKLARI",
+    "madde_etiketi": "B.",
+    "kanonik_ad": "Miyokard infarktüsü",
+    "ham_satir": "Miyokard infarktüsü geçiren veya daha önceden koroner aner hastalığı tanısı alan veya girişimsel-"
+  },
+  {
+    "sayfa": "ek2_033",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "DAMAR HASTALIKLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Damar hastalıkları",
+    "ham_satir": "DAMAR HASTALIKLARI"
+  },
+  {
+    "sayfa": "ek2_033",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "DAMAR HASTALIKLARI",
+    "madde_etiketi": "A-",
+    "kanonik_ad": "Arteriosklerozis obliterans (ASO)",
+    "ham_satir": "A- Arteriosklerozis obliterans (ASO)"
+  },
+  {
+    "sayfa": "ek2_034",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "DAMAR HASTALIKLARI",
+    "madde_etiketi": "B-",
+    "kanonik_ad": "Tromboangitis obliterans (Buerger)",
+    "ham_satir": "B- Tromboangitis obliterans (Buerger):"
+  },
+  {
+    "sayfa": "ek2_034",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "DAMAR HASTALIKLARI",
+    "madde_etiketi": "2-",
+    "kanonik_ad": "Fonksiyonel damar hastalıkları",
+    "ham_satir": "2- Fonksiyonel damar hastalığı olanlar (Reynaud Fenomeni, Akrosiyanozis vs.)"
+  },
+  {
+    "sayfa": "ek2_034",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "DAMAR HASTALIKLARI",
+    "madde_etiketi": "2-",
+    "kanonik_ad": "Raynaud fenomeni",
+    "ham_satir": "2- Fonksiyonel damar hastalığı olanlar (Reynaud Fenomeni, Akrosiyanozis vs.)"
+  },
+  {
+    "sayfa": "ek2_034",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "DAMAR HASTALIKLARI",
+    "madde_etiketi": "2-",
+    "kanonik_ad": "Akrosiyanozis",
+    "ham_satir": "2- Fonksiyonel damar hastalığı olanlar (Reynaud Fenomeni, Akrosiyanozis vs.)"
+  },
+  {
+    "sayfa": "ek2_034",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "DAMAR HASTALIKLARI",
+    "madde_etiketi": "3-",
+    "kanonik_ad": "Travmatik damar hastalığı",
+    "ham_satir": "3- Travmatik damar hastalığı olanlar"
+  },
+  {
+    "sayfa": "ek2_034",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "DAMAR HASTALIKLARI",
+    "madde_etiketi": "4-",
+    "kanonik_ad": "Derin ven trombozu",
+    "ham_satir": "4- Venöz sistem hastalıkları: İnvaziv ve noninvaziv tetkiklerle tespit edilmiş derin ven"
+  },
+  {
+    "sayfa": "ek2_034",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "DAMAR HASTALIKLARI",
+    "madde_etiketi": "4-",
+    "kanonik_ad": "Staz ülseri",
+    "ham_satir": "a- Staz ülseri bulunmayanlar"
+  },
+  {
+    "sayfa": "ek2_034",
+    "bolum_adi": "KARDİYOVASKÜLER SİSTEM",
+    "alt_bolum": "DAMAR HASTALIKLARI",
+    "madde_etiketi": "5-",
+    "kanonik_ad": "Lenfödem",
+    "ham_satir": "5- Lenf sistemi hastalıkları: (İster konjenital, ister akkiz lenfödemi olanlar)"
+  },
+  {
+    "sayfa": "ek2_035",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Diplopi",
+    "ham_satir": "Kontrast duyarlık ve glare (kamaşma) kusuru * Diplopi"
+  },
+  {
+    "sayfa": "ek2_040",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kontrast duyarlık ve kamaşma (glare) kusuru",
+    "ham_satir": "Klinik olarak anlamlı kontrast duyarlık — kamaşma (glare) kusuru varlığında (normal oda aydınlatması ile, karanlık odada yalnızca arkadan aydınlatmalı eşel veya projeksiyon eşelinin aydınlattığı ortama ait ölçümler arasında görme keskinliği puanını 15 puan veya daha fazla değiştiren, diğer bir ifadeyle ondalık (Snellen) görme keskinliği düzeyini iki kat değiştiren) )",
+    "durum": "duzeltilmis"
+  },
+  {
+    "sayfa": "ek2_042",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "2.",
+    "kanonik_ad": "Fonksiyonel körlük",
+    "ham_satir": "için \"fonksiyonel körlük”ten bahsedilir. Göz yuvarlağının yokluğunda da \"anatomik körlük” söz"
+  },
+  {
+    "sayfa": "ek2_042",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "2.",
+    "kanonik_ad": "Anatomik körlük",
+    "ham_satir": "için \"fonksiyonel körlük”ten bahsedilir. Göz yuvarlağının yokluğunda da \"anatomik körlük” söz"
+  },
+  {
+    "sayfa": "ek2_042",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "2.",
+    "kanonik_ad": "Tek gözlülük (monokülarite)",
+    "ham_satir": "\"tek gözlülük durumu” (monokülarite) diyeceğimiz özel bir durum ortaya çıkar."
+  },
+  {
+    "sayfa": "ek2_043",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Göz ekzanterasyonu",
+    "ham_satir": "Ekzanterasyon ameliyatı geçirmiş veya travmatik nedenle aynı derecede kayıp gerçekleşmiş, tek göz"
+  },
+  {
+    "sayfa": "ek2_044",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
+    "madde_etiketi": "A.",
+    "kanonik_ad": "Nistagmus",
+    "ham_satir": "Nistagmusu olan hastalarda en iyi görme keskinliğinin tespit edildiği sıfır noktası (null point)"
+  },
+  {
+    "sayfa": "ek2_044",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
+    "madde_etiketi": "B.",
+    "kanonik_ad": "Lagoftalmi",
+    "ham_satir": "Kalıcı tarsorafi yapılmış kapak kapanma kusurlarında (Lagoftalmi, yanık skarı vb)"
+  },
+  {
+    "sayfa": "ek2_044",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
+    "madde_etiketi": "C.",
+    "kanonik_ad": "Entropion",
+    "ham_satir": "Sekel hâlde, epifora ve/veya kornea hasarına neden olan entropion, ektropion durumlarında"
+  },
+  {
+    "sayfa": "ek2_044",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
+    "madde_etiketi": "C.",
+    "kanonik_ad": "Ektropion",
+    "ham_satir": "Sekel hâlde, epifora ve/veya kornea hasarına neden olan entropion, ektropion durumlarında"
+  },
+  {
+    "sayfa": "ek2_044",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
+    "madde_etiketi": "C.",
+    "kanonik_ad": "Epifora",
+    "ham_satir": "Sekel hâlde, epifora ve/veya kornea hasarına neden olan entropion, ektropion durumlarında"
+  },
+  {
+    "sayfa": "ek2_044",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
+    "madde_etiketi": "D.",
+    "kanonik_ad": "Lakrimal kanal tıkanıklığı",
+    "ham_satir": "Sürekli göz sulanmasına neden olan lakrimal kanal tıkanmalarında (tedavi ile düzelmesi"
+  },
+  {
+    "sayfa": "ek2_044",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
+    "madde_etiketi": "F.",
+    "kanonik_ad": "Pitozis",
+    "ham_satir": "F. Ağır pitozise bağlı primer pozisyonda pupilla açıklığı yarıdan fazla örtülen, sürekli alın kasını"
+  },
+  {
+    "sayfa": "ek2_045",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "DİĞER YAPISAL VE FONKSİYONEL KUSURLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Göz ve adneksleri tümörü",
+    "ham_satir": "Göz Ve Adnekslerinde Tümör Varlığında Engel Oranının DeğerIendirilmesi"
+  },
+  {
+    "sayfa": "ek2_045",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "",
+    "kanonik_ad": "Ambliyopi",
+    "ham_satir": "Tanı: Açıklanmayan amliyopi, muhtemelen konjenital."
+  },
+  {
+    "sayfa": "ek2_046",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "",
+    "kanonik_ad": "Retinoblastom",
+    "ham_satir": "Tanı: Retinoblastom hikayesi."
+  },
+  {
+    "sayfa": "ek2_047",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kornea opasitesi",
+    "ham_satir": "Tam: Kornea opasİtesİne bağlı görme kaybı."
+  },
+  {
+    "sayfa": "ek2_043",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "",
+    "kanonik_ad": "Glokom",
+    "ham_satir": "60 yaşında bayan hasta. Glokom tanısı ile izleniyor, 2 yıl önce sol gözün görmesini tümüyle"
+  },
+  {
+    "sayfa": "ek2_043",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "",
+    "kanonik_ad": "Absolü glokom",
+    "ham_satir": "Fizik muayene: Sağ absolu glokom, sol ileri derecede glokomatöz optik sinir çukurlaşması mevcut."
+  },
+  {
+    "sayfa": "ek2_048",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "",
+    "kanonik_ad": "Katarakt",
+    "ham_satir": "Tanı: Katarakta bağlı görme kaybı."
+  },
+  {
+    "sayfa": "ek2_048",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "",
+    "kanonik_ad": "Yaşlılık kataraktı",
+    "ham_satir": "Yaşlılık kataraktı veya görsel artış beklentisi olan kataraktlar nedeniyle düştüğü belirlenen"
+  },
+  {
+    "sayfa": "ek2_049",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "",
+    "kanonik_ad": "Stargardt juvenil makulopati",
+    "ham_satir": "Tam: Stargardtjuvenil makulopati."
+  },
+  {
+    "sayfa": "ek2_051",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "GÖRME ALANI YETERSİZLİĞİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Görme alanı yetersizliği",
+    "ham_satir": "GÖRME ALANI YETERSİZLİĞİ"
+  },
+  {
+    "sayfa": "ek2_056",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "",
+    "kanonik_ad": "Santral skotom",
+    "ham_satir": "Santral skotom için ayrı bir kurala daha ihtiyaç vardır. Santral skotomlar görme keskinliğini"
+  },
+  {
+    "sayfa": "ek2_056",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "",
+    "kanonik_ad": "Homonim hemianopi",
+    "ham_satir": "Tam homonim hemianopi %50'lik görme alan kaybı oluşturur."
+  },
+  {
+    "sayfa": "ek2_057",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "",
+    "kanonik_ad": "Bitemporal hemianopsi",
+    "ham_satir": "Bitemporal hemianopislerde ise her bir gözün farklı yarılarında kayıp olduğu İçin binoküler görme"
+  },
+  {
+    "sayfa": "ek2_057",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "",
+    "kanonik_ad": "Periferik görme alanı defekti",
+    "ham_satir": "Periferik Görme Alam Defekti"
+  },
+  {
+    "sayfa": "ek2_058",
+    "bolum_adi": "GÖRME SİSTEMİ",
+    "alt_bolum": "",
+    "madde_etiketi": "",
+    "kanonik_ad": "Retinoskizis",
+    "ham_satir": "retinoskizisli bir hastanın görme alanı testi."
+  },
+  {
+    "sayfa": "ek2_065",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "ı. ANA DEĞERLENDİRME",
+    "madde_etiketi": "",
+    "kanonik_ad": "Özefagus bozuklukları",
+    "ham_satir": "Özefagus bozukluğunu işaret eden semptomlar disfaji, pirozis, retrosternal ağrı,"
+  },
+  {
+    "sayfa": "ek2_065",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "ı. ANA DEĞERLENDİRME",
+    "madde_etiketi": "",
+    "kanonik_ad": "Mide-duodenum bozuklukları",
+    "ham_satir": "Mide-duedonum bozukluğuna ait semptom ve İşaretler bulantı-kusma, ağrı, kanama,"
+  },
+  {
+    "sayfa": "ek2_065",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "ı. ANA DEĞERLENDİRME",
+    "madde_etiketi": "",
+    "kanonik_ad": "İnce bağırsak bozuklukları",
+    "ham_satir": "bozukluğuna ait semptomlar karın ağrısı, ishal, steatore, kanama, tıkanıklık ve kilo kaybım içerir."
+  },
+  {
+    "sayfa": "ek2_065",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "ı. ANA DEĞERLENDİRME",
+    "madde_etiketi": "",
+    "kanonik_ad": "Pankreas fonksiyon bozukluğu",
+    "ham_satir": "Pankreas fonksiyon bozukluğuna ait semptom ve belirtiler karın ağrısı, bulantı-kusma, ishal, steatore,"
+  },
+  {
+    "sayfa": "ek2_065",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "ı. ANA DEĞERLENDİRME",
+    "madde_etiketi": "",
+    "kanonik_ad": "Portal hipertansiyon",
+    "ham_satir": "hemorajiye yol açan portal hipertansiyon, hepatik ensefalopati ve böbrek bozukluğuna yol açan"
+  },
+  {
+    "sayfa": "ek2_065",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "ı. ANA DEĞERLENDİRME",
+    "madde_etiketi": "",
+    "kanonik_ad": "Hepatik ensefalopati",
+    "ham_satir": "hemorajiye yol açan portal hipertansiyon, hepatik ensefalopati ve böbrek bozukluğuna yol açan"
+  },
+  {
+    "sayfa": "ek2_065",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "ı. ANA DEĞERLENDİRME",
+    "madde_etiketi": "",
+    "kanonik_ad": "Özefagus varisi",
+    "ham_satir": "İlerleyen karaciğer rahatsızlığının komplikasyonları ödem, generalize asit, özefagus varisi ve"
+  },
+  {
+    "sayfa": "ek2_067",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "2. ÜST SİNDİRİM KANALI",
+    "madde_etiketi": "2.",
+    "kanonik_ad": "Üst sindirim kanalı bozuklukları",
+    "ham_satir": "2. ÜST SİNDİRİM KANALI (özefagus, mide ve duedonum, ince bağırsak, ve pankreas)"
+  },
+  {
+    "sayfa": "ek2_067",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "2. ÜST SİNDİRİM KANALI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Pankreas transplantasyonu",
+    "ham_satir": "Pankreas transplantasyonunda engel oranı % 70 olup, aşağıdaki tabloya göre"
+  },
+  {
+    "sayfa": "ek2_069",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "4. ENTEROKÜTAN FİSTÜLLER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Cerrahi olarak oluşturulan stomalar",
+    "ham_satir": "Kalıcı cerrahi olarak oluşturulan stomalar, genellikle anatomik kaybı kompanse"
+  },
+  {
+    "sayfa": "ek2_070",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "4. ENTEROKÜTAN FİSTÜLLER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Özefagostomi",
+    "ham_satir": "OZEFAGOSTOMİ"
+  },
+  {
+    "sayfa": "ek2_070",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "4. ENTEROKÜTAN FİSTÜLLER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Gastrostomi",
+    "ham_satir": "GASTROSTOMİ"
+  },
+  {
+    "sayfa": "ek2_070",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "4. ENTEROKÜTAN FİSTÜLLER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Jejunostomi",
+    "ham_satir": "JEJUNOSTOMİ"
+  },
+  {
+    "sayfa": "ek2_070",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "4. ENTEROKÜTAN FİSTÜLLER",
+    "madde_etiketi": "",
+    "kanonik_ad": "İleostomi",
+    "ham_satir": "LEOSTOMİ"
+  },
+  {
+    "sayfa": "ek2_070",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "4. ENTEROKÜTAN FİSTÜLLER",
+    "madde_etiketi": "",
+    "kanonik_ad": "İleal-poş anal anastomoz",
+    "ham_satir": "İLEAL-POŞ ANAL ANASTOMOZ"
+  },
+  {
+    "sayfa": "ek2_070",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "4. ENTEROKÜTAN FİSTÜLLER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kolostomi",
+    "ham_satir": "KOLOSTO"
+  },
+  {
+    "sayfa": "ek2_070",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "5. KARACİĞER VE SAFRA YOLLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Karaciğer hastalıkları",
+    "ham_satir": "a) Karaciğer Hastalıklarına Bağlı Oluşan Kalıcı Bozulduk Sınıflama Kriterleri"
+  },
+  {
+    "sayfa": "ek2_070",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "5. KARACİĞER VE SAFRA YOLLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Karaciğer transplantasyonu",
+    "ham_satir": "Karaciğer transplantasyonlu hastalarda Engel Oranı %70 oranına Tablo 7'de"
+  },
+  {
+    "sayfa": "ek2_071",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "5. KARACİĞER VE SAFRA YOLLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Safra yolları hastalıkları",
+    "ham_satir": "b) Safra Yolları Hastalıklarına Bağlı Oluşan Kalıcı Bozulduk Sınıflama Kriterleri:"
+  },
+  {
+    "sayfa": "ek2_071",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "5. KARACİĞER VE SAFRA YOLLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kolanjit",
+    "ham_satir": "Tekrarlayan kolanjİt İle seyreden ve"
+  },
+  {
+    "sayfa": "ek2_071",
+    "bolum_adi": "SİNDİRİM SİSTEMİ",
+    "alt_bolum": "5. KARACİĞER VE SAFRA YOLLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Koledok obstrüksiyonu",
+    "ham_satir": "Kalıcı sarılık; Oltak safra kanalı (koledok)"
+  },
+  {
+    "sayfa": "ek2_072",
+    "bolum_adi": "KADIN HASTALIKLARI VE DOĞUM",
+    "alt_bolum": "A-VULVA VE VAGİNA",
+    "madde_etiketi": "",
+    "kanonik_ad": "Vulva ve vajina hastalıkları",
+    "ham_satir": "Vulva ve Vagina'nın Kalıcı Bozulduklarının DeğerIendirilmesinde Kriterler"
+  },
+  {
+    "sayfa": "ek2_072",
+    "bolum_adi": "KADIN HASTALIKLARI VE DOĞUM",
+    "alt_bolum": "B-SERVİKS VE UTERUS",
+    "madde_etiketi": "",
+    "kanonik_ad": "Serviks ve uterus hastalıkları",
+    "ham_satir": "Serviks Ve Uterus'un Kalıcı Bozukluklarının DeğerIendirilmesinde Kriterler"
+  },
+  {
+    "sayfa": "ek2_072",
+    "bolum_adi": "KADIN HASTALIKLARI VE DOĞUM",
+    "alt_bolum": "B-SERVİKS VE UTERUS",
+    "madde_etiketi": "",
+    "kanonik_ad": "Servikal darlık",
+    "ham_satir": "b-Tedavi gerektirmeyen servikal darhk var veya"
+  },
+  {
+    "sayfa": "ek2_073",
+    "bolum_adi": "KADIN HASTALIKLARI VE DOĞUM",
+    "alt_bolum": "C-FALLOPİAN TÜPLER VE OVERLER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Fallopian tüp ve over hastalıkları",
+    "ham_satir": "Fallopian Tüp Ve Overlerin Kalıcı Bozulduklarının"
+  },
+  {
+    "sayfa": "ek2_074",
+    "bolum_adi": "ÜROGENİTAL SİSTEM",
+    "alt_bolum": "NEFROLOJİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Nonnefrotik proteinüri ile seyreden nefropatiler",
+    "ham_satir": "Nonnefrotik proteinüri (mikroalbüminüri) ile seyreden nefropatiler, 6 ay süren tedaviye"
+  },
+  {
+    "sayfa": "ek2_074",
+    "bolum_adi": "ÜROGENİTAL SİSTEM",
+    "alt_bolum": "NEFROLOJİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Nefrotik düzeyde proteinüri ile seyreden nefropatiler",
+    "ham_satir": "Nefrotik düzeyde proteinüri (»3.5 gr/gün) ile seyreden nefropatiler, 6 ay süren tedaviye"
+  },
+  {
+    "sayfa": "ek2_074",
+    "bolum_adi": "ÜROGENİTAL SİSTEM",
+    "alt_bolum": "NEFROLOJİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kronik böbrek hastalığı",
+    "ham_satir": "Kronik böbrek hastalı I"
+  },
+  {
+    "sayfa": "ek2_074",
+    "bolum_adi": "ÜROGENİTAL SİSTEM",
+    "alt_bolum": "NEFROLOJİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Renal replasman tedavisi",
+    "ham_satir": "Renal re Iasman tedavisi hemodi aliz, eriton di alizİ erektiren kronik böbrek hastalı\""
+  },
+  {
+    "sayfa": "ek2_074",
+    "bolum_adi": "ÜROGENİTAL SİSTEM",
+    "alt_bolum": "NEFROLOJİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Böbrek nakli",
+    "ham_satir": "Böbrek nakli"
+  },
+  {
+    "sayfa": "ek2_074",
+    "bolum_adi": "ÜROGENİTAL SİSTEM",
+    "alt_bolum": "NEFROLOJİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Nefrektomi",
+    "ham_satir": "Nefrektomi - bilateral"
+  },
+  {
+    "sayfa": "ek2_074",
+    "bolum_adi": "ÜROGENİTAL SİSTEM",
+    "alt_bolum": "NEFROLOJİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Fanconi sendromu",
+    "ham_satir": "Fanconi sendromu, Hafif-ofta kalıcı renal tübüler hastalığa bağlı bozukluklar, 6 ay süren"
+  },
+  {
+    "sayfa": "ek2_074",
+    "bolum_adi": "ÜROGENİTAL SİSTEM",
+    "alt_bolum": "NEFROLOJİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Renal tübüler hastalık",
+    "ham_satir": "İleri kalıcı renal tübüler hastalığa eşlik eden, en az 6 aylık tedavi altında ve 3 ölçümde serum"
+  },
+  {
+    "sayfa": "ek2_075",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "ÜST ÜRİNER SİSTEM",
+    "madde_etiketi": "",
+    "kanonik_ad": "Üst üriner sistem hastalığı",
+    "ham_satir": "Intermitan semptom veren ve devamlı tedavi gerektirmeyen üst üriner sistem hastalığı"
+  },
+  {
+    "sayfa": "ek2_075",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "NEFREKTOMİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Soliter böbrek",
+    "ham_satir": "Soliter Böbrek (diğer böbreğin renal fonksiyonları da (kreatinin klirensi değerlerine göre)"
+  },
+  {
+    "sayfa": "ek2_075",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "ÜRİNER DİVERSİYON",
+    "madde_etiketi": "",
+    "kanonik_ad": "Üriner diversiyon",
+    "ham_satir": "ÜRİNER DİVERSİYON (Kalıcı)"
+  },
+  {
+    "sayfa": "ek2_075",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "ÜRİNER DİVERSİYON",
+    "madde_etiketi": "",
+    "kanonik_ad": "Üreterointestinal diversiyon (Coffey)",
+    "ham_satir": "Üreterointestinal (coffey)"
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "ÜRİNER DİVERSİYON",
+    "madde_etiketi": "",
+    "kanonik_ad": "Üreterokütanostomi (ileal loop)",
+    "ham_satir": "Üreterokütanostomi. ileal loop"
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "ÜRİNER DİVERSİYON",
+    "madde_etiketi": "",
+    "kanonik_ad": "Ortotopik mesane",
+    "ham_satir": "Ortotopik mesane"
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "ÜRİNER DİVERSİYON",
+    "madde_etiketi": "",
+    "kanonik_ad": "Nefrostomi",
+    "ham_satir": "Nefrostomi"
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "ÜRİNER DİVERSİYON",
+    "madde_etiketi": "",
+    "kanonik_ad": "Sistostomi",
+    "ham_satir": "Sistostomi Üretrostomi"
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "ÜRİNER DİVERSİYON",
+    "madde_etiketi": "",
+    "kanonik_ad": "Üretrostomi",
+    "ham_satir": "Sistostomi Üretrostomi"
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "MESANE",
+    "madde_etiketi": "",
+    "kanonik_ad": "Aşırı aktif mesane",
+    "ham_satir": "Devamlı tedavi gerektiren sistitizm semptomları da Qşırı aktif mesane"
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "MESANE",
+    "madde_etiketi": "",
+    "kanonik_ad": "Mesane hastalığı",
+    "ham_satir": "Tedavi ile tam olarak kontrol altına alınamayan mesane hastalığı"
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "MESANE",
+    "madde_etiketi": "",
+    "kanonik_ad": "Sistektomi",
+    "ham_satir": "Sistektomi"
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "MESANE",
+    "madde_etiketi": "",
+    "kanonik_ad": "Mesane augmentasyonu",
+    "ham_satir": "Mesane Augmentasyonu"
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "MESANE",
+    "madde_etiketi": "",
+    "kanonik_ad": "Ekstrofi vezika",
+    "ham_satir": "Ekstrofi Vezika"
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "MESANE",
+    "madde_etiketi": "",
+    "kanonik_ad": "Nörojen mesane",
+    "ham_satir": "*Nörojen mesane için kas-iskelet sistemi bölümü sayfa 189'daki tablo 4,3 'e bakınız."
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "ÜRETRA",
+    "madde_etiketi": "",
+    "kanonik_ad": "Üretra hastalığı",
+    "ham_satir": "Tedaviyle düzeltilebilen tekrarlayan üretra hastalığı"
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "ÜRETRA",
+    "madde_etiketi": "",
+    "kanonik_ad": "Üretra darlığı",
+    "ham_satir": "Sık tekrarlayan ve tedaviyle kür sağlanabilen üretra darlığı"
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "ÜRETRA",
+    "madde_etiketi": "",
+    "kanonik_ad": "Üretrektomi",
+    "ham_satir": "Üretrektomi"
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "PENİS",
+    "madde_etiketi": "",
+    "kanonik_ad": "Erektil disfonksiyon",
+    "ham_satir": "Medikal tedaviyle kısmi kür sağlanabilen erektil disfonksiyon"
+  },
+  {
+    "sayfa": "ek2_076",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "PENİS",
+    "madde_etiketi": "",
+    "kanonik_ad": "Penis hastalığı",
+    "ham_satir": "Tedaviye yeterli kür sağlanamayan penis hastalığı"
+  },
+  {
+    "sayfa": "ek2_077",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "PENİS",
+    "madde_etiketi": "",
+    "kanonik_ad": "Penektomi",
+    "ham_satir": "Penektomi"
+  },
+  {
+    "sayfa": "ek2_077",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "TESTİS, EPİDİDİM, SPERMATİK KORD",
+    "madde_etiketi": "",
+    "kanonik_ad": "Testis ve epididim hastalığı",
+    "ham_satir": "Tedaviyle düzeltilebilen tekrarlayan testis, epididim hastalığı"
+  },
+  {
+    "sayfa": "ek2_077",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "TESTİS, EPİDİDİM, SPERMATİK KORD",
+    "madde_etiketi": "",
+    "kanonik_ad": "Orşiektomi",
+    "ham_satir": "Orşiektomi"
+  },
+  {
+    "sayfa": "ek2_077",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "TESTİS, EPİDİDİM, SPERMATİK KORD",
+    "madde_etiketi": "",
+    "kanonik_ad": "İnfertilite",
+    "ham_satir": "İnfertilite"
+  },
+  {
+    "sayfa": "ek2_077",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "PROSTAT VE VEZİKULOSEMİNALİS",
+    "madde_etiketi": "",
+    "kanonik_ad": "Prostat ve veziküloseminalis hastalığı",
+    "ham_satir": "Tedaviyle düzeltilebilen tekrarlayan prostat. vezikuloseminalis hastalığı"
+  },
+  {
+    "sayfa": "ek2_077",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "PROSTAT VE VEZİKULOSEMİNALİS",
+    "madde_etiketi": "",
+    "kanonik_ad": "Prostatektomi",
+    "ham_satir": "Prostatektomi. V , Seminalis Eksizyonu"
+  },
+  {
+    "sayfa": "ek2_078",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "İ)RİNER İNKONTİNANS",
+    "madde_etiketi": "",
+    "kanonik_ad": "Üriner inkontinans",
+    "ham_satir": "İ)RİNER İNKONTİNANS"
+  },
+  {
+    "sayfa": "ek2_078",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "İ)RİNER İNKONTİNANS",
+    "madde_etiketi": "",
+    "kanonik_ad": "Urge inkontinans",
+    "ham_satir": "Tedaviye kısmi yanıt veren urge inkontinans"
+  },
+  {
+    "sayfa": "ek2_078",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "İ)RİNER İNKONTİNANS",
+    "madde_etiketi": "",
+    "kanonik_ad": "Stress inkontinans",
+    "ham_satir": "Tedaviye kısmi yanıt veren şiddetli stress inkontinans veya urge inkontinans"
+  },
+  {
+    "sayfa": "ek2_078",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "SKROTUM",
+    "madde_etiketi": "",
+    "kanonik_ad": "Skrotum hastalığı",
+    "ham_satir": "Tedaviye kısmi yanıt veren rekürren skrotum hastalığı"
+  },
+  {
+    "sayfa": "ek2_078",
+    "bolum_adi": "ÜRİNER SİSTEM VE ERKEK GENİTAL SİSTEM",
+    "alt_bolum": "ÜRİNER FİSTÜLLER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Üriner fistül",
+    "ham_satir": "Aralıklı hafif-orta derecede drenaja yol açan üriner fistül veya abse"
+  },
+  {
+    "sayfa": "ek2_082",
+    "bolum_adi": "ENDOKRİN SİSTEM",
+    "alt_bolum": "Metabolizma Hastalıkları",
+    "madde_etiketi": "ı)",
+    "kanonik_ad": "Glikozaminoglikan metabolizması bozuklukları",
+    "ham_satir": "Glikozaminoglikan metabolizması bozuklukları (organ disfonksiyonu yapmış)"
+  },
+  {
+    "sayfa": "ek2_082",
+    "bolum_adi": "ENDOKRİN SİSTEM",
+    "alt_bolum": "Metabolizma Hastalıkları",
+    "madde_etiketi": "m)",
+    "kanonik_ad": "Glikoprotein metabolizması bozuklukları",
+    "ham_satir": "Glikoprotein metabolizması bozuklukları (organ disfonksiyonu yapmış)"
+  },
+  {
+    "sayfa": "ek2_082",
+    "bolum_adi": "ENDOKRİN SİSTEM",
+    "alt_bolum": "Metabolizma Hastalıkları",
+    "madde_etiketi": "n)",
+    "kanonik_ad": "Kistik fibrozis",
+    "ham_satir": "Kistik fibrozis (organ disfonksiyonu yapmış)"
+  },
+  {
+    "sayfa": "ek2_082",
+    "bolum_adi": "ENDOKRİN SİSTEM",
+    "alt_bolum": "Metabolizma Hastalıkları",
+    "madde_etiketi": "o)",
+    "kanonik_ad": "İskelet displazileri",
+    "ham_satir": "İskelet displazileri"
+  },
+  {
+    "sayfa": "ek2_082",
+    "bolum_adi": "ENDOKRİN SİSTEM",
+    "alt_bolum": "Metabolizma Hastalıkları",
+    "madde_etiketi": "p)",
+    "kanonik_ad": "Akondroplazi",
+    "ham_satir": "Akondroplazi"
+  },
+  {
+    "sayfa": "ek2_082",
+    "bolum_adi": "ENDOKRİN SİSTEM",
+    "alt_bolum": "Metabolizma Hastalıkları",
+    "madde_etiketi": "ı-",
+    "kanonik_ad": "Akondroplazi dışı iskelet displazileri",
+    "ham_satir": "Akondroplazi dışı iskelet displazileri"
+  },
+  {
+    "sayfa": "ek2_082",
+    "bolum_adi": "ENDOKRİN SİSTEM",
+    "alt_bolum": "Metabolizma Hastalıkları",
+    "madde_etiketi": "r)",
+    "kanonik_ad": "Ailevi Akdeniz Ateşi",
+    "ham_satir": "Ailevi Akdeniz Ateşi:"
+  },
+  {
+    "sayfa": "ek2_083",
+    "bolum_adi": "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
+    "alt_bolum": "",
+    "madde_etiketi": "1-",
+    "kanonik_ad": "Akciğer, plevra ve göğüs kafesi hastalıkları",
+    "ham_satir": "l-Doğuştan veya kazanılmış akciğer, plevra ve göğüs kafesi hastalıkları veya akciğeri tutan"
+  },
+  {
+    "sayfa": "ek2_083",
+    "bolum_adi": "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
+    "alt_bolum": "",
+    "madde_etiketi": "1-",
+    "kanonik_ad": "Kronik kor pulmonale",
+    "ham_satir": "c- Ağır derecede etkilenme varsa veya kronik kor pulmonqle gelişmişse"
+  },
+  {
+    "sayfa": "ek2_083",
+    "bolum_adi": "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
+    "alt_bolum": "",
+    "madde_etiketi": "2-",
+    "kanonik_ad": "Akciğer ve/veya plevra tüberkülozu",
+    "ham_satir": "2-Akciğer ve/veya plevra tüberkülozunda verilecek karar tedavi sonunda ve I. maddedeki"
+  },
+  {
+    "sayfa": "ek2_083",
+    "bolum_adi": "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
+    "alt_bolum": "",
+    "madde_etiketi": "2-",
+    "kanonik_ad": "İlaca dirençli kronik tüberküloz",
+    "ham_satir": "*İlaca dirençli kronik tüberkülozlu olgular aym şekilde uygun tedavi süresinin bitiminden"
+  },
+  {
+    "sayfa": "ek2_083",
+    "bolum_adi": "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
+    "alt_bolum": "",
+    "madde_etiketi": "2-",
+    "kanonik_ad": "Ekstrapulmoner tüberküloz",
+    "ham_satir": "* *Ekstra pulmoner tüberkülozlu olgularda ise tedavi sonunda ilgili branş tarafindan engel"
+  },
+  {
+    "sayfa": "ek2_083",
+    "bolum_adi": "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
+    "alt_bolum": "",
+    "madde_etiketi": "4-",
+    "kanonik_ad": "Tek taraflı pnömonektomi",
+    "ham_satir": "4- Tek taraflı pnömonektomi"
+  },
+  {
+    "sayfa": "ek2_083",
+    "bolum_adi": "GÖĞÜS HASTALIKLARI VE GÖĞÜS CERRAHİSİ",
+    "alt_bolum": "",
+    "madde_etiketi": "5-",
+    "kanonik_ad": "Akciğer transplantasyonu",
+    "ham_satir": "5- Akciğer transplantasyonu"
+  },
+  {
+    "sayfa": "ek2_084",
+    "bolum_adi": "YANIKLAR",
+    "alt_bolum": "VI- SİNDİRİM SİSTEMİNİ İLGİLENDİREN YANIK ARIZALARI",
+    "madde_etiketi": "a)",
+    "kanonik_ad": "Curling ülseri",
+    "ham_satir": "a)Curling ülseri perforasyonu sonucu opere edilen vakalar ilgili branş tarafindan değerIendirilir."
+  },
+  {
+    "sayfa": "ek2_084",
+    "bolum_adi": "YANIKLAR",
+    "alt_bolum": "VI- SİNDİRİM SİSTEMİNİ İLGİLENDİREN YANIK ARIZALARI",
+    "madde_etiketi": "b)",
+    "kanonik_ad": "Yanığa bağlı özefagus darlığı",
+    "ham_satir": "b)Yamğa bağlı özefagus darlıkları ilgili branş tarafından değerlendirilir."
+  },
+  {
+    "sayfa": "ek2_085",
+    "bolum_adi": "YANIKLAR",
+    "alt_bolum": "VII- HAREKET SİSTEMİNİ İLGİLENDİREN YANIK ARIZALARI",
+    "madde_etiketi": "b)",
+    "kanonik_ad": "Sindaktili",
+    "ham_satir": "b)Yanık sebebiyle kalmış sindaktililer ilgili branş tarafından değerlendirilir."
+  },
+  {
+    "sayfa": "ek2_085",
+    "bolum_adi": "YANIKLAR",
+    "alt_bolum": "VII- HAREKET SİSTEMİNİ İLGİLENDİREN YANIK ARIZALARI",
+    "madde_etiketi": "d)",
+    "kanonik_ad": "Kostal kondrit",
+    "ham_satir": "d)Yamk sonrası kostal kondritis ve heterotopik periartiküler kemik oluşması ilgili branş tarafından"
+  },
+  {
+    "sayfa": "ek2_085",
+    "bolum_adi": "YANIKLAR",
+    "alt_bolum": "VII- HAREKET SİSTEMİNİ İLGİLENDİREN YANIK ARIZALARI",
+    "madde_etiketi": "d)",
+    "kanonik_ad": "Heterotopik periartiküler kemik oluşumu",
+    "ham_satir": "d)Yamk sonrası kostal kondritis ve heterotopik periartiküler kemik oluşması ilgili branş tarafından"
+  },
+  {
+    "sayfa": "ek2_085",
+    "bolum_adi": "YANIKLAR",
+    "alt_bolum": "VIII- SİNİR SİSTEMİNİ İLGİLENDİREN YANIK ARAZILARI",
+    "madde_etiketi": "a)",
+    "kanonik_ad": "Yanık sonrası periferik sinir lezyonu",
+    "ham_satir": "a)Yamk sonrası oluşan merkezi ve periferik sinir lezyonları ilgili branş tarafından değerlendirilir."
+  },
+  {
+    "sayfa": "ek2_086",
+    "bolum_adi": "ONKOLOJİ",
+    "alt_bolum": "Tümörlerin Sınıflaması",
+    "madde_etiketi": "4-",
+    "kanonik_ad": "Malign tümör",
+    "ham_satir": "4- İleri klinik evreli (Evre III ve IV) malign tümörü olan remisyona girmeyen veya tedavi"
+  },
+  {
+    "sayfa": "ek2_086",
+    "bolum_adi": "ONKOLOJİ",
+    "alt_bolum": "Tümörlerin Sınıflaması",
+    "madde_etiketi": "",
+    "kanonik_ad": "Malign transformasyon gösteren benign tümör",
+    "ham_satir": "Malign transformasyon gösteren benign tümörlerde primer tümörün sebep olduğu veya bu tümöre"
+  },
+  {
+    "sayfa": "ek2_086",
+    "bolum_adi": "ONKOLOJİ",
+    "alt_bolum": "Tümörlerin Sınıflaması",
+    "madde_etiketi": "6-",
+    "kanonik_ad": "Glioblastoma multiforme",
+    "ham_satir": "6-Yüksek dereli opere beyin tümörleri: (örn G4 glioblastomi multiforme)"
+  },
+  {
+    "sayfa": "ek2_087",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "YÜKSEK KORTİKAL FONKSİYON BOZUKLUKLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Yüksek kortikal fonksiyon bozuklukları",
+    "ham_satir": "YÜKSEK KORTİKAL FONKSİYON BOZUKLUKLARI"
+  },
+  {
+    "sayfa": "ek2_087",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "AFAZİLER",
+    "madde_etiketi": "A-",
+    "kanonik_ad": "Motor afazi",
+    "ham_satir": "A-MOTOR"
+  },
+  {
+    "sayfa": "ek2_087",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "AFAZİLER",
+    "madde_etiketi": "B-",
+    "kanonik_ad": "Sensöriyel afazi",
+    "ham_satir": "B-SENSÖRİYEL"
+  },
+  {
+    "sayfa": "ek2_087",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "AFAZİLER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Agnozi",
+    "ham_satir": "Agnozi, diskonneksiyon sendromları gibi diğer Yüksek Kortikal Fonksiyon"
+  },
+  {
+    "sayfa": "ek2_087",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "AFAZİLER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Diskonneksiyon sendromları",
+    "ham_satir": "Agnozi, diskonneksiyon sendromları gibi diğer Yüksek Kortikal Fonksiyon"
+  },
+  {
+    "sayfa": "ek2_088",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "EPİLEPSİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Epilepsi",
+    "ham_satir": "EPİLEPSİ (Uygun ve yeterli tedavi altında)"
+  },
+  {
+    "sayfa": "ek2_088",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "UYKU İLE İLİŞKİLİ BOZUKLUKLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Uyku ile ilişkili bozukluklar",
+    "ham_satir": "UYKU İLE İLİŞKİLİ BOZUKLUKLAR*"
+  },
+  {
+    "sayfa": "ek2_089",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "NÖROJENİK KAYNAKLI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Nörojenik kaynaklı ağrı",
+    "ham_satir": "NÖROJENİK KAYNAKLI"
+  },
+  {
+    "sayfa": "ek2_089",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "NÖROJENİK KAYNAKLI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Primer baş ağrıları",
+    "ham_satir": "*Primer baş ağrıları; nevraljiler, santral veya periferik kaynaklı nöropatik ağrılar (ağrının"
+  },
+  {
+    "sayfa": "ek2_089",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "NÖROJENİK KAYNAKLI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Nevralji",
+    "ham_satir": "*Primer baş ağrıları; nevraljiler, santral veya periferik kaynaklı nöropatik ağrılar (ağrının"
+  },
+  {
+    "sayfa": "ek2_089",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "NÖROJENİK KAYNAKLI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Nöropatik ağrı",
+    "ham_satir": "*Primer baş ağrıları; nevraljiler, santral veya periferik kaynaklı nöropatik ağrılar (ağrının"
+  },
+  {
+    "sayfa": "ek2_089",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "DEMANS",
+    "madde_etiketi": "",
+    "kanonik_ad": "Demans",
+    "ham_satir": "DEMANS"
+  },
+  {
+    "sayfa": "ek2_091",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "KRANİAL SİNİR BOZUKLUKLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kranial sinir bozuklukları",
+    "ham_satir": "KRANİAL SİNİR BOZUKLUKLARI"
+  },
+  {
+    "sayfa": "ek2_091",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "KRANİAL SİNİR BOZUKLUKLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Trigeminal nevralji",
+    "ham_satir": "Trigeminal Nevralji"
+  },
+  {
+    "sayfa": "ek2_091",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "KRANİAL SİNİR BOZUKLUKLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Periferik fasiyal paralizi",
+    "ham_satir": "PERİFERİK FASİAL PARALİZİ"
+  },
+  {
+    "sayfa": "ek2_092",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "DİZARTRİ VE DİSFAJİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Disfaji",
+    "ham_satir": "Hafif derecede dizartri, distoni veya"
+  },
+  {
+    "sayfa": "ek2_092",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "HAREKET BOZUKLUKLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Hareket bozuklukları",
+    "ham_satir": "HAREKET BOZUKLUKLARI"
+  },
+  {
+    "sayfa": "ek2_092",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "HAREKET BOZUKLUKLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Tremor",
+    "ham_satir": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını"
+  },
+  {
+    "sayfa": "ek2_092",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "HAREKET BOZUKLUKLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kore",
+    "ham_satir": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını"
+  },
+  {
+    "sayfa": "ek2_092",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "HAREKET BOZUKLUKLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Athetozis",
+    "ham_satir": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını"
+  },
+  {
+    "sayfa": "ek2_092",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "HAREKET BOZUKLUKLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Hemiballismus",
+    "ham_satir": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını"
+  },
+  {
+    "sayfa": "ek2_092",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "HAREKET BOZUKLUKLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Distoni",
+    "ham_satir": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını"
+  },
+  {
+    "sayfa": "ek2_092",
+    "bolum_adi": "SİNİR SİSTEMİ",
+    "alt_bolum": "DİZARTRİ VE DİSFAJİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Dizartri ve disfaji",
+    "ham_satir": "DİZARTRİ VE DİSFAJİ"
+  },
+  {
+    "sayfa": "ek2_093",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "I. OMURGAYA AİT SORUNLARDA ENGELLİLİK",
+    "madde_etiketi": "",
+    "kanonik_ad": "Omurgaya ait sorunlar",
+    "ham_satir": "ı. OMURGAYA AİT SORUNLARDA ENGELLİLİK"
+  },
+  {
+    "sayfa": "ek2_098",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "I. OMURGAYA AİT SORUNLARDA ENGELLİLİK",
+    "madde_etiketi": "",
+    "kanonik_ad": "Skolyoz",
+    "ham_satir": "Skolyoz için kardiovasküler sistem ve göğüs hastalıkları ilgili tabloları ile eklem hareket"
+  },
+  {
+    "sayfa": "ek2_099",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "1.1.2. EKLEM HAREKET AÇIKLIĞI MODELİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Servikal omurga hareket kısıtlılığı",
+    "ham_satir": "Tablo 1.4- Servikal omurgada hareket kısıtlılığına bağlı engellilik oranları (Eklem Hareket Açıklığı"
+  },
+  {
+    "sayfa": "ek2_099",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "1.1.2. EKLEM HAREKET AÇIKLIĞI MODELİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Torakal omurga hareket kısıtlılığı",
+    "ham_satir": "Tablo 1.5- Torakal omurgada hareket kısıtlılığına bağlı engellilik oranları."
+  },
+  {
+    "sayfa": "ek2_101",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "1.1.2. EKLEM HAREKET AÇIKLIĞI MODELİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Lomber omurga hareket kısıtlılığı",
+    "ham_satir": "Tablo 1.6- Lomber omurgada hareket kısıtlılığına bağlı engellilik oranları."
+  },
+  {
+    "sayfa": "ek2_097",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "1.1.2. EKLEM HAREKET AÇIKLIĞI MODELİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Omurga ankilozu",
+    "ham_satir": "Eğer omurgada bir miktar hareket olmasına rağmen aynı zamanda ankiloz var ise, nötral pozisyona en yakın hareket derecesi ankiloz derecesi olarak kabul edilir ve"
+  },
+  {
+    "sayfa": "ek2_102",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "SPESİFİK OMURGA HASTALIĞI TANISINA BAĞLI ENGELLİLİK",
+    "madde_etiketi": "",
+    "kanonik_ad": "Vertebra kompresyon kırığı",
+    "ham_satir": "Bir vertebra cisminin kompresyonu"
+  },
+  {
+    "sayfa": "ek2_102",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "SPESİFİK OMURGA HASTALIĞI TANISINA BAĞLI ENGELLİLİK",
+    "madde_etiketi": "",
+    "kanonik_ad": "Posterior eleman kırığı",
+    "ham_satir": "Posterior eleman kırığı (Pedikül-lamina-artiküle"
+  },
+  {
+    "sayfa": "ek2_102",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "SPESİFİK OMURGA HASTALIĞI TANISINA BAĞLI ENGELLİLİK",
+    "madde_etiketi": "",
+    "kanonik_ad": "Vertebranın redükte dislokasyonu",
+    "ham_satir": "Bir vertebranın redükte dislokasyonu"
+  },
+  {
+    "sayfa": "ek2_102",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "SPESİFİK OMURGA HASTALIĞI TANISINA BAĞLI ENGELLİLİK",
+    "madde_etiketi": "",
+    "kanonik_ad": "İntervertebral disk lezyonu",
+    "ham_satir": "İntervertebral disk veya diğer yumuşak doku lezyonu"
+  },
+  {
+    "sayfa": "ek2_102",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "SPESİFİK OMURGA HASTALIĞI TANISINA BAĞLI ENGELLİLİK",
+    "madde_etiketi": "",
+    "kanonik_ad": "Spondilolizis ve spondilolistezis",
+    "ham_satir": "meliyat Edilmemiş Spondilolizis ve Spondilolistezis"
+  },
+  {
+    "sayfa": "ek2_103",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "SPESİFİK OMURGA HASTALIĞI TANISINA BAĞLI ENGELLİLİK",
+    "madde_etiketi": "",
+    "kanonik_ad": "Spinal stenoz",
+    "ham_satir": "meliyatlı Spinal Stenoz, Segmental İnstabilite, Kırık, Dislokasyon"
+  },
+  {
+    "sayfa": "ek2_103",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "SPESİFİK OMURGA HASTALIĞI TANISINA BAĞLI ENGELLİLİK",
+    "madde_etiketi": "",
+    "kanonik_ad": "Segmental instabilite",
+    "ham_satir": "meliyatlı Spinal Stenoz, Segmental İnstabilite, Kırık, Dislokasyon"
+  },
+  {
+    "sayfa": "ek2_104",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "SPİNAL SİNİR KAYIPLARINA BAĞLI ENGELLİLİK",
+    "madde_etiketi": "",
+    "kanonik_ad": "Spinal sinir kayıpları",
+    "ham_satir": "SPİNAL SİNİR KAYIPLARINA BAĞLI ENGELLİLİK"
+  },
+  {
+    "sayfa": "ek2_107",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "SPİNAL SİNİR KAYIPLARINA BAĞLI ENGELLİLİK",
+    "madde_etiketi": "",
+    "kanonik_ad": "Radikülopati",
+    "ham_satir": "Tam: Radikülopati ile birlikte rekürrent diskopati"
+  },
+  {
+    "sayfa": "ek2_108",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "2. ÜST EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Üst ekstremite sorunları",
+    "ham_satir": "2. ÜST EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI"
+  },
+  {
+    "sayfa": "ek2_135",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Üst ekstremite ampütasyonları",
+    "ham_satir": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI"
+  },
+  {
+    "sayfa": "ek2_135",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Skapulotorasik ampütasyon",
+    "ham_satir": "-Skapulotorasik"
+  },
+  {
+    "sayfa": "ek2_135",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Omuz dezartikülasyonu",
+    "ham_satir": "-Omuz dezanikülasyonu"
+  },
+  {
+    "sayfa": "ek2_135",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Metakarpofalangeal ampütasyon",
+    "ham_satir": "smetakarpofalangiyal eklem"
+  },
+  {
+    "sayfa": "ek2_135",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Başparmak ampütasyonu",
+    "ham_satir": "-Başparmak:"
+  },
+  {
+    "sayfa": "ek2_135",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Parmak ampütasyonu",
+    "ham_satir": "Parmak"
+  },
+  {
+    "sayfa": "ek2_136",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "2.3 ÜST EKSTREMİTE ARTROPLASTİLERİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Üst ekstremite artroplastileri",
+    "ham_satir": "2.3 ÜST EKSTREMİTE ARTROPLASTİLERİ"
+  },
+  {
+    "sayfa": "ek2_136",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "2.3 ÜST EKSTREMİTE ARTROPLASTİLERİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Tüm omuz artroplastisi",
+    "ham_satir": "Tüm omuz"
+  },
+  {
+    "sayfa": "ek2_136",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "2.3 ÜST EKSTREMİTE ARTROPLASTİLERİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Tüm dirsek artroplastisi",
+    "ham_satir": "Tüm dirsek"
+  },
+  {
+    "sayfa": "ek2_136",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "2.3 ÜST EKSTREMİTE ARTROPLASTİLERİ",
+    "madde_etiketi": "",
+    "kanonik_ad": "Tüm el bileği artroplastisi",
+    "ham_satir": "Tüm el bileği"
+  },
+  {
+    "sayfa": "ek2_137",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "2.4. ÜST EKSTREMİTENİN DİĞER SORUNLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Tenosinovit",
+    "ham_satir": "Tenosinovit"
+  },
+  {
+    "sayfa": "ek2_138",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "2.5 PERİFERİK SİNİR KAYIPLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Periferik sinir lezyonu",
+    "ham_satir": "Tablo 2.10- Periferik sinir lezyonu sonucu ortaya çıkan ağrı veya duyu kaybına bağlı üst"
+  },
+  {
+    "sayfa": "ek2_139",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "2.5 PERİFERİK SİNİR KAYIPLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Spinal sinir lezyonu",
+    "ham_satir": "Tablo 2.12- Spinal sinirlerin unilateral duyu, motor veya birleşik kayıplarının üst"
+  },
+  {
+    "sayfa": "ek2_139",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "2.5 PERİFERİK SİNİR KAYIPLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Brakial pleksus lezyonu",
+    "ham_satir": "Tablo 2.13- Brakial pleksusun motor, duyu veya birleşik kayıplarının üst ekstremitede neden"
+  },
+  {
+    "sayfa": "ek2_141",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Alt ekstremite sorunları",
+    "ham_satir": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI"
+  },
+  {
+    "sayfa": "ek2_143",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Alt ekstremite uzunluk farklılıkları",
+    "ham_satir": "Tablo 3.3- Alt ekstremitenin uzunluk farklılıklarından kaynaklanan engellilik. (bkz tablo"
+  },
+  {
+    "sayfa": "ek2_144",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Yürüyüş bozukluğu",
+    "ham_satir": "Tablo 3.4- Yürüyüş bozulduğuna göre engellilik oranları. (bkz tablo 3.1)"
+  },
+  {
+    "sayfa": "ek2_145",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Bacak kaslarındaki atrofi",
+    "ham_satir": "Tablo 3.5- Bacak kaslarındaki atrofiye bağlı engellilik yüzdeleri. (bkz tablo 3.1)"
+  },
+  {
+    "sayfa": "ek2_146",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Alt ekstremite kas kuvveti kaybı",
+    "ham_satir": "Tablo 3.7- Alt ekstremite kas kuvvetinde kayba bağlı engellilik yüzdeleri. (bkz tablo 3,1)"
+  },
+  {
+    "sayfa": "ek2_147",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kalça eklemi hareket kısıtlılığı",
+    "ham_satir": "Tablo 3.8b-KaI a eklemi hareket kısıtlı ı iddetine ba 11 en ellili"
+  },
+  {
+    "sayfa": "ek2_148",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Diz eklemi hareket kısıtlılığı",
+    "ham_satir": "Tablo 3.9- Diz eklemi hareket kısıtlılığına bağlı engellilik."
+  },
+  {
+    "sayfa": "ek2_148",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Ayak bileği eklemi hareket kısıtlılığı",
+    "ham_satir": "Tablo 3.10- Ayak bileği eklemi hareket kısıtlılığına bağlı engellilik."
+  },
+  {
+    "sayfa": "ek2_148",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Topuk hareket kısıtlılığı",
+    "ham_satir": "Tablo 3.11- Topuk hareket kısıtlılığına bağlı engellilik."
+  },
+  {
+    "sayfa": "ek2_148",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Ayak bileği veya topuk deformitesi",
+    "ham_satir": "Tablo 3.12- Ayak bileği veya topuk deformite bozuldukları."
+  },
+  {
+    "sayfa": "ek2_149",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Ayak başparmak bozuklukları",
+    "ham_satir": "Tablo 3.13- Ayak başparmak bozuklukları *"
+  },
+  {
+    "sayfa": "ek2_149",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.6 ANKİLOZLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kalça ankilozu",
+    "ham_satir": "Tablo 3.14- Kalçanın fleksiyon pozisyonunda ankilozuna bağlı engellilik oranlan. (*)(bkz tablo"
+  },
+  {
+    "sayfa": "ek2_150",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.6 ANKİLOZLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Diz ankilozu",
+    "ham_satir": "Tablo 3.19- Dizin varus pozisyonunda ankilozuna bağlı engellilik."
+  },
+  {
+    "sayfa": "ek2_152",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.6 ANKİLOZLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Ayak bileği ankilozu",
+    "ham_satir": "Tablo 3.23- Ayak bileğinin plantar fleksiyon-dorsofleksiyonda ankilozuna bağlı engellilik."
+  },
+  {
+    "sayfa": "ek2_153",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.6 ANKİLOZLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Ayak ankilozu",
+    "ham_satir": "Ayak (Arkaayak, Ortaayak, Önayak): Ayağın subtalar parçası İçin optimal ankiloz pozisyonu,"
+  },
+  {
+    "sayfa": "ek2_154",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.6 ANKİLOZLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Ayak parmaklarının ankilozu",
+    "ham_satir": "Tablo 3.29- Ayak parmaklarının ankilozuna bağlı engellilik."
+  },
+  {
+    "sayfa": "ek2_155",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.7. AMPUTASYONLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Alt ekstremite ampütasyonları",
+    "ham_satir": "3.7. AMPUTASYONLAR"
+  },
+  {
+    "sayfa": "ek2_155",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.7. AMPUTASYONLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Hemipelvektomi",
+    "ham_satir": "-Hemipelvektomi"
+  },
+  {
+    "sayfa": "ek2_155",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.7. AMPUTASYONLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kalça dezartikülasyonu",
+    "ham_satir": "-Kalça dezartikulasyonu"
+  },
+  {
+    "sayfa": "ek2_155",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.7. AMPUTASYONLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Diz üstü ampütasyon",
+    "ham_satir": "-Diz üstü"
+  },
+  {
+    "sayfa": "ek2_155",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.7. AMPUTASYONLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Diz dezartikülasyonu",
+    "ham_satir": "-Diz dezartikülasyonu"
+  },
+  {
+    "sayfa": "ek2_155",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.7. AMPUTASYONLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Diz altı ampütasyon",
+    "ham_satir": "-Diz altı"
+  },
+  {
+    "sayfa": "ek2_155",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.7. AMPUTASYONLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Syme ampütasyonu",
+    "ham_satir": "-Syme (ayak)"
+  },
+  {
+    "sayfa": "ek2_155",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.7. AMPUTASYONLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Chopart ampütasyonu",
+    "ham_satir": "-Chopart (orta ayak)"
+  },
+  {
+    "sayfa": "ek2_155",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.7. AMPUTASYONLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Transmetatarsal ampütasyon",
+    "ham_satir": "-Transmetatarsal"
+  },
+  {
+    "sayfa": "ek2_156",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kalça replasmanı",
+    "ham_satir": "Tablo 3.31- Kalça replasmanı sonrasında engellilikle ilişkili puanlama.*"
+  },
+  {
+    "sayfa": "ek2_158",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Diz artroplastisi",
+    "ham_satir": "Tablo 3.32- Diz artroplastisi sonrası engellilikle ilişkili puanlama. *"
+  },
+  {
+    "sayfa": "ek2_159",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Girdlestone artroplastisi",
+    "ham_satir": "Girdlestone artroplasti"
+  },
+  {
+    "sayfa": "ek2_159",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Pelvis kırığı",
+    "ham_satir": "Pelvis Kırıkları"
+  },
+  {
+    "sayfa": "ek2_159",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Asetebular kırık",
+    "ham_satir": "Asetebular kırık"
+  },
+  {
+    "sayfa": "ek2_159",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Sakroiliak eklem kırığı",
+    "ham_satir": "Sakroiliak eklem kırığı (yer değiştirme göz"
+  },
+  {
+    "sayfa": "ek2_159",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "İskial bursit",
+    "ham_satir": "İskial bursit (basıncın sık sık azaltılmasını"
+  },
+  {
+    "sayfa": "ek2_159",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Trokanterik bursit",
+    "ham_satir": "Trokanterik bursit: (kronik) yürüme bozukluğuna"
+  },
+  {
+    "sayfa": "ek2_159",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Femoral boyun kırığı",
+    "ham_satir": "Femoral boyun kırığı:"
+  },
+  {
+    "sayfa": "ek2_159",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Femoral şaft kırığı",
+    "ham_satir": "Femoral şaft kırığı"
+  },
+  {
+    "sayfa": "ek2_160",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Patellar kırık",
+    "ham_satir": "Patellar kırık"
+  },
+  {
+    "sayfa": "ek2_160",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Patellektomi",
+    "ham_satir": "Patellektomi"
+  },
+  {
+    "sayfa": "ek2_160",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Menisektomi",
+    "ham_satir": "Menisektomi, medial veya lateral"
+  },
+  {
+    "sayfa": "ek2_160",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Krusiat veya kollateral ligament laksitesi",
+    "ham_satir": "Krusiat veya kollateral ligament laksitesi"
+  },
+  {
+    "sayfa": "ek2_160",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Plato kırığı",
+    "ham_satir": "Plato kırığı"
+  },
+  {
+    "sayfa": "ek2_160",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Suprakondüler veya interkondüler kırık",
+    "ham_satir": "Suprakondüler veya interkondüler kırık"
+  },
+  {
+    "sayfa": "ek2_160",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Unikondüler replasman",
+    "ham_satir": "Unikondüler"
+  },
+  {
+    "sayfa": "ek2_160",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Proksimal osteotomi",
+    "ham_satir": "Proksimal Osteotomi"
+  },
+  {
+    "sayfa": "ek2_160",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Tibia şaft kırığı",
+    "ham_satir": "Tibia şaft kırığı (dizilim bozulduğu)"
+  },
+  {
+    "sayfa": "ek2_161",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Ayak bileği ligamentöz instabilitesi",
+    "ham_satir": "Ligamentöz instabilite (stres röntgenleri ile)"
+  },
+  {
+    "sayfa": "ek2_161",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Ayak bileği kırığı",
+    "ham_satir": "Kırık"
+  },
+  {
+    "sayfa": "ek2_161",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kalkaneal kırık",
+    "ham_satir": "Ekstra-artikü ler (kalkaneal)"
+  },
+  {
+    "sayfa": "ek2_161",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Subtalar kemik kırığı",
+    "ham_satir": "Subtalar kemik"
+  },
+  {
+    "sayfa": "ek2_161",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Talonaviküler kemik kırığı",
+    "ham_satir": "Talonaviküler kemik"
+  },
+  {
+    "sayfa": "ek2_161",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kalkaneoküboid kemik kırığı",
+    "ham_satir": "Kalkaneoküboid kemik"
+  },
+  {
+    "sayfa": "ek2_162",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Cavus",
+    "ham_satir": "Cavus"
+  },
+  {
+    "sayfa": "ek2_162",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Rocker bottom",
+    "ham_satir": "Rocker Bottom"
+  },
+  {
+    "sayfa": "ek2_162",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Talusun avasküler nekrozu",
+    "ham_satir": "Talusun avasküler nekrozu"
+  },
+  {
+    "sayfa": "ek2_162",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Metatarsal kırık",
+    "ham_satir": "kırık"
+  },
+  {
+    "sayfa": "ek2_162",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.8. TANIYA DAYALI DEĞERLENDİRMELER",
+    "madde_etiketi": "",
+    "kanonik_ad": "Metatarsalji",
+    "ham_satir": "Metatarsalji ve plantar"
+  },
+  {
+    "sayfa": "ek2_163",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.9. DOKU KAYBI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Alt ekstremitede doku kaybı",
+    "ham_satir": "3.9. DOKU KAYBI"
+  },
+  {
+    "sayfa": "ek2_163",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.9. DOKU KAYBI",
+    "madde_etiketi": "",
+    "kanonik_ad": "Kronik osteomiyelit",
+    "ham_satir": "Kronik osteomiyelit de bu yöntem kullanılarak değerlendirilir."
+  },
+  {
+    "sayfa": "ek2_164",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "3.11. VASKÜLER HASTALIKLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Periferal vasküler hastalık",
+    "ham_satir": "Tablo 3.36- Alt ekstremitenin periferik vasküler hastalığına bağlı engellilik. (bkz tablo 3. I)"
+  },
+  {
+    "sayfa": "ek2_165",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
+    "madde_etiketi": "4.1.",
+    "kanonik_ad": "Serebral bozukluklar",
+    "ham_satir": "SEREBRAL BOZUKLUKLAR"
+  },
+  {
+    "sayfa": "ek2_166",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Spinal kord ve ilgili bozukluklar",
+    "ham_satir": "SPİNAL KORD ve İLGİLİ BOZUKLUKLAR"
+  },
+  {
+    "sayfa": "ek2_166",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Periferik sinir sistemi, nöromüsküler bileşke ve kas sistemi hastalıkları",
+    "ham_satir": "PERİFERİK SİNİR SİSTEMİ, NÖROMUSKÜLER BİLEŞKE ve KAS SİSTEMİ"
+  },
+  {
+    "sayfa": "ek2_166",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Ayakta durabilme, yürüme ve hareket bozuklukları",
+    "ham_satir": "Tablo 4.1- Ayakta durabilme, yürüme ve hareket bozuklukları (santral sinir sistemi veya"
+  },
+  {
+    "sayfa": "ek2_167",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Üst ekstremite bozuklukları (santral)",
+    "ham_satir": "Tablo 4.2.a- Üst ekstremite bozuklukları"
+  },
+  {
+    "sayfa": "ek2_168",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Anorektal sistem nörolojik bozuklukları",
+    "ham_satir": "Anorektal Sistem"
+  },
+  {
+    "sayfa": "ek2_168",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Üriner sistem ve mesane fonksiyon bozukluğu",
+    "ham_satir": "Üriner Sistem/Mesane"
+  },
+  {
+    "sayfa": "ek2_168",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Solunumda nörolojik bozukluklar",
+    "ham_satir": "Solunumda Nörolojik"
+  },
+  {
+    "sayfa": "ek2_168",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "4. SANTRAL VE PERİFERİK SİNİR SİSTEMİ HASTALIKLARINA BAĞLI BOZUKLUKLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Cinsel fonksiyon bozukluğu",
+    "ham_satir": "Cinsel Fonksiyon"
+  },
+  {
+    "sayfa": "ek2_169",
+    "bolum_adi": "KAS-İSKELET SİSTEMİ",
+    "alt_bolum": "SİSTEMİK ROMATİZMAL HASTALIKLAR",
+    "madde_etiketi": "",
+    "kanonik_ad": "Sistemik romatizmal hastalıklar",
+    "ham_satir": "SİSTEMİK ROMATİZMAL HASTALIKLAR"
+  }
 ]
