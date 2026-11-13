@@ -69,10 +69,12 @@ def main():
     with open(ab99_durum_map_path, 'r', encoding='utf-8') as f:
         ab99_durum_map = json.load(f)
 
-    # ab99cb4 kanit metni haritasi: orijinal olarak kayitlanmis kanit metinlerini tutar
-    ab99_kanit_map_path = r'C:\Users\RIDVAN\AppData\Local\Temp\mobilrs-ek2-devam\ab99cb4_kanit_izleri.json'
-    with open(ab99_kanit_map_path, 'r', encoding='utf-8') as f:
-        ab99_kanit_map = json.load(f)
+    # ab99cb4 kanit metni haritasi (liste formatindan dictionary formatine donusturulmus)
+    ab99_kanit_list_path = r'C:\Users\RIDVAN\AppData\Local\Temp\mobilrs-ek2-devam\ab99cb4_kanit_izleri.json'
+    with open(ab99_kanit_list_path, 'r', encoding='utf-8') as f:
+        ab99_kanit_list = json.load(f)
+    # Dictionary formatine donustur: kavram_id -> entry object
+    ab99_kanit_map = {x['kavram_id']: x for x in ab99_kanit_list}
 
     # frontal ve glare hariç, tum other entries icin ab99cb4 durumundan ve kanitundan korun
     KORUNAMAS_KAVRAM_IDS = {
@@ -120,7 +122,8 @@ def main():
         if k_id in ab99_durum_map and k_id not in KORUNAMAS_KAVRAM_IDS:
             k_durum = ab99_durum_map[k_id]
             # Kanit metnini de ab99cb4'ten koru
-            k_kanit = ab99_kanit_map.get(k_id, k.get("kanit", ""))
+            k_kanit_entry = ab99_kanit_map.get(k_id, None)
+            k_kanit = k_kanit_entry["kanit"] if k_kanit_entry else k.get("kanit", "")
         else:
             k_durum = None  # Normal logic ile belirlenecek
             k_kanit = k.get("kanit", "")
