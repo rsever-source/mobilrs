@@ -2,208 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-11-06T21:39:30.948725+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "source_diagnostics": {
-        "Anadolu Ajansı – Engelli Yaşam": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 9,
-          "parsed_items": 9,
-          "errors": []
-        },
-        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
-          "stage": "html_list",
-          "anchors": 72,
-          "path_matches": 20,
-          "dated_from_title": 0,
-          "dated_from_context": 0,
-          "detail_attempts": 20,
-          "detail_successes": 20,
-          "parsed_items": 20,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "TRT Haber": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "TRT Haber – Sağlık": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
-          "stage": "html_list",
-          "anchors": 200,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
-          "stage": "html_list",
-          "anchors": 186,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
-          "stage": "html_list",
-          "anchors": 480,
-          "path_matches": 294,
-          "dated_from_title": 294,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 294,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Sosyal Güvenlik Kurumu – Duyurular": {
-          "stage": "html_list",
-          "anchors": 94,
-          "path_matches": 10,
-          "dated_from_title": 10,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 10,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
-          "stage": "tbb_mevzuat",
-          "anchors": 88,
-          "article_links": 12,
-          "keyword_matches": 0,
-          "detail_attempts": 0,
-          "detail_errors": 0,
-          "missing_dates": 0,
-          "parsed_items": 0,
-          "errors": []
-        },
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 10,
-          "keyword_eliminated": 20,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 0,
-          "in_7_day_window": 0,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 505,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 18,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 18,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 469,
-          "accepted_as_candidate": 0
-        },
-        "examples": {
-          "already_published": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "TİHEK'ten Down sendromlu çocuğu oyun alanına almayan işletmeye ceza"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Engelli adaylar ile işverenler 21. Engelsiz Kariyer Günleri'nde buluştu"
-            }
-          ],
-          "older_than_7_days": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Odasını atölyeye dönüştüren bedensel engelli sanatçı 20 yıldır çini boyuyor"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Bağdat'ta Down sendromlu çocuklar \"Yapabiliriz\" etkinliğinde yeteneklerini sergiledi"
-            }
-          ],
-          "url_seen_within_7_days": [
-            {
-              "source": "TRT Haber",
-              "title": "Brüksel'e giden uçak bomba ihbarı üzerine Brüksel Havalimanı'na güvenli iniş yaptı"
-            },
-            {
-              "source": "TRT Haber",
-              "title": "Mülkiyede öğrenciler için kariyer zirvesi gerçekleştirildi"
-            }
-          ]
-        },
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": []
-    },
-    {
       "run_at": "2026-11-07T02:04:00.607298+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -6316,6 +6114,206 @@
         "zero_candidates_is_not_an_error": true
       },
       "candidates": []
+    },
+    {
+      "run_at": "2026-11-13T17:55:02.087920+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 8,
+          "parsed_items": 8,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 480,
+          "path_matches": 294,
+          "dated_from_title": 294,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 294,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "tls_verified": true,
+          "list_read": true,
+          "anchors": 88,
+          "article_links": 12,
+          "keyword_matches": 0,
+          "health_probe": true,
+          "detail_attempts": 1,
+          "detail_successes": 1,
+          "parsed_items": 0,
+          "validated": true,
+          "errors": []
+        },
+        "Resmî Gazete – TBB Mevzuat Yedeği": {
+          "stage": "skipped",
+          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 7,
+          "keyword_eliminated": 23,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 501,
+        "pending_total": 0,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 17,
+          "duplicate_in_this_run": 1,
+          "url_seen_within_7_days": 3,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 479,
+          "accepted_as_candidate": 1
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "Kar yağışını mutluluğa dönüştüren başkomiser ile engelli kızı Eylül'ün yürek ısıtan hikayesi",
+          "source": "Anadolu Ajansı – Engelli Yaşam",
+          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/kar-yagisini-mutluluga-donusturen-baskomiser-ile-engelli-kizi-eylulun-yurek-isitan-hikayesi/1833062",
+          "published_at": "2026-11-13T00:00:00+00:00",
+          "content_origin": null,
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "Erzurumlu başkomiserin engelli kızıyla kar sevinci yürek ısıttı",
+          "summary": "Erzurum'da görevli Başkomiser Mustafa Tan, belden aşağısı felçli olarak dünyaya gelen 10 yaşındaki kızı Eylül ile kurduğu sevgi bağıyla öne çıkıyor. Eşinin hamileliğinde doktorların bebeği aldırma önerisini reddeden Tan ailesi, kızlarını büyük bir özveriyle büyütüyor. Mesai dışındaki tüm zamanını Eylül'e ayıran baba, geçtiğimiz günlerde etkili olan kar yağışında kızıyla dışarı çıkarak kartopu oynadı. Normal bir okulda eğitim gören ve sınıfında ilk dörde giren Eylül'ün akademik başarı göstermesi ailesini gururlandırıyor. Baba Tan, kızının engellerini değil hayallerini büyütmek istediğini ve onun mutluluğu için her fedakarlığı göze aldığını belirtti.",
+          "detail_summary": "Erzurum'da görev yapan Başkomiser Mustafa Tan, 2016 yılında belden aşağısı felçli olarak dünyaya gelen kızı Eylül ile geçirdiği zamanlar ve aralarındaki güçlü bağla dikkat çekiyor. Bingöllü polis memuru Tan, 2015 yılında polislik eğitimi alırken eşinin hamile olduğunu ve bebeklerinin engelli doğacağını öğrendiklerini, doktorların aldırma önerisini ise kesinlikle reddettiklerini ifade etti. Mesai saatleri dışında kalan tüm zamanını 10 yaşındaki kızı Eylül'e adayan baba, sosyal aktivitelerini bir kenara bırakarak çocuğunun her türlü ihtiyacıyla yakından ilgileniyor. Erzurum'da etkili olan kar yağışının ardından kızıyla sokağa çıkan Tan, zorluklara rağmen Eylül'ü kar üstünde diğer çocukların yanına götürerek kartopu oynadıklarını ve bu anların sosyal medyada ilgi gördüğünü söyledi. Engelinin sadece bedensel olduğunu vurgulayan baba Tan, kızının zeki ve çalışkan bir öğrenci olarak normal bir okulda eğitim aldığını ve sınıfında ilk dörde girdiğini aktardı. Kızının gelecekte bilim insanı olmasını hayal ettiğini dile getiren Mustafa Tan, herkesin birer engelli adayı olduğunu belirterek çocukların sevilmesi ve desteklenmesi gerektiğinin altını çizdi. Eylül Tan ise cam kenarından izlediği kar yağışının ardından babasıyla dışarı çıkıp kartopu oynamaktan büyük mutluluk duyduğunu ve babasını kahramanı olarak gördüğünü belirtti.",
+          "decision": "publish",
+          "site_published_at": "2026-11-13T17:55:02.087920+00:00"
+        }
+      ]
     }
   ],
   "system_incidents": [
