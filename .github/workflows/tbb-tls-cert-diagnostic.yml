@@ -84,19 +84,23 @@ jobs:
           echo "### TARGET IP COUNT: $(grep -cE '^[0-9A-Fa-f:.]+$' /tmp/tbb_ips.txt || true)"
 
           echo "### SYSTEM CA STORE - SSL.com TLS RSA Root CA 2022 kontrolu"
+          # NOT: /etc/ssl/certs/ca-certificates.crt icerigi base64 PEM'dir; duz metin CN
+          # icermez. Bu yuzden grep yerine openssl storeutl ile cozumlenmis konu/issuer
+          # adlarina bakilir.
           if [ -f /etc/ssl/certs/ca-certificates.crt ]; then
-            if grep -q "SSL.com TLS RSA Root CA 2022" /etc/ssl/certs/ca-certificates.crt; then
-              echo "SYSTEM_CA_HAS[SSL.com TLS RSA Root CA 2022] = True"
-            else
-              echo "SYSTEM_CA_HAS[SSL.com TLS RSA Root CA 2022] = False"
-            fi
-            if grep -q "E-Tugra TLS RSA SubCA 2" /etc/ssl/certs/ca-certificates.crt; then
-              echo "SYSTEM_CA_HAS[E-Tugra TLS RSA SubCA 2] = True"
-            else
-              echo "SYSTEM_CA_HAS[E-Tugra TLS RSA SubCA 2] = False"
-            fi
-            echo "system_ca_sslcom_lines:"
-            grep -n "SSL.com" /etc/ssl/certs/ca-certificates.crt | head -40 || echo "(yok)"
+            openssl storeutl -noout -text /etc/ssl/certs/ca-certificates.crt > /tmp/system_ca_text.txt 2>/dev/null || true
+            for label in "SSL.com TLS RSA Root CA 2022" "SSL.com TLS ECC Root CA 2022" \
+                         "SSL.com Root Certification Authority RSA" "E-Tugra TLS RSA SubCA 2" \
+                         "E-Tugra TLS RSA SubCA R1" "E-Tugra TLS RSA CA R1" "SecureTrust CA"; do
+              if grep -qF "$label" /tmp/system_ca_text.txt; then
+                echo "SYSTEM_CA_HAS[$label] = True"
+              else
+                echo "SYSTEM_CA_HAS[$label] = False"
+              fi
+            done
+            echo "system_ca_sslcom_context:"
+            grep -nE "SSL\.com|E-Tugra|SecureTrust" /tmp/system_ca_text.txt | head -40 || echo "(yok)"
+            echo "system_ca_store_size: $(wc -l < /tmp/system_ca_text.txt) satirlar"
           fi
 
       - name: Prepare certifi environment
@@ -248,6 +252,64 @@ jobs:
                   print("PY_SYSTEM_VERIFY_ERROR:", type(exc).__name__, str(exc)[:400])
           PY
 
+      - name: Test E - Repeatability (10 sequential handshakes per host/SNI)
+        shell: bash
+        run: |
+          set -uo pipefail
+          CERTIFI_PEM="$(cat /tmp/certifi_pem.txt)"
+          # Sunucu bazen eksik zincir gonderiyor olabilir; aralikli hatayi yakalamak icin
+          # ayni hedef icin birden fazla el sikisma yapilir.
+          for sni in www.tbb.gov.tr tbb.gov.tr; do
+            echo "########## TEST_E REPEAT host=${sni} system_ca"
+            for i in $(seq 1 10); do
+              out="/tmp/rep_sys_${sni}_${i}.txt"
+              timeout 20 openssl s_client -connect "${sni}:443" -servername "${sni}" \
+                -showcerts </dev/null >"$out" 2>&1 || echo "openssl_exit=$?"
+              cnt="$(grep -c -- '-----BEGIN CERTIFICATE-----' "$out")"
+              code="$(grep -E '^Verify return code:' "$out" | head -1)"
+              [ -z "$code" ] && code="Verify return code: <yok>"
+              echo "REP_SYS ${sni} #${i} certs=${cnt} ${code}"
+            done
+            echo "########## TEST_E REPEAT host=${sni} certifi_ca"
+            for i in $(seq 1 10); do
+              out="/tmp/rep_cer_${sni}_${i}.txt"
+              timeout 20 openssl s_client -connect "${sni}:443" -servername "${sni}" \
+                -showcerts -CAfile "${CERTIFI_PEM}" </dev/null >"$out" 2>&1 || echo "openssl_exit=$?"
+              cnt="$(grep -c -- '-----BEGIN CERTIFICATE-----' "$out")"
+              code="$(grep -E '^Verify return code:' "$out" | head -1)"
+              [ -z "$code" ] && code="Verify return code: <yok>"
+              echo "REP_CER ${sni} #${i} certs=${cnt} ${code}"
+            done
+          done
+
+      - name: Test F - SNI comparison (www vs apex vs no SNI, same IP)
+        shell: bash
+        run: |
+          set -uo pipefail
+          CERTIFI_PEM="$(cat /tmp/certifi_pem.txt)"
+          IP="$(head -1 /tmp/tbb_ips.txt)"
+          echo "using_ip=${IP}"
+          for combo in "www.tbb.gov.tr" "tbb.gov.tr" "NONE"; do
+            echo "########## TEST_F SNI=${combo} system_ca"
+            out="/tmp/sni_sys_${combo}.txt"
+            if [ "$combo" = "NONE" ]; then
+              timeout 20 openssl s_client -connect "${IP}:443" -showcerts </dev/null >"$out" 2>&1 || echo "openssl_exit=$?"
+            else
+              timeout 20 openssl s_client -connect "${IP}:443" -servername "$combo" -showcerts </dev/null >"$out" 2>&1 || echo "openssl_exit=$?"
+            fi
+            echo "SERVER_CERTIFICATE_COUNT: $(grep -c -- '-----BEGIN CERTIFICATE-----' "$out")"
+            grep -E '^(depth=| *[0-9]+ s:| *i:|verify error:|Verification:|Verify return code:)' "$out" || true
+            echo "########## TEST_F SNI=${combo} certifi_ca"
+            out="/tmp/sni_cer_${combo}.txt"
+            if [ "$combo" = "NONE" ]; then
+              timeout 20 openssl s_client -connect "${IP}:443" -showcerts -CAfile "${CERTIFI_PEM}" </dev/null >"$out" 2>&1 || echo "openssl_exit=$?"
+            else
+              timeout 20 openssl s_client -connect "${IP}:443" -servername "$combo" -showcerts -CAfile "${CERTIFI_PEM}" </dev/null >"$out" 2>&1 || echo "openssl_exit=$?"
+            fi
+            echo "SERVER_CERTIFICATE_COUNT: $(grep -c -- '-----BEGIN CERTIFICATE-----' "$out")"
+            grep -E '^(depth=| *[0-9]+ s:| *i:|verify error:|Verification:|Verify return code:)' "$out" || true
+          done
+
       - name: Summary
         shell: bash
         run: |
@@ -261,4 +323,11 @@ jobs:
             echo "  certificate_count: $(grep -c -- '-----BEGIN CERTIFICATE-----' "$f")"
             grep -E '^Verify return code:' "$f" | sed 's/^/  /' || echo "  Verify return code: <yok>"
             grep -E 'verify error:' "$f" | sed 's/^/  /' || true
+          done
+          echo "### REPEATABILITY TALLY"
+          for f in /tmp/rep_sys_*.txt /tmp/rep_cer_*.txt; do
+            [ -f "$f" ] || continue
+            cnt="$(grep -c -- '-----BEGIN CERTIFICATE-----' "$f")"
+            code="$(grep -E '^Verify return code:' "$f" | head -1)"
+            echo "  $(basename "$f") certs=${cnt} ${code}"
           done
