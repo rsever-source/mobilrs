@@ -632,6 +632,19 @@ def _tbb_detail_published_at(soup):
             if parsed:
                 return parsed.isoformat()
 
+    # TBB duyuru detay sayfasinda yayin tarihi, duyurunun kendi govdesinde
+    # "field--name-published-at" alaninda <time datetime="..."> olarak bulunur.
+    # Sayfanin geri kalanindaki <time> etiketleri "diger duyurular" listesine
+    # aittir; genel tarama bunlari da toplayip "tek aday" kuralini bozdugu icin
+    # duyurunun kendi alani once ve en belirleyici kaynak olarak okunur.
+    for node in soup.select(
+        "article.node--type-announcement .field--name-published-at time"
+    ):
+        value = node.get("datetime") or node.get_text(" ", strip=True)
+        parsed = _date(value) or _date_from_text(value)
+        if parsed:
+            return parsed.isoformat()
+
     candidates = set()
     for node in soup.find_all("time"):
         value = node.get("datetime") or node.get_text(" ", strip=True)
