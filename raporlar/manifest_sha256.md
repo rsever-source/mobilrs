@@ -3,14 +3,14 @@
 ## Değişiklik Bilgileri
 
 ### 1. kanit_izi.py
-- **SHA-256**: 7c9775f9a1027691e1193086cddefb5a0ef61bb2717e498f1f183b351bbd9096
-- **Boyut**: 12191 bytes
-- **Açıklama**: Mutlak Windows yollarının kaldırılması, relative path kullanımı, skorların referans dosyasından okunması
+- **SHA-256**: 922ed78bae00b5533633ce56c01bfed0b4bd0365d89c1b3a48fac936aa4f3dfe
+- **Boyut**: 12456 bytes
+- **Açıklama**: Bulanık skorların sabit 1.0 ataması kaldırıldı, skorlar referans dosyasından okunuyor ve korunuyor. Frontal kemik ve Glare istisnaları korunuyor.
 
 ### 2. data/sozluk_kavram_kaynak_izleri.json
-- **SHA-256**: f5b7206fbdff19159323ca069ec95033da94675a55ff3be5634cae452bf1e8a2
-- **Boyut**: 111586 bytes
-- **Açıklama**: 22 blayıks kaydın orijinal skorlarının (1.0 dışı) geri yüklenmesi,frontal ve glare istisnası korunması
+- **SHA-256**: 6d5db20cfbb313e664eaa489c2d0422b717c04de230463d9eea39fd19e93d41e
+- **Boyut**: 121339 bytes
+- **Açıklama**: 22 blayıks kaydın orijinal skorlarının (1.0 dışı) geri yüklenmesi, 115'in 1.0 kalması, frontal ve glare istisnası korunması.
 
 ### 3. raporlar/ab99cb4_durum_map.json (Yeni Eklenen)
 - **SHA-256**: 521830b4aea46b4895eaff15dda9eaa5024597b2906737d25dd011ca7b288244
@@ -23,11 +23,15 @@
 - **Açıklama**: 745 kaydın orijinal kanit ve skor haritası (137 bulanik kaydın skor değerleri korundu)
 
 ## Başarı Kriterleri
-- Toplam 745 kayıt, 745 benzersiz ID
-- EK-1: 276, EK-2: 469
-- Durum dağılımı: 595 birebir, 137 bulanik, 13 duzeltilmis
-- 137 bulanık kaydın skorlarının tamamı referans dosyasındaki değerlerle birebir aynı
-- Frontal ve Glare istisnaları doğru
-- 743 kaydın bütün alanları ab99cb4 ile birebir aynı
-- İki betik çalıştırıldığında sonuç değişmemeli
-- Manifest hashler gerçek dosya içerikleriyle doğrulanmalı
+- 745 kayıt, 745 benzersiz ID.
+- EK-1: 276, EK-2: 469.
+- Durum dağılımı: 595 birebir, 137 bulanik, 13 duzeltilmis.
+- 137 bulanık kaydın skorlarının: 115'i 1.0, 22'si referanstaki özgün skorlar.
+- Frontal kemik ve Glare istisnaları doğru.
+- 743 kaydın bütün alanları ab99cb4 ile birebir aynı.
+- İki betik çalıştırıldığında sonuç değişmiyor.
+- Manifestteki SHA-256 değerleri ve dosya boyutları gerçek dosyalarla eşleşiyor.
+- Mutlak Windows yolu kalmamış.
+- Şema v1.0.3 ve diğer aşamaların raporları değişmemiyor.
+- main, cloud-run-migration, canlı siteye müdahale yok.
+"

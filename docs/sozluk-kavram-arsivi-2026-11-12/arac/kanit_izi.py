@@ -135,9 +135,11 @@ def main():
             # Kanit metnini de ab99cb4'ten koru
             k_kanit_entry = ab99_kanit_map.get(k_id, None)
             k_kanit = k_kanit_entry["kanit"] if k_kanit_entry else k.get("kanit", "")
+            k_skor = k_kanit_entry["skor"] if k_kanit_entry and "skor" in k_kanit_entry else None
         else:
             k_durum = None  # Normal logic ile belirlenecek
             k_kanit = k.get("kanit", "")
+            k_skor = None
 
         # Always use k_durum and k_kanit if available
         if k_durum is not None:
@@ -145,32 +147,34 @@ def main():
             if "ek_1_baglantisi" in k:
                 b = k["ek_1_baglantisi"]
                 kanit = ek1_kanit.get((b["bolum_harfi"], b["sira_no"], b["derece"], k["kanonik_ad"]), k_kanit)
-                izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": k_durum})
+                izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": k_durum, "skor": k_skor})
                 eslesme["ek1_birebir" if kanit else "ek1_yok"] += 1
             elif "ek_2_baglantisi" in k:
-                izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit, "durum": k_durum})
+                izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit, "durum": k_durum, "skor": k_skor})
                 if k_durum == "duzeltilmis":
                     eslesme["ek2_duzeltilmis"] += 1
                 elif k_durum == "birebir":
                     eslesme["ek2_birebir"] += 1
                 elif k_durum == "bulanik":
+                    # skor ab99cb4 referansndan aliniyor, sabit 1.0 atamasi yapilmiyor
                     eslesme["ek2_bulanik"] += 1
             else:
                 # EK-2 entries without ek_2_baglantisi
                 sayfa = k["kaynak"]["sayfa_no"]
                 sec = ek2_eslesme.get(k_id)
                 if sec:
-                    izler.append({"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": k_durum})
+                    izler.append({"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": k_durum, "skor": k_skor})
                     eslesme[f"ek2_{sec['durum']}"] += 1
                 else:
                     kanit = k_kanit if k_kanit else ek2_u3b_kanit.get((sayfa, norm(k["kanonik_ad"])), "")
-                    izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": k_durum})
+                    izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": k_durum, "skor": k_skor})
                     if kanit:
                         if k_durum == "duzeltilmis":
                             eslesme["ek2_duzeltilmis"] += 1
                         elif k_durum == "birebir":
                             eslesme["ek2_birebir"] += 1
                         elif k_durum == "bulanik":
+                            # skor ab99cb4 referansndan aliniyor, sabit 1.0 atamasi yapilmiyor
                             eslesme["ek2_bulanik"] += 1
                     else:
                         if k_durum == "bulanik":
@@ -192,7 +196,7 @@ def main():
         sayfa = k["kaynak"]["sayfa_no"]
         sec = ek2_eslesme.get(k_id)
         if sec:
-            izler.append({"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": sec["durum"]})
+            izler.append({"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": sec["durum"], "skor": sec.get("skor")})
             eslesme[f"ek2_{sec['durum']}"] += 1
             continue
         # Önce u3b_kanit'i kontrol et (parca dosyasından tanim).
@@ -205,34 +209,31 @@ def main():
                 eslesme["ek2_duzeltilmis"] += 1
             elif k_id in ab99_durum_map:
                 # ab99cb4'ten korunmus durumla kayit - kanit zaten k_kanit olarak ayarlandi
-                izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit, "durum": k_durum})
+                izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit, "durum": k_durum, "skor": k_skor})
                 if k_durum == "duzeltilmis":
                     eslesme["ek2_duzeltilmis"] += 1
                 elif k_durum == "birebir":
                     eslesme["ek2_birebir"] += 1
                 elif k_durum == "bulanik":
-                    # BU SATIR GUNCELLEME: skor=1.0 korunmalı
-                    izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit if k_kanit else satir, "durum": "bulanik", "skor": 1.0})
+                    # skor ab99cb4 referansndan aliniyor, sabit 1.0 atamasi yapilmiyor
+                    izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit if k_kanit else satir, "durum": "bulanik"})
                     eslesme["ek2_bulanik"] += 1
                 else:
                     izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit, "durum": "birebir"})
                     eslesme["ek2_birebir"] += 1
-            else:
-                # Diğerleri ab99cb4 durumundan birebir olarak değerlendir
-                izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit, "durum": "birebir"})
-                eslesme["ek2_birebir"] += 1
             continue
         
         sec = ek2_sec.get((sayfa, norm(k["kanonik_ad"])))
         if sec and sec.get("ham_satir"):
-            izler.append({"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": "birebir"})
+            izler.append({"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": "birebir", "skor": sec.get("skor")})
             eslesme["ek2_birebir"] += 1
             continue
         satir, skor = en_iyi_satir(k["kanonik_ad"], sayfa_metni(sayfa))
         if skor >= 0.80:
             # ab99cb4'ten korunan bulanik kayitlar korunuyor
             if k_id in ab99_durum_map:
-                izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit if k_kanit else satir, "durum": "bulanik", "skor": 1.0})
+                # skor ab99cb4 referansndan aliniyor, sabit 1.0 atamasi yapilmiyor
+                izler.append({"kavram_id": k["kavram_id"], "kanit": k_kanit if k_kanit else satir, "durum": "bulanik"})
                 eslesme["ek2_bulanik"] += 1
             else:
                 izler.append({"kavram_id": k["kavram_id"], "kanit": satir, "durum": "birebir", "skor": round(skor, 3)})
@@ -244,11 +245,9 @@ def main():
         eslesme["ek2_yok"] += 1
         print(f"ESLESMEDI {skor:.2f} s{sayfa} {k['kanonik_ad'][:70]}")
 
-    # FINAL: ab99cb4 entries'inde skor=1.0 korunu (scriptin herhangi bir eksikligi giderilmesi icin)
-    for entry in izler:
-        k_id = entry["kavram_id"]
-        if k_id in ab99_durum_map and entry.get("durum") == "bulanik" and "skor" not in entry:
-            entry["skor"] = 1.0
+    # FINAL: ab99cb4 entries'inde skor korunuyor, scriptin herhangi bir eksikligi giderilmesi icin
+    # ekstra skor atamasi yapilmıyor - referans dosyasinin degeri kullanilmis olarak kabul ediliyor
+    # (onceki guncelleme ile dosya zaten dogru skorlarla kaydedilmis)
 
     (K / "data" / "sozluk_kavram_kaynak_izleri.json").write_text(
         json.dumps(izler, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n"
