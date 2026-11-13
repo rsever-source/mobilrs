@@ -1381,579 +1381,483 @@
  },
  {
   "kavram_id": "ek2_s003_kalici_isitme_engeli",
-  "kanit": "l. Kalıcı işitme engeli: Bireyin yaşına göre normal kabul edilen işitme seviyeleri dışında kalan",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Bireyin yaşına göre normal kabul edilen işitme seviyeleri dışında kalan azalmış duyma hassasiyetini ifade eder. İşitmenin değerIendirilmesi sırasında işitme cihazları ve protezler kullanılmamalıdır.",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s003_kalici_iki_tarafli_isitme_engeli",
-  "kanit": "2, Kalıcı iki taraflı işitme engeli: Kişinin günlük yaşam aktivitelerini yapmasına engel teşkil eden",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Kişinin günlük yaşam aktivitelerini yapmasına engel teşkil eden iki taraflı işitme kaybıdır.",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s008_dil_konusma_ve_ses_bozukluklari",
-  "kanit": "Dil, konuşma ve ses bozuklukları iletişim ve İlişkili alanlarda meydana gelen problemler sonucu",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Dil, konuşma ve ses bozuklukları iletişim ve İlişkili alanlarda meydana gelen problemler sonucu ortaya çıkmaktadır. Bu problemler, fonemlerin yanlış kullanımından dili anlama ve kullanma yetersizliğine veya fonksiyonel konuşma için gerekli olan oral-motor mekanizmanın kullanım yetersizliğine kadar değişkenlik gösterebilir.",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s008_afazi",
   "kanit": "Afazi",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s008_dizartri",
   "kanit": "Dizartrİ",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s008_apraksi",
   "kanit": "Apraksi",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s008_akici_konusma_bozukluklari_kekemelik_v",
   "kanit": "Akıcı Konuşma Bozuklukları (kekemelik ve çok hızlı konuşma-takefemi)",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s008_larenjektomi",
   "kanit": "Larenjektomi",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s008_kranyo_fasyal_anomali",
   "kanit": "Kranyo-fasyal anomali",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s008_artikulasyon_fonolojik_bozukluk",
   "kanit": "Artikülasyon/fonolojik bozukluk",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s008_otizm",
   "kanit": "Otizm",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s008_isitme_kaybi",
   "kanit": "İşitme kaybı",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s008_mental_retardasyon",
-  "kanit": "10. Mental retardasyon",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Mental retardasyon",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s008_serebral_palsi",
-  "kanit": "II. Serebral palsİ",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Serebral palsİ",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s008_elektif_mutizm",
-  "kanit": "12. Elektifmutizm",
-  "durum": "bulanik",
-  "skor": 0.867
+  "kanit": "Elektifmutizm",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s008_santral_isitsel_islemleme_bozuklugu",
   "kanit": "Santral işitsel işlemleme bozukluğu",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s008_ses_bozukluklari",
   "kanit": "Ses bozuklukları, vs",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s011_vestibuler_bozukluklar",
-  "kanit": "Vestibüler bozukluklar hasta stabil olduktan sonra en az 6 ay süreyle takip edilip aşağıdaki",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Vestibüler bozukluklar hasta stabil olduktan sonra en az 6 ay süreyle takip edilip aşağıdaki kriterlere göre değerlendirilir. Vestibüler Bozukluğun Kriterleri.",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_edinsel_nedenlerle_fiziksel_gorunumu_b",
   "kanit": "Edinsel nedenlerle fiziksel görünümü bozan burun eğriliği",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_dis_kulagin_tek_tarafli_kaybi_veya_sek",
   "kanit": "Dış kulağın tek taraflı kaybı veya şekil bozukluğu",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
-  "kavram_id": "ek2_s012_frontal_kemikte_egilme",
-  "kanit": "Frontal kemikte eğkme",
-  "durum": "bulanik",
-  "skor": 0.93
+  "kavram_id": "ek2_s012_frontal_kemikte_cokme",
+  "kanit": "Frontal kemikte çökme",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_yanakla_beraber_burun_veya_frontal_kem",
   "kanit": "Yanakla beraber burun veya frontal kemikte çökme",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_burun_ve_sinus_bosluguna_acilma_ile_bi",
-  "kanit": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nın kısmi kaybı (medial duvar kaybı) IQ",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nın kısmi kaybı (medial duvar kaybı)",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_tukuruk_bezi_kanallarinin_yaralanmasi",
   "kanit": "Tükürük bezi kanallarının yaralanması veya hastalıkları sonucu sürekli fistül",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_orbital_ve_veya_intrakranial_sekel_bir",
-  "kanit": "Orbital ve/veya intrakranial sekel bırakan komplikasyonlu sinüzitler (fpnksiyon kaybı ilgili",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Orbital ve/veya intrakranial sekel bırakan komplikasyonlu sinüzitler (fpnksiyon kaybı ilgili uzmanlık dalı tarafindan ayrıca değerlendirilecektir?)",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_dis_kulagin_cift_tarafli_kaybi_veya_se",
   "kanit": "Dış kulağın çift taraflı kaybı veya şekil bozukluğp",
-  "durum": "bulanik",
-  "skor": 0.979
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_burunun_kozmetik_deformiteye_yol_acan",
   "kanit": "Burunun kozmetik deformiteye yol açan kısmi kaybı",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_cerrahi_veya_travma_sonucu_mandibula_s",
   "kanit": "Cerrahi veya travma sonucu mandibula segmenter rezeksiyonu",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_dogumsal_anomali_travma_kanser_ve_veya",
   "kanit": "Doğumsal anomali. travma, kanser ve/veya kanser ameliyatına bağlı olarak normal yüz anatomisinin aşırı bozukluğu",
-  "durum": "bulanik",
-  "skor": 0.967
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_burun_ve_sinus_bosluguna_acilma_ile_bi_2",
   "kanit": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nın kısmi kaybı (medial duvara İlaveten veya medial duvar dışında bir duvarının kaybı)",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_cerrahi_veya_travma_sonucu_hemimandibu",
   "kanit": "Cerrahi veya travma sonucu hemimandibulektomi",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_doku_kaybi_skarli_fiksasyon_veya_felce",
   "kanit": "Dok!! kaybı, skarll fiksasypn vgyg felce bağlı dilin fonksiygn kaybı (hafif)",
-  "durum": "bulanik",
-  "skor": 0.923
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_primer_atrofik_rinit_ozena",
   "kanit": "Primer atrofik rinit (ozena)",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_travma_tumor_veya_ameliyat_sonrasi_en",
   "kanit": "Travma. tümör veya ameliyat sonrası en az bir alveoler arktaki bütün kalıcı dişlerin kaybı",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s012_tam_fonksiyon_bozuklugu_yapan_dudak_ar",
   "kanit": "Tam fonksiyon bozukluğu yapan dudak arızaları",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s013_burun_ve_sinus_bosluguna_acilma_ile_bi",
-  "kanit": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nm tam kaybı (fonksiyon kaybı ile birlikte",
-  "durum": "bulanik",
-  "skor": 0.802
+  "kanit": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nm tam kaybı (fonksiyon kaybı ile birlikte alveoler çıkıntıda %50'den fazla kayıp)",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s013_burnun_tam_kaybi",
   "kanit": "Burnun tam kaybı",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s013_her_iki_goz_kuresinin_kaybi",
-  "kanit": "Her iki göz küresinin kaybı (fonksiyon kaybı ilgili uzmanlık dalı tarafmdan ayrıca",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Her iki göz küresinin kaybı (fonksiyon kaybı ilgili uzmanlık dalı tarafmdan ayrıca değerlendirilecektir)",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s013_cerrahi_veya_travma_sonucu_mandibula_o",
   "kanit": "Cerrahi veya travma sonucu mandibüla ön segmentinde %50'den fazla kayıp",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s013_doku_kaybi_skarli_fiksasyon_veya_felce",
   "kanit": "Doku kaybı. skarll fiksasyon veya felce bağlı dilin fonksion kaybı (Tam dil yokluğu veya konuşma ve yutmayı zorlaştıracak derecede dilin en az 2/3'sİnİn alındığı dil harabiyeti veya bilateral hipoglossal sinir paralizisi)",
-  "durum": "bulanik",
-  "skor": 0.819
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s013_ameliyat_edilemeyen_burun_paranazal_si",
   "kanit": "Ameliyat edilemeyen burun. paranazal sinüsler. çene. ağız ve farinks tümörleri",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s014_hava_yolu_defektleri",
-  "kanit": "Hava yolu defektlerinde dispne en önemli semptomdur. Dispne hastanın normal yaşantasını",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Respirasyon mekanizması akciğerleri ve diğer hava pasajlarını kapsar. Hava pasajları ise burun delikleri, nazal kaviteleri, ağız, farenks, larenks trakea ve bronşlar oluşturur. Hava yolunda görülen patolojiler hava yolunun kısmen (stenoz) ve tamamen (oklüzyon) kapanmasına sebep olabilir. Hava yolu defektlerinde dispne en önemli semptomdur. Dispne hastanın normal yaşantasını sürdürmesini engelleyebilir. Bu subjektif semptom, ilk önce egzersiz veya zorlanma sırasında görülür. Eğer istirahat hâlinde de dispne varsa bu durum patolojinin oldukça ciddi olduğunun bir belillisidir. Dispne tek başına veya diğer semptomlarla birlikte görülebilir. Hava yolu patolojileri nedeniyle oluşan kayıplar sınıflandırılırken, uyku apnesi bu sınıflandırmaya dahil edilmemiştir.",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s014_koku_ve_tat_duyusu_kaybi",
-  "kanit": "F.KOKU VE TAT DUYUSU KAYBI",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Koku ve tat duyusunun objektif olarak değerIendirilmesi mümkün olmadığından bu duyuları bilateral olarak bozabileceğine karar verilen hastalık ve arızaların (yaygın intrakranial, nazal veya oral tümörler, harici veya cerrahi travmalar, konjenital anomaliler ve sendromlar, nörolojik veya dahili hastalıklar) varlığı objektif olarak ortaya konulursa bu duyuların kaybolduğu kabul edilerek her biri için %3 Engel Oranı verilir. Bu değerlendirmenin yapılabilmesi için tat veya koku kaybına sebep olan hastalık veya durum için gerekli tedavi uygulanmış olmalıdır.",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s014_cigneme_ve_yutma_bozukluklari",
-  "kanit": "Çiğneme ve yutma bozuklukları gerekli rehabilitasyon uygulandıktan en az 6 ay sonra diyet",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Çiğneme ve yutma bozuklukları gerekli rehabilitasyon uygulandıktan en az 6 ay sonra diyet alımındaki kısıtlamalara göre değerlendirilir.",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s015_zeka_islev_bozukluklari",
-  "kanit": "I- Zekâ İşlev bozuklukları Engel Oranı",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Zekâ İşlev bozuklukları Engel Oranı",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s015_sizofreni",
-  "kanit": "II- Şizofreni",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Şizofreni",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s015_sizoaffektif_bozukluk_manik_depresif_v",
-  "kanit": "III- Şizoaffektif bozukluk (manik, depresif ve karışık tip)",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Şizoaffektif bozukluk (manik, depresif ve karışık tip)",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s015_sanrisal_bozukluklar_paranoya_paranoid",
-  "kanit": "IV- Sanrısal bozukluklar (paranoya, paranoid psikoz, parafreni tanılarını içerir)",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Sanrısal bozukluklar (paranoya, paranoid psikoz, parafreni tanılarını içerir)",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s015_atipik_veya_baska_turlu_adlandirilamay",
-  "kanit": "V- Atipik veya başka türlü adlandırılamayan psikozlar",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Atipik veya başka türlü adlandırılamayan psikozlar",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s015_yaygin_gelisimsel_bozukluklar",
-  "kanit": "VI- Yaygın gelişimsel bozukluklar",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Yaygın gelişimsel bozukluklar",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s015_asperger_sendromu",
-  "kanit": "a)Asperger Sendromu",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Asperger Sendromu",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s015_disintegratif_psikoz",
-  "kanit": "b)Disintegratif psikoz",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Disintegratif psikoz",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s015_rett_sendromu",
-  "kanit": "c)Rett Sendromu",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Rett Sendromu",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s015_atipik_otizm_baska_turlu_adlandirilama",
-  "kanit": "d)Atipik otizm (başka türlü adlandırılamayan yaygın gelişimsel bozukluk)",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Atipik otizm (başka türlü adlandırılamayan yaygın gelişimsel bozukluk)",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s015_otizm",
-  "kanit": "d)Otizm*",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Otizm*",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s016_beyin_hasari_beyin_islev_bozuklugu_ve",
-  "kanit": "I- Beyin Hasarı, Beyin İşlev Bozukluğu ve Bedensel Hastalıklara Bağlı Ruhsal Bozukluklar",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Beyin Hasarı, Beyin İşlev Bozukluğu ve Bedensel Hastalıklara Bağlı Ruhsal Bozukluklar",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s016_organik_hallusinozis_organik_katatonik",
-  "kanit": "a) Organik hâllusinozis, Organik katatonik bozukluk, Organik delüzyonel [şizofreni-benzeri] bozukluklar:",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Organik hâllusinozis, Organik katatonik bozukluk, Organik delüzyonel [şizofreni-benzeri] bozukluklar:",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s016_organik_duygu_affektivite_bozukluklari",
-  "kanit": "b) Organik duygu [affektivite] bozuklukları, Organik anksiyete bozuklukları, Organik disosiyatif bozukluk, Organik duygusal labilite [astenik] bozukluk, Hafif bilişsel bozukluk",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Organik duygu [affektivite] bozuklukları, Organik anksiyete bozuklukları, Organik disosiyatif bozukluk, Organik duygusal labilite [astenik] bozukluk, Hafif bilişsel bozukluk",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s016_beyin_hasari_beyin_islev_bozukluguna_b",
-  "kanit": "II- Beyin Hasarı, Beyin İşlev Bozulduğuna Bağlı Davramş Bozuklukları",
-  "durum": "bulanik",
-  "skor": 0.938
+  "kanit": "Beyin Hasarı, Beyin İşlev Bozulduğuna Bağlı Davramş Bozuklukları",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s016_organik_kisilik_bozuklugu_frontal_lob",
   "kanit": "(Organik kişilik bozukluğu, frontal lob sendromunu, beyin sarsılması sonrası postkontüzyonel sendrom içerir.)",
-  "durum": "bulanik",
-  "skor": 0.955
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s016_duygudurum_bozukluklari",
-  "kanit": "III-Duygudurum Bozuklukları",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Duygudurum Bozuklukları",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s016_manik_nobet_bipolar_duygudurum_bozuklu",
-  "kanit": "Manik nöbet, bipolar duygudurum bozukluğu,",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Manik nöbet, bipolar duygudurum bozukluğu",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s016_yineleyen_depresif_bozukluk",
   "kanit": "Yineleyen depresif bozukluk",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s016_yineleyen_depresif_bozukluk_simdiki_no",
   "kanit": "Yineleyen depresif bozukluk, şimdiki nöbet psikotik belirtili olan, olmayan, ağır",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s017_anksiyete_bozukluklari_obsesif_kompuls",
-  "kanit": "obsesif-kompülsif bozukluklar, somatoform bozulduklar ve yeme bozuklukları:",
-  "durum": "bulanik",
-  "skor": 0.852
+  "kanit": "Anksiyete bozuklukları( panik bozulduk, yaygm anksiyete bozulduğu, agorafobi), obsesif-kompülsif bozukluklar, somatoform bozulduklar ve yeme bozuklukları:",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s017_anksiyete_bozukluklari_panik_bozukluk",
-  "kanit": "a) Anksiyete bozukluları( panik bozulduk, yaygın anksiyete bozukluğu, agorafobi) ve somatoform bozukluklar",
-  "durum": "bulanik",
-  "skor": 0.975
+  "kanit": "Anksiyete bozukluları( panik bozulduk, yaygın anksiyete bozukluğu, agorafobi) ve somatoform bozukluklar",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s017_obsesif_kompulsif_bozukluk",
-  "kanit": "b) Obsesif-kompulsif bozukluk",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Obsesif-kompulsif bozukluk",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s017_travma_sonrasi_stres_bozuklugu",
-  "kanit": "C) Travma sonrası stres bozukluğu",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Travma sonrası stres bozukluğu",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s017_yeme_bozukluklari_anoreksia_nervosa_ve",
-  "kanit": "d) Yeme bozuklukları (Anoreksia nervosa ve bulimia nervosa )",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Yeme bozuklukları (Anoreksia nervosa ve bulimia nervosa )",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s017_psikoaktif_madde_kullanimina_bagli_ruh",
-  "kanit": "V- Psikoaktif Madde Kullanımına Bağlı Ruhsal ve Davranışsal Bozukluklar (duygulanım",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Psikoaktif Madde Kullanımına Bağlı Ruhsal ve Davranışsal Bozukluklar (duygulanım bozukluğu, alkol ve madde kullanımına bağlı psikotik bozukluk -alkol hâlusinozisi, alkol paranoyası-)",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s017_kisilik_bozukluklari",
-  "kanit": "VI- Kişilik bozuldukları",
-  "durum": "bulanik",
-  "skor": 0.884
+  "kanit": "Kişilik bozuldukları",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s018_sebase_ekrin_ve_apokrin_gland_hastalik",
-  "kanit": "ı. SEBASE, EKRİN VE APOKRİN GLAND HASTALIKLARI",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "SEBASE, EKRİN VE APOKRİN GLAND HASTALIKLARI",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s018_rozasea",
-  "kanit": "A- Rozasea",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Rozasea",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s018_hidradenitis_supurativa_akne_konglobat",
-  "kanit": "B- Hidradenitis supurativa, akne konglobata ve folliküler oklüzyon Triadl",
-  "durum": "bulanik",
-  "skor": 0.971
+  "kanit": "Hidradenitis supurativa, akne konglobata ve folliküler oklüzyon Triadl",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s019_sacli_derinin_diseke_edici_follikuliti",
-  "kanit": "C- Saçlı derinin diseke edici folliküliti",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Saçlı derinin diseke edici folliküliti",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s019_hiperhidrosis",
-  "kanit": "D- Hiperhİdrosİs",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Hiperhİdrosİs",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s019_kil_follikulu_ile_ilgili_hastaliklar",
-  "kanit": "11. KIL FOLLİKÜLÜ İLE İLGİLİ HASTALIKLAR",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "KIL FOLLİKÜLÜ İLE İLGİLİ HASTALIKLAR",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s019_alopesi_totalis",
-  "kanit": "1-Alopesi totalis",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Alopesi totalis",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s019_alopesi_universalis",
-  "kanit": "2-AIopesi üniversalis",
-  "durum": "bulanik",
-  "skor": 0.895
+  "kanit": "AIopesi üniversalis",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s019_hirsutizm",
-  "kanit": "3-Hirsutizm",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Hirsutizm",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s019_sac_rengi_ve_sac_govdesi_anormallikler",
-  "kanit": "4-Saç rengi ve saç gövdesi anormallikleri (moniletrix vb)",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Saç rengi ve saç gövdesi anormallikleri (moniletrix vb)",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s019_ekzematoz_dermatitler",
-  "kanit": "111. EKZEMATÖZ DERMATİTLER",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "EKZEMATÖZ DERMATİTLER",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s019_atopik_dermatit",
-  "kanit": "A- Atopik dermatit",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Atopik dermatit",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s019_dermatitler_kontakt_dermatit_staz_derm",
-  "kanit": "B- Dermatitler (Kontakt dermatit, staz dermatit, dishidrotik",
-  "durum": "bulanik",
-  "skor": 0.923
+  "kanit": "Dermatitler (Kontakt dermatit, staz dermatit, dishidrotik ekzema)",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s019_cesitli_inflamatuvar_deri_hastaliklari",
-  "kanit": "IV. ÇEŞİTLİ İNFLAMATUVAR DERİ HASTALIKLARI",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "ÇEŞİTLİ İNFLAMATUVAR DERİ HASTALIKLARI",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s019_psoriasis",
-  "kanit": "A- Psoriasis",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Psoriasis",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s019_pitriasis_rubra_pilaris_liken_planus",
-  "kanit": "B- Pitriasis rubra pilaris, liken planus",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Pitriasis rubra pilaris, liken planus",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s020_perforan_dermatozlar_kryle_hastaligi_v",
-  "kanit": "C- Perforan dermatozlar (Kryle Hastalığı vb.)",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Perforan dermatozlar (Kryle Hastalığı vb.)",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s020_psikiyatrik_etyolojili_deri_hastalikla",
-  "kanit": "V. PSİKİYATRİK ETYOLOJİLİ DERİ HASTALIKLARI",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "PSİKİYATRİK ETYOLOJİLİ DERİ HASTALIKLARI",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s020_psikiyatrik_etyolojili_deri_hastalikla_2",
   "kanit": "Psikiatrik etyolojili deri hastalıkları (nörotik ekskoriasyon, faktisiyel dermatit, vb.)",
-  "durum": "bulanik",
-  "skor": 0.994
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s020_deri_tumorleri",
   "kanit": "VI. DERİ TÜMÖRLERİ",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s020_benign_neoplazm_ve_hiperplaziler",
   "kanit": "A.BENİGN NEOPLAZM VE HİPERPLAZİLER",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s020_kongenital_melanositik_nevus",
   "kanit": "Kongenital melanositik nevus:",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s020_kan_damarlarinin_benign_neoplazm_ve_hi",
-  "kanit": "Kan damarlarının benign neoplazm ve hiperplazileri: Kapiller anjiom, Kavernöz anjiom, Lenfanjiom,",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Kan damarlarının benign neoplazm ve hiperplazileri: Kapiller anjiom, Kavernöz anjiom, Lenfanjiom, lenfohemanjiom, Anjiokeratom, KlippeI-Trenanuay-Weber, vb.",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s020_hipertrofik_skar_ve_keloid",
   "kanit": "Hipertrofik skar ve keloid",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s020_derinin_premalign_tumorleri",
   "kanit": "B DERİNİN PREMALİGN TÜMÖRLERİ",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s020_derinin_premalign_tumorlerine_bagli_do",
@@ -1963,8 +1867,7 @@
  {
   "kavram_id": "ek2_s020_derinin_malign_tumorleri",
   "kanit": "C.DERİNİN MALİGN TÜMÖRLERİ:",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s020_malign_deri_tumorlerinde_doku_veya_fon",
@@ -1978,249 +1881,208 @@
  },
  {
   "kavram_id": "ek2_s020_fotosensitivite_ve_gunes_isinlari_ile",
-  "kanit": "VII. FOTOSENSİTİVİTE VE GÜNEŞ IŞINLARI İLE TETİKLENEN HASTALIKLAR",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "FOTOSENSİTİVİTE VE GÜNEŞ IŞINLARI İLE TETİKLENEN HASTALIKLAR",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s020_solar_urtiker_aktinik_retikuloid_persi",
-  "kanit": "I-SoIar ürtiker, aktinik retikuloid, persistan Işık reaksiyonu, polimorf Işık erüpsiyonu klinik şiddete",
-  "durum": "bulanik",
-  "skor": 0.9
+  "kanit": "SoIar ürtiker, aktinik retikuloid, persistan Işık reaksiyonu, polimorf Işık erüpsiyonu klinik şiddete göre değerIendirilir.",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s021_porfirialar",
-  "kanit": "2-PorfiriaIar",
-  "durum": "bulanik",
-  "skor": 0.833
+  "kanit": "PorfiriaIar",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s021_eritroderma",
-  "kanit": "VIII. ERİTRODERMA",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "ERİTRODERMA",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s021_pigment_bozukluklari",
-  "kanit": "IX. PİGMENT BOZUKLUKLARI",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "PİGMENT BOZUKLUKLARI",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s021_pigment_bozuklugu_ile_seyreden_hastali",
-  "kanit": "Pigment bozukluğu ile (Vitiligo, depigmentasyon ve melanoderma yapan hastalıklar) seyreden",
-  "durum": "bulanik",
-  "skor": 0.839
+  "kanit": "Pigment bozukluğu ile (Vitiligo, depigmentasyon ve melanoderma yapan hastalıklar) seyreden hastalıklar",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s021_albinizm",
-  "kanit": "3-Albİnİzm",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Albİnİzm",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s021_immun_otoimmun_ve_sistemik_hastaliklar",
-  "kanit": "X. İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s021_vaskulitler",
   "kanit": "Vaskulitler",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s021_kronik_ve_veya_tedaviye_direncli_urtik",
   "kanit": "Kronik ve/veya tedaviye dirençli ürtiker ve anjioödem",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s021_pannikulitler",
   "kanit": "Pannikülitler (Lezyon şiddetine göre değerlendirilir)",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s021_behcet_hastaligi",
   "kanit": "Behçet hastalığı",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s021_otoimmun_bullu_hastaliklar_pemfigus_vu",
   "kanit": "Otoimmün biillü hastalıklar (Pemfigus vulgaris, büllöz pemfigoid, dermatitis herpetiformis ve diğer otoimmün büllü hastalıklar)",
-  "durum": "bulanik",
-  "skor": 0.988
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s021_kronik_bag_doku_hastaliklari",
   "kanit": "Kronik bağ doku hastalıkları",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s022_reiter_sendromu_sadece_deri_lezyonlari",
   "kanit": "Reiter sendromu: Sadece deri lezyonları için",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s022_pyoderma_gangrenosum",
   "kanit": "Pyoderma gangrenosum:",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s022_sarkoidozis",
   "kanit": "Sarkoidozis",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s022_kronik_graft_versus_host_hastaligi",
   "kanit": "Kronik Graft Versus Host Hastalığı",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s022_metabolik_endokrin_bozukluklar_depolan",
-  "kanit": "Metabolik, endokrin bozukluklar, depolanma hastalıkları ve sistemik malignitelerin deri bulguları:",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Metabolik, endokrin bozukluklar, depolanma hastalıkları ve sistemik malignitelerin deri bulguları: Sadece deri lezyonları için",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s022_genetik_gecisli_deri_hastaliklari",
-  "kanit": "XI. GENETİK GEÇİŞLİ DERİ HASTALIKLARI",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "GENETİK GEÇİŞLİ DERİ HASTALIKLARI",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s022_iktiyozis_grubu_hastaliklar",
   "kanit": "İktiyozis grubu hastalıklar:",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s022_herediter_palmoplanter_keratodermiler",
   "kanit": "Herediter palmoplanter keratodermiler, Unna Thost, Mal de Melada, vb.",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s022_norokutanoz_hastaliklar_norofibromatoz",
   "kanit": "Nörokutanöz hastalıklar (Nörofibromatosis, Tuberoz skleroz, Psödoksantoma elastikum, telenjiektazi, vb.)",
-  "durum": "bulanik",
-  "skor": 0.99
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s022_epidermolizis_bullosa",
   "kanit": "Epidermolizis büllosa",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s022_ataksi",
   "kanit": "Ataksi",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s023_hailey_hailey_hastaligi",
   "kanit": "Hailey Hailey Hastalığı",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s023_kseroderma_pigmentozum_rothmund_thomps",
   "kanit": "Kseroderma pigmentozum, Rothmund-Thompson Send., Diskeratozis konjenita, Werner send. vb.",
-  "durum": "bulanik",
-  "skor": 0.954
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s023_anhidrotik_hipohidrotik_ve_hidrotik_ek",
   "kanit": "Anhidrotik/Hipohidrotik ve hidrotik ektodermal displazi:",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s023_vaskuler_hastaliklarin_deri_bulgulari",
-  "kanit": "XII. VASKULER HASTALIKLARIN DERİ BULGULARI",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "VASKULER HASTALIKLARIN DERİ BULGULARI",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s023_kronik_bacak_ulserleri",
   "kanit": "Kronik bacak ülserleri: (lezyon şiddetine göre)",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s023_dekubitus_ulseri",
   "kanit": "Dekubitus ülseri: (lezyon şiddetine göre)",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s023_kutanoz_lenfoma_losemi_histiyositozlar",
-  "kanit": "XIII. KUTANÖZ LENFOMA, LÖSEMİ, HİSTİYOSİTOZLAR VE MASTOSİTOZLAR",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "KUTANÖZ LENFOMA, LÖSEMİ, HİSTİYOSİTOZLAR VE MASTOSİTOZLAR",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s023_kutanoz_t_hucreli_lenfoma",
   "kanit": "Kütanöz T Hücreli Lenfoma",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s024_mf_disi_diger_kutanoz_lenfomalar",
   "kanit": "MF dışı diğer kutanöz lenfomalar",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s024_kutanoz_langerhans_hucreli_histiyosito",
   "kanit": "Kutanöz (Langerhans hücreli) histiyosistozlar",
-  "durum": "bulanik",
-  "skor": 0.988
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s024_kutanoz_mastositozis",
   "kanit": "Kutanöz Mastositozis",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s024_mikrobial_ajanlara_bagli_deri_hastalik",
-  "kanit": "XIV. MİKROBİAL AJANLARA BAĞLI DERİ HASTALIKLARI",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "MİKROBİAL AJANLARA BAĞLI DERİ HASTALIKLARI",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s024_lepra_kutanoz_tuberkulozlar_sistemik_f",
-  "kanit": "Lepra, Kutanöz tüberkülozlar, Sistemik fungal infeksiyonlar, Mukokütanöz layşmanyazis,",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Lepra, Kutanöz tüberkülozlar. Sistemik fungal infeksiyonlar. mukokütanöz Layşmanyazis",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s024_konjenital_ve_gec_sifiliz_sonucunda_ge",
-  "kanit": "konjenital ve geç sifiliz sonucunda gelişen sekeller ilgili branşlarca değerlendirilir.",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Lepra, Kutanöz tüberkülozlar, Sistemik fungal infeksiyonlar, Mukokütanöz layşmanyazis, konjenital ve geç sifiliz sonucunda gelişen sekeller ilgili branşlarca değerlendirilir.",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s024_diger_deri_hastaliklari",
   "kanit": "DİĞER DERİ HASTALIKLARI",
-  "durum": "bulanik",
-  "skor": 1.0
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s024_listede_yer_almayan_deri_hastaliklari",
-  "kanit": "Yukarıdaki listede yer almayan deri hastalıkları ve sekellerine bağlı fonksiyon kayıplarının",
-  "durum": "bulanik",
-  "skor": 1.0
+  "kanit": "Yukarıdaki listede yer almayan deri hastalıkları ve sekellerine bağlı fonksiyon kayıplarının değerlendiri imesinde hastalığın şiddetine göre değerIendirme yapılır.",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s025_anemiler",
@@ -2689,8 +2551,8 @@
  },
  {
   "kavram_id": "ek2_s040_kontrast_duyarlik_ve_kamasma_glare_kus",
-  "kanit": "o Tek gözde mevcut ise",
-  "durum": "birebir"
+  "kanit": "Klinik olarak anlamlı kontrast duyarlık — kamaşma (glare) kusuru varlığında (normal oda aydınlatması ile, karanlık odada yalnızca arkadan aydınlatmalı eşel veya projeksiyon eşelinin aydınlattığı ortama ait ölçümler arasında görme keskinliği puanını 15 puan veya daha fazla değiştiren, diğer bir ifadeyle ondalık (Snellen) görme keskinliği düzeyini iki kat değiştiren) )",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s042_fonksiyonel_korluk",

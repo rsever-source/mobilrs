@@ -309,7 +309,7 @@ def main():
                 {
                     "kavram_id": kimlik,
                     "ham_satir": k["ham_satir"],
-                    "durum": "duzeltilmis" if k.get("duzeltilmis") else "birebir",
+                    "durum": "duzeltilmis" if k.get("duzeltilmis") or k.get("durum") == "duzeltilmis" else "birebir",
                 }
             )
         cikti.append(

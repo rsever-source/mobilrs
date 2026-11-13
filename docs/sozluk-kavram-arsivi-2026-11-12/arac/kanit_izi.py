@@ -105,6 +105,13 @@ def main():
             izler.append({"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": sec["durum"]})
             eslesme[f"ek2_{sec['durum']}"] += 1
             continue
+        # Önce u3b_kanit'i kontrol et (parca dosyasından tanim)
+        kanit = ek2_u3b_kanit.get((sayfa, norm(k["kanonik_ad"])), "")
+        if kanit:
+            izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": "duzeltilmis"})
+            eslesme["ek2_duzeltilmis"] += 1
+            continue
+        
         sec = ek2_sec.get((sayfa, norm(k["kanonik_ad"])))
         if sec and sec.get("ham_satir"):
             izler.append({"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": "birebir"})
@@ -117,11 +124,6 @@ def main():
             continue
         # kaynakta iki satira bolunmus metinler: parca dosyasindaki kaynak
         # metni (OCR satirlarinin birlestirilmis hali) kanit olarak kullanilir
-        kanit = ek2_u3b_kanit.get((sayfa, norm(k["kanonik_ad"])), "")
-        if kanit:
-            izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": "duzeltilmis"})
-            eslesme["ek2_duzeltilmis"] += 1
-            continue
         izler.append({"kavram_id": k["kavram_id"], "kanit": "", "durum": "yok", "skor": round(skor, 3)})
         eslesme["ek2_yok"] += 1
         print(f"ESLESMEDI {skor:.2f} s{sayfa} {k['kanonik_ad'][:70]}")
