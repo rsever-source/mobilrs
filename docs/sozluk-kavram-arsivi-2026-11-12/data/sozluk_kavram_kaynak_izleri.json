@@ -1381,103 +1381,103 @@
  },
  {
   "kavram_id": "ek2_s003_kalici_isitme_engeli",
-  "kanit": "Bireyin yaşına göre normal kabul edilen işitme seviyeleri dışında kalan azalmış duyma hassasiyetini ifade eder. İşitmenin değerIendirilmesi sırasında işitme cihazları ve protezler kullanılmamalıdır.",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s003_kalici_iki_tarafli_isitme_engeli",
-  "kanit": "Kişinin günlük yaşam aktivitelerini yapmasına engel teşkil eden iki taraflı işitme kaybıdır.",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s008_dil_konusma_ve_ses_bozukluklari",
-  "kanit": "Dil, konuşma ve ses bozuklukları iletişim ve İlişkili alanlarda meydana gelen problemler sonucu ortaya çıkmaktadır. Bu problemler, fonemlerin yanlış kullanımından dili anlama ve kullanma yetersizliğine veya fonksiyonel konuşma için gerekli olan oral-motor mekanizmanın kullanım yetersizliğine kadar değişkenlik gösterebilir.",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s008_afazi",
-  "kanit": "Afazi",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s008_dizartri",
-  "kanit": "Dizartrİ",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s008_apraksi",
-  "kanit": "Apraksi",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s008_akici_konusma_bozukluklari_kekemelik_v",
-  "kanit": "Akıcı Konuşma Bozuklukları (kekemelik ve çok hızlı konuşma-takefemi)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s008_larenjektomi",
-  "kanit": "Larenjektomi",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s008_kranyo_fasyal_anomali",
-  "kanit": "Kranyo-fasyal anomali",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s008_artikulasyon_fonolojik_bozukluk",
-  "kanit": "Artikülasyon/fonolojik bozukluk",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s008_otizm",
-  "kanit": "Otizm",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s008_isitme_kaybi",
-  "kanit": "İşitme kaybı",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s008_mental_retardasyon",
-  "kanit": "Mental retardasyon",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s008_serebral_palsi",
-  "kanit": "Serebral palsİ",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s008_elektif_mutizm",
-  "kanit": "Elektifmutizm",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s008_santral_isitsel_islemleme_bozuklugu",
-  "kanit": "Santral işitsel işlemleme bozukluğu",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s008_ses_bozukluklari",
-  "kanit": "Ses bozuklukları, vs",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s011_vestibuler_bozukluklar",
-  "kanit": "Vestibüler bozukluklar hasta stabil olduktan sonra en az 6 ay süreyle takip edilip aşağıdaki kriterlere göre değerlendirilir. Vestibüler Bozukluğun Kriterleri.",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_edinsel_nedenlerle_fiziksel_gorunumu_b",
-  "kanit": "Edinsel nedenlerle fiziksel görünümü bozan burun eğriliği",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_dis_kulagin_tek_tarafli_kaybi_veya_sek",
-  "kanit": "Dış kulağın tek taraflı kaybı veya şekil bozukluğu",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_frontal_kemikte_egilme",
@@ -1486,1067 +1486,1067 @@
  },
  {
   "kavram_id": "ek2_s012_yanakla_beraber_burun_veya_frontal_kem",
-  "kanit": "Yanakla beraber burun veya frontal kemikte çökme",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_burun_ve_sinus_bosluguna_acilma_ile_bi",
-  "kanit": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nın kısmi kaybı (medial duvar kaybı)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_tukuruk_bezi_kanallarinin_yaralanmasi",
-  "kanit": "Tükürük bezi kanallarının yaralanması veya hastalıkları sonucu sürekli fistül",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_orbital_ve_veya_intrakranial_sekel_bir",
-  "kanit": "Orbital ve/veya intrakranial sekel bırakan komplikasyonlu sinüzitler (fpnksiyon kaybı ilgili uzmanlık dalı tarafindan ayrıca değerlendirilecektir?)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_dis_kulagin_cift_tarafli_kaybi_veya_se",
-  "kanit": "Dış kulağın çift taraflı kaybı veya şekil bozukluğp",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_burunun_kozmetik_deformiteye_yol_acan",
-  "kanit": "Burunun kozmetik deformiteye yol açan kısmi kaybı",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_cerrahi_veya_travma_sonucu_mandibula_s",
-  "kanit": "Cerrahi veya travma sonucu mandibula segmenter rezeksiyonu",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_dogumsal_anomali_travma_kanser_ve_veya",
-  "kanit": "Doğumsal anomali. travma, kanser ve/veya kanser ameliyatına bağlı olarak normal yüz anatomisinin aşırı bozukluğu",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_burun_ve_sinus_bosluguna_acilma_ile_bi_2",
-  "kanit": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nın kısmi kaybı (medial duvara İlaveten veya medial duvar dışında bir duvarının kaybı)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_cerrahi_veya_travma_sonucu_hemimandibu",
-  "kanit": "Cerrahi veya travma sonucu hemimandibulektomi",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_doku_kaybi_skarli_fiksasyon_veya_felce",
-  "kanit": "Dok!! kaybı, skarll fiksasypn vgyg felce bağlı dilin fonksiygn kaybı (hafif)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_primer_atrofik_rinit_ozena",
-  "kanit": "Primer atrofik rinit (ozena)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_travma_tumor_veya_ameliyat_sonrasi_en",
-  "kanit": "Travma. tümör veya ameliyat sonrası en az bir alveoler arktaki bütün kalıcı dişlerin kaybı",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s012_tam_fonksiyon_bozuklugu_yapan_dudak_ar",
-  "kanit": "Tam fonksiyon bozukluğu yapan dudak arızaları",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s013_burun_ve_sinus_bosluguna_acilma_ile_bi",
-  "kanit": "Burun ve sinüs boşluğuna açılma ile birlikte maksilla'nm tam kaybı (fonksiyon kaybı ile birlikte alveoler çıkıntıda %50'den fazla kayıp)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s013_burnun_tam_kaybi",
-  "kanit": "Burnun tam kaybı",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s013_her_iki_goz_kuresinin_kaybi",
-  "kanit": "Her iki göz küresinin kaybı (fonksiyon kaybı ilgili uzmanlık dalı tarafmdan ayrıca değerlendirilecektir)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s013_cerrahi_veya_travma_sonucu_mandibula_o",
-  "kanit": "Cerrahi veya travma sonucu mandibüla ön segmentinde %50'den fazla kayıp",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s013_doku_kaybi_skarli_fiksasyon_veya_felce",
-  "kanit": "Doku kaybı. skarll fiksasyon veya felce bağlı dilin fonksion kaybı (Tam dil yokluğu veya konuşma ve yutmayı zorlaştıracak derecede dilin en az 2/3'sİnİn alındığı dil harabiyeti veya bilateral hipoglossal sinir paralizisi)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s013_ameliyat_edilemeyen_burun_paranazal_si",
-  "kanit": "Ameliyat edilemeyen burun. paranazal sinüsler. çene. ağız ve farinks tümörleri",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s014_hava_yolu_defektleri",
-  "kanit": "Respirasyon mekanizması akciğerleri ve diğer hava pasajlarını kapsar. Hava pasajları ise burun delikleri, nazal kaviteleri, ağız, farenks, larenks trakea ve bronşlar oluşturur. Hava yolunda görülen patolojiler hava yolunun kısmen (stenoz) ve tamamen (oklüzyon) kapanmasına sebep olabilir. Hava yolu defektlerinde dispne en önemli semptomdur. Dispne hastanın normal yaşantasını sürdürmesini engelleyebilir. Bu subjektif semptom, ilk önce egzersiz veya zorlanma sırasında görülür. Eğer istirahat hâlinde de dispne varsa bu durum patolojinin oldukça ciddi olduğunun bir belillisidir. Dispne tek başına veya diğer semptomlarla birlikte görülebilir. Hava yolu patolojileri nedeniyle oluşan kayıplar sınıflandırılırken, uyku apnesi bu sınıflandırmaya dahil edilmemiştir.",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s014_koku_ve_tat_duyusu_kaybi",
-  "kanit": "Koku ve tat duyusunun objektif olarak değerIendirilmesi mümkün olmadığından bu duyuları bilateral olarak bozabileceğine karar verilen hastalık ve arızaların (yaygın intrakranial, nazal veya oral tümörler, harici veya cerrahi travmalar, konjenital anomaliler ve sendromlar, nörolojik veya dahili hastalıklar) varlığı objektif olarak ortaya konulursa bu duyuların kaybolduğu kabul edilerek her biri için %3 Engel Oranı verilir. Bu değerlendirmenin yapılabilmesi için tat veya koku kaybına sebep olan hastalık veya durum için gerekli tedavi uygulanmış olmalıdır.",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s014_cigneme_ve_yutma_bozukluklari",
-  "kanit": "Çiğneme ve yutma bozuklukları gerekli rehabilitasyon uygulandıktan en az 6 ay sonra diyet alımındaki kısıtlamalara göre değerlendirilir.",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s015_zeka_islev_bozukluklari",
-  "kanit": "Zekâ İşlev bozuklukları Engel Oranı",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s015_sizofreni",
-  "kanit": "Şizofreni",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s015_sizoaffektif_bozukluk_manik_depresif_v",
-  "kanit": "Şizoaffektif bozukluk (manik, depresif ve karışık tip)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s015_sanrisal_bozukluklar_paranoya_paranoid",
-  "kanit": "Sanrısal bozukluklar (paranoya, paranoid psikoz, parafreni tanılarını içerir)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s015_atipik_veya_baska_turlu_adlandirilamay",
-  "kanit": "Atipik veya başka türlü adlandırılamayan psikozlar",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s015_yaygin_gelisimsel_bozukluklar",
-  "kanit": "Yaygın gelişimsel bozukluklar",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s015_asperger_sendromu",
-  "kanit": "Asperger Sendromu",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s015_disintegratif_psikoz",
-  "kanit": "Disintegratif psikoz",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s015_rett_sendromu",
-  "kanit": "Rett Sendromu",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s015_atipik_otizm_baska_turlu_adlandirilama",
-  "kanit": "Atipik otizm (başka türlü adlandırılamayan yaygın gelişimsel bozukluk)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s015_otizm",
-  "kanit": "Otizm*",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s016_beyin_hasari_beyin_islev_bozuklugu_ve",
-  "kanit": "Beyin Hasarı, Beyin İşlev Bozukluğu ve Bedensel Hastalıklara Bağlı Ruhsal Bozukluklar",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s016_organik_hallusinozis_organik_katatonik",
-  "kanit": "Organik hâllusinozis, Organik katatonik bozukluk, Organik delüzyonel [şizofreni-benzeri] bozukluklar:",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s016_organik_duygu_affektivite_bozukluklari",
-  "kanit": "Organik duygu [affektivite] bozuklukları, Organik anksiyete bozuklukları, Organik disosiyatif bozukluk, Organik duygusal labilite [astenik] bozukluk, Hafif bilişsel bozukluk",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s016_beyin_hasari_beyin_islev_bozukluguna_b",
-  "kanit": "Beyin Hasarı, Beyin İşlev Bozulduğuna Bağlı Davramş Bozuklukları",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s016_organik_kisilik_bozuklugu_frontal_lob",
-  "kanit": "(Organik kişilik bozukluğu, frontal lob sendromunu, beyin sarsılması sonrası postkontüzyonel sendrom içerir.)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s016_duygudurum_bozukluklari",
-  "kanit": "Duygudurum Bozuklukları",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s016_manik_nobet_bipolar_duygudurum_bozuklu",
-  "kanit": "Manik nöbet, bipolar duygudurum bozukluğu",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s016_yineleyen_depresif_bozukluk",
-  "kanit": "Yineleyen depresif bozukluk",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s016_yineleyen_depresif_bozukluk_simdiki_no",
-  "kanit": "Yineleyen depresif bozukluk, şimdiki nöbet psikotik belirtili olan, olmayan, ağır",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s017_anksiyete_bozukluklari_obsesif_kompuls",
-  "kanit": "Anksiyete bozuklukları( panik bozulduk, yaygm anksiyete bozulduğu, agorafobi), obsesif-kompülsif bozukluklar, somatoform bozulduklar ve yeme bozuklukları:",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s017_anksiyete_bozukluklari_panik_bozukluk",
-  "kanit": "Anksiyete bozukluları( panik bozulduk, yaygın anksiyete bozukluğu, agorafobi) ve somatoform bozukluklar",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s017_obsesif_kompulsif_bozukluk",
-  "kanit": "Obsesif-kompulsif bozukluk",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s017_travma_sonrasi_stres_bozuklugu",
-  "kanit": "Travma sonrası stres bozukluğu",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s017_yeme_bozukluklari_anoreksia_nervosa_ve",
-  "kanit": "Yeme bozuklukları (Anoreksia nervosa ve bulimia nervosa )",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s017_psikoaktif_madde_kullanimina_bagli_ruh",
-  "kanit": "Psikoaktif Madde Kullanımına Bağlı Ruhsal ve Davranışsal Bozukluklar (duygulanım bozukluğu, alkol ve madde kullanımına bağlı psikotik bozukluk -alkol hâlusinozisi, alkol paranoyası-)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s017_kisilik_bozukluklari",
-  "kanit": "Kişilik bozuldukları",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s018_sebase_ekrin_ve_apokrin_gland_hastalik",
-  "kanit": "SEBASE, EKRİN VE APOKRİN GLAND HASTALIKLARI",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s018_rozasea",
-  "kanit": "Rozasea",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s018_hidradenitis_supurativa_akne_konglobat",
-  "kanit": "Hidradenitis supurativa, akne konglobata ve folliküler oklüzyon Triadl",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s019_sacli_derinin_diseke_edici_follikuliti",
-  "kanit": "Saçlı derinin diseke edici folliküliti",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s019_hiperhidrosis",
-  "kanit": "Hiperhİdrosİs",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s019_kil_follikulu_ile_ilgili_hastaliklar",
-  "kanit": "KIL FOLLİKÜLÜ İLE İLGİLİ HASTALIKLAR",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s019_alopesi_totalis",
-  "kanit": "Alopesi totalis",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s019_alopesi_universalis",
-  "kanit": "AIopesi üniversalis",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s019_hirsutizm",
-  "kanit": "Hirsutizm",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s019_sac_rengi_ve_sac_govdesi_anormallikler",
-  "kanit": "Saç rengi ve saç gövdesi anormallikleri (moniletrix vb)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s019_ekzematoz_dermatitler",
-  "kanit": "EKZEMATÖZ DERMATİTLER",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s019_atopik_dermatit",
-  "kanit": "Atopik dermatit",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s019_dermatitler_kontakt_dermatit_staz_derm",
-  "kanit": "Dermatitler (Kontakt dermatit, staz dermatit, dishidrotik ekzema)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s019_cesitli_inflamatuvar_deri_hastaliklari",
-  "kanit": "ÇEŞİTLİ İNFLAMATUVAR DERİ HASTALIKLARI",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s019_psoriasis",
-  "kanit": "Psoriasis",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s019_pitriasis_rubra_pilaris_liken_planus",
-  "kanit": "Pitriasis rubra pilaris, liken planus",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s020_perforan_dermatozlar_kryle_hastaligi_v",
-  "kanit": "Perforan dermatozlar (Kryle Hastalığı vb.)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s020_psikiyatrik_etyolojili_deri_hastalikla",
-  "kanit": "PSİKİYATRİK ETYOLOJİLİ DERİ HASTALIKLARI",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s020_psikiyatrik_etyolojili_deri_hastalikla_2",
-  "kanit": "Psikiatrik etyolojili deri hastalıkları (nörotik ekskoriasyon, faktisiyel dermatit, vb.)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s020_deri_tumorleri",
-  "kanit": "VI. DERİ TÜMÖRLERİ",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s020_benign_neoplazm_ve_hiperplaziler",
-  "kanit": "A.BENİGN NEOPLAZM VE HİPERPLAZİLER",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s020_kongenital_melanositik_nevus",
-  "kanit": "Kongenital melanositik nevus:",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s020_kan_damarlarinin_benign_neoplazm_ve_hi",
-  "kanit": "Kan damarlarının benign neoplazm ve hiperplazileri: Kapiller anjiom, Kavernöz anjiom, Lenfanjiom, lenfohemanjiom, Anjiokeratom, KlippeI-Trenanuay-Weber, vb.",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s020_hipertrofik_skar_ve_keloid",
-  "kanit": "Hipertrofik skar ve keloid",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s020_derinin_premalign_tumorleri",
-  "kanit": "B DERİNİN PREMALİGN TÜMÖRLERİ",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s020_derinin_premalign_tumorlerine_bagli_do",
-  "kanit": "Primer tümörün sebep olduğu veya bu tümöre yğnelik tedavi sonrasmda gelişen doku veya fonksiyon kayıpları",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s020_derinin_malign_tumorleri",
-  "kanit": "C.DERİNİN MALİGN TÜMÖRLERİ:",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s020_malign_deri_tumorlerinde_doku_veya_fon",
-  "kanit": "Çalışabilir durumda ve tedaviye cevap veren klinik evreli malign tümörü olan hastalar. primer tğmörün sebep olduğu veya bu tümöre yönelik tedavi sonrasında gelişen doku veya fonksiyon kayıpları",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s020_ileri_klinik_evreli_tedaviye_cevap_ver",
-  "kanit": "İleri klinik evreli malign tümörü olan tedaviye cevap vermeyen çalışamayacak durumda olan hastalar",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s020_fotosensitivite_ve_gunes_isinlari_ile",
-  "kanit": "FOTOSENSİTİVİTE VE GÜNEŞ IŞINLARI İLE TETİKLENEN HASTALIKLAR",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s020_solar_urtiker_aktinik_retikuloid_persi",
-  "kanit": "SoIar ürtiker, aktinik retikuloid, persistan Işık reaksiyonu, polimorf Işık erüpsiyonu klinik şiddete göre değerIendirilir.",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s021_porfirialar",
-  "kanit": "PorfiriaIar",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s021_eritroderma",
-  "kanit": "ERİTRODERMA",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s021_pigment_bozukluklari",
-  "kanit": "PİGMENT BOZUKLUKLARI",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s021_pigment_bozuklugu_ile_seyreden_hastali",
-  "kanit": "Pigment bozukluğu ile (Vitiligo, depigmentasyon ve melanoderma yapan hastalıklar) seyreden hastalıklar",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s021_albinizm",
-  "kanit": "Albİnİzm",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s021_immun_otoimmun_ve_sistemik_hastaliklar",
-  "kanit": "İMMUN, OTOİMMUN VE SİSTEMİK HASTALIKLARIN DERİ BULGULARI",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s021_vaskulitler",
-  "kanit": "Vaskulitler",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s021_kronik_ve_veya_tedaviye_direncli_urtik",
-  "kanit": "Kronik ve/veya tedaviye dirençli ürtiker ve anjioödem",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s021_pannikulitler",
-  "kanit": "Pannikülitler (Lezyon şiddetine göre değerlendirilir)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s021_behcet_hastaligi",
-  "kanit": "Behçet hastalığı",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s021_otoimmun_bullu_hastaliklar_pemfigus_vu",
-  "kanit": "Otoimmün biillü hastalıklar (Pemfigus vulgaris, büllöz pemfigoid, dermatitis herpetiformis ve diğer otoimmün büllü hastalıklar)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s021_kronik_bag_doku_hastaliklari",
-  "kanit": "Kronik bağ doku hastalıkları",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s022_reiter_sendromu_sadece_deri_lezyonlari",
-  "kanit": "Reiter sendromu: Sadece deri lezyonları için",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s022_pyoderma_gangrenosum",
-  "kanit": "Pyoderma gangrenosum:",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s022_sarkoidozis",
-  "kanit": "Sarkoidozis",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s022_kronik_graft_versus_host_hastaligi",
-  "kanit": "Kronik Graft Versus Host Hastalığı",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s022_metabolik_endokrin_bozukluklar_depolan",
-  "kanit": "Metabolik, endokrin bozukluklar, depolanma hastalıkları ve sistemik malignitelerin deri bulguları: Sadece deri lezyonları için",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s022_genetik_gecisli_deri_hastaliklari",
-  "kanit": "GENETİK GEÇİŞLİ DERİ HASTALIKLARI",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s022_iktiyozis_grubu_hastaliklar",
-  "kanit": "İktiyozis grubu hastalıklar:",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s022_herediter_palmoplanter_keratodermiler",
-  "kanit": "Herediter palmoplanter keratodermiler, Unna Thost, Mal de Melada, vb.",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s022_norokutanoz_hastaliklar_norofibromatoz",
-  "kanit": "Nörokutanöz hastalıklar (Nörofibromatosis, Tuberoz skleroz, Psödoksantoma elastikum, telenjiektazi, vb.)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s022_epidermolizis_bullosa",
-  "kanit": "Epidermolizis büllosa",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s022_ataksi",
-  "kanit": "Ataksi",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s023_hailey_hailey_hastaligi",
-  "kanit": "Hailey Hailey Hastalığı",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s023_kseroderma_pigmentozum_rothmund_thomps",
-  "kanit": "Kseroderma pigmentozum, Rothmund-Thompson Send., Diskeratozis konjenita, Werner send. vb.",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s023_anhidrotik_hipohidrotik_ve_hidrotik_ek",
-  "kanit": "Anhidrotik/Hipohidrotik ve hidrotik ektodermal displazi:",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s023_vaskuler_hastaliklarin_deri_bulgulari",
-  "kanit": "VASKULER HASTALIKLARIN DERİ BULGULARI",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s023_kronik_bacak_ulserleri",
-  "kanit": "Kronik bacak ülserleri: (lezyon şiddetine göre)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s023_dekubitus_ulseri",
-  "kanit": "Dekubitus ülseri: (lezyon şiddetine göre)",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s023_kutanoz_lenfoma_losemi_histiyositozlar",
-  "kanit": "KUTANÖZ LENFOMA, LÖSEMİ, HİSTİYOSİTOZLAR VE MASTOSİTOZLAR",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s023_kutanoz_t_hucreli_lenfoma",
-  "kanit": "Kütanöz T Hücreli Lenfoma",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s024_mf_disi_diger_kutanoz_lenfomalar",
-  "kanit": "MF dışı diğer kutanöz lenfomalar",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s024_kutanoz_langerhans_hucreli_histiyosito",
-  "kanit": "Kutanöz (Langerhans hücreli) histiyosistozlar",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s024_kutanoz_mastositozis",
-  "kanit": "Kutanöz Mastositozis",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s024_mikrobial_ajanlara_bagli_deri_hastalik",
-  "kanit": "MİKROBİAL AJANLARA BAĞLI DERİ HASTALIKLARI",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s024_lepra_kutanoz_tuberkulozlar_sistemik_f",
-  "kanit": "Lepra, Kutanöz tüberkülozlar. Sistemik fungal infeksiyonlar. mukokütanöz Layşmanyazis",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s024_konjenital_ve_gec_sifiliz_sonucunda_ge",
-  "kanit": "Lepra, Kutanöz tüberkülozlar, Sistemik fungal infeksiyonlar, Mukokütanöz layşmanyazis, konjenital ve geç sifiliz sonucunda gelişen sekeller ilgili branşlarca değerlendirilir.",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s024_diger_deri_hastaliklari",
-  "kanit": "DİĞER DERİ HASTALIKLARI",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s024_listede_yer_almayan_deri_hastaliklari",
-  "kanit": "Yukarıdaki listede yer almayan deri hastalıkları ve sekellerine bağlı fonksiyon kayıplarının değerlendiri imesinde hastalığın şiddetine göre değerIendirme yapılır.",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "bulanik"
  },
  {
   "kavram_id": "ek2_s025_anemiler",
-  "kanit": "ı. ANEMİLER",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s025_aplastik_anemi_akkiz_ve_konjenital_fan",
-  "kanit": "A. Aplastik Anemi (Akkiz ve konjenital, Fanconi ve vb.)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s025_diamond_blacfan_anemisi_konjenital_hip",
-  "kanit": "B. Diamond Blacfan Anemisi (Konjenital Hipoplastik Anemi)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s025_hemolitik_anemiler",
-  "kanit": "C. Hemolitik Anemiler",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s025_eritrosit_enzim_defektleri_membran_def",
-  "kanit": "a. Eritrosit enzim defektleri, membran defektleri",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s025_paroksismal_nokturnal_hemoglobinuri",
-  "kanit": "b. Paroksismal Nokturnal Hemoglobinüri",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s025_oto_immun_hemolitik_anemiler_idiyopati",
-  "kanit": "c. Oto-immün hemolitik anemiler (İdiyopatik ve sekonder otoimmün hemolitik anemiler)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s025_hemoglobinopatiler",
-  "kanit": "D.Hemoglobinopatiler",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s025_orak_hucreli_anemi",
-  "kanit": "a. Orak hücreli anemi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s025_thalassemi",
-  "kanit": "b. Thalassemi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s026_miyelofibrozis",
-  "kanit": "11. MİYELOFİBROZİS",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s026_akut_losemiler",
-  "kanit": "A. Akut Lösemiler",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s026_kronik_losemiler",
-  "kanit": "B. Kronik Lösemiler",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s026_kronik_myelositik_losemi",
-  "kanit": "a. Kronik Myelositik Lösemi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s026_kronik_lenfositik_losemi",
-  "kanit": "b. Kronik Lenfositik Lösemi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s026_monoklonal_gammapatiler",
-  "kanit": "c. Monoklonal Gammapatiler",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s026_hemofagositik_sendrom",
-  "kanit": "C.Hemofagositik Sendrom",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s026_hemorajik_diatezler",
-  "kanit": "A. Hemorajik Diatezler",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s027_koagulopatiler_hemofili_a_b_c_ve_diger",
-  "kanit": "b. Koagülopatiler (Hemofili A, B, C ve diğer faktör eksiklikleri, Von Willebrand Hastalığı Tip III)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s027_hipofibrinojenemi_aflbrinojenemi_ve_di",
-  "kanit": "c. Hipofibrinojenemi, Aflbrinojenemi ve disfibrinojenemi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s027_akkiz_ve_herediter_trombotik_durumlar",
-  "kanit": "B. Akkiz ve herediter trombotik durumlar",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s027_trombotik_trombositopenik_purpura_ttp",
-  "kanit": "C. Trombotik Trombositopenik Purpura (TTP)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s027_dissemine_intravaskuler_koagulopati_kr",
-  "kanit": "D. Dissemine İntravasküler Koagülopati (kronik)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s027_hodgkin_lenfoma",
-  "kanit": "a. Hodgkin Lenfoma",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s027_non_hodgkin_lenfoma",
-  "kanit": "b. Non-Hodgkin Lenfoma",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s032_kapak_hastaliklari",
-  "kanit": "A. Kapak hastalıkları",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s032_koroner_arter_hastaligi",
-  "kanit": "B. Koroner arter hastalığı",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s030_hipertansif_retinopati_gunn_belirtiler",
-  "kanit": "3) Hipertansif retinopati (Gunn belirtileri)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s067_kolon_rektum_ve_anus",
-  "kanit": "3. KOLON, REKTUM VE ANÜS",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s069_enterokutan_fistuller",
-  "kanit": "4. ENTEROKÜTAN FİSTÜLLER",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s070_karaciger_ve_safra_yollari",
-  "kanit": "5. KARACİĞER VE SAFRA YOLLARI",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s071_herniler",
-  "kanit": "6. HERNİLER",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s071_splenektomi",
-  "kanit": "7. SPLENEKTOMİ",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s079_hipotalamik_hastaliklar",
-  "kanit": "I- Hipotalamik hastalıklar",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s079_hipofizer_hastaliklar_tibbi_ve_cerrahi",
-  "kanit": "II- Hipofizer hastalıklar (tıbbi ve cerrahi tedaviyle sonuç alınmamış)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s079_hipofiz_bezinin_hiperfonksiyonu",
-  "kanit": "a) Hipofiz Bezinin Hiperfonksiyonu",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s079_gigantizm_ve_akromegali",
-  "kanit": "I- Gigantizm ve Akromegali",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s079_hipofiz_bezinin_hipofonksiyonu",
-  "kanit": "b) Hipofiz Bezinin Hipofonksiyonu",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s079_tiroid_hastaliklari",
-  "kanit": "III- Tiroid hastalıkları",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s079_guatrlar_noduler_diffiiz_multinoduler",
-  "kanit": "a)Guatrlar (Nodüler, diffiiz, multinodüler, toksikve toksik olmayan) subakut tiroiditler",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s079_kretinizm",
-  "kanit": "b) Kretinizm",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s079_dogustan_iyot_eksikligi_sendromu",
-  "kanit": "c) Doğuştan iyot eksikliği sendromu",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s079_tirotoksikoz_komplikasyonsuz",
-  "kanit": "g)Tirotoksikoz (komplikasyonsuz)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s079_paratiroid_hastaliklari",
-  "kanit": "IV- Paratiroid Hastalıkları",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s079_hipoparatiroidi",
-  "kanit": "b) Hipoparatiroidi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s079_idiopatik_primer_hipoparatiroidi_repla",
-  "kanit": "I- İdiopatik Primer Hipoparatiroidi (Replasmanla Kompanse)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s080_adrenal_hastaliklari",
-  "kanit": "V- Adrenal hastalıkları",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s080_iki_tarafli_hiperplazi_hipofizer_adeno",
-  "kanit": "a) İki taraflı hiperplazi (Hipofizer Adenoma bağlı)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s080_adrenal_korteks_yetersizligi_addison_h",
-  "kanit": "b) Adrenal korteks yetersizliği (Addison hastalığı)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s080_hiperaldosteronizm",
-  "kanit": "c) Hiperaldosteronizm",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s080_feokromasitomalar",
-  "kanit": "d) Feokromasitomalar",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s080_adrenogenital_bozukluklar",
-  "kanit": "e)Adrenogenital bozukluklar",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s080_ergenlik_bozukluklari_puberte",
-  "kanit": "a) Ergenlik bozuklukları (puberte)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s080_cogul_bez_poligulanduler_islev_bozuklu",
-  "kanit": "b) Çoğul bez (poligülandüler) işlev bozukluğu",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s080_timus_hastaliklari",
-  "kanit": "c) Timus hastalıkları",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s080_diabetes_mellitus",
-  "kanit": "a) Diabetes mellitus",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s081_metabolizma_hastaliklari",
-  "kanit": "VIII- Metabolizma Hastalıkları",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s081_diffuz_primer_osteoporoz_radyolojik_de",
-  "kanit": "a) Difftiz primer osteoporoz (radyolojik dekalsiflkasyonla birlikte spontan kırıklar. şekil",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s081_osteomalazi_tibbi_tedaviye_cevap_verme",
-  "kanit": "b) Osteomalazi (Tıbbi tedaviye cevap vermeyen)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s081_lesch_nyhan_hastaligi",
-  "kanit": "I- Lesch-Nyhan Hastalığı",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s081_ciddi_obezite_vucut_kitle_indeksi_40_5",
-  "kanit": "I- Ciddi Obezite (Vücut Kitle indeksi 40-50kg/m2 arasında olanlar)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s084_vucut_yuzeyinin_10_unu_kaplayan_ve_ame",
-  "kanit": "a) Vücut yüzeyinin % 10'unu kaplayan ve ameliyatla giderilemeyen keloid hipertrofi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s084_yanik_zemininde_gelisen_marjolin_ulser",
-  "kanit": "e) Yanık zemininde gelişen MarjoIİn ülseri ve skuamöz kanserler İlgili branş tarafından",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s088_insomniler_uyarlanmis_insomni_psikofiz",
-  "kanit": "I. İnsomniler (Uyarlanmış insomni, psikofizyolojik insomni, paradoksal insomni,",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s088_uykuda_solunum_bozukluklari_santral_uy",
-  "kanit": "2. Uykuda solunum bozuklukları (Santral uyku apne sendromları, obstruktif uyku apne",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s088_hipersomniler_narkolepsi_sendromlari_r",
-  "kanit": "3. Hipersomniler (Narkolepsi sendromları, rekürren hipersomniler, idiyopatik",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s089_sirkadiyen_uyku_uyaniklik_ritm_bozuklu",
-  "kanit": "4. Sirkadiyen uyku-uyanıklık ritm bozuklukları (Geçikmiş uyku fazı sendromu, erken",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s089_parasomniler_konfuzyonel_uyanma_uykuda",
-  "kanit": "5. Parasomniler (Konfijzyonel uyanma, uykuda yürüme, gece terörü, uyku paralizisi,",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s089_uykuda_hareket_bozukluklari_huzursuz_b",
-  "kanit": "6. Uykuda hareket bozuklukları (Huzursuz bacak sendromu, uykuda periyodik hareket",
-  "durum": "birebir"
+  "kanit": "",
+  "durum": "duzeltilmis"
  },
  {
   "kavram_id": "ek2_s029_aritmiler",
-  "kanit": "ARİTMİLER",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s029_pulmoner_hipertansiyon",
-  "kanit": "PULMONER HİPERTANSİYON",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s030_hipertansiyon",
-  "kanit": "HİPERTANSİYON",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s030_hipertansif_serebrovaskuler_hastalik",
-  "kanit": "2. Hipenansif serebrovasküler hastalık",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s030_sol_ventrikul_hipertrofisi",
-  "kanit": "4) Sol ventrikül hipertrofisi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s030_proteinuri",
-  "kanit": "I. Proteinüri",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s030_perikard_hastaliklari",
-  "kanit": "PERİKARD HASTALIKLARI",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s030_konstruktif_perikardit",
-  "kanit": "Fizik muayene ve ekokardiyografi ile konstruktif perikardit tamsı konulan veya perikardiektomi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s030_hipertrofik_kardiyomiyopati",
-  "kanit": "HİPERTROFİK KARDİYOMİYOPATİ",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s030_kalp_yetmezligi",
-  "kanit": "KALP YETMEZLİĞİ",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s031_dogustan_kalp_hastaliklari",
-  "kanit": "DOĞUŞTAN KALP HASTALIKLARI ( DKH )",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s033_kalp_transplantasyonu",
-  "kanit": "Kalp transplantasyonu olan kişilerin Engel Oram % 70 olup, transplante kalbin",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s033_miyokard_infarktusu",
-  "kanit": "Miyokard infarktüsü geçiren veya daha önceden koroner aner hastalığı tanısı alan veya girişimsel-",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s033_damar_hastaliklari",
-  "kanit": "DAMAR HASTALIKLARI",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s033_arteriosklerozis_obliterans_aso",
-  "kanit": "A- Arteriosklerozis obliterans (ASO)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s034_tromboangitis_obliterans_buerger",
-  "kanit": "B- Tromboangitis obliterans (Buerger):",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s034_fonksiyonel_damar_hastaliklari",
-  "kanit": "2- Fonksiyonel damar hastalığı olanlar (Reynaud Fenomeni, Akrosiyanozis vs.)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s034_raynaud_fenomeni",
-  "kanit": "2- Fonksiyonel damar hastalığı olanlar (Reynaud Fenomeni, Akrosiyanozis vs.)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s034_akrosiyanozis",
-  "kanit": "2- Fonksiyonel damar hastalığı olanlar (Reynaud Fenomeni, Akrosiyanozis vs.)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s034_travmatik_damar_hastaligi",
-  "kanit": "3- Travmatik damar hastalığı olanlar",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s034_derin_ven_trombozu",
-  "kanit": "4- Venöz sistem hastalıkları: İnvaziv ve noninvaziv tetkiklerle tespit edilmiş derin ven",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s034_staz_ulseri",
-  "kanit": "a- Staz ülseri bulunmayanlar",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s034_lenfodem",
-  "kanit": "5- Lenf sistemi hastalıkları: (İster konjenital, ister akkiz lenfödemi olanlar)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s035_diplopi",
-  "kanit": "Kontrast duyarlık ve glare (kamaşma) kusuru * Diplopi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
@@ -2556,1172 +2556,1172 @@
  },
  {
   "kavram_id": "ek2_s042_fonksiyonel_korluk",
-  "kanit": "için \"fonksiyonel körlük”ten bahsedilir. Göz yuvarlağının yokluğunda da \"anatomik körlük” söz",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s042_anatomik_korluk",
-  "kanit": "için \"fonksiyonel körlük”ten bahsedilir. Göz yuvarlağının yokluğunda da \"anatomik körlük” söz",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s042_tek_gozluluk_monokularite",
-  "kanit": "\"tek gözlülük durumu” (monokülarite) diyeceğimiz özel bir durum ortaya çıkar.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s043_goz_ekzanterasyonu",
-  "kanit": "Ekzanterasyon ameliyatı geçirmiş veya travmatik nedenle aynı derecede kayıp gerçekleşmiş, tek göz",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s044_nistagmus",
-  "kanit": "Nistagmusu olan hastalarda en iyi görme keskinliğinin tespit edildiği sıfır noktası (null point)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s044_lagoftalmi",
-  "kanit": "Kalıcı tarsorafi yapılmış kapak kapanma kusurlarında (Lagoftalmi, yanık skarı vb)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s044_entropion",
-  "kanit": "Sekel hâlde, epifora ve/veya kornea hasarına neden olan entropion, ektropion durumlarında",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s044_ektropion",
-  "kanit": "Sekel hâlde, epifora ve/veya kornea hasarına neden olan entropion, ektropion durumlarında",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s044_epifora",
-  "kanit": "Sekel hâlde, epifora ve/veya kornea hasarına neden olan entropion, ektropion durumlarında",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s044_lakrimal_kanal_tikanikligi",
-  "kanit": "Sürekli göz sulanmasına neden olan lakrimal kanal tıkanmalarında (tedavi ile düzelmesi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s044_pitozis",
-  "kanit": "F. Ağır pitozise bağlı primer pozisyonda pupilla açıklığı yarıdan fazla örtülen, sürekli alın kasını",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s045_goz_ve_adneksleri_tumoru",
-  "kanit": "Göz Ve Adnekslerinde Tümör Varlığında Engel Oranının DeğerIendirilmesi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s045_ambliyopi",
-  "kanit": "Tanı: Açıklanmayan amliyopi, muhtemelen konjenital.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s046_retinoblastom",
-  "kanit": "Tanı: Retinoblastom hikayesi.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s047_kornea_opasitesi",
-  "kanit": "Tam: Kornea opasİtesİne bağlı görme kaybı.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s043_glokom",
-  "kanit": "60 yaşında bayan hasta. Glokom tanısı ile izleniyor, 2 yıl önce sol gözün görmesini tümüyle",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s043_absolu_glokom",
-  "kanit": "Fizik muayene: Sağ absolu glokom, sol ileri derecede glokomatöz optik sinir çukurlaşması mevcut.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s048_katarakt",
-  "kanit": "Tanı: Katarakta bağlı görme kaybı.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s048_yaslilik_katarakti",
-  "kanit": "Yaşlılık kataraktı veya görsel artış beklentisi olan kataraktlar nedeniyle düştüğü belirlenen",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s049_stargardt_juvenil_makulopati",
-  "kanit": "Tam: Stargardtjuvenil makulopati.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s051_gorme_alani_yetersizligi",
-  "kanit": "GÖRME ALANI YETERSİZLİĞİ",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s056_santral_skotom",
-  "kanit": "Santral skotom için ayrı bir kurala daha ihtiyaç vardır. Santral skotomlar görme keskinliğini",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s056_homonim_hemianopi",
-  "kanit": "Tam homonim hemianopi %50'lik görme alan kaybı oluşturur.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s057_bitemporal_hemianopsi",
-  "kanit": "Bitemporal hemianopislerde ise her bir gözün farklı yarılarında kayıp olduğu İçin binoküler görme",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s057_periferik_gorme_alani_defekti",
-  "kanit": "Periferik Görme Alam Defekti",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s058_retinoskizis",
-  "kanit": "retinoskizisli bir hastanın görme alanı testi.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s065_ozefagus_bozukluklari",
-  "kanit": "Özefagus bozukluğunu işaret eden semptomlar disfaji, pirozis, retrosternal ağrı,",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s065_mide_duodenum_bozukluklari",
-  "kanit": "Mide-duedonum bozukluğuna ait semptom ve İşaretler bulantı-kusma, ağrı, kanama,",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s065_ince_bagirsak_bozukluklari",
-  "kanit": "bozukluğuna ait semptomlar karın ağrısı, ishal, steatore, kanama, tıkanıklık ve kilo kaybım içerir.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s065_pankreas_fonksiyon_bozuklugu",
-  "kanit": "Pankreas fonksiyon bozukluğuna ait semptom ve belirtiler karın ağrısı, bulantı-kusma, ishal, steatore,",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s065_portal_hipertansiyon",
-  "kanit": "hemorajiye yol açan portal hipertansiyon, hepatik ensefalopati ve böbrek bozukluğuna yol açan",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s065_hepatik_ensefalopati",
-  "kanit": "hemorajiye yol açan portal hipertansiyon, hepatik ensefalopati ve böbrek bozukluğuna yol açan",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s065_ozefagus_varisi",
-  "kanit": "İlerleyen karaciğer rahatsızlığının komplikasyonları ödem, generalize asit, özefagus varisi ve",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s067_ust_sindirim_kanali_bozukluklari",
-  "kanit": "2. ÜST SİNDİRİM KANALI (özefagus, mide ve duedonum, ince bağırsak, ve pankreas)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s067_pankreas_transplantasyonu",
-  "kanit": "Pankreas transplantasyonunda engel oranı % 70 olup, aşağıdaki tabloya göre",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s069_cerrahi_olarak_olusturulan_stomalar",
-  "kanit": "Kalıcı cerrahi olarak oluşturulan stomalar, genellikle anatomik kaybı kompanse",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s070_ozefagostomi",
-  "kanit": "OZEFAGOSTOMİ",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s070_gastrostomi",
-  "kanit": "GASTROSTOMİ",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s070_jejunostomi",
-  "kanit": "JEJUNOSTOMİ",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s070_ileostomi",
-  "kanit": "LEOSTOMİ",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s070_ileal_pos_anal_anastomoz",
-  "kanit": "İLEAL-POŞ ANAL ANASTOMOZ",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s070_kolostomi",
-  "kanit": "KOLOSTO",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s070_karaciger_hastaliklari",
-  "kanit": "a) Karaciğer Hastalıklarına Bağlı Oluşan Kalıcı Bozulduk Sınıflama Kriterleri",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s070_karaciger_transplantasyonu",
-  "kanit": "Karaciğer transplantasyonlu hastalarda Engel Oranı %70 oranına Tablo 7'de",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s071_safra_yollari_hastaliklari",
-  "kanit": "b) Safra Yolları Hastalıklarına Bağlı Oluşan Kalıcı Bozulduk Sınıflama Kriterleri:",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s071_kolanjit",
-  "kanit": "Tekrarlayan kolanjİt İle seyreden ve",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s071_koledok_obstruksiyonu",
-  "kanit": "Kalıcı sarılık; Oltak safra kanalı (koledok)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s072_vulva_ve_vajina_hastaliklari",
-  "kanit": "Vulva ve Vagina'nın Kalıcı Bozulduklarının DeğerIendirilmesinde Kriterler",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s072_serviks_ve_uterus_hastaliklari",
-  "kanit": "Serviks Ve Uterus'un Kalıcı Bozukluklarının DeğerIendirilmesinde Kriterler",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s072_servikal_darlik",
-  "kanit": "b-Tedavi gerektirmeyen servikal darhk var veya",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s073_fallopian_tup_ve_over_hastaliklari",
-  "kanit": "Fallopian Tüp Ve Overlerin Kalıcı Bozulduklarının",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s074_nonnefrotik_proteinuri_ile_seyreden_ne",
-  "kanit": "Nonnefrotik proteinüri (mikroalbüminüri) ile seyreden nefropatiler, 6 ay süren tedaviye",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s074_nefrotik_duzeyde_proteinuri_ile_seyred",
-  "kanit": "Nefrotik düzeyde proteinüri (»3.5 gr/gün) ile seyreden nefropatiler, 6 ay süren tedaviye",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s074_kronik_bobrek_hastaligi",
-  "kanit": "Kronik böbrek hastalı I",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s074_renal_replasman_tedavisi",
-  "kanit": "Renal re Iasman tedavisi hemodi aliz, eriton di alizİ erektiren kronik böbrek hastalı\"",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s074_bobrek_nakli",
-  "kanit": "Böbrek nakli",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s074_nefrektomi",
-  "kanit": "Nefrektomi - bilateral",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s074_fanconi_sendromu",
-  "kanit": "Fanconi sendromu, Hafif-ofta kalıcı renal tübüler hastalığa bağlı bozukluklar, 6 ay süren",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s074_renal_tubuler_hastalik",
-  "kanit": "İleri kalıcı renal tübüler hastalığa eşlik eden, en az 6 aylık tedavi altında ve 3 ölçümde serum",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s075_ust_uriner_sistem_hastaligi",
-  "kanit": "Intermitan semptom veren ve devamlı tedavi gerektirmeyen üst üriner sistem hastalığı",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s075_soliter_bobrek",
-  "kanit": "Soliter Böbrek (diğer böbreğin renal fonksiyonları da (kreatinin klirensi değerlerine göre)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s075_uriner_diversiyon",
-  "kanit": "ÜRİNER DİVERSİYON (Kalıcı)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s075_ureterointestinal_diversiyon_coffey",
-  "kanit": "Üreterointestinal (coffey)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_ureterokutanostomi_ileal_loop",
-  "kanit": "Üreterokütanostomi. ileal loop",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_ortotopik_mesane",
-  "kanit": "Ortotopik mesane",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_nefrostomi",
-  "kanit": "Nefrostomi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_sistostomi",
-  "kanit": "Sistostomi Üretrostomi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_uretrostomi",
-  "kanit": "Sistostomi Üretrostomi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_asiri_aktif_mesane",
-  "kanit": "Devamlı tedavi gerektiren sistitizm semptomları da Qşırı aktif mesane",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_mesane_hastaligi",
-  "kanit": "Tedavi ile tam olarak kontrol altına alınamayan mesane hastalığı",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_sistektomi",
-  "kanit": "Sistektomi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_mesane_augmentasyonu",
-  "kanit": "Mesane Augmentasyonu",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_ekstrofi_vezika",
-  "kanit": "Ekstrofi Vezika",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_norojen_mesane",
-  "kanit": "*Nörojen mesane için kas-iskelet sistemi bölümü sayfa 189'daki tablo 4,3 'e bakınız.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_uretra_hastaligi",
-  "kanit": "Tedaviyle düzeltilebilen tekrarlayan üretra hastalığı",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_uretra_darligi",
-  "kanit": "Sık tekrarlayan ve tedaviyle kür sağlanabilen üretra darlığı",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_uretrektomi",
-  "kanit": "Üretrektomi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_erektil_disfonksiyon",
-  "kanit": "Medikal tedaviyle kısmi kür sağlanabilen erektil disfonksiyon",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s076_penis_hastaligi",
-  "kanit": "Tedaviye yeterli kür sağlanamayan penis hastalığı",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s077_penektomi",
-  "kanit": "Penektomi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s077_testis_ve_epididim_hastaligi",
-  "kanit": "Tedaviyle düzeltilebilen tekrarlayan testis, epididim hastalığı",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s077_orsiektomi",
-  "kanit": "Orşiektomi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s077_infertilite",
-  "kanit": "İnfertilite",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s077_prostat_ve_vezikuloseminalis_hastaligi",
-  "kanit": "Tedaviyle düzeltilebilen tekrarlayan prostat. vezikuloseminalis hastalığı",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s077_prostatektomi",
-  "kanit": "Prostatektomi. V , Seminalis Eksizyonu",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s078_uriner_inkontinans",
-  "kanit": "İ)RİNER İNKONTİNANS",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s078_urge_inkontinans",
-  "kanit": "Tedaviye kısmi yanıt veren urge inkontinans",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s078_stress_inkontinans",
-  "kanit": "Tedaviye kısmi yanıt veren şiddetli stress inkontinans veya urge inkontinans",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s078_skrotum_hastaligi",
-  "kanit": "Tedaviye kısmi yanıt veren rekürren skrotum hastalığı",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s078_uriner_fistul",
-  "kanit": "Aralıklı hafif-orta derecede drenaja yol açan üriner fistül veya abse",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s082_glikozaminoglikan_metabolizmasi_bozukl",
-  "kanit": "Glikozaminoglikan metabolizması bozuklukları (organ disfonksiyonu yapmış)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s082_glikoprotein_metabolizmasi_bozukluklar",
-  "kanit": "Glikoprotein metabolizması bozuklukları (organ disfonksiyonu yapmış)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s082_kistik_fibrozis",
-  "kanit": "Kistik fibrozis (organ disfonksiyonu yapmış)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s082_iskelet_displazileri",
-  "kanit": "İskelet displazileri",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s082_akondroplazi",
-  "kanit": "Akondroplazi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s082_akondroplazi_disi_iskelet_displazileri",
-  "kanit": "Akondroplazi dışı iskelet displazileri",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s082_ailevi_akdeniz_atesi",
-  "kanit": "Ailevi Akdeniz Ateşi:",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s083_akciger_plevra_ve_gogus_kafesi_hastali",
-  "kanit": "l-Doğuştan veya kazanılmış akciğer, plevra ve göğüs kafesi hastalıkları veya akciğeri tutan",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s083_kronik_kor_pulmonale",
-  "kanit": "c- Ağır derecede etkilenme varsa veya kronik kor pulmonqle gelişmişse",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s083_akciger_ve_veya_plevra_tuberkulozu",
-  "kanit": "2-Akciğer ve/veya plevra tüberkülozunda verilecek karar tedavi sonunda ve I. maddedeki",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s083_ilaca_direncli_kronik_tuberkuloz",
-  "kanit": "*İlaca dirençli kronik tüberkülozlu olgular aym şekilde uygun tedavi süresinin bitiminden",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s083_ekstrapulmoner_tuberkuloz",
-  "kanit": "* *Ekstra pulmoner tüberkülozlu olgularda ise tedavi sonunda ilgili branş tarafindan engel",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s083_tek_tarafli_pnomonektomi",
-  "kanit": "4- Tek taraflı pnömonektomi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s083_akciger_transplantasyonu",
-  "kanit": "5- Akciğer transplantasyonu",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s084_curling_ulseri",
-  "kanit": "a)Curling ülseri perforasyonu sonucu opere edilen vakalar ilgili branş tarafindan değerIendirilir.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s084_yaniga_bagli_ozefagus_darligi",
-  "kanit": "b)Yamğa bağlı özefagus darlıkları ilgili branş tarafından değerlendirilir.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s085_sindaktili",
-  "kanit": "b)Yanık sebebiyle kalmış sindaktililer ilgili branş tarafından değerlendirilir.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s085_kostal_kondrit",
-  "kanit": "d)Yamk sonrası kostal kondritis ve heterotopik periartiküler kemik oluşması ilgili branş tarafından",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s085_heterotopik_periartikuler_kemik_olusum",
-  "kanit": "d)Yamk sonrası kostal kondritis ve heterotopik periartiküler kemik oluşması ilgili branş tarafından",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s085_yanik_sonrasi_periferik_sinir_lezyonu",
-  "kanit": "a)Yamk sonrası oluşan merkezi ve periferik sinir lezyonları ilgili branş tarafından değerlendirilir.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s086_malign_tumor",
-  "kanit": "4- İleri klinik evreli (Evre III ve IV) malign tümörü olan remisyona girmeyen veya tedavi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s086_malign_transformasyon_gosteren_benign",
-  "kanit": "Malign transformasyon gösteren benign tümörlerde primer tümörün sebep olduğu veya bu tümöre",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s086_glioblastoma_multiforme",
-  "kanit": "6-Yüksek dereli opere beyin tümörleri: (örn G4 glioblastomi multiforme)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s087_yuksek_kortikal_fonksiyon_bozukluklari",
-  "kanit": "YÜKSEK KORTİKAL FONKSİYON BOZUKLUKLARI",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s087_motor_afazi",
-  "kanit": "A-MOTOR",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s087_sensoriyel_afazi",
-  "kanit": "B-SENSÖRİYEL",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s087_agnozi",
-  "kanit": "Agnozi, diskonneksiyon sendromları gibi diğer Yüksek Kortikal Fonksiyon",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s087_diskonneksiyon_sendromlari",
-  "kanit": "Agnozi, diskonneksiyon sendromları gibi diğer Yüksek Kortikal Fonksiyon",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s088_epilepsi",
-  "kanit": "EPİLEPSİ (Uygun ve yeterli tedavi altında)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s088_uyku_ile_iliskili_bozukluklar",
-  "kanit": "UYKU İLE İLİŞKİLİ BOZUKLUKLAR*",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s089_norojenik_kaynakli_agri",
-  "kanit": "NÖROJENİK KAYNAKLI",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s089_primer_bas_agrilari",
-  "kanit": "*Primer baş ağrıları; nevraljiler, santral veya periferik kaynaklı nöropatik ağrılar (ağrının",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s089_nevralji",
-  "kanit": "*Primer baş ağrıları; nevraljiler, santral veya periferik kaynaklı nöropatik ağrılar (ağrının",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s089_noropatik_agri",
-  "kanit": "*Primer baş ağrıları; nevraljiler, santral veya periferik kaynaklı nöropatik ağrılar (ağrının",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s089_demans",
-  "kanit": "DEMANS",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s091_kranial_sinir_bozukluklari",
-  "kanit": "KRANİAL SİNİR BOZUKLUKLARI",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s091_trigeminal_nevralji",
-  "kanit": "Trigeminal Nevralji",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s091_periferik_fasiyal_paralizi",
-  "kanit": "PERİFERİK FASİAL PARALİZİ",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s092_disfaji",
-  "kanit": "Hafif derecede dizartri, distoni veya",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s092_hareket_bozukluklari",
-  "kanit": "HAREKET BOZUKLUKLARI",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s092_tremor",
-  "kanit": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s092_kore",
-  "kanit": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s092_athetozis",
-  "kanit": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s092_hemiballismus",
-  "kanit": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s092_distoni",
-  "kanit": "tremor, chorea, athetosis, hemiballismus ve distoniler ekstremitelerin rahat kullanımını",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s092_dizartri_ve_disfaji",
-  "kanit": "DİZARTRİ VE DİSFAJİ",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s093_omurgaya_ait_sorunlar",
-  "kanit": "ı. OMURGAYA AİT SORUNLARDA ENGELLİLİK",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s098_skolyoz",
-  "kanit": "Skolyoz için kardiovasküler sistem ve göğüs hastalıkları ilgili tabloları ile eklem hareket",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s099_servikal_omurga_hareket_kisitliligi",
-  "kanit": "Tablo 1.4- Servikal omurgada hareket kısıtlılığına bağlı engellilik oranları (Eklem Hareket Açıklığı",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s099_torakal_omurga_hareket_kisitliligi",
-  "kanit": "Tablo 1.5- Torakal omurgada hareket kısıtlılığına bağlı engellilik oranları.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s101_lomber_omurga_hareket_kisitliligi",
-  "kanit": "Tablo 1.6- Lomber omurgada hareket kısıtlılığına bağlı engellilik oranları.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s097_omurga_ankilozu",
-  "kanit": "Eğer omurgada bir miktar hareket olmasına rağmen aynı zamanda ankiloz var ise, nötral pozisyona en yakın hareket derecesi ankiloz derecesi olarak kabul edilir ve",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s102_vertebra_kompresyon_kirigi",
-  "kanit": "Bir vertebra cisminin kompresyonu",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s102_posterior_eleman_kirigi",
-  "kanit": "Posterior eleman kırığı (Pedikül-lamina-artiküle",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s102_vertebranin_redukte_dislokasyonu",
-  "kanit": "Bir vertebranın redükte dislokasyonu",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s102_intervertebral_disk_lezyonu",
-  "kanit": "İntervertebral disk veya diğer yumuşak doku lezyonu",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s102_spondilolizis_ve_spondilolistezis",
-  "kanit": "meliyat Edilmemiş Spondilolizis ve Spondilolistezis",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s103_spinal_stenoz",
-  "kanit": "meliyatlı Spinal Stenoz, Segmental İnstabilite, Kırık, Dislokasyon",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s103_segmental_instabilite",
-  "kanit": "meliyatlı Spinal Stenoz, Segmental İnstabilite, Kırık, Dislokasyon",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s104_spinal_sinir_kayiplari",
-  "kanit": "SPİNAL SİNİR KAYIPLARINA BAĞLI ENGELLİLİK",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s107_radikulopati",
-  "kanit": "Tam: Radikülopati ile birlikte rekürrent diskopati",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s108_ust_ekstremite_sorunlari",
-  "kanit": "2. ÜST EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s135_ust_ekstremite_amputasyonlari",
-  "kanit": "2.2 ÜST EKSTREMİTE AMPUTASYONLARI",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s135_skapulotorasik_amputasyon",
-  "kanit": "-Skapulotorasik",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s135_omuz_dezartikulasyonu",
-  "kanit": "-Omuz dezanikülasyonu",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s135_metakarpofalangeal_amputasyon",
-  "kanit": "smetakarpofalangiyal eklem",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s135_basparmak_amputasyonu",
-  "kanit": "-Başparmak:",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s135_parmak_amputasyonu",
-  "kanit": "Parmak",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s136_ust_ekstremite_artroplastileri",
-  "kanit": "2.3 ÜST EKSTREMİTE ARTROPLASTİLERİ",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s136_tum_omuz_artroplastisi",
-  "kanit": "Tüm omuz",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s136_tum_dirsek_artroplastisi",
-  "kanit": "Tüm dirsek",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s136_tum_el_bilegi_artroplastisi",
-  "kanit": "Tüm el bileği",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s137_tenosinovit",
-  "kanit": "Tenosinovit",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s138_periferik_sinir_lezyonu",
-  "kanit": "Tablo 2.10- Periferik sinir lezyonu sonucu ortaya çıkan ağrı veya duyu kaybına bağlı üst",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s139_spinal_sinir_lezyonu",
-  "kanit": "Tablo 2.12- Spinal sinirlerin unilateral duyu, motor veya birleşik kayıplarının üst",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s139_brakial_pleksus_lezyonu",
-  "kanit": "Tablo 2.13- Brakial pleksusun motor, duyu veya birleşik kayıplarının üst ekstremitede neden",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s141_alt_ekstremite_sorunlari",
-  "kanit": "3. ALT EKSTREMİTEYE AİT SORUNLARDA ENGELLİLİK ORANLARI",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s143_alt_ekstremite_uzunluk_farkliliklari",
-  "kanit": "Tablo 3.3- Alt ekstremitenin uzunluk farklılıklarından kaynaklanan engellilik. (bkz tablo",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s144_yuruyus_bozuklugu",
-  "kanit": "Tablo 3.4- Yürüyüş bozulduğuna göre engellilik oranları. (bkz tablo 3.1)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s145_bacak_kaslarindaki_atrofi",
-  "kanit": "Tablo 3.5- Bacak kaslarındaki atrofiye bağlı engellilik yüzdeleri. (bkz tablo 3.1)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s146_alt_ekstremite_kas_kuvveti_kaybi",
-  "kanit": "Tablo 3.7- Alt ekstremite kas kuvvetinde kayba bağlı engellilik yüzdeleri. (bkz tablo 3,1)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s147_kalca_eklemi_hareket_kisitliligi",
-  "kanit": "Tablo 3.8b-KaI a eklemi hareket kısıtlı ı iddetine ba 11 en ellili",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s148_diz_eklemi_hareket_kisitliligi",
-  "kanit": "Tablo 3.9- Diz eklemi hareket kısıtlılığına bağlı engellilik.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s148_ayak_bilegi_eklemi_hareket_kisitliligi",
-  "kanit": "Tablo 3.10- Ayak bileği eklemi hareket kısıtlılığına bağlı engellilik.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s148_topuk_hareket_kisitliligi",
-  "kanit": "Tablo 3.11- Topuk hareket kısıtlılığına bağlı engellilik.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s148_ayak_bilegi_veya_topuk_deformitesi",
-  "kanit": "Tablo 3.12- Ayak bileği veya topuk deformite bozuldukları.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s149_ayak_basparmak_bozukluklari",
-  "kanit": "Tablo 3.13- Ayak başparmak bozuklukları *",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s149_kalca_ankilozu",
-  "kanit": "Tablo 3.14- Kalçanın fleksiyon pozisyonunda ankilozuna bağlı engellilik oranlan. (*)(bkz tablo",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s150_diz_ankilozu",
-  "kanit": "Tablo 3.19- Dizin varus pozisyonunda ankilozuna bağlı engellilik.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s152_ayak_bilegi_ankilozu",
-  "kanit": "Tablo 3.23- Ayak bileğinin plantar fleksiyon-dorsofleksiyonda ankilozuna bağlı engellilik.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s153_ayak_ankilozu",
-  "kanit": "Ayak (Arkaayak, Ortaayak, Önayak): Ayağın subtalar parçası İçin optimal ankiloz pozisyonu,",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s154_ayak_parmaklarinin_ankilozu",
-  "kanit": "Tablo 3.29- Ayak parmaklarının ankilozuna bağlı engellilik.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s155_alt_ekstremite_amputasyonlari",
-  "kanit": "3.7. AMPUTASYONLAR",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s155_hemipelvektomi",
-  "kanit": "-Hemipelvektomi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s155_kalca_dezartikulasyonu",
-  "kanit": "-Kalça dezartikulasyonu",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s155_diz_ustu_amputasyon",
-  "kanit": "-Diz üstü",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s155_diz_dezartikulasyonu",
-  "kanit": "-Diz dezartikülasyonu",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s155_diz_alti_amputasyon",
-  "kanit": "-Diz altı",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s155_syme_amputasyonu",
-  "kanit": "-Syme (ayak)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s155_chopart_amputasyonu",
-  "kanit": "-Chopart (orta ayak)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s155_transmetatarsal_amputasyon",
-  "kanit": "-Transmetatarsal",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s156_kalca_replasmani",
-  "kanit": "Tablo 3.31- Kalça replasmanı sonrasında engellilikle ilişkili puanlama.*",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s158_diz_artroplastisi",
-  "kanit": "Tablo 3.32- Diz artroplastisi sonrası engellilikle ilişkili puanlama. *",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s159_girdlestone_artroplastisi",
-  "kanit": "Girdlestone artroplasti",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s159_pelvis_kirigi",
-  "kanit": "Pelvis Kırıkları",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s159_asetebular_kirik",
-  "kanit": "Asetebular kırık",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s159_sakroiliak_eklem_kirigi",
-  "kanit": "Sakroiliak eklem kırığı (yer değiştirme göz",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s159_iskial_bursit",
-  "kanit": "İskial bursit (basıncın sık sık azaltılmasını",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s159_trokanterik_bursit",
-  "kanit": "Trokanterik bursit: (kronik) yürüme bozukluğuna",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s159_femoral_boyun_kirigi",
-  "kanit": "Femoral boyun kırığı:",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s159_femoral_saft_kirigi",
-  "kanit": "Femoral şaft kırığı",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s160_patellar_kirik",
-  "kanit": "Patellar kırık",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s160_patellektomi",
-  "kanit": "Patellektomi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s160_menisektomi",
-  "kanit": "Menisektomi, medial veya lateral",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s160_krusiat_veya_kollateral_ligament_laksi",
-  "kanit": "Krusiat veya kollateral ligament laksitesi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s160_plato_kirigi",
-  "kanit": "Plato kırığı",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s160_suprakonduler_veya_interkonduler_kirik",
-  "kanit": "Suprakondüler veya interkondüler kırık",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s160_unikonduler_replasman",
-  "kanit": "Unikondüler",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s160_proksimal_osteotomi",
-  "kanit": "Proksimal Osteotomi",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s160_tibia_saft_kirigi",
-  "kanit": "Tibia şaft kırığı (dizilim bozulduğu)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s161_ayak_bilegi_ligamentoz_instabilitesi",
-  "kanit": "Ligamentöz instabilite (stres röntgenleri ile)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s161_ayak_bilegi_kirigi",
-  "kanit": "Kırık",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s161_kalkaneal_kirik",
-  "kanit": "Ekstra-artikü ler (kalkaneal)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s161_subtalar_kemik_kirigi",
-  "kanit": "Subtalar kemik",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s161_talonavikuler_kemik_kirigi",
-  "kanit": "Talonaviküler kemik",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s161_kalkaneokuboid_kemik_kirigi",
-  "kanit": "Kalkaneoküboid kemik",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s162_cavus",
-  "kanit": "Cavus",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s162_rocker_bottom",
-  "kanit": "Rocker Bottom",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s162_talusun_avaskuler_nekrozu",
-  "kanit": "Talusun avasküler nekrozu",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s162_metatarsal_kirik",
-  "kanit": "kırık",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s162_metatarsalji",
-  "kanit": "Metatarsalji ve plantar",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s163_alt_ekstremitede_doku_kaybi",
-  "kanit": "3.9. DOKU KAYBI",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s163_kronik_osteomiyelit",
-  "kanit": "Kronik osteomiyelit de bu yöntem kullanılarak değerlendirilir.",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s164_periferal_vaskuler_hastalik",
-  "kanit": "Tablo 3.36- Alt ekstremitenin periferik vasküler hastalığına bağlı engellilik. (bkz tablo 3. I)",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s165_serebral_bozukluklar",
-  "kanit": "SEREBRAL BOZUKLUKLAR",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s166_spinal_kord_ve_ilgili_bozukluklar",
-  "kanit": "SPİNAL KORD ve İLGİLİ BOZUKLUKLAR",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s166_periferik_sinir_sistemi_noromuskuler_b",
-  "kanit": "PERİFERİK SİNİR SİSTEMİ, NÖROMUSKÜLER BİLEŞKE ve KAS SİSTEMİ",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s166_ayakta_durabilme_yurume_ve_hareket_boz",
-  "kanit": "Tablo 4.1- Ayakta durabilme, yürüme ve hareket bozuklukları (santral sinir sistemi veya",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s167_ust_ekstremite_bozukluklari_santral",
-  "kanit": "Tablo 4.2.a- Üst ekstremite bozuklukları",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s168_anorektal_sistem_norolojik_bozukluklar",
-  "kanit": "Anorektal Sistem",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s168_uriner_sistem_ve_mesane_fonksiyon_bozu",
-  "kanit": "Üriner Sistem/Mesane",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s168_solunumda_norolojik_bozukluklar",
-  "kanit": "Solunumda Nörolojik",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s168_cinsel_fonksiyon_bozuklugu",
-  "kanit": "Cinsel Fonksiyon",
+  "kanit": "",
   "durum": "birebir"
  },
  {
   "kavram_id": "ek2_s169_sistemik_romatizmal_hastaliklar",
-  "kanit": "SİSTEMİK ROMATİZMAL HASTALIKLAR",
+  "kanit": "",
   "durum": "birebir"
  }
 ]

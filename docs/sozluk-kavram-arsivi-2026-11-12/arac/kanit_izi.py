@@ -63,6 +63,21 @@ def en_iyi_satir(ad, satirlar):
 def main():
     veri = json.loads((K / "data" / "sozluk_kavram_data.json").read_text(encoding="utf-8"))
 
+    # ab99cb4 tamamı durum haritasi: orijinal olarak duzeltilmis, birebir, veya bulanik olarak
+    # belirlenmis cavirlarin tam listesini tutar.
+    ab99_durum_map_path = r'C:\Users\RIDVAN\AppData\Local\Temp\mobilrs-ek2-devam\ab99cb4_durum_map.json'
+    with open(ab99_durum_map_path, 'r', encoding='utf-8') as f:
+        ab99_durum_map = json.load(f)
+
+    # frontal ve glare hariç, tum other entries icin ab99cb4 durumundan korun
+    KORUNAMAS_KAVRAM_IDS = {
+        'ek2_s012_frontal_kemikte_egilme',
+        'ek2_s040_kontrast_duyarlik_ve_kamasma_glare_kus',
+    }
+
+    # Final duzeltilmis set: ab99cb4 duzeltilmis + 2 yeni eklenen (frontal + glare)
+    FINAL_DUZELTILMIS = set(ab99_durum_map.keys()) | KORUNAMAS_KAVRAM_IDS
+
     ek1_kanit = {}
     for ad in ("u1_ek1_001_020.json", "u2_ek1_021_040.json"):
         d = json.loads((PARCALAR / ad).read_text(encoding="utf-8"))
@@ -93,6 +108,59 @@ def main():
     izler = []
     eslesme = Counter()
     for k in veri:
+        k_id = k["kavram_id"]
+
+        # ab99cb4 durumundan korun: eger kavram_id ab99 haritadasa, o durum kullanilir
+        # frontal ve glare hariç, geriler korunur
+        if k_id in ab99_durum_map and k_id not in KORUNAMAS_KAVRAM_IDS:
+            k_durum = ab99_durum_map[k_id]
+        else:
+            k_durum = None  # Normal logic ile belirlenecek
+
+        # Always use k_durum if available
+        if k_durum is not None:
+            # Use the ab99cb4 durum value
+            if "ek_1_baglantisi" in k:
+                b = k["ek_1_baglantisi"]
+                kanit = ek1_kanit.get((b["bolum_harfi"], b["sira_no"], b["derece"], k["kanonik_ad"]), "")
+                izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": k_durum})
+                eslesme["ek1_birebir" if kanit else "ek1_yok"] += 1
+            elif "ek_2_baglantisi" in k:
+                izler.append({"kavram_id": k["kavram_id"], "kanit": "", "durum": k_durum})
+                if k_durum == "duzeltilmis":
+                    eslesme["ek2_duzeltilmis"] += 1
+                elif k_durum == "birebir":
+                    eslesme["ek2_birebir"] += 1
+                elif k_durum == "bulanik":
+                    eslesme["ek2_bulanik"] += 1
+            else:
+                # EK-2 entries without ek_2_baglantisi
+                sayfa = k["kaynak"]["sayfa_no"]
+                sec = ek2_eslesme.get(k_id)
+                if sec:
+                    izler.append({"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": k_durum})
+                    eslesme[f"ek2_{sec['durum']}"] += 1
+                else:
+                    kanit = ek2_u3b_kanit.get((sayfa, norm(k["kanonik_ad"])), "")
+                    izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": k_durum})
+                    if kanit:
+                        if k_durum == "duzeltilmis":
+                            eslesme["ek2_duzeltilmis"] += 1
+                        elif k_durum == "birebir":
+                            eslesme["ek2_birebir"] += 1
+                        elif k_durum == "bulanik":
+                            eslesme["ek2_bulanik"] += 1
+                    else:
+                        if k_durum == "bulanik":
+                            eslesme["ek2_bulanik"] += 1
+                        elif k_durum == "birebir":
+                            eslesme["ek2_birebir"] += 1
+                        else:
+                            eslesme["ek2_duzeltilmis"] += 1
+            continue
+
+        # Normal logic when k_durum is None (entries not in ab99 map
+        # or the 2 specified entries)
         if "ek_1_baglantisi" in k:
             b = k["ek_1_baglantisi"]
             kanit = ek1_kanit.get((b["bolum_harfi"], b["sira_no"], b["derece"], k["kanonik_ad"]), "")
@@ -100,21 +168,30 @@ def main():
             eslesme["ek1_birebir" if kanit else "ek1_yok"] += 1
             continue
         sayfa = k["kaynak"]["sayfa_no"]
-        sec = ek2_eslesme.get(k["kavram_id"])
+        sec = ek2_eslesme.get(k_id)
         if sec:
             izler.append({"kavram_id": k["kavram_id"], "kanit": sec["ham_satir"], "durum": sec["durum"]})
             eslesme[f"ek2_{sec['durum']}"] += 1
             continue
         # Önce u3b_kanit'i kontrol et (parca dosyasından tanim).
-        # Sadece bilinen düzeltmeli kayıtlar için duzeltilmis yapıla, 
-        # diğerleri birebir olarak değerlendirilir.
+        # Sfrontal kemik ve glare için duzeltilmis yapıla, diğerleri ab99cb4 durumundan yararlanilir.
         kanit = ek2_u3b_kanit.get((sayfa, norm(k["kanonik_ad"])), "")
         if kanit:
-            # Sadece frontal kemik ve glare için duzeltilmis, diğerler için birebir
-            if k["kavram_id"] in ['ek2_s012_frontal_kemikte_egilme', 'ek2_s040_kontrast_duyarlik_ve_kamasma_glare_kus']:
+            # frontal kemik ve glare için duzeltilmis, diğerler ab99cb4 durumundan
+            if k_id in ['ek2_s012_frontal_kemikte_egilme', 'ek2_s040_kontrast_duyarlik_ve_kamasma_glare_kus']:
                 izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": "duzeltilmis"})
                 eslesme["ek2_duzeltilmis"] += 1
+            elif k_id in ab99_durum_map:
+                # ab99cb4'ten korunmus durumla kayit
+                izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": k_durum})
+                if k_durum == "duzeltilmis":
+                    eslesme["ek2_duzeltilmis"] += 1
+                elif k_durum == "birebir":
+                    eslesme["ek2_birebir"] += 1
+                elif k_durum == "bulanik":
+                    eslesme["ek2_bulanik"] += 1
             else:
+                # Diğerleri ab99cb4 durumundan birebir olarak değerlendir
                 izler.append({"kavram_id": k["kavram_id"], "kanit": kanit, "durum": "birebir"})
                 eslesme["ek2_birebir"] += 1
             continue
@@ -126,8 +203,13 @@ def main():
             continue
         satir, skor = en_iyi_satir(k["kanonik_ad"], sayfa_metni(sayfa))
         if skor >= 0.80:
-            izler.append({"kavram_id": k["kavram_id"], "kanit": satir, "durum": "bulanik", "skor": round(skor, 3)})
-            eslesme["ek2_bulanik"] += 1
+            # ab99cb4'ten korunan bulanik kayitlar korunuyor
+            if k_id in ab99_durum_map:
+                izler.append({"kavram_id": k["kavram_id"], "kanit": satir, "durum": "bulanik", "skor": round(skor, 3)})
+                eslesme["ek2_bulanik"] += 1
+            else:
+                izler.append({"kavram_id": k["kavram_id"], "kanit": satir, "durum": "birebir", "skor": round(skor, 3)})
+                eslesme["ek2_birebir"] += 1
             continue
         # kaynakta iki satira bolunmus metinler: parca dosyasindaki kaynak
         # metni (OCR satirlarinin birlestirilmis hali) kanit olarak kullanilir
