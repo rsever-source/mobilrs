@@ -3,6 +3,8 @@ from datetime import datetime, timedelta, timezone
 from unittest.mock import patch
 
 import requests
+from bs4 import BeautifulSoup
+
 import news_service as ns
 
 
@@ -327,6 +329,210 @@ class NewsSourceDiagnosticsTests(unittest.TestCase):
         diagnostic = ns._SOURCE_DIAGNOSTICS[source["name"]]
         self.assertFalse(diagnostic["validated"])
         self.assertTrue(any("beklenmeyen adrese yönlendi" in error for error in diagnostic["errors"]))
+
+
+class TbbPublishedAtFieldTests(unittest.TestCase):
+    """TBB detay sayfasindaki gercek duyuru yayin tarihi alaninin okunmasi.
+
+    Gercek TBB sayfalarinda yayin tarihi, duyurunun kendi govdesindeki
+    "field--name-published-at" alaninda <time datetime="..."> olarak durur.
+    Sayfanin geri kalanindaki <time> etiketleri "diger duyurular" listesine
+    aittir ve duyuru metnindeki tarihler mevzuat icinde gecebilir.
+    """
+
+    def setUp(self):
+        ns._SOURCE_DIAGNOSTICS.clear()
+
+    @staticmethod
+    def _detail_html(published_datetime, published_text, extra_time_tags="", body=""):
+        return (
+            "<html><head><title>Engelli yönetmelik duyurusu</title></head><body>"
+            "<h1>Engelli yönetmelik duyurusu</h1>"
+            "<article class='node node--type-announcement node--view-mode-full clearfix'>"
+            "<div class='block block-layout-builder block-field-blocknodeannouncementpublished-at'>"
+            "<div class='field field--name-published-at field--type-published-at field__item'>"
+            f"<time datetime='{published_datetime}' class='datetime'>{published_text}</time>"
+            "</div></div>"
+            f"<div class='field field--name-body field--type-text-with-summary'>{body}</div>"
+            "</article>"
+            f"{extra_time_tags}"
+            "</body></html>"
+        )
+
+    def test_announcement_published_at_field_is_preferred_over_sidebar_dates(self):
+        # Sidebar'da 8 farkli "diger duyuru" tarihi var; genel tarama bunlari
+        # toplayip "tek aday" kuralini bozuyordu ve tarih None donuyordu.
+        sidebar = (
+            "<div class='view view-announcements view-id-announcements'>"
+            "<div class='views-row'><div class='views-field views-field-title'>"
+            "<span class='field-content'>"
+            "<time datetime='2026-11-04T12:12:27+03:00' class='datetime'>04/11/2026</time>"
+            "</span></div></div>"
+            "<div class='views-row'><div class='views-field views-field-title'>"
+            "<span class='field-content'>"
+            "<time datetime='2026-10-27T17:33:59+03:00' class='datetime'>27/10/2026</time>"
+            "</span></div></div>"
+            "</div>"
+        )
+        soup = BeautifulSoup(
+            self._detail_html("2026-11-10T11:15:08+03:00", "10 Kasım 2026", sidebar),
+            "html.parser",
+        )
+        published = ns._tbb_detail_published_at(soup)
+        self.assertEqual(published, "2026-11-10T08:15:08+00:00")
+
+    def test_datetime_attribute_is_preferred_over_visible_text(self):
+        # datetime oznitelligi ISO ve saat iceriyor; gorunen metin gun seviyesinde.
+        soup = BeautifulSoup(
+            self._detail_html("2026-11-10T11:15:08+03:00", "10 Kasım 2026"),
+            "html.parser",
+        )
+        self.assertEqual(ns._tbb_detail_published_at(soup), "2026-11-10T08:15:08+00:00")
+
+    def test_visible_text_is_used_when_datetime_attribute_is_missing(self):
+        html = (
+            "<html><body><h1>Engelli yönetmelik duyurusu</h1>"
+            "<article class='node node--type-announcement'>"
+            "<div class='field field--name-published-at field__item'>"
+            "<time class='datetime'>04/11/2026</time>"
+            "</div></article></body></html>"
+        )
+        soup = BeautifulSoup(html, "html.parser")
+        self.assertEqual(ns._tbb_detail_published_at(soup), "2026-11-04T00:00:00+00:00")
+
+    def test_legal_text_dates_do_not_override_announcement_date(self):
+        # Mevzuat metni icinde gecerli tarihler var; duyuru tarihi onlardan farkli
+        # olmali ve mevzuat metnindeki tarih secilmemeli.
+        body = (
+            "<p>Bu duyuru 15.10.2026 tarihli kararname uyarinca yayimlanmistir. "
+            "Yayin tarihi 01.11.2026 olarak belirlenmistir.</p>"
+        )
+        soup = BeautifulSoup(
+            self._detail_html("2026-11-10T11:15:08+03:00", "10 Kasım 2026", body=body),
+            "html.parser",
+        )
+        published = ns._tbb_detail_published_at(soup)
+        self.assertEqual(published, "2026-11-10T08:15:08+00:00")
+        self.assertNotIn("2026-10-15", published)
+        self.assertNotIn("2026-11-01", published)
+
+    def test_many_time_tags_outside_announcement_do_not_block_the_date(self):
+        # Cok sayida <time> etiketi (farkli yillarda) duyuru tarihi bulunmasini engellememeli.
+        extra = "".join(
+            f"<div class='views-row'><time datetime='2026-0{month}-01T08:00:00+03:00'>01/0{month}/2026</time></div>"
+            for month in range(1, 9)
+        )
+        soup = BeautifulSoup(
+            self._detail_html("2026-11-10T11:15:08+03:00", "10 Kasım 2026", extra),
+            "html.parser",
+        )
+        self.assertEqual(ns._tbb_detail_published_at(soup), "2026-11-10T08:15:08+00:00")
+
+    def test_meta_published_time_path_is_preserved(self):
+        # Mevcut meta yolu degistirilmedi; oncelikli calismaya devam etmeli.
+        html = (
+            "<html><head><meta property='article:published_time' "
+            "content='2026-11-09T10:00:00+03:00'></head><body>"
+            "<h1>Engelli yönetmelik duyurusu</h1>"
+            "<article class='node node--type-announcement'>"
+            "<div class='field field--name-published-at field__item'>"
+            "<time datetime='2026-01-01T00:00:00+03:00'>01/01/2026</time>"
+            "</div></article></body></html>"
+        )
+        soup = BeautifulSoup(html, "html.parser")
+        self.assertEqual(ns._tbb_detail_published_at(soup), "2026-11-09T07:00:00+00:00")
+
+    def test_json_ld_published_date_path_is_preserved(self):
+        html = (
+            "<html><head><script type='application/ld+json'>"
+            '{"@type":"Article","datePublished":"2026-11-08T09:30:00+03:00"}'
+            "</script></head><body>"
+            "<h1>Engelli yönetmelik duyurusu</h1>"
+            "<article class='node node--type-announcement'>"
+            "<div class='field field--name-published-at field__item'>"
+            "<time datetime='2026-01-01T00:00:00+03:00'>01/01/2026</time>"
+            "</div></article></body></html>"
+        )
+        soup = BeautifulSoup(html, "html.parser")
+        self.assertEqual(ns._tbb_detail_published_at(soup), "2026-11-08T06:30:00+00:00")
+
+    def test_page_without_announcement_field_falls_back_to_existing_behaviour(self):
+        # published-at alani olmayan bir sayfada mevcut genel yol calismaya devam eder.
+        html = (
+            "<html><body><h1>Engelli yönetmelik duyurusu</h1>"
+            "<time datetime='2026-11-05T10:00:00+03:00'>05/11/2026</time>"
+            "</body></html>"
+        )
+        soup = BeautifulSoup(html, "html.parser")
+        self.assertEqual(ns._tbb_detail_published_at(soup), "2026-11-05T07:00:00+00:00")
+
+    def test_announcement_without_any_published_date_still_returns_none(self):
+        # published-at alani bos ve sayfada baska hicbir tarih yok: sonuc None.
+        html = (
+            "<html><body><h1>Engelli yönetmelik duyurusu</h1>"
+            "<article class='node node--type-announcement'>"
+            "<div class='field field--name-published-at field__item'></div>"
+            "<div class='field field--name-body'>Duyuru metni</div>"
+            "</article></body></html>"
+        )
+        soup = BeautifulSoup(html, "html.parser")
+        self.assertIsNone(ns._tbb_detail_published_at(soup))
+
+    def test_empty_announcement_field_keeps_existing_fallback_behaviour(self):
+        # published-at alani bos sayfada mevcut genel tarama yolu devreye girer.
+        # Bu, duzeltmeden once de gecerli olan davranistir ve degistirilmemistir.
+        html = (
+            "<html><body><h1>Engelli yönetmelik duyurusu</h1>"
+            "<article class='node node--type-announcement'>"
+            "<div class='field field--name-published-at field__item'></div>"
+            "<div class='field field--name-body'><time>01/01/2026</time></div>"
+            "</article></body></html>"
+        )
+        soup = BeautifulSoup(html, "html.parser")
+        self.assertEqual(ns._tbb_detail_published_at(soup), "2026-01-01T00:00:00+00:00")
+
+    def test_end_to_end_tbb_item_is_published_with_announcement_date(self):
+        # Uctan uca: liste + detay sayfasi ile gercek duyuru haber olarak uretilmeli.
+        source = {
+            "name": ns.TBB_SOURCE_NAME,
+            "url": "https://www.tbb.gov.tr/tr/mevzuat-duyurulari",
+            "keywords": ["engelli"],
+        }
+        tbb_url = "https://www.tbb.gov.tr/tr/mevzuat-duyurulari/engelli-duyurusu"
+        listing = FakeResponse(
+            "<html><body><a href='/tr/mevzuat-duyurulari/engelli-duyurusu'>"
+            "Engelli yönetmelik duyurusu</a></body></html>",
+            url=source["url"],
+        )
+        sidebar = (
+            "<div class='view view-announcements'><div class='views-row'>"
+            "<time datetime='2026-11-04T12:12:27+03:00' class='datetime'>04/11/2026</time>"
+            "</div></div>"
+        )
+        detail = FakeResponse(
+            self._detail_html(
+                "2026-11-10T11:15:08+03:00",
+                "10 Kasım 2026",
+                sidebar,
+                body=(
+                    "<p>Bu TBB duyurusu, engelli bireylere ilişkin yönetmelik "
+                    "değişikliğini ve belediyelerin uygulaması gereken esasları "
+                    "açıklamaktadır. Ayrıntılı açıklama ve uygulama hükümleri "
+                    "bu sayfada yer almaktadır.</p>"
+                ),
+            ),
+            url=tbb_url,
+        )
+        with patch.object(ns._SESSION, "get", side_effect=[listing, detail]):
+            items = ns._tbb_mevzuat_items(source)
+
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0]["url"], tbb_url)
+        self.assertEqual(items[0]["published_at"], "2026-11-10T08:15:08+00:00")
+        diagnostic = ns._SOURCE_DIAGNOSTICS[source["name"]]
+        self.assertTrue(diagnostic["validated"])
+        self.assertEqual(diagnostic["detail_successes"], 1)
+        self.assertEqual(diagnostic["errors"], [])
 
 
 class TbbPrimarySourcePolicyTests(unittest.TestCase):
