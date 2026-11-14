@@ -289,6 +289,71 @@ class Arac3DataTests(unittest.TestCase):
         self.assertEqual(actual, expected)
 
 
+    def test_ek1_common_and_special_provisions_are_visible(self):
+        source = HTML.read_text(encoding="utf-8")
+        mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
+        data = json.loads(mapping_path.read_text(encoding="utf-8"))
+
+        embedded = re.search(r"const ARAC3_MAPPING_DATA=(\\{.*?\\});\\nconst mappingReady", source, re.S)
+        self.assertIsNotNone(embedded, "Araç 3 gömülü eşleştirme verisi bulunamadı")
+        self.assertEqual(json.loads(embedded.group(1)), data)
+
+        common = data.get("ek1_ortak_hukumler", [])
+        special = data.get("ek1_yeni_ek_hukumler", [])
+        self.assertEqual(len(common), 3)
+        self.assertEqual(len(special), 3)
+        self.assertEqual(data["ozet"]["ek1_ortak_hukum_sayisi"], 3)
+        self.assertEqual(data["ozet"]["ek1_gosterilecek_hukum_toplami"], 7)
+
+        common_texts = [item["kanonik_ad"] for item in common]
+        self.assertTrue(any("Mevcut hastalık listelerinde tanımlanmayan" in text for text in common_texts))
+        self.assertTrue(any("Birden fazla hastalığın bir arada" in text for text in common_texts))
+        self.assertTrue(any("birden fazla hafif düzeyde" in text for text in common_texts))
+
+        malign = next(row for row in data["kayitlar"] if row["mevcut_kayit_id"] == "MEVCUT-063")
+        self.assertEqual(malign["ek1_madde_no"], 24)
+        self.assertIn("18 ay süresince malul kabul edilir", malign["ek1_resmi_ad"])
+        self.assertEqual({item["ek1_kayit_id"] for item in special}, {"ek1-078", "ek1-079", "ek1-158"})
+
+        self.assertIn('id="ek1RulesDetails"', source)
+        self.assertIn('id="ek1Rules"', source)
+        self.assertIn("function renderEk1Rules()", source)
+        self.assertIn("function ek1RulesForMapping(m)", source)
+        self.assertIn("renderEk1RuleHints(m)", source)
+        self.assertIn("ek1_ortak_hukumler", source)
+        self.assertIn("R bölümü — ortak hükümler", source)
+
+    def test_nontext_ek1_criteria_are_not_invented(self):
+        mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
+        data = json.loads(mapping_path.read_text(encoding="utf-8"))
+        empty_rows = [
+            row for row in data["kayitlar"]
+            if row.get("kriter_metni_bos_duzeyler")
+        ]
+        self.assertEqual(len(empty_rows), 11)
+        selectable_empty = {
+            row["mevcut_kayit_id"]
+            for row in empty_rows
+            for level in row.get("duzeyler", [])
+            if level.get("secim_izinli") is True and not level.get("kriter", "").strip()
+        }
+        self.assertEqual(
+            selectable_empty,
+            {"MEVCUT-088", "MEVCUT-089", "MEVCUT-090", "MEVCUT-091", "MEVCUT-096", "MEVCUT-097"},
+        )
+        nonselectable_empty = {
+            row["mevcut_kayit_id"]
+            for row in empty_rows
+            for level in row.get("duzeyler", [])
+            if not level.get("kriter", "").strip() and level.get("secim_izinli") is not True
+        }
+        self.assertEqual(
+            nonselectable_empty,
+            {"MEVCUT-120", "MEVCUT-121", "MEVCUT-122", "MEVCUT-123", "MEVCUT-181"},
+        )
+
+
+
 if __name__ == "__main__":
     unittest.main()
 
