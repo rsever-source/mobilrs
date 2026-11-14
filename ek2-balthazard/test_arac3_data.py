@@ -324,6 +324,53 @@ class Arac3DataTests(unittest.TestCase):
         self.assertIn("ek1_ortak_hukumler", source)
         self.assertIn("R bölümü — ortak hükümler", source)
 
+    def test_ek1_section_footnotes_and_visual_verification(self):
+        mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
+        data = json.loads(mapping_path.read_text(encoding="utf-8"))
+        source = HTML.read_text(encoding="utf-8")
+
+        self.assertEqual(len(data["kayitlar"]), 182)
+        statuses = {row.get("kaynak_dogrulama") for row in data["kayitlar"]}
+        self.assertEqual(statuses, {"metin_ve_gorsel_kontrol_edildi"})
+        self.assertEqual(
+            data["ozet"]["kaynak_dogrulama_dagilimi"],
+            {"metin_ve_gorsel_kontrol_edildi": 182},
+        )
+
+        # Kriterleri iki sayfaya yayılan kayıtlar kaynak sayfa aralığını taşımalı.
+        rows = {row["mevcut_kayit_id"]: row for row in data["kayitlar"]}
+        self.assertEqual(rows["MEVCUT-004"]["ek1_kriter_pdf_sayfalari"], [1, 2])
+        self.assertEqual(rows["MEVCUT-104"]["ek1_kriter_pdf_sayfalari"], [20, 21])
+        self.assertEqual(rows["MEVCUT-176"]["ek1_kriter_pdf_sayfalari"], [37, 38])
+
+        # Bölüm Atıfları: kaynakta bölüm sonlarında yinelenen tanımlar.
+        atiflar = data.get("ek1_bolum_atiflari", [])
+        self.assertEqual(len(atiflar), 6)
+        self.assertEqual(data["ozet"]["ek1_bolum_atif_sayisi"], 6)
+        by_id = {item["kavram_id"]: item for item in atiflar}
+        self.assertEqual(
+            by_id["ek1_b_06_sik_transfuzyon"]["metin"],
+            "İki ayda bir, en az bir kez",
+        )
+        self.assertIn(
+            "Fonksiyonel ambulasyon sınıflamasına göre 0, 1, 2",
+            by_id["ek1_b_01_efektif_ambulasyon"]["metin"],
+        )
+        self.assertIn(
+            "ii. Çift üst ekstremite için",
+            by_id["ek1_b_02_ust_ekstremite"]["metin"],
+        )
+        self.assertIn(
+            "Günlük aktivitelerin tüme yakınını",
+            by_id["ek1_b_05_cok_siddetli"]["metin"],
+        )
+
+        # Ortak/özel hüküm sayısı değişmemeli; atıflar ayrı grupta gösterilmeli.
+        self.assertEqual(len(data["ek1_ortak_hukumler"]), 3)
+        self.assertEqual(len(data["ek1_yeni_ek_hukumler"]), 3)
+        self.assertIn("ek1_bolum_atiflari", source)
+        self.assertIn("Bölüm Atıfları — kriterlerde kullanılan tanımlar", source)
+
     def test_nontext_ek1_criteria_are_not_invented(self):
         mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
         data = json.loads(mapping_path.read_text(encoding="utf-8"))
