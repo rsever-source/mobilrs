@@ -28,7 +28,10 @@
       "ek1-079",
       "ek1-158"
     ],
-    "not": "Düzeyler yalnızca EK-1 verisinde açık kriter bulunan kayıtlara aktarılmıştır. Eşleşme yok kayıtlarına veya üst başlıklara düzey üretilmemiştir."
+    "not": "Düzeyler yalnızca EK-1 verisinde açık kriter bulunan kayıtlara aktarılmıştır. Eşleşme yok kayıtlarına veya üst başlıklara düzey üretilmemiştir.",
+    "ek1_ortak_hukum_sayisi": 3,
+    "ek1_gosterilen_ozel_hukum_sayisi": 4,
+    "ek1_gosterilecek_hukum_toplami": 7
   },
   "kayitlar": [
     {
@@ -6568,6 +6571,65 @@
       },
       "ilgili_ek1_kaydi": "ek1-151",
       "not": "Kronik pulmoner yetmezlik kapsamında karar verilemeyen durumlarda KPET ve işbirliği kısıtı için özel değerlendirme kuralı."
+    }
+  ],
+  "ek1_ortak_hukumler": [
+    {
+      "kavram_id": "ek1_r_01_mevcut_hastalik_listelerinde_tanimlanm_ortak_hukum",
+      "kanonik_ad": "Mevcut hastalık listelerinde tanımlanmayan ancak tedaviye rağmen çalışma olanağının bulunmadığı hastalıklar ağır düzeyde çalışma gücü kaybı olarak değerlendirilebilir.",
+      "es_anlamli": [],
+      "ek_1_baglantisi": {
+        "bolum_harfi": "R",
+        "sira_no": 1,
+        "derece": "ortak_hukum"
+      },
+      "kaynak": {
+        "belge_adi": "Maluliyet ve Çalışma Gücü Kaybı Tespiti İşlemleri Yönetmeliği EK-1 Hastalık Listesi",
+        "rg_tarihi": "28.09.2021",
+        "rg_sayisi": 31612,
+        "url": "https://www.resmigazete.gov.tr/eskiler/2021/09/20210928-4.htm",
+        "erisim_tarihi": "2026-11-12",
+        "sayfa_no": 40
+      },
+      "olusturulma_tarihi": "2026-11-12T00:00:00Z"
+    },
+    {
+      "kavram_id": "ek1_r_02_birden_fazla_hastaligin_bir_arada_oldu_ortak_hukum",
+      "kanonik_ad": "Birden fazla hastalığın bir arada olduğu ve tedaviye rağmen çalışma olanağının bulunmadığı durumlar, ağır düzeyde çalışma gücü kaybı olarak değerlendirilebilir.",
+      "es_anlamli": [],
+      "ek_1_baglantisi": {
+        "bolum_harfi": "R",
+        "sira_no": 2,
+        "derece": "ortak_hukum"
+      },
+      "kaynak": {
+        "belge_adi": "Maluliyet ve Çalışma Gücü Kaybı Tespiti İşlemleri Yönetmeliği EK-1 Hastalık Listesi",
+        "rg_tarihi": "28.09.2021",
+        "rg_sayisi": 31612,
+        "url": "https://www.resmigazete.gov.tr/eskiler/2021/09/20210928-4.htm",
+        "erisim_tarihi": "2026-11-12",
+        "sayfa_no": 40
+      },
+      "olusturulma_tarihi": "2026-11-12T00:00:00Z"
+    },
+    {
+      "kavram_id": "ek1_r_03_bu_hastalik_listesine_gore_birden_fazl_ortak_hukum",
+      "kanonik_ad": "Bu hastalık listesine göre birden fazla hafif düzeyde çalışma gücü kaybına neden olan durumlar, orta düzeyde çalışma gücü kaybı olarak değerlendirilebilir.",
+      "es_anlamli": [],
+      "ek_1_baglantisi": {
+        "bolum_harfi": "R",
+        "sira_no": 3,
+        "derece": "ortak_hukum"
+      },
+      "kaynak": {
+        "belge_adi": "Maluliyet ve Çalışma Gücü Kaybı Tespiti İşlemleri Yönetmeliği EK-1 Hastalık Listesi",
+        "rg_tarihi": "28.09.2021",
+        "rg_sayisi": 31612,
+        "url": "https://www.resmigazete.gov.tr/eskiler/2021/09/20210928-4.htm",
+        "erisim_tarihi": "2026-11-12",
+        "sayfa_no": 40
+      },
+      "olusturulma_tarihi": "2026-11-12T00:00:00Z"
     }
   ]
 }
