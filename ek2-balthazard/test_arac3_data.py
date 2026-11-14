@@ -157,12 +157,13 @@ class Arac3DataTests(unittest.TestCase):
         self.assertNotIn("Klinik Kognitif Değerlendirme Skoru (KDS)", mild["kriter"])
         self.assertNotIn("Günlük aktivite:", mild["kriter"])
 
-    def test_empty_criteria_amputation_levels_are_selectable(self):
+    def test_empty_criteria_heavy_levels_are_selectable(self):
         mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
         data = json.loads(mapping_path.read_text(encoding="utf-8"))
         expected_ids = {
             "MEVCUT-088", "MEVCUT-089", "MEVCUT-090", "MEVCUT-091",
-            "MEVCUT-096", "MEVCUT-097",
+            "MEVCUT-096", "MEVCUT-097", "MEVCUT-120", "MEVCUT-121",
+            "MEVCUT-122", "MEVCUT-123", "MEVCUT-181",
         }
         flagged = {
             row["mevcut_kayit_id"]
@@ -183,11 +184,11 @@ class Arac3DataTests(unittest.TestCase):
             self.assertEqual(level["kriter"], "", record_id)
             self.assertEqual(level["kriter_durumu"], "baslik_var_metin_yok", record_id)
 
-        # Bu 6 kayit disinda secim izni verilmemis olmali.
+        # EK-1'de açık ağır düzey başlığı bulunan 11 boş kriter kaydı seçilebilir olmalı.
         self.assertEqual(
             len([level for row in data["kayitlar"] for level in (row.get("duzeyler") or [])
                  if "secim_izinli" in level]),
-            6,
+            11,
         )
 
     def test_amputation_category_filters_exact_six_diseases(self):
@@ -339,7 +340,7 @@ class Arac3DataTests(unittest.TestCase):
         }
         self.assertEqual(
             selectable_empty,
-            {"MEVCUT-088", "MEVCUT-089", "MEVCUT-090", "MEVCUT-091", "MEVCUT-096", "MEVCUT-097"},
+            {"MEVCUT-088", "MEVCUT-089", "MEVCUT-090", "MEVCUT-091", "MEVCUT-096", "MEVCUT-097", "MEVCUT-120", "MEVCUT-121", "MEVCUT-122", "MEVCUT-123", "MEVCUT-181"},
         )
         nonselectable_empty = {
             row["mevcut_kayit_id"]
@@ -347,10 +348,10 @@ class Arac3DataTests(unittest.TestCase):
             for level in row.get("duzeyler", [])
             if not level.get("kriter", "").strip() and level.get("secim_izinli") is not True
         }
-        self.assertEqual(
-            nonselectable_empty,
-            {"MEVCUT-120", "MEVCUT-121", "MEVCUT-122", "MEVCUT-123", "MEVCUT-181"},
-        )
+        self.assertEqual(nonselectable_empty, set())
+        source = HTML.read_text(encoding="utf-8")
+        self.assertIn("EK1_BASLIK_NOTU", source)
+        self.assertIn("Bu kayıt EK-1’de Ağır düzey başlığı altında yer almaktadır.", source)
 
 
 
