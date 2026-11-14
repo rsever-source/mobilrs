@@ -329,6 +329,16 @@ body.high-contrast .selected-count{background:#000;color:#fff;border:1px solid #
   .result-special-rule{font-size:11.5px}
 }
 
+
+
+/* Araç 3: eşleşme ve FAS etiketlerini masaüstü ve mobilde aynı hizada tut. */
+.result .tags{align-items:center}
+.result .tags>.tag{display:inline-flex;align-items:center;min-height:23px;margin-top:0;line-height:1.2}
+@media(max-width:640px){
+  .result .tags{column-gap:6px;row-gap:6px}
+  .result .tags>.tag{white-space:nowrap}
+}
+
 </style>
 </head>
 <body><a class="skip-link" href="#main-content">İçeriğe geç</a><div class="app">
