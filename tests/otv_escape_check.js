@@ -9,7 +9,9 @@ const fs = require('fs');
 const path = require('path');
 
 const sourcePath = path.join(__dirname, '..', 'excel_vlookup_api.py');
-const source = fs.readFileSync(sourcePath, 'utf8');
+// Windows çalışma kopyaları CRLF, CI (Linux) LF kullanır; satır sonlarını
+// normalize ederek kontrolün her iki ortamda da aynı sonucu vermesini sağla.
+const source = fs.readFileSync(sourcePath, 'utf8').replace(/\r\n?/g, '\n');
 const failures = [];
 
 function check(condition, message) {
