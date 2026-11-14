@@ -157,12 +157,13 @@ class Arac3DataTests(unittest.TestCase):
         self.assertNotIn("Klinik Kognitif Değerlendirme Skoru (KDS)", mild["kriter"])
         self.assertNotIn("Günlük aktivite:", mild["kriter"])
 
-    def test_empty_criteria_amputation_levels_are_selectable(self):
+    def test_empty_criteria_heavy_levels_are_selectable(self):
         mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
         data = json.loads(mapping_path.read_text(encoding="utf-8"))
         expected_ids = {
             "MEVCUT-088", "MEVCUT-089", "MEVCUT-090", "MEVCUT-091",
-            "MEVCUT-096", "MEVCUT-097",
+            "MEVCUT-096", "MEVCUT-097", "MEVCUT-120", "MEVCUT-121",
+            "MEVCUT-122", "MEVCUT-123", "MEVCUT-181",
         }
         flagged = {
             row["mevcut_kayit_id"]
@@ -183,11 +184,11 @@ class Arac3DataTests(unittest.TestCase):
             self.assertEqual(level["kriter"], "", record_id)
             self.assertEqual(level["kriter_durumu"], "baslik_var_metin_yok", record_id)
 
-        # Bu 6 kayit disinda secim izni verilmemis olmali.
+        # EK-1'de açık ağır düzey başlığı bulunan 11 boş kriter kaydı seçilebilir olmalı.
         self.assertEqual(
             len([level for row in data["kayitlar"] for level in (row.get("duzeyler") or [])
                  if "secim_izinli" in level]),
-            6,
+            11,
         )
 
     def test_amputation_category_filters_exact_six_diseases(self):
@@ -287,6 +288,118 @@ class Arac3DataTests(unittest.TestCase):
         }
         actual = {record["name"] for record in self.records if record["hasFas"]}
         self.assertEqual(actual, expected)
+
+
+    def test_ek1_common_and_special_provisions_are_visible(self):
+        source = HTML.read_text(encoding="utf-8")
+        mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
+        data = json.loads(mapping_path.read_text(encoding="utf-8"))
+
+        embedded = re.search(r"const ARAC3_MAPPING_DATA=(\{.*?\});\nconst mappingReady", source, re.S)
+        self.assertIsNotNone(embedded, "Araç 3 gömülü eşleştirme verisi bulunamadı")
+        self.assertEqual(json.loads(embedded.group(1)), data)
+
+        common = data.get("ek1_ortak_hukumler", [])
+        special = data.get("ek1_yeni_ek_hukumler", [])
+        self.assertEqual(len(common), 3)
+        self.assertEqual(len(special), 3)
+        self.assertEqual(data["ozet"]["ek1_ortak_hukum_sayisi"], 3)
+        self.assertEqual(data["ozet"]["ek1_gosterilecek_hukum_toplami"], 7)
+
+        common_texts = [item["kanonik_ad"] for item in common]
+        self.assertTrue(any("Mevcut hastalık listelerinde tanımlanmayan" in text for text in common_texts))
+        self.assertTrue(any("Birden fazla hastalığın bir arada" in text for text in common_texts))
+        self.assertTrue(any("birden fazla hafif düzeyde" in text for text in common_texts))
+
+        malign = next(row for row in data["kayitlar"] if row["mevcut_kayit_id"] == "MEVCUT-063")
+        self.assertEqual(malign["ek1_madde_no"], 24)
+        self.assertIn("18 ay süresince malul kabul edilir", malign["ek1_resmi_ad"])
+        self.assertEqual({item["ek1_kayit_id"] for item in special}, {"ek1-078", "ek1-079", "ek1-158"})
+
+        self.assertIn('id="ek1RulesDetails"', source)
+        self.assertIn('id="ek1Rules"', source)
+        self.assertIn("function renderEk1Rules()", source)
+        self.assertIn("function ek1RulesForMapping(m)", source)
+        self.assertIn("renderEk1RuleHints(m)", source)
+        self.assertIn("ek1_ortak_hukumler", source)
+        self.assertIn("R bölümü — ortak hükümler", source)
+
+    def test_ek1_section_footnotes_and_visual_verification(self):
+        mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
+        data = json.loads(mapping_path.read_text(encoding="utf-8"))
+        source = HTML.read_text(encoding="utf-8")
+
+        self.assertEqual(len(data["kayitlar"]), 182)
+        statuses = {row.get("kaynak_dogrulama") for row in data["kayitlar"]}
+        self.assertEqual(statuses, {"metin_ve_gorsel_kontrol_edildi"})
+        self.assertEqual(
+            data["ozet"]["kaynak_dogrulama_dagilimi"],
+            {"metin_ve_gorsel_kontrol_edildi": 182},
+        )
+
+        # Kriterleri iki sayfaya yayılan kayıtlar kaynak sayfa aralığını taşımalı.
+        rows = {row["mevcut_kayit_id"]: row for row in data["kayitlar"]}
+        self.assertEqual(rows["MEVCUT-004"]["ek1_kriter_pdf_sayfalari"], [1, 2])
+        self.assertEqual(rows["MEVCUT-104"]["ek1_kriter_pdf_sayfalari"], [20, 21])
+        self.assertEqual(rows["MEVCUT-176"]["ek1_kriter_pdf_sayfalari"], [37, 38])
+
+        # Bölüm Atıfları: kaynakta bölüm sonlarında yinelenen tanımlar.
+        atiflar = data.get("ek1_bolum_atiflari", [])
+        self.assertEqual(len(atiflar), 6)
+        self.assertEqual(data["ozet"]["ek1_bolum_atif_sayisi"], 6)
+        by_id = {item["kavram_id"]: item for item in atiflar}
+        self.assertEqual(
+            by_id["ek1_b_06_sik_transfuzyon"]["metin"],
+            "İki ayda bir, en az bir kez",
+        )
+        self.assertIn(
+            "Fonksiyonel ambulasyon sınıflamasına göre 0, 1, 2",
+            by_id["ek1_b_01_efektif_ambulasyon"]["metin"],
+        )
+        self.assertIn(
+            "ii. Çift üst ekstremite için",
+            by_id["ek1_b_02_ust_ekstremite"]["metin"],
+        )
+        self.assertIn(
+            "Günlük aktivitelerin tüme yakınını",
+            by_id["ek1_b_05_cok_siddetli"]["metin"],
+        )
+
+        # Ortak/özel hüküm sayısı değişmemeli; atıflar ayrı grupta gösterilmeli.
+        self.assertEqual(len(data["ek1_ortak_hukumler"]), 3)
+        self.assertEqual(len(data["ek1_yeni_ek_hukumler"]), 3)
+        self.assertIn("ek1_bolum_atiflari", source)
+        self.assertIn("Bölüm Atıfları — kriterlerde kullanılan tanımlar", source)
+
+    def test_nontext_ek1_criteria_are_not_invented(self):
+        mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
+        data = json.loads(mapping_path.read_text(encoding="utf-8"))
+        empty_rows = [
+            row for row in data["kayitlar"]
+            if row.get("kriter_metni_bos_duzeyler")
+        ]
+        self.assertEqual(len(empty_rows), 11)
+        selectable_empty = {
+            row["mevcut_kayit_id"]
+            for row in empty_rows
+            for level in row.get("duzeyler", [])
+            if level.get("secim_izinli") is True and not level.get("kriter", "").strip()
+        }
+        self.assertEqual(
+            selectable_empty,
+            {"MEVCUT-088", "MEVCUT-089", "MEVCUT-090", "MEVCUT-091", "MEVCUT-096", "MEVCUT-097", "MEVCUT-120", "MEVCUT-121", "MEVCUT-122", "MEVCUT-123", "MEVCUT-181"},
+        )
+        nonselectable_empty = {
+            row["mevcut_kayit_id"]
+            for row in empty_rows
+            for level in row.get("duzeyler", [])
+            if not level.get("kriter", "").strip() and level.get("secim_izinli") is not True
+        }
+        self.assertEqual(nonselectable_empty, set())
+        source = HTML.read_text(encoding="utf-8")
+        self.assertIn("EK1_BASLIK_NOTU", source)
+        self.assertIn("Bu kayıt EK-1’de Ağır düzey başlığı altında yer almaktadır.", source)
+
 
 
 if __name__ == "__main__":

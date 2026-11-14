@@ -3,7 +3,7 @@
   "kaynaklar": {
     "mevcut_liste": "Yeni Metin Belgesi (2).txt üzerinden çıkarılmış 182 kayıt; Araç 3 bağımsız denetim raporundaki 182 kayıt sayısıyla uyumlu.",
     "ek1_json": "ek1_work/ek1_duzeyler_yeni.json",
-    "resmi_pdf": "20210928-4-1.pdf (40 sayfa; bu çalışma JSON çıkarımındaki sayfa/başlık verisini kullandı; her sayfa baştan görsel olarak yeniden denetlenmedi.)"
+    "resmi_pdf": "20210928-4-1.pdf (40 sayfa). 182 kaydın tamamı PDF sayfa görüntüleriyle karşılaştırılmıştır. 113 bekleyen kayıt 14.11.2026 tarihinde 200 DPI sayfa görüntüleri üzerinden görsel olarak denetlenmiştir."
   },
   "ozet": {
     "mevcut_kayit_sayisi": 182,
@@ -28,7 +28,14 @@
       "ek1-079",
       "ek1-158"
     ],
-    "not": "Düzeyler yalnızca EK-1 verisinde açık kriter bulunan kayıtlara aktarılmıştır. Eşleşme yok kayıtlarına veya üst başlıklara düzey üretilmemiştir."
+    "not": "Düzeyler yalnızca EK-1 verisinde açık kriter bulunan kayıtlara aktarılmıştır. Eşleşme yok kayıtlarına veya üst başlıklara düzey üretilmemiştir.",
+    "ek1_ortak_hukum_sayisi": 3,
+    "ek1_gosterilen_ozel_hukum_sayisi": 4,
+    "ek1_gosterilecek_hukum_toplami": 7,
+    "ek1_bolum_atif_sayisi": 6,
+    "kaynak_dogrulama_dagilimi": {
+      "metin_ve_gorsel_kontrol_edildi": 182
+    }
   },
   "kayitlar": [
     {
@@ -73,7 +80,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-002",
@@ -117,7 +124,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-003",
@@ -161,7 +168,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-004",
@@ -176,7 +183,10 @@
       "ek1_madde_no": 4,
       "ek1_pdf_sayfa": 1,
       "ek1_resmi_ad": "Kognitif bozukluklar Tedavi edilebilir demans nedenleri dışlandıktan sonra klinik kognitif değerlendirme skoru ve minimental test skoru; en az 6 ay ara ile 2 veya daha fazla tekrarlanmak koşuluyla değerlendirilir. Kognitif bozuklukların değerlendirilmesi, Sağlık kurulu raporunu düzenleyen sağlık hizmet sunucularının psikiyatri ve nöroloji branşların birlikte bulunduğu sağlık kurullarınca yapılır.",
-      "ek1_kriter_pdf_sayfalari": [],
+      "ek1_kriter_pdf_sayfalari": [
+        1,
+        2
+      ],
       "duzeyler": [
         {
           "anahtar": "agir",
@@ -205,7 +215,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-005",
@@ -249,7 +259,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-006",
@@ -293,7 +303,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-007",
@@ -330,7 +340,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-008",
@@ -374,7 +384,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-009",
@@ -389,7 +399,10 @@
       "ek1_madde_no": 9,
       "ek1_pdf_sayfa": 4,
       "ek1_resmi_ad": "Serebral palsi",
-      "ek1_kriter_pdf_sayfalari": [],
+      "ek1_kriter_pdf_sayfalari": [
+        4,
+        5
+      ],
       "duzeyler": [
         {
           "anahtar": "agir",
@@ -418,7 +431,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-010",
@@ -462,7 +475,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-011",
@@ -506,7 +519,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-012",
@@ -536,7 +549,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-013",
@@ -580,7 +593,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-014",
@@ -610,7 +623,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-015",
@@ -654,7 +667,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-016",
@@ -698,7 +711,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-017",
@@ -742,7 +755,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-018",
@@ -786,7 +799,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-019",
@@ -830,7 +843,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-020",
@@ -867,7 +880,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-021",
@@ -904,7 +917,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-022",
@@ -941,7 +954,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-023",
@@ -978,7 +991,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-024",
@@ -1015,7 +1028,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-025",
@@ -1052,7 +1065,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-026",
@@ -1089,7 +1102,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-027",
@@ -1119,7 +1132,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-028",
@@ -1149,7 +1162,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-029",
@@ -1179,7 +1192,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-030",
@@ -1223,7 +1236,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-031",
@@ -1253,7 +1266,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-032",
@@ -1283,7 +1296,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-033",
@@ -1313,7 +1326,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-034",
@@ -1357,7 +1370,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-035",
@@ -1387,7 +1400,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-036",
@@ -1417,7 +1430,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-037",
@@ -1432,7 +1445,10 @@
       "ek1_madde_no": 4,
       "ek1_pdf_sayfa": 10,
       "ek1_resmi_ad": "Ses organları",
-      "ek1_kriter_pdf_sayfalari": [],
+      "ek1_kriter_pdf_sayfalari": [
+        10,
+        11
+      ],
       "duzeyler": [
         {
           "anahtar": "agir",
@@ -1454,7 +1470,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-038",
@@ -1484,7 +1500,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-039",
@@ -1521,7 +1537,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-040",
@@ -1551,7 +1567,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-041",
@@ -1581,7 +1597,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-042",
@@ -1611,7 +1627,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-043",
@@ -1641,7 +1657,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-044",
@@ -1671,7 +1687,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-045",
@@ -1701,7 +1717,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-046",
@@ -1731,7 +1747,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-047",
@@ -1761,7 +1777,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-048",
@@ -1791,7 +1807,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-049",
@@ -1821,7 +1837,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-050",
@@ -1851,7 +1867,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-051",
@@ -1881,7 +1897,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-052",
@@ -1911,7 +1927,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-053",
@@ -1941,7 +1957,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-054",
@@ -1971,7 +1987,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-055",
@@ -2001,7 +2017,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-056",
@@ -2031,7 +2047,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-057",
@@ -2061,7 +2077,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-058",
@@ -2091,7 +2107,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-059",
@@ -2121,7 +2137,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-060",
@@ -2151,7 +2167,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-061",
@@ -2181,7 +2197,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-062",
@@ -2196,7 +2212,10 @@
       "ek1_madde_no": 23,
       "ek1_pdf_sayfa": 14,
       "ek1_resmi_ad": "Uygun incelemeye rağmen primer kaynağın bilinmediği durumlar",
-      "ek1_kriter_pdf_sayfalari": [],
+      "ek1_kriter_pdf_sayfalari": [
+        14,
+        15
+      ],
       "duzeyler": [
         {
           "anahtar": "agir",
@@ -2211,7 +2230,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-063",
@@ -2706,7 +2725,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-076",
@@ -2736,7 +2755,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-077",
@@ -2766,7 +2785,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-078",
@@ -2796,7 +2815,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-079",
@@ -2826,7 +2845,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-080",
@@ -2863,7 +2882,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-081",
@@ -2900,7 +2919,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-082",
@@ -2930,7 +2949,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-083",
@@ -2960,7 +2979,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-084",
@@ -2990,7 +3009,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-085",
@@ -3005,7 +3024,10 @@
       "ek1_madde_no": 12,
       "ek1_pdf_sayfa": 17,
       "ek1_resmi_ad": "Allojenik kemik iliği/kök hücre nakli",
-      "ek1_kriter_pdf_sayfalari": [],
+      "ek1_kriter_pdf_sayfalari": [
+        17,
+        18
+      ],
       "duzeyler": [
         {
           "anahtar": "agir",
@@ -3027,7 +3049,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-086",
@@ -3686,7 +3708,10 @@
       "ek1_madde_no": 1,
       "ek1_pdf_sayfa": 20,
       "ek1_resmi_ad": "Sistemik skleroz (skleroderma)",
-      "ek1_kriter_pdf_sayfalari": [],
+      "ek1_kriter_pdf_sayfalari": [
+        20,
+        21
+      ],
       "duzeyler": [
         {
           "anahtar": "agir",
@@ -3715,7 +3740,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-105",
@@ -3847,7 +3872,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-108",
@@ -3862,7 +3887,10 @@
       "ek1_madde_no": 5,
       "ek1_pdf_sayfa": 22,
       "ek1_resmi_ad": "Behçet hastalığı",
-      "ek1_kriter_pdf_sayfalari": [],
+      "ek1_kriter_pdf_sayfalari": [
+        22,
+        23
+      ],
       "duzeyler": [
         {
           "anahtar": "agir",
@@ -3891,7 +3919,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-109",
@@ -3935,7 +3963,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-110",
@@ -3979,7 +4007,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-111",
@@ -3994,7 +4022,10 @@
       "ek1_madde_no": 1,
       "ek1_pdf_sayfa": 25,
       "ek1_resmi_ad": "Portal hipertansiyona bağlı gastrointestinal kanamalar",
-      "ek1_kriter_pdf_sayfalari": [],
+      "ek1_kriter_pdf_sayfalari": [
+        25,
+        26
+      ],
       "duzeyler": [
         {
           "anahtar": "agir",
@@ -4016,7 +4047,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-112",
@@ -4060,7 +4091,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-113",
@@ -4097,7 +4128,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-114",
@@ -4112,7 +4143,10 @@
       "ek1_madde_no": 4,
       "ek1_pdf_sayfa": 26,
       "ek1_resmi_ad": "İnflamatuar bağırsak hastalıkları (İki yıl sonra kontrolü gerekir)",
-      "ek1_kriter_pdf_sayfalari": [],
+      "ek1_kriter_pdf_sayfalari": [
+        26,
+        27
+      ],
       "duzeyler": [
         {
           "anahtar": "agir",
@@ -4134,7 +4168,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-115",
@@ -4171,7 +4205,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-116",
@@ -4201,7 +4235,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-117",
@@ -4238,7 +4272,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-118",
@@ -4268,7 +4302,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-119",
@@ -4327,7 +4361,8 @@
           "duzey": "Ağır",
           "baslik": "Ağır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
           "kriter": "",
-          "kriter_durumu": "baslik_var_metin_yok"
+          "kriter_durumu": "baslik_var_metin_yok",
+          "secim_izinli": true
         }
       ],
       "dipnotlar": [],
@@ -4359,7 +4394,8 @@
           "duzey": "Ağır",
           "baslik": "Ağır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
           "kriter": "",
-          "kriter_durumu": "baslik_var_metin_yok"
+          "kriter_durumu": "baslik_var_metin_yok",
+          "secim_izinli": true
         }
       ],
       "dipnotlar": [],
@@ -4391,7 +4427,8 @@
           "duzey": "Ağır",
           "baslik": "Ağır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
           "kriter": "",
-          "kriter_durumu": "baslik_var_metin_yok"
+          "kriter_durumu": "baslik_var_metin_yok",
+          "secim_izinli": true
         }
       ],
       "dipnotlar": [],
@@ -4423,7 +4460,8 @@
           "duzey": "Ağır",
           "baslik": "Ağır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
           "kriter": "",
-          "kriter_durumu": "baslik_var_metin_yok"
+          "kriter_durumu": "baslik_var_metin_yok",
+          "secim_izinli": true
         }
       ],
       "dipnotlar": [],
@@ -4698,7 +4736,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-132",
@@ -4735,7 +4773,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-133",
@@ -4772,7 +4810,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-134",
@@ -4809,7 +4847,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-135",
@@ -4839,7 +4877,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-136",
@@ -4883,7 +4921,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-137",
@@ -4927,7 +4965,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-138",
@@ -4957,7 +4995,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-139",
@@ -5308,7 +5346,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-150",
@@ -5338,7 +5376,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-151",
@@ -5375,7 +5413,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-152",
@@ -5390,7 +5428,10 @@
       "ek1_madde_no": 5,
       "ek1_pdf_sayfa": 31,
       "ek1_resmi_ad": "Kalp yetersizliği",
-      "ek1_kriter_pdf_sayfalari": [],
+      "ek1_kriter_pdf_sayfalari": [
+        31,
+        32
+      ],
       "duzeyler": [
         {
           "anahtar": "agir",
@@ -5419,7 +5460,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-153",
@@ -5456,7 +5497,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-154",
@@ -5493,7 +5534,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-155",
@@ -5508,7 +5549,10 @@
       "ek1_madde_no": 8,
       "ek1_pdf_sayfa": 32,
       "ek1_resmi_ad": "Koroner Arter Hastalıkları",
-      "ek1_kriter_pdf_sayfalari": [],
+      "ek1_kriter_pdf_sayfalari": [
+        32,
+        33
+      ],
       "duzeyler": [
         {
           "anahtar": "agir",
@@ -5530,7 +5574,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-156",
@@ -5560,7 +5604,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-157",
@@ -5597,7 +5641,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-158",
@@ -5627,7 +5671,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-159",
@@ -5657,7 +5701,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-160",
@@ -5694,7 +5738,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-161",
@@ -5731,7 +5775,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-162",
@@ -6098,7 +6142,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-172",
@@ -6128,7 +6172,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-173",
@@ -6172,7 +6216,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-174",
@@ -6209,7 +6253,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-175",
@@ -6224,7 +6268,10 @@
       "ek1_madde_no": 1,
       "ek1_pdf_sayfa": 36,
       "ek1_resmi_ad": "Kronik pulmoner yetmezlik",
-      "ek1_kriter_pdf_sayfalari": [],
+      "ek1_kriter_pdf_sayfalari": [
+        36,
+        37
+      ],
       "duzeyler": [
         {
           "anahtar": "agir",
@@ -6253,7 +6300,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-176",
@@ -6268,7 +6315,10 @@
       "ek1_madde_no": 2,
       "ek1_pdf_sayfa": 37,
       "ek1_resmi_ad": "Astım (Astımda maluliyet için rapor düzenlenmeden önce optimal tedavi yapılmış ve klinik stabil dönem sağlanmış olmalı ve en az bir yıllık takip sonrası değerlendirilmelidir)",
-      "ek1_kriter_pdf_sayfalari": [],
+      "ek1_kriter_pdf_sayfalari": [
+        37,
+        38
+      ],
       "duzeyler": [
         {
           "anahtar": "agir",
@@ -6297,7 +6347,7 @@
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
       "kriter_metni_bos_duzeyler": [],
-      "kaynak_dogrulama": "metin_katmani_ayristirildi_gorsel_dogrulama_bekliyor"
+      "kaynak_dogrulama": "metin_ve_gorsel_kontrol_edildi"
     },
     {
       "mevcut_kayit_id": "MEVCUT-177",
@@ -6439,7 +6489,8 @@
           "duzey": "Ağır",
           "baslik": "Ağır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
           "kriter": "",
-          "kriter_durumu": "baslik_var_metin_yok"
+          "kriter_durumu": "baslik_var_metin_yok",
+          "secim_izinli": true
         }
       ],
       "dipnotlar": [],
@@ -6568,6 +6619,135 @@
       },
       "ilgili_ek1_kaydi": "ek1-151",
       "not": "Kronik pulmoner yetmezlik kapsamında karar verilemeyen durumlarda KPET ve işbirliği kısıtı için özel değerlendirme kuralı."
+    }
+  ],
+  "ek1_ortak_hukumler": [
+    {
+      "kavram_id": "ek1_r_01_mevcut_hastalik_listelerinde_tanimlanm_ortak_hukum",
+      "kanonik_ad": "Mevcut hastalık listelerinde tanımlanmayan ancak tedaviye rağmen çalışma olanağının bulunmadığı hastalıklar ağır düzeyde çalışma gücü kaybı olarak değerlendirilebilir.",
+      "es_anlamli": [],
+      "ek_1_baglantisi": {
+        "bolum_harfi": "R",
+        "sira_no": 1,
+        "derece": "ortak_hukum"
+      },
+      "kaynak": {
+        "belge_adi": "Maluliyet ve Çalışma Gücü Kaybı Tespiti İşlemleri Yönetmeliği EK-1 Hastalık Listesi",
+        "rg_tarihi": "28.09.2021",
+        "rg_sayisi": 31612,
+        "url": "https://www.resmigazete.gov.tr/eskiler/2021/09/20210928-4.htm",
+        "erisim_tarihi": "2026-11-12",
+        "sayfa_no": 40
+      },
+      "olusturulma_tarihi": "2026-11-12T00:00:00Z"
+    },
+    {
+      "kavram_id": "ek1_r_02_birden_fazla_hastaligin_bir_arada_oldu_ortak_hukum",
+      "kanonik_ad": "Birden fazla hastalığın bir arada olduğu ve tedaviye rağmen çalışma olanağının bulunmadığı durumlar, ağır düzeyde çalışma gücü kaybı olarak değerlendirilebilir.",
+      "es_anlamli": [],
+      "ek_1_baglantisi": {
+        "bolum_harfi": "R",
+        "sira_no": 2,
+        "derece": "ortak_hukum"
+      },
+      "kaynak": {
+        "belge_adi": "Maluliyet ve Çalışma Gücü Kaybı Tespiti İşlemleri Yönetmeliği EK-1 Hastalık Listesi",
+        "rg_tarihi": "28.09.2021",
+        "rg_sayisi": 31612,
+        "url": "https://www.resmigazete.gov.tr/eskiler/2021/09/20210928-4.htm",
+        "erisim_tarihi": "2026-11-12",
+        "sayfa_no": 40
+      },
+      "olusturulma_tarihi": "2026-11-12T00:00:00Z"
+    },
+    {
+      "kavram_id": "ek1_r_03_bu_hastalik_listesine_gore_birden_fazl_ortak_hukum",
+      "kanonik_ad": "Bu hastalık listesine göre birden fazla hafif düzeyde çalışma gücü kaybına neden olan durumlar, orta düzeyde çalışma gücü kaybı olarak değerlendirilebilir.",
+      "es_anlamli": [],
+      "ek_1_baglantisi": {
+        "bolum_harfi": "R",
+        "sira_no": 3,
+        "derece": "ortak_hukum"
+      },
+      "kaynak": {
+        "belge_adi": "Maluliyet ve Çalışma Gücü Kaybı Tespiti İşlemleri Yönetmeliği EK-1 Hastalık Listesi",
+        "rg_tarihi": "28.09.2021",
+        "rg_sayisi": 31612,
+        "url": "https://www.resmigazete.gov.tr/eskiler/2021/09/20210928-4.htm",
+        "erisim_tarihi": "2026-11-12",
+        "sayfa_no": 40
+      },
+      "olusturulma_tarihi": "2026-11-12T00:00:00Z"
+    }
+  ],
+  "ek1_bolum_atiflari": [
+    {
+      "kavram_id": "ek1_b_01_efektif_ambulasyon",
+      "ad": "Efektif ambulasyon sağlayamama",
+      "isaret": "1",
+      "bolum": "A. Nörolojik, H. Romatolojik ve İ. Gastroenterolojik hastalıklar bölüm sonlarında yinelenir",
+      "pdf_sayfalari": [
+        7,
+        8,
+        20,
+        24,
+        25
+      ],
+      "metin": "Efektif ambulasyon, günlük yaşam aktivitelerini devam ettirebilmek için yeterli bir mesafeyi makul bir yürüme hızıyla sağlayabilme yeteneğine sahip olmayı ifade eder. Efektif ambulasyon sağlayamama, yürüme yeteneğinde ciddi kısıtlama olduğunu ve genellikle her iki alt ekstremitenin yetersizliği sonucu kullanılan yardımcı cihaz/cihazlar ile her iki üst ekstremite fonksiyonun limitlendiğini gösterir\nAşağıdakilerle sınırlı kalmamak üzere, efektif ambulasyonu sağlayamama şu örnekleri içerir.\n• Tekerlekli sandalye düzeyinde olmak,\n• İki baston, iki kanadyen, yürüteç v.b. mekanik destek ve/veya yardımcı cihaz olmadan yürüyememek,\n• Tek el desteğine rağmen yardım olmaksızın yürüyememek, standart toplu taşım araçlarını kullanamamak, rutin aktiviteleri sürdürememek v.b.\n• Ankiloz, diz kalça ve ayak bileğinin kontraktürü, ileri düzeyde kas hastalıkları, Parkinson v.b. (Evde yardımcı cihaz kullanmadan bağımsız yürümek, ambulasyonu efektif sağladığı anlamına gelmemektedir.)\nFonksiyonel ambulasyon sınıflamasına göre:\nAlt Ekstremite:\nAğır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar: Fonksiyonel ambulasyon sınıflamasına göre 0, 1, 2\nOrta Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar: Fonksiyonel ambulasyon sınıflamasına göre 3\nHafif Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar: Fonksiyonel ambulasyon sınıflamasına göre 4"
+    },
+    {
+      "kavram_id": "ek1_b_02_ust_ekstremite",
+      "ad": "Üst ekstremite ve kendine bakım aktivitelerinin sağlanamaması",
+      "isaret": "2",
+      "bolum": "A. Nörolojik, H. Romatolojik ve İ. Gastroenterolojik hastalıklar bölüm sonlarında yinelenir",
+      "pdf_sayfalari": [
+        7,
+        8,
+        20,
+        24,
+        25
+      ],
+      "metin": "İnce ve kaba hareket becerilerini efektif yapamama, her iki üst ekstremite fonksiyonlarında ciddi kayıp sonucu, kişinin etkilenmiş ekstremiteleri kendine bakım veya günlük yaşam aktivitelerinde kullanamadığını ifade etmektedir. (El beceri testleri, günlük yaşam aktivitesi ölçekleri ile değerlendirilerek)\nÜst Ekstremite:\ni. Tek üst ekstremite için;\nAğır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar: Kişi etkilenmiş üst ekstremiteyi uygun tedavi ve rehabilitasyon uygulamalarına rağmen kendine bakım veya günlük aktivitelerinde kullanamıyor. (üst ekstremite ve ele ait kaba ve ince fonksiyonların ileri derecede bozukluğu veya yokluğu)\nOrta Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar: Kişi etkilenmiş üst ekstremiteyi kendine bakım veya günlük aktivitelerinde kullanmakta zorlanıyor. (üst ekstremite ve ele ait kaba ve ince fonksiyonların gerçekleştirilmesinde zorluk çekiyor.)\nHafif Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar: Kişi etkilenmiş üst ekstremiteyi kendine bakım veya günlük aktivitelerinde kullanabiliyor. Fakat ele ait ince fonksiyonların gerçekleştirilmesinde zorluk çekiyor\nii. Çift üst ekstremite için;\nAğır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar: Kişi etkilenmiş üst ekstremitelerini uygun tedavi ve rehabilitasyon uygulamalarına rağmen kendine bakım veya günlük aktivitelerde kullanmakta zorlanıyor veya kullanamıyor."
+    },
+    {
+      "kavram_id": "ek1_b_03_orta",
+      "ad": "ORTA",
+      "isaret": "*",
+      "bolum": "Dermatoloji bölümü",
+      "pdf_sayfalari": [
+        30
+      ],
+      "metin": "a- Belirti ve bulgular sürekli veya aralıklı olarak mevcut.\nb- Günlük aktivitelerin bir kısmını kısıtlamakta.\nc- Aralıklı veya sürekli tedavi gerektirmektedir."
+    },
+    {
+      "kavram_id": "ek1_b_04_siddetli",
+      "ad": "ŞİDDETLİ",
+      "isaret": "**",
+      "bolum": "Dermatoloji bölümü",
+      "pdf_sayfalari": [
+        30
+      ],
+      "metin": "a- Belirti ve bulgular sürekli olarak mevcut.\nb- Günlük aktivitelerinin bir çoğunu kısıtlamakta veya zaman zaman hastane veya evde yatılı olarak mahsur kalmakta.\nc- Aralıklı veya sürekli tedavi gerekmektedir."
+    },
+    {
+      "kavram_id": "ek1_b_05_cok_siddetli",
+      "ad": "ÇOK ŞİDDETLİ",
+      "isaret": "***",
+      "bolum": "Dermatoloji bölümü",
+      "pdf_sayfalari": [
+        30
+      ],
+      "metin": "a- Belirti ve bulgular sürekli olarak mevcut.\nb- Günlük aktivitelerin tüme yakınını etkilemekte veya hastane ya da evde uzun süreli mahsur kalmakta.\nc- Aralıklı veya sürekli tedavi gerekmektedir."
+    },
+    {
+      "kavram_id": "ek1_b_06_sik_transfuzyon",
+      "ad": "Sık transfüzyon",
+      "isaret": "",
+      "bolum": "Hematoloji bölümü",
+      "pdf_sayfalari": [
+        18
+      ],
+      "metin": "İki ayda bir, en az bir kez"
     }
   ]
 }
