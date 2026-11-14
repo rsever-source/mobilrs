@@ -2,209 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-11-07T16:33:16.706573+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "source_diagnostics": {
-        "Anadolu Ajansı – Engelli Yaşam": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 9,
-          "parsed_items": 9,
-          "errors": []
-        },
-        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
-          "stage": "html_list",
-          "anchors": 72,
-          "path_matches": 20,
-          "dated_from_title": 0,
-          "dated_from_context": 0,
-          "detail_attempts": 20,
-          "detail_successes": 20,
-          "parsed_items": 20,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "TRT Haber": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "TRT Haber – Sağlık": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
-          "stage": "html_list",
-          "anchors": 200,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
-          "stage": "html_list",
-          "anchors": 186,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
-          "stage": "html_list",
-          "anchors": 480,
-          "path_matches": 294,
-          "dated_from_title": 294,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 294,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Sosyal Güvenlik Kurumu – Duyurular": {
-          "stage": "html_list",
-          "anchors": 94,
-          "path_matches": 10,
-          "dated_from_title": 10,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 10,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
-          "stage": "tbb_mevzuat",
-          "anchors": 88,
-          "article_links": 12,
-          "keyword_matches": 0,
-          "detail_attempts": 0,
-          "detail_errors": 0,
-          "missing_dates": 0,
-          "parsed_items": 0,
-          "errors": []
-        },
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 10,
-          "keyword_eliminated": 20,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 0,
-          "in_7_day_window": 0,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "8 Ekim 2026 Tarihinde Yapılan Devlet Gelir Uzmanlığı Yeterlik Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "3 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Türkiye Cumhuriyeti Hükümeti ile El Salvador Cumhuriyeti Hükümeti Arasında Çifte Vergilendirmeyi Önleme Anlaşması New Yo",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 505,
-        "pending_total": 0,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 18,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 18,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 469,
-          "accepted_as_candidate": 0
-        },
-        "examples": {
-          "already_published": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "TİHEK'ten Down sendromlu çocuğu oyun alanına almayan işletmeye ceza"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Engelli adaylar ile işverenler 21. Engelsiz Kariyer Günleri'nde buluştu"
-            }
-          ],
-          "older_than_7_days": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Odasını atölyeye dönüştüren bedensel engelli sanatçı 20 yıldır çini boyuyor"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Bağdat'ta Down sendromlu çocuklar \"Yapabiliriz\" etkinliğinde yeteneklerini sergiledi"
-            }
-          ],
-          "url_seen_within_7_days": [
-            {
-              "source": "TRT Haber",
-              "title": "Brüksel'e giden uçak bomba ihbarı üzerine Brüksel Havalimanı'na güvenli iniş yaptı"
-            },
-            {
-              "source": "TRT Haber",
-              "title": "Mülkiyede öğrenciler için kariyer zirvesi gerçekleştirildi"
-            }
-          ]
-        },
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": []
-    },
-    {
       "run_at": "2026-11-07T22:05:18.872299+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -6340,6 +6137,262 @@
         "zero_candidates_is_not_an_error": true
       },
       "candidates": []
+    },
+    {
+      "run_at": "2026-11-14T15:13:04.266909+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 10,
+          "parsed_items": 10,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 480,
+          "path_matches": 294,
+          "dated_from_title": 294,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 294,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "tls_verified": true,
+          "list_read": true,
+          "anchors": 88,
+          "article_links": 12,
+          "keyword_matches": 0,
+          "health_probe": true,
+          "detail_attempts": 1,
+          "detail_successes": 1,
+          "parsed_items": 0,
+          "validated": true,
+          "errors": []
+        },
+        "Resmî Gazete – TBB Mevzuat Yedeği": {
+          "stage": "skipped",
+          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 7,
+          "keyword_eliminated": 23,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 503,
+        "pending_total": 0,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 17,
+          "duplicate_in_this_run": 2,
+          "url_seen_within_7_days": 3,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 477,
+          "accepted_as_candidate": 4
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "Omurilik felcini 12 yıllık mücadeleyle yenen Merdan Rozıyev, İstanbul'dan İzmir'e yürüyor",
+          "source": "Anadolu Ajansı – Engelli Yaşam",
+          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/omurilik-felcini-12-yillik-mucadeleyle-yenen-merdan-roziyev-istanbuldan-izmire-yuruyor/1833073",
+          "published_at": "2026-11-14T00:00:00+00:00",
+          "content_origin": null,
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "Omurilik felcini yenen Merdan Rozıyev, farkındalık için İstanbul'dan İzmir'e yürüyor",
+          "summary": "Geçirdiği kaza sonucu omurilik felci olan ve 12 yıllık mücadelenin ardından yeniden yürümeyi başaran Merdan Rozıyev, omurilik felcine dikkat çekmek için İstanbul'dan İzmir'e yürüyüş başlattı. Türkmenistan'da geçirdiği ağır kazanın ardından doktorların yeniden yürümesine imkansız gözüyle baktığı Rozıyev, fizik tedavi ve rehabilitasyon çalışmaları sayesinde ayağa kalktı. Kanadalı atlet Rick Hansen'ın dünya turundan ilham alan Rozıyev, \"Mucizevi Adımlar\" projesiyle engelli bireylere umut olmayı hedefliyor. Üsküdar Salacak Sahili'nden başlayan ilk etap yürüyüşü; Kocaeli, Bursa, Balıkesir ve Manisa güzergahını izleyerek İzmir'de tamamlanacak. Rozıyev, Türkiye'deki bu yürüyüşünü ilerleyen süreçte küresel ölçekte bir dünya turuna dönüştürmeyi amaçlıyor.",
+          "detail_summary": "Geçirdiği ağır kaza neticesinde C5 seviyesinde omurilik felci tanısı alan Merdan Rozıyev, 12 yıllık zorlu bir mücadelenin ardından yeniden yürümeyi başardı. Doktorların yürümesine imkansız gözüyle baktığı süreçte pes etmeyen Rozıyev, sürdürdüğü yoğun fizik tedavi ve rehabilitasyon çalışmaları sayesinde ayağa kalktı. Kanadalı atlet Rick Hansen'ın gerçekleştirdiği dünya turundan ilham alan sporcu, engelli bireylere umut olmak ve toplumsal farkındalık oluşturmak amacıyla \"Mucizevi Adımlar\" projesini hayata geçirdi. Projenin Türkiye ayağının ilk adımı İstanbul Üsküdar Salacak Sahili'nde düzenlenen basın açıklamasıyla atıldı. Planlanan rota kapsamında yürüyüş; sırasıyla Kocaeli, Bursa, Balıkesir ve Manisa illeri üzerinden devam edecek. 500 kilometre sürmesi beklenen bu ilk etap, 3 Ocak günü İzmir Saat Kulesi'nde yapılacak final etkinliğiyle son bulacak. Merdan Rozıyev, dünya genelindeki milyonlarca omurilik felçli ve engelli bireye imkansız diye bir şey olmadığını kanıtlamayı amaçlıyor. Proje aynı zamanda omurilik felci alanındaki tıbbi araştırmalara yönelik farkındalığı artırmayı hedefliyor. Rozıyev, Türkiye'de başlattığı bu anlamlı yürüyüşü ilerleyen dönemde küresel bir dünya turuna dönüştürmek istiyor.",
+          "decision": "publish",
+          "site_published_at": "2026-11-14T15:13:04.266909+00:00"
+        },
+        {
+          "title": "MEB, özel eğitim ihtiyacı bulunan öğrenciler için erken tarama sistemini yaygınlaştıracak",
+          "source": "Anadolu Ajansı – Engelli Yaşam",
+          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/meb-ozel-egitim-ihtiyaci-bulunan-ogrenciler-icin-erken-tarama-sistemini-yayginlastiracak/1833066",
+          "published_at": "2026-11-14T00:00:00+00:00",
+          "content_origin": null,
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "MEB'den özel eğitim ihtiyacı olan öğrenciler için erken tarama adımı",
+          "summary": "Milli Eğitim Bakanlığı, özel eğitim ihtiyacı bulunan öğrencilerin erken dönemde tanılanması amacıyla hazırlanan Eğitsel Tarama ve Değerlendirme Bataryası'nı yaygınlaştırıyor. Okul öncesi ve ilkokul kademesindeki öğretmenler bu araç sayesinde risk altındaki öğrencileri daha rahat fark edebilecek. Geliştirilen sistemin 2027 yılında e-Rehberlik Modülü'ne entegre edilmesi planlanıyor. Böylece öğrencilerin uygun eğitim ortamlarına zamanında erişmesi hedefleniyor. Bakanlık ayrıca tanılama süreçleri için yerli ölçme araçlarına da ağırlık veriyor. Bu kapsamda Türk Ulusal Zeka Ölçeği RAM'lerde aktif olarak kullanılmaya başlandı.",
+          "detail_summary": "Milli Eğitim Bakanlığı, özel eğitim ihtiyacı olan öğrencilerin eğitim hizmetlerinden etkin yararlanması için çalışmalarını sürdürüyor. Öğrencilerin bireysel farklılıklarına uygun ortamlara erişmesi amacıyla Temel Eğitimde Özel Eğitim Strateji Belgesi hazırlandı. UNICEF işbirliğiyle geliştirilen Eğitsel Tarama ve Değerlendirme Bataryası ülke genelinde yaygınlaştırılıyor. Okul öncesi ile ilkokul birinci, ikinci ve üçüncü sınıfta görev yapan öğretmenler risk altındaki öğrencileri erken dönemde belirleyebilecek. Sistemin 2027'de e-Rehberlik Modülü'ne entegre edilmesiyle süreçlerin daha sistematik yürütülmesi hedefleniyor. Bakanlık, tanılama süreçleri için yerli ve milli ölçme araçları geliştirmeye de devam ediyor. Bilgisayar tabanlı Türk Ulusal Zeka Ölçeği 2025'ten bu yana rehberlik ve araştırma merkezlerinde kullanılıyor. Ayrıca 6-9 yaş grubuna yönelik sözel olmayan yeni bir zeka testinin geliştirilmesi için çalışmalar başlatıldı.",
+          "decision": "publish",
+          "site_published_at": "2026-11-14T15:13:04.266909+00:00"
+        },
+        {
+          "title": "Türkiye'de bu yıl 9,6 milyon diyabet taraması yapıldı",
+          "source": "TRT Haber – Sağlık",
+          "url": "https://www.trthaber.com/haber/saglik/turkiyede-bu-yil-96-milyon-diyabet-taramasi-yapildi-963282.html",
+          "published_at": "2026-11-14T13:04:00+00:00",
+          "content_origin": null,
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "Haber genel sağlık taramaları ve diyabet bilgilendirmesi ile ilgili olup doğrudan engelli hakları veya hizmetleriyle ilgili değildir.",
+          "reject_label": "Genel sağlık",
+          "generated_title": "Türkiye'de Bu Yıl 9,6 Milyon Diyabet Taraması Yapıldı",
+          "summary": "",
+          "detail_summary": "",
+          "decision": "reject"
+        },
+        {
+          "title": "Diyabetli erişkinlerin yaklaşık yüzde 45'i hastalığını bilmiyor",
+          "source": "TRT Haber – Sağlık",
+          "url": "https://www.trthaber.com/haber/saglik/diyabetli-eriskinlerin-yaklasik-yuzde-45i-hastaligini-bilmiyor-963259.html",
+          "published_at": "2026-11-14T08:59:00+00:00",
+          "content_origin": null,
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "Diyabetli erişkinlerin yaklaşık yüzde 45'i hastalığını bilmiyor",
+          "summary": "Kanuni Sultan Süleyman Eğitim ve Araştırma Hastanesi İç Hastalıkları Klinik Sorumlusu Doç. Dr. Murat Akarsu, Türkiye'de yaklaşık 10 milyon kişinin diyabetle yaşadığını belirtti. Uzmanlar, bu kişilerden 4,37 milyonunun hastalığının farkında olmadığını vurguladı. Uzun süreli yüksek kan şekerinin vücudun hemen her organını etkileyen sistemik bir metabolik hastalık olduğu ifade edildi. Kontrolsüz diyabetin göz kaybı, böbrek yetmezliği, sinir hasarı ve kalp krizi gibi ciddi sonuçlara yol açabileceği aktarıldı. Uzmanlar, sağlıklı beslenme, fiziksel aktivite ve kilo kontrolü ile diyabet riskinin azaltılabileceğini bildirdi.",
+          "detail_summary": "Doç. Dr. Murat Akarsu, Dünya Diyabet Günü dolayısıyla yaptığı açıklamada, diyabetin Türkiye'de büyüyen bir halk sağlığı sorunu haline geldiğini ifade etti. Uluslararası Diyabet Federasyonunun 2025 verilerine göre, 20 ila 79 yaş arasındaki yaklaşık 10 milyon kişinin diyabetle yaşadığı ve bu sayının erişkin nüfusun yüzde 16-17'sine denk geldiği kaydedildi. Türkiye'de diyabetli erişkinlerin yaklaşık yüzde 45,5'inin hastalığının farkında olmadığı ve bu durumun yaklaşık 4,37 milyon kişiye karşılık geldiği açıklandı. Çocukluk çağı obezitesindeki artışın genç yaşta görülen tip 2 diyabet riskini artırdığı, bu durumun böbrek, göz ve kalp-damar komplikasyonlarına zemin hazırlayabileceği belirtildi. Çok su içme, sık idrara çıkma, halsizlik ve yorgunluk gibi belirtilerin yanı sıra, 40 yaş üzerindeki ve risk grubundaki bireylerin düzenli olarak değerlendirilmesi gerektiği vurgulandı. Kontrolsüz diyabetin görme kaybına, kronik böbrek hastalığına, ayak yaralarına ve uzuv kaybına neden olabileceği bildirildi. Yüksek riskli bireylerde yaşam tarzı değişiklikleriyle diyabet geliştirme riskinin yüzde 58 oranında azaltılabileceği ifade edildi.",
+          "decision": "publish",
+          "site_published_at": "2026-11-14T15:13:04.266909+00:00"
+        }
+      ]
     }
   ],
   "system_incidents": [
