@@ -4330,7 +4330,8 @@
           "duzey": "Ağır",
           "baslik": "Ağır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
           "kriter": "",
-          "kriter_durumu": "baslik_var_metin_yok"
+          "kriter_durumu": "baslik_var_metin_yok",
+          "secim_izinli": true
         }
       ],
       "dipnotlar": [],
@@ -4362,7 +4363,8 @@
           "duzey": "Ağır",
           "baslik": "Ağır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
           "kriter": "",
-          "kriter_durumu": "baslik_var_metin_yok"
+          "kriter_durumu": "baslik_var_metin_yok",
+          "secim_izinli": true
         }
       ],
       "dipnotlar": [],
@@ -4394,7 +4396,8 @@
           "duzey": "Ağır",
           "baslik": "Ağır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
           "kriter": "",
-          "kriter_durumu": "baslik_var_metin_yok"
+          "kriter_durumu": "baslik_var_metin_yok",
+          "secim_izinli": true
         }
       ],
       "dipnotlar": [],
@@ -4426,7 +4429,8 @@
           "duzey": "Ağır",
           "baslik": "Ağır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
           "kriter": "",
-          "kriter_durumu": "baslik_var_metin_yok"
+          "kriter_durumu": "baslik_var_metin_yok",
+          "secim_izinli": true
         }
       ],
       "dipnotlar": [],
@@ -6442,7 +6446,8 @@
           "duzey": "Ağır",
           "baslik": "Ağır Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
           "kriter": "",
-          "kriter_durumu": "baslik_var_metin_yok"
+          "kriter_durumu": "baslik_var_metin_yok",
+          "secim_izinli": true
         }
       ],
       "dipnotlar": [],
