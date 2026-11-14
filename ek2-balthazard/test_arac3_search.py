@@ -138,7 +138,7 @@ class Arac3SearchTests(unittest.TestCase):
 
     def test_known_synonyms_return_expected_exact_sets(self):
         exact = {
-            "sara": {"d001"},
+            "sara": {"d001", "d002", "d003"},
             "grand mal": {"d001"},
             "çocuk felci": {"d013"},
             "ms": {"d011"},
