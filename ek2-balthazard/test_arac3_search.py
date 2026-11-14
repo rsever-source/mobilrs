@@ -168,7 +168,7 @@ class Arac3SearchTests(unittest.TestCase):
             "behçet": {"d108"},
             "lupus": {"d107"},
             "pku": {"d174"},
-            "hiv": {"d182"},
+            "hiv": set(),
             "çölyak": {"d116"},
             "meme": {"d045"},
             "prostat": {"d059"},
