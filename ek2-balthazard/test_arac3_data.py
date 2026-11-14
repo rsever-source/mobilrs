@@ -294,7 +294,7 @@ class Arac3DataTests(unittest.TestCase):
         mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
         data = json.loads(mapping_path.read_text(encoding="utf-8"))
 
-        embedded = re.search(r"const ARAC3_MAPPING_DATA=(\\{.*?\\});\\nconst mappingReady", source, re.S)
+        embedded = re.search(r"const ARAC3_MAPPING_DATA=(\{.*?\});\nconst mappingReady", source, re.S)
         self.assertIsNotNone(embedded, "Araç 3 gömülü eşleştirme verisi bulunamadı")
         self.assertEqual(json.loads(embedded.group(1)), data)
 
