@@ -347,6 +347,17 @@ body.high-contrast .selected-count{background:#000;color:#fff;border:1px solid #
 body.dark-mode .level-followup-note{background:#1c2634;color:#edf2f8}
 body.high-contrast .level-followup-note{background:#fff;color:#000;border:2px solid #000}
 @media(max-width:640px){.level-followup-note{padding:10px 11px;font-size:12px;line-height:1.5}}
+
+
+/* EK-1 bilgi grupları: ortak hükümler ve bölüm atıfları ayrı, kapalı açılır alanlarda. */
+.ek1-rules-subdetails{margin-top:9px;border:1px solid var(--line);border-radius:11px;background:var(--card);overflow:hidden}
+.ek1-rules-subdetails>summary{padding:11px 13px;color:var(--ink);font-size:13px;font-weight:800;line-height:1.45;cursor:pointer;list-style-position:inside}
+.ek1-subdetails-content{padding:0 10px 7px}
+.ek1-subdetails-content .ek1-rule-card:first-child{margin-top:4px}
+@media(max-width:640px){
+  .ek1-rules-subdetails>summary{padding:10px 11px;font-size:12.5px}
+  .ek1-subdetails-content{padding:0 8px 6px}
+}
 </style>
 </head>
 <body><a class="skip-link" href="#main-content">İçeriğe geç</a><div class="app">
@@ -463,8 +474,8 @@ function renderEk1Rules(){
   )).join('');
   $('ek1Rules').innerHTML=
     '<section class="ek1-rule-group"><h3>Hastalık ve branş bazlı özel hükümler</h3>'+specificHtml+'</section>'+
-    '<section class="ek1-rule-group"><h3>R bölümü — ortak hükümler</h3>'+commonHtml+'</section>'+
-    (atifHtml?'<section class="ek1-rule-group"><h3>Bölüm Atıfları — kriterlerde kullanılan tanımlar</h3>'+atifHtml+'</section>':'');
+    '<details class="ek1-rules-subdetails"><summary>R bölümü — ortak hükümler ('+common.length+' hüküm)</summary><div class="ek1-subdetails-content">'+commonHtml+'</div></details>'+
+    (atifHtml?'<details class="ek1-rules-subdetails"><summary>Bölüm Atıfları — kriterlerde kullanılan tanımlar ('+atiflar.length+' kayıt)</summary><div class="ek1-subdetails-content">'+atifHtml+'</div></details>':'');
   $('ek1RulesSummary').textContent='EK-1 ortak ve özel hükümleri ('+(specific.length+common.length)+' hüküm)';
 }
 function orderedLevels(m){
