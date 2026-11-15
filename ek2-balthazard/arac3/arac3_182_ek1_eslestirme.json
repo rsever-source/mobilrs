@@ -4123,7 +4123,9 @@
           "kriter_durumu": "metin_var"
         }
       ],
-      "dipnotlar": [],
+      "dipnotlar": [
+        "Karaciğer nakli sonrası ilk 2 yıl malul kabul edilir. 2 yıl sonunda karaciğer fonksiyonlarına göre yeniden değerlendirilir."
+      ],
       "not": "",
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
@@ -4163,7 +4165,9 @@
           "kriter_durumu": "metin_var"
         }
       ],
-      "dipnotlar": [],
+      "dipnotlar": [
+        "İki yıl sonra kontrolü gerekir."
+      ],
       "not": "",
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
@@ -4200,7 +4204,9 @@
           "kriter_durumu": "metin_var"
         }
       ],
-      "dipnotlar": [],
+      "dipnotlar": [
+        "İki yıl sonra kontrol gerekir."
+      ],
       "not": "",
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
@@ -4297,7 +4303,9 @@
           "kriter_durumu": "metin_var"
         }
       ],
-      "dipnotlar": [],
+      "dipnotlar": [
+        "2 yıl sonra kontrol gerekir. 2 yıl sonunda anorektal manometre ile internal ve eksternal sfinkter yetmezliği ve/veya günlük dışkılama sayısına göre değerlendirilir."
+      ],
       "not": "",
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
@@ -5990,11 +5998,13 @@
           "anahtar": "orta",
           "duzey": "Orta",
           "baslik": "Orta Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
-          "kriter": "Cerrahi ile düzeltilemeyen ve total inkontinansa neden olmayan devamlı orta-ağır derecede drenaja yol açan üriner fistül",
+          "kriter": "Cerrahi ile düzeltilemeyen ve total inkontinansa neden olmayan devamlı orta-ağır derecede drenaja yol açan üriner fistül*",
           "kriter_durumu": "metin_var"
         }
       ],
-      "dipnotlar": [],
+      "dipnotlar": [
+        "* 2 yıl sonra yeniden değerlendirilir."
+      ],
       "not": "",
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
@@ -6020,12 +6030,12 @@
           "anahtar": "orta",
           "duzey": "Orta",
           "baslik": "Orta Düzeyde Çalışma Gücü Kaybına Neden Olan Durumlar",
-          "kriter": "Medikal ve cerrahi tedavi ile düzeltilemeyen devamlı sonda ya da TAK kullanılması gereken nörojenik mesane bozuklukları",
+          "kriter": "Medikal ve cerrahi tedavi ile düzeltilemeyen devamlı sonda ya da TAK kullanılması gereken nörojenik mesane bozuklukları*",
           "kriter_durumu": "metin_var"
         }
       ],
       "dipnotlar": [
-        "2 yıl sonra yeniden değerlendirilir."
+        "* 2 yıl sonra yeniden değerlendirilir."
       ],
       "not": "",
       "duzey_gosterimi_izinli": true,
@@ -6402,7 +6412,9 @@
           "kriter_durumu": "metin_var"
         }
       ],
-      "dipnotlar": [],
+      "dipnotlar": [
+        "Çoklu ilaca dirençli tüberküloz için iki yıl sonra tekrar değerlendirilir."
+      ],
       "not": "",
       "duzey_gosterimi_izinli": true,
       "kriter_metni_var": true,
