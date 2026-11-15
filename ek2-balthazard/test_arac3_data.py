@@ -403,6 +403,28 @@ class Arac3DataTests(unittest.TestCase):
         self.assertIn("@media(max-width:640px){.level-followup-note", source)
 
 
+    def test_common_rules_and_section_references_are_separate_collapsible_groups(self):
+        source = HTML.read_text(encoding="utf-8")
+        self.assertIn(
+            '<details class="ek1-rules-subdetails"><summary>R bölümü — ortak hükümler (',
+            source,
+        )
+        self.assertIn(
+            '<details class="ek1-rules-subdetails"><summary>Bölüm Atıfları — kriterlerde kullanılan tanımlar (',
+            source,
+        )
+        self.assertIn("common.length+' hüküm)", source)
+        self.assertIn("atiflar.length+' kayıt)", source)
+        self.assertIn("const common=ARAC3_MAPPING_DATA.ek1_ortak_hukumler||[]", source)
+        self.assertIn("const atiflar=ARAC3_MAPPING_DATA.ek1_bolum_atiflari||[]", source)
+        # İki alt grup varsayılan kapalıdır: <details> etiketlerinde open özniteliği yoktur.
+        self.assertNotRegex(
+            source,
+            r'<details class="ek1-rules-subdetails"[^>]*\bopen\b',
+        )
+        self.assertIn(".ek1-rules-subdetails>summary", source)
+        self.assertIn("@media(max-width:640px)", source)
+
     def test_nontext_ek1_criteria_are_not_invented(self):
         mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
         data = json.loads(mapping_path.read_text(encoding="utf-8"))
