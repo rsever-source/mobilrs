@@ -115,6 +115,9 @@ class Arac3DataTests(unittest.TestCase):
         embedded = re.search(r"const ARAC3_MAPPING_DATA=(\{.*?\});\nconst mappingReady", source)
         self.assertIsNotNone(embedded, "Araç 3 gömülü eşleştirme verisi bulunamadı")
         data = json.loads(embedded.group(1))
+        mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
+        external_data = json.loads(mapping_path.read_text(encoding="utf-8"))
+        self.assertEqual(data, external_data)
         self.assertEqual(len(data["kayitlar"]), 182)
         self.assertEqual(data["ozet"]["mevcut_kayit_sayisi"], 182)
 
@@ -370,6 +373,35 @@ class Arac3DataTests(unittest.TestCase):
         self.assertEqual(len(data["ek1_yeni_ek_hukumler"]), 3)
         self.assertIn("ek1_bolum_atiflari", source)
         self.assertIn("Bölüm Atıfları — kriterlerde kullanılan tanımlar", source)
+
+    def test_two_year_reassessment_notes_are_present_and_rendered(self):
+        mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
+        data = json.loads(mapping_path.read_text(encoding="utf-8"))
+        by_id = {row["mevcut_kayit_id"]: row for row in data["kayitlar"]}
+        expected = {
+            "MEVCUT-113": "Karaciğer nakli sonrası ilk 2 yıl malul kabul edilir. 2 yıl sonunda karaciğer fonksiyonlarına göre yeniden değerlendirilir.",
+            "MEVCUT-114": "İki yıl sonra kontrolü gerekir.",
+            "MEVCUT-115": "İki yıl sonra kontrol gerekir.",
+            "MEVCUT-118": "2 yıl sonra kontrol gerekir. 2 yıl sonunda anorektal manometre ile internal ve eksternal sfinkter yetmezliği ve/veya günlük dışkılama sayısına göre değerlendirilir.",
+            "MEVCUT-163": "2 yıl sonra yeniden değerlendirilir.",
+            "MEVCUT-167": "* 2 yıl sonra yeniden değerlendirilir.",
+            "MEVCUT-168": "* 2 yıl sonra yeniden değerlendirilir.",
+            "MEVCUT-178": "Çoklu ilaca dirençli tüberküloz için iki yıl sonra tekrar değerlendirilir.",
+            "MEVCUT-182": "2 yıl sonra yeniden değerlendirilir.",
+        }
+        for record_id, note in expected.items():
+            with self.subTest(record_id=record_id):
+                self.assertEqual(by_id[record_id].get("dipnotlar"), [note])
+
+        self.assertTrue(by_id["MEVCUT-167"]["duzeyler"][1]["kriter"].endswith("*"))
+        self.assertTrue(by_id["MEVCUT-168"]["duzeyler"][0]["kriter"].endswith("*"))
+
+        source = HTML.read_text(encoding="utf-8")
+        self.assertIn("const followUpNotes=Array.isArray(m.dipnotlar)", source)
+        self.assertIn("level-followup-notes", source)
+        self.assertIn("level-followup-note", source)
+        self.assertIn("@media(max-width:640px){.level-followup-note", source)
+
 
     def test_nontext_ek1_criteria_are_not_invented(self):
         mapping_path = Path(__file__).parent / "arac3" / "arac3_182_ek1_eslestirme.json"
