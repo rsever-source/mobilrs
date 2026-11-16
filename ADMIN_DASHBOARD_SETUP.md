@@ -6,7 +6,7 @@ Bu ekran yalnızca haber sistemi durumunu okur. **Güncelle** düğmesi haber ta
 
 Cloud Run servisinde Secret Manager üzerinden `ADMIN_PASSWORD` adlı bir secret'ı ortam değişkeni olarak bağla. Bu değer, yalnızca bu yönetim ekranı için belirlenen güçlü bir yönetici parolası olmalıdır. Parolayı GitHub'a, kaynak koda veya sohbete yazma.
 
-Redis, Passkey/WebAuthn veya ayrı bir oturum veritabanı gerekmez. Oturum, paroladan türetilen HMAC imzalı, `Secure`, `HttpOnly`, `SameSite=Strict` çerezle doğrulanır ve 12 saat sonra sona erer. Parola değişirse önceki oturumlar geçersiz olur.
+Redis, Passkey/WebAuthn veya ayrı bir oturum veritabanı gerekmez. Oturum, paroladan türetilen HMAC imzalı, `Secure`, `HttpOnly`, `SameSite=Lax` çerezle doğrulanır ve 10 gün sonra sona erer. Parola değişirse önceki oturumlar geçersiz olur.
 
 ## Açılış ve doğrulama
 
@@ -20,6 +20,6 @@ Redis, Passkey/WebAuthn veya ayrı bir oturum veritabanı gerekmez. Oturum, paro
 
 - Sayfa ve rapor API'si oturum gerektirir; `noindex` başlıkları ek bir koruma değil, yalnızca indeksleme yönergesidir.
 - Parola yalnızca Cloud Run'ın secret yapılandırmasında tutulur; kaynak koda eklenmez.
-- Oturum çerezi sunucu tarafında bir veritabanı gerektirmeyen imzalı bir belirteçtir; ömrü 12 saattir.
+- Oturum çerezi sunucu tarafında bir veritabanı gerektirmeyen imzalı bir belirteçtir; ömrü 10 gündür.
 - GitHub token'ı tarayıcıya gönderilmez. Rapor, herkese açık depo verilerini okur.
 - Bu PR birleştirilmeden ve dağıtım yapılmadan önce `ADMIN_PASSWORD` secret'ı yapılandırılmalıdır.

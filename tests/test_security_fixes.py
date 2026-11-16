@@ -257,9 +257,9 @@ class AdminSourceTests(unittest.TestCase):
     def setUpClass(cls):
         cls.text = source("admin_dashboard.py")
 
-    def test_session_lifetime_is_shortened(self):
-        self.assertIn("SESSION_TTL = 12 * 60 * 60", self.text)
-        self.assertNotIn("SESSION_TTL = 7 * 24 * 60 * 60", self.text)
+    def test_session_lifetime_is_ten_days(self):
+        self.assertIn("SESSION_TTL = 10 * 24 * 60 * 60", self.text)
+        self.assertNotIn("SESSION_TTL = 12 * 60 * 60", self.text)
 
     def test_logout_revokes_session(self):
         self.assertIn("SESSION_REVOCATIONS.revoke(", self.text)

@@ -25,9 +25,9 @@ from security_utils import (
 )
 
 router = APIRouter()
-# Stateless oturumda çalınmış bir çerez sunucudan iptal edilemediği için
-# süre 7 günden 12 saate indirildi; çıkışta nonce iptal listesine yazılır.
-SESSION_TTL = 12 * 60 * 60
+# Oturum 10 gün geçerli tutulur. Stateless olduğu için çalınmış bir çerez
+# ancak süre dolunca veya çıkışta nonce iptal listesine yazılınca geçersizleşir.
+SESSION_TTL = 10 * 24 * 60 * 60
 LOGIN_ATTEMPT_LIMIT = 5
 LOGIN_ATTEMPT_WINDOW = 10 * 60
 LOGIN_FAILURE_DELAY_SECONDS = 0.4

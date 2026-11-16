@@ -94,10 +94,13 @@ class AdminSessionCookieTests(unittest.TestCase):
         self.assertIn("path=/admin", lowered)
         self.assertNotIn("domain=", lowered)
 
-    def test_cookie_lifetime_is_twelve_hours(self):
+    def test_cookie_lifetime_is_ten_days(self):
         header = session_cookie_header()
-        self.assertIn("max-age=%d" % admin_dashboard.SESSION_TTL, header.lower())
-        self.assertEqual(admin_dashboard.SESSION_TTL, 12 * 60 * 60)
+        self.assertIn("max-age=864000", header.lower())
+        self.assertEqual(admin_dashboard.SESSION_TTL, 10 * 24 * 60 * 60)
+        # Çerezdeki imzalı son kullanma zamanı da gerçekten 10 gün sonrasını göstermeli.
+        expiry = int(cookie_value(header).split(".", 1)[0])
+        self.assertAlmostEqual(expiry, int(time.time()) + 864000, delta=5)
 
     def test_issued_cookie_is_accepted_on_next_request(self):
         token = cookie_value(session_cookie_header())
