@@ -7056,14 +7056,6 @@
       "recovery_details": "Engelli Haberleri Otomatik Güncelle başarıyla tamamlandı; haber akışı durdu uyarısı kapatıldı. Çalışma: https://github.com/rsever-source/mobilrs/actions/runs/44043615963"
     },
     {
-      "component": "rdv-health",
-      "first_seen": "2026-11-17T11:34:04.507614+00:00",
-      "last_seen": "2026-11-17T11:34:04.507614+00:00",
-      "occurrences": 1,
-      "status": "pending_24h",
-      "details": "- Ana sayfa açıldı ama ÖTV Muaf Araçlar bölümü bulunamadı.\n- Ana sayfa açıldı ama ÖTV Muaf Araçlar bölümü bulunamadı. | Çalışma: https://github.com/rsever-source/mobilrs/actions/runs/44075133646\nBaşarısız adımlar: health: Check RDV Asistan on Cloud Run"
-    },
-    {
       "component": "workflow:349484409",
       "first_seen": "2026-11-17T11:34:17.685457+00:00",
       "last_seen": "2026-11-17T11:34:17.685457+00:00",
