@@ -7115,6 +7115,14 @@
       "reported_at": "2026-11-17T11:34:17.685457+00:00",
       "resolved_at": "2026-11-17T12:25:10.875497+00:00",
       "recovery_details": "Workflow: RDV Asistan Health Monitor; sonuç: success; dal: fix/rdv-health-otv-selector-20261117; çalışma no: 344; run ID: 44082868044; çalışma: https://github.com/rsever-source/mobilrs/actions/runs/44082868044"
+    },
+    {
+      "component": "otv-daily",
+      "first_seen": "2026-11-17T14:14:04.446095+00:00",
+      "last_seen": "2026-11-17T14:14:04.446095+00:00",
+      "occurrences": 1,
+      "status": "pending_24h",
+      "details": "Günlük ÖTV yenileme ve doğrulama kontrolü. Çalışma: https://github.com/rsever-source/mobilrs/actions/runs/44100842134\nBaşarısız adımlar: refresh-and-check: Check RDV Asistan home"
     }
   ]
 }
