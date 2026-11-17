@@ -44,7 +44,7 @@ _PORTAL_NAV_HTML = (
     '<nav class="portal-nav" aria-label="Ana menü"><ul>'
     '<li><a href="/">Ana Sayfa</a></li>'
     '<li><a href="/#news">Haberler</a></li>'
-    '<li><a href="/#hesaplamalar" aria-current="true">Hesaplamalar</a></li>'
+    '<li><a href="/#hesaplamalar" aria-current="true">Yardımcılar</a></li>'
     '<li><a href="/#otv-araclar">ÖTV Muafiyetli Araçlar</a></li>'
     '</ul></nav>'
 )
@@ -62,7 +62,7 @@ _PORTAL_FOOTER_HTML = (
     '<nav class="portal-footer-nav" aria-label="Hızlı bağlantılar">'
     '<h2>Keşfet</h2>'
     '<a href="/#news">Güncel haberler</a>'
-    '<a href="/#hesaplamalar">Hesaplamalar ve İşlemler</a>'
+    '<a href="/#hesaplamalar">Yardımcılar</a>'
     '<a href="/#otv-araclar">ÖTV muafiyetli araçlar</a>'
     '</nav>'
     '<section class="portal-footer-contact" aria-label="İletişim ve bilgiler">'
@@ -822,11 +822,11 @@ HOME_HTML = r'''<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Engelli.me | Engelli Haberleri, Hesaplamalar ve ÖTV Muafiyetli Araçlar</title>
+<title>Engelli.me | Engelli Haberleri, Yardımcılar ve ÖTV Muafiyetli Araçlar</title>
 <meta name="description" content="Güncel engelli haberleri, ÖTV muafiyetli araç fiyatları, EK-2 hastalık oranı bulma, Balthazard engellilik oranı hesaplama, kira hesaplama, Excel ve PDF → Excel araçları.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://engelli.me/">
-<meta property="og:title" content="Engelli.me | Haberler, Hesaplamalar ve ÖTV Muafiyetli Araçlar">
+<meta property="og:title" content="Engelli.me | Haberler, Yardımcılar ve ÖTV Muafiyetli Araçlar">
 <meta property="og:description" content="Güncel engelli haberleri, ÖTV muafiyetli araç fiyatları ve pratik hesaplama araçları.">
 <meta property="og:url" content="https://engelli.me/">
 <meta property="og:type" content="website">
@@ -3171,7 +3171,7 @@ body.dark-mode .result { background: var(--accent-soft); }
       <ul>
         <li><a href="#home" id="navHome" class="is-active" aria-current="page" onclick="return goPage('home')">Ana Sayfa</a></li>
         <li><a href="#news" id="navNews" onclick="return goPage('news')">Haberler</a></li>
-        <li><a href="#hesaplamalar" onclick="return goSection('hesaplamalar')">Hesaplamalar</a></li>
+        <li><a href="#hesaplamalar" onclick="return goSection('hesaplamalar')">Yardımcılar</a></li>
         <li><a href="#otv-araclar" onclick="return goSection('otv-araclar')">ÖTV Muafiyetli Araçlar</a></li>
       </ul>
     </nav>
@@ -3272,7 +3272,7 @@ body.dark-mode .result { background: var(--accent-soft); }
     <span id="helpers" aria-hidden="true"></span>
     <div class="tools-section-head">
       <div>
-        <h2 id="hesaplamalar-baslik">Hesaplamalar ve İşlemler</h2>
+        <h2 id="hesaplamalar-baslik">Yardımcılar</h2>
         <p>İhtiyacınız olan işlemlere tek yerden ulaşın</p>
       </div>
     </div>
@@ -3467,7 +3467,7 @@ body.dark-mode .result { background: var(--accent-soft); }
   <div class="page-inner">
     <div class="page-head">
       <a class="back-link" href="#home" onclick="return goPage('home')">‹ Ana sayfa</a>
-      <p class="kicker">Hesaplamalar</p>
+      <p class="kicker">Yardımcılar</p>
       <h1 id="kira-baslik">Kira Hesaplama</h1>
       <p class="page-note">Mevcut kiranızı ve yenileme ayını girin; 12 aylık ortalama TÜFE ile yeni kirayı hesaplayalım.</p>
     </div>
@@ -3506,7 +3506,7 @@ body.dark-mode .result { background: var(--accent-soft); }
   <div class="page-inner">
     <div class="page-head">
       <a class="back-link" href="#home" onclick="return goPage('home')">‹ Ana sayfa</a>
-      <p class="kicker">Hesaplamalar ve İşlemler</p>
+      <p class="kicker">Yardımcılar</p>
       <h1 id="excel-baslik">Excel İşlemleri</h1>
       <p class="page-note">İki Excel dosyası yükleyin ve yapmak istediğiniz işlemi yazın. Sonuç dosyası işlem bitince indirilir.</p>
     </div>
@@ -3527,7 +3527,7 @@ body.dark-mode .result { background: var(--accent-soft); }
   <div class="page-inner">
     <div class="page-head">
       <a class="back-link" href="#home" onclick="return goPage('home')">‹ Ana sayfa</a>
-      <p class="kicker">Hesaplamalar ve İşlemler</p>
+      <p class="kicker">Yardımcılar</p>
       <h1 id="pdf-baslik">PDF → Excel</h1>
       <p class="page-note">Bir PDF dosyası seçin; içeriği tabloya dönüştürülerek Excel dosyası olarak indirilir.</p>
     </div>
@@ -3556,7 +3556,7 @@ body.dark-mode .result { background: var(--accent-soft); }
       <nav class="footer-nav" aria-label="Hızlı bağlantılar">
         <h2>Keşfet</h2>
         <a href="#news" onclick="return goPage('news')">Güncel haberler</a>
-        <a href="#hesaplamalar" onclick="return goSection('hesaplamalar')">Hesaplamalar ve İşlemler</a>
+        <a href="#hesaplamalar" onclick="return goSection('hesaplamalar')">Yardımcılar</a>
         <a href="#otv-araclar" onclick="return goSection('otv-araclar')">ÖTV muafiyetli araçlar</a>
       </nav>
 
