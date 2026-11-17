@@ -29,7 +29,8 @@ jobs:
         run: |
           set -e
           html=$(curl --fail --silent --show-error --retry 4 --retry-delay 15 --max-time 60 https://mobilrs-test-987996487997.europe-west1.run.app/)
-          echo "$html" | grep -q 'ÖTV Muaf Araçlar'
+          # Stable section ID: do not couple health checks to the visible heading text.
+          echo "$html" | grep -q 'id="otv-araclar"'
           ! echo "$html" | grep -q 'Hesaplanmıyor'
           ! echo "$html" | grep -qi 'fiyat doğrulanıyor'
           ! echo "$html" | grep -q '>Kontrol<'
