@@ -7060,9 +7060,11 @@
       "first_seen": "2026-11-17T11:34:17.685457+00:00",
       "last_seen": "2026-11-17T11:34:17.685457+00:00",
       "occurrences": 1,
-      "status": "reported",
+      "status": "resolved",
       "details": "Workflow: RDV Asistan Health Monitor; sonuç: failure; dal: main; çalışma no: 343; run ID: 44075133646; çalışma: https://github.com/rsever-source/mobilrs/actions/runs/44075133646",
-      "reported_at": "2026-11-17T11:34:17.685457+00:00"
+      "reported_at": "2026-11-17T11:34:17.685457+00:00",
+      "resolved_at": "2026-11-17T12:25:10.875497+00:00",
+      "recovery_details": "Workflow: RDV Asistan Health Monitor; sonuç: success; dal: fix/rdv-health-otv-selector-20261117; çalışma no: 344; run ID: 44082868044; çalışma: https://github.com/rsever-source/mobilrs/actions/runs/44082868044"
     }
   ]
 }
