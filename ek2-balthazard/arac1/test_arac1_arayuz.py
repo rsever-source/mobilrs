@@ -136,8 +136,8 @@ class Arac1ArayuzTestleri(unittest.TestCase):
         from pathlib import Path
         ana_uygulama = Path(__file__).resolve().parents[2] / "excel_vlookup_api.py"
         ana_html = ana_uygulama.read_text(encoding="utf-8")
-        self.assertIn("<b>Hastalık Oranı Bulma</b>", ana_html)
-        self.assertNotIn("<b>EK-2 Hastalık Oranı Bulma</b>", ana_html)
+        self.assertRegex(ana_html, r"<(?:b|strong)>Hastalık Oranı Bulma</(?:b|strong)>")
+        self.assertNotRegex(ana_html, r"<(?:b|strong)>EK-2 Hastalık Oranı Bulma</(?:b|strong)>")
 
     def test_bolumler_ve_sayilar(self):
         data = self._json("/api/bolumler")
