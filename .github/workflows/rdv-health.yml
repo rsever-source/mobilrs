@@ -45,10 +45,10 @@ jobs:
           }
 
           if ! get_url "$BASE/" /tmp/home.html; then
-            FAIL="$FAIL\n- Ana sayfa 8 denemede açılamadı."
+            FAIL="$FAIL\n- Ana sayfa 3 denemede açılamadı."
           else
-            grep -q "ÖTV Muaf Araçlar" /tmp/home.html || FAIL="$FAIL\n- Ana sayfa açıldı ama ÖTV Muaf Araçlar bölümü bulunamadı."
-            grep -q "ÖTV Muaf Araçlar" /tmp/home.html || FAIL="$FAIL\n- Ana sayfa açıldı ama ÖTV Muaf Araçlar bölümü bulunamadı."
+            # Stable section ID: visible heading text may change during design updates.
+            grep -q 'id="otv-araclar"' /tmp/home.html || FAIL="$FAIL\n- Ana sayfada ÖTV araçlar bölümü (id=otv-araclar) bulunamadı."
           fi
 
           if ! get_url "$BASE/api/otv" /tmp/otv.json; then
