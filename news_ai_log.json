@@ -7123,6 +7123,15 @@
       "occurrences": 1,
       "status": "pending_24h",
       "details": "Günlük ÖTV yenileme ve doğrulama kontrolü. Çalışma: https://github.com/rsever-source/mobilrs/actions/runs/44100842134\nBaşarısız adımlar: refresh-and-check: Check RDV Asistan home"
+    },
+    {
+      "component": "workflow:349468309",
+      "first_seen": "2026-11-17T14:14:18.719483+00:00",
+      "last_seen": "2026-11-17T14:14:18.719483+00:00",
+      "occurrences": 1,
+      "status": "reported",
+      "details": "Workflow: RDV OTV Daily Update; sonuç: failure; dal: main; çalışma no: 142; run ID: 44100842134; çalışma: https://github.com/rsever-source/mobilrs/actions/runs/44100842134",
+      "reported_at": "2026-11-17T14:14:18.719483+00:00"
     }
   ]
 }
