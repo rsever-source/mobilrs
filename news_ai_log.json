@@ -2,209 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-11-11T09:37:35.951209+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [
-        {
-          "source": "Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
-          "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='www.tbb.gov.tr', port=443): Max retries exceeded with url: /tr/mevzuat-duyurulari (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1018)')))\"))",
-          "kind": "source_fetch_error"
-        }
-      ],
-      "source_diagnostics": {
-        "Anadolu Ajansı – Engelli Yaşam": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 6,
-          "parsed_items": 6,
-          "errors": []
-        },
-        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
-          "stage": "html_list",
-          "anchors": 72,
-          "path_matches": 20,
-          "dated_from_title": 0,
-          "dated_from_context": 0,
-          "detail_attempts": 20,
-          "detail_successes": 20,
-          "parsed_items": 20,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "TRT Haber": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "TRT Haber – Sağlık": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
-          "stage": "html_list",
-          "anchors": 200,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
-          "stage": "html_list",
-          "anchors": 186,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
-          "stage": "html_list",
-          "anchors": 480,
-          "path_matches": 294,
-          "dated_from_title": 294,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 294,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Sosyal Güvenlik Kurumu – Duyurular": {
-          "stage": "html_list",
-          "anchors": 94,
-          "path_matches": 10,
-          "dated_from_title": 10,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 10,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Resmî Gazete – TBB Mevzuat Yedeği": {
-          "stage": "skipped",
-          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
-          "errors": []
-        },
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 7,
-          "keyword_eliminated": 23,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 0,
-          "in_7_day_window": 0,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Dairesi Müdür Yardımcılığı Sınavı Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 499,
-        "pending_total": 0,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 18,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 8,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 473,
-          "accepted_as_candidate": 0
-        },
-        "examples": {
-          "already_published": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "TİHEK'ten Down sendromlu çocuğu oyun alanına almayan işletmeye ceza"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Engelli adaylar ile işverenler 21. Engelsiz Kariyer Günleri'nde buluştu"
-            }
-          ],
-          "older_than_7_days": [
-            {
-              "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
-              "title": "Odasını atölyeye dönüştüren bedensel engelli sanatçı 20 yıldır çini boyuyor"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
-              "title": "Bağdat'ta Down sendromlu çocuklar \"Yapabiliriz\" etkinliğinde yeteneklerini sergiledi"
-            }
-          ],
-          "url_seen_within_7_days": [
-            {
-              "source": "TRT Haber",
-              "title": "Brüksel'e giden uçak bomba ihbarı üzerine Brüksel Havalimanı'na güvenli iniş yaptı"
-            },
-            {
-              "source": "TRT Haber",
-              "title": "Mülkiyede öğrenciler için kariyer zirvesi gerçekleştirildi"
-            }
-          ]
-        },
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": []
-    },
-    {
       "run_at": "2026-11-11T17:57:16.199600+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [
@@ -6793,6 +6590,261 @@
         "zero_candidates_is_not_an_error": true
       },
       "candidates": []
+    },
+    {
+      "run_at": "2026-11-18T14:14:03.311352+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 10,
+          "parsed_items": 10,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 480,
+          "path_matches": 294,
+          "dated_from_title": 294,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 294,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "tls_verified": true,
+          "list_read": true,
+          "anchors": 88,
+          "article_links": 12,
+          "keyword_matches": 0,
+          "health_probe": true,
+          "detail_attempts": 1,
+          "detail_successes": 1,
+          "parsed_items": 0,
+          "validated": true,
+          "errors": []
+        },
+        "Resmî Gazete – TBB Mevzuat Yedeği": {
+          "stage": "skipped",
+          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 7,
+          "keyword_eliminated": 23,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 1,
+          "in_7_day_window": 1,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "Vergi Dairesi Müdür Yardımcısı Görev Yeri Seçme Programı Başkanımız Sayın Şinasi Candan'ın Teşrifleriyle Gerçekleştirild",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 503,
+        "pending_total": 0,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 18,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 20,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 461,
+          "accepted_as_candidate": 4
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "Çocuklarda omega3 eksikliğine karşı haftada 2 öğün balık önerisi",
+          "source": "TRT Haber – Sağlık",
+          "url": "https://www.trthaber.com/haber/saglik/cocuklarda-omega-3-eksikligine-karsi-haftada-2-ogun-balik-onerisi-963671.html",
+          "published_at": "2026-11-18T09:07:00+00:00",
+          "content_origin": null,
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "Genel çocuk sağlığı ve beslenme önerileri içerdiği, engelli bireylere özel somut bir konu barındırmadığı için uygun değildir.",
+          "reject_label": "Genel sağlık",
+          "generated_title": "Çocuklarda omega-3 eksikliğine karşı haftada 2 öğün balık önerisi",
+          "summary": "",
+          "detail_summary": "",
+          "decision": "reject"
+        },
+        {
+          "title": "18.11.2026 Bakanımız Göktaş, Singapur ve Filipinler'deki aile ve çocuk politikalarına ilişkin temaslarını değerlendirdi Haberin Detayı",
+          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
+          "url": "https://www.aile.gov.tr/haberler/bakanimiz-goktas-singapur-ve-filipinlerdeki-aile-ve-cocuk-politikalarina-iliskin-temaslarini-degerlendirdi/",
+          "published_at": "2026-11-18T00:00:00+00:00",
+          "content_origin": null,
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "Haber, genel aile ve çocuk politikalarına yönelik uluslararası temasları ele aldığı ve engelli bireylere yönelik özel bir gelişme içermediği için kapsam dışıdır.",
+          "reject_label": "Kapsam dışı",
+          "generated_title": "Bakan Göktaş, Singapur ve Filipinler'deki sosyal politika temaslarını değerlendirdi",
+          "summary": "",
+          "detail_summary": "",
+          "decision": "reject"
+        },
+        {
+          "title": "18.11.2026 Bakanımız Göktaş, \"Çocuklara Yönelik Şiddetin Sona Erdirilmesi Konulu İkinci Küresel Bakanlar Konferansı\"nda Türkiye'nin taahhütlerini paylaştı Haberin Detayı",
+          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
+          "url": "https://www.aile.gov.tr/haberler/bakanimizgoktas-cocuklara-yonelik-siddetin-sona-erdirilmesi-konulu-ikinci-kuresel-bakanlar-konferansinda-turkiyenin-taahhutlerini-paylasti/",
+          "published_at": "2026-11-18T00:00:00+00:00",
+          "content_origin": null,
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "Bakan Göktaş, Küresel Bakanlar Konferansı'nda Türkiye'nin çocuk koruma taahhütlerini paylaştı",
+          "summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Filipinler'de düzenlenen İkinci Küresel Bakanlar Konferansı'na katıldı. Bakan Göktaş, Türkiye'nin çocuklara yönelik şiddetin önlenmesine ilişkin yeni taahhütlerini açıkladı. Çocukların aile yanında desteklenmesi ve koruyucu aile hizmetlerinin çeşitlendirilmesi hedefleniyor. Dijital ortamlarda çocuk güvenliğini artırmak için koruyucu ve önleyici tedbirler geliştirilecek. Sosyal Risk Haritaları ile risklerin erken tespiti ve ailelere zamanında müdahale edilmesi sağlanacak. Göktaş, çocukların şiddetten uzak büyümesi için küresel iş birliği çağrısında bulundu.",
+          "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Filipinler Hükümeti'nin ev sahipliğinde, DSÖ ve UNICEF iş birliğiyle gerçekleştirilen İkinci Küresel Bakanlar Konferansı'na katıldı. Konferansın Bakanlar Düzeyinde Taahhüt Açıklama Oturumu'nda konuşan Göktaş, Türkiye'nin çocuk koruma sisteminin güçlendirilmesine yönelik yeni adımlarını paylaştı. Önceliğin her durumda çocukları kendi aileleri yanında desteklemek olduğunu belirten Bakan, ailesi yanında bakılamayan çocuklar için koruyucu aile hizmetlerinin artırılacağını kaydetti. Çocuk adalet sisteminde damgalanmayı önleyen onarıcı yaklaşımların güçlendirileceği, ekonomik ve psikososyal desteklerin artırılacağı ifade edildi. Dijital ortamlarda çocukları istismar, sömürü ve zorbalık risklerine karşı korumak amacıyla çocuk dostu güvenli alanların güçlendirileceği vurgulandı. Risklerin erken tespiti amacıyla hane düzeyinde analiz yapan Sosyal Risk Haritalarının geliştirildiği bilgisi paylaşıldı. Bakan Göktaş, Türkiye'nin Çocuk Hakları Strateji Belgesi ve Dijital Dünyada Çocukların Güçlendirilmesine Yönelik Eylem Planı ile bütüncül bir yaklaşım izlediğini belirtti. Konuşmasında çocukların da görüşlerinin dinlenmesi gerektiğini belirten Göktaş, tüm devletleri Küresel Öncü Ülkeler İttifakı'na katılmaya davet etti.",
+          "decision": "publish",
+          "site_published_at": "2026-11-18T14:14:03.311352+00:00"
+        },
+        {
+          "title": "18 Kasım 2026 Bedeli Ödenecek İlaçlar Listesinde Yapılan Düzenlemeler Hakkında Duyuru 2026/45 GENEL SAĞLIK SİGORTASI GENEL MÜDÜRLÜĞÜ",
+          "source": "Sosyal Güvenlik Kurumu – Duyurular",
+          "url": "https://www.sgk.gov.tr/duyuru/detay/Bedeli-Odenecek-Ilaclar-Listesinde-Yapilan-Duzenlemeler-Hakkinda-Duyuru-202645-2026-11-18-03-55-22",
+          "published_at": "2026-11-18T00:00:00+00:00",
+          "content_origin": null,
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "SGK'dan Bedeli Ödenecek İlaçlar Listesi Düzenlemesi",
+          "summary": "Sosyal Güvenlik Kurumu, Bedeli Ödenecek İlaçlar Listesi'nde yapılan yeni düzenlemelere ilişkin duyuru yayımladı. Genel Sağlık Sigortası Genel Müdürlüğü tarafından paylaşılan duyuru 18 Kasım 2026 tarihini taşıyor. Yapılan güncellemeler kapsamında ilaç geri ödeme listesinde çeşitli değişiklikler yapıldı. Hak sahiplerinin ve hastaların güncel listeleri incelemesi önem taşıyor. Duyuru detayları kurumun resmi internet sitesinde erişime açıldı.",
+          "detail_summary": "Sosyal Güvenlik Kurumu Genel Sağlık Sigortası Genel Müdürlüğü, 18 Kasım 2026 tarihinde yeni bir duyuru yayımladı. Duyuruda Bedeli Ödenecek İlaçlar Listesi'nde yapılan düzenlemelere yer verildi. Çalışma kapsamında yayımlanan 2026/45 numaralı düzenleme ile ilgili ek dosyalar paylaşıldı. İlaç listesindeki değişiklikler ve uygulama esasları resmi duyuru metinlerinde yer aldı. İlgili vatandaşlar ve hastalar güncel listelere SGK'nın resmi web sitesi üzerinden ulaşabiliyor.",
+          "decision": "publish",
+          "site_published_at": "2026-11-18T14:14:03.311352+00:00"
+        }
+      ]
     }
   ],
   "system_incidents": [
