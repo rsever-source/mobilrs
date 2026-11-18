@@ -1375,7 +1375,8 @@ main {
     "lead lead"
     "news sidebar"
     "news tools"
-    "otv otv";
+    "otv otv"
+    "chat chat";
   column-gap: var(--gap);
   row-gap: 0;
   align-items: start;
@@ -1386,6 +1387,7 @@ main {
 .sidebar { grid-area: sidebar; min-width: 0; padding-top: 40px; }
 .tools-section { grid-area: tools; min-width: 0; }
 .otv { grid-area: otv; }
+.chat-invite { grid-area: chat; }
 
 .section-head {
   display: flex;
@@ -2401,7 +2403,8 @@ body.high-contrast :focus-visible {
       "news"
       "sidebar"
       "otv"
-      "tools";
+      "tools"
+      "chat";
     column-gap: 0;
   }
 
@@ -2760,6 +2763,94 @@ body.high-contrast .tool-arrow { color: #000000; }
 }
 @media (prefers-reduced-motion: reduce) {
   .tool-card, .tool-arrow { transition: none; }
+}
+
+
+/* Ana sayfa sohbet bağlantısı — portalın sade editoryal bölüm düzeni */
+.chat-invite {
+  grid-area: chat;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 8px 24px;
+  min-width: 0;
+  margin-top: 3rem;
+  padding: 14px 0 0;
+  border-top: 2px solid var(--ink);
+  background: transparent;
+}
+.chat-invite-copy {
+  min-width: 0;
+  max-width: 68ch;
+}
+.chat-invite .kicker {
+  margin: 0 0 0.45rem;
+  color: var(--accent-ink);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.chat-invite h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+.chat-invite-copy > p:not(.kicker) {
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+.chat-invite-copy .chat-invite-note {
+  font-size: 0.68rem;
+}
+.chat-invite-link {
+  display: inline;
+  align-self: center;
+  color: var(--accent-ink);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.chat-invite-link:hover {
+  color: var(--accent-ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.chat-invite-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+body.high-contrast .chat-invite {
+  border-top: 2px solid #000000;
+  background: transparent;
+}
+body.high-contrast .chat-invite .kicker,
+body.high-contrast .chat-invite h2,
+body.high-contrast .chat-invite-copy > p,
+body.high-contrast .chat-invite-link {
+  color: #000000;
+}
+body.high-contrast .chat-invite-link {
+  text-decoration: underline;
+}
+@media (max-width: 560px) {
+  .chat-invite {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    margin-top: 2.25rem;
+  }
+  .chat-invite-link {
+    justify-self: start;
+  }
 }
 
 
@@ -3399,6 +3490,17 @@ body.dark-mode .result { background: var(--accent-soft); }
       doğrulanamayan veya 2026 limitini aşan adaylar listeye alınmaz. Bu bölümde araç fotoğrafı
       kullanılmaz; yalnızca marka logoları yer alır.
     </p>
+  </section>
+
+  <section class="chat-invite" aria-labelledby="chat-invite-title">
+    <div class="chat-invite-copy">
+      <p class="kicker">Topluluk</p>
+      <h2 id="chat-invite-title">Engelli.me Sohbet</h2>
+      <p>Engelli hakları ve günlük yaşam üzerine topluluğumuzla sohbet edin, deneyimlerinizi paylaşın.</p>
+    </div>
+    <a class="chat-invite-link" href="https://chat.engelli.me/" target="_blank" rel="noopener noreferrer" aria-label="Engelli.me sohbeti yeni sekmede aç">
+      Sohbete katıl <span aria-hidden="true">↗</span>
+    </a>
   </section>
 
 </section>
