@@ -2816,9 +2816,9 @@ body.high-contrast .tool-arrow { color: #000000; }
   display: inline;
   align-self: center;
   color: var(--accent-ink);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-size: 0.88rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
