@@ -1375,7 +1375,8 @@ main {
     "lead lead"
     "news sidebar"
     "news tools"
-    "otv otv";
+    "otv otv"
+    "chat chat";
   column-gap: var(--gap);
   row-gap: 0;
   align-items: start;
@@ -1386,6 +1387,7 @@ main {
 .sidebar { grid-area: sidebar; min-width: 0; padding-top: 40px; }
 .tools-section { grid-area: tools; min-width: 0; }
 .otv { grid-area: otv; }
+.chat-invite { grid-area: chat; }
 
 .section-head {
   display: flex;
@@ -2401,7 +2403,8 @@ body.high-contrast :focus-visible {
       "news"
       "sidebar"
       "otv"
-      "tools";
+      "tools"
+      "chat";
     column-gap: 0;
   }
 
@@ -2760,6 +2763,111 @@ body.high-contrast .tool-arrow { color: #000000; }
 }
 @media (prefers-reduced-motion: reduce) {
   .tool-card, .tool-arrow { transition: none; }
+}
+
+
+/* Ana sayfa sohbet daveti — footer öncesinde tam genişlikli topluluk bağlantısı */
+.chat-invite {
+  grid-area: chat;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-width: 0;
+  margin-top: 3rem;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid var(--line-strong);
+  border-left: 4px solid var(--accent);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgba(22, 33, 31, 0.045);
+}
+.chat-invite-copy {
+  min-width: 0;
+  max-width: 64ch;
+}
+.chat-invite .kicker {
+  margin: 0 0 0.45rem;
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.chat-invite h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+  line-height: 1.2;
+}
+.chat-invite-copy > p:not(.kicker) {
+  margin: 0.55rem 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+.chat-invite-copy .chat-invite-note {
+  font-size: 0.72rem;
+}
+.chat-invite-link {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 48px;
+  padding: 12px 18px;
+  border: 1px solid var(--btn-primary-bg);
+  border-radius: 999px;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-ink);
+  font-size: 0.82rem;
+  font-weight: 750;
+  white-space: nowrap;
+  transition: transform 140ms ease, background 140ms ease;
+}
+.chat-invite-link:hover {
+  color: var(--btn-primary-ink);
+  background: var(--accent-ink);
+  border-color: var(--accent-ink);
+  transform: translateY(-1px);
+}
+.chat-invite-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+body.high-contrast .chat-invite {
+  background: #ffffff;
+  border: 2px solid #000000;
+  border-left-width: 6px;
+  box-shadow: none;
+}
+body.high-contrast .chat-invite .kicker,
+body.high-contrast .chat-invite h2,
+body.high-contrast .chat-invite-copy > p,
+body.high-contrast .chat-invite-link {
+  color: #000000;
+}
+body.high-contrast .chat-invite-link {
+  background: #ffffff;
+  border: 2px solid #000000;
+  text-decoration: underline;
+}
+@media (max-width: 560px) {
+  .chat-invite {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    margin-top: 2.25rem;
+    padding: 20px;
+  }
+  .chat-invite-link {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-invite-link { transition: none; }
 }
 
 
@@ -3399,6 +3507,19 @@ body.dark-mode .result { background: var(--accent-soft); }
       doğrulanamayan veya 2026 limitini aşan adaylar listeye alınmaz. Bu bölümde araç fotoğrafı
       kullanılmaz; yalnızca marka logoları yer alır.
     </p>
+  </section>
+
+  <section class="chat-invite" aria-labelledby="chat-invite-title">
+    <div class="chat-invite-copy">
+      <p class="kicker">Topluluğa katıl</p>
+      <h2 id="chat-invite-title">Engelli.me Sohbet</h2>
+      <p>Engelli hakları ve günlük yaşam üzerine diğer ziyaretçilerle sohbet edin, deneyimlerinizi paylaşın.</p>
+      <p class="chat-invite-note">Gizliliğiniz için sohbette kimlik, iletişim veya sağlık bilgilerinizi paylaşmayın.</p>
+    </div>
+    <a class="chat-invite-link" href="https://chat.engelli.me/" target="_blank" rel="noopener noreferrer" aria-label="Engelli.me canlı sohbeti yeni sekmede aç">
+      <span>Canlı sohbete katıl</span>
+      <span aria-hidden="true">↗</span>
+    </a>
   </section>
 
 </section>
