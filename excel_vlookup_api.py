@@ -2809,6 +2809,9 @@ body.high-contrast .tool-arrow { color: #000000; }
 .chat-invite-copy .chat-invite-note {
   font-size: 0.68rem;
 }
+.chat-invite-copy .chat-invite-note {
+  font-size: 0.68rem;
+}
 .chat-invite-link {
   display: inline;
   align-self: center;
@@ -3497,6 +3500,7 @@ body.dark-mode .result { background: var(--accent-soft); }
       <p class="kicker">Topluluk</p>
       <h2 id="chat-invite-title">Engelli.me Sohbet</h2>
       <p>Engelli hakları ve günlük yaşam üzerine topluluğumuzla sohbet edin, deneyimlerinizi paylaşın.</p>
+      <p class="chat-invite-note">Gizliliğiniz için ad, telefon, adres, kimlik veya sağlık bilgisi gibi kişisel verilerinizi sohbette paylaşmayın.</p>
     </div>
     <a class="chat-invite-link" href="https://chat.engelli.me/" target="_blank" rel="noopener noreferrer" aria-label="Engelli.me sohbeti yeni sekmede aç">
       Sohbete katıl <span aria-hidden="true">↗</span>
