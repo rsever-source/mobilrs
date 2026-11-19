@@ -2,198 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-11-12T09:58:22.947104+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [
-        {
-          "source": "Türkiye Belediyeler Birliği – Mevzuat Duyuruları",
-          "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='www.tbb.gov.tr', port=443): Max retries exceeded with url: /tr/mevzuat-duyurulari (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1018)')))\"))",
-          "kind": "source_fetch_error"
-        }
-      ],
-      "source_diagnostics": {
-        "Anadolu Ajansı – Engelli Yaşam": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 7,
-          "parsed_items": 7,
-          "errors": []
-        },
-        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
-          "stage": "html_list",
-          "anchors": 72,
-          "path_matches": 20,
-          "dated_from_title": 0,
-          "dated_from_context": 0,
-          "detail_attempts": 20,
-          "detail_successes": 20,
-          "parsed_items": 20,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "TRT Haber": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "TRT Haber – Sağlık": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
-          "stage": "html_list",
-          "anchors": 200,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
-          "stage": "html_list",
-          "anchors": 186,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
-          "stage": "html_list",
-          "anchors": 480,
-          "path_matches": 294,
-          "dated_from_title": 294,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 294,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Sosyal Güvenlik Kurumu – Duyurular": {
-          "stage": "html_list",
-          "anchors": 94,
-          "path_matches": 10,
-          "dated_from_title": 10,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 10,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Resmî Gazete – TBB Mevzuat Yedeği": {
-          "stage": "skipped",
-          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
-          "errors": []
-        },
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 7,
-          "keyword_eliminated": 23,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 0,
-          "in_7_day_window": 0,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 500,
-        "pending_total": 0,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 17,
-          "duplicate_in_this_run": 1,
-          "url_seen_within_7_days": 6,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 475,
-          "accepted_as_candidate": 1
-        },
-        "examples": {},
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": [
-        {
-          "title": "Kırklareli'nde tıp öğrencilerinden engelli bireylere evlerinde mini konser",
-          "source": "Anadolu Ajansı – Engelli Yaşam",
-          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/kirklarelinde-tip-ogrencilerinden-engelli-bireylere-evlerinde-mini-konser/1833052",
-          "published_at": "2026-11-12T00:00:00+00:00",
-          "content_origin": null,
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "",
-          "reject_label": "",
-          "generated_title": "Kırklareli'nde tıp öğrencilerinden engelli bireylere evlerinde mini konser",
-          "summary": "Kırklareli'nde gönüllü tıp öğrencileri, \"İyilik Var\" projesi kapsamında engelli bireyleri evlerinde ziyaret ediyor. Aile ve Sosyal Hizmetler İl Müdürlüğü koordinesinde yürütülen çalışmada öğrenciler müzikle moral veriyor. Bağlama ve gitar eşliğinde şarkılar söyleyen gönüllüler, ailelerle keyifli vakit geçiriyor. İki aydır süren proje çerçevesinde bugüne kadar dört hane ziyaret edildi. On gönüllü öğrenci son olarak Babaeski'de yaşayan engelli Elif Aktan'a konuk oldu. Ziyaretler genç hekimler için de farklı yaşamları tanıma fırsatı sunuyor.",
-          "detail_summary": "Kırklareli'nde gönüllü tıp öğrencileri, Aile ve Sosyal Hizmetler Bakanlığının \"İyilik Var\" projesi kapsamında engelli bireyleri evlerinde ziyaret ediyor. Aile ve Sosyal Hizmetler İl Müdürlüğü koordinesinde yürütülen çalışmada, Kırklareli Üniversitesi Tıp Fakültesi öğrencileri evde bakım hizmetinden yararlanan kişilere konuk oluyor. Gönüllü öğrenciler bağlama ve gitar eşliğinde şarkılar seslendirerek engelli bireylerin ve ailelerinin keyifli vakit geçirmesini sağlıyor. İki aydır devam eden bu anlamlı ziyaretler kapsamında bugüne kadar dört farklı hane ziyaret edildi. Projese görev alan on gönüllü öğrenci, son olarak Babaeski ilçesinde yaşayan serebral palsili ve yüzde elli görme engelli Elif Aktan'ı evinde ziyaret etti. Ziyaret edilen evlerde müzik ve sanat etkinlikleri yapılarak yatağa bağımlı vatandaşlara moral desteği veriliyor. Tıp öğrencisi Aslı Nur Yucak, ziyaretlerin kendilerine farklı hayatları tanıma ve insan sevgisini güçlendirme fırsatı sunduğunu belirtti. Öğrenci Birliği Başkanı Baturalp Bakırcı ise yoğun ders programlarına rağmen projede yer almaktan mutluluk duyduklarını ifade etti. Elif Aktan'ın annesi Cemile Aktan da ziyaretten duydukları memnuniyeti dile getirerek öğrencileri yeniden evlerinde ağırlamak istediklerini kaydetti.",
-          "decision": "publish",
-          "site_published_at": "2026-11-12T09:58:22.947104+00:00"
-        }
-      ]
-    },
-    {
       "run_at": "2026-11-12T18:24:04.331692+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [
@@ -6880,6 +6688,223 @@
         "zero_candidates_is_not_an_error": true
       },
       "candidates": []
+    },
+    {
+      "run_at": "2026-11-19T07:36:55.642484+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 8,
+          "parsed_items": 8,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 480,
+          "path_matches": 294,
+          "dated_from_title": 294,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 294,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "tls_verified": true,
+          "list_read": true,
+          "anchors": 88,
+          "article_links": 12,
+          "keyword_matches": 0,
+          "health_probe": true,
+          "detail_attempts": 1,
+          "detail_successes": 1,
+          "parsed_items": 0,
+          "validated": true,
+          "errors": []
+        },
+        "Resmî Gazete – TBB Mevzuat Yedeği": {
+          "stage": "skipped",
+          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 7,
+          "keyword_eliminated": 23,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 1,
+          "in_7_day_window": 1,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "Vergi Dairesi Müdür Yardımcısı Görev Yeri Seçme Programı Başkanımız Sayın Şinasi Candan'ın Teşrifleriyle Gerçekleştirild",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 501,
+        "pending_total": 0,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 17,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 24,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 458,
+          "accepted_as_candidate": 2
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "Bilim insanları, dişlerin arasındaki kalıntılardan metabolizmayı takip eden akıllı diş ipi geliştirdi",
+          "source": "TRT Haber – Sağlık",
+          "url": "https://www.trthaber.com/haber/saglik/bilim-insanlari-dislerin-arasindaki-kalintilardan-metabolizmayi-takip-eden-akilli-dis-ipi-gelistirdi-963758.html",
+          "published_at": "2026-11-19T04:23:00+00:00",
+          "content_origin": null,
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "Haber genel teknoloji ve sağlık alanındaki bir arge çalışmasını konu aldığı, doğrudan engelli bireylerin hakları, bakımı veya özel gereksinimleriyle anlamlı bir bağı bulunmadığı iç",
+          "reject_label": "Genel teknoloji",
+          "generated_title": "Bilim İnsanlarından Metabolizmayı Takip Eden Akıllı Diş İpi",
+          "summary": "Hong Kong'daki bilim insanları diş eti sıvısını analiz ederek metabolizmayı izleyen bir diş ipi geliştirdi. Cihaz ağız sağlığı ile vücut metabolizmasını ev konforunda aynı anda takip etmeyi amaçlıyor. Yapılan ilk denemelerde glikoz ve ürik asit ölçümlerinin kan testleriyle örtüştüğü görüldü. Standart kürdanlı diş ipi görünümündeki cihaz elde ettiği verileri kablosuz olarak telefona aktarıyor. Araştırmacılar günlük bir alışkanlığı tanısal bir eyleme dönüştürmeyi hedefliyor.",
+          "detail_summary": "Hong Kong Bilim ve Teknoloji Üniversitesindeki araştırmacılar diş eti oluğu sıvısını analiz edebilen akıllı bir diş ipi geliştirdi. Cihaz diş aralarındaki kalıntıları toplayarak ağız sağlığını ve vücut metabolizmasını aynı anda izleme imkanı sunuyor. Science Advances dergisinde yayımlanan küçük çaplı denemelerde glikoz ve ürik asit ölçümlerinin kan testleriyle büyük ölçüde örtüştüğü belirlendi. Standart bir kürdanlı diş ipi şeklinde tasarlanan sistem, sıvıyı biyosensörlü mikroakışkan hazneye yönlendiren bir makara mekanizmasına sahip. Cihaz ölçüm sonuçlarını kablosuz bağlantı aracılığıyla akıllı telefonlara aktarabiliyor. Diş eti oluğu sıvısının toplanması zor olduğu için bu yöntem alanda önemli bir yenilik olarak değerlendiriliyor. Sistem sağlıklı bireylerin yanı sıra diyabet ve hiperürisemi hastaları üzerinde de test edildi. Araştırma ekibi bulguların klinik uygulamalara dönüştürülmesi için yeni çalışmalar planlıyor.",
+          "decision": "reject"
+        },
+        {
+          "title": "19 Kasım 2026 Sosyal Güvenlik Kurumu Müfettiş Yardımcılığı Giriş Sınavı Duyurusu REHBERLİK VE TEFTİŞ BAŞKANLIĞI",
+          "source": "Sosyal Güvenlik Kurumu – Duyurular",
+          "url": "https://www.sgk.gov.tr/duyuru/detay/Sosyal-Guvenlik-Kurumu-Mufettis-Yardimciligi-Giris-Sinavi-Duyurusu-2026-11-19-09-45-28",
+          "published_at": "2026-11-19T00:00:00+00:00",
+          "content_origin": null,
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "Bu duyuru kurum içi müfettiş yardımcılığı giriş sınavına ilişkindir ve engelli bireyleri doğrudan etkileyen bir yönü bulunmamaktadır.",
+          "reject_label": "Kurum içi",
+          "generated_title": "",
+          "summary": "",
+          "detail_summary": "",
+          "decision": "reject"
+        }
+      ]
     }
   ],
   "system_incidents": [
