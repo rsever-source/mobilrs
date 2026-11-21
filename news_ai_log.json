@@ -2,217 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-11-13T23:43:54.144074+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "source_diagnostics": {
-        "Anadolu Ajansı – Engelli Yaşam": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 8,
-          "parsed_items": 8,
-          "errors": []
-        },
-        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
-          "stage": "html_list",
-          "anchors": 72,
-          "path_matches": 20,
-          "dated_from_title": 0,
-          "dated_from_context": 0,
-          "detail_attempts": 20,
-          "detail_successes": 20,
-          "parsed_items": 20,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "TRT Haber": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "TRT Haber – Sağlık": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
-          "stage": "html_list",
-          "anchors": 200,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
-          "stage": "html_list",
-          "anchors": 186,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
-          "stage": "html_list",
-          "anchors": 480,
-          "path_matches": 294,
-          "dated_from_title": 294,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 294,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Sosyal Güvenlik Kurumu – Duyurular": {
-          "stage": "html_list",
-          "anchors": 94,
-          "path_matches": 10,
-          "dated_from_title": 10,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 10,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
-          "stage": "tbb_mevzuat",
-          "tls_verified": true,
-          "list_read": true,
-          "anchors": 88,
-          "article_links": 12,
-          "keyword_matches": 0,
-          "health_probe": true,
-          "detail_attempts": 1,
-          "detail_successes": 1,
-          "parsed_items": 0,
-          "validated": true,
-          "errors": []
-        },
-        "Resmî Gazete – TBB Mevzuat Yedeği": {
-          "stage": "skipped",
-          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
-          "errors": []
-        },
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 7,
-          "keyword_eliminated": 23,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 0,
-          "in_7_day_window": 0,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 596) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 501,
-        "pending_total": 0,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 17,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 3,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 481,
-          "accepted_as_candidate": 0
-        },
-        "examples": {
-          "already_published": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Kar yağışını mutluluğa dönüştüren başkomiser ile engelli kızı Eylül'ün yürek ısıtan hikayesi"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Kırklareli'nde tıp öğrencilerinden engelli bireylere evlerinde mini konser"
-            }
-          ],
-          "older_than_7_days": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Sigarayı bırakan görme engelli Serkan spora başlayıp milli judocu oldu"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Yağmurdan kaçan öğrencilerin arasından engelli arkadaşının yardımına koştu"
-            }
-          ],
-          "url_seen_within_7_days": [
-            {
-              "source": "TRT Haber",
-              "title": "İtalya'da bomba ihbarları okullarda yeni tahliyelere yol açtı"
-            },
-            {
-              "source": "TRT Haber – Sağlık",
-              "title": "COP tarihinde bir ilk: Sağlık, müstakil eylem alanı olarak belirlendi"
-            }
-          ]
-        },
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": []
-    },
-    {
       "run_at": "2026-11-14T06:40:12.477905+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -6817,6 +6606,224 @@
         "zero_candidates_is_not_an_error": true
       },
       "candidates": []
+    },
+    {
+      "run_at": "2026-11-21T12:51:17.734625+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 7,
+          "parsed_items": 7,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 481,
+          "path_matches": 295,
+          "dated_from_title": 295,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 295,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "tls_verified": true,
+          "list_read": true,
+          "anchors": 88,
+          "article_links": 12,
+          "keyword_matches": 0,
+          "health_probe": true,
+          "detail_attempts": 1,
+          "detail_successes": 1,
+          "parsed_items": 0,
+          "validated": true,
+          "errors": []
+        },
+        "Resmî Gazete – TBB Mevzuat Yedeği": {
+          "stage": "skipped",
+          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 6,
+          "keyword_eliminated": 24,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 1,
+          "in_7_day_window": 1,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavı Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Elektronik Tebligat Sistemine İlişkin Rehber, İnfografik ve Video Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Dairesi Müdür Yardımcısı Görev Yeri Seçme Programı Başkanımız Sayın Şinasi Candan'ın Teşrifleriyle Gerçekleştirild",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 500,
+        "pending_total": 0,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 16,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 21,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 461,
+          "accepted_as_candidate": 2
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "Çocuklarda ilk diş muayenesi ne zaman yapılmalı?",
+          "source": "TRT Haber – Sağlık",
+          "url": "https://www.trthaber.com/haber/saglik/cocuklarda-ilk-dis-muayenesi-ne-zaman-yapilmali-964034.html",
+          "published_at": "2026-11-21T06:45:00+00:00",
+          "content_origin": null,
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "Uzmanlardan çocuklarda ilk diş muayenesi ve ağız sağlığı uyarısı",
+          "summary": "Uzmanlar, çocuklarda ağız ve diş sağlığı sorunlarının erken dönemde önlenebilmesi için ilk süt dişinin çıkmasıyla ağız bakımına başlanmasını öneriyor. İlk diş hekimi muayenesinin ise en geç bir yaşında yapılması gerektiği vurgulanıyor. Dünya Sağlık Örgütü verilerine göre dünya genelinde milyarlarca kişi ağız ve diş hastalıklarından etkileniyor. Tedavi edilmeyen diş çürükleri çocuklarda ağrı, beslenme güçlüğü ve okul yaşamında aksamalara yol açabiliyor. Koruyucu diş hekimliği uygulamalarının özellikle çocukluk döneminde başlatılması önem taşıyor. Düzenli diş fırçalama, florürlü macun kullanımı ve kontrollerle ağız sağlığı korunabiliyor.",
+          "detail_summary": "Uzman diş hekimleri, çocuklarda ağız ve diş sağlığı sorunlarının erken dönemde önlenebilmesi amacıyla ilk süt dişinin sürmesiyle birlikte ağız bakımına başlanmasını öneriyor. İlk diş hekimi muayenesinin ise en geç çocuğun bir yaşına girdiği dönemde gerçekleştirilmesi gerektiği belirtiliyor. Dünya Sağlık Örgütü verilerine göre dünya genelinde yaklaşık 3,7 milyar kişi ağız ve diş hastalıklarından etkileniyor. Tedavi edilmeyen diş çürükleri ve diş eti hastalıkları çocuklarda ağrı, uyku problemleri, beslenme güçlükleri ve okul yaşamında aksamalara neden olabiliyor. Fiziksel, zihinsel veya gelişimsel farklılıkları bulunan engelli ve özel gereksinimli bireylerde tedaviye uyum güçlükleri hastalık sıklığını artırabiliyor. Diş çürükleriyle mücadelede günde en az iki kez florürlü diş macunuyla fırçalama ve düzenli diş hekimi kontrolleri temel uygulamalar arasında yer alıyor. Topikal florür ve pit fissür örtücü uygulamaları çocukların dişlerini çürüğe karşı dirençli hale getirmede kullanılıyor.",
+          "decision": "publish",
+          "site_published_at": "2026-11-21T12:51:17.734625+00:00"
+        },
+        {
+          "title": "21.11.2026 Aile ve Gençlik Fonu kapsamında yeni yuva kuran 11 bin 224 genç için Kasım ayında 1 milyar 277 milyon lira ödeme yapıldı Haberin Detayı",
+          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
+          "url": "https://www.aile.gov.tr/haberler/aile-ve-genclik-fonu-kapsaminda-yeni-yuva-kuran-11-bin-224-genc-icin-kasim-ayinda-1-milyar-277-milyon-lira-odeme-yapildi/",
+          "published_at": "2026-11-21T00:00:00+00:00",
+          "content_origin": null,
+          "status": "gemini_decision",
+          "publish": false,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "Haber, genel gençlik ve evlilik desteklerini konu aldığından doğrudan engelli bireylere yönelik hak veya hizmetleri içermemektedir.",
+          "reject_label": "Kapsam dışı",
+          "generated_title": "Aile ve Gençlik Fonu Kasım Ödemeleri Açıklandı",
+          "summary": "Aile ve Gençlik Fonu kapsamında kasım ayında yeni yuva kuran 11 bin 224 genç için 1 milyar 277 milyon lira ödeme yapıldığı duyuruldu. Bakan Mahinur Özdemir Göktaş, fonun genç çiftlerin evlilik süreçlerine katkı sağladığını belirtti. Yer altı zenginliklerinden elde edilen gelirlerle finanse edilen fon, 81 ilde uygulanıyor. Gençler başvurularını e-Devlet üzerinden gerçekleştirebiliyor.",
+          "detail_summary": "Aile ve Gençlik Fonu kapsamında kasım ayında yeni yuva kuran 11 bin 224 genç için 1 milyar 277 milyon lira ödeme yapıldı. Bakan Mahinur Özdemir Göktaş, projenin aile kurumunu güçlendirmeyi ve gençleri sosyal risklerden korumayı amaçladığını ifade etti. Türkiye'nin yer altı zenginliklerinden elde edilen gelirlerle finanse edilen fon, 81 ilde yürütülüyor. Fondan yararlanmak isteyen çiftler başvurularını e-Devlet veya ilgili web sitesi üzerinden yapabiliyor. Çiftlerden her ikisinin 18-25 yaş arasında olması halinde 250 bin lira, 26-29 yaş aralığında olmaları durumunda ise 200 bin lira destek sağlanıyor. Kredi desteği 48 ay vadeli ve 2 yıl geri ödemesiz olarak sunuluyor. Gelir durumu değerlendirmesindeki başvuru şartı asgari ücretin 2 katından 2,5 katına çıkarıldı.",
+          "decision": "reject"
+        }
+      ]
     }
   ],
   "system_incidents": [
