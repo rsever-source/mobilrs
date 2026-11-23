@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T02:55:12.770702+00:00",
+  "updated_at": "2026-11-23T15:02:01.433499+00:00",
   "items": [
     {
       "id": "725889ce14b47b5c65c9",
@@ -122,7 +122,32 @@
       "created_at": "2026-11-14T15:13:04.266909+00:00"
     }
   ],
-  "pending": [],
+  "pending": [
+    {
+      "source": "Anadolu Ajansı – Engelli Yaşam",
+      "title": "Özel öğrencileriyle kurduğu folklor ekibiyle müziğin iyileştirici gücünü sahneye taşıdı",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/ozel-ogrencileriyle-kurdugu-folklor-ekibiyle-muzigin-iyilestirici-gucunu-sahneye-tasidi/1833119",
+      "description": "Bağcılar Belediyesi Engelliler Sarayı'nda görevli halk oyunları eğitmeni Yeliz Arayıcı'nın 19-46 yaş arasındaki özel gereksinimli bireylerle kurduğu \"Işıldayan Adımlar\" ekibi, Türkiye Halk Oyunları Federasyonunun düzenlediği yarışmada birinci oldu",
+      "published_at": "2026-11-23T00:00:00+00:00",
+      "id": "e1c98ddfca9bcee8a42d"
+    },
+    {
+      "source": "Anadolu Ajansı – Engelli Yaşam",
+      "title": "Sınıfını hayatın içine taşıyarak çocuklara öğrenmeyi sevdiriyor",
+      "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/sinifini-hayatin-icine-tasiyarak-cocuklara-ogrenmeyi-sevdiriyor/1833117",
+      "description": "Aydın'da sınıf öğretmeni Tuğba Savut, bazen yaptığı maketle Vecihi Hürkuş'un Türkiye'nin ilk uçağı Vecihi K-6'yı bazen de eline aldığı dronla yerli ve milli insansız hava araçlarını öğrencilerine tiyatral gösteriyle anlatıyor.",
+      "published_at": "2026-11-23T00:00:00+00:00",
+      "id": "454b020034b468419b84"
+    },
+    {
+      "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
+      "title": "21.11.2026 Bakanımız Göktaş, KADEM'in 7. Uluslararası Kadın ve Adalet Zirvesi'nde konuştu Haberin Detayı",
+      "url": "https://www.aile.gov.tr/haberler/bakanimiz-goktas-kademin-7-uluslararasi-kadin-ve-adalet-zirvesinde-konustu/",
+      "description": "21.11.2026 Bakanımız Göktaş, KADEM'in 7. Uluslararası Kadın ve Adalet Zirvesi'nde konuştu Haberin Detayı",
+      "published_at": "2026-11-21T00:00:00+00:00",
+      "id": "bea989057142567619cb"
+    }
+  ],
   "seen_urls": {
     "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/down-erisilebilir-kafe-calisma-hayatinda-firsat-esitligine-dikkati-cekiyor/1833080": "2026-11-16T18:42:06.967963+00:00",
     "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/depremde-ailesini-ve-bacaklarini-kaybetti-kizinin-voleybol-tutkusuyla-hayata-tutundu/1833079": "2026-11-16T18:42:06.967963+00:00",
@@ -147,6 +172,11 @@
     "https://www.trthaber.com/haber/guncel/abd-istihbarat-kurumundaki-iletisim-kesintisi-orta-doguyu-da-etkiledi-963775.html": "2026-11-19T10:31:07.390564+00:00",
     "https://www.aile.gov.tr/duyurular/oezel-engelli-bakim-merkezi-yeni-basvuru-hakkinda-duyuru/": "2026-11-20T21:53:19.397902+00:00",
     "https://www.trthaber.com/haber/saglik/cocuklarda-ilk-dis-muayenesi-ne-zaman-yapilmali-964034.html": "2026-11-21T12:51:17.734625+00:00",
-    "https://www.aile.gov.tr/haberler/aile-ve-genclik-fonu-kapsaminda-yeni-yuva-kuran-11-bin-224-genc-icin-kasim-ayinda-1-milyar-277-milyon-lira-odeme-yapildi/": "2026-11-21T12:51:17.734625+00:00"
+    "https://www.aile.gov.tr/haberler/aile-ve-genclik-fonu-kapsaminda-yeni-yuva-kuran-11-bin-224-genc-icin-kasim-ayinda-1-milyar-277-milyon-lira-odeme-yapildi/": "2026-11-21T12:51:17.734625+00:00",
+    "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/ozel-ogrencileriyle-kurdugu-folklor-ekibiyle-muzigin-iyilestirici-gucunu-sahneye-tasidi/1833119": "2026-11-23T15:02:01.433499+00:00",
+    "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/sinifini-hayatin-icine-tasiyarak-cocuklara-ogrenmeyi-sevdiriyor/1833117": "2026-11-23T15:02:01.433499+00:00",
+    "https://www.aile.gov.tr/haberler/kadina-yonelik-siddetle-mucadelede-yeni-donem-vizyonu-25-kasimda-aciklanacak/": "2026-11-23T15:02:01.433499+00:00",
+    "https://www.aile.gov.tr/haberler/bakanimiz-goktas-kademin-7-uluslararasi-kadin-ve-adalet-zirvesinde-konustu/": "2026-11-23T15:02:01.433499+00:00",
+    "https://www.sgk.gov.tr/duyuru/detay/Sosyal-Guvenlik-Kurumu-Mufettis-Yardimciligi-Giris-Sinavi-Duyurusu-2026-11-23-09-54-59": "2026-11-23T15:02:01.433499+00:00"
   }
 }
