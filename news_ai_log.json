@@ -7206,6 +7206,15 @@
       "occurrences": 1,
       "status": "pending_24h",
       "details": "24 Kasım 2026 Görevde Yükselme Yazılı Sınavına Katılmaya Hak Kazanan Personele İlişkin Duyuru PERSONEL DAİRE BAŞKANLIĞI: ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)\"))"
+    },
+    {
+      "component": "news-workflow-stale",
+      "first_seen": "2026-11-24T20:41:47.526512+00:00",
+      "last_seen": "2026-11-24T20:41:47.526512+00:00",
+      "occurrences": 1,
+      "status": "reported",
+      "details": "5 saatten uzun süredir başarılı zamanlanmış haber çalışması yok (5.60 saat). Otomatik kurtarma tetiklemesi deneniyor. Son başarılı zamanlanmış haber çalışması: 308; tamamlanma: 2026-11-24T15:05:46Z; geçen süre: 5.60 saat; çalışma: https://github.com/rsever-source/mobilrs/actions/runs/45420684077 Yeniden tetikleme GitHub tarafından kabul edildi; haber workflow'unun sonucunu tamamlanma raporu üzerinden izle.",
+      "reported_at": "2026-11-24T20:41:47.526512+00:00"
     }
   ]
 }
