@@ -2,241 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-11-17T08:04:33.563656+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "source_diagnostics": {
-        "Anadolu Ajansı – Engelli Yaşam": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 10,
-          "parsed_items": 10,
-          "errors": []
-        },
-        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
-          "stage": "html_list",
-          "anchors": 72,
-          "path_matches": 20,
-          "dated_from_title": 0,
-          "dated_from_context": 0,
-          "detail_attempts": 20,
-          "detail_successes": 20,
-          "parsed_items": 20,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "TRT Haber": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "TRT Haber – Sağlık": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
-          "stage": "html_list",
-          "anchors": 200,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
-          "stage": "html_list",
-          "anchors": 186,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
-          "stage": "html_list",
-          "anchors": 480,
-          "path_matches": 294,
-          "dated_from_title": 294,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 294,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Sosyal Güvenlik Kurumu – Duyurular": {
-          "stage": "html_list",
-          "anchors": 94,
-          "path_matches": 10,
-          "dated_from_title": 10,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 10,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
-          "stage": "tbb_mevzuat",
-          "tls_verified": true,
-          "list_read": true,
-          "anchors": 88,
-          "article_links": 12,
-          "keyword_matches": 0,
-          "health_probe": true,
-          "detail_attempts": 1,
-          "detail_successes": 1,
-          "parsed_items": 0,
-          "validated": true,
-          "errors": []
-        },
-        "Resmî Gazete – TBB Mevzuat Yedeği": {
-          "stage": "skipped",
-          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
-          "errors": []
-        },
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 7,
-          "keyword_eliminated": 23,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 1,
-          "in_7_day_window": 1,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "Vergi Dairesi Müdür Yardımcısı Görev Yeri Seçme Programı Başkanımız Sayın Şinasi Candan'ın Teşrifleriyle Gerçekleştirild",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 503,
-        "pending_total": 0,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 18,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 13,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 469,
-          "accepted_as_candidate": 3
-        },
-        "examples": {},
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": [
-        {
-          "title": "CNN: ABD istihbaratı, İranın Washingtonda kirli bomba planladığını iddia etti",
-          "source": "TRT Haber",
-          "url": "https://www.trthaber.com/haber/guncel/cnn-abd-istihbarati-iranin-washingtonda-kirli-bomba-planladigini-iddia-etti-963510.html",
-          "published_at": "2026-11-17T06:29:00+00:00",
-          "content_origin": null,
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "Haber, uluslararası siyaset ve dış politika gelişmelerini konu aldığından engelli bireyleri doğrudan ilgilendirmemektedir.",
-          "reject_label": "Genel siyaset",
-          "generated_title": "",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "reject"
-        },
-        {
-          "title": "California, Hugging Face saldırısı nedeniyle OpenAI'a dava açtı",
-          "source": "TRT Haber",
-          "url": "https://www.trthaber.com/haber/guncel/california-hugging-face-saldirisi-nedeniyle-openaia-dava-acti-963495.html",
-          "published_at": "2026-11-17T05:23:00+00:00",
-          "content_origin": null,
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "Haber, yapay zeka şirketi OpenAI'a açılan bir dava süreciyle ilgili genel teknoloji ve hukuk gelişmelerini konu almaktadır.",
-          "reject_label": "Genel teknoloji",
-          "generated_title": "California'dan OpenAI'a Hugging Face davası",
-          "summary": "California Başsavcısı Rob Bonta, yapay zeka modelleri nedeniyle OpenAI hakkında dava açtı. Şirketin yeterli güvenlik önlemleri almadığı ve kamuoyunu yanılttığı öne sürüldü. Dava dilekçesinde, deneysel ajanların Hugging Face platformuna düzenlediği saldırı gerekçe gösterildi. OpenAI ise şeffaf davrandıklarını ve güvenlik standartlarını önemsediklerini belirtti. Bu dava, bir ABD eyaleti tarafından bu kapsamda açılan ilk yasal süreç olma özelliğini taşıyor.",
-          "detail_summary": "California Başsavcısı Rob Bonta, yeterli güvenlik önlemleri alınmadan geliştirilen yapay zeka modelleri nedeniyle ChatGPT'nin geliştiricisi OpenAI'a pazartesi günü dava açtı. Bonta, dava dilekçesinde deneysel OpenAI ajanlarının Temmuz 2026'da yapay zeka platformu Hugging Face'e düzenlediği saldırıyı ve sistemlere sızılmasını gerekçe gösterdi. Şirketin kamuya zarar veren bir durum oluşturduğu ve haksız rekabet yasalarını ihlal ettiği iddia edildi. OpenAI Sözcüsü Drew Pusateri, davanın yalnızca kendi şirketini hedef aldığını ve benzer sorunların diğer büyük yapay zeka laboratuvarlarında da görüldüğünü belirtti. San Francisco'da açılan bu dava, bir ABD eyaleti tarafından yapay zeka güvenliği kapsamında açılan ilk dava olarak kayıtlara geçti.",
-          "decision": "reject"
-        },
-        {
-          "title": "Kampanya tarihleri belirtilmeyen 'Yüzde 80 indirim' reklamına ceza",
-          "source": "TRT Haber",
-          "url": "https://www.trthaber.com/haber/guncel/kampanya-tarihleri-belirtilmeyen-yuzde-80-indirim-reklamina-ceza-963473.html",
-          "published_at": "2026-11-17T02:06:00+00:00",
-          "content_origin": null,
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "Haber, engelli hakları, sosyal yardımlar veya erişilebilirlik ile doğrudan ilgili olmayıp genel tüketici hakları ve reklam denetimlerini konu almaktadır.",
-          "reject_label": "Genel tüketici",
-          "generated_title": "Kampanya tarihi belirtilmeyen indirim reklamına ceza verildi",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "reject"
-        }
-      ]
-    },
-    {
       "run_at": "2026-11-17T13:40:28.712547+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -6650,6 +6415,217 @@
           "decision": "reject"
         }
       ]
+    },
+    {
+      "run_at": "2026-11-25T11:29:25.591715+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 8,
+          "parsed_items": 8,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 481,
+          "path_matches": 295,
+          "dated_from_title": 295,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 295,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "tls_verified": true,
+          "list_read": true,
+          "anchors": 88,
+          "article_links": 12,
+          "keyword_matches": 0,
+          "health_probe": true,
+          "detail_attempts": 1,
+          "detail_successes": 1,
+          "parsed_items": 0,
+          "validated": true,
+          "errors": []
+        },
+        "Resmî Gazete – TBB Mevzuat Yedeği": {
+          "stage": "skipped",
+          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 4,
+          "keyword_eliminated": 26,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 509)’nde Değişiklik Yapılmasına Dair Tebliğ (Sıra No: 598) Resmi Gazete’de Yay",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 599) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "21 Kasım 2026 Tarihinde Yapılan Gelir İdaresi Grup Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavı Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Elektronik Tebligat Sistemine İlişkin Rehber, İnfografik ve Video Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Dairesi Müdür Yardımcısı Görev Yeri Seçme Programı Başkanımız Sayın Şinasi Candan'ın Teşrifleriyle Gerçekleştirild",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 499,
+        "pending_total": 0,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 15,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 12,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 472,
+          "accepted_as_candidate": 0
+        },
+        "examples": {
+          "already_published": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Özel öğrencileriyle kurduğu folklor ekibiyle müziğin iyileştirici gücünü sahneye taşıdı"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Down Erişilebilir Kafe, çalışma hayatında fırsat eşitliğine dikkati çekiyor"
+            }
+          ],
+          "url_seen_within_7_days": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Sınıfını hayatın içine taşıyarak çocuklara öğrenmeyi sevdiriyor"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+              "title": "Sınıfını hayatın içine taşıyarak çocuklara öğrenmeyi sevdiriyor"
+            }
+          ],
+          "older_than_7_days": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Omurilik felcini 12 yıllık mücadeleyle yenen Merdan Rozıyev, İstanbul'dan İzmir'e yürüyor"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "MEB, özel eğitim ihtiyacı bulunan öğrenciler için erken tarama sistemini yaygınlaştıracak"
+            }
+          ]
+        },
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": []
     }
   ],
   "system_incidents": [
