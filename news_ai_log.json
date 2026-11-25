@@ -2,318 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-11-16T18:42:06.967963+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "source_diagnostics": {
-        "Anadolu Ajansı – Engelli Yaşam": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 10,
-          "parsed_items": 10,
-          "errors": []
-        },
-        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
-          "stage": "html_list",
-          "anchors": 72,
-          "path_matches": 20,
-          "dated_from_title": 0,
-          "dated_from_context": 0,
-          "detail_attempts": 20,
-          "detail_successes": 20,
-          "parsed_items": 20,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "TRT Haber": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "TRT Haber – Sağlık": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
-          "stage": "html_list",
-          "anchors": 200,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
-          "stage": "html_list",
-          "anchors": 186,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
-          "stage": "html_list",
-          "anchors": 480,
-          "path_matches": 294,
-          "dated_from_title": 294,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 294,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Sosyal Güvenlik Kurumu – Duyurular": {
-          "stage": "html_list",
-          "anchors": 94,
-          "path_matches": 10,
-          "dated_from_title": 10,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 10,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
-          "stage": "tbb_mevzuat",
-          "tls_verified": true,
-          "list_read": true,
-          "anchors": 88,
-          "article_links": 12,
-          "keyword_matches": 0,
-          "health_probe": true,
-          "detail_attempts": 1,
-          "detail_successes": 1,
-          "parsed_items": 0,
-          "validated": true,
-          "errors": []
-        },
-        "Resmî Gazete – TBB Mevzuat Yedeği": {
-          "stage": "skipped",
-          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
-          "errors": []
-        },
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 7,
-          "keyword_eliminated": 23,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 0,
-          "in_7_day_window": 1,
-          "new_candidates_for_gemini": 1,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "Vergi Dairesi Müdür Yardımcısı Görev Yeri Seçme Programı Başkanımız Sayın Şinasi Candan'ın Teşrifleriyle Gerçekleştirild",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 503,
-        "pending_total": 0,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 18,
-          "duplicate_in_this_run": 2,
-          "url_seen_within_7_days": 9,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 467,
-          "accepted_as_candidate": 7
-        },
-        "examples": {},
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": [
-        {
-          "title": "Down Erişilebilir Kafe, çalışma hayatında fırsat eşitliğine dikkati çekiyor",
-          "source": "Anadolu Ajansı – Engelli Yaşam",
-          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/down-erisilebilir-kafe-calisma-hayatinda-firsat-esitligine-dikkati-cekiyor/1833080",
-          "published_at": "2026-11-16T00:00:00+00:00",
-          "content_origin": null,
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "",
-          "reject_label": "",
-          "generated_title": "COP Down Erişilebilir Kafe, çalışma hayatında fırsat eşitliğine dikkati çekiyor",
-          "summary": "Antalya'da düzenlenen COP31 zirvesinde görev alan Down sendromlu gençler, açtıkları özel kafede yerli ve yabancı misafirleri ağırlıyor. Kocaeli'den gelen özel eğitim merkezi öğrencileri, çay ve kahve servisi yaparak çalışma hayatında fırsat eşitliğini vurguluyor. Ziyaretçilerle iletişim kuran gençler hem yeni deneyimler kazanıyor hem de sosyal hayata aktif katılım sağlıyor. Öğretmenler eşliğinde yürütülen bu çalışma, gençlerin yabancı katılımcılarla etkileşim kurmasına olanak tanıyor. Gençler her şeyi başarabileceklerini belirterek engelleri aşma kararlılıklarını dile getiriyor. Uluslararası zirvede yer alan bu anlamlı girişim büyük ilgi görüyor.",
-          "detail_summary": "Türkiye'nin ev sahipliğinde Antalya'da düzenlenen BM İklim Değişikliği Çerçeve Sözleşmesi 31. Taraflar Konferansı kapsamında özel bir kafe faaliyete başladı. Kocaeli'deki Buğday Tanesi Özel Eğitim ve Rehabilitasyon Merkezi'nden gelen 15 Down sendromlu öğrenci COP Down Erişilebilir Kafe'de görev alıyor. Sabah erken saatlerde kafeyi açan gençler, temizlik yaptıktan sonra yerli ve yabancı ziyaretçilere çay ve kahve ikram ediyor. Güler yüzleriyle dikkat çeken öğrenciler, sosyal hayata katılımın ve çalışma hayatında fırsat eşitliğinin önemini gösteriyor. Öğrencilerden Mehmet Anıl Koçak, Özlem Çukur ve Mehmet Bekir Kılıç kafede çalışmaktan duydukları mutluluğu ve her şeyi başarabileceklerini ifade etti. Rehabilitasyon merkezi öğretmeni Kader Karaesmer, öğrencilerin farklı insanlarla tanışarak iletişim becerilerini geliştirdiğini belirtti. Yabancı katılımcılar gençlerle sohbet edip fotoğraf çektirerek kafeye yoğun ilgi gösteriyor.",
-          "decision": "publish",
-          "site_published_at": "2026-11-16T18:42:06.967963+00:00"
-        },
-        {
-          "title": "Depremde ailesini ve bacaklarını kaybetti, kızının voleybol tutkusuyla hayata tutundu",
-          "source": "Anadolu Ajansı – Engelli Yaşam",
-          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/depremde-ailesini-ve-bacaklarini-kaybetti-kizinin-voleybol-tutkusuyla-hayata-tutundu/1833079",
-          "published_at": "2026-11-16T00:00:00+00:00",
-          "content_origin": null,
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "",
-          "reject_label": "",
-          "generated_title": "Depremde ailesini ve bacaklarını kaybeden Eda Şimşek, kızının hayali için voleybol oynuyor",
-          "summary": "Kahramanmaraş merkezli depremlerde eşini ve iki çocuğunu kaybeden, iki bacağı ampute edilen Eda Şimşek hayata sporla tutundu. Voleybol oynayan kızının yarım kalan hayalini gerçekleştirmek isteyen Şimşek, Oturarak Voleybol Süper Lig ekiplerinden Batman Ampute Spor Kulübü'ne katıldı. Zorlu fizik tedavi ve rehabilitasyon süreçlerini geride bırakan Şimşek, azmiyle çevresine örnek oluyor. Batman'da bir yılı aşkın süredir forma giyen başarılı sporcu, takımıyla birlikte 2027 Paravolley Avrupa Euroleague Kadınlar Şampiyonası'na hazırlanıyor. Şimşek, benzer zorluklar yaşayan bireylere pes etmeme ve hayata tutunma çağrısında bulundu.",
-          "detail_summary": "Kahramanmaraş merkezli 6 Şubat 2023 depremlerinde polis eşini, 10 yaşındaki kızı Elif Nazlı'yı ve 7 yaşındaki oğlu Berat'ı kaybeden Eda Şimşek, enkazdan 24 saat sonra yaralı olarak çıkarıldı. Kayseri Şehir Hastanesi'nde 20 gün yoğun bakımda kalan ve iki kez entübe edilen Şimşek'in her iki bacağı da ampute edildi. Zorlu bir yoğun bakım ve tedavi sürecinin ardından taburcu edilen Şimşek, protezleriyle ilk bağımsız adımlarını atarak hayata yeniden bağlandı. Depremde kaybettiği kızının voleybol oynama tutkusunu ve hayalini yaşatmak isteyen Şimşek, kızının eski antrenörünün teşvikiyle voleybol branşına yöneldi. Profesyonel spor kariyerine Diyarbakır'da başlayan ve ardından Ankara Engelsiz Sportif Paralimpik Spor Kulübü'nde forma giyen Şimşek, son olarak Batman Ampute Spor Kulübü'ne transfer oldu. Batman ekibinde bir yılı aşkın süredir ter döken Şimşek, lig maçlarının yanı sıra gelecek yıl 29 Nisan-2 Mayıs tarihlerinde Almanya'da düzenlenecek 2027 Paravolley Avrupa Euroleague Kadınlar Şampiyonası için hazırlıklarını sürdürüyor. Yaşadığı büyük kayıplara rağmen hiçbir zaman pes etmediğini belirten Şimşek, benzer zorluklar yaşayan ampute bireylerin evlerine kapanmayıp spor gibi aktivitelerle hayata katılması gerektiğini vurguladı.",
-          "decision": "publish",
-          "site_published_at": "2026-11-16T18:42:06.967963+00:00"
-        },
-        {
-          "title": "16.11.2026 Türkiye ile Singapur arasında aile ve sosyal hizmetler alanında iş birliği güçlendirilecek Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/turkiye-ile-singapur-arasinda-aile-ve-sosyal-hizmetler-alaninda-is-birligi-guclendirilecek/",
-          "published_at": "2026-11-16T00:00:00+00:00",
-          "content_origin": null,
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "",
-          "reject_label": "",
-          "generated_title": "Türkiye ile Singapur arasında aile ve sosyal hizmetler alanında iş birliği güçlendirilecek",
-          "summary": "Türkiye ve Singapur, aile ve sosyal hizmetler alanındaki iş birliğini artırmak için yeni bir faaliyet planı imzaladı. Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş ile Singapur Toplumsal ve Aile Gelişim Bakanı Masagos Zulkifli bir araya geldi. İki ülke arasında 2027-2029 dönemini kapsayan ortak faaliyet planı hayata geçirildi. Yapılan anlaşma ile aile yapısının güçlendirilmesi ve demografik dönüşüm konularında deneyim paylaşımı yapılacak. Engelli bireylerin eğitim, istihdam, erişilebilirlik ve bakım hizmetlerinin geliştirilmesi için de ortak çalışmalar yürütülecek. Ayrıca kadınların güçlendirilmesi ve kadına yönelik şiddetle mücadele alanlarında tecrübe aktarımı sağlanacak.",
-          "detail_summary": "Türkiye ile Singapur arasında aile ve sosyal hizmetler alanındaki ilişkileri derinleştirecek önemli bir adım atıldı. Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Asya Aile Konferansı için bulunduğu Singapur'da Singapur Toplumsal ve Aile Gelişim Bakanı Masagos Zulkifli ile ikili görüşme gerçekleştirdi. Görüşme sonrasında iki bakan, 2027-2029 yıllarını kapsayan yeni faaliyet planına imza attı. 4 Kasım 2025'te imzalanan mutabakat zaptının devamı niteliğindeki bu planla aile yapısının güçlendirilmesi ve nüfus politikaları ele alınacak. Çocuk koruma, sosyal yardım sistemleri ve aile odaklı danışmanlık hizmetlerinde ortak çalışmalar yürütülecek. Plan kapsamında engelli bireylerin eğitim, istihdam, erişilebilirlik, bakım ve rehabilitasyon hizmetlerinin geliştirilmesi için iş birliği yapılacak. Kadınların ekonomik ve sosyal hayata katılımının artırılması ile kadına yönelik şiddetle mücadelede tecrübe paylaşımında bulunulacak. Ayrıca iki ülke arasında ortak programlar, konferanslar ve uluslararası platformlarda iş birliği çalışmaları gerçekleştirilecek.",
-          "decision": "publish",
-          "site_published_at": "2026-11-16T18:42:06.967963+00:00"
-        },
-        {
-          "title": "16.11.2026 Koruyucu ailelere yönelik ödemeler hesaplara yatırıldı Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/koruyucu-ailelere-yonelik-odemeler-hesaplara-yatirildi/",
-          "published_at": "2026-11-16T00:00:00+00:00",
-          "content_origin": null,
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "",
-          "reject_label": "",
-          "generated_title": "Koruyucu ailelere yönelik Kasım ayı ödemeleri hesaplara yatırıldı",
-          "summary": "Aile ve Sosyal Hizmetler Bakanlığı, Kasım ayı koruyucu aile ödemelerinin hesaplara yatırıldığını açıkladı. Bakan Mahinur Özdemir Göktaş, bu kapsamda toplam 228 milyon 334 bin lira desteğin hak sahiplerine aktarıldığını belirtti. Koruyucu ailelere çocuk başına aylık ortalama 17 bin 632 lira destek sağlandığı bildirildi. Gönül Elçileri Projesi ile koruyucu aile yanında bulunan çocuk sayısı 11 bin 89'a ulaştı. Hizmet modelinden 1 bin 278 özel gereksinimli çocuk da yararlanıyor. Bakan Göktaş, tüm vatandaşları çocuklara sevgi dolu yuvalarını açmaya davet etti.",
-          "detail_summary": "Aile ve Sosyal Hizmetler Bakanlığı, koruyucu aile hizmeti kapsamında Kasım ayı ödemelerinin hesaplara yatırıldığını duyurdu. Bakan Mahinur Özdemir Göktaş, bu ay toplam 228 milyon 334 bin lira ödemenin hak sahiplerine aktarıldığını bildirdi. Koruyucu ailelere çocuk başına aylık ortalama 17 bin 632 lira destek sağlandığı ifade edildi. Emine Erdoğan'ın himayelerinde 2012 yılında başlatılan Gönül Elçileri Projesi ile koruyucu aile yanındaki çocuk sayısının 11 bin 89'a yükseldiği kaydedildi. Söz konusu hizmet modelinden 0-6 yaş grubundaki 4 bin 310 çocuğun yanı sıra 1 bin 278 özel gereksinimli çocuğun da yararlandığı belirtildi. Kuruluşlarda ise halihazırda 15 bin 174 çocuğa bakım ve koruma hizmeti sunulmaya devam ediliyor. Koruyucu aile olan kamu ve özel sektör çalışanlarına talep etmeleri halinde 10 gün ücretsiz izin hakkı tanındığı hatırlatıldı. Geçici Koruyucu Aile Modeli ile 30 pilot ilde 440 çocuğun 222 geçici koruyucu aile ile buluşturulduğu açıklandı.",
-          "decision": "publish",
-          "site_published_at": "2026-11-16T18:42:06.967963+00:00"
-        },
-        {
-          "title": "13.11.2026 Aile ve Sosyal Hizmetler Bakanımız Göktaş, COP31’de Kadınlarla Atıksız Sürdürülebilir Yaşam Projesi'ni tanıttı: Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktascop31de-kadinlarla-atiksiz-surdurulebilir-yasam-projesini-tanitti/",
-          "published_at": "2026-11-13T00:00:00+00:00",
-          "content_origin": null,
-          "status": "published",
-          "publish": true,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "",
-          "reject_label": "",
-          "generated_title": "Bakan Göktaş, COP31'de Kadınlarla Atıksız Sürdürülebilir Yaşam Projesi'ni tanıttı",
-          "summary": "Aile ve Sosyal Hizmetler Bakanlığı ile Sıfır Atık Vakfı işbirliğinde hayata geçirilen Kadınlarla Atıksız Sürdürülebilir Yaşam Projesi tanıtıldı. Bakan Mahinur Özdemir Göktaş, 24 ay sürecek projeyle 1 milyon kadına ulaşmayı hedeflediklerini belirtti. Antalya'da düzenlenen COP31 kapsamında açıklanan proje, sıfır atık bilincini aile mirasına dönüştürmeyi amaçlıyor. Çalışma kapsamında 81 ilde Sıfır Atık Kadın Elçileri ağı kurulacak. Proje, bilgi ve farkındalık, yerel liderlik ile ekonomik güçlendirme olmak üzere üç temel ayak üzerinde yükselecek. Yaşlı, engelli ve çocuk gibi kırılgan grupların iklim krizinden etkilendiğine dikkat çekildi.",
-          "detail_summary": "Aile ve Sosyal Hizmetler Bakanı Mahinur Özdemir Göktaş, Antalya'daki COP31 zirvesi kapsamında Sıfır Atık Müzesi'ndeki tanıtım etkinliğine katıldı. Bakanlık ile Sıfır Atık Vakfı ortaklığında yürütülecek Kadınlarla Atıksız Sürdürülebilir Yaşam Projesi ile 24 ayda 1 milyon kadına erişilmesi hedefleniyor. Projenin ilk ayağını oluşturan bilgi ve farkındalık çalışmaları kapsamında, 81 ildeki merkezlerde sıfır atık eğitimleri düzenlenecek. İkinci ayak olarak Türkiye genelinde gönüllü kadınlardan oluşan Sıfır Atık Kadın Elçileri ağı kurulacak. Üçüncü aşamada ise kadın kooperatiflerinin eğitim süreçlerinde sıfır atık yaklaşımını benimsemesi teşvik edilerek ekonomik güçlendirme sağlanacak. Bakan Göktaş, iklim değişikliğinin kadınları, çocukları, yaşlı ve engelli bireyleri daha fazla etkilediğini vurguladı. Adil Geçiş İçin Sosyal Koruma, Bakım Hizmetleri ve Kadınların Güçlenmesi Etkinliği'nde de konuşan Göktaş, bakım hizmetlerinin iklim finansmanı kapsamında değerlendirilmesi gerektiğine dikkat çekti.",
-          "decision": "publish",
-          "site_published_at": "2026-11-16T18:42:06.967963+00:00"
-        },
-        {
-          "title": "13.11.2026 Aile ve Sosyal Hizmetler Bakanımız Göktaş, COP31’de \"27. Uluslararası Çocuk Forumu'nda\" konuştu: Haberin Detayı",
-          "source": "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler",
-          "url": "https://www.aile.gov.tr/haberler/aile-ve-sosyal-hizmetler-bakanimiz-goktas-cop31de-27-uluslararasi-cocuk-forumunda-konustu/",
-          "published_at": "2026-11-13T00:00:00+00:00",
-          "content_origin": null,
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "Haber genel çevre ve iklim politikaları ile çocuk forumu faaliyetlerini konu aldığından engelli hakları ve hizmetleriyle doğrudan anlamlı bir ilişkisi bulunmamaktadır.",
-          "reject_label": "Kapsam dışı",
-          "generated_title": "",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "reject"
-        },
-        {
-          "title": "30 Ocak 2027 Tarihinde Gelir Uzmanlığı Yeterlik Sınavı Yapılacaktır",
-          "source": "Gelir İdaresi Başkanlığı – Güncel Duyurular",
-          "url": "https://www.gib.gov.tr/duyuru-arsivi/guncel/19500_30_ocak_2027_tarihinde_gelir_uzmanligi_yeterlik_sinavi_yapilacaktir",
-          "published_at": "2026-11-16T11:20:00+00:00",
-          "content_origin": null,
-          "status": "gemini_decision",
-          "publish": false,
-          "duplicate": false,
-          "duplicate_reason": "",
-          "duplicate_label": "",
-          "reject_reason": "Haber, Gelir İdaresi Başkanlığı tarafından yapılacak yeterlik sınavına ilişkin genel idari duyuru niteliğinde olup doğrudan engelli bireylerin hakları veya yaşamıyla ilgili değildi",
-          "reject_label": "Kapsam dışı",
-          "generated_title": "",
-          "summary": "",
-          "detail_summary": "",
-          "decision": "reject"
-        }
-      ]
-    },
-    {
       "run_at": "2026-11-17T02:59:43.785585+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -6763,6 +6451,217 @@
           "decision": "reject"
         }
       ]
+    },
+    {
+      "run_at": "2026-11-25T00:55:38.438333+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 8,
+          "parsed_items": 8,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 481,
+          "path_matches": 295,
+          "dated_from_title": 295,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 295,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "tls_verified": true,
+          "list_read": true,
+          "anchors": 88,
+          "article_links": 12,
+          "keyword_matches": 0,
+          "health_probe": true,
+          "detail_attempts": 1,
+          "detail_successes": 1,
+          "parsed_items": 0,
+          "validated": true,
+          "errors": []
+        },
+        "Resmî Gazete – TBB Mevzuat Yedeği": {
+          "stage": "skipped",
+          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 4,
+          "keyword_eliminated": 26,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 509)’nde Değişiklik Yapılmasına Dair Tebliğ (Sıra No: 598) Resmi Gazete’de Yay",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 599) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "21 Kasım 2026 Tarihinde Yapılan Gelir İdaresi Grup Müdürlüğü Sınavının Yazılı Bölüm Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Gelir İdaresi Başkanlığı Personeli Görevde Yükselme (VHKİ) Sınavı Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Elektronik Tebligat Sistemine İlişkin Rehber, İnfografik ve Video Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Dairesi Müdür Yardımcısı Görev Yeri Seçme Programı Başkanımız Sayın Şinasi Candan'ın Teşrifleriyle Gerçekleştirild",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 499,
+        "pending_total": 0,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 15,
+          "duplicate_in_this_run": 0,
+          "url_seen_within_7_days": 11,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 473,
+          "accepted_as_candidate": 0
+        },
+        "examples": {
+          "already_published": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Özel öğrencileriyle kurduğu folklor ekibiyle müziğin iyileştirici gücünü sahneye taşıdı"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Down Erişilebilir Kafe, çalışma hayatında fırsat eşitliğine dikkati çekiyor"
+            }
+          ],
+          "url_seen_within_7_days": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Sınıfını hayatın içine taşıyarak çocuklara öğrenmeyi sevdiriyor"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelsiz Yaşam (yedek)",
+              "title": "Sınıfını hayatın içine taşıyarak çocuklara öğrenmeyi sevdiriyor"
+            }
+          ],
+          "older_than_7_days": [
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "Omurilik felcini 12 yıllık mücadeleyle yenen Merdan Rozıyev, İstanbul'dan İzmir'e yürüyor"
+            },
+            {
+              "source": "Anadolu Ajansı – Engelli Yaşam",
+              "title": "MEB, özel eğitim ihtiyacı bulunan öğrenciler için erken tarama sistemini yaygınlaştıracak"
+            }
+          ]
+        },
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": []
     }
   ],
   "system_incidents": [
