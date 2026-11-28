@@ -2,217 +2,6 @@
   "schema_version": 2,
   "news_runs": [
     {
-      "run_at": "2026-11-19T20:50:16.500245+00:00",
-      "model": "gemini-3.5-flash-lite",
-      "source_errors": [],
-      "source_diagnostics": {
-        "Anadolu Ajansı – Engelli Yaşam": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 8,
-          "parsed_items": 8,
-          "errors": []
-        },
-        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
-          "stage": "html_list",
-          "anchors": 72,
-          "path_matches": 20,
-          "dated_from_title": 0,
-          "dated_from_context": 0,
-          "detail_attempts": 20,
-          "detail_successes": 20,
-          "parsed_items": 20,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "TRT Haber": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "TRT Haber – Sağlık": {
-          "stage": "rss",
-          "root_tag": "rss",
-          "item_or_entry_nodes": 60,
-          "parsed_items": 60,
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
-          "stage": "html_list",
-          "anchors": 200,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
-          "stage": "html_list",
-          "anchors": 186,
-          "path_matches": 21,
-          "dated_from_title": 21,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 21,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
-          "stage": "html_list",
-          "anchors": 480,
-          "path_matches": 294,
-          "dated_from_title": 294,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 294,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Sosyal Güvenlik Kurumu – Duyurular": {
-          "stage": "html_list",
-          "anchors": 94,
-          "path_matches": 10,
-          "dated_from_title": 10,
-          "dated_from_context": 0,
-          "detail_attempts": 0,
-          "detail_successes": 0,
-          "parsed_items": 10,
-          "missing_date_items": [],
-          "errors": []
-        },
-        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
-          "stage": "tbb_mevzuat",
-          "tls_verified": true,
-          "list_read": true,
-          "anchors": 88,
-          "article_links": 12,
-          "keyword_matches": 0,
-          "health_probe": true,
-          "detail_attempts": 1,
-          "detail_successes": 1,
-          "parsed_items": 0,
-          "validated": true,
-          "errors": []
-        },
-        "Resmî Gazete – TBB Mevzuat Yedeği": {
-          "stage": "skipped",
-          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
-          "errors": []
-        },
-        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
-          "stage": "gib_api",
-          "scanned": 30,
-          "parsed_items": 7,
-          "keyword_eliminated": 23,
-          "invalid_date": 0,
-          "invalid_rows": 0,
-          "duplicate_in_scan": 0,
-          "already_processed": 1,
-          "in_7_day_window": 1,
-          "new_candidates_for_gemini": 0,
-          "lookback_hours": 168,
-          "error": null,
-          "eliminated_examples": [
-            {
-              "title": "Vergi Dairesi Müdür Yardımcısı Görev Yeri Seçme Programı Başkanımız Sayın Şinasi Candan'ın Teşrifleriyle Gerçekleştirild",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Güncellenmiştir",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "21 Kasım 2026 Tarihinde Yapılacak Gelir İdaresi Grup Müdürlüğü Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açıkla",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Devlet Gelir Uzmanlığı Yeterlik Sınavının Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 597) Resmi Gazete’de Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Vergi Uyumunda Davranışsal Kamu Politikaları Hakkında Malezya Heyeti Gelir İdaresi Başkanlığını Ziyaret Etti",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılan Vergi Dairesi Müdür Yardımcılığı Sınavının Yazılı Bölüm Sonucu Açıklandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "5520 Sayılı Kurumlar Vergisi Kanunu 74 Nolu Sirküler Yayımlandı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "31 Ekim 2026 Tarihinde Yapılacak Vergi Dairesi Müdür Yardımcılığı Sınavına Katılacak Adaylar ile Sınav Giriş Yerleri Açı",
-              "reason": "anahtar kelime eşleşmedi"
-            },
-            {
-              "title": "Üniversitelerin Kurumumuzu Ziyaretleri – Aksaray Üniversitesi",
-              "reason": "anahtar kelime eşleşmedi"
-            }
-          ]
-        }
-      },
-      "filter_diagnostics": {
-        "parsed_total": 501,
-        "pending_total": 0,
-        "counts": {
-          "pending_unknown_or_expired_date": 0,
-          "already_published": 17,
-          "duplicate_in_this_run": 0,
-          "url_seen_within_7_days": 25,
-          "missing_date": 0,
-          "future_date": 0,
-          "older_than_7_days": 459,
-          "accepted_as_candidate": 0
-        },
-        "examples": {
-          "already_published": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Down Erişilebilir Kafe, çalışma hayatında fırsat eşitliğine dikkati çekiyor"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Depremde ailesini ve bacaklarını kaybetti, kızının voleybol tutkusuyla hayata tutundu"
-            }
-          ],
-          "older_than_7_days": [
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "Kırklareli'nde tıp öğrencilerinden engelli bireylere evlerinde mini konser"
-            },
-            {
-              "source": "Anadolu Ajansı – Engelli Yaşam",
-              "title": "TİHEK'ten Down sendromlu çocuğu oyun alanına almayan işletmeye ceza"
-            }
-          ],
-          "url_seen_within_7_days": [
-            {
-              "source": "TRT Haber",
-              "title": "ABD istihbarat kurumundaki iletişim kesintisi Orta Doğu'yu da etkiledi"
-            },
-            {
-              "source": "TRT Haber",
-              "title": "Lise öğrencileri Fransa'da altın madalya kazandı"
-            }
-          ]
-        },
-        "zero_candidates_is_not_an_error": true
-      },
-      "candidates": []
-    },
-    {
       "run_at": "2026-11-20T03:35:07.805697+00:00",
       "model": "gemini-3.5-flash-lite",
       "source_errors": [],
@@ -6647,6 +6436,225 @@
         "zero_candidates_is_not_an_error": true
       },
       "candidates": []
+    },
+    {
+      "run_at": "2026-11-28T13:20:51.007984+00:00",
+      "model": "gemini-3.5-flash-lite",
+      "source_errors": [],
+      "source_diagnostics": {
+        "Anadolu Ajansı – Engelli Yaşam": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 11,
+          "parsed_items": 11,
+          "errors": []
+        },
+        "Anadolu Ajansı – Engelsiz Yaşam (yedek)": {
+          "stage": "html_list",
+          "anchors": 72,
+          "path_matches": 20,
+          "dated_from_title": 0,
+          "dated_from_context": 0,
+          "detail_attempts": 20,
+          "detail_successes": 20,
+          "parsed_items": 20,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "TRT Haber": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "TRT Haber – Sağlık": {
+          "stage": "rss",
+          "root_tag": "rss",
+          "item_or_entry_nodes": 60,
+          "parsed_items": 60,
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Engelli ve Yaşlı Hizmetleri": {
+          "stage": "html_list",
+          "anchors": 200,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Genel Haberler": {
+          "stage": "html_list",
+          "anchors": 186,
+          "path_matches": 21,
+          "dated_from_title": 21,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 21,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Aile ve Sosyal Hizmetler Bakanlığı – Duyurular": {
+          "stage": "html_list",
+          "anchors": 481,
+          "path_matches": 295,
+          "dated_from_title": 295,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 295,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Sosyal Güvenlik Kurumu – Duyurular": {
+          "stage": "html_list",
+          "anchors": 94,
+          "path_matches": 10,
+          "dated_from_title": 10,
+          "dated_from_context": 0,
+          "detail_attempts": 0,
+          "detail_successes": 0,
+          "parsed_items": 10,
+          "missing_date_items": [],
+          "errors": []
+        },
+        "Türkiye Belediyeler Birliği – Mevzuat Duyuruları": {
+          "stage": "tbb_mevzuat",
+          "tls_verified": true,
+          "list_read": true,
+          "anchors": 89,
+          "article_links": 12,
+          "keyword_matches": 0,
+          "health_probe": true,
+          "detail_attempts": 1,
+          "detail_successes": 1,
+          "parsed_items": 0,
+          "validated": true,
+          "errors": []
+        },
+        "Resmî Gazete – TBB Mevzuat Yedeği": {
+          "stage": "skipped",
+          "reason": "TBB birincil kaynağıdır. Resmî Gazete yedeği normal haber toplama akışında otomatik çalıştırılmaz; yalnızca gerektiğinde ayrı tanılama/yedek kontrolü için kullanılır.",
+          "errors": []
+        },
+        "Gelir İdaresi Başkanlığı – Güncel Duyurular": {
+          "stage": "gib_api",
+          "scanned": 30,
+          "parsed_items": 2,
+          "keyword_eliminated": 28,
+          "invalid_date": 0,
+          "invalid_rows": 0,
+          "duplicate_in_scan": 0,
+          "already_processed": 0,
+          "in_7_day_window": 0,
+          "new_candidates_for_gemini": 0,
+          "lookback_hours": 168,
+          "error": null,
+          "eliminated_examples": [
+            {
+              "title": "22 Aralık 2026 Tarihinde Sözleşmeli Koruma ve Güvenlik Görevlisi Giriş Sınavı Yapılacaktır",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "23 Aralık 2026 Tarihinde Sözleşmeli Tekniker Giriş Sınavı Yapılacaktır",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "21 Aralık 2026 Tarihinde Sözleşmeli Avukat Giriş Sınavı Yapılacaktır",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "24 – 28 Aralık 2026 Tarihleri Arasında Sözleşmeli Destek Personeli (Hizmetli) Giriş Sınavı Yapılacaktır",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "28 – 29 Aralık 2026 Tarihlerinde Sözleşmeli Destek Personeli (Şoför) Giriş Sınavı Yapılacaktır",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Tahsilat Genel Tebliği (Seri:C Sıra No:10) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "12028 Sayılı Cumhurbaşkanı Kararı 27/11/2026 Tarihli ve 33443 Sayılı Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Kaynak Kullanımını Destekleme Fonu Kesintisi Hakkında Karar (Karar Sayısı: 12027) Resmi Gazete’de Yayımlandı",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Kurumumuzun Üniversite Ziyaretleri – Ankara Yıldırım Beyazıt Üniversitesi",
+              "reason": "anahtar kelime eşleşmedi"
+            },
+            {
+              "title": "Vergi Usul Kanunu Genel Tebliği (Sıra No: 509)’nde Değişiklik Yapılmasına Dair Tebliğ (Sıra No: 598) Resmi Gazete’de Yay",
+              "reason": "anahtar kelime eşleşmedi"
+            }
+          ]
+        }
+      },
+      "filter_diagnostics": {
+        "parsed_total": 500,
+        "pending_total": 0,
+        "counts": {
+          "pending_unknown_or_expired_date": 0,
+          "already_published": 15,
+          "duplicate_in_this_run": 2,
+          "url_seen_within_7_days": 14,
+          "missing_date": 0,
+          "future_date": 0,
+          "older_than_7_days": 467,
+          "accepted_as_candidate": 2
+        },
+        "examples": {},
+        "zero_candidates_is_not_an_error": true
+      },
+      "candidates": [
+        {
+          "title": "Özel gereksinimli bireyler \"Engelsiz cami buluşmalarını\" çok sevdi",
+          "source": "Anadolu Ajansı – Engelli Yaşam",
+          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/ozel-gereksinimli-bireyler-engelsiz-cami-bulusmalarini-cok-sevdi/1833157",
+          "published_at": "2026-11-28T00:00:00+00:00",
+          "content_origin": null,
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "Kastamonu'da yürütülen 'Engelsiz Cami Buluşmaları' özel bireyleri sevindirdi",
+          "summary": "Kastamonu'da yürütülen Engelsiz Cami Buluşmaları Projesi ile özel gereksinimli bireyler aileleriyle camileri ziyaret ediyor. Yaklaşık 15 aydır süren proje kapsamında bugüne kadar yedi cami ve çeşitli türbeler gezildi. Katılımcı sayısı zamanla artarak 90'a yakın kişiye ulaştı.",
+          "detail_summary": "Kastamonu Müftülüğü Engelli Koordinatörlüğü ile Özel Bireyler ve Aileleri Dayanışma Derneği ortaklaşa proje yürütüyor. Proje kapsamında özel gereksinimli bireyler aileleriyle birlikte camileri ziyaret edip dua ediyor ve ilahiler söylüyor. Yaklaşık 15 aydır sürdürülen çalışmalar neticesinde bugüne kadar yedi farklı cami gezildi. Son olarak Devrekani ilçesindeki türbeler ve 1893 yapımı Merkez Camisi ziyaret edildi. Dernek Başkanı Huriye Boyraz, yola 40 kişiyle çıktıklarını ancak katılımcı sayısının 90'a yaklaştığını belirtti. Etkinliklere özellikle görme engelli bireyler ile tekerlekli sandalye kullanan çocuklar ilgi gösteriyor. Aileler çocuklarının manevi etkinliklere katılmasından ve duydukları mutluluktan duydukları memnuniyeti dile getirdi.",
+          "decision": "publish",
+          "site_published_at": "2026-11-28T13:20:51.007984+00:00"
+        },
+        {
+          "title": "Sınavlara hazırlanan görme engellilere özel \"dijital eğitim platformu\"",
+          "source": "Anadolu Ajansı – Engelli Yaşam",
+          "url": "https://www.aa.com.tr/tr/ayrimcilikhatti/engelsiz-yasam/sinavlara-hazirlanan-gorme-engellilere-ozel-dijital-egitim-platformu/1833156",
+          "published_at": "2026-11-28T00:00:00+00:00",
+          "content_origin": null,
+          "status": "published",
+          "publish": true,
+          "duplicate": false,
+          "duplicate_reason": "",
+          "duplicate_label": "",
+          "reject_reason": "",
+          "reject_label": "",
+          "generated_title": "Görme engelliler için erişilebilir dijital eğitim platformu kuruldu",
+          "summary": "Çukurova Üniversitesi öğrencilerinden oluşan Baliz Parmak Kulübü, sınavlara hazırlanan görme engelli bireyler için özel bir dijital eğitim platformu geliştirdi. Balizparmak.net adresi üzerinden hizmet veren Ozan Bayır Erişilebilir Dijital Kütüphanesi'nde sesli konu anlatımları ve soru çözümleri yer alıyor. EKPSS ve YKS gibi sınavlara hazırlanan adaylar sistemden faydalanabiliyor. Platformda kullanıcılara hedefleri sorularak çalışma alanları gösteriliyor. Yapay zeka desteğiyle yanlış yapılan konularda ek anlatımlar devreye giriyor. Projenin kapsamının gelecekte LGS gibi farklı sınav gruplarını da kapsayacak şekilde genişletilmesi hedefleniyor.",
+          "detail_summary": "Adana'da Çukurova Üniversitesi'nin farklı bölümlerinde okuyan öğrenciler, sosyal sorumluluk amacıyla 2024 yılında Baliz Parmak Kulübü'nü kurdu. Kulüp üyeleri daha önce Braille alfabesiyle dergi çıkarırken, bu kez sınavlara hazırlanan görme engelli bireyler için dijital bir eğitim platformu oluşturdu. Kahramanmaraş merkezli 6 Şubat depremlerinde hayatını kaybeden kulüp üyesi Ozan Bayır'ın adı verilen platform, balizparmak.net internet sitesi üzerinden erişime sunuldu. Sitede EKPSS ve YKS sınavlarına hazırlanan görme engelliler için seslendirilmiş konu anlatımları, örnek sorular ve günlük soru çözme hedefleri bulunuyor. Kulüp başkanı Ömer Öksüzaşıkı, sistemin hata yapılan konularda yapay zeka desteğiyle konu anlatımını devreye soktuğunu belirtti. Yazılım geliştirme sürecinde görev alan Furkan Selim Gönç, sistemin erişilebilirlik odaklı tasarlandığını ve eğitimde fırsat eşitliğine katkı sunduğunu ifade etti. Sosyal Bilgiler Öğretmenliği öğrencisi ve görme engelli Edanur Taşdemir, EKPSS hazırlık sürecinde iki aydır bu platformdan yararlandığını ve uygulamanın hayatlarına dokunduğunu kaydetti. Öğrenciler, ilerleyen dönemde platformu Liselere Geçiş Sistemi gibi farklı sınavlara hazırlanan diğer öğrencilere de ulaştırmayı amaçlıyor.",
+          "decision": "publish",
+          "site_published_at": "2026-11-28T13:20:51.007984+00:00"
+        }
+      ]
     }
   ],
   "system_incidents": [
